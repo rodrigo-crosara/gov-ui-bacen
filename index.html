@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine - Design System - Banco Central do Brasil</title>
+    
+    <!-- Bootstrap 4.6 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <!-- BCB Styles -->
+    <link rel="stylesheet" href="./assets/css/bcb-style.css">
+    
+    <style>
+        body {
+            font-family: var(--bcb-font-ubuntu);
+            color: var(--bcb-color-body-text);
+            background-color: var(--bcb-color-white);
+        }
+        .header-bcb {
+            background-color: var(--bcb-brand-blue);
+            color: var(--bcb-color-white);
+            padding: var(--bcb-space-5) 0;
+        }
+        .header-bcb h1 {
+            margin: 0;
+            font-size: var(--bcb-font-600);
+            font-weight: 500;
+        }
+        
+        /* Ajustes básicos do Bootstrap para usar os Tokens BCB em Botões */
+        .btn-primary {
+            background-color: var(--bcb-btn-primary-bg);
+            border-color: var(--bcb-btn-primary-bg);
+            color: var(--bcb-color-white);
+        }
+        .btn-primary:hover {
+            background-color: var(--bcb-btn-primary-hover);
+            border-color: var(--bcb-btn-primary-hover);
+            color: var(--bcb-color-white);
+        }
+        .btn-primary:active {
+            background-color: var(--bcb-btn-primary-active) !important;
+            border-color: var(--bcb-btn-primary-active) !important;
+        }
+        .btn-primary:disabled {
+            background-color: #64666c;
+            border-color: #64666c;
+        }
+        
+        .btn-secondary {
+            background-color: var(--bcb-btn-secondary-bg);
+            border-color: var(--bcb-btn-secondary-bg);
+            color: var(--bcb-color-white);
+        }
+        .btn-secondary:hover {
+            background-color: var(--bcb-btn-secondary-hover);
+            border-color: var(--bcb-btn-secondary-hover);
+            color: var(--bcb-color-white);
+        }
+        .btn-secondary:active, .btn-secondary:focus {
+            background-color: var(--bcb-btn-secondary-active) !important;
+            border-color: var(--bcb-btn-secondary-active) !important;
+        }
+        
+        .btn-outline-primary {
+            color: var(--bcb-brand-blue);
+            border-color: var(--bcb-brand-blue);
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--bcb-brand-blue);
+            color: var(--bcb-color-white);
+        }
+        
+        .btn-link {
+            color: var(--bcb-link-color);
+        }
+        .btn-link:hover {
+            color: var(--bcb-link-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bcb">
+        <div class="container">
+            <h1>Design System - Banco Central do Brasil</h1>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        
+        <section class="mb-5">
+            <h2 class="mb-4">Botões (Buttons)</h2>
+            <p class="text-body mb-4">Exemplos práticos das variantes, tamanhos e estados de botões baseados nos componentes do DS.</p>
+            
+            <div class="mb-4">
+                <h3 class="h5 medium">Variantes</h3>
+                <div class="d-flex flex-wrap" style="gap: 1rem;">
+                    <button type="button" class="btn btn-primary">Salvar relatório</button>
+                    <button type="button" class="btn btn-secondary">Confirmar dados</button>
+                    <button type="button" class="btn btn-outline-primary">Ação alternativa</button>
+                    <button type="button" class="btn btn-link">Limpar formulário</button>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="h5 medium">Tamanhos</h3>
+                <div class="d-flex flex-wrap align-items-center" style="gap: 1rem;">
+                    <button type="button" class="btn btn-primary btn-sm">Ação Auxiliar (Sair)</button>
+                    <button type="button" class="btn btn-primary">Formato Padrão</button>
+                    <button type="button" class="btn btn-primary btn-lg">Conversão (Destacado)</button>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="h5 medium">Botões com Ícones</h3>
+                <div class="d-flex flex-wrap" style="gap: 1rem;">
+                    <button type="button" class="btn btn-primary d-flex align-items-center">
+                        Ver conteúdo <span class="material-icons-outlined ml-2">chevron_right</span>
+                    </button>
+
+                    <button type="button" class="btn btn-secondary d-flex align-items-center">
+                        Baixar <span class="material-icons-outlined ml-2">file_download</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="h5 medium">Estado Desabilitado</h3>
+                <button type="button" class="btn btn-primary" disabled>Ação Indisponível</button>
+            </div>
+            
+            <div class="mb-4">
+                <h3 class="h5 medium">Links Navegacionais com Formato de Botão</h3>
+                <a href="#proxima-pagina" class="btn btn-primary">Ir para a Próxima Etapa</a>
+            </div>
+            
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-4">Links e Âncoras</h2>
+            
+            <ul class="list-unstyled">
+                <li class="mb-3">
+                    <strong>Link Padrão:</strong><br>
+                    <a href="#secao" class="text-link">Informações adicionais sobre normativos</a>
+                </li>
+                <li class="mb-3">
+                    <strong>Link que abre em Nova Aba:</strong><br>
+                    <a href="#externo" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)">
+                        Acessar Portal do Registrato
+                    </a>
+                </li>
+                <li class="mb-3">
+                    <strong>Download de Arquivo:</strong><br>
+                    <a href="#download.pdf" class="text-link" aria-label="baixe a planilha completa">
+                        Relatório Econômico Anual (PDF, 2MB)
+                    </a>
+                </li>
+                <li class="mb-3">
+                    <strong>Link em Título (Herdando formatação e assumindo .text-link):</strong><br>
+                    <h4 class="h6 mt-2">
+                        <a href="#titulolink" class="text-link" aria-label="Abre em nova aba ou janela">
+                            Comunicado de Política Monetária (Copom)
+                            <span class="material-icons-outlined ml-1" style="font-size: 1rem; vertical-align: middle;">open_in_new</span>
+                        </a>
+                    </h4>
+                </li>
+            </ul>
+        </section>
+        
+    </main>
+
+</body>
+</html>
