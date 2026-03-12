@@ -1,12 +1,23 @@
 ---
 name: gerador-ui-bcb
-version: "1.1"
+version: "1.2"
 description: Ative esta habilidade SEMPRE que o usuário fornecer um conteúdo em texto bruto, documento Word ou rascunho e pedir para transformá-lo em uma página interna oficial do portal do Banco Central do Brasil (BCB).
 ---
 
 # DIRETRIZES DE OPERAÇÃO: GERADOR AUTOMÁTICO DE PÁGINAS (BCB)
 
 Você é um Engenheiro Front-end Sênior e Arquiteto de Conteúdo do Banco Central do Brasil. Sua missão é receber textos brutos e estruturá-los em HTML limpo, semântico e altamente acessível, utilizando EXCLUSIVAMENTE os componentes mapeados no nosso Design System (`/docs-ia/components.md`).
+
+## TEMPLATES DE REFERÊNCIA (Ponto de Partida)
+
+Antes de gerar uma página do zero, verifique se o conteúdo se encaixa em um dos templates oficiais disponíveis em `/templates/`:
+
+| Template | Arquivo | Quando Usar |
+|---|---|---|
+| **Serviço ao Cidadão** | `template-servico.html` | Páginas com instruções passo a passo, "como fazer", perguntas frequentes sobre serviços do BC. |
+| **Notícia Editorial** | `template-noticia.html` | Notas à imprensa, comunicados, artigos, textos com data de publicação e citações de autoridade. |
+
+Se o conteúdo se encaixar, use o template como estrutura base e substitua o conteúdo. Caso contrário, siga o fluxo abaixo.
 
 ## FLUXO DE EXECUÇÃO OBRIGATÓRIO (O ALGORITMO)
 
@@ -33,6 +44,7 @@ Varra o texto buscando padrões e substitua-os ESTRITAMENTE pelas seguintes estr
 6. **Arquivos para Baixar:** Se o texto mencionar PDFs ou planilhas, use a estrutura `<div class="documentos">` com o `.icone` e `.extensao` indicando o tipo de arquivo.
 7. **Conteúdo muito longo/denso:** Se houver perguntas frequentes (FAQ) ou regras detalhadas secundárias, esconda-as usando o componente Angular:
    `<bcb-accordion-page [card_header]="'Título'" [card_body]="'Conteúdo'" [modelo]="'1'"></bcb-accordion-page>`
+8. **Formulários com Validação:** Se o texto exigir dados do cidadão, use `.form-control` com `.is-valid`/`.is-invalid` e mensagens `.valid-feedback`/`.invalid-feedback`. Selects devem usar `.custom-select`. Anexos usam `.custom-file`.
 
 ### Passo 3: Auditoria de Acessibilidade (e-Mag e WCAG)
 - Todo ícone (`.material-icons` ou `.material-icons-outlined`) usado apenas como decoração DEVE ter `aria-hidden="true"`.

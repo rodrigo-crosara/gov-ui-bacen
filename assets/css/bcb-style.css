@@ -332,3 +332,31 @@ footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; b
 .color-swatch:hover { transform: scale(1.04); box-shadow: var(--bcb-shadow-300); }
 .color-swatch .swatch-name { font-weight: 700; margin-bottom: 2px; }
 .color-swatch .swatch-hex { opacity: 0.8; font-family: 'Ubuntu Mono', monospace; font-size: 0.75rem; }
+
+/* ==========================================
+   20. FORMULÁRIOS AVANÇADOS E VALIDAÇÃO
+   ========================================== */
+/* Select Customizado */
+.custom-select { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-gray-900); background-color: var(--bcb-color-white); transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+.custom-select:focus { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); outline: 0; }
+
+/* File Input */
+.custom-file-label { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-gray-600); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.custom-file-label::after { content: "Selecionar"; background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); border-left: 1px solid var(--bcb-gray-500); padding: 0.75rem 1rem; height: 100%; display: flex; align-items: center; font-weight: 500; transition: background-color 0.2s; }
+.custom-file-input:focus ~ .custom-file-label { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); }
+
+/* Estados de Validação */
+.form-control.is-valid { border-color: #28a745; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1rem; padding-right: 2.5rem; }
+.form-control.is-valid:focus { box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); }
+.valid-feedback { display: block; color: #28a745; font-size: 0.85rem; margin-top: 0.25rem; font-weight: 500; }
+
+.form-control.is-invalid { border-color: #dc3545; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1rem; padding-right: 2.5rem; }
+.form-control.is-invalid:focus { box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); }
+.invalid-feedback { display: block; color: #dc3545; font-size: 0.85rem; margin-top: 0.25rem; font-weight: 500; }
+
+/* Template-specific utilities */
+.bcb-page-title { font-size: 2rem; font-weight: 500; color: var(--bcb-gray-900); margin-bottom: 0.5rem; }
+.bcb-page-meta { font-size: 0.9rem; color: var(--bcb-gray-600); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.bcb-page-meta .tag-bcb { font-size: 0.65rem; vertical-align: middle; }
+.bcb-share-btn { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.3rem 0.75rem; font-size: 0.8rem; border: 1px solid var(--bcb-gray-300); border-radius: var(--bcb-radius-pill); color: var(--bcb-gray-700); background: var(--bcb-color-white); transition: all 0.2s; cursor: pointer; text-decoration: none; }
+.bcb-share-btn:hover { border-color: var(--bcb-brand-blue); color: var(--bcb-brand-blue); text-decoration: none; }

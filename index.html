@@ -116,6 +116,9 @@
 
                 <div class="ds-sidebar-title">Estrutura</div>
                 <a class="nav-link" href="#header-footer">Header e Footer</a>
+
+                <div class="ds-sidebar-title">Templates de Página</div>
+                <a class="nav-link" href="#templates">Ver Templates</a>
             </nav>
         </aside>
         
@@ -314,6 +317,84 @@
   &lt;input type="checkbox" class="custom-control-input" id="chk1"&gt;
   &lt;label class="custom-control-label" for="chk1"&gt;Concordo com os termos.&lt;/label&gt;
 &lt;/div&gt;</code></pre>
+                </div>
+
+                <h3 class="h5 medium">Select (Menu Suspenso)</h3>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="selectUF">Estado (UF)</label>
+                      <select class="custom-select" id="selectUF">
+                        <option selected disabled>Selecione...</option>
+                        <option>Distrito Federal</option>
+                        <option>São Paulo</option>
+                        <option>Rio de Janeiro</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="h5 medium">Anexo de Arquivo (File Input)</h3>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="fileAnexo">Documento comprobatório</label>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="fileAnexo" aria-describedby="fileHelp">
+                        <label class="custom-file-label" for="fileAnexo">Nenhum arquivo selecionado</label>
+                      </div>
+                      <small id="fileHelp" class="form-text text-muted">Formatos aceitos: PDF, JPG, PNG. Tamanho máximo: 5MB.</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;select class="custom-select" id="selectUF"&gt;
+  &lt;option selected disabled&gt;Selecione...&lt;/option&gt;
+  &lt;option&gt;Distrito Federal&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;div class="custom-file"&gt;
+  &lt;input type="file" class="custom-file-input" id="fileAnexo"&gt;
+  &lt;label class="custom-file-label" for="fileAnexo"&gt;Nenhum arquivo selecionado&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <h3 class="h5 medium">Estados de Validação</h3>
+                <div class="row mb-3">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="inputEmailOk">E-mail (válido)</label>
+                      <input type="email" class="form-control is-valid" id="inputEmailOk" value="usuario@exemplo.com">
+                      <div class="valid-feedback">E-mail verificado com sucesso.</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="inputCPFErro">CPF (inválido)</label>
+                      <input type="text" class="form-control is-invalid" id="inputCPFErro" value="123.456.789-0">
+                      <div class="invalid-feedback">CPF inválido. Verifique o número digitado.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="inputObrig">Nome (obrigatório)</label>
+                      <input type="text" class="form-control is-invalid" id="inputObrig" value="">
+                      <div class="invalid-feedback">Campo obrigatório.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;!-- Input Válido --&gt;
+&lt;input type="email" class="form-control is-valid" id="inputEmail" value="ok@mail.com"&gt;
+&lt;div class="valid-feedback"&gt;E-mail verificado com sucesso.&lt;/div&gt;
+
+&lt;!-- Input Inválido --&gt;
+&lt;input type="text" class="form-control is-invalid" id="inputCPF" value="123.456.789-0"&gt;
+&lt;div class="invalid-feedback"&gt;CPF inválido. Verifique o número digitado.&lt;/div&gt;</code></pre>
                 </div>
             </section>
 
@@ -683,6 +764,32 @@
                     <button class="btn-copy" type="button">Copiar</button>
                     <pre><code>&lt;header role="banner"&gt;...&lt;/header&gt;
 &lt;footer role="contentinfo"&gt;...&lt;/footer&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ TEMPLATES ============ -->
+            <section id="templates">
+                <h2>Templates de Página</h2>
+                <p class="text-body mb-4">Páginas completas prontas para uso que demonstram o Design System funcionando em contexto real. Abra em nova aba para visualizar em tela cheia.</p>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <a href="./templates/template-servico.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg d-flex align-items-center justify-content-center" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template de Serviço ao Cidadão (nova aba)">
+                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">assignment</span>
+                      <div class="text-left">
+                        <strong class="d-block">Serviço ao Cidadão</strong>
+                        <small style="opacity:0.8;">Registrato — Passo a Passo</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <a href="./templates/template-noticia.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg d-flex align-items-center justify-content-center" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template de Notícia Editorial (nova aba)">
+                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">article</span>
+                      <div class="text-left">
+                        <strong class="d-block">Notícia Editorial</strong>
+                        <small style="opacity:0.8;">Pix Agendado Recorrente</small>
+                      </div>
+                    </a>
+                  </div>
                 </div>
             </section>
 

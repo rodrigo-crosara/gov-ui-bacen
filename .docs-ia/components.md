@@ -501,3 +501,57 @@ Utilize a estrutura `.custom-control` do Bootstrap 4 para garantir alinhamento e
   <label class="custom-control-label" for="radioPessoaFisica">Pessoa Física (CPF)</label>
 </div>
 ```
+
+---
+
+## 24. Select Customizado (Menu Suspenso)
+Use a classe `.custom-select` do Bootstrap 4, que recebe automaticamente a estilização BCB (borda, foco azul, padding).
+
+```html
+<div class="form-group">
+  <label for="selectUF">Estado (UF)</label>
+  <select class="custom-select" id="selectUF">
+    <option selected disabled>Selecione...</option>
+    <option>Distrito Federal</option>
+    <option>São Paulo</option>
+  </select>
+</div>
+```
+
+---
+
+## 25. Anexo de Arquivo (File Input)
+Use a estrutura `.custom-file` do Bootstrap 4. O botão "Selecionar" recebe automaticamente a cor Brand Blue do BCB.
+
+```html
+<div class="form-group">
+  <label for="fileAnexo">Documento comprobatório</label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="fileAnexo">
+    <label class="custom-file-label" for="fileAnexo">Nenhum arquivo selecionado</label>
+  </div>
+  <small class="form-text text-muted">Formatos aceitos: PDF, JPG, PNG. Máximo: 5MB.</small>
+</div>
+```
+
+---
+
+## 26. Estados de Validação (Form Validation)
+O BCB usa as classes nativas `.is-valid` e `.is-invalid` do Bootstrap 4, customizadas com ícones SVG inline e cores de feedback.
+
+### 26.1 Input Válido
+```html
+<input type="email" class="form-control is-valid" id="inputEmail" value="ok@mail.com">
+<div class="valid-feedback">E-mail verificado com sucesso.</div>
+```
+
+### 26.2 Input Inválido
+```html
+<input type="text" class="form-control is-invalid" id="inputCPF" value="123.456.789-0">
+<div class="invalid-feedback">CPF inválido. Verifique o número digitado.</div>
+```
+
+### ⚠️ Diretrizes Inquebráveis para a IA (Validação)
+1. **Feedback visual claro:** Todo campo inválido DEVE ter uma mensagem `.invalid-feedback` explicando o erro de forma clara e em português.
+2. **Nunca use apenas cor:** O ícone SVG no campo garante que usuários daltônicos identifiquem o estado. Mantenha sempre a classe `.is-valid`/`.is-invalid`.
+3. **Campos obrigatórios:** Se o campo é obrigatório e está vazio, a mensagem deve ser "Campo obrigatório."

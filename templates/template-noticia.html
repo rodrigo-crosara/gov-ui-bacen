@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BC lança nova funcionalidade do Pix — Banco Central do Brasil</title>
+    <meta name="description" content="O Banco Central anunciou nova funcionalidade de Pix agendado recorrente, que permite transferências automáticas periódicas a partir de outubro.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+    <style>
+        body { font-family: var(--bcb-font-ubuntu); color: var(--bcb-color-body-text); background-color: var(--bcb-color-white); }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER OFICIAL -->
+    <header role="banner">
+      <div class="container position-relative h-100">
+        <div id="accessibility-wrapper">
+          <div class="d-flex justify-content-end">
+            <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
+              <li class="d-none d-lg-block"><a class="font-color-1" href="#">Acessibilidade</a></li>
+              <li><a class="font-color-1" href="#">Alto Contraste</a></li>
+            </ul>
+          </div>
+        </div>
+        <a title="Banco Central do Brasil" href="/"><img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"></a>
+      </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <nav aria-label="Navegação secundária">
+      <ul class="breadcrumb-bcb">
+        <li><a href="/">Página Inicial</a></li>
+        <li><a href="/noticias">Notas à Imprensa</a></li>
+        <li aria-current="page">BC lança nova funcionalidade do Pix</li>
+      </ul>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container mt-4 mb-5">
+      <div class="row">
+        
+        <!-- ARTIGO PRINCIPAL -->
+        <div class="col-lg-8">
+          <article>
+            <h1 class="bcb-page-title">BC lança nova funcionalidade do Pix para pagamentos recorrentes</h1>
+            <div class="bcb-page-meta">
+              <span><span class="material-icons-outlined mr-1" style="font-size:1rem; vertical-align:middle;" aria-hidden="true">calendar_today</span> 12/03/2026</span>
+              <span class="tag-bcb primary">Pix</span>
+              <span class="tag-bcb">Pagamentos</span>
+              <a href="#" class="bcb-share-btn" aria-label="Compartilhar esta notícia">
+                <span class="material-icons-outlined" style="font-size:1rem;" aria-hidden="true">share</span> Compartilhar
+              </a>
+            </div>
+
+            <p class="text-body" style="font-size: 1.1rem; line-height: 1.8;">O Banco Central do Brasil anunciou nesta quarta-feira (12) a nova funcionalidade de <strong>Pix agendado recorrente</strong>, que permitirá aos cidadãos e empresas programarem transferências automáticas e periódicas diretamente pelo aplicativo de sua instituição financeira.</p>
+
+            <p class="text-body" style="line-height: 1.8;">A funcionalidade entra em vigor a partir de <strong>28 de outubro de 2026</strong> e será obrigatória para todas as instituições participantes do Pix. A medida busca modernizar o ecossistema de pagamentos brasileiro, reduzindo custos com boletos recorrentes e simplificando o dia a dia do cidadão.</p>
+
+            <h2 class="h4 mt-4 mb-3 color-1">Como vai funcionar</h2>
+            <p class="text-body" style="line-height: 1.8;">O usuário poderá, dentro do aplicativo do seu banco, selecionar a opção "Pix Agendado Recorrente" e definir:</p>
+            <ul class="spacing-scale-2x text-body" style="line-height: 1.8;">
+              <li>O valor fixo ou variável da transferência;</li>
+              <li>A periodicidade (semanal, quinzenal, mensal);</li>
+              <li>A data de início e fim (opcional);</li>
+              <li>O destinatário, incluindo chave Pix ou dados bancários.</li>
+            </ul>
+
+            <!-- CITAÇÃO OFICIAL -->
+            <bcb-citacao [autor]="'Roberto Campos Neto, Presidente do Banco Central'" [citacao]="'O Pix recorrente é mais um passo na democratização dos meios de pagamento no Brasil. Estamos simplificando processos que antes exigiam intermediários e custos elevados, beneficiando diretamente o cidadão e os pequenos empreendedores.'"></bcb-citacao>
+            <!-- Simulação visual -->
+            <blockquote class="bcb-citacao">
+              <p class="mb-0">"O Pix recorrente é mais um passo na democratização dos meios de pagamento no Brasil. Estamos simplificando processos que antes exigiam intermediários e custos elevados, beneficiando diretamente o cidadão e os pequenos empreendedores."</p>
+              <footer>Roberto Campos Neto, Presidente do Banco Central</footer>
+            </blockquote>
+
+            <h2 class="h4 mt-4 mb-3 color-1">Impacto esperado</h2>
+            <p class="text-body" style="line-height: 1.8;">De acordo com os estudos do Departamento de Competição e Estrutura do Mercado Financeiro (Decem), a funcionalidade pode substituir até <strong>30% dos boletos bancários recorrentes</strong> emitidos mensalmente, representando economia de R$ 2,8 bilhões por ano em taxas para consumidores e empresas.</p>
+
+            <div class="bcb-olho">
+              <h4>Segurança</h4>
+              <p class="mb-0">Todo agendamento recorrente exigirá autenticação biométrica ou por senha a cada nova configuração. O usuário poderá cancelar a recorrência a qualquer momento, sem custos.</p>
+            </div>
+
+            <h2 class="h4 mt-4 mb-3 color-1">Documentos</h2>
+            <div class="documentos">
+              <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Resolução BCB nº 412/2026 (PDF)">
+                <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
+                  <div class="d-flex flex-column position-relative">
+                    <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
+                    <span class="extensao bg-color-1">pdf</span>
+                  </div>
+                </div>
+                <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
+                  <span class="documento-title">Resolução BCB nº 412/2026</span>
+                  <span class="documento-data">Publicado em: 12/03/2026</span>
+                </div>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- SIDEBAR (Notícias Relacionadas) -->
+        <div class="col-lg-4 mt-4 mt-lg-0">
+          <div class="border-left pl-4">
+            <h3 class="h6 text-uppercase mb-3" style="letter-spacing:1px; color: var(--bcb-gray-500);">Relacionadas</h3>
+            
+            <div class="mb-3 pb-3 border-bottom">
+              <a href="#" class="text-link d-block mb-1" style="font-weight: 500;">BC ajusta regras para Pix parcelado em compras online</a>
+              <small class="text-muted">08/03/2026</small>
+            </div>
+            <div class="mb-3 pb-3 border-bottom">
+              <a href="#" class="text-link d-block mb-1" style="font-weight: 500;">Pix bate recorde de 180 milhões de transações em um dia</a>
+              <small class="text-muted">01/03/2026</small>
+            </div>
+            <div class="mb-3 pb-3 border-bottom">
+              <a href="#" class="text-link d-block mb-1" style="font-weight: 500;">Banco Central publica relatório anual do Pix 2025</a>
+              <small class="text-muted">15/02/2026</small>
+            </div>
+            <div class="mb-3 pb-3">
+              <a href="#" class="text-link d-block mb-1" style="font-weight: 500;">Nova funcionalidade permite Pix por aproximação (NFC)</a>
+              <small class="text-muted">28/01/2026</small>
+            </div>
+
+            <a class="btn btn-outline-primary btn-sm btn-block mt-3" href="/noticias" style="border-color: var(--bcb-brand-blue); color: var(--bcb-brand-blue);">
+              Mais notas à imprensa <span aria-hidden="true" class="material-icons md-18">chevron_right</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER OFICIAL -->
+    <footer role="contentinfo">
+      <div class="container arts"><span class="line"></span></div>
+      <div class="t px-4 px-md-0">
+        <div class="container">
+          <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+            <span class="font-weight-bold font-color-1 mr-lg-3 mb-2 mb-lg-0">Siga o BC</span>
+            <ul class="list-unstyled redes-sociais mb-0">
+              <li><a href="#" title="Instagram">IG</a></li>
+              <li><a href="#" title="LinkedIn">IN</a></li>
+              <li><a href="#" title="X">X</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="b">
+        <div class="container">
+          <div class="d-lg-flex align-items-lg-center justify-content-lg-between py-3 bottom">
+            <div class="missao mb-2 mb-lg-0 mr-lg-3">Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade.</div>
+            <div class="info">
+              <ul class="list-inline text-lg-right mb-0">
+                <li class="list-inline-item"><a href="#">Fale conosco</a></li>
+                <li class="list-inline-item"><a href="#">Política de privacidade</a></li>
+              </ul>
+              <div class="text-lg-right mt-2 text-muted"> © Banco Central do Brasil</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
