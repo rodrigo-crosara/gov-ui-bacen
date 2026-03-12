@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     
     <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     
     <!-- BCB Styles -->
     <link rel="stylesheet" href="./assets/css/bcb-style.css">
@@ -119,15 +119,6 @@
         .btn-copy:hover {
             background-color: #666;
         }
-        
-        /* Ajustes provisórios para Vitrine (Classes BCB Angular) */
-        .bg-color-1 { background-color: var(--bcb-brand-blue) !important; color: white !important; }
-        .font-color-1 { color: var(--bcb-brand-blue) !important; font-weight: 500; border: 1px solid #dee2e6; border-left: none;}
-        .icone { width: 60px; height: 60px; }
-        listalinks .texto { height: 60px; }
-        .no-underline:hover { text-decoration: none; }
-        .hvr-shadow { transition: box-shadow 0.2s; }
-        .hvr-shadow:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -384,6 +375,531 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/listalinks&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-4">Estrutura Principal (Header e Footer)</h2>
+            <div class="mb-5">
+                <h3 class="h5 medium">Cabeçalho (Header)</h3>
+                <header role="banner" class="border">
+                  <div class="container position-relative h-100">
+                    <div id="accessibility-wrapper">
+                      <div class="d-flex justify-content-end">
+                        <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
+                          <li class="d-none d-lg-block"><a class="font-color-1" href="#">Acessibilidade</a></li>
+                          <li><a class="font-color-1" href="#">Alto Contraste</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <a title="Banco Central do Brasil" href="/"><img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"></a>
+                  </div>
+                </header>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;header role="banner"&gt;
+  &lt;div class="container position-relative h-100"&gt;
+    &lt;div id="accessibility-wrapper"&gt;
+      &lt;div class="d-flex justify-content-end"&gt;
+        &lt;ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase"&gt;
+          &lt;li class="d-none d-lg-block"&gt;&lt;a class="font-color-1" href="#"&gt;Acessibilidade&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a class="font-color-1" href="#"&gt;Alto Contraste&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;a title="Banco Central do Brasil" href="/"&gt;&lt;img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Rodapé (Footer)</h3>
+                <footer role="contentinfo">
+                  <div class="container arts"><span class="line"></span></div>
+                  <div class="t px-4 px-md-0">
+                    <div class="container">
+                      <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                        <span class="font-weight-bold font-color-1 mr-lg-3 mb-2 mb-lg-0">Siga o BC</span>
+                        <ul class="list-unstyled redes-sociais mb-0">
+                          <li><a href="#" title="Instagram">IG</a></li>
+                          <li><a href="#" title="LinkedIn">IN</a></li>
+                          <li><a href="#" title="X">X</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b">
+                    <div class="container">
+                      <div class="d-lg-flex align-items-lg-center justify-content-lg-between py-3 bottom">
+                        <div class="missao mb-2 mb-lg-0 mr-lg-3">Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade.</div>
+                        <div class="info">
+                          <ul class="list-inline text-lg-right mb-0">
+                            <li class="list-inline-item"><a href="#">Fale conosco</a></li>
+                            <li class="list-inline-item"><a href="#">Política de privacidade</a></li>
+                          </ul>
+                          <div class="text-lg-right mt-2 text-muted"> © Banco Central do Brasil - Todos os direitos reservados</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </footer>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;footer role="contentinfo"&gt;
+  &lt;div class="container arts"&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="t px-4 px-md-0"&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="d-flex flex-column flex-lg-row justify-content-center align-items-center"&gt;
+        &lt;span class="font-weight-bold font-color-1 mr-lg-3 mb-2 mb-lg-0"&gt;Siga o BC&lt;/span&gt;
+        &lt;ul class="list-unstyled redes-sociais mb-0"&gt;
+          &lt;li&gt;&lt;a href="#" title="Instagram"&gt;IG&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#" title="LinkedIn"&gt;IN&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#" title="X"&gt;X&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="b"&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="d-lg-flex align-items-lg-center justify-content-lg-between py-3 bottom"&gt;
+        &lt;div class="missao mb-2 mb-lg-0 mr-lg-3"&gt;Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade.&lt;/div&gt;
+        &lt;div class="info"&gt;
+          &lt;ul class="list-inline text-lg-right mb-0"&gt;
+            &lt;li class="list-inline-item"&gt;&lt;a href="#"&gt;Fale conosco&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="list-inline-item"&gt;&lt;a href="#"&gt;Política de privacidade&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class="text-lg-right mt-2 text-muted"&gt; © Banco Central do Brasil - Todos os direitos reservados&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-4">Componentes de Conteúdo Editorial</h2>
+            <p class="text-body mb-4">Como a vitrine é visualizada nativamente e os componentes abaixo são <em>Custom Elements</em> do Angular BCB baseados em shadow DOM (não renderizáveis em HTML sem motor TypeScript), listamos exclusivamente as instruções e os <em>snippets</em> para que a IA ou o Desenvolvedor possam extrair e aplicar essas diretrizes de texto rapidamente.</p>
+            
+            <div class="mb-5">
+                <h3 class="h5 medium mt-5 mb-3">Box "Olho" (Callout)</h3>
+                <div class="bcb-olho">
+                  <h4>Atenção</h4>
+                  <p class="mb-0">Este é um texto de destaque renderizado simulando o componente Angular.</p>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;bcb-olho [texto]="'&lt;h4&gt;Atenção&lt;/h4&gt;&lt;p&gt;Este é um texto de destaque gerado pela IA.&lt;/p&gt;'"&gt;&lt;/bcb-olho&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium mt-5 mb-3">Accordions (Sanfonas expansíveis) - Modelo 1</h3>
+                <div class="accordion modelo-1" id="accordionExemplo">
+                  <div class="card">
+                    <div class="card-header" id="headingUm">
+                      <a role="button" data-toggle="collapse" class="btn d-flex justify-content-between align-items-center w-100 text-left text-decoration-none" href="#collapseUm" aria-expanded="true">
+                        <span>Título da Sanfona de Exemplo</span>
+                        <span class="material-icons">expand_more</span>
+                      </a>
+                    </div>
+                    <div id="collapseUm" class="collapse show" data-parent="#accordionExemplo">
+                      <div class="card-body">
+                        <p class="mb-0">Conteúdo HTML interno visível da sanfona.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;bcb-accordion-page [card_header]="'Título da Sanfona'" [card_body]="'&lt;p&gt;Conteúdo HTML interno&lt;/p&gt;'" [aria_expanded]="false" [modelo]="'1'"&gt;&lt;/bcb-accordion-page&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium mt-5 mb-3">Citações (Blockquotes)</h3>
+                <blockquote class="bcb-citacao">
+                  <p class="mb-0">"Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade."</p>
+                  <footer>Banco Central do Brasil</footer>
+                </blockquote>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;bcb-citacao [autor]="'Nome do Autor'" [citacao]="'Texto da citação completa sem aspas.'"&gt;&lt;/bcb-citacao&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-4">Tabelas, Alertas e Documentos</h2>
+            
+            <div class="mb-5">
+                <h3 class="h5 medium">Tabelas de Dados</h3>
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered">
+                    <thead class="thead-primary">
+                      <tr><th>Coluna 1</th><th>Coluna 2</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Dado 1</td><td>Dado 2</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="table-responsive"&gt;
+  &lt;table class="table table-striped table-bordered"&gt;
+    &lt;thead class="thead-primary"&gt;
+      &lt;tr&gt;&lt;th&gt;Coluna 1&lt;/th&gt;&lt;th&gt;Coluna 2&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;Dado 1&lt;/td&gt;&lt;td&gt;Dado 2&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Alertas (Alerts)</h3>
+                <div class="alert alert-success" role="alert">
+                  Este é um alerta de sucesso (dica ou seção).
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="alert alert-success" role="alert"&gt;
+  Este é um alerta de sucesso (dica ou seção).
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Lista de Documentos (Downloads)</h3>
+                <div class="documentos">
+                  <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="arquivo.pdf" aria-label="Baixar Relatório (PDF)">
+                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
+                      <div class="d-flex flex-column position-relative">
+                        <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
+                        <span class="extensao bg-color-1">pdf</span>
+                      </div>
+                    </div>
+                    <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
+                      <span class="documento-title">Título do Documento ou Relatório</span>
+                      <span class="documento-data">Publicado em: 10/03/2026</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="documentos"&gt;
+  &lt;a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="arquivo.pdf" aria-label="Baixar Relatório (PDF)"&gt;
+    &lt;div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"&gt;
+      &lt;div class="d-flex flex-column position-relative"&gt;
+        &lt;span class="material-icons md-36" aria-hidden="true"&gt;insert_drive_file&lt;/span&gt;
+        &lt;span class="extensao bg-color-1"&gt;pdf&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3"&gt;
+      &lt;span class="documento-title"&gt;Título do Documento ou Relatório&lt;/span&gt;
+      &lt;span class="documento-data"&gt;Publicado em: 10/03/2026&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-4">Cards de Conteúdo (Listalinks Light)</h2>
+            <p class="text-body mb-4">Usados para navegação principal ou apresentação de múltiplos serviços.</p>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Modelo 1 (Com Sombra e Fundo)</h3>
+                <div class="listalinks-light modelo-1">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center rounded-left">
+                            <span class="material-icons md-36 color-1" aria-hidden="true">campaign</span>
+                          </div>
+                          <div class="info-container align-self-center p-3">
+                            <p class="mb-0">
+                              <span class="title color-1">Comunicação e Imprensa</span><br>
+                              <span class="description">Acesse os últimos comunicados.</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center rounded-left">
+                            <span class="material-icons md-36 color-1" aria-hidden="true">hearing</span>
+                          </div>
+                          <div class="info-container align-self-center p-3">
+                            <p class="mb-0">
+                              <span class="title color-1">Ouvidoria</span><br>
+                              <span class="description">Fale com o Banco Central.</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="listalinks-light modelo-1"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-6 mb-3"&gt;
+      &lt;div class="h-100 d-flex align-items-center"&gt;
+        &lt;a href="#" class="d-inline-flex rounded w-100 h-100"&gt;
+          &lt;div class="icon-container d-flex align-items-center justify-content-center rounded-left"&gt;
+            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;campaign&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="info-container align-self-center p-3"&gt;
+            &lt;p class="mb-0"&gt;
+              &lt;span class="title color-1"&gt;Comunicação e Imprensa&lt;/span&gt;&lt;br&gt;
+              &lt;span class="description"&gt;Acesse os últimos comunicados.&lt;/span&gt;
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-6 mb-3"&gt;
+      &lt;div class="h-100 d-flex align-items-center"&gt;
+        &lt;a href="#" class="d-inline-flex rounded w-100 h-100"&gt;
+          &lt;div class="icon-container d-flex align-items-center justify-content-center rounded-left"&gt;
+            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;hearing&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="info-container align-self-center p-3"&gt;
+            &lt;p class="mb-0"&gt;
+              &lt;span class="title color-1"&gt;Ouvidoria&lt;/span&gt;&lt;br&gt;
+              &lt;span class="description"&gt;Fale com o Banco Central.&lt;/span&gt;
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Modelo 5 (Caixas Grandes Verticalizadas)</h3>
+                <div class="listalinks-light modelo-5">
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center">
+                            <span class="material-icons md-36 color-1" aria-hidden="true">support_agent</span>
+                          </div>
+                          <div class="info-container align-self-center text-center">
+                            <p class="mb-0">
+                              <span class="title color-1 text-uppercase d-block mt-3">Atendimento</span><br>
+                              <span class="description">Central de atendimento ao cidadão.</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center">
+                            <span class="material-icons md-36 color-1" aria-hidden="true">outgoing_mail</span>
+                          </div>
+                          <div class="info-container align-self-center text-center">
+                            <p class="mb-0">
+                              <span class="title color-1 text-uppercase d-block mt-3">Fale Conosco</span><br>
+                              <span class="description">Envie suas dúvidas por email.</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center">
+                            <span class="material-icons md-36 color-1" aria-hidden="true">help_outline</span>
+                          </div>
+                          <div class="info-container align-self-center text-center">
+                            <p class="mb-0">
+                              <span class="title color-1 text-uppercase d-block mt-3">Perguntas Frequentes</span><br>
+                              <span class="description">Tire suas dúvidas rapidamente.</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="listalinks-light modelo-5"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-4 mb-3"&gt;
+      &lt;div class="h-100 d-flex align-items-center"&gt;
+        &lt;a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100"&gt;
+          &lt;div class="icon-container d-flex align-items-center justify-content-center"&gt;
+            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;support_agent&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="info-container align-self-center text-center"&gt;
+            &lt;p class="mb-0"&gt;
+              &lt;span class="title color-1 text-uppercase d-block mt-3"&gt;Atendimento&lt;/span&gt;&lt;br&gt;
+              &lt;span class="description"&gt;Central de atendimento ao cidadão.&lt;/span&gt;
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4 mb-3"&gt;
+      &lt;div class="h-100 d-flex align-items-center"&gt;
+        &lt;a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100"&gt;
+          &lt;div class="icon-container d-flex align-items-center justify-content-center"&gt;
+            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;outgoing_mail&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="info-container align-self-center text-center"&gt;
+            &lt;p class="mb-0"&gt;
+              &lt;span class="title color-1 text-uppercase d-block mt-3"&gt;Fale Conosco&lt;/span&gt;&lt;br&gt;
+              &lt;span class="description"&gt;Envie suas dúvidas por email.&lt;/span&gt;
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4 mb-3"&gt;
+      &lt;div class="h-100 d-flex align-items-center"&gt;
+        &lt;a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100"&gt;
+          &lt;div class="icon-container d-flex align-items-center justify-content-center"&gt;
+            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;help_outline&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="info-container align-self-center text-center"&gt;
+            &lt;p class="mb-0"&gt;
+              &lt;span class="title color-1 text-uppercase d-block mt-3"&gt;Perguntas Frequentes&lt;/span&gt;&lt;br&gt;
+              &lt;span class="description"&gt;Tire suas dúvidas rapidamente.&lt;/span&gt;
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-4">Navegação Editorial e Estrutura</h2>
+            <p class="text-body mb-4">Componentes avançados baseados em normas internacionais para a arquitetura de informação central e páginas longas.</p>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Breadcrumb (Trilha de Navegação)</h3>
+                <nav aria-label="Navegação secundária">
+                  <ul class="breadcrumb-bcb">
+                    <li><a href="/">Página Inicial</a></li>
+                    <li><a href="/estabilidade">Estabilidade Financeira</a></li>
+                    <li aria-current="page">Normas</li>
+                  </ul>
+                </nav>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;nav aria-label="Navegação secundária"&gt;
+  &lt;ul class="breadcrumb-bcb"&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Página Inicial&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/estabilidade"&gt;Estabilidade Financeira&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Normas&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Menu de Âncoras e Layout</h3>
+                <div class="row">
+                  <div class="col-md-4">
+                    <aside class="bd-sidebar">
+                      <div class="bd-toc">
+                        <strong>Nesta página</strong>
+                        <nav aria-label="Navegação âncora" class="bd-links">
+                          <ul class="list-unstyled mb-0">
+                            <li><a href="#secao1" class="active">1. Introdução</a></li>
+                            <li><a href="#secao2">2. Regras Gerais</a></li>
+                            <li><a href="#secao3">3. Considerações</a></li>
+                          </ul>
+                        </nav>
+                      </div>
+                    </aside>
+                  </div>
+                  <div class="col-md-8">
+                    <p class="text-body text-muted border p-3 bg-light">Abaixo vemos o menu à esquerda fixo (sticky). O conteúdo da página seria desenrolado nesta coluna central. Em telas inteiras, ele funciona como um facilitador de saltos entre capítulos.</p>
+                  </div>
+                </div>
+                <div class="code-snippet mt-3">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;aside class="bd-sidebar"&gt;
+  &lt;div class="bd-toc"&gt;
+    &lt;strong&gt;Nesta página&lt;/strong&gt;
+    &lt;nav aria-label="Navegação âncora" class="bd-links"&gt;
+      &lt;ul class="list-unstyled mb-0"&gt;
+        &lt;li&gt;&lt;a href="#secao1" class="active"&gt;1. Introdução&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#secao2"&gt;2. Regras Gerais&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Tags (Etiquetas)</h3>
+                <div class="mb-2">
+                  <span class="tag-bcb">Comunicado</span>
+                  <span class="tag-bcb primary">Novo</span>
+                  <span class="tag-bcb">Em consulta</span>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;span class="tag-bcb"&gt;Comunicado&lt;/span&gt;
+&lt;span class="tag-bcb primary"&gt;Novo&lt;/span&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Process List (Passo a Passo)</h3>
+                <ul class="process-list mt-3">
+                  <li>
+                    <h4 class="h5 mt-0 mb-1 color-1">Acesse o sistema</h4>
+                    <p class="text-body text-sm">Faça login com sua conta gov.br nível prata ou ouro.</p>
+                  </li>
+                  <li>
+                    <h4 class="h5 mt-0 mb-1 color-1">Preencha os dados</h4>
+                    <p class="text-body text-sm">Insira as informações solicitadas no formulário principal de requerimento.</p>
+                  </li>
+                  <li>
+                    <h4 class="h5 mt-0 mb-1 color-1">Envie e aguarde</h4>
+                    <p class="text-body text-sm">Você receberá o protocolo confirmando a operação no portal.</p>
+                  </li>
+                </ul>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;ul class="process-list"&gt;
+  &lt;li&gt;
+    &lt;h4 class="h5 mt-0 mb-1 color-1"&gt;Acesse o sistema&lt;/h4&gt;
+    &lt;p class="text-body text-sm"&gt;Faça login com sua conta gov.br nível prata ou ouro.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h4 class="h5 mt-0 mb-1 color-1"&gt;Preencha os dados&lt;/h4&gt;
+    &lt;p class="text-body text-sm"&gt;Insira as informações solicitadas no formulário.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
                 </div>
             </div>
         </section>

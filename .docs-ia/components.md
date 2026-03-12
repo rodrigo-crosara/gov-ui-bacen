@@ -148,3 +148,323 @@ Devem ser renderizados dentro de uma div com a classe `.row` para usar o grid do
   </div>
 </listalinks>
 ```
+
+---
+
+## 6. Lista de Notícias (bcb-noticias)
+Usado para exibir uma lista de links de notas à imprensa ou atualizações.
+
+### 6.1 Estrutura HTML Padrão
+Deve ser envolvido em `<bcb-noticias>`. A lista deve usar as classes do Bootstrap (`list-unstyled`, `d-flex`). A tag `<a>` que envolve o texto da notícia deve usar a classe `.color-1`.
+
+```html
+<bcb-noticias>
+  <div class="componente">
+    <h2 class="titulo cormorant">Notas à imprensa</h2>
+    <div class="box notas pl-sm-3">
+      <ul class="list-unstyled">
+        <li>
+          <div class="d-flex">
+            <span aria-hidden="true" class="bullet material-icons md-18 mr-2 align-self-start">chevron_right</span>
+            <div>
+              <span class="mr-2 text-muted">10/03/2026</span>
+              <a class="color-1 font-weight-bold" href="#">BC faz consulta pública para aprimorar regras...</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a class="btn btn-outline-primary btn-sm btn-block mt-3" href="/noticias">
+        Mais notas à imprensa <span aria-hidden="true" class="material-icons md-18">chevron_right</span>
+      </a>
+    </div>
+  </div>
+</bcb-noticias>
+```
+
+---
+
+## 7. Barra Gov.br
+Todo site governamental brasileiro deve incluir a Barra Brasil no topo absoluto da página.
+
+### 7.1 Estrutura HTML
+Deve ser injetada logo após a abertura do `<body>`.
+
+```html
+<div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px;display:block;">
+  <ul id="menu-barra-temp" style="list-style:none;">
+    </li>
+  </ul>
+</div>
+<script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
+```
+
+---
+
+## 8. Cabeçalho (Header)
+O cabeçalho do portal contém a logomarca centralizada e os links de acessibilidade no canto superior direito.
+
+### 8.1 Estrutura HTML Padrão
+```html
+<header role="banner">
+  <div class="container position-relative h-100">
+    <div id="accessibility-wrapper">
+      <div class="d-flex justify-content-end">
+        <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
+          <li class="d-none d-lg-block"><a class="font-color-1" href="#">Acessibilidade</a></li>
+          <li><a class="font-color-1" href="#">Alto Contraste</a></li>
+        </ul>
+      </div>
+    </div>
+    <a title="Banco Central do Brasil" href="/"><img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"></a>
+  </div>
+</header>
+```
+
+---
+
+## 9. Rodapé (Footer)
+O rodapé contém links úteis, redes sociais e a missão da instituição.
+
+### 9.1 Estrutura HTML Padrão
+```html
+<footer role="contentinfo">
+  <div class="container arts"><span class="line"></span></div>
+  <div class="t px-4 px-md-0">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+        <span class="font-weight-bold font-color-1 mr-lg-3 mb-2 mb-lg-0">Siga o BC</span>
+        <ul class="list-unstyled redes-sociais mb-0">
+          <li><a href="#" title="Instagram">IG</a></li>
+          <li><a href="#" title="LinkedIn">IN</a></li>
+          <li><a href="#" title="X">X</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="b">
+    <div class="container">
+      <div class="d-lg-flex align-items-lg-center justify-content-lg-between py-3 bottom">
+        <div class="missao mb-2 mb-lg-0 mr-lg-3">Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade.</div>
+        <div class="info">
+          <ul class="list-inline text-lg-right mb-0">
+            <li class="list-inline-item"><a href="#">Fale conosco</a></li>
+            <li class="list-inline-item"><a href="#">Política de privacidade</a></li>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+---
+
+## 10. Listas (Lists e Spacing Scale)
+Para listas ordenadas (`<ol>`) e não ordenadas (`<ul>`), o BCB utiliza classes utilitárias para espaçamento entre os itens (margin-bottom).
+- Use `.spacing-scale-1x` (8px de espaço)
+- Use `.spacing-scale-2x` (16px de espaço - Padrão recomendado)
+- Use `.spacing-scale-3x` (24px de espaço)
+
+---
+
+## 11. Box "Olho" (Callout / Destaque)
+Usado para destacar trechos importantes no meio de uma massa de texto. A cor de fundo tem uma transparência de 8% da cor principal.
+
+### 11.1 Estrutura Angular
+A IA deve utilizar a tag `<bcb-olho>`. O conteúdo HTML interno deve ser passado como string na propriedade `[texto]`. O título interno deve ser no máximo `<h3>`.
+```html
+<bcb-olho [texto]="'<h4>Atenção</h4><p>Este é um texto de destaque gerado pela IA.</p>'"></bcb-olho>
+```
+
+---
+
+## 12. Accordions (Sanfonas expansíveis)
+Avalie o uso para enxugar páginas com muito conteúdo.
+
+- **Modelo 1 (Sólido)**: Fundo cinza, usado para blocos autônomos.
+- **Modelo 2 (Transparente)**: Sem bordas, exclusivo para o meio de textos em andamento.
+
+### 12.1 Estrutura Angular
+Use a tag `<bcb-accordion-page>` passando os parâmetros.
+
+```html
+<bcb-accordion-page [card_header]="'Título da Sanfona'" [card_body]="'<p>Conteúdo HTML interno</p>'" [aria_expanded]="false" [modelo]="'1'"></bcb-accordion-page>
+```
+
+---
+
+## 13. Citações (Blockquotes)
+Componente padronizado para exibir citações oficiais ou de autoridades.
+
+### 13.1 Estrutura Angular
+```html
+<bcb-citacao [autor]="'Nome do Autor'" [citacao]="'Texto da citação completa sem aspas.'"></bcb-citacao>
+```
+
+---
+
+## 14. Tabelas de Dados (Tables)
+O BCB utiliza a estrutura de tabelas responsivas do Bootstrap 4 com uma classe customizada para o cabeçalho.
+
+### 14.1 Estrutura HTML Padrão
+Sempre envolva a tabela em uma div `.table-responsive`. A tag `<table>` deve usar as classes `.table` e, opcionalmente, `.table-striped` ou `.table-bordered`. O cabeçalho `<thead>` DEVE usar a classe `.thead-primary`.
+
+```html
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead class="thead-primary">
+      <tr><th>Coluna 1</th><th>Coluna 2</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dado 1</td><td>Dado 2</td></tr>
+    </tbody>
+  </table>
+</div>
+```
+
+---
+
+## 15. Alertas (Alerts)
+Para caixas de destaque simples, use os alertas nativos do Bootstrap.
+
+- `.alert-success`: Fundo verde claro. Usado para dicas ou títulos de seção.
+- `.alert-danger`: Fundo vermelho. Usado para restrições ou alertas críticos.
+
+---
+
+## 16. Lista de Documentos (Downloads)
+Usado para disponibilizar arquivos (PDF, DOCX, XLSX) no meio do conteúdo.
+
+### 16.1 Estrutura HTML
+Crie uma div `.documentos` contendo links `.documento`.
+
+```html
+<div class="documentos">
+  <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="arquivo.pdf" aria-label="Baixar Relatório (PDF)">
+    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
+      <div class="d-flex flex-column position-relative">
+        <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
+        <span class="extensao bg-color-1">pdf</span>
+      </div>
+    </div>
+    <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
+      <span class="documento-title">Título do Documento ou Relatório</span>
+      <span class="documento-data">Publicado em: 10/03/2026</span>
+    </div>
+  </a>
+</div>
+```
+
+---
+
+## 17. Cards de Conteúdo (Listalinks Light)
+Usados para navegação principal ou apresentação de múltiplos serviços. A estrutura usa o grid do Bootstrap (`.row` e `.col-md-X`).
+
+### 17.1 Modelo 1 (Com Sombra e Fundo)
+Estrutura horizontal com ícone à esquerda. Efeito de elevação no hover.
+```html
+<div class="listalinks-light modelo-1">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="h-100 d-flex align-items-center">
+        <a href="#" class="d-inline-flex rounded w-100 h-100">
+          <div class="icon-container d-flex align-items-center justify-content-center rounded-left">
+            <span class="material-icons md-36 color-1" aria-hidden="true">campaign</span>
+          </div>
+          <div class="info-container align-self-center p-3">
+            <p class="mb-0">
+              <span class="title color-1">Título do Card</span><br>
+              <span class="description">Breve descrição do serviço oferecido.</span>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### 17.2 Modelo 5 (Caixas Grandes Verticalizadas)
+Usado em aterrissagens. O ícone fica centralizado acima do título.
+
+```html
+<div class="listalinks-light modelo-5">
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="h-100 d-flex align-items-center">
+        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
+          <div class="icon-container d-flex align-items-center justify-content-center">
+            <span class="material-icons md-36 color-1" aria-hidden="true">support_agent</span>
+          </div>
+          <div class="info-container align-self-center text-center">
+            <p class="mb-0">
+              <span class="title color-1 text-uppercase d-block mt-3">Título Central</span><br>
+              <span class="description">Descrição centralizada.</span>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## 18. Breadcrumb (Trilha de Navegação)
+Indica a localização atual da página na hierarquia do site. O BCB usa um fundo azul escuro para este elemento.
+
+```html
+<nav aria-label="Navegação secundária">
+  <ul class="breadcrumb-bcb">
+    <li><a href="/">Página Inicial</a></li>
+    <li><a href="/estabilidade">Estabilidade Financeira</a></li>
+    <li aria-current="page">Normas</li>
+  </ul>
+</nav>
+```
+
+---
+
+## 19. Menu de Âncoras (In-page Navigation)
+Usado em páginas longas (textos densos) para navegação rápida entre os capítulos (H2 e H3).
+
+```html
+<aside class="bd-sidebar">
+  <div class="bd-toc">
+    <strong>Nesta página</strong>
+    <nav aria-label="Navegação âncora" class="bd-links">
+      <ul class="list-unstyled mb-0">
+        <li><a href="#secao1" class="active">1. Introdução</a></li>
+        <li><a href="#secao2">2. Regras Gerais</a></li>
+      </ul>
+    </nav>
+  </div>
+</aside>
+```
+
+---
+
+## 20. Tags (Etiquetas)
+Usadas para categorizar conteúdo ou destacar status (ex: "Novo", "Em consulta").
+
+```html
+<span class="tag-bcb">Comunicado</span>
+<span class="tag-bcb primary">Novo</span>
+```
+
+---
+
+## 21. Process List (Passo a Passo)
+Usado para explicar fluxos de serviços ou instruções sequenciais.
+
+```html
+<ul class="process-list">
+  <li>
+    <h4 class="h5 mt-0 mb-1 color-1">Acesse o sistema</h4>
+    <p class="text-body text-sm">Faça login com sua conta gov.br nível prata ou ouro.</p>
+  </li>
+  <li>
+    <h4 class="h5 mt-0 mb-1 color-1">Preencha os dados</h4>
+    <p class="text-body text-sm">Insira as informações solicitadas no formulário.</p>
+  </li>
+</ul>
+```

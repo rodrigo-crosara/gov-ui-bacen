@@ -134,3 +134,96 @@
   color: var(--bcb-link-hover); 
   text-decoration: underline; 
 }
+
+/* ==========================================
+   11. COMPONENTES ANGULAR EXTRAÍDOS (DEINF)
+   ========================================== */
+
+/* NAVEGACAOABAS */
+navegacaoabas .nav-tabs { padding-left: 5px; border-bottom: 0; position: relative; z-index: 2; }
+navegacaoabas .nav-tabs:first-child { padding-left: 0; }
+navegacaoabas .nav-link { position: relative; border-top-left-radius: 0; border-top-right-radius: 0.5rem; border-bottom: none; display: flex; align-items: center; line-height: 15px; padding: 0.5rem 0.7rem 0.5rem 1rem; font-size: 0.8rem; transition: none; height: 48px; background-color: var(--bcb-gray-200); border-color: var(--bcb-gray-400); color: var(--bcb-gray-700); margin-bottom: 0; }
+navegacaoabas .nav-link:not(:last-child) { margin-right: 2px; }
+navegacaoabas .nav-link:focus, navegacaoabas .nav-link:hover { border-color: var(--bcb-gray-400); }
+navegacaoabas .nav-link::before { content: ""; position: absolute; top: -1px; left: -2px; border-bottom: 21px solid transparent; border-left: 21px solid var(--bcb-color-white); }
+navegacaoabas .nav-link.active { color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); background-color: var(--bcb-color-white); position: relative; bottom: -1px; }
+navegacaoabas .nav-link:not(.active) .icone { display: none; }
+navegacaoabas .nav-link .line { display: block; width: 0; height: 26px; border-left: 1px solid var(--bcb-gray-400); transform: rotate(45deg); position: absolute; left: 8px; top: -4px; }
+navegacaoabas .nav-link.active .line { border-color: var(--bcb-brand-blue); }
+navegacaoabas .nav-link:not(.active) img { filter: grayscale(1); }
+navegacaoabas .nav-link .texto { margin-left: 8px; }
+navegacaoabas .tab-content { border: 1px solid var(--bcb-brand-blue); border-radius: 0 0 5px 5px; position: relative; z-index: 1; }
+navegacaoabas .tab-content > .tab-pane { padding: 1rem; }
+
+/* LISTALINKS */
+listalinks .buffer a { height: 3rem; }
+listalinks .buffer .texto { font-size: 0.9rem; line-height: 1.1; background-color: var(--bcb-gray-100); padding: 5px 10px; transition: .3s all; }
+listalinks .buffer a:hover .texto { background-color: var(--bcb-gray-200); }
+listalinks .buffer .icone { width: 3rem; min-width: 3rem; }
+
+/* UTILITÁRIOS BCB (Cores e Efeitos) */
+.bg-color-1 { background-color: var(--bcb-brand-blue) !important; color: var(--bcb-color-white) !important; }
+.font-color-1 { color: var(--bcb-brand-blue) !important; font-weight: 500; border: 1px solid var(--bcb-gray-200); border-left: none;}
+.color-1 { color: var(--bcb-brand-blue) !important; }
+.hvr-shadow { transition: box-shadow 0.2s; }
+.hvr-shadow:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+/* ==========================================
+   12. ESTRUTURA PRINCIPAL (HEADER E FOOTER)
+   ========================================== */
+
+/* HEADER */
+header[role=banner] { transition: height .3s; height: 60px; background: #fff; position: relative; z-index: 3; border-bottom: 1px solid #e9ecef; }
+header[role=banner] .brand { position: absolute; left: 50%; transform: translateX(-50%); top: 12px; z-index: 1; width: 126px; }
+#portal-siteactions { border-bottom: 1px dotted var(--bcb-brand-blue); background: hsla(0,0%,100%,.8); }
+#portal-siteactions li:not(:last-child) { margin-right: 1rem; }
+#accessibility-wrapper { position: absolute; top: 5px; z-index: 1031; right: 15px; font-size: .7rem; }
+
+/* FOOTER */
+footer[role=contentinfo] { display: block; position: relative; border-top: 1px solid #e9ecef; background-color: #f9f9f9; margin-top: 30px; font-size: 0.9rem; }
+footer[role=contentinfo] .m, footer[role=contentinfo] .t { border-bottom: 1px solid #e9ecef; }
+footer[role=contentinfo] .m > .container, footer[role=contentinfo] .t > .container { padding-top: 25px; padding-bottom: 25px; }
+footer[role=contentinfo] .redes-sociais { display: flex; flex-wrap: wrap; flex-direction: row; align-items: center; justify-content: center; gap: 10px; }
+footer[role=contentinfo] .redes-sociais li { display: flex; width: 30px; height: 30px; background: var(--bcb-brand-blue); border-radius: 50%; }
+footer[role=contentinfo] .redes-sociais li a { display: flex; flex-grow: 1; align-items: center; justify-content: center; transition: transform .3s ease; color: white; text-decoration: none; font-size: 14px; font-weight: bold; }
+footer[role=contentinfo] .redes-sociais li a:hover { transform: scale(1.1) translateY(-2px); }
+footer[role=contentinfo] .missao { max-width: 550px; font-style: italic; }
+footer[role=contentinfo] .info li:not(:last-child):after { content: "|"; display: inline-block; margin-left: 7px; color: #ccc; }
+footer[role=contentinfo] .arts { position: relative; }
+footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; border-right: 1px solid #e9ecef; transform: rotate(-45deg); right: 36px; top: -13px; z-index: 2; position: absolute; }
+
+/* AJUSTES GERAIS BCB */
+.font-weight-bold { font-weight: 500!important; }
+.text-uppercase { text-transform: uppercase!important; }
+
+/* ==========================================
+   13. SIMULAÇÃO VISUAL (CONTEÚDO EDITORIAL)
+   ========================================== */
+.bcb-olho { background-color: rgba(2, 92, 117, 0.08); border-left: 4px solid var(--bcb-brand-blue); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+.bcb-olho h1, .bcb-olho h2, .bcb-olho h3, .bcb-olho h4 { color: var(--bcb-brand-blue); font-weight: 500; margin-top: 0; }
+.bcb-citacao { border-left: 4px solid var(--bcb-gray-400); padding: 1rem 1.5rem; margin: 1.5rem 0; background-color: var(--bcb-gray-50); font-style: italic; }
+.bcb-citacao footer { font-style: normal; font-weight: 500; color: var(--bcb-brand-blue); margin-top: 0.5rem; }
+.bcb-citacao footer::before { content: "— "; }
+
+/* Ajuste Accordion Bootstrap para BCB */
+.accordion.modelo-1 .card { border: none; margin-bottom: 5px; }
+.accordion.modelo-1 .card-header { background-color: var(--bcb-gray-100); border-bottom: none; padding: 0; }
+.accordion.modelo-1 .card-header .btn { padding: 1rem 1.25rem; font-weight: 500; color: var(--bcb-brand-blue); }
+.accordion.modelo-1 .card-body { border: 1px solid var(--bcb-gray-200); border-top: none; }
+
+/* ==========================================
+   14. TABELAS, ALERTAS E DOCUMENTOS
+   ========================================== */
+/* Tabelas BCB */
+.table .thead-primary th { background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); border-color: var(--bcb-brand-blue); font-weight: 500; }
+.table-bordered { border: 1px solid var(--bcb-gray-300); }
+
+/* Lista de Documentos / Downloads */
+.documentos .documento { min-height: 4rem; margin-bottom: 0.25rem; }
+.documentos .documento .texto { background-color: var(--bcb-gray-100); padding: 5px 10px; line-height: 1.2rem; transition: .3s all; }
+.documentos .documento:hover .texto { background-color: var(--bcb-gray-200); }
+.documentos .documento .icone { min-width: 4rem; width: 4rem; position: relative; }
+.documentos .documento-title { display: block; font-weight: 500; font-size: 1rem; }
+.documentos .documento:hover .documento-title { text-decoration: underline; }
+.documentos .documento-data { font-size: .8rem; color: var(--bcb-gray-700); display: block; }
+.documentos .extensao { width: 26px; position: absolute; font-size: 0.5rem; text-align: center; bottom: 5px; left: 5px; line-height: 0.6rem; letter-spacing: 0.1px; padding: 1px 0; text-transform: uppercase; }
