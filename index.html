@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitrine - Design System - Banco Central do Brasil</title>
+    <title>Design System – Banco Central do Brasil</title>
+    <meta name="description" content="Biblioteca de componentes, tokens e padrões visuais do Design System oficial do Banco Central do Brasil.">
     
     <!-- Bootstrap 4.6 CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -24,161 +25,138 @@
             font-family: var(--bcb-font-ubuntu);
             color: var(--bcb-color-body-text);
             background-color: var(--bcb-color-white);
+            margin: 0;
         }
         .header-bcb {
             background-color: var(--bcb-brand-blue);
             color: var(--bcb-color-white);
-            padding: var(--bcb-space-5) 0;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
         .header-bcb h1 {
             margin: 0;
-            font-size: var(--bcb-font-600);
+            font-size: 1.25rem;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header-bcb .badge-version {
+            font-size: 0.65rem;
+            background-color: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: 400;
         }
         
-        /* Ajustes básicos do Bootstrap para usar os Tokens BCB em Botões */
-        .btn-primary {
-            background-color: var(--bcb-btn-primary-bg);
-            border-color: var(--bcb-btn-primary-bg);
-            color: var(--bcb-color-white);
-        }
-        .btn-primary:hover {
-            background-color: var(--bcb-btn-primary-bg);
-            border-color: var(--bcb-btn-primary-bg);
-            color: var(--bcb-color-white);
-            filter: brightness(0.9);
-        }
-        .btn-primary:active {
-            background-color: var(--bcb-btn-primary-active) !important;
-            border-color: var(--bcb-btn-primary-active) !important;
-        }
-        .btn-primary:disabled {
-            background-color: #64666c;
-            border-color: #64666c;
-        }
-        
-        .btn-secondary {
-            background-color: var(--bcb-btn-secondary-bg);
-            border-color: var(--bcb-btn-secondary-bg);
-            color: var(--bcb-color-white);
-        }
-        .btn-secondary:hover {
-            background-color: var(--bcb-btn-secondary-bg);
-            border-color: var(--bcb-btn-secondary-bg);
-            color: var(--bcb-color-white);
-            filter: brightness(0.9);
-        }
-        .btn-secondary:active, .btn-secondary:focus {
-            background-color: var(--bcb-btn-secondary-active) !important;
-            border-color: var(--bcb-btn-secondary-active) !important;
-        }
-        
-        .btn-outline-primary {
-            color: var(--bcb-brand-blue);
-            border-color: var(--bcb-brand-blue);
-        }
-        .btn-outline-primary:hover {
-            background-color: var(--bcb-brand-blue);
-            color: var(--bcb-color-white);
-        }
-        
-        .btn-link {
-            color: var(--bcb-link-color);
-        }
-        .btn-link:hover {
-            color: var(--bcb-link-hover);
-        }
+        /* Override Bootstrap Buttons with BCB Tokens */
+        .btn-primary { background-color: var(--bcb-btn-primary-bg); border-color: var(--bcb-btn-primary-bg); color: var(--bcb-color-white); transition: all 0.2s; }
+        .btn-primary:hover { background-color: var(--bcb-btn-primary-hover); border-color: var(--bcb-btn-primary-hover); color: var(--bcb-color-white); }
+        .btn-primary:active { background-color: var(--bcb-btn-primary-active) !important; border-color: var(--bcb-btn-primary-active) !important; }
+        .btn-primary:disabled { background-color: #64666c; border-color: #64666c; }
+        .btn-secondary { background-color: var(--bcb-btn-secondary-bg); border-color: var(--bcb-btn-secondary-bg); color: var(--bcb-color-white); transition: all 0.2s; }
+        .btn-secondary:hover { background-color: var(--bcb-btn-secondary-hover); border-color: var(--bcb-btn-secondary-hover); color: var(--bcb-color-white); }
+        .btn-secondary:active, .btn-secondary:focus { background-color: var(--bcb-btn-secondary-active) !important; border-color: var(--bcb-btn-secondary-active) !important; }
+        .btn-outline-primary { color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); transition: all 0.2s; }
+        .btn-outline-primary:hover { background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
+        .btn-link { color: var(--bcb-link-color); }
+        .btn-link:hover { color: var(--bcb-link-hover); }
         
         /* Code snippet styling */
-        .code-snippet {
-            background: #272822;
-            color: #f8f8f2;
-            border-radius: 4px;
-            padding: 15px;
-            position: relative;
-            margin-top: 15px;
-            overflow-x: auto;
-        }
-        .code-snippet pre {
-            margin: 0;
-            color: inherit;
-        }
-        .btn-copy {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #444;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 4px 8px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .btn-copy:hover {
-            background-color: #666;
-        }
+        .code-snippet { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 16px; position: relative; margin-top: 16px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.05); }
+        .code-snippet pre { margin: 0; color: inherit; font-size: 0.85rem; }
+        .btn-copy { position: absolute; top: 8px; right: 8px; background-color: rgba(255,255,255,0.1); color: #cdd6f4; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
+        .btn-copy:hover { background-color: rgba(255,255,255,0.2); color: #fff; }
+
+        /* Section dividers */
+        .ds-main section { padding-bottom: 2rem; margin-bottom: 2rem; border-bottom: 1px solid var(--bcb-gray-200); }
+        .ds-main section:last-child { border-bottom: none; }
+        .ds-main h2 { color: var(--bcb-gray-900); font-weight: 500; font-size: 1.6rem; }
+        .ds-main h3 { color: var(--bcb-gray-800); font-size: 1.1rem; margin-top: 1.5rem; }
     </style>
 </head>
 <body>
 
     <header class="header-bcb">
-        <div class="container">
-            <h1>Design System - Banco Central do Brasil</h1>
+        <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
+            <h1>
+                <span class="material-icons" aria-hidden="true">palette</span>
+                Design System BCB
+                <span class="badge-version">v1.0</span>
+            </h1>
+            <span class="d-none d-md-inline" style="font-size:0.8rem; opacity:0.7;">Banco Central do Brasil</span>
         </div>
     </header>
 
     <div class="ds-wrapper">
         <aside class="ds-sidebar">
             <nav class="nav flex-column">
-                <div class="ds-sidebar-title">FUNDAÇÃO</div>
+                <div class="ds-sidebar-title">Fundação</div>
                 <a class="nav-link" href="#cores">Cores e Tokens</a>
                 <a class="nav-link" href="#tipografia">Tipografia</a>
-                
-                <div class="ds-sidebar-title">COMPONENTES</div>
+
+                <div class="ds-sidebar-title">Componentes</div>
                 <a class="nav-link" href="#botoes">Botões</a>
                 <a class="nav-link" href="#links">Links e Âncoras</a>
-                <a class="nav-link" href="#tabelas-alertas">Tabelas e Alertas</a>
+                <a class="nav-link" href="#tabelas-alertas">Tabelas, Alertas e Downloads</a>
                 <a class="nav-link" href="#forms">Formulários e Inputs</a>
-                
-                <div class="ds-sidebar-title">ESTRUTURA</div>
+
+                <div class="ds-sidebar-title">Navegação</div>
+                <a class="nav-link" href="#abas">Abas (Tabs)</a>
                 <a class="nav-link" href="#cards-links-rapidos">Cards de Links Rápidos</a>
                 <a class="nav-link" href="#cards-conteudo">Cards de Conteúdo</a>
-                <a class="nav-link" href="#abas">Abas de Navegação (Tabs)</a>
-                <a class="nav-link" href="#header-footer">Estrutura Principal</a>
-                <a class="nav-link" href="#conteudo-editorial">Conteúdo Editorial</a>
-                <a class="nav-link" href="#navegacao-editorial">Navegação Editorial e Estrutura</a>
+                <a class="nav-link" href="#breadcrumb-tags">Breadcrumb e Tags</a>
+
+                <div class="ds-sidebar-title">Editorial</div>
+                <a class="nav-link" href="#conteudo-editorial">Olho, Citação e Accordion</a>
+                <a class="nav-link" href="#navegacao-editorial">Menu de Âncoras e Passo a Passo</a>
+
+                <div class="ds-sidebar-title">Estrutura</div>
+                <a class="nav-link" href="#header-footer">Header e Footer</a>
             </nav>
         </aside>
         
         <main class="ds-main">
-            
-            <section id="cores" class="mb-5">
-                <h2 class="mb-4">Cores e Tokens</h2>
-                <div class="d-flex" style="gap: 1rem;">
-                    <div class="p-4 rounded text-white" style="background-color: var(--bcb-brand-blue);">--bcb-brand-blue</div>
-                    <div class="p-4 rounded text-white" style="background-color: var(--bcb-brand-blue-dark);">--bcb-brand-blue-dark</div>
-                    <div class="p-4 rounded text-white" style="background-color: var(--bcb-portal-primary);">--bcb-portal-primary</div>
-                    <div class="p-4 rounded text-dark" style="background-color: var(--bcb-gray-100);">--bcb-gray-100</div>
+
+            <!-- ============ CORES ============ -->
+            <section id="cores">
+                <h2>Cores e Tokens</h2>
+                <p class="text-body mb-3">Paleta oficial extraída do portal BCB em produção. Use as CSS Custom Properties (<code>var(--bcb-...)</code>) em vez de valores hardcoded.</p>
+                <div class="row">
+                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-blue);"><span class="swatch-name">Brand Blue</span><span class="swatch-hex">#025C75</span></div></div>
+                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-blue-dark);"><span class="swatch-name">Blue Dark</span><span class="swatch-hex">#013F50</span></div></div>
+                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-azulcinti);"><span class="swatch-name">Azul Cinti</span><span class="swatch-hex">#088694</span></div></div>
+                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-azulpetro);"><span class="swatch-name">Azul Petro</span><span class="swatch-hex">#077391</span></div></div>
+                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-vinho);"><span class="swatch-name">Vinho</span><span class="swatch-hex">#2E4C59</span></div></div>
+                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-verde-susta);"><span class="swatch-name">Verde Susta</span><span class="swatch-hex">#067078</span></div></div>
+                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-dark" style="background-color: var(--bcb-brand-amarellato);"><span class="swatch-name">Amarellato</span><span class="swatch-hex">#F8D48D</span></div></div>
+                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-dark" style="background-color: var(--bcb-gray-200);"><span class="swatch-name">Gray 200</span><span class="swatch-hex">#E6EAEF</span></div></div>
                 </div>
             </section>
-            
-            <section id="tipografia" class="mb-5">
-                <h2 class="mb-4">Tipografia</h2>
-                <p class="bold font-size-xl">Títulos: Ubuntu Bold</p>
-                <p class="medium font-size-lg">Subtítulos: Ubuntu Medium</p>
-                <p class="text-body">Corpos de texto: Ubuntu Regular. Exemplo de tipografia padronizada em diversas aplicações.</p>
-                <p class="italic text-muted">Texto mutado ou de apoio em Ubuntu Italic.</p>
+
+            <!-- ============ TIPOGRAFIA ============ -->
+            <section id="tipografia">
+                <h2>Tipografia</h2>
+                <p class="text-body mb-4">A família principal é <strong>Ubuntu</strong>. Peso 300 para light, 400 regular, 500 médio e 700 bold. Títulos editoriais podem usar <strong>Cormorant Garamond</strong>.</p>
+                <h1 class="mb-2" style="font-family: var(--bcb-font-ubuntu);">Título h1 — Ubuntu Medium</h1>
+                <h2 class="mb-2">Subtítulo h2 — Ubuntu</h2>
+                <h3 class="mb-2">Subtítulo h3 — Ubuntu</h3>
+                <p class="text-body mb-1">Corpo de texto padrão: <code>.text-body</code> (Ubuntu Regular, #606060)</p>
+                <p class="light text-muted mb-1">Texto leve: <code>.light</code> (peso 300)</p>
+                <p class="bold mb-1">Texto negrito: <code>.bold</code> (peso 700)</p>
+                <p class="italic text-muted">Texto em itálico: <code>.italic</code></p>
             </section>
 
-        <section id="botoes" class="mb-5">
-            <h2 class="mb-4">Botões (Buttons)</h2>
-            <p class="text-body mb-4">Exemplos práticos das variantes, tamanhos e estados de botões baseados nos componentes do DS.</p>
-            
-            <div class="mb-5">
+            <!-- ============ BOTÕES ============ -->
+            <section id="botoes">
+                <h2>Botões (Buttons)</h2>
+                <p class="text-body mb-4">Variantes, tamanhos e estados de botões baseados nos tokens do Design System.</p>
+                
                 <h3 class="h5 medium">Variantes</h3>
-                <div class="d-flex flex-wrap" style="gap: 1rem;">
+                <div class="d-flex flex-wrap mb-3" style="gap: 1rem;">
                     <button type="button" class="btn btn-primary">Salvar relatório</button>
                     <button type="button" class="btn btn-secondary">Confirmar dados</button>
                     <button type="button" class="btn btn-outline-primary">Ação alternativa</button>
@@ -191,129 +169,157 @@
 &lt;button type="button" class="btn btn-outline-primary"&gt;Ação alternativa&lt;/button&gt;
 &lt;button type="button" class="btn btn-link"&gt;Limpar formulário&lt;/button&gt;</code></pre>
                 </div>
-            </div>
 
-            <div class="mb-5">
                 <h3 class="h5 medium">Tamanhos</h3>
-                <div class="d-flex flex-wrap align-items-center" style="gap: 1rem;">
-                    <button type="button" class="btn btn-primary btn-sm">Ação Auxiliar (Sair)</button>
-                    <button type="button" class="btn btn-primary">Formato Padrão</button>
-                    <button type="button" class="btn btn-primary btn-lg">Conversão (Destacado)</button>
+                <div class="d-flex flex-wrap align-items-center mb-3" style="gap: 1rem;">
+                    <button type="button" class="btn btn-primary btn-sm">Pequeno (.btn-sm)</button>
+                    <button type="button" class="btn btn-primary">Padrão</button>
+                    <button type="button" class="btn btn-primary btn-lg">Grande (.btn-lg)</button>
+                </div>
+
+                <h3 class="h5 medium">Com Ícones e Estado Desabilitado</h3>
+                <div class="d-flex flex-wrap mb-3" style="gap: 1rem;">
+                    <button type="button" class="btn btn-primary d-flex align-items-center">Ver conteúdo <span class="material-icons-outlined ml-2" aria-hidden="true">chevron_right</span></button>
+                    <button type="button" class="btn btn-secondary d-flex align-items-center">Baixar <span class="material-icons-outlined ml-2" aria-hidden="true">file_download</span></button>
+                    <button type="button" class="btn btn-primary" disabled>Indisponível</button>
                 </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;button type="button" class="btn btn-primary btn-sm"&gt;Ação Auxiliar (Sair)&lt;/button&gt;
-&lt;button type="button" class="btn btn-primary"&gt;Formato Padrão&lt;/button&gt;
-&lt;button type="button" class="btn btn-primary btn-lg"&gt;Conversão (Destacado)&lt;/button&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Botões com Ícones</h3>
-                <div class="d-flex flex-wrap" style="gap: 1rem;">
-                    <button type="button" class="btn btn-primary d-flex align-items-center">
-                        Ver conteúdo <span class="material-icons-outlined ml-2">chevron_right</span>
-                    </button>
-
-                    <button type="button" class="btn btn-secondary d-flex align-items-center">
-                        Baixar <span class="material-icons-outlined ml-2">file_download</span>
-                    </button>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;button type="button" class="btn btn-primary d-flex align-items-center"&gt;
-    Ver conteúdo &lt;span class="material-icons-outlined ml-2"&gt;chevron_right&lt;/span&gt;
-&lt;/button&gt;
-
-&lt;button type="button" class="btn btn-secondary d-flex align-items-center"&gt;
-    Baixar &lt;span class="material-icons-outlined ml-2"&gt;file_download&lt;/span&gt;
+                    <pre><code>&lt;button class="btn btn-primary d-flex align-items-center"&gt;
+  Ver conteúdo &lt;span class="material-icons-outlined ml-2" aria-hidden="true"&gt;chevron_right&lt;/span&gt;
 &lt;/button&gt;</code></pre>
                 </div>
-            </div>
+            </section>
 
-            <div class="mb-5">
-                <h3 class="h5 medium">Estado Desabilitado</h3>
-                <button type="button" class="btn btn-primary" disabled>Ação Indisponível</button>
+            <!-- ============ LINKS ============ -->
+            <section id="links">
+                <h2>Links e Âncoras</h2>
+                <div class="mb-4">
+                    <h3 class="h5 medium">Link Padrão</h3>
+                    <a href="#" class="text-link">Informações adicionais sobre normativos</a>
+                </div>
+                <div class="mb-4">
+                    <h3 class="h5 medium">Link em Nova Aba</h3>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)">Acessar Portal do Registrato <span class="material-icons-outlined ml-1" style="font-size:1rem; vertical-align:middle;" aria-hidden="true">open_in_new</span></a>
+                </div>
+                <div class="mb-4">
+                    <h3 class="h5 medium">Download de Arquivo</h3>
+                    <a href="#" class="text-link" aria-label="baixe o relatório econômico anual">Relatório Econômico Anual (PDF, 2MB)</a>
+                </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;button type="button" class="btn btn-primary" disabled&gt;Ação Indisponível&lt;/button&gt;</code></pre>
+                    <pre><code>&lt;a href="#" class="text-link"&gt;Informações adicionais sobre normativos&lt;/a&gt;
+&lt;a href="#" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)"&gt;Portal do Registrato&lt;/a&gt;</code></pre>
                 </div>
-            </div>
-            
-            <div class="mb-5">
-                <h3 class="h5 medium">Links Navegacionais com Formato de Botão</h3>
-                <a href="#proxima-pagina" class="btn btn-primary">Ir para a Próxima Etapa</a>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;a href="#proxima-pagina" class="btn btn-primary"&gt;Ir para a Próxima Etapa&lt;/a&gt;</code></pre>
-                </div>
-            </div>
-            
-        </section>
+            </section>
 
-        <section id="links" class="mb-5">
-            <h2 class="mb-4">Links e Âncoras</h2>
-            
-            <div class="mb-5">
-                <h3 class="h5 medium">Link Padrão</h3>
-                <a href="#secao" class="text-link">Informações adicionais sobre normativos</a>
+            <!-- ============ TABELAS, ALERTAS E DOCUMENTOS ============ -->
+            <section id="tabelas-alertas">
+                <h2>Tabelas, Alertas e Downloads</h2>
+                
+                <h3 class="h5 medium">Tabela de Dados</h3>
+                <div class="table-responsive mb-3">
+                  <table class="table table-striped table-bordered">
+                    <thead class="thead-primary">
+                      <tr><th>Indicador</th><th>Jan/2026</th><th>Fev/2026</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>IPCA</td><td>0,42%</td><td>0,83%</td></tr>
+                      <tr><td>Selic (meta)</td><td>14,25%</td><td>14,25%</td></tr>
+                    </tbody>
+                  </table>
+                </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;a href="#secao" class="text-link"&gt;Informações adicionais sobre normativos&lt;/a&gt;</code></pre>
+                    <pre><code>&lt;div class="table-responsive"&gt;
+  &lt;table class="table table-striped table-bordered"&gt;
+    &lt;thead class="thead-primary"&gt;...&lt;/thead&gt;
+    &lt;tbody&gt;...&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
                 </div>
-            </div>
 
-            <div class="mb-5">
-                <h3 class="h5 medium">Link que abre em Nova Aba</h3>
-                <a href="#externo" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)">
-                    Acessar Portal do Registrato
-                </a>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;a href="#externo" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)"&gt;
-    Acessar Portal do Registrato
-&lt;/a&gt;</code></pre>
-                </div>
-            </div>
+                <h3 class="h5 medium">Alertas</h3>
+                <div class="alert alert-success" role="alert"><strong>Dica:</strong> Use <code>.alert-success</code> para seções informativas.</div>
+                <div class="alert alert-danger" role="alert"><strong>Restrição:</strong> Use <code>.alert-danger</code> para alertas críticos.</div>
 
-            <div class="mb-5">
-                <h3 class="h5 medium">Download de Arquivo</h3>
-                <a href="#download.pdf" class="text-link" aria-label="baixe a planilha completa">
-                    Relatório Econômico Anual (PDF, 2MB)
-                </a>
+                <h3 class="h5 medium">Lista de Documentos</h3>
+                <div class="documentos">
+                  <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Relatório (PDF)">
+                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
+                      <div class="d-flex flex-column position-relative">
+                        <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
+                        <span class="extensao bg-color-1">pdf</span>
+                      </div>
+                    </div>
+                    <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
+                      <span class="documento-title">Relatório de Inflação — Mar/2026</span>
+                      <span class="documento-data">Publicado em: 12/03/2026</span>
+                    </div>
+                  </a>
+                </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;a href="#download.pdf" class="text-link" aria-label="baixe a planilha completa"&gt;
-    Relatório Econômico Anual (PDF, 2MB)
-&lt;/a&gt;</code></pre>
+                    <pre><code>&lt;div class="documentos"&gt;
+  &lt;a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="arquivo.pdf" aria-label="Baixar Relatório (PDF)"&gt;
+    &lt;div class="icone text-white bg-color-1 ..."&gt;...&lt;/div&gt;
+    &lt;div class="texto ..."&gt;
+      &lt;span class="documento-title"&gt;Título&lt;/span&gt;
+      &lt;span class="documento-data"&gt;Data&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
                 </div>
-            </div>
+            </section>
 
-            <div class="mb-5">
-                <h3 class="h5 medium">Link em Título (Herdando formatação e assumindo .text-link)</h3>
-                <h4 class="h6 mt-2">
-                    <a href="#titulolink" class="text-link" aria-label="Abre em nova aba ou janela">
-                        Comunicado de Política Monetária (Copom)
-                        <span class="material-icons-outlined ml-1" style="font-size: 1rem; vertical-align: middle;">open_in_new</span>
-                    </a>
-                </h4>
+            <!-- ============ FORMULÁRIOS ============ -->
+            <section id="forms">
+                <h2>Formulários e Inputs</h2>
+                <p class="text-body mb-4">Diretrizes USWDS adaptadas: foco em legibilidade dos rótulos, contraste e estados de foco visíveis.</p>
+                
+                <h3 class="h5 medium">Campo de Texto</h3>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="inputNome">Nome completo</label>
+                      <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp">
+                      <small id="nomeHelp" class="form-text text-muted">Insira seu nome conforme documento oficial.</small>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="h5 medium">Checkboxes e Radios</h3>
+                <div class="p-3 bg-light border rounded mb-3">
+                  <h4 class="h6 mb-3">Tipo de pessoa:</h4>
+                  <div class="custom-control custom-radio mb-2">
+                    <input type="radio" id="rpf" name="tp" class="custom-control-input">
+                    <label class="custom-control-label" for="rpf">Pessoa Física (CPF)</label>
+                  </div>
+                  <div class="custom-control custom-radio mb-3">
+                    <input type="radio" id="rpj" name="tp" class="custom-control-input">
+                    <label class="custom-control-label" for="rpj">Pessoa Jurídica (CNPJ)</label>
+                  </div>
+                  <div class="custom-control custom-checkbox mt-3">
+                    <input type="checkbox" class="custom-control-input" id="chk1">
+                    <label class="custom-control-label" for="chk1">Declaro que li e concordo com os termos de uso.</label>
+                  </div>
+                </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;h4 class="h6 mt-2"&gt;
-    &lt;a href="#titulolink" class="text-link" aria-label="Abre em nova aba ou janela"&gt;
-        Comunicado de Política Monetária (Copom)
-        &lt;span class="material-icons-outlined ml-1" style="font-size: 1rem; vertical-align: middle;"&gt;open_in_new&lt;/span&gt;
-    &lt;/a&gt;
-&lt;/h4&gt;</code></pre>
+                    <pre><code>&lt;div class="custom-control custom-radio mb-2"&gt;
+  &lt;input type="radio" id="rpf" name="tp" class="custom-control-input"&gt;
+  &lt;label class="custom-control-label" for="rpf"&gt;Pessoa Física (CPF)&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="custom-control custom-checkbox"&gt;
+  &lt;input type="checkbox" class="custom-control-input" id="chk1"&gt;
+  &lt;label class="custom-control-label" for="chk1"&gt;Concordo com os termos.&lt;/label&gt;
+&lt;/div&gt;</code></pre>
                 </div>
-            </div>
-            
-        </section>
-        
-        <section id="abas" class="mb-5">
-            <h2 class="mb-4">Abas de Navegação (Tabs)</h2>
-            <div class="mb-5">
-                <h3 class="h5 medium">Exemplo `<navegacaoabas>`</h3>
+            </section>
+
+            <!-- ============ ABAS ============ -->
+            <section id="abas">
+                <h2>Abas de Navegação (Tabs)</h2>
                 <navegacaoabas>
                     <nav>
                         <div class="nav nav-tabs" role="tablist">
@@ -345,48 +351,32 @@
         &lt;div class="icone"&gt;&lt;span class="material-icons"&gt;person&lt;/span&gt;&lt;/div&gt;
         &lt;div class="texto"&gt;Cidadão&lt;/div&gt;
       &lt;/a&gt;
-      &lt;a class="nav-link" data-toggle="tab" href="#tab2" role="tab"&gt;
-        &lt;span class="line"&gt;&lt;/span&gt;
-        &lt;div class="icone"&gt;&lt;span class="material-icons"&gt;account_balance&lt;/span&gt;&lt;/div&gt;
-        &lt;div class="texto"&gt;Sistema Financeiro&lt;/div&gt;
-      &lt;/a&gt;
     &lt;/div&gt;
   &lt;/nav&gt;
   &lt;div class="tab-content"&gt;
     &lt;span class="line"&gt;&lt;/span&gt;
-    &lt;div class="tab-pane fade show active" id="tab1" role="tabpanel"&gt;Conteúdo da aba Cidadão.&lt;/div&gt;
-    &lt;div class="tab-pane fade" id="tab2" role="tabpanel"&gt;Conteúdo da aba Sistema Financeiro.&lt;/div&gt;
+    &lt;div class="tab-pane fade show active" id="tab1" role="tabpanel"&gt;...&lt;/div&gt;
   &lt;/div&gt;
 &lt;/navegacaoabas&gt;</code></pre>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="cards-links-rapidos" class="mb-5">
-            <h2 class="mb-4">Cards de Links Rápidos</h2>
-            <div class="mb-5">
-                <h3 class="h5 medium">Exemplo `<listalinks>` (2 Colunas)</h3>
+            <!-- ============ CARDS DE LINKS RÁPIDOS ============ -->
+            <section id="cards-links-rapidos">
+                <h2>Cards de Links Rápidos</h2>
                 <listalinks>
                     <div class="buffer">
                         <div class="row">
                             <div class="col-sm-6 mb-2">
                                 <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
-                                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
-                                        <span class="material-icons" aria-hidden="true">chevron_right</span>
-                                    </div>
-                                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">
-                                        Busca de normas
-                                    </div>
+                                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
+                                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Busca de normas</div>
                                 </a>
                             </div>
                             <div class="col-sm-6 mb-2">
                                 <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
-                                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
-                                        <span class="material-icons" aria-hidden="true">chevron_right</span>
-                                    </div>
-                                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">
-                                        Atendimento ao cidadão
-                                    </div>
+                                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
+                                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Atendimento ao cidadão</div>
                                 </a>
                             </div>
                         </div>
@@ -399,32 +389,253 @@
     &lt;div class="row"&gt;
       &lt;div class="col-sm-6 mb-2"&gt;
         &lt;a class="hvr-shadow d-flex no-underline" href="#"&gt;
-          &lt;div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"&gt;
-            &lt;span class="material-icons" aria-hidden="true"&gt;chevron_right&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;div class="texto d-flex align-items-center w-100 rounded-right font-color-1"&gt;Busca de normas&lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-      &lt;div class="col-sm-6 mb-2"&gt;
-        &lt;a class="hvr-shadow d-flex no-underline" href="#"&gt;
-          &lt;div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"&gt;
-            &lt;span class="material-icons" aria-hidden="true"&gt;chevron_right&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;div class="texto d-flex align-items-center w-100 rounded-right font-color-1"&gt;Atendimento ao cidadão&lt;/div&gt;
+          &lt;div class="icone text-white bg-color-1 ..."&gt;...&lt;/div&gt;
+          &lt;div class="texto ..."&gt;Busca de normas&lt;/div&gt;
         &lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/listalinks&gt;</code></pre>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="header-footer" class="mb-5">
-            <h2 class="mb-4">Estrutura Principal (Header e Footer)</h2>
-            <div class="mb-5">
+            <!-- ============ CARDS DE CONTEÚDO ============ -->
+            <section id="cards-conteudo">
+                <h2>Cards de Conteúdo (Listalinks Light)</h2>
+                
+                <h3 class="h5 medium">Modelo 1 (Com Sombra)</h3>
+                <div class="listalinks-light modelo-1 mb-3">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center rounded-left"><span class="material-icons md-36 color-1" aria-hidden="true">campaign</span></div>
+                          <div class="info-container align-self-center p-3">
+                            <p class="mb-0"><span class="title color-1">Comunicação e Imprensa</span><br><span class="description">Acesse os últimos comunicados.</span></p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center rounded-left"><span class="material-icons md-36 color-1" aria-hidden="true">hearing</span></div>
+                          <div class="info-container align-self-center p-3">
+                            <p class="mb-0"><span class="title color-1">Ouvidoria</span><br><span class="description">Fale com o Banco Central.</span></p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <h3 class="h5 medium">Modelo 5 (Vertical)</h3>
+                <div class="listalinks-light modelo-5 mb-3">
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center"><span class="material-icons md-36 color-1" aria-hidden="true">support_agent</span></div>
+                          <div class="info-container align-self-center text-center">
+                            <p class="mb-0"><span class="title color-1 text-uppercase d-block mt-3">Atendimento</span><br><span class="description">Central de atendimento ao cidadão.</span></p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center"><span class="material-icons md-36 color-1" aria-hidden="true">outgoing_mail</span></div>
+                          <div class="info-container align-self-center text-center">
+                            <p class="mb-0"><span class="title color-1 text-uppercase d-block mt-3">Fale Conosco</span><br><span class="description">Envie suas dúvidas por email.</span></p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <div class="h-100 d-flex align-items-center">
+                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
+                          <div class="icon-container d-flex align-items-center justify-content-center"><span class="material-icons md-36 color-1" aria-hidden="true">help_outline</span></div>
+                          <div class="info-container align-self-center text-center">
+                            <p class="mb-0"><span class="title color-1 text-uppercase d-block mt-3">FAQ</span><br><span class="description">Perguntas frequentes.</span></p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="listalinks-light modelo-1"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-6 mb-3"&gt;
+      &lt;div class="h-100 d-flex align-items-center"&gt;
+        &lt;a href="#" class="d-inline-flex rounded w-100 h-100"&gt;
+          &lt;div class="icon-container ..."&gt;...&lt;/div&gt;
+          &lt;div class="info-container ..."&gt;
+            &lt;span class="title color-1"&gt;Título&lt;/span&gt;
+            &lt;span class="description"&gt;Descrição&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ BREADCRUMB E TAGS ============ -->
+            <section id="breadcrumb-tags">
+                <h2>Breadcrumb e Tags</h2>
+                
+                <h3 class="h5 medium">Breadcrumb</h3>
+                <nav aria-label="Navegação secundária">
+                  <ul class="breadcrumb-bcb">
+                    <li><a href="/">Página Inicial</a></li>
+                    <li><a href="/estabilidade">Estabilidade Financeira</a></li>
+                    <li aria-current="page">Normas</li>
+                  </ul>
+                </nav>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;nav aria-label="Navegação secundária"&gt;
+  &lt;ul class="breadcrumb-bcb"&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Página Inicial&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/estabilidade"&gt;Estabilidade Financeira&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Normas&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+
+                <h3 class="h5 medium">Tags (Etiquetas)</h3>
+                <div class="mb-3">
+                  <span class="tag-bcb mr-1">Comunicado</span>
+                  <span class="tag-bcb primary mr-1">Novo</span>
+                  <span class="tag-bcb mr-1">Em consulta</span>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;span class="tag-bcb"&gt;Comunicado&lt;/span&gt;
+&lt;span class="tag-bcb primary"&gt;Novo&lt;/span&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ CONTEÚDO EDITORIAL ============ -->
+            <section id="conteudo-editorial">
+                <h2>Olho, Citação e Accordion</h2>
+                <p class="text-body mb-4">Simulação visual dos Custom Elements Angular do BCB, com o código do componente abaixo para uso em produção.</p>
+                
+                <h3 class="h5 medium">Box "Olho" (Callout)</h3>
+                <div class="bcb-olho">
+                  <h4>Atenção</h4>
+                  <p class="mb-0">Este é um texto de destaque renderizado simulando o componente Angular <code>&lt;bcb-olho&gt;</code>.</p>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;bcb-olho [texto]="'&lt;h4&gt;Atenção&lt;/h4&gt;&lt;p&gt;Texto de destaque.&lt;/p&gt;'"&gt;&lt;/bcb-olho&gt;</code></pre>
+                </div>
+
+                <h3 class="h5 medium">Citação (Blockquote)</h3>
+                <blockquote class="bcb-citacao">
+                  <p class="mb-0">"Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade."</p>
+                  <footer>Banco Central do Brasil</footer>
+                </blockquote>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;bcb-citacao [autor]="'Banco Central do Brasil'" [citacao]="'Garantir a estabilidade de preços...'"&gt;&lt;/bcb-citacao&gt;</code></pre>
+                </div>
+
+                <h3 class="h5 medium">Accordion (Modelo 1)</h3>
+                <div class="accordion modelo-1" id="accordionDS">
+                  <div class="card">
+                    <div class="card-header" id="headDS1">
+                      <a role="button" data-toggle="collapse" class="btn d-flex justify-content-between align-items-center w-100 text-left text-decoration-none" href="#collapseDS1" aria-expanded="true">
+                        <span>Título da Sanfona de Exemplo</span>
+                        <span class="material-icons" aria-hidden="true">expand_more</span>
+                      </a>
+                    </div>
+                    <div id="collapseDS1" class="collapse show" data-parent="#accordionDS">
+                      <div class="card-body"><p class="mb-0">Conteúdo HTML interno visível da sanfona.</p></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;bcb-accordion-page [card_header]="'Título'" [card_body]="'&lt;p&gt;Conteúdo&lt;/p&gt;'" [aria_expanded]="false" [modelo]="'1'"&gt;&lt;/bcb-accordion-page&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ NAVEGAÇÃO EDITORIAL ============ -->
+            <section id="navegacao-editorial">
+                <h2>Menu de Âncoras e Passo a Passo</h2>
+
+                <h3 class="h5 medium">Menu de Âncoras (In-page Navigation)</h3>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <aside class="bd-sidebar" style="position: static;">
+                      <div class="bd-toc">
+                        <strong>Nesta página</strong>
+                        <nav aria-label="Navegação âncora" class="bd-links">
+                          <ul class="list-unstyled mb-0">
+                            <li><a href="#" class="active">1. Introdução</a></li>
+                            <li><a href="#">2. Regras Gerais</a></li>
+                            <li><a href="#">3. Considerações</a></li>
+                          </ul>
+                        </nav>
+                      </div>
+                    </aside>
+                  </div>
+                  <div class="col-md-8">
+                    <p class="text-body text-muted border p-3 bg-light rounded">O menu à esquerda funciona com <code>position: sticky</code> em páginas reais. O conteúdo é rolado nesta coluna.</p>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;aside class="bd-sidebar"&gt;
+  &lt;div class="bd-toc"&gt;
+    &lt;strong&gt;Nesta página&lt;/strong&gt;
+    &lt;nav aria-label="Navegação âncora" class="bd-links"&gt;
+      &lt;ul class="list-unstyled mb-0"&gt;
+        &lt;li&gt;&lt;a href="#secao1" class="active"&gt;1. Introdução&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#secao2"&gt;2. Regras Gerais&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</code></pre>
+                </div>
+
+                <h3 class="h5 medium">Process List (Passo a Passo)</h3>
+                <ul class="process-list mt-3">
+                  <li>
+                    <h4 class="h5 mt-0 mb-1 color-1">Acesse o sistema</h4>
+                    <p class="text-body">Faça login com sua conta gov.br nível prata ou ouro.</p>
+                  </li>
+                  <li>
+                    <h4 class="h5 mt-0 mb-1 color-1">Preencha os dados</h4>
+                    <p class="text-body">Insira as informações solicitadas no formulário.</p>
+                  </li>
+                  <li>
+                    <h4 class="h5 mt-0 mb-1 color-1">Envie e aguarde</h4>
+                    <p class="text-body">Você receberá o protocolo confirmando a operação no portal.</p>
+                  </li>
+                </ul>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;ul class="process-list"&gt;
+  &lt;li&gt;
+    &lt;h4 class="h5 mt-0 mb-1 color-1"&gt;Acesse o sistema&lt;/h4&gt;
+    &lt;p class="text-body"&gt;Faça login com sua conta gov.br.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ HEADER E FOOTER ============ -->
+            <section id="header-footer">
+                <h2>Header e Footer</h2>
+                
                 <h3 class="h5 medium">Cabeçalho (Header)</h3>
-                <header role="banner" class="border">
+                <header role="banner" class="border mb-3">
                   <div class="container position-relative h-100">
                     <div id="accessibility-wrapper">
                       <div class="d-flex justify-content-end">
@@ -437,25 +648,7 @@
                     <a title="Banco Central do Brasil" href="/"><img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"></a>
                   </div>
                 </header>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;header role="banner"&gt;
-  &lt;div class="container position-relative h-100"&gt;
-    &lt;div id="accessibility-wrapper"&gt;
-      &lt;div class="d-flex justify-content-end"&gt;
-        &lt;ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase"&gt;
-          &lt;li class="d-none d-lg-block"&gt;&lt;a class="font-color-1" href="#"&gt;Acessibilidade&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a class="font-color-1" href="#"&gt;Alto Contraste&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;a title="Banco Central do Brasil" href="/"&gt;&lt;img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"&gt;&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/header&gt;</code></pre>
-                </div>
-            </div>
 
-            <div class="mb-5">
                 <h3 class="h5 medium">Rodapé (Footer)</h3>
                 <footer role="contentinfo">
                   <div class="container arts"><span class="line"></span></div>
@@ -480,7 +673,7 @@
                             <li class="list-inline-item"><a href="#">Fale conosco</a></li>
                             <li class="list-inline-item"><a href="#">Política de privacidade</a></li>
                           </ul>
-                          <div class="text-lg-right mt-2 text-muted"> © Banco Central do Brasil - Todos os direitos reservados</div>
+                          <div class="text-lg-right mt-2 text-muted"> © Banco Central do Brasil</div>
                         </div>
                       </div>
                     </div>
@@ -488,545 +681,52 @@
                 </footer>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;footer role="contentinfo"&gt;
-  &lt;div class="container arts"&gt;&lt;span class="line"&gt;&lt;/span&gt;&lt;/div&gt;
-  &lt;div class="t px-4 px-md-0"&gt;
-    &lt;div class="container"&gt;
-      &lt;div class="d-flex flex-column flex-lg-row justify-content-center align-items-center"&gt;
-        &lt;span class="font-weight-bold font-color-1 mr-lg-3 mb-2 mb-lg-0"&gt;Siga o BC&lt;/span&gt;
-        &lt;ul class="list-unstyled redes-sociais mb-0"&gt;
-          &lt;li&gt;&lt;a href="#" title="Instagram"&gt;IG&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href="#" title="LinkedIn"&gt;IN&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href="#" title="X"&gt;X&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="b"&gt;
-    &lt;div class="container"&gt;
-      &lt;div class="d-lg-flex align-items-lg-center justify-content-lg-between py-3 bottom"&gt;
-        &lt;div class="missao mb-2 mb-lg-0 mr-lg-3"&gt;Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade.&lt;/div&gt;
-        &lt;div class="info"&gt;
-          &lt;ul class="list-inline text-lg-right mb-0"&gt;
-            &lt;li class="list-inline-item"&gt;&lt;a href="#"&gt;Fale conosco&lt;/a&gt;&lt;/li&gt;
-            &lt;li class="list-inline-item"&gt;&lt;a href="#"&gt;Política de privacidade&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-          &lt;div class="text-lg-right mt-2 text-muted"&gt; © Banco Central do Brasil - Todos os direitos reservados&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/footer&gt;</code></pre>
+                    <pre><code>&lt;header role="banner"&gt;...&lt;/header&gt;
+&lt;footer role="contentinfo"&gt;...&lt;/footer&gt;</code></pre>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="conteudo-editorial" class="mb-5">
-            <h2 class="mb-4">Componentes de Conteúdo Editorial</h2>
-            <p class="text-body mb-4">Como a vitrine é visualizada nativamente e os componentes abaixo são <em>Custom Elements</em> do Angular BCB baseados em shadow DOM (não renderizáveis em HTML sem motor TypeScript), listamos exclusivamente as instruções e os <em>snippets</em> para que a IA ou o Desenvolvedor possam extrair e aplicar essas diretrizes de texto rapidamente.</p>
-            
-            <div class="mb-5">
-                <h3 class="h5 medium mt-5 mb-3">Box "Olho" (Callout)</h3>
-                <div class="bcb-olho">
-                  <h4>Atenção</h4>
-                  <p class="mb-0">Este é um texto de destaque renderizado simulando o componente Angular.</p>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;bcb-olho [texto]="'&lt;h4&gt;Atenção&lt;/h4&gt;&lt;p&gt;Este é um texto de destaque gerado pela IA.&lt;/p&gt;'"&gt;&lt;/bcb-olho&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium mt-5 mb-3">Accordions (Sanfonas expansíveis) - Modelo 1</h3>
-                <div class="accordion modelo-1" id="accordionExemplo">
-                  <div class="card">
-                    <div class="card-header" id="headingUm">
-                      <a role="button" data-toggle="collapse" class="btn d-flex justify-content-between align-items-center w-100 text-left text-decoration-none" href="#collapseUm" aria-expanded="true">
-                        <span>Título da Sanfona de Exemplo</span>
-                        <span class="material-icons">expand_more</span>
-                      </a>
-                    </div>
-                    <div id="collapseUm" class="collapse show" data-parent="#accordionExemplo">
-                      <div class="card-body">
-                        <p class="mb-0">Conteúdo HTML interno visível da sanfona.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;bcb-accordion-page [card_header]="'Título da Sanfona'" [card_body]="'&lt;p&gt;Conteúdo HTML interno&lt;/p&gt;'" [aria_expanded]="false" [modelo]="'1'"&gt;&lt;/bcb-accordion-page&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium mt-5 mb-3">Citações (Blockquotes)</h3>
-                <blockquote class="bcb-citacao">
-                  <p class="mb-0">"Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade."</p>
-                  <footer>Banco Central do Brasil</footer>
-                </blockquote>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;bcb-citacao [autor]="'Nome do Autor'" [citacao]="'Texto da citação completa sem aspas.'"&gt;&lt;/bcb-citacao&gt;</code></pre>
-                </div>
-            </div>
-        </section>
-
-        <section id="tabelas-alertas" class="mb-5">
-            <h2 class="mb-4">Tabelas, Alertas e Documentos</h2>
-            
-            <div class="mb-5">
-                <h3 class="h5 medium">Tabelas de Dados</h3>
-                <div class="table-responsive">
-                  <table class="table table-striped table-bordered">
-                    <thead class="thead-primary">
-                      <tr><th>Coluna 1</th><th>Coluna 2</th></tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>Dado 1</td><td>Dado 2</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="table-responsive"&gt;
-  &lt;table class="table table-striped table-bordered"&gt;
-    &lt;thead class="thead-primary"&gt;
-      &lt;tr&gt;&lt;th&gt;Coluna 1&lt;/th&gt;&lt;th&gt;Coluna 2&lt;/th&gt;&lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-      &lt;tr&gt;&lt;td&gt;Dado 1&lt;/td&gt;&lt;td&gt;Dado 2&lt;/td&gt;&lt;/tr&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Alertas (Alerts)</h3>
-                <div class="alert alert-success" role="alert">
-                  Este é um alerta de sucesso (dica ou seção).
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="alert alert-success" role="alert"&gt;
-  Este é um alerta de sucesso (dica ou seção).
-&lt;/div&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Lista de Documentos (Downloads)</h3>
-                <div class="documentos">
-                  <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="arquivo.pdf" aria-label="Baixar Relatório (PDF)">
-                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
-                      <div class="d-flex flex-column position-relative">
-                        <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
-                        <span class="extensao bg-color-1">pdf</span>
-                      </div>
-                    </div>
-                    <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
-                      <span class="documento-title">Título do Documento ou Relatório</span>
-                      <span class="documento-data">Publicado em: 10/03/2026</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="documentos"&gt;
-  &lt;a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="arquivo.pdf" aria-label="Baixar Relatório (PDF)"&gt;
-    &lt;div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"&gt;
-      &lt;div class="d-flex flex-column position-relative"&gt;
-        &lt;span class="material-icons md-36" aria-hidden="true"&gt;insert_drive_file&lt;/span&gt;
-        &lt;span class="extensao bg-color-1"&gt;pdf&lt;/span&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3"&gt;
-      &lt;span class="documento-title"&gt;Título do Documento ou Relatório&lt;/span&gt;
-      &lt;span class="documento-data"&gt;Publicado em: 10/03/2026&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </div>
-        </section>
-
-        <section id="cards-conteudo" class="mb-5">
-            <h2 class="mb-4">Cards de Conteúdo (Listalinks Light)</h2>
-            <p class="text-body mb-4">Usados para navegação principal ou apresentação de múltiplos serviços.</p>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Modelo 1 (Com Sombra e Fundo)</h3>
-                <div class="listalinks-light modelo-1">
-                  <div class="row">
-                    <div class="col-md-6 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center rounded-left">
-                            <span class="material-icons md-36 color-1" aria-hidden="true">campaign</span>
-                          </div>
-                          <div class="info-container align-self-center p-3">
-                            <p class="mb-0">
-                              <span class="title color-1">Comunicação e Imprensa</span><br>
-                              <span class="description">Acesse os últimos comunicados.</span>
-                            </p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center rounded-left">
-                            <span class="material-icons md-36 color-1" aria-hidden="true">hearing</span>
-                          </div>
-                          <div class="info-container align-self-center p-3">
-                            <p class="mb-0">
-                              <span class="title color-1">Ouvidoria</span><br>
-                              <span class="description">Fale com o Banco Central.</span>
-                            </p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="listalinks-light modelo-1"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-6 mb-3"&gt;
-      &lt;div class="h-100 d-flex align-items-center"&gt;
-        &lt;a href="#" class="d-inline-flex rounded w-100 h-100"&gt;
-          &lt;div class="icon-container d-flex align-items-center justify-content-center rounded-left"&gt;
-            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;campaign&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;div class="info-container align-self-center p-3"&gt;
-            &lt;p class="mb-0"&gt;
-              &lt;span class="title color-1"&gt;Comunicação e Imprensa&lt;/span&gt;&lt;br&gt;
-              &lt;span class="description"&gt;Acesse os últimos comunicados.&lt;/span&gt;
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-md-6 mb-3"&gt;
-      &lt;div class="h-100 d-flex align-items-center"&gt;
-        &lt;a href="#" class="d-inline-flex rounded w-100 h-100"&gt;
-          &lt;div class="icon-container d-flex align-items-center justify-content-center rounded-left"&gt;
-            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;hearing&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;div class="info-container align-self-center p-3"&gt;
-            &lt;p class="mb-0"&gt;
-              &lt;span class="title color-1"&gt;Ouvidoria&lt;/span&gt;&lt;br&gt;
-              &lt;span class="description"&gt;Fale com o Banco Central.&lt;/span&gt;
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Modelo 5 (Caixas Grandes Verticalizadas)</h3>
-                <div class="listalinks-light modelo-5">
-                  <div class="row">
-                    <div class="col-md-4 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center">
-                            <span class="material-icons md-36 color-1" aria-hidden="true">support_agent</span>
-                          </div>
-                          <div class="info-container align-self-center text-center">
-                            <p class="mb-0">
-                              <span class="title color-1 text-uppercase d-block mt-3">Atendimento</span><br>
-                              <span class="description">Central de atendimento ao cidadão.</span>
-                            </p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center">
-                            <span class="material-icons md-36 color-1" aria-hidden="true">outgoing_mail</span>
-                          </div>
-                          <div class="info-container align-self-center text-center">
-                            <p class="mb-0">
-                              <span class="title color-1 text-uppercase d-block mt-3">Fale Conosco</span><br>
-                              <span class="description">Envie suas dúvidas por email.</span>
-                            </p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center">
-                            <span class="material-icons md-36 color-1" aria-hidden="true">help_outline</span>
-                          </div>
-                          <div class="info-container align-self-center text-center">
-                            <p class="mb-0">
-                              <span class="title color-1 text-uppercase d-block mt-3">Perguntas Frequentes</span><br>
-                              <span class="description">Tire suas dúvidas rapidamente.</span>
-                            </p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="listalinks-light modelo-5"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-4 mb-3"&gt;
-      &lt;div class="h-100 d-flex align-items-center"&gt;
-        &lt;a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100"&gt;
-          &lt;div class="icon-container d-flex align-items-center justify-content-center"&gt;
-            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;support_agent&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;div class="info-container align-self-center text-center"&gt;
-            &lt;p class="mb-0"&gt;
-              &lt;span class="title color-1 text-uppercase d-block mt-3"&gt;Atendimento&lt;/span&gt;&lt;br&gt;
-              &lt;span class="description"&gt;Central de atendimento ao cidadão.&lt;/span&gt;
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-md-4 mb-3"&gt;
-      &lt;div class="h-100 d-flex align-items-center"&gt;
-        &lt;a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100"&gt;
-          &lt;div class="icon-container d-flex align-items-center justify-content-center"&gt;
-            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;outgoing_mail&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;div class="info-container align-self-center text-center"&gt;
-            &lt;p class="mb-0"&gt;
-              &lt;span class="title color-1 text-uppercase d-block mt-3"&gt;Fale Conosco&lt;/span&gt;&lt;br&gt;
-              &lt;span class="description"&gt;Envie suas dúvidas por email.&lt;/span&gt;
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-md-4 mb-3"&gt;
-      &lt;div class="h-100 d-flex align-items-center"&gt;
-        &lt;a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100"&gt;
-          &lt;div class="icon-container d-flex align-items-center justify-content-center"&gt;
-            &lt;span class="material-icons md-36 color-1" aria-hidden="true"&gt;help_outline&lt;/span&gt;
-          &lt;/div&gt;
-          &lt;div class="info-container align-self-center text-center"&gt;
-            &lt;p class="mb-0"&gt;
-              &lt;span class="title color-1 text-uppercase d-block mt-3"&gt;Perguntas Frequentes&lt;/span&gt;&lt;br&gt;
-              &lt;span class="description"&gt;Tire suas dúvidas rapidamente.&lt;/span&gt;
-            &lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </div>
-        </section>
-
-        <section id="navegacao-editorial" class="mb-5">
-            <h2 class="mb-4">Navegação Editorial e Estrutura</h2>
-            <p class="text-body mb-4">Componentes avançados baseados em normas internacionais para a arquitetura de informação central e páginas longas.</p>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Breadcrumb (Trilha de Navegação)</h3>
-                <nav aria-label="Navegação secundária">
-                  <ul class="breadcrumb-bcb">
-                    <li><a href="/">Página Inicial</a></li>
-                    <li><a href="/estabilidade">Estabilidade Financeira</a></li>
-                    <li aria-current="page">Normas</li>
-                  </ul>
-                </nav>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;nav aria-label="Navegação secundária"&gt;
-  &lt;ul class="breadcrumb-bcb"&gt;
-    &lt;li&gt;&lt;a href="/"&gt;Página Inicial&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/estabilidade"&gt;Estabilidade Financeira&lt;/a&gt;&lt;/li&gt;
-    &lt;li aria-current="page"&gt;Normas&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Menu de Âncoras e Layout</h3>
-                <div class="row">
-                  <div class="col-md-4">
-                    <aside class="bd-sidebar">
-                      <div class="bd-toc">
-                        <strong>Nesta página</strong>
-                        <nav aria-label="Navegação âncora" class="bd-links">
-                          <ul class="list-unstyled mb-0">
-                            <li><a href="#secao1" class="active">1. Introdução</a></li>
-                            <li><a href="#secao2">2. Regras Gerais</a></li>
-                            <li><a href="#secao3">3. Considerações</a></li>
-                          </ul>
-                        </nav>
-                      </div>
-                    </aside>
-                  </div>
-                  <div class="col-md-8">
-                    <p class="text-body text-muted border p-3 bg-light">Abaixo vemos o menu à esquerda fixo (sticky). O conteúdo da página seria desenrolado nesta coluna central. Em telas inteiras, ele funciona como um facilitador de saltos entre capítulos.</p>
-                  </div>
-                </div>
-                <div class="code-snippet mt-3">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;aside class="bd-sidebar"&gt;
-  &lt;div class="bd-toc"&gt;
-    &lt;strong&gt;Nesta página&lt;/strong&gt;
-    &lt;nav aria-label="Navegação âncora" class="bd-links"&gt;
-      &lt;ul class="list-unstyled mb-0"&gt;
-        &lt;li&gt;&lt;a href="#secao1" class="active"&gt;1. Introdução&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#secao2"&gt;2. Regras Gerais&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/nav&gt;
-  &lt;/div&gt;
-&lt;/aside&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Tags (Etiquetas)</h3>
-                <div class="mb-2">
-                  <span class="tag-bcb">Comunicado</span>
-                  <span class="tag-bcb primary">Novo</span>
-                  <span class="tag-bcb">Em consulta</span>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;span class="tag-bcb"&gt;Comunicado&lt;/span&gt;
-&lt;span class="tag-bcb primary"&gt;Novo&lt;/span&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Process List (Passo a Passo)</h3>
-                <ul class="process-list mt-3">
-                  <li>
-                    <h4 class="h5 mt-0 mb-1 color-1">Acesse o sistema</h4>
-                    <p class="text-body text-sm">Faça login com sua conta gov.br nível prata ou ouro.</p>
-                  </li>
-                  <li>
-                    <h4 class="h5 mt-0 mb-1 color-1">Preencha os dados</h4>
-                    <p class="text-body text-sm">Insira as informações solicitadas no formulário principal de requerimento.</p>
-                  </li>
-                  <li>
-                    <h4 class="h5 mt-0 mb-1 color-1">Envie e aguarde</h4>
-                    <p class="text-body text-sm">Você receberá o protocolo confirmando a operação no portal.</p>
-                  </li>
-                </ul>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;ul class="process-list"&gt;
-  &lt;li&gt;
-    &lt;h4 class="h5 mt-0 mb-1 color-1"&gt;Acesse o sistema&lt;/h4&gt;
-    &lt;p class="text-body text-sm"&gt;Faça login com sua conta gov.br nível prata ou ouro.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h4 class="h5 mt-0 mb-1 color-1"&gt;Preencha os dados&lt;/h4&gt;
-    &lt;p class="text-body text-sm"&gt;Insira as informações solicitadas no formulário.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-                </div>
-            </div>
-        </section>
-
-        <section id="forms" class="mb-5">
-            <h2 class="mb-4">Formulários e Inputs (Forms)</h2>
-            <p class="text-body mb-4">Campos de entrada focados em acessibilidade, contraste e usabilidade (Padrões USWDS adaptados).</p>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Campos de Texto (Text Inputs)</h3>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="inputNome">Nome completo</label>
-                      <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp">
-                      <small id="nomeHelp" class="form-text text-muted">Insira seu nome exatamente como consta no documento oficial.</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="form-group"&gt;
-  &lt;label for="inputNome"&gt;Nome completo&lt;/label&gt;
-  &lt;input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp"&gt;
-  &lt;small id="nomeHelp" class="form-text text-muted"&gt;Insira seu nome exatamente como consta no documento oficial.&lt;/small&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h3 class="h5 medium">Seleção (Checkboxes e Radios)</h3>
-                
-                <div class="p-3 bg-light border rounded mb-3">
-                  <h4 class="h6 mb-3">Selecione o tipo de pessoa:</h4>
-                  <div class="custom-control custom-radio mb-2">
-                    <input type="radio" id="radioPessoaFisica" name="tipoPessoa" class="custom-control-input">
-                    <label class="custom-control-label" for="radioPessoaFisica">Pessoa Física (CPF)</label>
-                  </div>
-                  <div class="custom-control custom-radio mb-3">
-                    <input type="radio" id="radioPessoaJuridica" name="tipoPessoa" class="custom-control-input">
-                    <label class="custom-control-label" for="radioPessoaJuridica">Pessoa Jurídica (CNPJ)</label>
-                  </div>
-
-                  <div class="custom-control custom-checkbox mt-4">
-                    <input type="checkbox" class="custom-control-input" id="checkTermos">
-                    <label class="custom-control-label" for="checkTermos">Declaro que li e concordo com os termos de uso.</label>
-                  </div>
-                </div>
-
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="custom-control custom-radio mb-2"&gt;
-  &lt;input type="radio" id="radioPessoaFisica" name="tipoPessoa" class="custom-control-input"&gt;
-  &lt;label class="custom-control-label" for="radioPessoaFisica"&gt;Pessoa Física (CPF)&lt;/label&gt;
-&lt;/div&gt;
-
-&lt;div class="custom-control custom-checkbox mt-4"&gt;
-  &lt;input type="checkbox" class="custom-control-input" id="checkTermos"&gt;
-  &lt;label class="custom-control-label" for="checkTermos"&gt;Declaro que li e concordo com os termos de uso.&lt;/label&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </div>
-        </section>
-        
-    </main>
+        </main>
     </div>
 
-    <!-- jQuery & Bootstrap Bundle para Tabs Functionais -->
+    <!-- jQuery & Bootstrap Bundle -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
     <script>
+        // Copy button functionality
         document.querySelectorAll('.btn-copy').forEach(button => {
             button.addEventListener('click', () => {
                 const codeSnippet = button.nextElementSibling.innerText;
                 navigator.clipboard.writeText(codeSnippet).then(() => {
                     const originalText = button.innerText;
                     button.innerText = 'Copiado!';
+                    button.style.backgroundColor = 'rgba(2, 92, 117, 0.4)';
                     setTimeout(() => {
                         button.innerText = originalText;
+                        button.style.backgroundColor = '';
                     }, 2000);
                 }).catch(err => {
                     console.error('Erro ao copiar texto: ', err);
                 });
             });
         });
+
+        // Sidebar active state on scroll
+        const sections = document.querySelectorAll('.ds-main section[id]');
+        const navLinks = document.querySelectorAll('.ds-sidebar .nav-link');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const activeLink = document.querySelector(`.ds-sidebar .nav-link[href="#${entry.target.id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        
+        sections.forEach(section => observer.observe(section));
     </script>
 </body>
 </html>

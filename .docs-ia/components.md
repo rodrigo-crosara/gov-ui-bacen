@@ -1,6 +1,6 @@
 # BCB UI – Components Library
 
-> **Status**: v1.0. Este documento define os blocos de construção da interface do Banco Central do Brasil. Os agentes de IA devem consultar este arquivo para utilizar as classes e marcações corretas, garantindo consistência visual e conformidade com o e-Mag 3.1 e WCAG.
+> **Status**: v1.1 (Auditoria Enterprise — Mar/2026). Este documento define os blocos de construção da interface do Banco Central do Brasil. Os agentes de IA devem consultar este arquivo para utilizar as classes e marcações corretas, garantindo consistência visual e conformidade com o e-Mag 3.1 e WCAG.
 
 ---
 

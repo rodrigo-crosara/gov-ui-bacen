@@ -11,6 +11,7 @@
      2. BRAND (Primárias Oficiais)
      ========================================== */
   --bcb-brand-blue: #025C75;
+  --bcb-brand-blue-dark: #013F50;
   --bcb-brand-gray80: #606062;
 
   /* ==========================================
@@ -103,8 +104,8 @@
   --bcb-radius-pill: 9999px;
 
   --bcb-shadow-100: 0 1px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04);
-  --bcb-shadow-300: 0 2px 4px rgba(0,0,0,0.10), 0 3px 3px rgba(0,0,0,0.08); /* Hover em Cards */
-  --bcb-shadow-600: 3px 3px 10px 0 hsla(0,0%,76%,0.5); /* Sombra pesada extraída de modais/cards */
+  --bcb-shadow-300: 0 2px 4px rgba(0,0,0,0.10), 0 3px 3px rgba(0,0,0,0.08);
+  --bcb-shadow-600: 3px 3px 10px 0 hsla(0,0%,76%,0.5);
 
   /* ==========================================
      10. FAMÍLIAS TIPOGRÁFICAS
@@ -112,6 +113,11 @@
   --bcb-font-ubuntu: 'Ubuntu', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --bcb-font-cormorant: 'Cormorant Garamond', serif;
   --bcb-font-istok: 'Istok Web', sans-serif;
+
+  /* ==========================================
+     PORTAL PRIMARY (Usado em Breadcrumb etc.)
+     ========================================== */
+  --bcb-portal-primary: #22272B;
 }
 
 /* ==========================================
@@ -122,18 +128,13 @@
 .bold    { font-weight: 700; }
 .italic  { font-style: italic; }
 
-.text-body { 
-  color: var(--bcb-color-body-text); 
-}
+.text-body { color: var(--bcb-color-body-text); }
+.text-link { color: var(--bcb-link-color); text-decoration: none; transition: color 0.2s; }
+.text-link:hover { color: var(--bcb-link-hover); text-decoration: underline; }
 
-.text-link { 
-  color: var(--bcb-link-color); 
-  text-decoration: none; 
-}
-.text-link:hover { 
-  color: var(--bcb-link-hover); 
-  text-decoration: underline; 
-}
+/* AJUSTES GERAIS BCB */
+.font-weight-bold { font-weight: 500!important; }
+.text-uppercase { text-transform: uppercase!important; }
 
 /* ==========================================
    11. COMPONENTES ANGULAR EXTRAÍDOS (DEINF)
@@ -142,7 +143,7 @@
 /* NAVEGACAOABAS */
 navegacaoabas .nav-tabs { padding-left: 5px; border-bottom: 0; position: relative; z-index: 2; }
 navegacaoabas .nav-tabs:first-child { padding-left: 0; }
-navegacaoabas .nav-link { position: relative; border-top-left-radius: 0; border-top-right-radius: 0.5rem; border-bottom: none; display: flex; align-items: center; line-height: 15px; padding: 0.5rem 0.7rem 0.5rem 1rem; font-size: 0.8rem; transition: none; height: 48px; background-color: var(--bcb-gray-200); border-color: var(--bcb-gray-400); color: var(--bcb-gray-700); margin-bottom: 0; }
+navegacaoabas .nav-link { position: relative; border-top-left-radius: 0; border-top-right-radius: 0.5rem; border-bottom: none; display: flex; align-items: center; line-height: 15px; padding: 0.5rem 0.7rem 0.5rem 1rem; font-size: 0.8rem; transition: background-color 0.2s, color 0.2s; height: 48px; background-color: var(--bcb-gray-200); border-color: var(--bcb-gray-400); color: var(--bcb-gray-700); margin-bottom: 0; }
 navegacaoabas .nav-link:not(:last-child) { margin-right: 2px; }
 navegacaoabas .nav-link:focus, navegacaoabas .nav-link:hover { border-color: var(--bcb-gray-400); }
 navegacaoabas .nav-link::before { content: ""; position: absolute; top: -1px; left: -2px; border-bottom: 21px solid transparent; border-left: 21px solid var(--bcb-color-white); }
@@ -157,7 +158,7 @@ navegacaoabas .tab-content > .tab-pane { padding: 1rem; }
 
 /* LISTALINKS */
 listalinks .buffer a { height: 3rem; }
-listalinks .buffer .texto { font-size: 0.9rem; line-height: 1.1; background-color: var(--bcb-gray-100); padding: 5px 10px; transition: .3s all; }
+listalinks .buffer .texto { font-size: 0.9rem; line-height: 1.1; background-color: var(--bcb-gray-100); padding: 5px 10px; transition: background-color 0.3s, box-shadow 0.3s; }
 listalinks .buffer a:hover .texto { background-color: var(--bcb-gray-200); }
 listalinks .buffer .icone { width: 3rem; min-width: 3rem; }
 
@@ -165,8 +166,8 @@ listalinks .buffer .icone { width: 3rem; min-width: 3rem; }
 .bg-color-1 { background-color: var(--bcb-brand-blue) !important; color: var(--bcb-color-white) !important; }
 .font-color-1 { color: var(--bcb-brand-blue) !important; font-weight: 500; border: 1px solid var(--bcb-gray-200); border-left: none;}
 .color-1 { color: var(--bcb-brand-blue) !important; }
-.hvr-shadow { transition: box-shadow 0.2s; }
-.hvr-shadow:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.hvr-shadow { transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out; }
+.hvr-shadow:hover { box-shadow: var(--bcb-shadow-300); transform: translateY(-1px); }
 
 /* ==========================================
    12. ESTRUTURA PRINCIPAL (HEADER E FOOTER)
@@ -192,23 +193,22 @@ footer[role=contentinfo] .info li:not(:last-child):after { content: "|"; display
 footer[role=contentinfo] .arts { position: relative; }
 footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; border-right: 1px solid #e9ecef; transform: rotate(-45deg); right: 36px; top: -13px; z-index: 2; position: absolute; }
 
-/* AJUSTES GERAIS BCB */
-.font-weight-bold { font-weight: 500!important; }
-.text-uppercase { text-transform: uppercase!important; }
-
 /* ==========================================
    13. SIMULAÇÃO VISUAL (CONTEÚDO EDITORIAL)
    ========================================== */
-.bcb-olho { background-color: rgba(2, 92, 117, 0.08); border-left: 4px solid var(--bcb-brand-blue); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+.bcb-olho { background-color: rgba(2, 92, 117, 0.08); border-left: 4px solid var(--bcb-brand-blue); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 var(--bcb-radius-4) var(--bcb-radius-4) 0; transition: box-shadow 0.2s; }
+.bcb-olho:hover { box-shadow: var(--bcb-shadow-100); }
 .bcb-olho h1, .bcb-olho h2, .bcb-olho h3, .bcb-olho h4 { color: var(--bcb-brand-blue); font-weight: 500; margin-top: 0; }
-.bcb-citacao { border-left: 4px solid var(--bcb-gray-400); padding: 1rem 1.5rem; margin: 1.5rem 0; background-color: var(--bcb-gray-50); font-style: italic; }
+.bcb-citacao { border-left: 4px solid var(--bcb-gray-400); padding: 1rem 1.5rem; margin: 1.5rem 0; background-color: var(--bcb-gray-50); font-style: italic; transition: border-color 0.2s; }
+.bcb-citacao:hover { border-left-color: var(--bcb-brand-blue); }
 .bcb-citacao footer { font-style: normal; font-weight: 500; color: var(--bcb-brand-blue); margin-top: 0.5rem; }
 .bcb-citacao footer::before { content: "— "; }
 
 /* Ajuste Accordion Bootstrap para BCB */
-.accordion.modelo-1 .card { border: none; margin-bottom: 5px; }
-.accordion.modelo-1 .card-header { background-color: var(--bcb-gray-100); border-bottom: none; padding: 0; }
-.accordion.modelo-1 .card-header .btn { padding: 1rem 1.25rem; font-weight: 500; color: var(--bcb-brand-blue); }
+.accordion.modelo-1 .card { border: none; margin-bottom: 5px; border-radius: var(--bcb-radius-4); overflow: hidden; }
+.accordion.modelo-1 .card-header { background-color: var(--bcb-gray-100); border-bottom: none; padding: 0; transition: background-color 0.2s; }
+.accordion.modelo-1 .card-header:hover { background-color: var(--bcb-gray-200); }
+.accordion.modelo-1 .card-header .btn { padding: 1rem 1.25rem; font-weight: 500; color: var(--bcb-brand-blue); text-decoration: none; }
 .accordion.modelo-1 .card-body { border: 1px solid var(--bcb-gray-200); border-top: none; }
 
 /* ==========================================
@@ -219,11 +219,116 @@ footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; b
 .table-bordered { border: 1px solid var(--bcb-gray-300); }
 
 /* Lista de Documentos / Downloads */
-.documentos .documento { min-height: 4rem; margin-bottom: 0.25rem; }
-.documentos .documento .texto { background-color: var(--bcb-gray-100); padding: 5px 10px; line-height: 1.2rem; transition: .3s all; }
+.documentos .documento { min-height: 4rem; margin-bottom: 0.25rem; transition: transform 0.2s; }
+.documentos .documento:hover { transform: translateX(4px); }
+.documentos .documento .texto { background-color: var(--bcb-gray-100); padding: 5px 10px; line-height: 1.2rem; transition: background-color 0.3s; }
 .documentos .documento:hover .texto { background-color: var(--bcb-gray-200); }
 .documentos .documento .icone { min-width: 4rem; width: 4rem; position: relative; }
 .documentos .documento-title { display: block; font-weight: 500; font-size: 1rem; }
 .documentos .documento:hover .documento-title { text-decoration: underline; }
 .documentos .documento-data { font-size: .8rem; color: var(--bcb-gray-700); display: block; }
 .documentos .extensao { width: 26px; position: absolute; font-size: 0.5rem; text-align: center; bottom: 5px; left: 5px; line-height: 0.6rem; letter-spacing: 0.1px; padding: 1px 0; text-transform: uppercase; }
+
+/* ==========================================
+   15. CARDS DE CONTEÚDO (LISTALINKS-LIGHT)
+   ========================================== */
+.listalinks-light { display: block; }
+.listalinks-light .title { font-weight: 500; }
+.listalinks-light a { text-decoration: none; color: inherit; }
+.listalinks-light a:hover .title { text-decoration: underline; }
+.listalinks-light .icon-container { width: 85px; flex: none; }
+.listalinks-light .description { color: var(--bcb-gray-600); font-size: 0.9rem; line-height: 1.2; display: block; margin-top: 4px; }
+
+/* Efeito de Sombra e Escala (Modelos 1 e 5) */
+.listalinks-light.modelo-1 a, .listalinks-light.modelo-5 a {
+    box-shadow: var(--bcb-shadow-100);
+    transition: all .2s ease-in-out;
+    background-color: var(--bcb-color-white);
+}
+.listalinks-light.modelo-1 a:hover, .listalinks-light.modelo-5 a:hover {
+    box-shadow: var(--bcb-shadow-300);
+    transform: translateY(-2px);
+}
+.listalinks-light.modelo-1 a:hover .title, .listalinks-light.modelo-5 a:hover .title {
+    text-decoration: none;
+}
+
+/* Ajustes Específicos por Modelo */
+.listalinks-light.modelo-1 .icon-container { background-color: var(--bcb-gray-100); }
+.listalinks-light.modelo-2 .item-card { border-bottom: 1px solid var(--bcb-gray-200); padding: 1rem 0; }
+.listalinks-light.modelo-5 .icon-container { width: auto; margin-bottom: 1rem; }
+.listalinks-light.modelo-5 a { background-color: var(--bcb-gray-50); padding: 1.5rem; text-align: center; }
+
+/* ==========================================
+   16. COMPONENTES EDITORIAIS AVANÇADOS
+   ========================================== */
+/* Breadcrumb */
+.breadcrumb-bcb { background-color: var(--bcb-portal-primary); padding: .5rem 1rem; border-radius: 0; display: flex; list-style: none; margin-bottom: 1rem; }
+.breadcrumb-bcb li { display: flex; align-items: center; color: var(--bcb-gray-400); font-size: 0.9rem; }
+.breadcrumb-bcb li a { color: var(--bcb-color-white); text-decoration: none; transition: opacity 0.2s; }
+.breadcrumb-bcb li a:hover { text-decoration: underline; opacity: 0.85; }
+.breadcrumb-bcb li + li::before { content: '>'; color: var(--bcb-gray-400); margin: 0 0.5rem; }
+
+/* Menu de Âncoras (In-page navigation) */
+.bd-sidebar { position: sticky; top: 80px; }
+.bd-toc { border-left: 2px solid var(--bcb-gray-200); padding-left: 1rem; margin-bottom: 2rem; }
+.bd-toc strong { display: block; color: var(--bcb-gray-700); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 1rem; }
+.bd-links a { color: var(--bcb-gray-600); display: block; padding: 0.25rem 0; font-size: 0.9rem; text-decoration: none; transition: color 0.2s, padding-left 0.2s; }
+.bd-links a:hover, .bd-links a.active { color: var(--bcb-brand-blue); font-weight: 500; padding-left: 4px; }
+
+/* Tags e Process List */
+.tag-bcb { display: inline-block; padding: 0.25em 0.6em; font-size: 0.75em; font-weight: 700; background-color: var(--bcb-gray-200); color: var(--bcb-brand-blue); border-radius: var(--bcb-radius-4); text-transform: uppercase; transition: background-color 0.2s; }
+.tag-bcb:hover { background-color: var(--bcb-gray-300); }
+.tag-bcb.primary { background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
+.tag-bcb.primary:hover { background-color: var(--bcb-btn-primary-hover); }
+.process-list { list-style: none; padding-left: 0; counter-reset: bcb-counter; }
+.process-list > li { position: relative; margin-bottom: 1.5rem; padding-left: 2.5rem; }
+.process-list > li::before { counter-increment: bcb-counter; content: counter(bcb-counter); position: absolute; left: 0; top: 0; width: 1.8rem; height: 1.8rem; border-radius: 50%; background-color: var(--bcb-brand-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+
+/* ==========================================
+   17. FORMULÁRIOS E INPUTS (FORMS)
+   ========================================== */
+.form-group label { font-weight: 500; color: var(--bcb-gray-900); margin-bottom: 0.5rem; display: block; }
+.form-control { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-gray-900); box-shadow: inset 0 1px 2px rgba(0,0,0,0.075); transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+.form-control:focus { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); outline: 0; }
+.form-text.text-muted { font-size: 0.85rem; margin-top: 0.25rem; color: var(--bcb-gray-600) !important; }
+
+/* Checkboxes e Radios Customizados */
+.custom-control-label::before { border: 2px solid var(--bcb-gray-500); background-color: var(--bcb-color-white); }
+.custom-control-input:checked ~ .custom-control-label::before { border-color: var(--bcb-brand-blue); background-color: var(--bcb-brand-blue); }
+.custom-checkbox .custom-control-label::before { border-radius: var(--bcb-radius-4); }
+.custom-radio .custom-control-label::before { border-radius: 50%; }
+.custom-control-input:focus ~ .custom-control-label::before { box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); }
+
+/* ==========================================
+   18. LAYOUT DA DOCUMENTAÇÃO (VITRINE)
+   ========================================== */
+.ds-wrapper { display: flex; flex-wrap: nowrap; min-height: calc(100vh - 60px); }
+.ds-sidebar { width: 280px; flex-shrink: 0; padding: 1.5rem 0.75rem; border-right: 1px solid var(--bcb-gray-200); position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: var(--bcb-gray-50); }
+.ds-sidebar .nav-link { color: var(--bcb-gray-700); padding: 0.4rem 1rem; border-radius: var(--bcb-radius-4); font-size: 0.9rem; font-weight: 400; transition: background-color 0.2s, color 0.2s, padding-left 0.2s; display: block; }
+.ds-sidebar .nav-link:hover { background-color: var(--bcb-gray-200); color: var(--bcb-brand-blue); padding-left: 1.25rem; }
+.ds-sidebar .nav-link.active { background-color: rgba(2, 92, 117, 0.08); color: var(--bcb-brand-blue); font-weight: 500; border-left: 3px solid var(--bcb-brand-blue); }
+.ds-sidebar-title { font-size: 0.7rem; text-transform: uppercase; color: var(--bcb-gray-500); padding: 0 1rem; margin-bottom: 0.5rem; letter-spacing: 1.5px; font-weight: 700; margin-top: 1.5rem; }
+.ds-sidebar-title:first-child { margin-top: 0.5rem; }
+.ds-main { flex-grow: 1; padding: 2.5rem 3rem; min-width: 0; background-color: var(--bcb-color-white); }
+.ds-main section { scroll-margin-top: 20px; }
+
+/* Sidebar scrollbar polish */
+.ds-sidebar::-webkit-scrollbar { width: 4px; }
+.ds-sidebar::-webkit-scrollbar-track { background: transparent; }
+.ds-sidebar::-webkit-scrollbar-thumb { background-color: var(--bcb-gray-300); border-radius: var(--bcb-radius-pill); }
+
+@media (max-width: 768px) {
+    .ds-wrapper { flex-direction: column; }
+    .ds-sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--bcb-gray-200); padding: 1rem; }
+    .ds-sidebar .nav-link.active { border-left: none; border-bottom: 2px solid var(--bcb-brand-blue); }
+    .ds-main { padding: 1.5rem; }
+}
+
+/* ==========================================
+   19. PALETA VISUAL (Vitrine de Cores)
+   ========================================== */
+.color-swatch { border-radius: var(--bcb-radius-8); padding: 1.25rem; font-size: 0.8rem; font-weight: 500; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--bcb-shadow-100); }
+.color-swatch:hover { transform: scale(1.04); box-shadow: var(--bcb-shadow-300); }
+.color-swatch .swatch-name { font-weight: 700; margin-bottom: 2px; }
+.color-swatch .swatch-hex { opacity: 0.8; font-family: 'Ubuntu Mono', monospace; font-size: 0.75rem; }
