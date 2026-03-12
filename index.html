@@ -43,9 +43,10 @@
             color: var(--bcb-color-white);
         }
         .btn-primary:hover {
-            background-color: var(--bcb-btn-primary-hover);
-            border-color: var(--bcb-btn-primary-hover);
+            background-color: var(--bcb-btn-primary-bg);
+            border-color: var(--bcb-btn-primary-bg);
             color: var(--bcb-color-white);
+            filter: brightness(0.9);
         }
         .btn-primary:active {
             background-color: var(--bcb-btn-primary-active) !important;
@@ -62,9 +63,10 @@
             color: var(--bcb-color-white);
         }
         .btn-secondary:hover {
-            background-color: var(--bcb-btn-secondary-hover);
-            border-color: var(--bcb-btn-secondary-hover);
+            background-color: var(--bcb-btn-secondary-bg);
+            border-color: var(--bcb-btn-secondary-bg);
             color: var(--bcb-color-white);
+            filter: brightness(0.9);
         }
         .btn-secondary:active, .btn-secondary:focus {
             background-color: var(--bcb-btn-secondary-active) !important;
@@ -86,6 +88,37 @@
         .btn-link:hover {
             color: var(--bcb-link-hover);
         }
+        
+        /* Code snippet styling */
+        .code-snippet {
+            background: #272822;
+            color: #f8f8f2;
+            border-radius: 4px;
+            padding: 15px;
+            position: relative;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+        .code-snippet pre {
+            margin: 0;
+            color: inherit;
+        }
+        .btn-copy {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-copy:hover {
+            background-color: #666;
+        }
     </style>
 </head>
 <body>
@@ -102,7 +135,7 @@
             <h2 class="mb-4">Botões (Buttons)</h2>
             <p class="text-body mb-4">Exemplos práticos das variantes, tamanhos e estados de botões baseados nos componentes do DS.</p>
             
-            <div class="mb-4">
+            <div class="mb-5">
                 <h3 class="h5 medium">Variantes</h3>
                 <div class="d-flex flex-wrap" style="gap: 1rem;">
                     <button type="button" class="btn btn-primary">Salvar relatório</button>
@@ -110,18 +143,31 @@
                     <button type="button" class="btn btn-outline-primary">Ação alternativa</button>
                     <button type="button" class="btn btn-link">Limpar formulário</button>
                 </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;button type="button" class="btn btn-primary"&gt;Salvar relatório&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Confirmar dados&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-primary"&gt;Ação alternativa&lt;/button&gt;
+&lt;button type="button" class="btn btn-link"&gt;Limpar formulário&lt;/button&gt;</code></pre>
+                </div>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-5">
                 <h3 class="h5 medium">Tamanhos</h3>
                 <div class="d-flex flex-wrap align-items-center" style="gap: 1rem;">
                     <button type="button" class="btn btn-primary btn-sm">Ação Auxiliar (Sair)</button>
                     <button type="button" class="btn btn-primary">Formato Padrão</button>
                     <button type="button" class="btn btn-primary btn-lg">Conversão (Destacado)</button>
                 </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;button type="button" class="btn btn-primary btn-sm"&gt;Ação Auxiliar (Sair)&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Formato Padrão&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary btn-lg"&gt;Conversão (Destacado)&lt;/button&gt;</code></pre>
+                </div>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-5">
                 <h3 class="h5 medium">Botões com Ícones</h3>
                 <div class="d-flex flex-wrap" style="gap: 1rem;">
                     <button type="button" class="btn btn-primary d-flex align-items-center">
@@ -132,16 +178,34 @@
                         Baixar <span class="material-icons-outlined ml-2">file_download</span>
                     </button>
                 </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;button type="button" class="btn btn-primary d-flex align-items-center"&gt;
+    Ver conteúdo &lt;span class="material-icons-outlined ml-2"&gt;chevron_right&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button type="button" class="btn btn-secondary d-flex align-items-center"&gt;
+    Baixar &lt;span class="material-icons-outlined ml-2"&gt;file_download&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                </div>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-5">
                 <h3 class="h5 medium">Estado Desabilitado</h3>
                 <button type="button" class="btn btn-primary" disabled>Ação Indisponível</button>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;button type="button" class="btn btn-primary" disabled&gt;Ação Indisponível&lt;/button&gt;</code></pre>
+                </div>
             </div>
             
-            <div class="mb-4">
+            <div class="mb-5">
                 <h3 class="h5 medium">Links Navegacionais com Formato de Botão</h3>
                 <a href="#proxima-pagina" class="btn btn-primary">Ir para a Próxima Etapa</a>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;a href="#proxima-pagina" class="btn btn-primary"&gt;Ir para a Próxima Etapa&lt;/a&gt;</code></pre>
+                </div>
             </div>
             
         </section>
@@ -149,36 +213,79 @@
         <section class="mb-5">
             <h2 class="mb-4">Links e Âncoras</h2>
             
-            <ul class="list-unstyled">
-                <li class="mb-3">
-                    <strong>Link Padrão:</strong><br>
-                    <a href="#secao" class="text-link">Informações adicionais sobre normativos</a>
-                </li>
-                <li class="mb-3">
-                    <strong>Link que abre em Nova Aba:</strong><br>
-                    <a href="#externo" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)">
-                        Acessar Portal do Registrato
+            <div class="mb-5">
+                <h3 class="h5 medium">Link Padrão</h3>
+                <a href="#secao" class="text-link">Informações adicionais sobre normativos</a>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;a href="#secao" class="text-link"&gt;Informações adicionais sobre normativos&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Link que abre em Nova Aba</h3>
+                <a href="#externo" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)">
+                    Acessar Portal do Registrato
+                </a>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;a href="#externo" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)"&gt;
+    Acessar Portal do Registrato
+&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Download de Arquivo</h3>
+                <a href="#download.pdf" class="text-link" aria-label="baixe a planilha completa">
+                    Relatório Econômico Anual (PDF, 2MB)
+                </a>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;a href="#download.pdf" class="text-link" aria-label="baixe a planilha completa"&gt;
+    Relatório Econômico Anual (PDF, 2MB)
+&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Link em Título (Herdando formatação e assumindo .text-link)</h3>
+                <h4 class="h6 mt-2">
+                    <a href="#titulolink" class="text-link" aria-label="Abre em nova aba ou janela">
+                        Comunicado de Política Monetária (Copom)
+                        <span class="material-icons-outlined ml-1" style="font-size: 1rem; vertical-align: middle;">open_in_new</span>
                     </a>
-                </li>
-                <li class="mb-3">
-                    <strong>Download de Arquivo:</strong><br>
-                    <a href="#download.pdf" class="text-link" aria-label="baixe a planilha completa">
-                        Relatório Econômico Anual (PDF, 2MB)
-                    </a>
-                </li>
-                <li class="mb-3">
-                    <strong>Link em Título (Herdando formatação e assumindo .text-link):</strong><br>
-                    <h4 class="h6 mt-2">
-                        <a href="#titulolink" class="text-link" aria-label="Abre em nova aba ou janela">
-                            Comunicado de Política Monetária (Copom)
-                            <span class="material-icons-outlined ml-1" style="font-size: 1rem; vertical-align: middle;">open_in_new</span>
-                        </a>
-                    </h4>
-                </li>
-            </ul>
+                </h4>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;h4 class="h6 mt-2"&gt;
+    &lt;a href="#titulolink" class="text-link" aria-label="Abre em nova aba ou janela"&gt;
+        Comunicado de Política Monetária (Copom)
+        &lt;span class="material-icons-outlined ml-1" style="font-size: 1rem; vertical-align: middle;"&gt;open_in_new&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/h4&gt;</code></pre>
+                </div>
+            </div>
+            
         </section>
         
     </main>
 
+    <script>
+        document.querySelectorAll('.btn-copy').forEach(button => {
+            button.addEventListener('click', () => {
+                const codeSnippet = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(codeSnippet).then(() => {
+                    const originalText = button.innerText;
+                    button.innerText = 'Copiado!';
+                    setTimeout(() => {
+                        button.innerText = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Erro ao copiar texto: ', err);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

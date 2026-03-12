@@ -78,3 +78,20 @@ Quando um título ou subtítulo for um link, ele deve herdar a formatação do t
 2. **Informação de Arquivos:** Todo link de download DEVE conter, no final do texto do link e entre parênteses, o formato do arquivo e seu tamanho (ex: `Relatório Anual (PDF, 2MB)`).
 3. **Uso de ARIA Labels (WCAG 3.2.5):** Se o link for um ícone ou se abrir em uma nova aba, ele DEVE conter um atributo `aria-label` descritivo. Exemplo: `aria-label="Acesse o Registrato (abrirá em nova aba)"`.
 4. **Agrupamento sem Quebras:** É proibido usar a tag `<br>` para separar links adjacentes. Eles devem ser organizados em listas (`<ul>` ou `<ol>`).
+
+---
+
+## 3. Iconografia (Material Icons)
+O portal utiliza a biblioteca **Material Icons** do Google.
+
+### 3.1 Estilos Disponíveis
+* **Padrão (Filled):** Use a classe `material-icons`. Possui a biblioteca completa e melhor legibilidade geral.
+* **Alternativo (Outlined):** Use a classe `material-icons-outlined` para ícones secundários ou que exijam traço fino.
+
+### 3.2 Inserção HTML
+Você pode usar a tag `<span>` ou `<i>`. O padrão preferencial da IA deve ser o `<span>`.
+Exemplo: `<span class="material-icons">home</span>` ou `<i class="material-icons-outlined">search</i>`.
+
+### ⚠️ Diretrizes Inquebráveis para a IA (Acessibilidade)
+1. **Ícones Decorativos:** Devem ter `aria-hidden="true"`. Ex: `<span class="material-icons" aria-hidden="true">chevron_right</span>`
+2. **Ícones Semânticos (Sem Texto):** O botão ou link pai DEVE ter um `aria-label`. Ex: `<button aria-label="Fechar"><span class="material-icons" aria-hidden="true">close</span></button>`
