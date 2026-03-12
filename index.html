@@ -129,9 +129,50 @@
         </div>
     </header>
 
-    <main class="container mt-5">
+    <div class="ds-wrapper">
+        <aside class="ds-sidebar">
+            <nav class="nav flex-column">
+                <div class="ds-sidebar-title">FUNDAÇÃO</div>
+                <a class="nav-link" href="#cores">Cores e Tokens</a>
+                <a class="nav-link" href="#tipografia">Tipografia</a>
+                
+                <div class="ds-sidebar-title">COMPONENTES</div>
+                <a class="nav-link" href="#botoes">Botões</a>
+                <a class="nav-link" href="#links">Links e Âncoras</a>
+                <a class="nav-link" href="#tabelas-alertas">Tabelas e Alertas</a>
+                <a class="nav-link" href="#forms">Formulários e Inputs</a>
+                
+                <div class="ds-sidebar-title">ESTRUTURA</div>
+                <a class="nav-link" href="#cards-links-rapidos">Cards de Links Rápidos</a>
+                <a class="nav-link" href="#cards-conteudo">Cards de Conteúdo</a>
+                <a class="nav-link" href="#abas">Abas de Navegação (Tabs)</a>
+                <a class="nav-link" href="#header-footer">Estrutura Principal</a>
+                <a class="nav-link" href="#conteudo-editorial">Conteúdo Editorial</a>
+                <a class="nav-link" href="#navegacao-editorial">Navegação Editorial e Estrutura</a>
+            </nav>
+        </aside>
         
-        <section class="mb-5">
+        <main class="ds-main">
+            
+            <section id="cores" class="mb-5">
+                <h2 class="mb-4">Cores e Tokens</h2>
+                <div class="d-flex" style="gap: 1rem;">
+                    <div class="p-4 rounded text-white" style="background-color: var(--bcb-brand-blue);">--bcb-brand-blue</div>
+                    <div class="p-4 rounded text-white" style="background-color: var(--bcb-brand-blue-dark);">--bcb-brand-blue-dark</div>
+                    <div class="p-4 rounded text-white" style="background-color: var(--bcb-portal-primary);">--bcb-portal-primary</div>
+                    <div class="p-4 rounded text-dark" style="background-color: var(--bcb-gray-100);">--bcb-gray-100</div>
+                </div>
+            </section>
+            
+            <section id="tipografia" class="mb-5">
+                <h2 class="mb-4">Tipografia</h2>
+                <p class="bold font-size-xl">Títulos: Ubuntu Bold</p>
+                <p class="medium font-size-lg">Subtítulos: Ubuntu Medium</p>
+                <p class="text-body">Corpos de texto: Ubuntu Regular. Exemplo de tipografia padronizada em diversas aplicações.</p>
+                <p class="italic text-muted">Texto mutado ou de apoio em Ubuntu Italic.</p>
+            </section>
+
+        <section id="botoes" class="mb-5">
             <h2 class="mb-4">Botões (Buttons)</h2>
             <p class="text-body mb-4">Exemplos práticos das variantes, tamanhos e estados de botões baseados nos componentes do DS.</p>
             
@@ -210,7 +251,7 @@
             
         </section>
 
-        <section class="mb-5">
+        <section id="links" class="mb-5">
             <h2 class="mb-4">Links e Âncoras</h2>
             
             <div class="mb-5">
@@ -269,7 +310,7 @@
             
         </section>
         
-        <section class="mb-5">
+        <section id="abas" class="mb-5">
             <h2 class="mb-4">Abas de Navegação (Tabs)</h2>
             <div class="mb-5">
                 <h3 class="h5 medium">Exemplo `<navegacaoabas>`</h3>
@@ -321,7 +362,7 @@
             </div>
         </section>
 
-        <section class="mb-5">
+        <section id="cards-links-rapidos" class="mb-5">
             <h2 class="mb-4">Cards de Links Rápidos</h2>
             <div class="mb-5">
                 <h3 class="h5 medium">Exemplo `<listalinks>` (2 Colunas)</h3>
@@ -379,7 +420,7 @@
             </div>
         </section>
 
-        <section class="mb-5">
+        <section id="header-footer" class="mb-5">
             <h2 class="mb-4">Estrutura Principal (Header e Footer)</h2>
             <div class="mb-5">
                 <h3 class="h5 medium">Cabeçalho (Header)</h3>
@@ -480,7 +521,7 @@
             </div>
         </section>
 
-        <section class="mb-5">
+        <section id="conteudo-editorial" class="mb-5">
             <h2 class="mb-4">Componentes de Conteúdo Editorial</h2>
             <p class="text-body mb-4">Como a vitrine é visualizada nativamente e os componentes abaixo são <em>Custom Elements</em> do Angular BCB baseados em shadow DOM (não renderizáveis em HTML sem motor TypeScript), listamos exclusivamente as instruções e os <em>snippets</em> para que a IA ou o Desenvolvedor possam extrair e aplicar essas diretrizes de texto rapidamente.</p>
             
@@ -532,7 +573,7 @@
             </div>
         </section>
 
-        <section class="mb-5">
+        <section id="tabelas-alertas" class="mb-5">
             <h2 class="mb-4">Tabelas, Alertas e Documentos</h2>
             
             <div class="mb-5">
@@ -611,7 +652,7 @@
             </div>
         </section>
 
-        <section class="mb-5">
+        <section id="cards-conteudo" class="mb-5">
             <h2 class="mb-4">Cards de Conteúdo (Listalinks Light)</h2>
             <p class="text-body mb-4">Usados para navegação principal ou apresentação de múltiplos serviços.</p>
 
@@ -796,7 +837,7 @@
             </div>
         </section>
 
-        <section class="mb-5">
+        <section id="navegacao-editorial" class="mb-5">
             <h2 class="mb-4">Navegação Editorial e Estrutura</h2>
             <p class="text-body mb-4">Componentes avançados baseados em normas internacionais para a arquitetura de informação central e páginas longas.</p>
 
@@ -904,7 +945,7 @@
             </div>
         </section>
 
-        <section class="mb-5">
+        <section id="forms" class="mb-5">
             <h2 class="mb-4">Formulários e Inputs (Forms)</h2>
             <p class="text-body mb-4">Campos de entrada focados em acessibilidade, contraste e usabilidade (Padrões USWDS adaptados).</p>
 
@@ -965,6 +1006,7 @@
         </section>
         
     </main>
+    </div>
 
     <!-- jQuery & Bootstrap Bundle para Tabs Functionais -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
