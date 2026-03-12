@@ -903,6 +903,66 @@
                 </div>
             </div>
         </section>
+
+        <section class="mb-5">
+            <h2 class="mb-4">Formulários e Inputs (Forms)</h2>
+            <p class="text-body mb-4">Campos de entrada focados em acessibilidade, contraste e usabilidade (Padrões USWDS adaptados).</p>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Campos de Texto (Text Inputs)</h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="inputNome">Nome completo</label>
+                      <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp">
+                      <small id="nomeHelp" class="form-text text-muted">Insira seu nome exatamente como consta no documento oficial.</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="inputNome"&gt;Nome completo&lt;/label&gt;
+  &lt;input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp"&gt;
+  &lt;small id="nomeHelp" class="form-text text-muted"&gt;Insira seu nome exatamente como consta no documento oficial.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="h5 medium">Seleção (Checkboxes e Radios)</h3>
+                
+                <div class="p-3 bg-light border rounded mb-3">
+                  <h4 class="h6 mb-3">Selecione o tipo de pessoa:</h4>
+                  <div class="custom-control custom-radio mb-2">
+                    <input type="radio" id="radioPessoaFisica" name="tipoPessoa" class="custom-control-input">
+                    <label class="custom-control-label" for="radioPessoaFisica">Pessoa Física (CPF)</label>
+                  </div>
+                  <div class="custom-control custom-radio mb-3">
+                    <input type="radio" id="radioPessoaJuridica" name="tipoPessoa" class="custom-control-input">
+                    <label class="custom-control-label" for="radioPessoaJuridica">Pessoa Jurídica (CNPJ)</label>
+                  </div>
+
+                  <div class="custom-control custom-checkbox mt-4">
+                    <input type="checkbox" class="custom-control-input" id="checkTermos">
+                    <label class="custom-control-label" for="checkTermos">Declaro que li e concordo com os termos de uso.</label>
+                  </div>
+                </div>
+
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="custom-control custom-radio mb-2"&gt;
+  &lt;input type="radio" id="radioPessoaFisica" name="tipoPessoa" class="custom-control-input"&gt;
+  &lt;label class="custom-control-label" for="radioPessoaFisica"&gt;Pessoa Física (CPF)&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="custom-control custom-checkbox mt-4"&gt;
+  &lt;input type="checkbox" class="custom-control-input" id="checkTermos"&gt;
+  &lt;label class="custom-control-label" for="checkTermos"&gt;Declaro que li e concordo com os termos de uso.&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </section>
         
     </main>
 

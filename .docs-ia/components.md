@@ -468,3 +468,36 @@ Usado para explicar fluxos de serviços ou instruções sequenciais.
   </li>
 </ul>
 ```
+
+---
+
+## 22. Campos de Texto (Text Inputs)
+Usados para coletar informações textuais curtas. Todo input deve possuir um `<label>` claro e, se necessário, um texto de ajuda (`.form-text`).
+
+```html
+<div class="form-group">
+  <label for="inputNome">Nome completo</label>
+  <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp">
+  <small id="nomeHelp" class="form-text text-muted">Insira seu nome exatamente como consta no documento oficial.</small>
+</div>
+```
+
+---
+
+## 23. Seleção (Checkboxes e Radios)
+Utilize a estrutura `.custom-control` do Bootstrap 4 para garantir alinhamento e contraste corretos.
+
+- **Radio**: Para selecionar apenas UMA opção.
+- **Checkbox**: Para selecionar VÁRIAS opções ou confirmar termos.
+
+```html
+<div class="custom-control custom-checkbox mb-3">
+  <input type="checkbox" class="custom-control-input" id="checkTermos">
+  <label class="custom-control-label" for="checkTermos">Declaro que li e concordo com os termos de uso.</label>
+</div>
+
+<div class="custom-control custom-radio">
+  <input type="radio" id="radioPessoaFisica" name="tipoPessoa" class="custom-control-input">
+  <label class="custom-control-label" for="radioPessoaFisica">Pessoa Física (CPF)</label>
+</div>
+```
