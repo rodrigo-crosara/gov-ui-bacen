@@ -95,3 +95,56 @@ Exemplo: `<span class="material-icons">home</span>` ou `<i class="material-icons
 ### ⚠️ Diretrizes Inquebráveis para a IA (Acessibilidade)
 1. **Ícones Decorativos:** Devem ter `aria-hidden="true"`. Ex: `<span class="material-icons" aria-hidden="true">chevron_right</span>`
 2. **Ícones Semânticos (Sem Texto):** O botão ou link pai DEVE ter um `aria-label`. Ex: `<button aria-label="Fechar"><span class="material-icons" aria-hidden="true">close</span></button>`
+
+---
+
+## 4. Navegação em Abas (Tabs / navegacaoabas)
+O BCB utiliza abas baseadas no Bootstrap 4, mas encapsuladas e estilizadas para conter o "chanfro" da identidade visual.
+
+### 4.1 Estrutura HTML Padrão
+Sempre envolva o bloco na tag semântica (ou pseudo-componente) `<navegacaoabas>`. 
+
+**Atenção à regra do Chanfro:** Toda tag `<a>` com a classe `.nav-link` DEVE ter como seu primeiro filho um `<span class="line"></span>`. Isso gera o detalhe visual de marcação do BCB.
+
+```html
+<navegacaoabas>
+  <nav>
+    <div class="nav nav-tabs" role="tablist">
+      <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab">
+        <span class="line"></span>
+        <div class="icone"><span class="material-icons">person</span></div>
+        <div class="texto">Cidadão</div>
+      </a>
+    </div>
+  </nav>
+  <div class="tab-content">
+    <span class="line"></span>
+    <div class="tab-pane fade show active" id="tab1" role="tabpanel">Conteúdo</div>
+  </div>
+</navegacaoabas>
+```
+
+---
+
+## 5. Cards de Links Rápidos (listalinks)
+Usados para navegação em formato de grade (Grid). O ícone fica em um bloco à esquerda com a cor primária, e o texto à direita.
+
+### 5.1 Estrutura HTML Padrão
+Devem ser renderizados dentro de uma div com a classe `.row` para usar o grid do Bootstrap. A tag `<a>` principal deve ter as classes `.hvr-shadow .d-flex .no-underline`.
+
+```html
+<listalinks>
+  <div class="buffer">
+    <div class="row">
+      <div class="col-sm-6 mb-2">
+        <a class="hvr-shadow d-flex no-underline" href="#">
+          <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
+            <span class="material-icons" aria-hidden="true">chevron_right</span>
+          </div>
+          <div class="texto d-flex align-items-center w-100 rounded-right font-color-1">Busca de normas</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</listalinks>
+```
