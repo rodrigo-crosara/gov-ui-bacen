@@ -491,3 +491,17 @@ footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; b
     .videos-destaque .video-item { flex: 0 0 280px; }
     .timeline-horizontal { justify-content: flex-start; }
 }
+
+/* ==========================================
+   28. BLOCO DE TRANSIÇÃO (STORYTELLING)
+   ========================================== */
+.transition-block { text-align: center; margin: 3.5rem 0 2rem; }
+.transition-block h3 { font-weight: 700; color: var(--bcb-brand-blue); margin-bottom: 0.5rem; }
+.transition-block .lead { color: var(--bcb-gray-700); font-size: 1.15rem; margin-bottom: 0; }
+.animated-arrow { color: var(--bcb-brand-blue); font-size: 2.5rem; margin-top: 1rem; animation: bounceArrow 2s infinite; }
+
+@keyframes bounceArrow {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}

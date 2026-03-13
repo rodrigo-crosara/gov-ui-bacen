@@ -850,3 +850,17 @@ Ideal para demonstrar a evolução de um projeto (ex: Fases do Open Finance, cro
 |---|---|---|
 | (padrão) | Círculo cinza | Fase futura |
 | `.active` | Círculo azul BCB | Fase concluída ou em andamento |
+
+---
+
+## 38. Bloco de Transição (com Seta Animada)
+Usado antes de Timelines ou Passos para engajar a leitura e criar ritmo visual (storytelling).
+
+### 38.1 Estrutura HTML
+```html
+<div class="transition-block">
+  <h3>Mas por onde começar?</h3>
+  <p class="lead">Veja os passos nesta jornada:</p>
+  <i class="material-icons animated-arrow" aria-hidden="true">arrow_downward</i>
+</div>
+```

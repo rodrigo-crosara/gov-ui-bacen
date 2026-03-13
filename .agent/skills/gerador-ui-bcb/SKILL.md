@@ -37,8 +37,7 @@ Varra o texto buscando padrões e substitua-os ESTRITAMENTE pelas seguintes estr
    `<bcb-olho [texto]="'<h4>Atenção</h4><p>...</p>'"></bcb-olho>`
 2. **Citações Oficiais:** Se houver uma fala de autoridade ou trecho de lei isolado, use:
    `<bcb-citacao [autor]="'Nome'" [citacao]="'Texto'"></bcb-citacao>`
-3. **Listas de Links Rápidos / Serviços:** Se o texto listar serviços (ex: "Acesse aqui a Ouvidoria, Fale Conosco"), transforme em Cards usando:
-   `<listalinks-light [modelo]="'1'">` (Gere o HTML com a classe `.modelo-1` e `.hvr-shadow`).
+3. **Listas de Links Rápidos / Serviços:** Use `<listalinks-light>`. É ESTRITAMENTE PROIBIDO adicionar classes de borda, padding (`p-3`), `bg-white` ou estilos inline (`style="border..."`) na div externa que envolve o `<a>`. O visual do card é aplicado diretamente na tag `<a>` pelo CSS. Utilize o modelo adequado (ex: `.modelo-5` para verticalizado).
 4. **Tabelas de Dados:** Se houver dados tabulares, DEVE usar a classe `.table-responsive` e a classe `.thead-primary` no cabeçalho.
 5. **Passo a Passo / Instruções:** Se o texto ensinar "Como fazer algo" em etapas (1, 2, 3), use a lista estruturada `<ul class="process-list">`.
 6. **Arquivos para Baixar:** Se o texto mencionar PDFs ou planilhas, use a estrutura `<div class="documentos">` com o `.icone` e `.extensao` indicando o tipo de arquivo.
@@ -50,6 +49,7 @@ Varra o texto buscando padrões e substitua-os ESTRITAMENTE pelas seguintes estr
 11. **Jornadas ou Tutoriais Longos:** Se o texto indicar uma jornada educativa, uma sequência de passos complexa ou um "guia", NÃO use o `process-list` simples. Utilize obrigatoriamente a estrutura `<div class="timeline-container">` com `<div class="step-card">` descrita no `components.md`. E caso o texto contenha "Dica:", envolva em um `<div class="tip-box">`.
 12. **Introdução de Grandes Temas:** Se o texto indicar que se trata da página principal de um programa, serviço ou pilar do BCB (como Pix, Drex, Cidadania Financeira), inicie a página APÓS O `<h1>` usando o componente `<div class="bcb-hero-banner">` documentado no `components.md`. Use `.bg-verde-susta` para temas de sustentabilidade e `.bg-vinho` para regulações.
 13. **Linhas do Tempo e Vídeos:** Se o texto indicar fases de um projeto com datas (ex: Fase 1, Fase 2), use a classe `.timeline-horizontal`. Se houver uma lista de links do YouTube sugeridos, envolva-os obrigatoriamente no componente `.videos-destaque`.
+14. **Transições de Conteúdo:** Antes de iniciar tutoriais ou timelines, injete o `<div class="transition-block">` com a seta animada para engajar a leitura.
 
 ### Passo 3: Auditoria de Acessibilidade (e-Mag e WCAG)
 - Todo ícone (`.material-icons` ou `.material-icons-outlined`) usado apenas como decoração DEVE ter `aria-hidden="true"`.
