@@ -360,3 +360,41 @@ footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; b
 .bcb-page-meta .tag-bcb { font-size: 0.65rem; vertical-align: middle; }
 .bcb-share-btn { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.3rem 0.75rem; font-size: 0.8rem; border: 1px solid var(--bcb-gray-300); border-radius: var(--bcb-radius-pill); color: var(--bcb-gray-700); background: var(--bcb-color-white); transition: all 0.2s; cursor: pointer; text-decoration: none; }
 .bcb-share-btn:hover { border-color: var(--bcb-brand-blue); color: var(--bcb-brand-blue); text-decoration: none; }
+
+/* ==========================================
+   21. BUSCA AVANÇADA COM FILTROS (SEARCH)
+   ========================================== */
+.bcb-search-overlay { background-color: var(--bcb-gray-100); padding: 2rem; border-radius: var(--bcb-radius-8); margin-bottom: 2rem; box-shadow: var(--bcb-shadow-100); }
+.bcb-search-input-group { display: flex; align-items: center; background: var(--bcb-color-white); border: 2px solid var(--bcb-gray-300); border-radius: var(--bcb-radius-4); padding: 0.5rem 1rem; transition: border-color 0.2s; }
+.bcb-search-input-group:focus-within { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.15); }
+.bcb-search-input-group input { border: none; flex-grow: 1; outline: none; font-size: 1.1rem; padding: 0.5rem; color: var(--bcb-gray-900); background: transparent; }
+.bcb-search-input-group input::placeholder { color: var(--bcb-gray-500); }
+.bcb-search-input-group .material-icons { color: var(--bcb-brand-blue); font-size: 1.5rem; cursor: pointer; transition: transform 0.2s; }
+.bcb-search-input-group .material-icons:hover { transform: scale(1.1); }
+.bcb-search-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
+.bcb-search-filters label { font-size: 0.85rem; color: var(--bcb-gray-600); font-weight: 500; margin-right: 0.25rem; margin-bottom: 0; }
+.bcb-chip { display: inline-flex; align-items: center; padding: 0.35rem 1rem; border-radius: var(--bcb-radius-pill); border: 1px solid var(--bcb-gray-400); background: var(--bcb-color-white); cursor: pointer; font-size: 0.85rem; color: var(--bcb-gray-700); transition: all 0.2s; text-decoration: none; }
+.bcb-chip:hover { border-color: var(--bcb-brand-blue); color: var(--bcb-brand-blue); }
+.bcb-chip.active { background: var(--bcb-brand-blue); color: var(--bcb-color-white); border-color: var(--bcb-brand-blue); }
+
+/* ==========================================
+   22. CARDS DE INDICADORES (PANORAMA ECONÔMICO)
+   ========================================== */
+.bcb-indicator-card { background: var(--bcb-color-white); border-radius: var(--bcb-radius-8); padding: 1.5rem; box-shadow: var(--bcb-shadow-100); border-top: 4px solid var(--bcb-brand-blue); height: 100%; transition: transform 0.2s, box-shadow 0.2s; }
+.bcb-indicator-card:hover { transform: translateY(-4px); box-shadow: var(--bcb-shadow-300); }
+.bcb-indicator-card.accent-green { border-top-color: #28a745; }
+.bcb-indicator-card.accent-amber { border-top-color: #F8D48D; }
+.bcb-indicator-label { font-size: 0.75rem; color: var(--bcb-gray-600); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+.bcb-indicator-value { font-size: 1.75rem; font-weight: 500; color: var(--bcb-brand-blue); margin-bottom: 0.25rem; line-height: 1.2; }
+.bcb-indicator-meta { font-size: 0.8rem; color: var(--bcb-gray-500); }
+.bcb-indicator-trend { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.8rem; font-weight: 500; }
+.bcb-indicator-trend.up { color: #dc3545; }
+.bcb-indicator-trend.down { color: #28a745; }
+.bcb-indicator-trend .material-icons { font-size: 1rem; }
+
+/* ==========================================
+   23. BOTÃO VOLTAR AO TOPO (BACK TO TOP)
+   ========================================== */
+.bcb-back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); border: none; border-radius: var(--bcb-radius-8); display: flex; align-items: center; justify-content: center; box-shadow: var(--bcb-shadow-300); cursor: pointer; z-index: 999; transition: all 0.3s; opacity: 0; visibility: hidden; transform: translateY(10px); }
+.bcb-back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.bcb-back-to-top:hover { background-color: var(--bcb-btn-primary-hover); transform: translateY(-2px); box-shadow: var(--bcb-shadow-600); }

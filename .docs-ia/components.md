@@ -555,3 +555,80 @@ O BCB usa as classes nativas `.is-valid` e `.is-invalid` do Bootstrap 4, customi
 1. **Feedback visual claro:** Todo campo inválido DEVE ter uma mensagem `.invalid-feedback` explicando o erro de forma clara e em português.
 2. **Nunca use apenas cor:** O ícone SVG no campo garante que usuários daltônicos identifiquem o estado. Mantenha sempre a classe `.is-valid`/`.is-invalid`.
 3. **Campos obrigatórios:** Se o campo é obrigatório e está vazio, a mensagem deve ser "Campo obrigatório."
+
+---
+
+## 27. Busca Avançada com Filtros (Search Overlay)
+Padrão extraído do portal oficial do BCB. Inclui um campo de busca com ícone e chips de filtro por categoria.
+
+### 27.1 Estrutura HTML
+```html
+<div class="bcb-search-overlay">
+  <div class="bcb-search-input-group">
+    <span class="material-icons" aria-hidden="true">search</span>
+    <input type="text" placeholder="O que você procura?" aria-label="Campo de busca">
+  </div>
+  <div class="bcb-search-filters">
+    <label>Filtrar por:</label>
+    <span class="bcb-chip active">Tudo</span>
+    <span class="bcb-chip">Notícias</span>
+    <span class="bcb-chip">Publicações</span>
+    <span class="bcb-chip">Normativos</span>
+  </div>
+</div>
+```
+
+### ⚠️ Diretrizes
+1. O chip ativo recebe a classe `.active` (fundo Brand Blue).
+2. O campo de busca DEVE ter `aria-label` descritivo.
+
+---
+
+## 28. Cards de Indicadores Econômicos
+Cards com borda superior colorida para exibir indicadores-chave (Selic, IPCA, Câmbio), inspirados no Panorama Econômico do bcb.gov.br.
+
+### 28.1 Estrutura HTML
+```html
+<div class="bcb-indicator-card">
+  <div class="bcb-indicator-label">Taxa Selic (Meta)</div>
+  <div class="bcb-indicator-value">14,25%
+    <small class="bcb-indicator-trend up">
+      <span class="material-icons" aria-hidden="true">arrow_upward</span> +1,00 p.p.
+    </small>
+  </div>
+  <div class="bcb-indicator-meta">Copom — 12/03/2026</div>
+</div>
+```
+
+### 28.2 Variantes de Cor
+| Classe | Borda Superior | Uso |
+|---|---|---|
+| (padrão) | `--bcb-brand-blue` | Indicadores monetários (Selic, CDI) |
+| `.accent-green` | Verde `#28a745` | Câmbio / valores em queda |
+| `.accent-amber` | Dourado `#F8D48D` | Inflação / índices de preço |
+
+### 28.3 Tendência (Trend)
+Use `.bcb-indicator-trend.up` (vermelho, seta para cima) ou `.down` (verde, seta para baixo).
+
+---
+
+## 29. Botão Voltar ao Topo (Back to Top)
+Botão fixo no canto inferior direito, aparece ao rolar a página além de 400px. Extraído do bcb.gov.br.
+
+### 29.1 Estrutura HTML
+```html
+<button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+  <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
+</button>
+```
+
+### 29.2 JavaScript Necessário
+```javascript
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+});
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+```

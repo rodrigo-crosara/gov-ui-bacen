@@ -1,6 +1,6 @@
 ---
 name: gerador-ui-bcb
-version: "1.2"
+version: "1.3"
 description: Ative esta habilidade SEMPRE que o usuário fornecer um conteúdo em texto bruto, documento Word ou rascunho e pedir para transformá-lo em uma página interna oficial do portal do Banco Central do Brasil (BCB).
 ---
 
@@ -45,6 +45,8 @@ Varra o texto buscando padrões e substitua-os ESTRITAMENTE pelas seguintes estr
 7. **Conteúdo muito longo/denso:** Se houver perguntas frequentes (FAQ) ou regras detalhadas secundárias, esconda-as usando o componente Angular:
    `<bcb-accordion-page [card_header]="'Título'" [card_body]="'Conteúdo'" [modelo]="'1'"></bcb-accordion-page>`
 8. **Formulários com Validação:** Se o texto exigir dados do cidadão, use `.form-control` com `.is-valid`/`.is-invalid` e mensagens `.valid-feedback`/`.invalid-feedback`. Selects devem usar `.custom-select`. Anexos usam `.custom-file`.
+9. **Campos de Busca:** Se a página precisa de funcionalidade de busca ou filtragem, utilize `.bcb-search-overlay` com `.bcb-search-input-group` e chips de filtro `.bcb-chip` (com `.active` no selecionado).
+10. **Indicadores Econômicos:** Se o texto mencionar dados numéricos de indicadores (Selic, IPCA, Câmbio, PIB), exiba-os em `.bcb-indicator-card` com `.bcb-indicator-label`, `.bcb-indicator-value` e `.bcb-indicator-meta`. Use `.accent-green` para câmbio e `.accent-amber` para inflação. Adicione `.bcb-indicator-trend.up` (vermelho) ou `.down` (verde) para variação.
 
 ### Passo 3: Auditoria de Acessibilidade (e-Mag e WCAG)
 - Todo ícone (`.material-icons` ou `.material-icons-outlined`) usado apenas como decoração DEVE ter `aria-hidden="true"`.

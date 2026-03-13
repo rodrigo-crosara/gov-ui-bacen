@@ -119,6 +119,10 @@
 
                 <div class="ds-sidebar-title">Templates de Página</div>
                 <a class="nav-link" href="#templates">Ver Templates</a>
+
+                <div class="ds-sidebar-title">Auditoria (Novos)</div>
+                <a class="nav-link" href="#busca">Busca com Filtros</a>
+                <a class="nav-link" href="#indicadores">Cards de Indicadores</a>
             </nav>
         </aside>
         
@@ -793,6 +797,84 @@
                 </div>
             </section>
 
+            <!-- ============ BUSCA ============ -->
+            <section id="busca">
+                <h2>Busca Avançada com Filtros</h2>
+                <p class="text-body mb-4">Padrão de busca extraído do portal oficial <code>bcb.gov.br</code>. O input expande com foco e inclui chips de filtro por categoria.</p>
+                <div class="bcb-search-overlay">
+                  <div class="bcb-search-input-group">
+                    <span class="material-icons" aria-hidden="true">search</span>
+                    <input type="text" placeholder="O que você procura?" aria-label="Campo de busca">
+                  </div>
+                  <div class="bcb-search-filters">
+                    <label>Filtrar por:</label>
+                    <span class="bcb-chip active">Tudo</span>
+                    <span class="bcb-chip">Notícias</span>
+                    <span class="bcb-chip">Publicações</span>
+                    <span class="bcb-chip">Normativos</span>
+                    <span class="bcb-chip">Estatísticas</span>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="bcb-search-overlay"&gt;
+  &lt;div class="bcb-search-input-group"&gt;
+    &lt;span class="material-icons" aria-hidden="true"&gt;search&lt;/span&gt;
+    &lt;input type="text" placeholder="O que você procura?" aria-label="Campo de busca"&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-search-filters"&gt;
+    &lt;label&gt;Filtrar por:&lt;/label&gt;
+    &lt;span class="bcb-chip active"&gt;Tudo&lt;/span&gt;
+    &lt;span class="bcb-chip"&gt;Notícias&lt;/span&gt;
+    &lt;span class="bcb-chip"&gt;Publicações&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ INDICADORES ============ -->
+            <section id="indicadores">
+                <h2>Cards de Indicadores Econômicos</h2>
+                <p class="text-body mb-4">Cards com borda superior colorida para exibir indicadores-chave (Selic, IPCA, Câmbio). Padrão do Panorama Econômico do BCB.</p>
+                <div class="row mb-3">
+                  <div class="col-md-4 mb-3">
+                    <div class="bcb-indicator-card">
+                      <div class="bcb-indicator-label">Taxa Selic (Meta)</div>
+                      <div class="bcb-indicator-value">14,25% <small class="bcb-indicator-trend up"><span class="material-icons" aria-hidden="true">arrow_upward</span> +1,00 p.p.</small></div>
+                      <div class="bcb-indicator-meta">Copom — 12/03/2026</div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="bcb-indicator-card accent-amber">
+                      <div class="bcb-indicator-label">IPCA (12 meses)</div>
+                      <div class="bcb-indicator-value">5,06%</div>
+                      <div class="bcb-indicator-meta">IBGE — Fev/2026</div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="bcb-indicator-card accent-green">
+                      <div class="bcb-indicator-label">Dólar (PTAX)</div>
+                      <div class="bcb-indicator-value">R$ 5,7812 <small class="bcb-indicator-trend down"><span class="material-icons" aria-hidden="true">arrow_downward</span> -0,32%</small></div>
+                      <div class="bcb-indicator-meta">12/03/2026</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="bcb-indicator-card"&gt;
+  &lt;div class="bcb-indicator-label"&gt;Taxa Selic (Meta)&lt;/div&gt;
+  &lt;div class="bcb-indicator-value"&gt;14,25% 
+    &lt;small class="bcb-indicator-trend up"&gt;
+      &lt;span class="material-icons" aria-hidden="true"&gt;arrow_upward&lt;/span&gt; +1,00 p.p.
+    &lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-indicator-meta"&gt;Copom — 12/03/2026&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Variantes: .accent-green | .accent-amber --&gt;</code></pre>
+                </div>
+            </section>
+
         </main>
     </div>
 
@@ -834,6 +916,32 @@
         }, { rootMargin: '-20% 0px -70% 0px' });
         
         sections.forEach(section => observer.observe(section));
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Chip filter toggle
+        document.querySelectorAll('.bcb-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                chip.closest('.bcb-search-filters').querySelectorAll('.bcb-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+            });
+        });
     </script>
+
+    <!-- Back to Top Button -->
+    <button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+        <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
+    </button>
 </body>
 </html>
