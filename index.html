@@ -123,6 +123,15 @@
                 <div class="ds-sidebar-title">Auditoria (Novos)</div>
                 <a class="nav-link" href="#busca">Busca com Filtros</a>
                 <a class="nav-link" href="#indicadores">Cards de Indicadores</a>
+
+                <div class="ds-sidebar-title">Serviços e Interações</div>
+                <a class="nav-link" href="#servicos">Stepper, Paginação e Tooltip</a>
+                <a class="nav-link" href="#timeline">Timeline Educativa</a>
+                <a class="nav-link" href="#hero-banner">Hero Banner</a>
+
+                <div class="ds-sidebar-title">Elementos de Produto</div>
+                <a class="nav-link" href="#videos-carousel">Carrossel de Vídeos</a>
+                <a class="nav-link" href="#timeline-h">Timeline Horizontal</a>
             </nav>
         </aside>
         
@@ -875,6 +884,340 @@
                 </div>
             </section>
 
+            <!-- ============ SERVIÇOS ============ -->
+            <section id="servicos">
+                <h2>Stepper, Paginação e Tooltip de Glossário</h2>
+                <p class="text-body mb-4">Componentes voltados para serviços ao cidadão: indicador de etapas em processos, navegação paginada e termos financeiros com explicação.</p>
+
+                <h3 class="h5 medium">Stepper (Indicador de Etapas)</h3>
+                <ul class="bcb-stepper">
+                  <li class="bcb-stepper-item completed">
+                    <div class="bcb-stepper-circle"><span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle;" aria-hidden="true">check</span></div>
+                    <span class="bcb-stepper-title">Autenticação</span>
+                  </li>
+                  <li class="bcb-stepper-item active">
+                    <div class="bcb-stepper-circle">2</div>
+                    <span class="bcb-stepper-title">Dados do Pedido</span>
+                  </li>
+                  <li class="bcb-stepper-item">
+                    <div class="bcb-stepper-circle">3</div>
+                    <span class="bcb-stepper-title">Confirmação</span>
+                  </li>
+                  <li class="bcb-stepper-item">
+                    <div class="bcb-stepper-circle">4</div>
+                    <span class="bcb-stepper-title">Protocolo</span>
+                  </li>
+                </ul>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;ul class="bcb-stepper"&gt;
+  &lt;li class="bcb-stepper-item completed"&gt;
+    &lt;div class="bcb-stepper-circle"&gt;
+      &lt;span class="material-icons-outlined" aria-hidden="true"&gt;check&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class="bcb-stepper-title"&gt;Autenticação&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="bcb-stepper-item active"&gt;
+    &lt;div class="bcb-stepper-circle"&gt;2&lt;/div&gt;
+    &lt;span class="bcb-stepper-title"&gt;Dados do Pedido&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="bcb-stepper-item"&gt;
+    &lt;div class="bcb-stepper-circle"&gt;3&lt;/div&gt;
+    &lt;span class="bcb-stepper-title"&gt;Confirmação&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+
+                <h3 class="h5 medium mt-4">Paginação</h3>
+                <nav aria-label="Navegação de página">
+                  <ul class="pagination">
+                    <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+                    <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+                  </ul>
+                </nav>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;nav aria-label="Navegação de página"&gt;
+  &lt;ul class="pagination"&gt;
+    &lt;li class="page-item disabled"&gt;&lt;a class="page-link" href="#"&gt;Anterior&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="page-item active"&gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="page-item"&gt;&lt;a class="page-link" href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="page-item"&gt;&lt;a class="page-link" href="#"&gt;Próximo&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+
+                <h3 class="h5 medium mt-4">Tooltip de Glossário</h3>
+                <p class="text-body">O Comitê de Política Monetária (Copom) define periodicamente a meta para a <a href="#" class="bcb-tooltip-link" data-toggle="tooltip" data-placement="top" title="Taxa básica de juros da economia brasileira, definida pelo Copom a cada 45 dias. É o principal instrumento de política monetária.">Taxa Selic</a>, que é o principal instrumento de controle da <a href="#" class="bcb-tooltip-link" data-toggle="tooltip" data-placement="top" title="Aumento generalizado e persistente dos preços de bens e serviços em uma economia.">inflação</a> no Brasil. Alterações nessa taxa impactam diretamente o <a href="#" class="bcb-tooltip-link" data-toggle="tooltip" data-placement="top" title="Spread bancário é a diferença entre a taxa de juros cobrada nos empréstimos e a taxa paga nos depósitos.">spread bancário</a> e o custo do crédito para o cidadão.</p>
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;a href="#" class="bcb-tooltip-link" 
+   data-toggle="tooltip" 
+   data-placement="top" 
+   title="Taxa básica de juros da economia brasileira."&gt;
+  Taxa Selic
+&lt;/a&gt;
+
+&lt;!-- Inicialização (jQuery): --&gt;
+&lt;script&gt;$('[data-toggle="tooltip"]').tooltip();&lt;/script&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ TIMELINE ============ -->
+            <section id="timeline">
+                <h2>Timeline Educativa (Storytelling)</h2>
+                <p class="text-body mb-4">Componente oficial de Cidadania Financeira para guiar o usuário por jornadas de aprendizado. Cada <code>.step-card</code> é conectado por uma linha vertical dourada.</p>
+
+                <div class="timeline-container">
+                  <!-- Step 1 -->
+                  <div class="card step-card d-block p-0">
+                    <div class="d-lg-flex flex-row-reverse align-items-stretch">
+                      <div class="img-placeholder" style="background-color: #e0ebee; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-icons" style="font-size: 4rem; color: var(--bcb-brand-blue); opacity: 0.3;" aria-hidden="true">account_balance</span>
+                      </div>
+                      <div class="step-details border-0 w-100">
+                        <div class="step-header">
+                          <i class="material-icons step-icon" aria-hidden="true">school</i>
+                          <h3 class="step-title">1. O que é o Sistema Financeiro?</h3>
+                        </div>
+                        <div class="step-content pt-2 px-4 pb-0">
+                          <p>O Sistema Financeiro Nacional (SFN) é formado por um conjunto de entidades e instituições que promovem a intermediação financeira — o encontro entre quem tem dinheiro sobrando e quem precisa de recursos.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: #F8F9FB;">
+                      <div class="step-content pt-0 p-0 m-0">
+                        <p>O Banco Central é a autoridade monetária principal do Brasil. Ele regula e supervisiona as instituições financeiras, emite moeda e controla a liquidez da economia.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 2 -->
+                  <div class="card step-card d-block p-0">
+                    <div class="d-lg-flex flex-row-reverse align-items-stretch">
+                      <div class="img-placeholder" style="background-color: #e8f0e0; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-icons" style="font-size: 4rem; color: #067078; opacity: 0.3;" aria-hidden="true">savings</span>
+                      </div>
+                      <div class="step-details border-0 w-100">
+                        <div class="step-header">
+                          <i class="material-icons step-icon" aria-hidden="true">monetization_on</i>
+                          <h3 class="step-title">2. Planejamento Financeiro Pessoal</h3>
+                        </div>
+                        <div class="step-content pt-2 px-4 pb-0">
+                          <p>Planejar suas finanças é o primeiro passo para conquistar objetivos. Comece registrando suas receitas e despesas mensais, defina metas de curto e longo prazo e crie uma reserva de emergência.</p>
+                          <div class="tip-box">
+                            <p class="mb-0"><strong>Dica:</strong> O programa <em>Aprender Valor</em> do Banco Central oferece materiais gratuitos para professores e estudantes sobre educação financeira. <a href="#" class="text-link">Acesse o portal</a> e saiba mais!</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: #F8F9FB;">
+                      <div class="step-content pt-0 p-0 m-0">
+                        <p>Utilize ferramentas como a <strong>Calculadora do Cidadão</strong> do BC para simular investimentos, financiamentos e correções de valores.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="timeline-container"&gt;
+  &lt;div class="card step-card d-block p-0"&gt;
+    &lt;div class="d-lg-flex flex-row-reverse align-items-stretch"&gt;
+      &lt;div class="img-placeholder" style="background-image: url('...');"&gt;&lt;/div&gt;
+      &lt;div class="step-details border-0 w-100"&gt;
+        &lt;div class="step-header"&gt;
+          &lt;i class="material-icons step-icon" aria-hidden="true"&gt;school&lt;/i&gt;
+          &lt;h3 class="step-title"&gt;1. Título do Passo&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class="step-content pt-2 px-4 pb-0"&gt;
+          &lt;p&gt;Conteúdo descritivo.&lt;/p&gt;
+          &lt;div class="tip-box"&gt;
+            &lt;p class="mb-0"&gt;&lt;strong&gt;Dica:&lt;/strong&gt; Texto da dica.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="w-100 px-4 pb-4 pt-3" style="background-color: #F8F9FB;"&gt;
+      &lt;div class="step-content pt-0 p-0 m-0"&gt;
+        &lt;p&gt;Conteúdo adicional full-width.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ HERO BANNER ============ -->
+            <section id="hero-banner">
+                <h2>Hero Banner (Destaque Principal)</h2>
+                <p class="text-body mb-4">Banner de abertura para páginas temáticas. Aceita variações de cor institucional. Sempre posicionado logo após o <code>&lt;h1&gt;</code>.</p>
+
+                <h3 class="h5 medium">Azul Institucional (Padrão)</h3>
+                <div class="bcb-hero-banner shadow-sm mb-4">
+                  <div class="row">
+                    <div class="col-md-6 bcb-hero-content">
+                      <h2 class="bcb-hero-title">Pix: o pagamento instantâneo brasileiro</h2>
+                      <div class="bcb-hero-text">
+                        O Pix é o meio de pagamento criado pelo Banco Central em que os recursos são transferidos entre contas em poucos segundos, a qualquer hora ou dia.
+                      </div>
+                      <div class="mt-auto text-md-right text-left">
+                        <a href="#" class="btn btn-sm btn-outline-primary bg-white">Saiba mais sobre o Pix</a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 bcb-hero-img-container">
+                      <div style="width:100%; height:100%; min-height:220px; background-color: rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center;">
+                        <span class="material-icons" style="font-size:5rem; opacity:0.2; color: var(--bcb-brand-amarellato);" aria-hidden="true">pix</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="h5 medium">Verde Sustentabilidade</h3>
+                <div class="bcb-hero-banner bg-verde-susta shadow-sm mb-4">
+                  <div class="row">
+                    <div class="col-md-6 bcb-hero-content">
+                      <h2 class="bcb-hero-title">Agenda BC# Sustentabilidade</h2>
+                      <div class="bcb-hero-text">
+                        A dimensão Sustentabilidade do BC# visa promover finanças sustentáveis e incorporar riscos climáticos à regulação do sistema financeiro.
+                      </div>
+                      <div class="mt-auto text-md-right text-left">
+                        <a href="#" class="btn btn-sm btn-outline-primary bg-white">Conheça a Agenda</a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 bcb-hero-img-container">
+                      <div style="width:100%; height:100%; min-height:220px; background-color: rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center;">
+                        <span class="material-icons" style="font-size:5rem; opacity:0.2; color: #A8D5BA;" aria-hidden="true">eco</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="bcb-hero-banner shadow-sm"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-6 bcb-hero-content"&gt;
+      &lt;h2 class="bcb-hero-title"&gt;Título de Impacto&lt;/h2&gt;
+      &lt;div class="bcb-hero-text"&gt;
+        Texto descritivo do tema da página.
+      &lt;/div&gt;
+      &lt;div class="mt-auto text-md-right text-left"&gt;
+        &lt;a href="#" class="btn btn-sm btn-outline-primary bg-white"&gt;Ação&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-6 bcb-hero-img-container"&gt;
+      &lt;img src="imagem.jpg" alt="Descrição"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Variantes: .bg-verde-susta | .bg-vinho --&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ CARROSSEL DE VÍDEOS ============ -->
+            <section id="videos-carousel">
+                <h2>Carrossel de Vídeos (YouTube)</h2>
+                <p class="text-body mb-4">Scroll horizontal com snap para agrupar vídeos sem poluir a verticalidade da página. Arraste para o lado ou use a scrollbar.</p>
+
+                <div class="videos-destaque">
+                  <div class="video-item">
+                    <div class="video-container">
+                      <iframe src="https://www.youtube.com/embed/253qlxanAK4" allowfullscreen title="LIVE BC #10 - O que muda para mim com o Drex?"></iframe>
+                    </div>
+                    <p class="video-title">LIVE BC #10 - O que muda para mim com o Drex?</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-container">
+                      <iframe src="https://www.youtube.com/embed/R0z0p8YoBVY" allowfullscreen title="Pix: o pagamento instantâneo brasileiro"></iframe>
+                    </div>
+                    <p class="video-title">Pix: o pagamento instantâneo brasileiro</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-container">
+                      <iframe src="https://www.youtube.com/embed/4o8GU3Fmnxs" allowfullscreen title="O que é o Open Finance?"></iframe>
+                    </div>
+                    <p class="video-title">O que é o Open Finance?</p>
+                  </div>
+                  <div class="video-item">
+                    <div class="video-container">
+                      <iframe src="https://www.youtube.com/embed/FgJVkjB5EEQ" allowfullscreen title="Valores a Receber (SVR): como consultar"></iframe>
+                    </div>
+                    <p class="video-title">Valores a Receber (SVR): como consultar</p>
+                  </div>
+                </div>
+
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="videos-destaque"&gt;
+  &lt;div class="video-item"&gt;
+    &lt;div class="video-container"&gt;
+      &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID" 
+              allowfullscreen title="Título do vídeo"&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+    &lt;p class="video-title"&gt;Título descritivo&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- Repita .video-item para cada vídeo --&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ TIMELINE HORIZONTAL ============ -->
+            <section id="timeline-h">
+                <h2>Timeline Horizontal (Marcos e Fases)</h2>
+                <p class="text-body mb-4">Ideal para demonstrar a evolução de projetos com datas e fases. Exemplo: Fases do Open Finance Brasil.</p>
+
+                <div class="timeline-horizontal">
+                  <div class="timeline-h-step active">
+                    <div class="timeline-h-circle"></div>
+                    <div class="timeline-h-date">Fev/2021</div>
+                    <div class="timeline-h-text">Fase 1: Dados Abertos de Produtos e Serviços</div>
+                  </div>
+                  <div class="timeline-h-step active">
+                    <div class="timeline-h-circle"></div>
+                    <div class="timeline-h-date">Ago/2021</div>
+                    <div class="timeline-h-text">Fase 2: Compartilhamento de Dados de Clientes</div>
+                  </div>
+                  <div class="timeline-h-step active">
+                    <div class="timeline-h-circle"></div>
+                    <div class="timeline-h-date">Out/2021</div>
+                    <div class="timeline-h-text">Fase 3: Iniciação de Pagamentos (Pix)</div>
+                  </div>
+                  <div class="timeline-h-step active">
+                    <div class="timeline-h-circle"></div>
+                    <div class="timeline-h-date">Dez/2022</div>
+                    <div class="timeline-h-text">Fase 4: Seguros, Previdência e Câmbio</div>
+                  </div>
+                  <div class="timeline-h-step">
+                    <div class="timeline-h-circle"></div>
+                    <div class="timeline-h-date">2026</div>
+                    <div class="timeline-h-text">Fase 5: Investimentos e Portabilidade</div>
+                  </div>
+                </div>
+
+                <div class="code-snippet">
+                    <button class="btn-copy" type="button">Copiar</button>
+                    <pre><code>&lt;div class="timeline-horizontal"&gt;
+  &lt;div class="timeline-h-step active"&gt;
+    &lt;div class="timeline-h-circle"&gt;&lt;/div&gt;
+    &lt;div class="timeline-h-date"&gt;Fev/2021&lt;/div&gt;
+    &lt;div class="timeline-h-text"&gt;Fase 1: Dados Abertos&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="timeline-h-step"&gt;
+    &lt;div class="timeline-h-circle"&gt;&lt;/div&gt;
+    &lt;div class="timeline-h-date"&gt;2026&lt;/div&gt;
+    &lt;div class="timeline-h-text"&gt;Fase futura&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
         </main>
     </div>
 
@@ -937,6 +1280,11 @@
                 chip.classList.add('active');
             });
         });
+    </script>
+
+    <script>
+        // Initialize Bootstrap tooltips
+        $(function () { $('[data-toggle="tooltip"]').tooltip(); });
     </script>
 
     <!-- Back to Top Button -->

@@ -632,3 +632,221 @@ backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 ```
+
+---
+
+## 30. Stepper (Indicador de Etapas)
+Usado em serviços como o Registrato para guiar o usuário em processos de múltiplas telas.
+
+### 30.1 Estrutura HTML
+```html
+<ul class="bcb-stepper">
+  <li class="bcb-stepper-item completed">
+    <div class="bcb-stepper-circle">
+      <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle;">check</span>
+    </div>
+    <span class="bcb-stepper-title">Autenticação</span>
+  </li>
+  <li class="bcb-stepper-item active">
+    <div class="bcb-stepper-circle">2</div>
+    <span class="bcb-stepper-title">Dados do Pedido</span>
+  </li>
+  <li class="bcb-stepper-item">
+    <div class="bcb-stepper-circle">3</div>
+    <span class="bcb-stepper-title">Confirmação</span>
+  </li>
+</ul>
+```
+
+### 30.2 Estados
+| Classe | Visual | Uso |
+|---|---|---|
+| (padrão) | Círculo cinza | Etapa futura |
+| `.active` | Círculo azul BCB, título em negrito | Etapa atual |
+| `.completed` | Círculo azul Cinti + ícone check | Etapa concluída |
+
+---
+
+## 31. Paginação e Tooltips de Glossário
+
+### 31.1 Paginação
+Utilize a marcação padrão do Bootstrap 4. O CSS do BCB sobrescreve as cores automaticamente.
+
+```html
+<nav aria-label="Navegação de página">
+  <ul class="pagination">
+    <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+  </ul>
+</nav>
+```
+
+### 31.2 Tooltip de Glossário
+Termos técnicos financeiros devem usar `.bcb-tooltip-link` combinada com os atributos de tooltip do Bootstrap.
+
+```html
+<a href="#" class="bcb-tooltip-link" data-toggle="tooltip" title="Taxa básica de juros da economia brasileira, definida pelo Copom.">
+  Taxa Selic
+</a>
+```
+
+> ⚠️ Lembre-se de inicializar os tooltips via JavaScript: `$('[data-toggle="tooltip"]').tooltip();`
+
+---
+
+## 32. Padrões de Layout (Grid do Bootstrap)
+O BCB utiliza o sistema de 12 colunas do Bootstrap 4. A IA DEVE respeitar as seguintes proporções:
+
+| Layout | Sidebar | Conteúdo | Quando Usar |
+|---|---|---|---|
+| **Editorial com Menu** | `col-md-4` | `col-md-8` | Páginas de serviço, conteúdo longo |
+| **Grade de Cards (3 col.)** | — | `col-md-4` × 3 | Indicadores, links rápidos |
+| **Grade de Cards (2 col.)** | — | `col-md-6` × 2 | Comparações, destaque |
+| **Formulário Centralizado** | — | `col-md-8 offset-md-2` | Formulários longos de serviço |
+| **Conteúdo Full-width** | — | `col-12` | Tabelas, alertas |
+
+---
+
+## 33. Timeline Educativa (Storytelling)
+Componente focado em guiar o usuário por uma jornada de aprendizado ou passos detalhados. Usado na área de Cidadania Financeira.
+
+### 33.1 Estrutura HTML
+```html
+<div class="timeline-container">
+  <div class="card step-card d-block p-0">
+    <div class="d-lg-flex flex-row-reverse align-items-stretch">
+      <div class="img-placeholder" style="background-image: url('caminho/imagem.jpg');"></div>
+      <div class="step-details border-0 w-100">
+        <div class="step-header">
+          <i class="material-icons step-icon" aria-hidden="true">school</i>
+          <h2 class="step-title">1. Título do Passo</h2>
+        </div>
+        <div class="step-content pt-2 px-4 pb-0">
+          <p>Conteúdo descritivo do passo da jornada.</p>
+        </div>
+      </div>
+    </div>
+    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: #F8F9FB;">
+      <div class="step-content pt-0 p-0 m-0">
+        <p>Conteúdo adicional que ocupa a largura total do card.</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### 33.2 Diretrizes
+1. A linha vertical dourada (`.timeline-container::before`) conecta os cards visualmente.
+2. O `.step-icon` deve usar ícones Material Icons que representem o tema do passo.
+3. Em desktop (≥992px) o layout muda para horizontal (imagem à direita, conteúdo à esquerda).
+4. Use pelo menos 2 step-cards para justificar a timeline visual.
+
+---
+
+## 34. Tip Box (Caixa de Dica)
+Variação de alerta específica para contextos educacionais. Cor de fundo palha (`#FFF8E8`) com borda azul escura (`#005D77`).
+
+```html
+<div class="tip-box">
+  <p class="mb-0"><strong>Dica:</strong> O Aprender Valor tem um portal só dele. Acesse e saiba mais!</p>
+</div>
+```
+
+### ⚠️ Quando Usar
+- Em páginas educativas, tutoriais e jornadas do cidadão.
+- **NÃO** substitui o `bcb-olho` para avisos ou alertas formais. Use Tip Box apenas em contexto de aprendizado.
+
+---
+
+## 35. Hero Banner (Banner Principal)
+Utilizado logo abaixo do `<h1>` para abrir páginas temáticas ou de produtos principais (ex: Pix, Open Finance, Cidadania Financeira).
+
+### 35.1 Estrutura HTML Padrão
+```html
+<div class="bcb-hero-banner shadow-sm">
+  <div class="row">
+    <div class="col-md-6 bcb-hero-content">
+      <h2 class="bcb-hero-title">Título de Impacto do Tema</h2>
+      <div class="bcb-hero-text">
+        Texto descritivo ou subtítulo que explica o tema da página de forma clara.
+      </div>
+      <div class="mt-auto text-md-right text-left">
+        <a href="#" class="btn btn-sm btn-outline-primary bg-white">Ação ou Link Principal</a>
+      </div>
+    </div>
+    <div class="col-md-6 bcb-hero-img-container">
+      <img src="caminho/imagem.jpg" alt="Descrição da imagem">
+    </div>
+  </div>
+</div>
+```
+
+### 35.2 Variantes de Cor
+| Classe Extra | Cor de Fundo | Uso |
+|---|---|---|
+| (padrão) | `--bcb-brand-blue` (`#025C75`) | Tema geral / institucional |
+| `.bg-verde-susta` | `#0A663A` | Sustentabilidade, ESG, agenda verde |
+| `.bg-vinho` | `--bcb-brand-vinho` (`#2E4C59`) | Temas especiais, regulações |
+
+### ⚠️ Diretrizes
+1. O título (`.bcb-hero-title`) usa a cor amarelato (`--bcb-brand-amarellato`) para contraste sobre fundo escuro.
+2. A imagem deve ter `alt` descritivo obrigatoriamente (e-Mag).
+3. Use **apenas 1 Hero Banner** por página, sempre logo após o `<h1>`.
+
+---
+
+## 36. Carrossel de Vídeos (YouTube)
+Usado para agrupar múltiplos vídeos sem poluir verticalmente a página. Possui scroll horizontal nativo (CSS Snap).
+
+### 36.1 Estrutura HTML
+```html
+<div class="videos-destaque">
+  <div class="video-item">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen title="Título do vídeo"></iframe>
+    </div>
+    <p class="video-title">Título descritivo do vídeo</p>
+  </div>
+  <!-- Repita .video-item para cada vídeo -->
+</div>
+```
+
+### ⚠️ Diretrizes
+1. Cada `<iframe>` DEVE ter o atributo `title` descritivo (e-Mag/WCAG).
+2. O `.video-container` mantém proporção 16:9 automaticamente via `padding-bottom: 56.25%`.
+3. Recomenda-se entre 3 e 6 vídeos por carrossel.
+
+---
+
+## 37. Timeline Horizontal (Marcos e Fases)
+Ideal para demonstrar a evolução de um projeto (ex: Fases do Open Finance, cronograma do Pix).
+
+### 37.1 Estrutura HTML
+```html
+<div class="timeline-horizontal">
+  <div class="timeline-h-step active">
+    <div class="timeline-h-circle"></div>
+    <div class="timeline-h-date">Fev/2021</div>
+    <div class="timeline-h-text">Início da Fase 1: Dados Abertos</div>
+  </div>
+  <div class="timeline-h-step active">
+    <div class="timeline-h-circle"></div>
+    <div class="timeline-h-date">Ago/2021</div>
+    <div class="timeline-h-text">Início da Fase 2: Dados de Clientes</div>
+  </div>
+  <div class="timeline-h-step">
+    <div class="timeline-h-circle"></div>
+    <div class="timeline-h-date">Out/2021</div>
+    <div class="timeline-h-text">Início da Fase 3: Serviços</div>
+  </div>
+</div>
+```
+
+### 37.2 Estados
+| Classe | Visual | Uso |
+|---|---|---|
+| (padrão) | Círculo cinza | Fase futura |
+| `.active` | Círculo azul BCB | Fase concluída ou em andamento |
