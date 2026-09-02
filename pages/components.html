@@ -289,13 +289,17 @@
                     <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
                     <span class="d-none d-sm-inline">Tokens</span>
                 </a>
-                <a href="changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Changelog" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
-                    <span class="d-none d-sm-inline">Changelog</span>
-                </a>
                 <a href="templates.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Galeria de Templates" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
                     <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
                     <span class="d-none d-sm-inline">Templates</span>
+                </a>
+                <a href="automacao-ia.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Guia de Automação com IA" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">smart_toy</span>
+                    <span class="d-none d-sm-inline">Guia IA</span>
+                </a>
+                <a href="changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Changelog" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
+                    <span class="d-none d-sm-inline">Changelog</span>
                 </a>
 
                 <!-- Seletor de 3 Temas Funcional -->
@@ -338,19 +342,18 @@
             <a class="nav-link" href="#atomo-skeleton">1.6 Skeleton Loading</a>
 
             <div class="ds-sidebar-title">2. Moléculas (Compostos)</div>
-            <a class="nav-link" href="#molecula-breadcrumb">2.1 Breadcrumb</a>
-            <a class="nav-link" href="#molecula-callouts">2.2 Callouts Estruturados</a>
-            <a class="nav-link" href="#molecula-tipbox">2.3 Tip Box Educativa</a>
-            <a class="nav-link" href="#molecula-documentos">2.4 Download de Documentos</a>
-            <a class="nav-link" href="#molecula-indicadores">2.5 Card de Indicador Econômico</a>
-            <a class="nav-link" href="#molecula-listalinks">2.6 Card Link / Lista Links</a>
-            <a class="nav-link" href="#molecula-stepper">2.7 Stepper (Passo a Passo)</a>
-            <a class="nav-link" href="#molecula-datatable">2.8 Data Table Responsiva</a>
-            <a class="nav-link" href="#molecula-filtros">2.9 Filtros e Busca Facetada</a>
-            <a class="nav-link" href="#molecula-search-overlay">2.10 Busca Avançada Local (Search)</a>
-            <a class="nav-link" href="#molecula-toasts-alertas">2.11 Toasts e Alertas</a>
-            <a class="nav-link" href="#molecula-data-export">2.12 Exportação de Dados Abertos</a>
-            <a class="nav-link" href="#molecula-empty-state">2.13 Empty State</a>
+            <a class="nav-link" href="#molecula-callouts">2.1 Callouts Estruturados</a>
+            <a class="nav-link" href="#molecula-tipbox">2.2 Tip Box Educativa</a>
+            <a class="nav-link" href="#molecula-documentos">2.3 Download de Documentos</a>
+            <a class="nav-link" href="#molecula-indicadores">2.4 Card de Indicador Econômico</a>
+            <a class="nav-link" href="#molecula-listalinks">2.5 Card Link / Lista Links</a>
+            <a class="nav-link" href="#molecula-stepper">2.6 Stepper (Passo a Passo)</a>
+            <a class="nav-link" href="#molecula-datatable">2.7 Data Table Responsiva</a>
+            <a class="nav-link" href="#molecula-filtros">2.8 Filtros e Busca Facetada</a>
+            <a class="nav-link" href="#molecula-search-overlay">2.9 Busca Avançada Local (Search)</a>
+            <a class="nav-link" href="#molecula-toasts-alertas">2.10 Toasts e Alertas</a>
+            <a class="nav-link" href="#molecula-data-export">2.11 Exportação de Dados Abertos</a>
+            <a class="nav-link" href="#molecula-empty-state">2.12 Empty State</a>
 
             <div class="ds-sidebar-title">3. Organismos (Estruturas)</div>
             <a class="nav-link" href="#organismo-accordion">3.1 Accordion (Sanfona)</a>
@@ -704,37 +707,10 @@
             <!-- 2. MOLÉCULAS (COMPOSTOS) -->
             <!-- ========================================================= -->
 
-            <!-- 2.1 Breadcrumb -->
-            <section id="molecula-breadcrumb" class="ds-component-card">
-                <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">folder_open</span> 2.1 Breadcrumb (Trilha de Navegação)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-current="page"</span>
-                </div>
-                <div class="ds-component-preview">
-                    <nav aria-label="Trilha de navegação">
-                        <ul class="breadcrumb-bcb">
-                            <li><a href="/">Página Inicial</a></li>
-                            <li><a href="/estabilidade-financeira">Estabilidade Financeira</a></li>
-                            <li aria-current="page">Taxa Selic e Indicadores</li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-breadcrumb"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
-                    <pre><code id="code-breadcrumb">&lt;nav aria-label="Trilha de navegação"&gt;
-  &lt;ul class="breadcrumb-bcb"&gt;
-    &lt;li&gt;&lt;a href="/"&gt;Página Inicial&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/estabilidade-financeira"&gt;Estabilidade Financeira&lt;/a&gt;&lt;/li&gt;
-    &lt;li aria-current="page"&gt;Taxa Selic e Indicadores&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- 2.2 Callouts Estruturados -->
+            <!-- 2.1 Callouts Estruturados -->
             <section id="molecula-callouts" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">chat_bubble_outline</span> 2.2 Callouts Estruturados</h3>
+                    <h3><span class="material-icons" aria-hidden="true">chat_bubble_outline</span> 2.1 Callouts Estruturados</h3>
                     <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> 5 Variantes Semânticas</span>
                 </div>
                 <div class="ds-component-preview">

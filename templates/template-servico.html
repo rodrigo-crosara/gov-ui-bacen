@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,16 +17,7 @@
 </head>
 <body>
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="container py-4 my-4" id="conteudo-principal">
-      <!-- BREADCRUMB -->
-      <nav aria-label="Navegação secundária" class="mb-3">
-        <ul class="breadcrumb-bcb">
-          <li><a href="/">Página Inicial</a></li>
-          <li><a href="/cidadania-financeira">Cidadania Financeira</a></li>
-          <li aria-current="page">Como consultar o Registrato</li>
-        </ul>
-      </nav>
-
+    <main class="bcb-container container py-4 my-4" id="conteudo-principal">
       <div class="row">
         
         <!-- SIDEBAR (Menu de Âncoras) -->
@@ -97,8 +88,6 @@
 
           <!-- BOX CALLOUT (Alerta de Fraude) -->
           <div id="atencao"></div>
-          <bcb-callout [tipo]="'warning'" [titulo]="'Atenção: Golpe do falso Registrato'" [texto]="'O Banco Central <strong>nunca</strong> entra em contato por telefone, e-mail ou WhatsApp para solicitar dados pessoais. Se alguém pedir sua senha ou código de acesso informando ser do BC, trata-se de tentativa de golpe. Denuncie imediatamente.'"></bcb-callout>
-          <!-- Simulação visual -->
           <div class="callout callout-warning callout-elevated">
             <span class="material-icons-outlined callout-icon" aria-hidden="true">warning</span>
             <div class="callout-content">
@@ -109,36 +98,34 @@
 
           <!-- CARDS DE LINKS RÁPIDOS -->
           <h2 id="servicos" class="h4 mt-5 mb-3 color-1">Serviços relacionados</h2>
-          <listalinks>
-            <div class="buffer">
-              <div class="row">
-                <div class="col-sm-6 mb-2">
-                  <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
-                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
-                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Consultar valores a receber (SVR)</div>
-                  </a>
-                </div>
-                <div class="col-sm-6 mb-2">
-                  <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
-                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
-                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Reclamação contra instituição financeira</div>
-                  </a>
-                </div>
-                <div class="col-sm-6 mb-2">
-                  <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
-                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
-                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Calculadora do Cidadão</div>
-                  </a>
-                </div>
-                <div class="col-sm-6 mb-2">
-                  <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
-                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
-                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Fale com o BC</div>
-                  </a>
-                </div>
+          <div class="buffer">
+            <div class="row">
+              <div class="col-sm-6 mb-2">
+                <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
+                  <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
+                  <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Consultar valores a receber (SVR)</div>
+                </a>
+              </div>
+              <div class="col-sm-6 mb-2">
+                <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
+                  <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
+                  <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Reclamação contra instituição financeira</div>
+                </a>
+              </div>
+              <div class="col-sm-6 mb-2">
+                <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
+                  <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
+                  <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Calculadora do Cidadão</div>
+                </a>
+              </div>
+              <div class="col-sm-6 mb-2">
+                <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
+                  <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
+                  <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Fale com o BC</div>
+                </a>
               </div>
             </div>
-          </listalinks>
+          </div>
 
         </div>
       </div>

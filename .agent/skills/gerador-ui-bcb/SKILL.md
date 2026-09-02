@@ -33,7 +33,7 @@ Antes de gerar qualquer layout, consulte as fontes da verdade do repositório:
 > 1. **ADOÇÃO OBRIGATÓRIA DE TEMPLATES**: Ao criar qualquer nova página ou protótipo, **SEMPRE identifique qual dos 6 templates acima é o mais próximo do conteúdo solicitado**, clone o esqueleto estrutural desse template a partir da pasta `/templates/` e adapte os dados e componentes. **NUNCA crie uma página do zero** sem se basear no blueprint homologado.
 > 2. **FOCO EXCLUSIVO NO CONTEÚDO**: Todo protótipo gerado deve conter apenas a tag `<main id="conteudo-principal" class="container">` iniciando rigorosamente com a tag `<h1>` do título da página (`<h1 class="bcb-page-title">...</h1>`).
 > 3. **H1 ÚNICO ESTRITO**: É obrigatório ter **apenas 1 tag <h1> por página**. Todas as seções e subtítulos devem utilizar rigorosamente `<h2>`, `<h3>` etc., sem pular níveis na hierarquia.
-> 4. **PROIBIÇÃO DE CASCA GLOBAL**: É terminantemente **PROIBIDO** gerar `<header>`, `<footer>`, `#barra-brasil`, `.bcb-govbr-bar` ou qualquer casca de portal. O Design System foca exclusivamente na área de conteúdo.
+> 4. **PROIBIÇÃO DE CASCA GLOBAL E BREADCRUMBS**: É terminantemente **PROIBIDO** gerar `<header>`, `<footer>`, `#barra-brasil`, `.bcb-govbr-bar` ou `<nav aria-label="Trilha de navegação">` / `.breadcrumb-bcb`. O Breadcrumb e a casca são providos exclusivamente pelo invólucro do portal. O miolo de conteúdo `<main id="conteudo-principal" class="bcb-container">` DEVE iniciar imediatamente com o `<h1>` da página.
 > 5. **USO EXCLUSIVO DE TOKENS**: Use APENAS as variáveis CSS oficiais (`var(--bcb-*)`). É PROIBIDO inventar cores hexadecimais arbitrárias.
 > 6. **RESILIÊNCIA DE DADOS**: Para tabelas e cards assíncronos, utilize o átomo de Skeleton Loading (`.bcb-skeleton`, `.table-skeleton`) durante carregamento e a molécula de Empty State (`.bcb-empty-state`) para resultados vazios.
 
@@ -69,17 +69,8 @@ Toda página gerada DEVE conter rigorosamente a seguinte estrutura:
     <link rel="stylesheet" href="../assets/css/bcb-style.css">
 </head>
 <body>
-    <!-- CONTEÚDO PRINCIPAL DA PÁGINA (Iniciado com H1 único) -->
-    <main class="container py-4 mb-5" id="conteudo-principal">
-        <!-- Trilha de Navegação (Breadcrumb) Opcional -->
-        <nav aria-label="Trilha de navegação" class="mb-3">
-            <ul class="breadcrumb-bcb">
-                <li><a href="/">Página Inicial</a></li>
-                <li><a href="#">Área Temática</a></li>
-                <li aria-current="page">[Título Curto]</li>
-            </ul>
-        </nav>
-
+    <!-- CONTEÚDO PRINCIPAL DA PÁGINA (Iniciado rigorosamente com H1 único) -->
+    <main class="bcb-container container py-4 mb-5" id="conteudo-principal">
         <div class="mb-4">
             <h1 class="bcb-page-title">[Título da Página]</h1>
             <div class="bcb-page-meta">
@@ -129,16 +120,7 @@ Toda página gerada DEVE conter rigorosamente a seguinte estrutura:
 
 **Saída Canônica Gerada**:
 ```html
-<main class="container py-4 mb-5" id="conteudo-principal">
-  <!-- Trilha de Navegação (Breadcrumb) -->
-  <nav aria-label="Trilha de navegação" class="mb-3">
-    <ul class="breadcrumb-bcb">
-      <li><a href="/">Início</a></li>
-      <li><a href="/estabilidade">Estabilidade Financeira</a></li>
-      <li aria-current="page">Taxa Selic</li>
-    </ul>
-  </nav>
-
+<main class="bcb-container container py-4 mb-5" id="conteudo-principal">
   <h1 class="bcb-page-title">Taxa Selic (Meta do Copom)</h1>
   <div class="bcb-page-meta">
     <span class="tag-bcb primary">Indicador Oficial</span>
@@ -235,16 +217,9 @@ Toda página gerada DEVE conter rigorosamente a seguinte estrutura:
 
 **Saída Canônica Gerada**:
 ```html
-<main class="container py-4 mb-5" id="conteudo-principal">
-  <!-- Trilha de Navegação (Breadcrumb) -->
-  <nav aria-label="Trilha de navegação" class="mb-3">
-    <ul class="breadcrumb-bcb">
-      <li><a href="/">Início</a></li>
-      <li><a href="/servicos">Serviços ao Cidadão</a></li>
-      <li aria-current="page">Valores a Receber</li>
-    </ul>
-  </nav>
-
+<main class="bcb-container container py-4 mb-5" id="conteudo-principal">
+  <h1 class="bcb-page-title">Sistema Valores a Receber (SVR)</h1>
+  
   <div class="row">
     <!-- Sidebar de Navegação -->
     <div class="col-md-4 mb-4">

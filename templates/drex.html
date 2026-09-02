@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,21 +16,12 @@
     <link rel="stylesheet" href="../assets/css/bcb-style.css">
 </head>
 <body>
-    <main class="container py-4 my-4" id="conteudo-principal">
-        <!-- Breadcrumb -->
-        <ul class="breadcrumb-bcb">
-            <li><a href="#">Página Inicial</a></li>
-            <li><a href="#">Estabilidade Financeira</a></li>
-            <li>Drex</li>
-        </ul>
-
-        <h1 class="sr-only">Drex: O Real Digital</h1>
-
+    <main class="bcb-container container py-4 my-4" id="conteudo-principal">
         <!-- 1. Hero Banner -->
         <div class="bcb-hero-banner shadow-sm">
             <div class="row">
                 <div class="col-md-6 bcb-hero-content">
-                    <h2 class="bcb-hero-title">Drex: O Real Digital</h2>
+                    <h1 class="bcb-hero-title">Drex: A Plataforma do Real Digital</h1>
                     <div class="bcb-hero-text">
                         Bem-vindo à página oficial do Drex, a nova moeda digital do Banco Central do Brasil. O Drex vai facilitar a sua vida financeira, trazendo mais segurança e inovação para os seus negócios.
                     </div>
@@ -94,19 +85,37 @@
                   <p class="mb-0"><strong>Dica para desenvolvedores:</strong> Você pode acompanhar o repositório oficial do Piloto Drex no <a href="#" class="text-link">GitHub do BC</a>.</p>
                 </div>
 
-                <!-- 7. Accordion (FAQ Oculto) -->
+                <!-- 7. Accordion (FAQ) -->
                 <h3 class="mb-3">Perguntas Frequentes</h3>
-                <div class="mb-5">
-                    <bcb-accordion-page 
-                        [card_header]="'1. O Drex vai substituir o Pix?'" 
-                        [card_body]="'Não. O Pix é uma forma de transferência instantânea, enquanto o Drex é a própria representação do dinheiro (a moeda) em ambiente digital.'" 
-                        [modelo]="'1'">
-                    </bcb-accordion-page>
-                    <bcb-accordion-page 
-                        [card_header]="'2. Quanto vai custar o Drex?'" 
-                        [card_body]="'O uso do Drex terá custos definidos pelas instituições financeiras, mas o BC trabalha para que seja o mais barato possível.'" 
-                        [modelo]="'1'">
-                    </bcb-accordion-page>
+                <div class="accordion modelo-1 mb-5" id="accordionDrex">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h4 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    1. O Drex vai substituir o Pix?
+                                </button>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionDrex">
+                            <div class="card-body">
+                                Não. O Pix é uma forma de transferência instantânea, enquanto o Drex é a própria representação do dinheiro em ambiente digital, com suporte a contratos inteligentes.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h4 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    2. Quanto vai custar o Drex?
+                                </button>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionDrex">
+                            <div class="card-body">
+                                O uso do Drex terá custos definidos pelas instituições financeiras participantes, sob regulação do BC, visando à redução de custos e aumento da segurança.
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 8. Outros Serviços (Modelo 5 Limpo) -->

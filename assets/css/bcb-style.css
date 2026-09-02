@@ -18,7 +18,6 @@
 @import '_03-atoms/_tables.css';
 @import '_03-atoms/_form-controls.css';
 @import '_03-atoms/_skeleton.css';
-@import '_04-molecules/_breadcrumb.css';
 @import '_04-molecules/_callout.css';
 @import '_04-molecules/_card-indicator.css';
 @import '_04-molecules/_card-link.css';
@@ -786,13 +785,6 @@ p { font-size: var(--bcb-font-100); }
 /* ==========================================
    16. COMPONENTES EDITORIAIS AVANÇADOS
    ========================================== */
-/* Breadcrumb */
-.breadcrumb-bcb { background-color: var(--bcb-portal-primary); padding: .5rem 1rem; border-radius: 0; display: flex; list-style: none; margin-bottom: 1rem; }
-.breadcrumb-bcb li { display: flex; align-items: center; color: var(--bcb-gray-400); font-size: 0.9rem; }
-.breadcrumb-bcb li a { color: var(--bcb-color-white); text-decoration: none; transition: opacity 0.2s; }
-.breadcrumb-bcb li a:hover { text-decoration: underline; opacity: 0.85; }
-.breadcrumb-bcb li + li::before { content: '>'; color: var(--bcb-gray-400); margin: 0 0.5rem; }
-
 /* Menu de Âncoras (In-page navigation) */
 .bd-sidebar { position: sticky; top: 80px; }
 .bd-toc { border-left: 2px solid var(--bcb-gray-200); padding-left: 1rem; margin-bottom: 2rem; }

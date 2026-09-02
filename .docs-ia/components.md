@@ -11,7 +11,7 @@
 1. [Botões (Buttons)](#1-botões-buttons)
 2. [Links e Âncoras](#2-links-e-âncoras)
 3. [Iconografia (Material Icons)](#3-iconografia-material-icons)
-4. [Breadcrumb (Trilha de Navegação)](#4-breadcrumb-trilha-de-navegação)
+4. [Componente Excluído — Breadcrumb](#4-componente-excluído--breadcrumb)
 5. [Menu de Âncoras / Sidebar TOC](#5-menu-de-âncoras--sidebar-toc)
 6. [Callouts e Alertas Estruturados](#6-callouts-e-alertas-estruturados)
 7. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa)
@@ -137,24 +137,11 @@ Utilize a biblioteca **Google Material Icons** (Filled ou Outlined).
 
 ---
 
-## 4. Breadcrumb (Trilha de Navegação)
+## 4. Componente Excluído — Breadcrumb
 
-Indica a hierarquia da página dentro do portal.
-
-### Assinatura HTML Canônica
-```html
-<nav aria-label="Trilha de navegação">
-  <ul class="breadcrumb-bcb">
-    <li><a href="/">Início</a></li>
-    <li><a href="/estabilidade-financeira">Estabilidade Financeira</a></li>
-    <li aria-current="page">Taxa Selic</li>
-  </ul>
-</nav>
-```
-
-| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
-|---|---|
-| Defina `aria-current="page"` no último item (página atual). | NUNCA coloque link `<a>` no item da página atual. |
+> 🚫 **PROIBIÇÃO RIGOROSA**: O componente Breadcrumb (`.breadcrumb-bcb`) foi **definitivamente descontinuado e extirpado** do Design System de conteúdo.
+> No portal do Banco Central do Brasil, a trilha de navegação (breadcrumb) é gerada automaticamente pelo invólucro do portal (CMS/portal envelope), fora da tag `<main id="conteudo-principal">`.
+> **Nenhum template ou página de conteúdo deve conter elementos de breadcrumb.** O conteúdo do `<main>` deve iniciar diretamente no `<h1>`.
 
 ---
 

@@ -28,8 +28,6 @@ Todo desenvolvimento de novas interfaces pelo time ou por agentes de IA deve par
 ### Diagrama Estrutural (Wireframe)
 ```
 +---------------------------------------------------------------+
-| Breadcrumb: Início > Economia > Taxa Selic                   |
-+---------------------------------------------------------------+
 | H1: Taxa Selic (Meta Copom)                                   |
 | Meta info: Atualizado em 12/03/2026 · Fonte: BCB/Copom        |
 +---------------------------------------------------------------+
@@ -58,17 +56,8 @@ Todo desenvolvimento de novas interfaces pelo time ou por agentes de IA deve par
   <link rel="stylesheet" href="../assets/css/bcb-style.css">
 </head>
 <body>
-  <!-- Conteúdo Principal -->
-  <main class="container py-4 mb-5" id="conteudo-principal">
-    <!-- Breadcrumb -->
-    <nav aria-label="Trilha de navegação" class="mb-3">
-      <ul class="breadcrumb-bcb">
-        <li><a href="/">Início</a></li>
-        <li><a href="/estabilidade-financeira">Estabilidade Financeira</a></li>
-        <li aria-current="page">Taxa Selic</li>
-      </ul>
-    </nav>
-
+  <!-- Conteúdo Principal Iniciando Direto no H1 Oficial -->
+  <main class="bcb-container container py-4 mb-5" id="conteudo-principal">
     <h1 class="bcb-page-title">Taxa Selic (Meta Copom)</h1>
     <div class="bcb-page-meta">
       <span class="tag-bcb primary">Indicador Oficial</span>

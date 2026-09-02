@@ -110,6 +110,18 @@ for (const arquivo of arquivosHTML) {
     if (conteudo.match(/<nav[^>]*class=["'][^"']*govbr[^"']*["']/gi)) {
       problemas.push('Elemento <nav class="govbr..."> detectado em template de conteúdo.');
     }
+
+    // 7.4 Proibição rigorosa de Breadcrumbs em templates (providos pelo portal)
+    if (conteudo.match(/<nav[^>]*aria-label=["'][^"']*(?:breadcrumb|trilha)[^"']*["']/gi) ||
+        conteudo.match(/class=["'][^"']*(?:bcb-breadcrumb|breadcrumb-bcb|breadcrumb)[^"']*["']/gi)) {
+      problemas.push('Breadcrumb detectado em template de conteúdo — a trilha de navegação é provida pela casca do portal.');
+    }
+
+    // 7.5 Proibição de tags customizadas legadas ou órfãs
+    const tagsOrfas = conteudo.match(/<(?:bcb-accordion-page|bcb-callout|listalinks)[\s>]/gi) || [];
+    if (tagsOrfas.length > 0) {
+      problemas.push(`${tagsOrfas.length} tag(s) customizada(s) órfã(s) detectada(s). Use apenas componentes em HTML5 nativo.`);
+    }
   }
 
   // Relatório do arquivo
