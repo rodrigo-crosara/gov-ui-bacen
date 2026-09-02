@@ -7,12 +7,18 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [2.0.0] — 2026-09-02
 
+### Adicionado
+- **Micro-padrões Financeiros de Mercado (`_card-indicator.css`):** Suporte a variantes semânticas de mercado positivo (`.indicator-positive`, `--bcb-brand-verde-susta`), negativo (`.indicator-negative`, `--bcb-brand-marsala`), neutro (`.indicator-warning`) e badges de tendência com setas direcionais cambiais/inflação.
+- **Molécula de Exportação de Dados Abertos (`_data-export.css`):** Barra padronizada para download de séries temporais em CSV, JSON, planilhas e APIs REST (Swagger), compatível com Alto Contraste e Modo Escuro.
+- **Lapidação da Vitrine de Componentes (`pages/components.html`):** Inclusão da seção 2.12 Exportação de Dados Abertos, demonstração de estados completos de formulário (disabled, invalid com aria-describedby), expansão da Data Table para 5 linhas com ordenação dinâmica e paginação.
+- **Documentação Canônica Atualizada (`.docs-ia/components.md`):** 29 seções rigorosamente numeradas com sumário sincronizado, regras Do/Don't e assinaturas HTML completas.
+
 ### Modificado (Breaking Change)
 - **Remoção do Invólucro Global do Portal:** Deletados os arquivos legados de casca (`_govbr-bar.css`, `_header.css`, `_footer.css`) e eliminados `@import` e estilos associados em `bcb-style.css`, `_high-contrast.css` e `_dark-mode.css`.
 - **Higienização de 100% dos Templates HTML:** Removidos `#barra-brasil`, scripts da barra Brasil, `<header>` e `<footer>` de todos os arquivos HTML (`index.html`, `pages/*.html`, `templates/*.html`).
 - **Reorientação do Design System para Miolo de Conteúdo:** Todas as páginas iniciam diretamente no container semântico `<main id="conteudo-principal" class="container">` com rigorosamente **um único `<h1>`** por página.
 - **Skill de IA v3.0 (.agent/skills/gerador-ui-bcb/SKILL.md):** Reorientada para geração exclusiva de miolo semântico, banindo explicitamente cabeçalhos, rodapés ou cascas de portal e fixando a validação de H1 único.
-- **Auditoria e Testes Automatizados:** Atualizados `html-integrity.test.js` e `templates-lint.test.js` para exigir estritamente `assert count(h1) === 1` e proibir cascas globais nos templates. `a11y-runner.js` atualizado para auditar diretamente o elemento `<main>`.
+- **Auditoria e Testes Automatizados:** Atualizados `html-integrity.test.js` e `templates-lint.test.js` para exigir estritamente `assert count(h1) === 1`, `main id="conteudo-principal"` e proibir cascas globais nos templates. `a11y-runner.js` atualizado para auditar diretamente o elemento `<main>`.
 
 ## [1.3.0] — 2026-09-02
 

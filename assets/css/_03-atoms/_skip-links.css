@@ -1,6 +1,12 @@
 /* ============= BCB Design System — Atoms / Skip Links =============
  * Links de salto de acessibilidade (WCAG 2.4.1 / e-MAG Requisito 1.1).
  * Ocultos visualmente por padrão, revelam-se ao receber foco pelo teclado.
+ * 
+ * [NOTA DE ESCOPO / ARQUITETURA]:
+ * Este componente pertence exclusivamente à casca externa do portal e às
+ * páginas de documentação da vitrine. Em protótipos de conteúdo gerados
+ * por IA (<main id="conteudo-principal">), os skip links NÃO devem ser
+ * inseridos no miolo semântico, pois o portal já provê o salto para o main.
  * ==================================================================== */
 
 .bcb-skip-links {

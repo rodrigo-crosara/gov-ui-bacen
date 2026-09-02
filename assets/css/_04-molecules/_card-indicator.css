@@ -1,13 +1,115 @@
-/* ============= BCB Design System — Molecules / Card Indicator ============= */
+/* ============= BCB Design System — Molecules / Card Indicator =============
+ * Cards de indicadores econômicos, monetários e financeiros do Banco Central.
+ * Suporta variantes de mercado: positivo, negativo, neutro e destaque institucional.
+ * ========================================================================= */
 
-.bcb-indicator-card { background: var(--bcb-color-white); border-radius: var(--bcb-radius-8); padding: 1.5rem; box-shadow: var(--bcb-shadow-100); border-top: 4px solid var(--bcb-brand-blue); height: 100%; transition: transform 0.2s, box-shadow 0.2s; }
-.bcb-indicator-card:hover { transform: translateY(-4px); box-shadow: var(--bcb-shadow-300); }
-.bcb-indicator-card.accent-green { border-top-color: #28a745; }
-.bcb-indicator-card.accent-amber { border-top-color: #F8D48D; }
-.bcb-indicator-label { font-size: 0.75rem; color: var(--bcb-gray-600); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
-.bcb-indicator-value { font-size: 1.75rem; font-weight: 500; color: var(--bcb-brand-blue); margin-bottom: 0.25rem; line-height: 1.2; }
-.bcb-indicator-meta { font-size: 0.8rem; color: var(--bcb-gray-500); }
-.bcb-indicator-trend { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.8rem; font-weight: 500; }
-.bcb-indicator-trend.up { color: #dc3545; }
-.bcb-indicator-trend.down { color: #28a745; }
-.bcb-indicator-trend .material-icons { font-size: 1rem; }
+.bcb-indicator-card {
+  background: var(--bcb-color-white);
+  border-radius: var(--bcb-radius-8);
+  padding: 1.5rem;
+  box-shadow: var(--bcb-shadow-100);
+  border: 1px solid var(--bcb-gray-200);
+  border-top: 4px solid var(--bcb-brand-blue);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bcb-indicator-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--bcb-shadow-300);
+}
+
+/* Variantes de Borda Superior Semântica */
+.bcb-indicator-card.accent-blue,
+.bcb-indicator-card.indicator-brand {
+  border-top-color: var(--bcb-brand-blue);
+}
+
+.bcb-indicator-card.accent-green,
+.bcb-indicator-card.indicator-positive {
+  border-top-color: var(--bcb-brand-verde-susta, #0A663A);
+}
+
+.bcb-indicator-card.accent-red,
+.bcb-indicator-card.indicator-negative {
+  border-top-color: var(--bcb-brand-marsala, #C62828);
+}
+
+.bcb-indicator-card.accent-amber,
+.bcb-indicator-card.indicator-warning {
+  border-top-color: var(--bcb-brand-amarellato, #F8D48D);
+}
+
+/* Tipografia e Rótulos */
+.bcb-indicator-label {
+  font-size: 0.75rem;
+  color: var(--bcb-gray-600);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.bcb-indicator-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--bcb-brand-blue);
+  margin-bottom: 0.35rem;
+  line-height: 1.15;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bcb-indicator-value.value-positive {
+  color: var(--bcb-brand-verde-susta, #0A663A);
+}
+
+.bcb-indicator-value.value-negative {
+  color: var(--bcb-brand-marsala, #C62828);
+}
+
+.bcb-indicator-meta {
+  font-size: 0.8rem;
+  color: var(--bcb-gray-500);
+  margin-top: 0.5rem;
+}
+
+/* Tendências e Setas Cambiais / Inflação */
+.bcb-indicator-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--bcb-radius-pill);
+  background-color: var(--bcb-gray-100);
+}
+
+.bcb-indicator-trend.positive,
+.bcb-indicator-trend.trend-positive {
+  color: var(--bcb-brand-verde-susta, #0A663A);
+  background-color: rgba(10, 102, 58, 0.12);
+}
+
+.bcb-indicator-trend.negative,
+.bcb-indicator-trend.trend-negative {
+  color: var(--bcb-brand-marsala, #C62828);
+  background-color: rgba(198, 40, 40, 0.12);
+}
+
+.bcb-indicator-trend.neutral,
+.bcb-indicator-trend.trend-neutral {
+  color: var(--bcb-gray-600);
+  background-color: var(--bcb-gray-100);
+}
+
+.bcb-indicator-trend .material-icons {
+  font-size: 1.1rem;
+  line-height: 1;
+}

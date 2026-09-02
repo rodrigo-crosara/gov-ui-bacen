@@ -83,8 +83,20 @@ for (const arquivo of arquivosHTML) {
     problemas.push('Folha de estilo oficial bcb-style.css não importada.');
   }
 
-  // REGRA 7: Proibir casca de portal (Header, Footer, Barra Brasil) nos templates de conteúdo
+  // REGRA 7: Validação Semântica Estrita do Miolo de Conteúdo nos Templates
   if (nomeRelativo.startsWith('templates/')) {
+    // 7.1 Deve possuir exatamente um <main>
+    const totalMain = (conteudo.match(/<main[\s>]/gi) || []).length;
+    if (totalMain !== 1) {
+      problemas.push(`Quantidade inválida de tags <main> (${totalMain}) — templates de conteúdo devem possuir exatamente 1 tag <main>.`);
+    }
+
+    // 7.2 O <main> deve possuir id="conteudo-principal"
+    if (!conteudo.includes('id="conteudo-principal"') && !conteudo.includes("id='conteudo-principal'")) {
+      problemas.push('Elemento <main> deve obrigatoriamente possuir id="conteudo-principal" para acessibilidade.');
+    }
+
+    // 7.3 Proibição de casca do portal
     if (conteudo.includes('id="barra-brasil"') || conteudo.includes("id='barra-brasil'")) {
       problemas.push('Barra Brasil (#barra-brasil) detectada em template de conteúdo.');
     }
@@ -94,6 +106,9 @@ for (const arquivo of arquivosHTML) {
     const footersNaoCitacao = conteudo.match(/<footer(?![^>]*blockquote-footer)[^>]*>/gi) || [];
     if (footersNaoCitacao.length > 0) {
       problemas.push('Tag <footer> detectada em template de conteúdo — templates devem focar exclusivamente no miolo semântico.');
+    }
+    if (conteudo.match(/<nav[^>]*class=["'][^"']*govbr[^"']*["']/gi)) {
+      problemas.push('Elemento <nav class="govbr..."> detectado em template de conteúdo.');
     }
   }
 

@@ -127,18 +127,16 @@ Toda página gerada DEVE conter rigorosamente a seguinte estrutura:
 
 **Saída Canônica Gerada**:
 ```html
-<!-- Breadcrumb -->
-<div class="container mt-3">
-  <nav aria-label="Trilha de navegação">
+<main class="container py-4 mb-5" id="conteudo-principal">
+  <!-- Trilha de Navegação (Breadcrumb) -->
+  <nav aria-label="Trilha de navegação" class="mb-3">
     <ul class="breadcrumb-bcb">
       <li><a href="/">Início</a></li>
       <li><a href="/estabilidade">Estabilidade Financeira</a></li>
       <li aria-current="page">Taxa Selic</li>
     </ul>
   </nav>
-</div>
 
-<main class="container mb-5" id="conteudo-principal">
   <h1 class="bcb-page-title">Taxa Selic (Meta do Copom)</h1>
   <div class="bcb-page-meta">
     <span class="tag-bcb primary">Indicador Oficial</span>
@@ -235,17 +233,16 @@ Toda página gerada DEVE conter rigorosamente a seguinte estrutura:
 
 **Saída Canônica Gerada**:
 ```html
-<div class="container mt-3">
-  <nav aria-label="Trilha de navegação">
+<main class="container py-4 mb-5" id="conteudo-principal">
+  <!-- Trilha de Navegação (Breadcrumb) -->
+  <nav aria-label="Trilha de navegação" class="mb-3">
     <ul class="breadcrumb-bcb">
       <li><a href="/">Início</a></li>
       <li><a href="/servicos">Serviços ao Cidadão</a></li>
       <li aria-current="page">Valores a Receber</li>
     </ul>
   </nav>
-</div>
 
-<main class="container mb-5" id="conteudo-principal">
   <div class="row">
     <!-- Sidebar de Navegação -->
     <div class="col-md-4 mb-4">

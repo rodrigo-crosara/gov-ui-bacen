@@ -118,20 +118,22 @@ Links (`<a>`) são usados para navegação entre páginas, download de arquivos 
 
 Utilize os ícones da biblioteca Google Material Icons.
 
+Utilize a biblioteca **Google Material Icons** (Filled ou Outlined).
+
 ### Assinatura HTML Canônica
 ```html
-<!-- Ícone puramente decorativo -->
+<!-- Ícone Decorativo (Acompanha Texto) -->
 <span class="material-icons" aria-hidden="true">account_balance</span>
 
-<!-- Ícone com modificador de tamanho -->
-<span class="material-icons md-18" aria-hidden="true">chevron_right</span>
-<span class="material-icons md-36" aria-hidden="true">payments</span>
+<!-- Ícone Funcional (Sem Texto — Exige aria-label no container) -->
+<button type="button" class="btn btn-icon" aria-label="Pesquisar">
+  <span class="material-icons" aria-hidden="true">search</span>
+</button>
 ```
 
 | O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
 |---|---|
 | Sempre inclua `aria-hidden="true"` em ícones que acompanham texto. | NUNCA use ícone sozinho sem `aria-label` no elemento pai clicável. |
-| Use tamanhos utilitários padronizados (`.md-18`, `.md-24`, `.md-36`, `.md-48`). | NUNCA aplique `style="font-size: 23px"` inline. |
 
 ---
 
@@ -156,7 +158,7 @@ Indica a hierarquia da página dentro do portal.
 
 ---
 
-## 9. Menu de Âncoras / Sidebar TOC
+## 5. Menu de Âncoras / Sidebar TOC
 
 Menu lateral sticky para navegação interna em páginas longas.
 
@@ -178,7 +180,7 @@ Menu lateral sticky para navegação interna em páginas longas.
 
 ---
 
-## 10. Callouts e Alertas Estruturados
+## 6. Callouts e Alertas Estruturados
 
 Substitui o antigo `.bcb-olho`. Utilizado para destaques, avisos operacionais, normativos e orientações críticas.
 
@@ -207,7 +209,7 @@ Substitui o antigo `.bcb-olho`. Utilizado para destaques, avisos operacionais, n
 
 ---
 
-## 11. Tip Box (Dica Educativa)
+## 7. Tip Box (Dica Educativa)
 
 Utilizado exclusivamente em materiais de educação e cidadania financeira.
 
@@ -222,7 +224,7 @@ Utilizado exclusivamente em materiais de educação e cidadania financeira.
 
 ---
 
-## 12. Citações e Testemunhos (Blockquotes)
+## 8. Citações e Testemunhos (Blockquotes)
 
 Destaca falas de autoridades, diretoria ou trechos de legislação.
 
@@ -230,13 +232,13 @@ Destaca falas de autoridades, diretoria ou trechos de legislação.
 ```html
 <blockquote class="bcb-citacao">
   <p class="mb-0">"A estabilidade de preços é o alicerce fundamental para o crescimento sustentável do país."</p>
-  <footer>Presidente do Banco Central do Brasil</footer>
+  <footer class="blockquote-footer">Presidente do Banco Central do Brasil</footer>
 </blockquote>
 ```
 
 ---
 
-## 13. Tags e Badges
+## 9. Tags e Badges
 
 Identificam status, categorias de conteúdo ou tipos de documento.
 
@@ -249,7 +251,7 @@ Identificam status, categorias de conteúdo ou tipos de documento.
 
 ---
 
-## 14. Process List (Passo a Passo)
+## 10. Process List (Passo a Passo)
 
 Para fluxos lineares simples de 3 a 5 etapas.
 
@@ -273,7 +275,7 @@ Para fluxos lineares simples de 3 a 5 etapas.
 
 ---
 
-## 15. Stepper (Indicador de Etapas)
+## 11. Stepper (Indicador de Etapas)
 
 Usado no topo de formulários multi-etapas (Wizards).
 
@@ -299,7 +301,7 @@ Usado no topo de formulários multi-etapas (Wizards).
 
 ---
 
-## 16. Controles de Formulário e Validação
+## 12. Controles de Formulário e Validação
 
 Inputs acessíveis com rótulos conectados por `for`/`id` e feedback de validação.
 
@@ -315,8 +317,14 @@ Inputs acessíveis com rótulos conectados por `for`/`id` e feedback de validaç
 <!-- Campo com Validação Inválida -->
 <div class="form-group">
   <label for="inputEmail">E-mail Institucional <span class="text-danger">*</span></label>
-  <input type="email" class="form-control is-invalid" id="inputEmail" aria-describedby="feedbackEmail" required>
+  <input type="email" class="form-control is-invalid" id="inputEmail" aria-invalid="true" aria-describedby="feedbackEmail" required>
   <div id="feedbackEmail" class="invalid-feedback">Informe um endereço de e-mail válido.</div>
+</div>
+
+<!-- Campo Desabilitado -->
+<div class="form-group">
+  <label for="inputBloqueado">Número de Protocolo</label>
+  <input type="text" class="form-control" id="inputBloqueado" value="2026-BCB-12345" disabled aria-disabled="true">
 </div>
 
 <!-- Switch Toggle -->
@@ -328,7 +336,7 @@ Inputs acessíveis com rótulos conectados por `for`/`id` e feedback de validaç
 
 ---
 
-## 17. Filtros e Busca Facetada
+## 13. Filtros e Busca Facetada
 
 Painel para busca refinada com múltiplos critérios simultâneos.
 
@@ -380,7 +388,7 @@ Painel para busca refinada com múltiplos critérios simultâneos.
 
 ---
 
-## 18. Data Table Responsiva (Séries e Taxas)
+## 14. Data Table Responsiva (Séries e Taxas)
 
 Tabela avançada para séries temporais, metas Selic e cotações com ordenação e paginação.
 
@@ -461,7 +469,7 @@ Tabela avançada para séries temporais, metas Selic e cotações com ordenaçã
 
 ---
 
-## 19. Modais e Diálogos Acessíveis
+## 15. Modais e Diálogos Acessíveis
 
 Janelas sobrepostas para confirmação ou inserção de dados.
 
@@ -491,7 +499,7 @@ Janelas sobrepostas para confirmação ou inserção de dados.
 
 ---
 
-## 20. Alertas e Toast Notifications
+## 16. Alertas e Toast Notifications
 
 Notificações temporárias ou mensagens de status em tempo real.
 
@@ -523,7 +531,41 @@ Notificações temporárias ou mensagens de status em tempo real.
 
 ---
 
-## 21. Navegação em Abas (Tabs)
+## 17. Exportação de Dados Abertos (Data Export)
+
+Barra padronizada de exportação para dados abertos, séries temporais (SGS) e integração de desenvolvedores.
+
+### Assinatura HTML Canônica
+```html
+<div class="bcb-data-export">
+  <div class="bcb-data-export-info">
+    <div class="bcb-data-export-icon">
+      <span class="material-icons" aria-hidden="true">dataset</span>
+    </div>
+    <div>
+      <h4 class="bcb-data-export-title">Exportar Série Histórica</h4>
+      <p class="bcb-data-export-subtitle">Dados abertos oficiais do Banco Central do Brasil</p>
+    </div>
+  </div>
+  <div class="bcb-data-export-actions">
+    <a href="dados.csv" class="bcb-btn-export export-csv" role="button" aria-label="Exportar série em CSV">
+      <span class="material-icons" aria-hidden="true">table_view</span> <span class="export-ext">CSV</span> (450 KB)
+    </a>
+    <a href="dados.json" class="bcb-btn-export export-json" role="button" aria-label="Exportar série em JSON">
+      <span class="material-icons" aria-hidden="true">data_object</span> <span class="export-ext">JSON</span> API
+    </a>
+    <a href="/swagger" class="bcb-btn-export export-api" role="button" aria-label="Documentação Swagger REST">
+      <span class="material-icons" aria-hidden="true">api</span> <span class="export-ext">API</span> REST
+    </a>
+  </div>
+</div>
+```
+
+---
+
+---
+
+## 18. Navegação em Abas (Tabs)
 
 Abas com chanfro da identidade visual do BCB.
 
@@ -557,7 +599,7 @@ Abas com chanfro da identidade visual do BCB.
 
 ---
 
-## 22. Accordions (Sanfonas Expansíveis)
+## 19. Accordions (Sanfonas Expansíveis)
 
 Ideal para FAQs e seções secundárias de regulamentação.
 
@@ -582,7 +624,7 @@ Ideal para FAQs e seções secundárias de regulamentação.
 
 ---
 
-## 23. Cards de Links Rápidos (Listalinks)
+## 20. Cards de Links Rápidos (Listalinks)
 
 Grade de acessos rápidos a serviços.
 
@@ -609,26 +651,64 @@ Grade de acessos rápidos a serviços.
 
 ---
 
-## 24. Cards de Indicadores Econômicos
+## 21. Cards de Indicadores Econômicos & Mercado
 
-Cards de destaque de valores e variações do mercado financeiro.
+Cards de destaque de valores e variações do mercado financeiro com suporte a tendências direcionais e semântica de mercado.
 
-### Assinatura HTML Canônica
+### Assinatura HTML Canônica (Variantes de Mercado)
 ```html
-<div class="bcb-indicator-card accent-green">
-  <div class="bcb-indicator-label">Câmbio PTAX (Dólar Comercial)</div>
-  <div class="bcb-indicator-value">R$ 5,24
-    <small class="bcb-indicator-trend down">
-      <span class="material-icons" aria-hidden="true">arrow_downward</span> -0,35%
-    </small>
+<!-- Indicador Padrão Institucional -->
+<div class="bcb-indicator-card indicator-brand">
+  <div class="bcb-indicator-label">Meta Selic (Copom)</div>
+  <div class="bcb-indicator-value">
+    14,25%
+    <span class="bcb-indicator-trend positive">
+      <span class="material-icons" aria-hidden="true">arrow_upward</span> +1,00 p.p.
+    </span>
   </div>
-  <div class="bcb-indicator-meta">Fechamento — 02/09/2026</div>
+  <div class="bcb-indicator-meta">Vigência: 13/03/2026 · 268ª Reunião</div>
+</div>
+
+<!-- Indicador Positivo (Alta Favorável / Liquidez) -->
+<div class="bcb-indicator-card indicator-positive">
+  <div class="bcb-indicator-label">Reservas Internacionais</div>
+  <div class="bcb-indicator-value value-positive">
+    US$ 355,8 bi
+    <span class="bcb-indicator-trend positive">
+      <span class="material-icons" aria-hidden="true">arrow_upward</span> +2,4%
+    </span>
+  </div>
+  <div class="bcb-indicator-meta">Posição líquida internacional</div>
+</div>
+
+<!-- Indicador Negativo (Alerta Cambial / Inflação) -->
+<div class="bcb-indicator-card indicator-negative">
+  <div class="bcb-indicator-label">Dólar Comercial (PTAX)</div>
+  <div class="bcb-indicator-value value-negative">
+    R$ 5,7420
+    <span class="bcb-indicator-trend negative">
+      <span class="material-icons" aria-hidden="true">arrow_upward</span> +0,85%
+    </span>
+  </div>
+  <div class="bcb-indicator-meta">Cotação de fechamento diário</div>
+</div>
+
+<!-- Indicador Neutro (Estabilidade) -->
+<div class="bcb-indicator-card indicator-warning">
+  <div class="bcb-indicator-label">IPCA (12 Meses)</div>
+  <div class="bcb-indicator-value">
+    4,10%
+    <span class="bcb-indicator-trend neutral">
+      <span class="material-icons" aria-hidden="true">trending_flat</span> 0,00
+    </span>
+  </div>
+  <div class="bcb-indicator-meta">Meta: 3,00% (Tolerância: 4,50%)</div>
 </div>
 ```
 
 ---
 
-## 25. Download de Documentos
+## 22. Download de Documentos
 
 Cartões de arquivo com identificação de extensão e data.
 
@@ -652,7 +732,7 @@ Cartões de arquivo com identificação de extensão e data.
 
 ---
 
-## 26. Hero Banner Institucional
+## 23. Hero Banner Institucional
 
 Banner visual de abertura de produtos ou temas prioritários (Drex, Pix, Open Finance).
 
@@ -678,7 +758,7 @@ Banner visual de abertura de produtos ou temas prioritários (Drex, Pix, Open Fi
 
 ---
 
-## 27. Timeline Educativa (Storytelling)
+## 24. Timeline Educativa (Storytelling)
 
 Jornada longa com cartões narrativos e ícones temáticos.
 
@@ -702,7 +782,7 @@ Jornada longa com cartões narrativos e ícones temáticos.
 
 ---
 
-## 28. Timeline Horizontal (Fases de Projeto)
+## 25. Timeline Horizontal (Fases de Projeto)
 
 Cronograma horizontal com marcos e datas.
 
@@ -729,7 +809,7 @@ Cronograma horizontal com marcos e datas.
 
 ---
 
-## 29. Carrossel de Vídeos
+## 26. Carrossel de Vídeos
 
 Exibição horizontal com proporção 16:9 acessível.
 
@@ -747,7 +827,7 @@ Exibição horizontal com proporção 16:9 acessível.
 
 ---
 
-## 30. Bloco de Transição Narrativa
+## 27. Bloco de Transição Narrativa
 
 Conecta introduções a passos práticos.
 
@@ -762,7 +842,7 @@ Conecta introduções a passos práticos.
 
 ---
 
-## 31. Botão Voltar ao Topo
+## 28. Botão Voltar ao Topo
 
 Botão fixo que aparece na rolagem.
 
@@ -786,7 +866,7 @@ Botão fixo que aparece na rolagem.
 
 ---
 
-## 32. Paginação e Tooltips de Glossário
+## 29. Paginação e Tooltips de Glossário
 
 Navegação em páginas de listagens e explicações em termos técnicos.
 
