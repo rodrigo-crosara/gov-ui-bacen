@@ -613,19 +613,18 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="selectTipoDemanda" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
-                            <span class="material-icons md-18 align-middle" aria-hidden="true">category</span> Tipo de Demanda Institucional:
+                            <span class="material-icons md-18 align-middle" aria-hidden="true">category</span> Seletor de Tipo de Diagramação:
                         </label>
                         <select class="form-control custom-select" id="selectTipoDemanda">
-                            <option value="minuta">Minuta Normativa / Comunicado Regulatório (Pix, Resoluções)</option>
-                            <option value="indicadores">Indicador Econômico / Séries Temporais (Selic, Inflação, Câmbio)</option>
-                            <option value="servico">Serviço ao Cidadão / Passo a Passo (Registrato, Valores a Receber)</option>
-                            <option value="noticia">Notícia Oficial / Decisão do Copom / Imprensa</option>
-                            <option value="educativo">Guia Educativo / Leitura Longa / Cartilha</option>
+                            <option value="normativa">Página Normativa / Comunicado Copom (Layout 70/30)</option>
+                            <option value="indicadores">Painel Econômico / Séries Temporais (Cards 33/33/33 &amp; Data Table)</option>
+                            <option value="servico">Serviço ao Cidadão / Guia Passo a Passo (Stepper 100% &amp; Orientação)</option>
+                            <option value="educacional">Página Informativa / Educacional (Layout Fluido, 50/50 &amp; Accordions)</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputTituloSugerido" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
-                            <span class="material-icons md-18 align-middle" aria-hidden="true">title</span> Título Oficial Previsto (ou Tema Central):
+                            <span class="material-icons md-18 align-middle" aria-hidden="true">title</span> Título Oficial Previsto:
                         </label>
                         <input type="text" class="form-control" id="inputTituloSugerido" placeholder="Ex: Ajustes nos Limites Noturnos do Pix">
                     </div>
@@ -633,19 +632,32 @@
 
                 <div class="form-group">
                     <label for="textareaTextoBruto" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
-                        <span class="material-icons md-18 align-middle" aria-hidden="true">content_paste</span> Cole o Texto Bruto da Demanda (E-mail, Nota Técnica ou Resolução):
+                        <span class="material-icons md-18 align-middle" aria-hidden="true">content_paste</span> Cole aqui o texto bruto da demanda (e-mail, minuta de norma, briefing):
                     </label>
-                    <textarea class="form-control" id="textareaTextoBruto" rows="4" placeholder="Cole aqui o texto cru recebido da área técnica..."></textarea>
+                    <textarea class="form-control" id="textareaTextoBruto" rows="5" placeholder="Cole aqui o texto cru recebido da área técnica ou briefing institucional..."></textarea>
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center flex-wrap pt-2" style="gap: 1rem;">
                     <span class="text-muted small">
-                        <span class="material-icons md-18 align-middle" aria-hidden="true">verified</span> O prompt incluirá automaticamente todas as regras de acessibilidade e tokens oficiais.
+                        <span class="material-icons md-18 align-middle" aria-hidden="true">verified</span> O gerador injeta automaticamente o Grid 12 colunas, comentários de slots CMS e tokens oficiais do BCB.
                     </span>
                     <button type="button" class="btn btn-primary d-inline-flex align-items-center" id="btnGerarPrompt" style="gap: 0.4rem;">
-                        <span class="material-icons md-18" aria-hidden="true">copy_all</span>
-                        <span>Copiar Prompt Estruturado</span>
+                        <span class="material-icons md-18" aria-hidden="true">auto_fix_high</span>
+                        <span>Gerar Prompt para IA</span>
                     </button>
+                </div>
+
+                <!-- Painel de Saída do Prompt Gerado -->
+                <div id="painelResultadoPrompt" class="mt-4 pt-3 border-top" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <label for="textareaPromptGerado" class="font-weight-bold text-success mb-0 d-flex align-items-center" style="gap: 0.3rem;">
+                            <span class="material-icons md-18" aria-hidden="true">check_circle</span> Prompt Pronto para Envio à IA:
+                        </label>
+                        <button type="button" class="btn btn-sm btn-outline-success d-inline-flex align-items-center" id="btnCopiarPromptGerado" style="gap: 0.3rem;">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar Instrução
+                        </button>
+                    </div>
+                    <textarea class="form-control" id="textareaPromptGerado" rows="8" readonly style="background-color: var(--bcb-gray-100); font-family: monospace; font-size: 0.85rem; line-height: 1.5;"></textarea>
                 </div>
             </div>
         </section>
@@ -875,32 +887,77 @@ CONTEÚDO BRUTO DO SERVIÇO:
         // 3. PROMPT BUILDER INTERATIVO DO DESIGNER
         // ==========================================
         const btnGerarPrompt = document.getElementById('btnGerarPrompt');
+        const painelResultado = document.getElementById('painelResultadoPrompt');
+        const textareaPromptGerado = document.getElementById('textareaPromptGerado');
+        const btnCopiarPromptGerado = document.getElementById('btnCopiarPromptGerado');
+
         if (btnGerarPrompt) {
             btnGerarPrompt.addEventListener('click', () => {
                 const tipo = document.getElementById('selectTipoDemanda').value;
-                const titulo = document.getElementById('inputTituloSugerido').value.trim() || 'Título da Demanda';
-                const texto = document.getElementById('textareaTextoBruto').value.trim() || '[Insira aqui o texto bruto da demanda recebida]';
+                const titulo = document.getElementById('inputTituloSugerido').value.trim() || 'Título da Demanda Institucional';
+                const texto = document.getElementById('textareaTextoBruto').value.trim() || '[Insira aqui o texto bruto da demanda recebida da área técnica]';
 
-                const promptMontado = `Atue como Especialista em Diagramação e UI/UX do Banco Central do Brasil.
-Gere uma página HTML5 oficial e homologada para a demanda "${titulo}".
+                let especificacaoLayout = '';
 
-REGRAS ARQUITETURAIS MANDATÓRIAS:
-1. Inicie diretamente com <main id="conteudo-principal" class="bcb-container container py-4 mb-5"> e contenha exatamente 1 tag <` + `h1 class="bcb-page-title">${titulo}</` + `h1>.
-2. É ESTRITAMENTE PROIBIDO incluir <header>, <footer>, Barra Gov.br ou Breadcrumbs (providos pelo portal).
-3. Aplique a Matriz de Conversão Heurística do BCB:
-   - Extraia dados e números-chave em cards (.bcb-indicator-card).
-   - Converta sequências cronológicas em stepper (.process-list).
-   - Destaque avisos regulatórios e alertas em callouts (.callout) com contraste acessível.
-   - Tabule dados com .table .table-bordered e inclua exportação (.bcb-data-export).
-   - Disponibilize downloads oficiais com .documentos .documento.
-4. Utilize exclusivamente os tokens oficiais de cor e tipografia do BCB Design System.
+                switch (tipo) {
+                    case 'normativa':
+                        especificacaoLayout = `ESTRUTURA DE GRID E SLOTS EXIGIDA (PÁGINA NORMATIVA / COMUNICADO COPOM):
+- Layout estruturado no padrão 70/30 (.bcb-row com .bcb-col-12.bcb-col-lg-8 e .bcb-col-12.bcb-col-lg-4).
+- Delimite com comentários semânticos: <!-- [SLOT CMS: 70% Conteúdo Noticioso/Normativo | 30% Sidebar de Resoluções e Downloads] -->.
+- Coluna 70%: H1 oficial, metadados com data e tags (.tag-bcb), texto jornalístico claro, citação canônica (.bcb-citacao) e callout de atenção (.callout.callout-warning).
+- Coluna 30%: Bloco lateral com documentos oficiais vinculados (.documentos .documento) e links para normas correlatas.`;
+                        break;
 
-TEXTO BRUTO DA DEMANDA:
+                    case 'indicadores':
+                        especificacaoLayout = `ESTRUTURA DE GRID E SLOTS EXIGIDA (PAINEL ECONÔMICO / SÉRIES TEMPORAIS):
+- Abertura 100% (.bcb-col-12): H1 oficial, data de vigência e lead contextual <!-- [SLOT CMS: 100% - Abertura e Metadados] -->.
+- Grade de Indicadores 33/33/33 (.bcb-row com três colunas .bcb-col-12.bcb-col-md-4): cada qual com card de indicador (.bcb-indicator-card), valor destacado, seta de tendência e vigência <!-- [SLOT CMS: 33/33/33 - Grade de Indicadores Econômicos] -->.
+- Painel de Filtros e Busca em 100% (.bcb-filter-panel) com campos de data/reunião <!-- [SLOT CMS: 100% - Filtros e Busca] -->.
+- Série Histórica Densa em 100% (.bcb-col-12): tabela de dados (.table.table-striped) com <caption> acessível e barra de exportação CSV/JSON (.bcb-data-export) <!-- [SLOT CMS: 100% - Série Histórica e Downloads] -->.`;
+                        break;
+
+                    case 'servico':
+                        especificacaoLayout = `ESTRUTURA DE GRID E SLOTS EXIGIDA (SERVIÇO AO CIDADÃO / GUIA PASSO A PASSO):
+- Abertura 100% (.bcb-col-12): H1 oficial, metadados do serviço e lead explicativo <!-- [SLOT CMS: 100% - Abertura do Serviço] -->.
+- Stepper Cronológico 100% (.bcb-col-12): passos ordenados usando <ol class="process-list"> com títulos e instruções diretas <!-- [SLOT CMS: 100% - Stepper de Etapas] -->.
+- Detalhamento e Ajuda em layout 70/30 (.bcb-row com .bcb-col-12.bcb-col-lg-8 e .bcb-col-12.bcb-col-lg-4) <!-- [SLOT CMS: 70% Informações | 30% Ajuda e Alertas] -->:
+  - 70%: Tabela de relatórios/documentos com <caption> e links de serviços relacionados.
+  - 30%: Box de alerta contra fraudes (.callout.callout-warning.callout-elevated) e orientações sobre selos Prata/Ouro do Gov.br.`;
+                        break;
+
+                    case 'educacional':
+                        especificacaoLayout = `ESTRUTURA DE GRID E SLOTS EXIGIDA (PÁGINA INFORMATIVA / EDUCACIONAL):
+- Abertura e Leitura Fluida: container centralizado (.bcb-row.justify-content-center com .bcb-col-12.bcb-col-lg-10) <!-- [SLOT CMS: 100% - Leitura Longa e Reflexão] -->.
+- Blocos de Destaque em 50/50 (.bcb-row com duas colunas .bcb-col-12.bcb-col-md-6) para perguntas de planejamento, comparativos ou dicas <!-- [SLOT CMS: 50/50 - Destaques Comparativos] -->.
+- Seção de Perguntas Frequentes: acordeão oficial (.accordion.modelo-1) com atributos ARIA para síntese de dúvidas <!-- [SLOT CMS: 100% - FAQ e Documentos de Apoio] -->.
+- Caixas de dicas complementares com .tip-box e cards de download (.doc-download).`;
+                        break;
+                }
+
+                const promptMontado = `Atue como Especialista em Diagramação e Arquitetura de Informação UI/UX do Banco Central do Brasil.
+Gere uma página HTML5 oficial para o portal institucional referente à demanda: "${titulo}".
+
+${especificacaoLayout}
+
+DIRETRIZES TÉCNICAS MANDATÓRIAS DO DESIGN SYSTEM:
+1. Inicie diretamente em <main id="conteudo-principal" class="bcb-container container py-4 my-4"> com exatamente 1 tag <` + `h1 class="bcb-page-title">${titulo}</` + `h1>.
+2. É ESTRITAMENTE PROIBIDO incluir <header>, <footer>, Barra Brasil gov.br ou Breadcrumbs (providos pela casca do portal).
+3. Utilize exclusivamente o Grid oficial do BCB (.bcb-container, .bcb-row, .bcb-col-*, .bcb-section) com gutter de 24px e seções verticais com margem de 48px.
+4. Aplique a paleta de cores e tipografia estritamente via tokens oficiais (--bcb-brand-*, --bcb-color-*, font-family Ubuntu/Cormorant).
+5. Assegure contraste e-MAG / WCAG AAA tanto no tema claro quanto escuro e alto contraste.
+
+TEXTO BRUTO RECEBIDO DA DEMANDA:
 ${texto}`;
+
+                if (painelResultado && textareaPromptGerado) {
+                    textareaPromptGerado.value = promptMontado;
+                    painelResultado.style.display = 'block';
+                    painelResultado.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
 
                 navigator.clipboard.writeText(promptMontado).then(() => {
                     const originalHTML = btnGerarPrompt.innerHTML;
-                    btnGerarPrompt.innerHTML = '<span class="material-icons md-18" aria-hidden="true">check</span> Prompt Copiado com Sucesso!';
+                    btnGerarPrompt.innerHTML = '<span class="material-icons md-18" aria-hidden="true">check</span> Prompt Gerado &amp; Copiado!';
                     btnGerarPrompt.classList.remove('btn-primary');
                     btnGerarPrompt.classList.add('btn-success');
 
@@ -912,14 +969,30 @@ ${texto}`;
 
                     if (window.BcbToast) {
                         window.BcbToast.show({
-                            title: 'Prompt Estruturado Criado!',
-                            message: 'O prompt personalizado foi montado e copiado. Cole no chat do agente para gerar a tela!',
+                            title: 'Prompt para IA Gerado!',
+                            message: 'A instrução completa com grid e regras do BCB foi copiada para sua área de transferência.',
                             type: 'success',
                             duration: 3500
                         });
                     }
                 }).catch(err => {
-                    console.error('Erro ao copiar prompt gerado:', err);
+                    console.error('Erro ao copiar prompt:', err);
+                });
+            });
+        }
+
+        if (btnCopiarPromptGerado && textareaPromptGerado) {
+            btnCopiarPromptGerado.addEventListener('click', () => {
+                if (!textareaPromptGerado.value) return;
+                navigator.clipboard.writeText(textareaPromptGerado.value).then(() => {
+                    if (window.BcbToast) {
+                        window.BcbToast.show({
+                            title: 'Código Copiado!',
+                            message: 'Prompt copiado com sucesso para a área de transferência.',
+                            type: 'success',
+                            duration: 2500
+                        });
+                    }
                 });
             });
         }

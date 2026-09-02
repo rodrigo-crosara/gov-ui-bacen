@@ -6,21 +6,43 @@
 (function () {
   'use strict';
 
-  // Gerenciador Global de Temas (Claro, Escuro e Alto Contraste)
+  // Gerenciador Global de Temas (Claro/Padrão, Escuro e Alto Contraste)
   const BcbTheme = {
     init() {
       const btnLight = document.getElementById('btnThemeLight');
       const btnDark = document.getElementById('btnThemeDark');
       const btnContrast = document.getElementById('btnThemeHighContrast');
+      const allSwitchers = Array.from(document.querySelectorAll('[data-theme-switcher]'));
 
-      function applyTheme(theme, contrast) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.setAttribute('data-contrast', contrast);
+      function applyTheme(themeKey) {
+        let themeAttr = 'light';
+        let contrastAttr = 'normal';
+
+        if (themeKey === 'dark') {
+          themeAttr = 'dark';
+          contrastAttr = 'normal';
+        } else if (themeKey === 'high-contrast' || themeKey === 'high') {
+          themeAttr = 'high-contrast';
+          contrastAttr = 'high';
+        } else {
+          themeAttr = 'light';
+          contrastAttr = 'normal';
+        }
+
+        // Aplica na tag html e body
+        document.documentElement.setAttribute('data-theme', themeAttr);
+        document.documentElement.setAttribute('data-contrast', contrastAttr);
+        if (document.body) {
+          document.body.setAttribute('data-theme', themeAttr);
+          document.body.setAttribute('data-contrast', contrastAttr);
+        }
+
         try {
-          localStorage.setItem('bcb-theme', theme);
-          localStorage.setItem('bcb-contrast', contrast);
+          localStorage.setItem('bcb-theme', themeKey);
+          localStorage.setItem('bcb-contrast', contrastAttr);
         } catch (e) {}
 
+        // Sincroniza botões da navbar padrão
         [btnLight, btnDark, btnContrast].forEach(b => {
           if (b) {
             b.classList.remove('active');
@@ -28,12 +50,12 @@
           }
         });
 
-        if (contrast === 'high') {
+        if (contrastAttr === 'high') {
           if (btnContrast) {
             btnContrast.classList.add('active');
             btnContrast.setAttribute('aria-pressed', 'true');
           }
-        } else if (theme === 'dark') {
+        } else if (themeAttr === 'dark') {
           if (btnDark) {
             btnDark.classList.add('active');
             btnDark.setAttribute('aria-pressed', 'true');
@@ -44,17 +66,41 @@
             btnLight.setAttribute('aria-pressed', 'true');
           }
         }
+
+        // Sincroniza botões genéricos [data-theme-switcher]
+        allSwitchers.forEach(b => {
+          const target = b.getAttribute('data-theme-switcher');
+          const isMatch = (target === themeKey) ||
+                          (target === 'default' && (themeKey === 'light' || themeKey === 'default')) ||
+                          (target === 'light' && (themeKey === 'light' || themeKey === 'default')) ||
+                          (target === 'high-contrast' && (themeKey === 'high-contrast' || themeKey === 'high'));
+          if (isMatch) {
+            b.classList.add('active');
+            b.setAttribute('aria-pressed', 'true');
+          } else {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          }
+        });
       }
 
-      if (btnLight) btnLight.addEventListener('click', () => applyTheme('light', 'normal'));
-      if (btnDark) btnDark.addEventListener('click', () => applyTheme('dark', 'normal'));
-      if (btnContrast) btnContrast.addEventListener('click', () => applyTheme('dark', 'high'));
+      if (btnLight) btnLight.addEventListener('click', () => applyTheme('light'));
+      if (btnDark) btnDark.addEventListener('click', () => applyTheme('dark'));
+      if (btnContrast) btnContrast.addEventListener('click', () => applyTheme('high-contrast'));
 
-      // Restaurar preferência do usuário ou padrão
+      allSwitchers.forEach(b => {
+        b.addEventListener('click', () => {
+          const mode = b.getAttribute('data-theme-switcher');
+          applyTheme(mode);
+        });
+      });
+
+      // Restaurar preferência salva do usuário ou padrão
       try {
-        const savedTheme = localStorage.getItem('bcb-theme') || document.documentElement.getAttribute('data-theme') || 'light';
-        const savedContrast = localStorage.getItem('bcb-contrast') || document.documentElement.getAttribute('data-contrast') || 'normal';
-        applyTheme(savedTheme, savedContrast);
+        const savedTheme = localStorage.getItem('bcb-theme') ||
+                           document.documentElement.getAttribute('data-theme') ||
+                           'light';
+        applyTheme(savedTheme);
       } catch (e) {}
     }
   };

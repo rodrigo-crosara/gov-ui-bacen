@@ -17,189 +17,174 @@
 </head>
 <body>
     <main class="bcb-container container py-4 my-4" id="conteudo-principal">
-        <!-- 1. Hero Banner -->
-        <div class="bcb-hero-banner shadow-sm">
-            <div class="row">
-                <div class="col-md-6 bcb-hero-content">
-                    <h1 class="bcb-hero-title">Drex: A Plataforma do Real Digital</h1>
-                    <div class="bcb-hero-text">
-                        Bem-vindo à página oficial do Drex, a nova moeda digital do Banco Central do Brasil. O Drex vai facilitar a sua vida financeira, trazendo mais segurança e inovação para os seus negócios.
+
+        <!-- [SLOT CMS: 100% - Hero Banner Institucional] -->
+        <section class="bcb-section">
+            <div class="bcb-hero-banner shadow-sm">
+                <div class="bcb-row align-items-center">
+                    <div class="bcb-col-12 bcb-col-md-7 bcb-hero-content">
+                        <h1 class="bcb-hero-title">Drex: A Plataforma do Real Digital</h1>
+                        <div class="bcb-hero-text">
+                            Apresentação oficial do Drex, a moeda digital regulada pelo Banco Central do Brasil para viabilizar liquidação inteligente, contratos programáveis e inovação financeira com segurança jurídica.
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 bcb-hero-img-container">
-                    <div style="width:100%; height:100%; min-height:220px; background-color: rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center;">
-                        <span class="material-icons" style="font-size:6rem; opacity:0.2; color: var(--bcb-brand-amarellato);" aria-hidden="true">currency_exchange</span>
+                    <div class="bcb-col-12 bcb-col-md-5 bcb-hero-img-container">
+                        <div style="width:100%; height:100%; min-height:200px; background-color: rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; border-radius: 8px;">
+                            <span class="material-icons" style="font-size:5.5rem; opacity:0.3; color: var(--bcb-brand-amarellato);" aria-hidden="true">currency_exchange</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="row">
-            <!-- Centralizando conteúdo por ser página de leitura longa (Padrão 32) -->
-            <div class="col-md-8 offset-md-2">
-                
-                <!-- 2. Callout (Alerta Cidadão) -->
-                <div class="callout callout-warning callout-elevated">
-                    <span class="material-icons-outlined callout-icon" aria-hidden="true">warning</span>
-                    <div class="callout-content">
-                        <h3 class="callout-title">Cuidado com fraudes!</h3>
-                        <p class="mb-0">O Banco Central <strong>não liga</strong> para os cidadãos pedindo senhas, dados bancários ou transferências via Pix para cadastrar o Drex.</p>
-                    </div>
-                </div>
-
-                <!-- 3. Citação -->
-                <div class="bcb-citacao">
-                    <p>"O Drex vai democratizar o acesso a serviços financeiros inteligentes, diminuindo custos e burocracias para todos os brasileiros."</p>
-                    <small>— Presidente do Banco Central do Brasil</small>
-                </div>
-
-                <!-- 4. Bloco de Transição -->
-                <div class="transition-block">
-                  <h3>Mas por onde começar?</h3>
-                  <p class="lead">Conheça o cronograma de evolução do Real Digital:</p>
-                  <i class="material-icons animated-arrow" aria-hidden="true">arrow_downward</i>
-                </div>
-
-                <!-- 5. Timeline Horizontal (Fases do Projeto) -->
-                <h3 class="mb-4">Fases de Implantação</h3>
-                <div class="timeline-horizontal">
-                  <div class="timeline-h-step active">
-                    <div class="timeline-h-circle"></div>
-                    <div class="timeline-h-date">Mar/2023</div>
-                    <div class="timeline-h-text">Início dos testes do Piloto Drex</div>
-                  </div>
-                  <div class="timeline-h-step active">
-                    <div class="timeline-h-circle"></div>
-                    <div class="timeline-h-date">Mai/2024</div>
-                    <div class="timeline-h-text">Segunda fase de testes (Contratos inteligentes)</div>
-                  </div>
-                  <div class="timeline-h-step">
-                    <div class="timeline-h-circle"></div>
-                    <div class="timeline-h-date">Dez/2024</div>
-                    <div class="timeline-h-text">Avaliação para lançamento ao público</div>
-                  </div>
-                </div>
-
-                <!-- 6. Tip Box (Dica Educacional/Técnica) -->
-                <div class="tip-box my-5">
-                  <p class="mb-0"><strong>Dica para desenvolvedores:</strong> Você pode acompanhar o repositório oficial do Piloto Drex no <a href="#" class="text-link">GitHub do BC</a>.</p>
-                </div>
-
-                <!-- 7. Accordion (FAQ) -->
-                <h3 class="mb-3">Perguntas Frequentes</h3>
-                <div class="accordion modelo-1 mb-5" id="accordionDrex">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h4 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    1. O Drex vai substituir o Pix?
-                                </button>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionDrex">
-                            <div class="card-body">
-                                Não. O Pix é uma forma de transferência instantânea, enquanto o Drex é a própria representação do dinheiro em ambiente digital, com suporte a contratos inteligentes.
-                            </div>
+        <!-- [SLOT CMS: 100% - Alerta de Segurança e Diretrizes Oficiais] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <div class="callout callout-warning callout-elevated mb-4">
+                        <span class="material-icons-outlined callout-icon" aria-hidden="true">warning</span>
+                        <div class="callout-content">
+                            <h2 class="callout-title h5">Cuidado com golpes envolvendo o Drex</h2>
+                            <p class="mb-0">O Banco Central <strong>nunca entra em contato</strong> solicitando chaves, senhas, códigos de validação ou pagamentos antecipados para cadastramento no Drex.</p>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h4 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    2. Quanto vai custar o Drex?
-                                </button>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionDrex">
-                            <div class="card-body">
-                                O uso do Drex terá custos definidos pelas instituições financeiras participantes, sob regulação do BC, visando à redução de custos e aumento da segurança.
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- 8. Outros Serviços (Modelo 5 Limpo) -->
-                <h3 class="mb-4">Outros Serviços Relacionados</h3>
-                <div class="listalinks-light modelo-5">
-                    <div class="row mb-5">
-                        <div class="col-md-4 mb-3">
-                            <div class="h-100 d-flex align-items-center">
-                                <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                                    <div class="icon-container d-flex align-items-center justify-content-center">
-                                        <span class="material-icons md-36 color-1" aria-hidden="true">gavel</span>
-                                    </div>
-                                    <div class="info-container align-self-center text-center">
-                                        <p class="mb-0">
-                                            <span class="title color-1 text-uppercase d-block mt-3">Regulamentação</span>
-                                            <span class="description">Leia as normas oficiais</span>
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="h-100 d-flex align-items-center">
-                                <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                                    <div class="icon-container d-flex align-items-center justify-content-center">
-                                        <span class="material-icons md-36 color-1" aria-hidden="true">contact_support</span>
-                                    </div>
-                                    <div class="info-container align-self-center text-center">
-                                        <p class="mb-0">
-                                            <span class="title color-1 text-uppercase d-block mt-3">Fale Conosco</span>
-                                            <span class="description">Tire suas dúvidas</span>
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="h-100 d-flex align-items-center">
-                                <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                                    <div class="icon-container d-flex align-items-center justify-content-center">
-                                        <span class="material-icons md-36 color-1" aria-hidden="true">pix</span>
-                                    </div>
-                                    <div class="info-container align-self-center text-center">
-                                        <p class="mb-0">
-                                            <span class="title color-1 text-uppercase d-block mt-3">Pix</span>
-                                            <span class="description">Novidades do Pix</span>
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <blockquote class="bcb-citacao">
+                        <p class="mb-0">"O Drex vai democratizar o acesso a serviços financeiros inteligentes, reduzindo custos de transação e simplificando contratos do dia a dia com segurança jurídica garantida pelo Banco Central."</p>
+                        <footer class="blockquote-footer">Diretoria de Organização do Sistema Financeiro e de Resolução</footer>
+                    </blockquote>
                 </div>
-
-                <!-- 8. Documentos Úteis -->
-                <h3 class="mb-3">Arquivos Úteis</h3>
-                <div class="documentos">
-                    <a href="#" class="documento hvr-shadow d-flex text-decoration-none color-1" aria-label="Baixar Apresentação Completa do Projeto Drex (PDF, 2.4 MB)">
-                        <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
-                            <div class="d-flex flex-column position-relative">
-                                <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
-                                <span class="extensao bg-color-1">pdf</span>
-                            </div>
-                        </div>
-                        <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
-                            <span class="documento-title">Apresentação Completa do Projeto Drex (PDF, 2.4 MB)</span>
-                            <span class="documento-data">Publicado em: 15/02/2026</span>
-                        </div>
-                    </a>
-                </div>
-
             </div>
-        </div>
+        </section>
+
+        <!-- [SLOT CMS: 33/33/33 - Pilares Estratégicos da Plataforma] -->
+        <section class="bcb-section">
+            <h2 class="h4 mb-4 color-1">Pilares Fundamentais do Real Digital</h2>
+            <div class="bcb-row">
+                <div class="bcb-col-12 bcb-col-md-4 mb-4">
+                    <div class="card h-100 p-4 border shadow-sm" style="background-color: var(--bcb-color-surface);">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="material-icons md-36 color-1 mr-2" aria-hidden="true">smart_toy</span>
+                            <h3 class="h5 mb-0 color-1 font-weight-bold">Contratos Inteligentes</h3>
+                        </div>
+                        <p class="text-body mb-0">Execução automatizada e condicional de liquidações financeiras (Delivery versus Payment) sem intermediários manuais.</p>
+                    </div>
+                </div>
+                <div class="bcb-col-12 bcb-col-md-4 mb-4">
+                    <div class="card h-100 p-4 border shadow-sm" style="background-color: var(--bcb-color-surface);">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="material-icons md-36 color-1 mr-2" aria-hidden="true">security</span>
+                            <h3 class="h5 mb-0 color-1 font-weight-bold">Privacidade &amp; Sigilo</h3>
+                        </div>
+                        <p class="text-body mb-0">Soluções criptográficas avançadas que garantem conformidade com a LGPD e o sigilo bancário em ambiente de registro distribuído.</p>
+                    </div>
+                </div>
+                <div class="bcb-col-12 bcb-col-md-4 mb-4">
+                    <div class="card h-100 p-4 border shadow-sm" style="background-color: var(--bcb-color-surface);">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="material-icons md-36 color-1 mr-2" aria-hidden="true">hub</span>
+                            <h3 class="h5 mb-0 color-1 font-weight-bold">Interoperabilidade</h3>
+                        </div>
+                        <p class="text-body mb-0">Integração nativa com o Pix, Open Finance e redes financeiras globais reguladas pelo Banco Central.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Linha do Tempo e Cronograma] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <h2 class="h4 mb-4 color-1">Cronograma de Fases de Implantação</h2>
+                    <div class="timeline-horizontal">
+                        <div class="timeline-h-step active">
+                            <div class="timeline-h-circle"></div>
+                            <div class="timeline-h-date">Mar/2023</div>
+                            <div class="timeline-h-text">Início dos testes do Piloto Drex (infraestrutura e nós)</div>
+                        </div>
+                        <div class="timeline-h-step active">
+                            <div class="timeline-h-circle"></div>
+                            <div class="timeline-h-date">Mai/2024</div>
+                            <div class="timeline-h-text">Segunda fase: Contratos inteligentes e privacidade</div>
+                        </div>
+                        <div class="timeline-h-step">
+                            <div class="timeline-h-circle"></div>
+                            <div class="timeline-h-date">2026+</div>
+                            <div class="timeline-h-text">Evolução regulatória e primeiros casos de uso públicos</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box my-4">
+                        <p class="mb-0"><strong>Ambiente Técnico do Piloto:</strong> Desenvolvedores e pesquisadores autorizados podem acompanhar as especificações técnicas e contratos de referência no repositório oficial do projeto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Perguntas Frequentes & Downloads] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12 bcb-col-lg-8 mb-4 mb-lg-0">
+                    <h2 class="h4 mb-3 color-1">Perguntas Frequentes</h2>
+                    <div class="accordion modelo-1" id="accordionDrex">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h3 class="h6 mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        1. O Drex vai substituir o Pix?
+                                    </button>
+                                </h3>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionDrex">
+                                <div class="card-body">
+                                    Não. O Pix é um meio de pagamento instantâneo para transferência de valores, enquanto o Drex é a infraestrutura de moeda digital programável sobre tecnologia DLT (Distributed Ledger Technology).
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h3 class="h6 mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        2. Quem poderá transacionar com o Drex?
+                                    </button>
+                                </h3>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionDrex">
+                                <div class="card-body">
+                                    Cidadãos e empresas transacionarão por meio de depósitos tokenizados mantidos em instituições financeiras e de pagamento autorizadas pelo BC.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bcb-col-12 bcb-col-lg-4">
+                    <aside>
+                        <h2 class="h4 mb-3 color-1">Documentos Oficiais</h2>
+                        <div class="documentos">
+                            <a href="#" class="documento hvr-shadow d-flex text-decoration-none color-1" aria-label="Baixar Diretrizes do Real Digital Drex (PDF, 2.4 MB)">
+                                <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
+                                    <div class="d-flex flex-column position-relative">
+                                        <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
+                                        <span class="extensao bg-color-1">pdf</span>
+                                    </div>
+                                </div>
+                                <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
+                                    <span class="documento-title">Diretrizes do Projeto Drex (PDF, 2.4 MB)</span>
+                                    <span class="documento-data">Publicado em: 15/02/2026</span>
+                                </div>
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Scripts Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/bcb-ui.js"></script>
-
-    <script>
-        const rootElement = document.documentElement;
-        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        rootElement.setAttribute('data-theme', currentTheme);
-    </script>
 </body>
 </html>

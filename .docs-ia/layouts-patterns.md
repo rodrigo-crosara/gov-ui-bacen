@@ -21,6 +21,68 @@ Todo desenvolvimento de novas interfaces pelo time ou por agentes de IA deve par
 
 ---
 
+## 0.1 Sistema de Grid de 12 Colunas & Slots Modulares (CMS BCB)
+
+O layout das páginas internas do Banco Central do Brasil é estruturado sobre o sistema de **Grid Flexível de 12 Colunas** com gutter padrão de 24px e espaçamento vertical entre seções padronizado em 48px (`.bcb-section`).
+
+### Átomos Estruturais e Classes
+
+| Classe | Descrição | Comportamento Responsivo |
+|---|---|---|
+| `.bcb-container` | Container institucional de largura restrita | Mobile: padding 15px; Desktop ≥1200px: padding 25px; Wide ≥1520px: `max-width: 1440px` centralizado. |
+| `.bcb-row` | Linha flexível de alinhamento com gutter negativo | `display: flex; flex-wrap: wrap; margin: 0 -12px;`. |
+| `.bcb-row--gap` | Linha flexível com espaçamento via gap | `gap: var(--bcb-spacing-lg, 24px);`. |
+| `.bcb-col-12` | Coluna de largura cheia (100%) | Ocupa 12/12 colunas em qualquer resolução. |
+| `.bcb-col-lg-8` | Coluna principal 70% (conteúdo analítico/noticioso) | Ocupa 8/12 colunas no desktop (≥992px); 100% no mobile. |
+| `.bcb-col-lg-4` | Coluna lateral 30% (sidebar, downloads, links) | Ocupa 4/12 colunas no desktop (≥992px); 100% no mobile. |
+| `.bcb-col-md-6` | Coluna 50% (pares de indicadores, comparativos) | Ocupa 6/12 colunas em tablets/desktops (≥768px); 100% no mobile. |
+| `.bcb-col-md-4` | Coluna 33% (trio de indicadores, pilares, acessos) | Ocupa 4/12 colunas em tablets/desktops (≥768px); 100% no mobile. |
+| `.bcb-section` | Espaçador vertical semântico entre blocos | `margin-bottom: var(--bcb-spacing-2xl, 48px);`. |
+
+### Matriz de Equivalência com os Slots do CMS
+
+Para facilitar a importação e o recorte modular de componentes pelo webdesigner no CMS institucional, todo código gerado deve conter comentários delimitadores canônicos:
+
+```html
+<!-- [SLOT CMS: 100% - Abertura e Metadados] -->
+<section class="bcb-section">
+  <div class="bcb-row">
+    <div class="bcb-col-12">
+      <h1 class="bcb-page-title">Título Oficial</h1>
+      <div class="bcb-page-meta">...</div>
+      <p class="lead">Texto introdutório...</p>
+    </div>
+  </div>
+</section>
+
+<!-- [SLOT CMS: 33/33/33 - Grade de Indicadores Econômicos] -->
+<section class="bcb-section">
+  <div class="bcb-row">
+    <div class="bcb-col-12 bcb-col-md-4 mb-3">...Card 1...</div>
+    <div class="bcb-col-12 bcb-col-md-4 mb-3">...Card 2...</div>
+    <div class="bcb-col-12 bcb-col-md-4 mb-3">...Card 3...</div>
+  </div>
+</section>
+
+<!-- [SLOT CMS: 70% Conteúdo | 30% Sidebar de Serviços] -->
+<section class="bcb-section">
+  <div class="bcb-row">
+    <div class="bcb-col-12 bcb-col-lg-8">...Artigo / Notícia / Tabela...</div>
+    <div class="bcb-col-12 bcb-col-lg-4 mt-4 mt-lg-0">...Downloads / Relacionadas...</div>
+  </div>
+</section>
+
+<!-- [SLOT CMS: 50/50 - Comparativos ou Downloads] -->
+<section class="bcb-section">
+  <div class="bcb-row">
+    <div class="bcb-col-12 bcb-col-md-6 mb-3">...Bloco A...</div>
+    <div class="bcb-col-12 bcb-col-md-6 mb-3">...Bloco B...</div>
+  </div>
+</section>
+```
+
+---
+
 ## 1. Blueprint 1: Página de Indicador Econômico
 
 **Casos de Uso**: Taxa Selic, IPCA, Câmbio PTAX, Reservas Internacionais, Poupança.

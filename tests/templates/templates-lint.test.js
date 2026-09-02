@@ -122,6 +122,14 @@ for (const arquivo of arquivosHTML) {
     if (tagsOrfas.length > 0) {
       problemas.push(`${tagsOrfas.length} tag(s) customizada(s) órfã(s) detectada(s). Use apenas componentes em HTML5 nativo.`);
     }
+
+    // 7.6 Validação Mandatória de Grid 12 Colunas Oficial (.bcb-row e .bcb-col-*)
+    if (!conteudo.includes('bcb-row')) {
+      problemas.push('Template não utiliza a classe oficial de linha do Grid 12 colunas (.bcb-row).');
+    }
+    if (!conteudo.match(/bcb-col-(?:12|md-6|md-4|lg-8|lg-4)/)) {
+      problemas.push('Template não utiliza colunas proporcionais do sistema oficial de grid (.bcb-col-*).');
+    }
   }
 
   // Relatório do arquivo

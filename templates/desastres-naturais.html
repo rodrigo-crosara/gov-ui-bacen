@@ -285,24 +285,25 @@
             </div>
         </div>
 
-            <!-- Seção Hero: Introdução -->
-            <section class="intro-section">
-                <div class="row align-items-center">
-                    <div class="col-md-7 mb-4 mb-md-0">
-                        <h2 class="h3 text-primary-custom mb-3">O clima está mudando. O que está acontecendo?</h2>
-                        <p class="lead">Nós estamos acostumados a ver notícias de enchentes devastadoras, seca severa e ondas de calor. Antes, esses eventos pareciam ocorrer longe de onde moramos.</p>
-                        <p class="mb-0">Está ocorrendo o que os cientistas já previam há algumas décadas: o aquecimento global está levando o mundo a condições climáticas mais severas e eventos extremos mais frequentes. Como as mudanças climáticas atingem principalmente as populações mais vulneráveis, é melhor estar preparado. <strong>É nisso que vamos te ajudar!</strong></p>
-                    </div>
-                    <div class="col-md-5 text-center">
-                        <!-- Imagem do Unsplash representando natureza/clima -->
-                        <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Paisagem representando a força da natureza e o clima" class="img-fluid shadow">
-                    </div>
+        <!-- Seção Hero: Introdução -->
+        <section class="bcb-section intro-section">
+            <div class="bcb-row align-items-center">
+                <div class="bcb-col-12 bcb-col-md-7 mb-4 mb-md-0">
+                    <h2 class="h3 text-primary-custom mb-3">O clima está mudando. O que está acontecendo?</h2>
+                    <p class="lead">Nós estamos acostumados a ver notícias de enchentes devastadoras, seca severa e ondas de calor. Antes, esses eventos pareciam ocorrer longe de onde moramos.</p>
+                    <p class="mb-0">Está ocorrendo o que os cientistas já previam há algumas décadas: o aquecimento global está levando o mundo a condições climáticas mais severas e eventos extremos mais frequentes. Como as mudanças climáticas atingem principalmente as populações mais vulneráveis, é melhor estar preparado. <strong>É nisso que vamos te ajudar!</strong></p>
                 </div>
-            </section>
+                <div class="bcb-col-12 bcb-col-md-5 text-center">
+                    <!-- Imagem do Unsplash representando natureza/clima -->
+                    <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Paisagem representando a força da natureza e o clima" class="img-fluid shadow">
+                </div>
+            </div>
+        </section>
 
-            <!-- Grid Centralizado para Leitura Confortável -->
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-10">
+        <!-- Grid Centralizado para Leitura Confortável -->
+        <section class="bcb-section">
+            <div class="bcb-row justify-content-center">
+                <div class="bcb-col-12 bcb-col-lg-10">
                     
                     <!-- 1. Riscos Climáticos -->
                     <section id="riscos" class="mb-5">
@@ -471,36 +472,49 @@
 
                         <h3 class="h5 mt-5 mb-4">Veja algumas ações que você pode tomar:</h3>
                         
-                        <div class="process-list mb-5">
-                            <div class="process-item">
-                                <i class="material-icons md-36" aria-hidden="true">account_balance</i>
-                                <h4 class="h6 font-weight-bold mb-2">Auxílios do Governo</h4>
-                                <p class="small text-muted mb-0">Verifique os auxílios emergenciais disponibilizados pelo governo/prefeitura. Se você fizer parte da população atendida, inscreva-se o quanto antes.</p>
+                        <!-- [SLOT CMS: 50/50 - Ações Imediatas de Suporte] -->
+                        <div class="bcb-row mb-5">
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                                <div class="process-item h-100 p-3 border rounded bg-white shadow-sm">
+                                    <i class="material-icons md-36 text-primary-custom" aria-hidden="true">account_balance</i>
+                                    <h4 class="h6 font-weight-bold my-2">Auxílios do Governo</h4>
+                                    <p class="small text-muted mb-0">Verifique os auxílios emergenciais disponibilizados pelo poder público. Se você fizer parte do público atendido, inscreva-se o quanto antes.</p>
+                                </div>
                             </div>
-                            <div class="process-item">
-                                <i class="material-icons md-36" aria-hidden="true">directions_car</i>
-                                <h4 class="h6 font-weight-bold mb-2">Veículos</h4>
-                                <p class="small text-muted mb-0">Verifique se o seguro cobre danos de desastres ou se há seguro atrelado ao financiamento. Tente negociar pagamentos com a instituição financeira.</p>
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                                <div class="process-item h-100 p-3 border rounded bg-white shadow-sm">
+                                    <i class="material-icons md-36 text-primary-custom" aria-hidden="true">directions_car</i>
+                                    <h4 class="h6 font-weight-bold my-2">Veículos</h4>
+                                    <p class="small text-muted mb-0">Verifique se o seguro cobre danos de desastres ou se há seguro atrelado ao financiamento. Negocie com sua instituição financeira.</p>
+                                </div>
                             </div>
-                            <div class="process-item">
-                                <i class="material-icons md-36" aria-hidden="true">shield</i>
-                                <h4 class="h6 font-weight-bold mb-2">Seguros Residenciais</h4>
-                                <p class="small text-muted mb-0">Busque informações sobre as coberturas em caso de eventos naturais e prazos para acionar o sinistro e receber os valores.</p>
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                                <div class="process-item h-100 p-3 border rounded bg-white shadow-sm">
+                                    <i class="material-icons md-36 text-primary-custom" aria-hidden="true">shield</i>
+                                    <h4 class="h6 font-weight-bold my-2">Seguros Residenciais</h4>
+                                    <p class="small text-muted mb-0">Busque informações sobre as coberturas em caso de eventos climáticos e prazos para acionar o sinistro e receber os valores.</p>
+                                </div>
                             </div>
-                            <div class="process-item">
-                                <i class="material-icons md-36" aria-hidden="true">house</i>
-                                <h4 class="h6 font-weight-bold mb-2">Moradia e Aluguel</h4>
-                                <p class="small text-muted mb-0">Financiamento: renegocie o pagamento junto ao banco. Aluguel: contate o proprietário para informar danos e negociar alternativas.</p>
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                                <div class="process-item h-100 p-3 border rounded bg-white shadow-sm">
+                                    <i class="material-icons md-36 text-primary-custom" aria-hidden="true">house</i>
+                                    <h4 class="h6 font-weight-bold my-2">Moradia e Aluguel</h4>
+                                    <p class="small text-muted mb-0">Financiamento: renegocie parcelas junto ao banco. Aluguel: contate o locador para reportar danos e negociar alternativas.</p>
+                                </div>
                             </div>
-                            <div class="process-item">
-                                <i class="material-icons md-36" aria-hidden="true">receipt_long</i>
-                                <h4 class="h6 font-weight-bold mb-2">Contas Básicas</h4>
-                                <p class="small text-muted mb-0">Contate prestadores (água, luz, internet) para suspender temporariamente os serviços e faturamentos caso precise se ausentar do imóvel.</p>
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                                <div class="process-item h-100 p-3 border rounded bg-white shadow-sm">
+                                    <i class="material-icons md-36 text-primary-custom" aria-hidden="true">receipt_long</i>
+                                    <h4 class="h6 font-weight-bold my-2">Contas Básicas</h4>
+                                    <p class="small text-muted mb-0">Contate prestadores (água, energia, telecom) para suspender temporariamente faturamentos caso precise se ausentar.</p>
+                                </div>
                             </div>
-                            <div class="process-item">
-                                <i class="material-icons md-36" aria-hidden="true">credit_card</i>
-                                <h4 class="h6 font-weight-bold mb-2">Bancos e Cartões</h4>
-                                <p class="small text-muted mb-0">Fale com seu gerente e operadora de cartão. Verifique ofertas de mitigação, como pausa em parcelas, neste momento de emergência.</p>
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                                <div class="process-item h-100 p-3 border rounded bg-white shadow-sm">
+                                    <i class="material-icons md-36 text-primary-custom" aria-hidden="true">credit_card</i>
+                                    <h4 class="h6 font-weight-bold my-2">Bancos e Cartões</h4>
+                                    <p class="small text-muted mb-0">Fale com seu gerente e banco. Verifique medidas emergenciais, como carência e pausa em parcelas de crédito.</p>
+                                </div>
                             </div>
                         </div>
 
@@ -585,7 +599,7 @@
 
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <!-- Scripts Bootstrap 4.6 (jQuery & Popper necessários) -->
