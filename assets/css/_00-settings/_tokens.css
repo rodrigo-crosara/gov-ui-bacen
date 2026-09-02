@@ -12,39 +12,67 @@
   --bcb-color-bg-light: #E0EBEE;
 
   /* ==========================================
-     2. BRAND (Primárias Oficiais)
+     2. BRAND (Cores Oficiais do Manual de Marca)
      ========================================== */
+  --bcb-brand-azul-blue: #025C75;
+  --bcb-brand-azulcinti: #077391;
+  --bcb-brand-azulpetro: #2E4C59;
+  --bcb-brand-azulnetuno: #476F82;
+  --bcb-brand-verde-susta: #067078;
+  --bcb-brand-verde-castell: #088694;
+  --bcb-brand-cinza-80: #606062;
+  --bcb-brand-amarellato-biscoito: #F8D48D;
+  --bcb-brand-cafellato: #DEBE7F;
+  --bcb-brand-vinho-autentico: #47373A;
+  --bcb-brand-marsala-suave: #736063;
+  /* Aliases de compatibilidade */
   --bcb-brand-blue: #025C75;
   --bcb-brand-blue-dark: #013F50;
   --bcb-brand-gray80: #606062;
-
-  /* ==========================================
-     3. BRAND (Complementares)
-     ========================================== */
-  --bcb-brand-vinho: #2E4C59;
+  --bcb-brand-vinho: #47373A;
   --bcb-brand-marsala: #736063;
-  --bcb-brand-azulpetro: #077391;
-  --bcb-brand-azulnetuno: #476F82;
-  --bcb-brand-azulcinti: #088694;
-  --bcb-brand-verde-susta: #067078;
-  --bcb-brand-verde-castell: #DEBE7F;
   --bcb-brand-amarellato: #F8D48D;
-  --bcb-brand-cafellato: #47373A;
+  --bcb-color-azulcinti: #077391;
+  --bcb-color-verde-castell: #088694;
 
   /* ==========================================
-     4. INTERAÇÃO E BOTÕES
+     3. AÇÕES E INTERAÇÃO (Botões e Links)
      ========================================== */
   --bcb-btn-primary-bg: #025C75;
-  --bcb-btn-primary-hover: #013F50;
-  --bcb-btn-primary-active: #012F3C;
+  --bcb-btn-primary-hover: #077391;
+  --bcb-btn-primary-active: #2E4C59;
+  --bcb-action-primary-default: #025C75;
+  --bcb-action-primary-hover: #077391;
+  --bcb-action-primary-active: #2E4C59;
   --bcb-btn-secondary-bg: #088694;
-  --bcb-btn-secondary-hover: #066974;
-  --bcb-btn-secondary-active: #055861;
+  --bcb-btn-secondary-hover: #067078;
+  --bcb-btn-secondary-active: #2E4C59;
+  --bcb-action-secondary-default: #088694;
+  --bcb-action-secondary-hover: #067078;
+  --bcb-action-secondary-active: #2E4C59;
   --bcb-link-color: #1B75A6;
-  --bcb-link-hover: #013F50;
+  --bcb-link-hover: #025C75;
 
   /* ==========================================
-     5. MODO ALTO CONTRASTE (Acessibilidade)
+     4. FEEDBACK SEMÂNTICO (Success, Warning, Danger, Info)
+     ========================================== */
+  --bcb-feedback-success: #067078;
+  --bcb-feedback-warning-surface: #F8D48D;
+  --bcb-feedback-warning-border: #DEBE7F;
+  --bcb-feedback-danger: #47373A;
+  --bcb-feedback-info: #025C75;
+  --bcb-feedback-warning: #DEBE7F;
+
+  /* ==========================================
+     5. TEXTO E SUPERFÍCIE
+     ========================================== */
+  --bcb-text-primary: #606060;
+  --bcb-text-secondary: #606062;
+  --bcb-surface-light: #E0EBEE;
+  --bcb-surface-card: #F3F5F7;
+
+  /* ==========================================
+     6. MODO ALTO CONTRASTE (Acessibilidade)
      ========================================== */
   --bcb-hc-bg-level1: #000000;
   --bcb-hc-bg-level2: #222222;
@@ -54,7 +82,7 @@
   --bcb-hc-border: #FFFFFF;
 
   /* ==========================================
-     6. ESCALA DE CINZAS UI (Superfícies e Bordas)
+     7. ESCALA DE CINZAS UI (Superfícies e Bordas)
      ========================================== */
   --bcb-gray-50: #FAFBFC;
   --bcb-gray-100: #F3F5F7;
@@ -69,7 +97,16 @@
   --bcb-gray-1000: #0B0D0E;
 
   /* ==========================================
-     7. TAMANHOS DE FONTE (Fluída com clamp)
+     8. TINTS DE SUPERFÍCIE (Callouts e Destaques)
+     ========================================== */
+  --bg-brand-light: #F0F7F9;
+  --bg-verde-light: #F0F8F8;
+  --bg-amarellato-light: #FEFBFA;
+  --bg-vinho-light: #F5F7F8;
+  --bg-gray-light: #F8F9FB;
+
+  /* ==========================================
+     9. TAMANHOS DE FONTE (Fluída com clamp)
      ========================================== */
   --bcb-font-50: 0.75rem;
   --bcb-font-75: clamp(0.75rem, 0.675rem + 0.38vw, 0.875rem);
@@ -83,7 +120,7 @@
   --bcb-font-800: clamp(2.2rem, 1.72rem + 2.4vw, 3rem);
 
   /* ==========================================
-     8. ESPAÇAMENTOS (Grid de 4px, base 16px)
+     10. ESPAÇAMENTOS (Grid de 4px, base 16px)
      ========================================== */
   --bcb-space-0: 0;
   --bcb-space-1: 0.25rem;
@@ -98,7 +135,7 @@
   --bcb-space-24: 6rem;
 
   /* ==========================================
-     9. BORDAS E SOMBRAS (Elevation)
+     11. BORDAS E SOMBRAS (Elevation)
      ========================================== */
   --bcb-radius-0: 0;
   --bcb-radius-4: 0.25rem;
@@ -110,18 +147,14 @@
   --bcb-shadow-600: 3px 3px 10px 0 hsla(0,0%,76%,0.5);
 
   /* ==========================================
-     10. FAMÍLIAS TIPOGRÁFICAS
+     12. FAMÍLIAS TIPOGRÁFICAS
      ========================================== */
   --bcb-font-ubuntu: 'Ubuntu', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --bcb-font-cormorant: 'Cormorant Garamond', serif;
   --bcb-font-istok: 'Istok Web', sans-serif;
 
   /* ==========================================
-     11. FEEDBACK E PORTAL
+     13. PORTAL PRIMARY
      ========================================== */
   --bcb-portal-primary: #22272B;
-  --bcb-feedback-success: #28A745;
-  --bcb-feedback-warning: #D6A13B;
-  --bcb-feedback-danger: #DC3545;
-  --bcb-feedback-info: #025C75;
 }

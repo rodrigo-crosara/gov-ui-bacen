@@ -48,57 +48,82 @@
   --bcb-color-white: #FFFFFF;
   --bcb-color-black: #000000;
   --bcb-color-body-text: #606060;
-  --bcb-color-bg-light: #e0ebee;
+  --bcb-color-bg-light: #E0EBEE;
 
   /* ==========================================
-     2. BRAND (Primárias Oficiais)
+     2. BRAND (Cores Oficiais do Manual de Marca)
      ========================================== */
+  --bcb-brand-azul-blue: #025C75;
+  --bcb-brand-azulcinti: #077391;
+  --bcb-brand-azulpetro: #2E4C59;
+  --bcb-brand-azulnetuno: #476F82;
+  --bcb-brand-verde-susta: #067078;
+  --bcb-brand-verde-castell: #088694;
+  --bcb-brand-cinza-80: #606062;
+  --bcb-brand-amarellato-biscoito: #F8D48D;
+  --bcb-brand-cafellato: #DEBE7F;
+  --bcb-brand-vinho-autentico: #47373A;
+  --bcb-brand-marsala-suave: #736063;
+  /* Aliases de compatibilidade */
   --bcb-brand-blue: #025C75;
   --bcb-brand-blue-dark: #013F50;
   --bcb-brand-gray80: #606062;
-
-  /* ==========================================
-     3. BRAND (Complementares)
-     ========================================== */
-  --bcb-brand-vinho: #2E4C59;
+  --bcb-brand-vinho: #47373A;
   --bcb-brand-marsala: #736063;
-  --bcb-brand-azulpetro: #077391;
-  --bcb-brand-azulnetuno: #476F82;
-  --bcb-brand-azulcinti: #088694;
-  --bcb-brand-verde-susta: #067078;
-  --bcb-brand-verde-castell: #DEBE7F;
   --bcb-brand-amarellato: #F8D48D;
-  --bcb-brand-cafellato: #47373A;
+  --bcb-color-azulcinti: #077391;
+  --bcb-color-verde-castell: #088694;
 
   /* ==========================================
-     4. INTERAÇÃO E BOTÕES (Extraído de Produção)
+     3. AÇÕES E INTERAÇÃO (Botões e Links)
      ========================================== */
   --bcb-btn-primary-bg: #025C75;
-  --bcb-btn-primary-hover: #013F50;
-  --bcb-btn-primary-active: #012F3C;
-  
+  --bcb-btn-primary-hover: #077391;
+  --bcb-btn-primary-active: #2E4C59;
+  --bcb-action-primary-default: #025C75;
+  --bcb-action-primary-hover: #077391;
+  --bcb-action-primary-active: #2E4C59;
   --bcb-btn-secondary-bg: #088694;
-  --bcb-btn-secondary-hover: #066974;
-  --bcb-btn-secondary-active: #055861;
-
-  /* Links */
+  --bcb-btn-secondary-hover: #067078;
+  --bcb-btn-secondary-active: #2E4C59;
+  --bcb-action-secondary-default: #088694;
+  --bcb-action-secondary-hover: #067078;
+  --bcb-action-secondary-active: #2E4C59;
   --bcb-link-color: #1B75A6;
-  --bcb-link-hover: #013F50;
+  --bcb-link-hover: #025C75;
 
   /* ==========================================
-     5. MODO ALTO CONTRASTE (Acessibilidade)
+     4. FEEDBACK SEMÂNTICO (Success, Warning, Danger, Info)
      ========================================== */
-  --bcb-hc-bg-level-1: #000000;
-  --bcb-hc-bg-level-2: #222222;
-  --bcb-hc-bg-level-3: #333333;
+  --bcb-feedback-success: #067078;
+  --bcb-feedback-warning-surface: #F8D48D;
+  --bcb-feedback-warning-border: #DEBE7F;
+  --bcb-feedback-danger: #47373A;
+  --bcb-feedback-info: #025C75;
+  --bcb-feedback-warning: #DEBE7F;
+
+  /* ==========================================
+     5. TEXTO E SUPERFÍCIE
+     ========================================== */
+  --bcb-text-primary: #606060;
+  --bcb-text-secondary: #606062;
+  --bcb-surface-light: #E0EBEE;
+  --bcb-surface-card: #F3F5F7;
+
+  /* ==========================================
+     6. MODO ALTO CONTRASTE (Acessibilidade)
+     ========================================== */
+  --bcb-hc-bg-level1: #000000;
+  --bcb-hc-bg-level2: #222222;
+  --bcb-hc-bg-level3: #333333;
   --bcb-hc-text: #FFFFFF;
   --bcb-hc-link: #FFFF00;
   --bcb-hc-border: #FFFFFF;
-  
+
   /* ==========================================
-     6. ESCALA DE CINZAS UI (Superfícies e Bordas)
+     7. ESCALA DE CINZAS UI (Superfícies e Bordas)
      ========================================== */
-  --bcb-gray-50:  #FAFBFC;
+  --bcb-gray-50: #FAFBFC;
   --bcb-gray-100: #F3F5F7;
   --bcb-gray-200: #E6EAEF;
   --bcb-gray-300: #D0D7DF;
@@ -111,40 +136,49 @@
   --bcb-gray-1000: #0B0D0E;
 
   /* ==========================================
-     7. TAMANHOS DE FONTE (Fluída com clamp - Base 16px)
+     8. TINTS DE SUPERFÍCIE (Callouts e Destaques)
      ========================================== */
-  --bcb-font-50:   0.75rem;
-  --bcb-font-75:   clamp(0.75rem, 0.675rem + 0.38vw, 0.875rem);
-  --bcb-font-100:  clamp(0.875rem, 0.8rem + 0.38vw, 1rem);
-  --bcb-font-200:  clamp(1rem, 0.925rem + 0.38vw, 1.125rem);
-  --bcb-font-300:  clamp(1.125rem, 1.05rem + 0.38vw, 1.25rem);
-  --bcb-font-400:  clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
-  --bcb-font-500:  clamp(1.4rem, 1.19rem + 1.05vw, 1.75rem);
-  --bcb-font-600:  clamp(1.6rem, 1.36rem + 1.2vw, 2rem);
-  --bcb-font-700:  clamp(1.8rem, 1.53rem + 1.35vw, 2.25rem);
-  --bcb-font-800:  clamp(2.2rem, 1.72rem + 2.4vw, 3rem);
+  --bg-brand-light: #F0F7F9;
+  --bg-verde-light: #F0F8F8;
+  --bg-amarellato-light: #FEFBFA;
+  --bg-vinho-light: #F5F7F8;
+  --bg-gray-light: #F8F9FB;
 
   /* ==========================================
-     8. ESPAÇAMENTOS (Grid de 4px, base 16px)
+     9. TAMANHOS DE FONTE (Fluída com clamp)
      ========================================== */
-  --bcb-space-0:  0;
-  --bcb-space-1:  0.25rem;
-  --bcb-space-2:  0.5rem;
-  --bcb-space-3:  0.75rem;
-  --bcb-space-4:  1rem;
-  --bcb-space-5:  1.25rem;
-  --bcb-space-6:  1.5rem;
-  --bcb-space-8:  2rem;
+  --bcb-font-50: 0.75rem;
+  --bcb-font-75: clamp(0.75rem, 0.675rem + 0.38vw, 0.875rem);
+  --bcb-font-100: clamp(0.875rem, 0.8rem + 0.38vw, 1rem);
+  --bcb-font-200: clamp(1rem, 0.925rem + 0.38vw, 1.125rem);
+  --bcb-font-300: clamp(1.125rem, 1.05rem + 0.38vw, 1.25rem);
+  --bcb-font-400: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --bcb-font-500: clamp(1.4rem, 1.19rem + 1.05vw, 1.75rem);
+  --bcb-font-600: clamp(1.6rem, 1.36rem + 1.2vw, 2rem);
+  --bcb-font-700: clamp(1.8rem, 1.53rem + 1.35vw, 2.25rem);
+  --bcb-font-800: clamp(2.2rem, 1.72rem + 2.4vw, 3rem);
+
+  /* ==========================================
+     10. ESPAÇAMENTOS (Grid de 4px, base 16px)
+     ========================================== */
+  --bcb-space-0: 0;
+  --bcb-space-1: 0.25rem;
+  --bcb-space-2: 0.5rem;
+  --bcb-space-3: 0.75rem;
+  --bcb-space-4: 1rem;
+  --bcb-space-5: 1.25rem;
+  --bcb-space-6: 1.5rem;
+  --bcb-space-8: 2rem;
   --bcb-space-12: 3rem;
   --bcb-space-16: 4rem;
   --bcb-space-24: 6rem;
 
   /* ==========================================
-     9. BORDAS E SOMBRAS (Elevation)
+     11. BORDAS E SOMBRAS (Elevation)
      ========================================== */
-  --bcb-radius-0:   0;
-  --bcb-radius-4:   0.25rem;
-  --bcb-radius-8:   0.5rem;
+  --bcb-radius-0: 0;
+  --bcb-radius-4: 0.25rem;
+  --bcb-radius-8: 0.5rem;
   --bcb-radius-pill: 9999px;
 
   --bcb-shadow-100: 0 1px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04);
@@ -152,25 +186,16 @@
   --bcb-shadow-600: 3px 3px 10px 0 hsla(0,0%,76%,0.5);
 
   /* ==========================================
-     10. FAMÍLIAS TIPOGRÁFICAS
+     12. FAMÍLIAS TIPOGRÁFICAS
      ========================================== */
   --bcb-font-ubuntu: 'Ubuntu', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --bcb-font-cormorant: 'Cormorant Garamond', serif;
   --bcb-font-istok: 'Istok Web', sans-serif;
 
   /* ==========================================
-     11. PORTAL PRIMARY (Breadcrumbs, etc.)
+     13. PORTAL PRIMARY
      ========================================== */
   --bcb-portal-primary: #22272B;
-
-  /* ==========================================
-     12. TINTS DE SUPERFÍCIE (Callouts / Destaques)
-     ========================================== */
-  --bg-brand-light:      #f0f7f9;
-  --bg-verde-light:      #f0f8f8;
-  --bg-amarellato-light: #fefbfa;
-  --bg-vinho-light:      #f5f7f8;
-  --bg-gray-light:       #f8f9fb;
 }
 
 /* ==========================================
@@ -197,26 +222,35 @@
   --bcb-gray-1000: #F3F5F7;
 
   /* Brand (mais vibrantes para contraste) */
+  --bcb-brand-azul-blue: #0A9FD4;
+  --bcb-brand-azulcinti: #077391;
+  --bcb-brand-azulpetro: #2E4C59;
+  --bcb-brand-azulnetuno: #6B94A8;
+  --bcb-brand-verde-susta: #0EB880;
+  --bcb-brand-verde-castell: #088694;
+  --bcb-brand-cinza-80: #9AA6B2;
+  --bcb-brand-amarellato-biscoito: #F9DEAA;
+  --bcb-brand-cafellato: #DEBE7F;
+  --bcb-brand-vinho-autentico: #8A7276;
+  --bcb-brand-marsala-suave: #9E8589;
+
+  /* Aliases de compatibilidade */
   --bcb-brand-blue: #0A9FD4;
   --bcb-brand-blue-dark: #0888B8;
-  --bcb-brand-azulcinti: #0BB0C0;
-  --bcb-brand-azulpetro: #0998B8;
-  --bcb-brand-azulnetuno: #6B94A8;
-  --bcb-brand-vinho: #528096;
-  --bcb-brand-marsala: #9E8589;
-  --bcb-brand-verde-susta: #0EB880;
-  --bcb-brand-verde-castell: #E5CA92;
-  --bcb-brand-amarellato: #F9DEAA;
-  --bcb-brand-cafellato: #8A7276;
   --bcb-brand-gray80: #9AA6B2;
+  --bcb-brand-vinho: #8A7276;
+  --bcb-brand-marsala: #9E8589;
+  --bcb-brand-amarellato: #F9DEAA;
+  --bcb-color-azulcinti: #077391;
+  --bcb-color-verde-castell: #088694;
 
   /* Interação */
-  --bcb-btn-primary-bg: #0A9FD4;
-  --bcb-btn-primary-hover: #0888B8;
-  --bcb-btn-primary-active: #077099;
-  --bcb-btn-secondary-bg: #0BB0C0;
-  --bcb-btn-secondary-hover: #099BA8;
-  --bcb-btn-secondary-active: #088590;
+  --bcb-btn-primary-bg: #077391;
+  --bcb-btn-primary-hover: #088694;
+  --bcb-btn-primary-active: #0A9FD4;
+  --bcb-btn-secondary-bg: #088694;
+  --bcb-btn-secondary-hover: #0EB880;
+  --bcb-btn-secondary-active: #077391;
   --bcb-link-color: #5BB8E8;
   --bcb-link-hover: #8AD0F5;
 
@@ -258,26 +292,35 @@
     --bcb-gray-1000: #F3F5F7;
 
     /* Brand (mais vibrantes para contraste) */
+    --bcb-brand-azul-blue: #0A9FD4;
+    --bcb-brand-azulcinti: #077391;
+    --bcb-brand-azulpetro: #2E4C59;
+    --bcb-brand-azulnetuno: #6B94A8;
+    --bcb-brand-verde-susta: #0EB880;
+    --bcb-brand-verde-castell: #088694;
+    --bcb-brand-cinza-80: #9AA6B2;
+    --bcb-brand-amarellato-biscoito: #F9DEAA;
+    --bcb-brand-cafellato: #DEBE7F;
+    --bcb-brand-vinho-autentico: #8A7276;
+    --bcb-brand-marsala-suave: #9E8589;
+
+    /* Aliases de compatibilidade */
     --bcb-brand-blue: #0A9FD4;
     --bcb-brand-blue-dark: #0888B8;
-    --bcb-brand-azulcinti: #0BB0C0;
-    --bcb-brand-azulpetro: #0998B8;
-    --bcb-brand-azulnetuno: #6B94A8;
-    --bcb-brand-vinho: #528096;
-    --bcb-brand-marsala: #9E8589;
-    --bcb-brand-verde-susta: #0EB880;
-    --bcb-brand-verde-castell: #E5CA92;
-    --bcb-brand-amarellato: #F9DEAA;
-    --bcb-brand-cafellato: #8A7276;
     --bcb-brand-gray80: #9AA6B2;
+    --bcb-brand-vinho: #8A7276;
+    --bcb-brand-marsala: #9E8589;
+    --bcb-brand-amarellato: #F9DEAA;
+    --bcb-color-azulcinti: #077391;
+    --bcb-color-verde-castell: #088694;
 
     /* Interação */
-    --bcb-btn-primary-bg: #0A9FD4;
-    --bcb-btn-primary-hover: #0888B8;
-    --bcb-btn-primary-active: #077099;
-    --bcb-btn-secondary-bg: #0BB0C0;
-    --bcb-btn-secondary-hover: #099BA8;
-    --bcb-btn-secondary-active: #088590;
+    --bcb-btn-primary-bg: #077391;
+    --bcb-btn-primary-hover: #088694;
+    --bcb-btn-primary-active: #0A9FD4;
+    --bcb-btn-secondary-bg: #088694;
+    --bcb-btn-secondary-hover: #0EB880;
+    --bcb-btn-secondary-active: #077391;
     --bcb-link-color: #5BB8E8;
     --bcb-link-hover: #8AD0F5;
 
@@ -321,17 +364,27 @@
   --bcb-gray-900: #FFFFFF;
   --bcb-gray-1000: #FFFFFF;
 
-  --bcb-brand-blue: #4DC8FF;
-  --bcb-brand-blue-dark: #3AB8EE;
+  --bcb-brand-azul-blue: #4DC8FF;
   --bcb-brand-azulcinti: #4DE8F0;
   --bcb-brand-azulpetro: #4DC8FF;
   --bcb-brand-azulnetuno: #80D0FF;
-  --bcb-brand-vinho: #FFFFFF;
-  --bcb-brand-marsala: #FF9999;
   --bcb-brand-verde-susta: #00FF88;
   --bcb-brand-verde-castell: #FFFF88;
+  --bcb-brand-cinza-80: #CCCCCC;
+  --bcb-brand-amarellato-biscoito: #FFFF88;
   --bcb-brand-cafellato: #FFFFFF;
+  --bcb-brand-vinho-autentico: #FFFFFF;
+  --bcb-brand-marsala-suave: #FF9999;
+
+  /* Aliases de compatibilidade */
+  --bcb-brand-blue: #4DC8FF;
+  --bcb-brand-blue-dark: #3AB8EE;
+  --bcb-brand-vinho: #FFFFFF;
+  --bcb-brand-marsala: #FF9999;
+  --bcb-brand-amarellato: #FFFF88;
   --bcb-brand-gray80: #CCCCCC;
+  --bcb-color-azulcinti: #4DE8F0;
+  --bcb-color-verde-castell: #FFFF88;
 
   --bcb-btn-primary-bg: #4DC8FF;
   --bcb-btn-primary-hover: #70D6FF;

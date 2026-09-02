@@ -1,17 +1,52 @@
 # BCB UI – Design Tokens & Brand Guidelines
 
-> **Status**: v1.1 (Base Documental + Extração de Produção). Este arquivo unifica o Manual da Marca com os tokens absolutos extraídos via engenharia reversa do CSS em produção do portal (Bootstrap 4.6.2 customizado).
+> **Status**: v2.0 (Manual de Marca Oficial do BCB + Especificação W3C Design Tokens). Este arquivo documenta a paleta cromática oficial, códigos Pantone, RGB, CMYK e regras de mapeamento semântico para geração e validação de código por IA.
 
 ---
 
 ## 1. Identidade e Tom de Voz (Contexto para IA)
-O Banco Central do Brasil (BCB) é a autoridade monetária do país. O design gerado a partir destes tokens deve refletir os valores da instituição: **Transparência, Excelência técnica, Confiança e Inovação**. A interface deve ser limpa, com suporte nativo e obrigatório ao Modo de Alto Contraste (WCAG).
+O Banco Central do Brasil (BCB) é a autoridade monetária do país. O design gerado a partir destes tokens deve refletir os valores da instituição: **Transparência, Solidez técnica, Confiança e Inovação**. A interface deve ser limpa, com suporte nativo e obrigatório ao Modo Escuro e ao Modo de Alto Contraste (WCAG 2.2 AA / AAA e e-MAG 3.1).
 
 ---
 
-## 2. Cores Institucionais e UI (Tokens Absolutos)
+## 2. Paleta Cromática Oficial do Manual de Marca do BCB
 
-### CSS Custom Properties
+| Cor Oficial | Nome Token | HEX | Pantone | RGB | CMYK | Aplicação Principal / Semântica |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Azul Blue** | `azul-blue` | `#025C75` | 3025 C | (2, 92, 117) | 98, 21, 0, 54 | Cor primária institucional, botões principais, cabeçalhos e títulos h1 |
+| **Azul Cinti** | `azulcinti` | `#077391` | 7698 C | (7, 115, 145) | 95, 21, 0, 43 | Hover de botão primário, links em destaque, botões secundários |
+| **Azul Petro** | `azulpetro` | `#2E4C59` | 7546 C | (46, 76, 89) | 48, 15, 0, 65 | Estado active/focus de botões, divisores e fundos de contraste sóbrio |
+| **Azul Netuno** | `azulnetuno` | `#476F82` | 7544 C | (71, 111, 130) | 45, 15, 0, 49 | Cor complementar, tags informativas, badges e divisores gráficos |
+| **Verde Susta** | `verde-susta` | `#067078` | 7719 C | (6, 112, 120) | 95, 7, 0, 53 | Feedback de sucesso (`feedback.success`), agenda BC# Sustentabilidade, indicadores positivos |
+| **Verde Castell** | `verde-castell` | `#088694` | 3145 C | (8, 134, 148) | 95, 9, 0, 42 | Botões secundários, temas de inovação, contraste e destaque no modo escuro |
+| **Cinza 80** | `cinza-80` | `#606062` | Cool Gray 10 C | (96, 96, 98) | 2, 2, 0, 62 | Textos secundários (`text.secondary`), metadados, títulos secundários (`.font-color-2`) |
+| **Amarellato Biscoito** | `amarellato-biscoito` | `#F8D48D` | 141 C | (248, 212, 141) | 0, 15, 43, 3 | Anel de foco acessível, superfície de alerta (`feedback.warning-surface`), banners hero |
+| **Cafellato** | `cafellato` | `#DEBE7F` | 7508 C | (222, 190, 127) | 0, 14, 43, 13 | Borda de alerta (`feedback.warning-border`), cartões especiais e destaques editoriais |
+| **Vinho Autêntico** | `vinho-autentico` | `#47373A` | 4975 C | (71, 55, 58) | 0, 23, 18, 72 | Feedback de perigo/erro (`feedback.danger`), contraste solene institucional |
+| **Marsala Suave** | `marsala-suave` | `#736063` | 5005 C | (115, 96, 99) | 0, 17, 14, 55 | Indicadores de mercado com oscilação negativa (inflação/volatilidade), alertas secundários |
+
+---
+
+## 3. Mapeamento Semântico para IA
+
+Para garantir robustez e manutenibilidade, utilize sempre os tokens semânticos:
+
+| Propósito Semântico | Token CSS Recomendado | Token no `tokens.json` | Valor Light | Valor Dark |
+| :--- | :--- | :--- | :--- | :--- |
+| **Botão Primário (Normal)** | `var(--bcb-btn-primary-bg)` | `action.primary.default` | `#025C75` | `#077391` |
+| **Botão Primário (Hover)** | `var(--bcb-btn-primary-hover)` | `action.primary.hover` | `#077391` | `#088694` |
+| **Botão Primário (Active)** | `var(--bcb-btn-primary-active)` | `action.primary.active` | `#2E4C59` | `#0A9FD4` |
+| **Botão Secundário (Normal)** | `var(--bcb-btn-secondary-bg)` | `action.secondary.default` | `#088694` | `#088694` |
+| **Botão Secundário (Hover)** | `var(--bcb-btn-secondary-hover)` | `action.secondary.hover` | `#067078` | `#0EB880` |
+| **Feedback Sucesso** | `var(--bcb-feedback-success)` | `feedback.success` | `#067078` | `#0EB880` |
+| **Feedback Atenção (Fundo)** | `var(--bcb-feedback-warning-surface)` | `feedback.warningSurface` | `#F8D48D` | `#F9DEAA` |
+| **Feedback Atenção (Borda)** | `var(--bcb-feedback-warning-border)` | `feedback.warningBorder` | `#DEBE7F` | `#DEBE7F` |
+| **Feedback Erro / Perigo** | `var(--bcb-feedback-danger)` | `feedback.danger` | `#47373A` | `#8A7276` |
+| **Texto Secundário / Apoio** | `var(--bcb-text-secondary)` | `text.secondary` | `#606062` | `#9AA6B2` |
+
+---
+
+## 4. CSS Custom Properties (`:root`)
 ```css
 :root {
   /* ==========================================
@@ -19,57 +54,57 @@ O Banco Central do Brasil (BCB) é a autoridade monetária do país. O design ge
      ========================================== */
   --bcb-color-white: #FFFFFF;
   --bcb-color-black: #000000;
-  --bcb-color-body-text: #606060; /* Extraído do body de produção */
-  --bcb-color-bg-light: #e0ebee;  /* Extraído da classe .bg-color-12 */
+  --bcb-color-body-text: #606060;
+  --bcb-color-bg-light: #E0EBEE;
 
   /* ==========================================
-     2. BRAND (Primárias Oficiais)
+     2. BRAND (Cores Oficiais do Manual de Marca)
      ========================================== */
-  --bcb-brand-blue: #025C75;      /* Pantone 3025 - Classe .font-color-1 */
-  --bcb-brand-gray80: #606062;    /* Pantone Cool Gray 10 - Classe .font-color-2 */
-
-  /* ==========================================
-     3. BRAND (Complementares)
-     ========================================== */
-  --bcb-brand-vinho: #2E4C59;
-  --bcb-brand-marsala: #736063;
-  --bcb-brand-azulpetro: #077391;
+  --bcb-brand-azul-blue: #025C75;
+  --bcb-brand-azulcinti: #077391;
+  --bcb-brand-azulpetro: #2E4C59;
   --bcb-brand-azulnetuno: #476F82;
-  --bcb-brand-azulcinti: #088694; /* Usado como botão secundário */
   --bcb-brand-verde-susta: #067078;
-  --bcb-brand-verde-castell: #DEBE7F;
+  --bcb-brand-verde-castell: #088694;
+  --bcb-brand-cinza-80: #606062;
+  --bcb-brand-amarellato-biscoito: #F8D48D;
+  --bcb-brand-cafellato: #DEBE7F;
+  --bcb-brand-vinho-autentico: #47373A;
+  --bcb-brand-marsala-suave: #736063;
+
+  /* Aliases de compatibilidade */
+  --bcb-brand-blue: #025C75;
+  --bcb-brand-blue-dark: #013F50;
+  --bcb-brand-gray80: #606062;
+  --bcb-brand-vinho: #47373A;
+  --bcb-brand-marsala: #736063;
   --bcb-brand-amarellato: #F8D48D;
-  --bcb-brand-cafellato: #47373A;
+  --bcb-color-azulcinti: #077391;
+  --bcb-color-verde-castell: #088694;
 
   /* ==========================================
-     4. INTERAÇÃO E BOTÕES (Extraído de Produção)
+     3. AÇÕES E INTERAÇÃO
      ========================================== */
-  /* Primary Button */
   --bcb-btn-primary-bg: #025C75;
-  --bcb-btn-primary-hover: #013F50;
-  --bcb-btn-primary-active: #012F3C;
-  
-  /* Secondary Button */
+  --bcb-btn-primary-hover: #077391;
+  --bcb-btn-primary-active: #2E4C59;
   --bcb-btn-secondary-bg: #088694;
-  --bcb-btn-secondary-hover: #066974;
-  --bcb-btn-secondary-active: #055861;
-
-  /* Links */
-  --bcb-link-color: #3298D5;
-  --bcb-link-hover: #0056B3;
+  --bcb-btn-secondary-hover: #067078;
+  --bcb-btn-secondary-active: #2E4C59;
+  --bcb-link-color: #1B75A6;
+  --bcb-link-hover: #025C75;
 
   /* ==========================================
-     5. MODO ALTO CONTRASTE (Acessibilidade)
+     4. FEEDBACK SEMÂNTICO
      ========================================== */
-  --bcb-hc-bg-level-1: #000000; /* Fundo principal */
-  --bcb-hc-bg-level-2: #222222; /* Fundo de cards/blocos */
-  --bcb-hc-bg-level-3: #333333; /* Fundo de botões e menus */
-  --bcb-hc-text: #FFFFFF;
-  --bcb-hc-link: #FFFF00;       /* Amarelo contraste máximo */
-  --bcb-hc-border: #FFFFFF;
-  
+  --bcb-feedback-success: #067078;
+  --bcb-feedback-warning-surface: #F8D48D;
+  --bcb-feedback-warning-border: #DEBE7F;
+  --bcb-feedback-danger: #47373A;
+  --bcb-feedback-info: #025C75;
+
   /* ==========================================
-     6. ESCALA DE CINZAS UI (Superfícies e Bordas)
+     5. ESCALA DE CINZAS UI
      ========================================== */
   --bcb-gray-50:  #FAFBFC;
   --bcb-gray-100: #F3F5F7;
@@ -78,18 +113,10 @@ O Banco Central do Brasil (BCB) é a autoridade monetária do país. O design ge
   --bcb-gray-400: #B7C0CB;
   --bcb-gray-500: #9AA6B2;
   --bcb-gray-600: #7E8A95;
-  --bcb-gray-700: #606062; /* Equivalente ao Cinza80 Institucional */
+  --bcb-gray-700: #606062;
   --bcb-gray-800: #3E454B;
   --bcb-gray-900: #22272B;
   --bcb-gray-1000: #0B0D0E;
-  /* ==========================================
-     7. TINTS DE SUPERFÍCIE (Callouts e Destaques)
-     ========================================== */
-  --bg-brand-light:      #f0f7f9;
-  --bg-verde-light:      #f0f8f8;
-  --bg-amarellato-light: #fefbfa;
-  --bg-vinho-light:      #f5f7f8;
-  --bg-gray-light:       #f8f9fb;
 }
 ```
 

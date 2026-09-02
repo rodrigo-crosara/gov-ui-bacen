@@ -30,27 +30,49 @@ const tokensObrigatorios = [
   '--bcb-color-black',
   '--bcb-color-body-text',
   '--bcb-color-bg-light',
-  // Brand primárias
+  // Brand oficiais do Manual
+  '--bcb-brand-azul-blue',
+  '--bcb-brand-azulcinti',
+  '--bcb-brand-azulpetro',
+  '--bcb-brand-azulnetuno',
+  '--bcb-brand-verde-susta',
+  '--bcb-brand-verde-castell',
+  '--bcb-brand-cinza-80',
+  '--bcb-brand-amarellato-biscoito',
+  '--bcb-brand-cafellato',
+  '--bcb-brand-vinho-autentico',
+  '--bcb-brand-marsala-suave',
+  // Brand aliases de compatibilidade
   '--bcb-brand-blue',
   '--bcb-brand-blue-dark',
   '--bcb-brand-gray80',
-  // Brand complementares
   '--bcb-brand-vinho',
   '--bcb-brand-marsala',
-  '--bcb-brand-azulpetro',
-  '--bcb-brand-azulnetuno',
-  '--bcb-brand-azulcinti',
-  '--bcb-brand-verde-susta',
-  '--bcb-brand-verde-castell',
   '--bcb-brand-amarellato',
-  '--bcb-brand-cafellato',
-  // Botões
+  '--bcb-color-azulcinti',
+  '--bcb-color-verde-castell',
+  // Ações e Botões
   '--bcb-btn-primary-bg',
   '--bcb-btn-primary-hover',
   '--bcb-btn-primary-active',
   '--bcb-btn-secondary-bg',
   '--bcb-btn-secondary-hover',
   '--bcb-btn-secondary-active',
+  '--bcb-action-primary-default',
+  '--bcb-action-primary-hover',
+  '--bcb-action-primary-active',
+  '--bcb-action-secondary-default',
+  // Feedback semântico
+  '--bcb-feedback-success',
+  '--bcb-feedback-warning-surface',
+  '--bcb-feedback-warning-border',
+  '--bcb-feedback-danger',
+  '--bcb-feedback-info',
+  // Textos e Superfícies
+  '--bcb-text-primary',
+  '--bcb-text-secondary',
+  '--bcb-surface-light',
+  '--bcb-surface-card',
   // Links
   '--bcb-link-color',
   '--bcb-link-hover',
@@ -131,9 +153,10 @@ console.log('\n📋 Teste 2: Cores hardcoded fora do :root');
 
 // Extrair conteúdo FORA dos blocos :root
 const blocosSemRoot = conteudoCSS
-  .replace(/:root\s*\{[^}]*\}/g, '')  // Remove :root { ... }
-  .replace(/:root\[data-theme[^}]*\}/g, '')  // Remove :root[data-theme] { ... }
-  .replace(/@media[^{]*prefers-color-scheme[^}]*\{[\s\S]*?\}\s*\}/g, ''); // Remove dark mode media
+  .replace(/:root\s*\{[\s\S]*?\}/g, '')  // Remove :root { ... }
+  .replace(/:root\[data-[^\]]*\]\s*\{[\s\S]*?\}/g, '')  // Remove :root[data-theme] e :root[data-contrast]
+  .replace(/@media[^{]*prefers-color-scheme[^}]*\{[\s\S]*?\}\s*\}/g, '') // Remove dark mode media
+  .replace(/@media[^{]*prefers-contrast[^}]*\{[\s\S]*?\}\s*\}/g, ''); // Remove contrast media
 
 // Cores permitidas fora do :root (Bootstrap e SVG inline)
 const coresPermitidas = [

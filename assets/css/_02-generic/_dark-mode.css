@@ -24,26 +24,35 @@
   --bcb-gray-1000: #F3F5F7;
 
   /* Brand (mais vibrantes para contraste) */
+  --bcb-brand-azul-blue: #0A9FD4;
+  --bcb-brand-azulcinti: #077391;
+  --bcb-brand-azulpetro: #2E4C59;
+  --bcb-brand-azulnetuno: #6B94A8;
+  --bcb-brand-verde-susta: #0EB880;
+  --bcb-brand-verde-castell: #088694;
+  --bcb-brand-cinza-80: #9AA6B2;
+  --bcb-brand-amarellato-biscoito: #F9DEAA;
+  --bcb-brand-cafellato: #DEBE7F;
+  --bcb-brand-vinho-autentico: #8A7276;
+  --bcb-brand-marsala-suave: #9E8589;
+
+  /* Aliases de compatibilidade */
   --bcb-brand-blue: #0A9FD4;
   --bcb-brand-blue-dark: #0888B8;
-  --bcb-brand-azulcinti: #0BB0C0;
-  --bcb-brand-azulpetro: #0998B8;
-  --bcb-brand-azulnetuno: #6B94A8;
-  --bcb-brand-vinho: #528096;
-  --bcb-brand-marsala: #9E8589;
-  --bcb-brand-verde-susta: #0EB880;
-  --bcb-brand-verde-castell: #E5CA92;
-  --bcb-brand-amarellato: #F9DEAA;
-  --bcb-brand-cafellato: #8A7276;
   --bcb-brand-gray80: #9AA6B2;
+  --bcb-brand-vinho: #8A7276;
+  --bcb-brand-marsala: #9E8589;
+  --bcb-brand-amarellato: #F9DEAA;
+  --bcb-color-azulcinti: #077391;
+  --bcb-color-verde-castell: #088694;
 
   /* Interação */
-  --bcb-btn-primary-bg: #0A9FD4;
-  --bcb-btn-primary-hover: #0888B8;
-  --bcb-btn-primary-active: #077099;
-  --bcb-btn-secondary-bg: #0BB0C0;
-  --bcb-btn-secondary-hover: #099BA8;
-  --bcb-btn-secondary-active: #088590;
+  --bcb-btn-primary-bg: #077391;
+  --bcb-btn-primary-hover: #088694;
+  --bcb-btn-primary-active: #0A9FD4;
+  --bcb-btn-secondary-bg: #088694;
+  --bcb-btn-secondary-hover: #0EB880;
+  --bcb-btn-secondary-active: #077391;
   --bcb-link-color: #5BB8E8;
   --bcb-link-hover: #8AD0F5;
 
@@ -85,26 +94,35 @@
     --bcb-gray-1000: #F3F5F7;
 
     /* Brand (mais vibrantes para contraste) */
+    --bcb-brand-azul-blue: #0A9FD4;
+    --bcb-brand-azulcinti: #077391;
+    --bcb-brand-azulpetro: #2E4C59;
+    --bcb-brand-azulnetuno: #6B94A8;
+    --bcb-brand-verde-susta: #0EB880;
+    --bcb-brand-verde-castell: #088694;
+    --bcb-brand-cinza-80: #9AA6B2;
+    --bcb-brand-amarellato-biscoito: #F9DEAA;
+    --bcb-brand-cafellato: #DEBE7F;
+    --bcb-brand-vinho-autentico: #8A7276;
+    --bcb-brand-marsala-suave: #9E8589;
+
+    /* Aliases de compatibilidade */
     --bcb-brand-blue: #0A9FD4;
     --bcb-brand-blue-dark: #0888B8;
-    --bcb-brand-azulcinti: #0BB0C0;
-    --bcb-brand-azulpetro: #0998B8;
-    --bcb-brand-azulnetuno: #6B94A8;
-    --bcb-brand-vinho: #528096;
-    --bcb-brand-marsala: #9E8589;
-    --bcb-brand-verde-susta: #0EB880;
-    --bcb-brand-verde-castell: #E5CA92;
-    --bcb-brand-amarellato: #F9DEAA;
-    --bcb-brand-cafellato: #8A7276;
     --bcb-brand-gray80: #9AA6B2;
+    --bcb-brand-vinho: #8A7276;
+    --bcb-brand-marsala: #9E8589;
+    --bcb-brand-amarellato: #F9DEAA;
+    --bcb-color-azulcinti: #077391;
+    --bcb-color-verde-castell: #088694;
 
     /* Interação */
-    --bcb-btn-primary-bg: #0A9FD4;
-    --bcb-btn-primary-hover: #0888B8;
-    --bcb-btn-primary-active: #077099;
-    --bcb-btn-secondary-bg: #0BB0C0;
-    --bcb-btn-secondary-hover: #099BA8;
-    --bcb-btn-secondary-active: #088590;
+    --bcb-btn-primary-bg: #077391;
+    --bcb-btn-primary-hover: #088694;
+    --bcb-btn-primary-active: #0A9FD4;
+    --bcb-btn-secondary-bg: #088694;
+    --bcb-btn-secondary-hover: #0EB880;
+    --bcb-btn-secondary-active: #077391;
     --bcb-link-color: #5BB8E8;
     --bcb-link-hover: #8AD0F5;
 

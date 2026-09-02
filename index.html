@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light" data-contrast="normal">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design System – Banco Central do Brasil</title>
-    <meta name="description" content="Biblioteca de componentes, tokens e padrões visuais do Design System oficial do Banco Central do Brasil.">
+    <title>Design System Banco Central do Brasil — Hub Central de Documentação</title>
+    <meta name="description" content="Hub central de documentação do Design System oficial do Banco Central do Brasil: tokens, componentes, blueprints de layout e diretrizes para IA.">
     
     <!-- Bootstrap 4.6 CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts (Ubuntu + Cormorant Garamond) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -21,1754 +21,637 @@
     <link rel="stylesheet" href="./assets/css/bcb-style.css">
     
     <style>
+        body {
+            background-color: var(--bcb-color-bg-light);
+            color: var(--bcb-color-body-text);
+            font-family: var(--bcb-font-ubuntu);
+            margin: 0;
+            padding: 0;
+        }
+
         .header-bcb {
-            background-color: var(--bcb-brand-blue);
+            background-color: var(--bcb-brand-azul-blue);
             color: var(--bcb-color-white);
-            padding: 14px 0;
+            padding: 0.75rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 1040;
+            box-shadow: var(--bcb-shadow-300);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+
         .header-bcb h1 {
-            margin: 0;
             font-size: 1.25rem;
-            font-weight: 500;
+            font-weight: 700;
+            margin: 0;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: var(--bcb-color-white);
         }
-        .header-bcb .badge-version {
-            font-size: 0.65rem;
-            background-color: rgba(255,255,255,0.2);
-            padding: 2px 8px;
-            border-radius: 9999px;
-            font-weight: 400;
-        }
-        
-        /* Override Bootstrap Buttons with BCB Tokens */
-        .btn-primary { background-color: var(--bcb-btn-primary-bg); border-color: var(--bcb-btn-primary-bg); color: var(--bcb-color-white); transition: all 0.2s; }
-        .btn-primary:hover { background-color: var(--bcb-btn-primary-hover); border-color: var(--bcb-btn-primary-hover); color: var(--bcb-color-white); }
-        .btn-primary:active { background-color: var(--bcb-btn-primary-active) !important; border-color: var(--bcb-btn-primary-active) !important; }
-        .btn-primary:disabled { background-color: #64666c; border-color: #64666c; }
-        .btn-secondary { background-color: var(--bcb-btn-secondary-bg); border-color: var(--bcb-btn-secondary-bg); color: var(--bcb-color-white); transition: all 0.2s; }
-        .btn-secondary:hover { background-color: var(--bcb-btn-secondary-hover); border-color: var(--bcb-btn-secondary-hover); color: var(--bcb-color-white); }
-        .btn-secondary:active, .btn-secondary:focus { background-color: var(--bcb-btn-secondary-active) !important; border-color: var(--bcb-btn-secondary-active) !important; }
-        .btn-outline-primary { color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); transition: all 0.2s; }
-        .btn-outline-primary:hover { background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
-        .btn-link { color: var(--bcb-link-color); }
-        .btn-link:hover { color: var(--bcb-link-hover); }
-        
-        /* Code snippet styling */
-        .code-snippet { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 16px; position: relative; margin-top: 16px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.05); }
-        .code-snippet pre { margin: 0; color: inherit; font-size: 0.85rem; }
-        .btn-copy { position: absolute; top: 8px; right: 8px; background-color: rgba(255,255,255,0.1); color: #cdd6f4; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; }
-        .btn-copy:hover { background-color: rgba(255,255,255,0.2); color: #fff; }
 
-        /* Section dividers */
-        .ds-main section { padding-bottom: 2rem; margin-bottom: 2rem; border-bottom: 1px solid var(--bcb-gray-200); }
-        .ds-main section:last-child { border-bottom: none; }
-        .ds-main h2 { color: var(--bcb-gray-900); font-weight: 500; font-size: 1.6rem; }
-        .ds-main h3 { color: var(--bcb-gray-800); font-size: 1.1rem; margin-top: 1.5rem; }
+        .badge-version {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--bcb-radius-pill);
+            font-weight: 500;
+        }
+
+        .theme-switcher-group {
+            display: inline-flex;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 2px;
+            border-radius: var(--bcb-radius-pill);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .theme-btn {
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 0.25rem 0.65rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: var(--bcb-radius-pill);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .theme-btn.active {
+            background: var(--bcb-brand-amarellato-biscoito);
+            color: #002244;
+            font-weight: 700;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Hub Cards */
+        .hub-card {
+            background-color: var(--bcb-color-white);
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            padding: 1.75rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--bcb-shadow-100);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hub-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--bcb-shadow-300);
+            border-color: var(--bcb-brand-azulcinti);
+        }
+
+        .hub-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--bcb-brand-azul-blue);
+        }
+
+        .hub-card.card-tokens::before { background-color: var(--bcb-brand-azulcinti); }
+        .hub-card.card-components::before { background-color: var(--bcb-brand-azul-blue); }
+        .hub-card.card-templates::before { background-color: var(--bcb-brand-verde-castell); }
+        .hub-card.card-ai::before { background-color: var(--bcb-brand-verde-susta); }
+
+        .hub-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--bcb-radius-8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            background-color: var(--bg-brand-light);
+            color: var(--bcb-brand-azul-blue);
+        }
+
+        .hub-card.card-tokens .hub-card-icon { background-color: var(--bg-brand-light); color: var(--bcb-brand-azulcinti); }
+        .hub-card.card-templates .hub-card-icon { background-color: var(--bg-verde-light); color: var(--bcb-brand-verde-castell); }
+        .hub-card.card-ai .hub-card-icon { background-color: var(--bg-verde-light); color: var(--bcb-brand-verde-susta); }
+
+        .hub-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--bcb-gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .hub-card-description {
+            font-size: 0.9rem;
+            color: var(--bcb-color-body-text);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Principle Cards */
+        .principle-card {
+            background-color: var(--bcb-color-white);
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            padding: 1.5rem;
+            box-shadow: var(--bcb-shadow-100);
+            height: 100%;
+        }
+
+        .principle-icon {
+            font-size: 2rem;
+            color: var(--bcb-brand-azul-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Code snippets */
+        .code-snippet-box {
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            border-radius: var(--bcb-radius-8);
+            padding: 1.25rem 1.5rem;
+            position: relative;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .code-snippet-box pre {
+            margin: 0;
+            color: inherit;
+            font-family: inherit;
+        }
+
+        .btn-copy-code {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: var(--bcb-radius-4);
+            padding: 0.25rem 0.6rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-copy-code:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Hero Banner Hub */
+        .hero-hub {
+            background: linear-gradient(135deg, rgba(2, 92, 117, 0.08) 0%, rgba(8, 134, 148, 0.04) 100%);
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-hub-title {
+            color: var(--bcb-brand-azul-blue);
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-hub-lead {
+            font-size: 1.1rem;
+            color: var(--bcb-gray-800);
+            max-width: 850px;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: var(--bcb-radius-pill);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .status-ready { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+        .status-wcag { background-color: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+        .status-brand { background-color: rgba(2, 92, 117, 0.1); color: var(--bcb-brand-azul-blue); border: 1px solid rgba(2, 92, 117, 0.2); }
     </style>
 </head>
 <body>
+
     <!-- Skip Links de Acessibilidade (e-MAG) -->
     <ul class="bcb-skip-links" aria-label="Atalhos de acessibilidade">
         <li><a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span></a></li>
     </ul>
 
-    <header class="header-bcb">
-        <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
-            <h1>
-                <span class="material-icons" aria-hidden="true">palette</span>
-                Design System BCB
-                <span class="badge-version">v1.0</span>
-            </h1>
-            <div class="d-flex align-items-center" style="gap: 0.75rem;">
-                <a href="pages/components.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar catálogo vivo de componentes" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+    <!-- Header Sticky Oficial -->
+    <header class="header-bcb" role="banner">
+        <div class="container-fluid px-4 d-flex align-items-center justify-content-between flex-wrap">
+            <div class="header-logo" style="font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; color: var(--bcb-color-white);">
+                <span class="material-icons" aria-hidden="true">account_balance</span>
+                BCB Design System
+                <span class="badge-version">v2.0.0</span>
+            </div>
+
+            <div class="d-flex align-items-center flex-wrap my-1" style="gap: 0.75rem;">
+                <a href="pages/components.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar catálogo vivo de componentes" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
                     <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">widgets</span>
-                    <span class="d-none d-sm-inline">Catálogo Vivo</span>
+                    <span class="d-none d-sm-inline">Componentes</span>
                 </a>
-                <a href="pages/tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar página interativa de design tokens" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                <a href="pages/tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar página interativa de design tokens" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
                     <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
                     <span class="d-none d-sm-inline">Tokens</span>
                 </a>
-                <a href="pages/changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar histórico de versões e changelog" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                <a href="templates/template-indicadores.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar biblioteca de templates de página" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
+                    <span class="d-none d-sm-inline">Templates</span>
+                </a>
+                <a href="pages/changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar histórico de versões e changelog" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
                     <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
                     <span class="d-none d-sm-inline">Changelog</span>
                 </a>
-                <button id="theme-toggle" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Alternar tema claro/escuro" style="border-color: rgba(255,255,255,0.3); color: white; background: transparent;">
-                    <span class="material-icons" style="font-size: 1.2rem;" aria-hidden="true">brightness_medium</span>
-                </button>
-                <span class="d-none d-md-inline" style="font-size:0.8rem; opacity:0.7;">Banco Central do Brasil</span>
+
+                <!-- Seletor de Temas Funcional -->
+                <div class="theme-switcher-group" role="group" aria-label="Alternador de Tema Visual">
+                    <button type="button" class="theme-btn active" id="btnThemeLight" title="Tema Claro Padrão" aria-pressed="true">
+                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">light_mode</span> Padrão
+                    </button>
+                    <button type="button" class="theme-btn" id="btnThemeDark" title="Modo Escuro" aria-pressed="false">
+                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">dark_mode</span> Escuro
+                    </button>
+                    <button type="button" class="theme-btn" id="btnThemeHighContrast" title="Alto Contraste Acessível (e-MAG)" aria-pressed="false">
+                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">contrast</span> Alto Contraste
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="ds-wrapper">
-        <aside class="ds-sidebar">
-            <nav class="nav flex-column">
-                <div class="ds-sidebar-title">Documentação Interativa</div>
-                <a class="nav-link" href="pages/components.html">Catálogo de Componentes (Novo)</a>
-                <a class="nav-link" href="pages/tokens.html">Design Tokens (Interativo)</a>
-                <a class="nav-link" href="pages/changelog.html">Changelog do Projeto</a>
-
-                <div class="ds-sidebar-title">Fundação</div>
-                <a class="nav-link" href="#cores">Cores e Tokens</a>
-                <a class="nav-link" href="#tipografia">Tipografia</a>
-
-                <div class="ds-sidebar-title">Componentes</div>
-                <a class="nav-link" href="#botoes">Botões</a>
-                <a class="nav-link" href="#links">Links e Âncoras</a>
-                <a class="nav-link" href="#tabelas-alertas">Tabelas, Alertas e Downloads</a>
-                <a class="nav-link" href="#tabelas-graficos-oficiais">Tabelas e Gráficos (Manual)</a>
-                <a class="nav-link" href="#forms">Formulários e Inputs</a>
-
-                <div class="ds-sidebar-title">Navegação</div>
-                <a class="nav-link" href="#abas">Abas (Tabs)</a>
-                <a class="nav-link" href="#cards-links-rapidos">Cards de Links Rápidos</a>
-                <a class="nav-link" href="#cards-conteudo">Cards de Conteúdo</a>
-                <a class="nav-link" href="#breadcrumb-tags">Breadcrumb e Tags</a>
-
-                <div class="ds-sidebar-title">Editorial</div>
-                <a class="nav-link" href="#conteudo-editorial">Callout, Citação e Accordion</a>
-                <a class="nav-link" href="#navegacao-editorial">Menu de Âncoras e Passo a Passo</a>
-
-                <div class="ds-sidebar-title">Templates de Página</div>
-                <a class="nav-link" href="#templates">Ver Templates</a>
-
-                <div class="ds-sidebar-title">Auditoria (Novos)</div>
-                <a class="nav-link" href="#busca">Busca com Filtros</a>
-                <a class="nav-link" href="#indicadores">Cards de Indicadores</a>
-
-                <div class="ds-sidebar-title">Serviços e Interações</div>
-                <a class="nav-link" href="#servicos">Stepper, Paginação e Tooltip</a>
-                <a class="nav-link" href="#timeline">Timeline Educativa</a>
-                <a class="nav-link" href="#hero-banner">Hero Banner</a>
-
-                <div class="ds-sidebar-title">Elementos de Produto</div>
-                <a class="nav-link" href="#videos-carousel">Carrossel de Vídeos</a>
-                <a class="nav-link" href="#timeline-h">Timeline Horizontal</a>
-            </nav>
-        </aside>
+    <!-- CONTEÚDO PRINCIPAL (Hub de Documentação) -->
+    <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
         
-        <main class="ds-main" id="conteudo-principal">
+        <!-- Hero Institucional -->
+        <section class="hero-hub">
+            <div class="d-flex align-items-center flex-wrap gap-2 mb-2" style="gap: 0.5rem;">
+                <span class="status-badge status-brand">
+                    <span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">verified</span> Versão 2.0.0 Oficial
+                </span>
+                <span class="status-badge status-wcag">
+                    <span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">accessibility_new</span> WCAG 2.2 AA / AAA &bull; e-MAG 3.1
+                </span>
+                <span class="status-badge status-ready">
+                    <span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Pronto para Produção & IA
+                </span>
+            </div>
+            
+            <h1 class="hero-hub-title">Design System Banco Central do Brasil</h1>
+            <p class="hero-hub-lead">Biblioteca unificada de decisões de design, tokens cromáticos, componentes canônicos e aceleradores de prototipagem para criar interfaces consistentes, elegantes e acessíveis no portal do BCB.</p>
+            
+            <div class="d-flex flex-wrap gap-3" style="gap: 0.75rem;">
+                <a href="pages/components.html" class="btn btn-primary d-inline-flex align-items-center" style="gap: 0.5rem;">
+                    <span class="material-icons" aria-hidden="true">widgets</span> Explorar Catálogo de Componentes
+                </a>
+                <a href="pages/tokens.html" class="btn btn-outline-primary d-inline-flex align-items-center" style="gap: 0.5rem;">
+                    <span class="material-icons" aria-hidden="true">palette</span> Consultar Design Tokens
+                </a>
+                <a href="#quick-start" class="btn btn-light d-inline-flex align-items-center border" style="gap: 0.5rem;">
+                    <span class="material-icons" aria-hidden="true">bolt</span> Guia Rápido (Quick Start)
+                </a>
+            </div>
+        </section>
 
-            <!-- ============ CORES ============ -->
-            <section id="cores">
-                <h2>Cores e Tokens</h2>
-                <p class="text-body mb-3">Paleta oficial extraída do portal BCB em produção. Use as CSS Custom Properties (<code>var(--bcb-...)</code>) em vez de valores hardcoded.</p>
-                <div class="row">
-                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-blue);"><span class="swatch-name">Brand Blue</span><span class="swatch-hex">#025C75</span></div></div>
-                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-blue-dark);"><span class="swatch-name">Blue Dark</span><span class="swatch-hex">#013F50</span></div></div>
-                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-azulcinti);"><span class="swatch-name">Azul Cinti</span><span class="swatch-hex">#088694</span></div></div>
-                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-azulpetro);"><span class="swatch-name">Azul Petro</span><span class="swatch-hex">#077391</span></div></div>
-                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-vinho);"><span class="swatch-name">Vinho</span><span class="swatch-hex">#2E4C59</span></div></div>
-                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-white" style="background-color: var(--bcb-brand-verde-susta);"><span class="swatch-name">Verde Susta</span><span class="swatch-hex">#067078</span></div></div>
-                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-dark" style="background-color: var(--bcb-brand-amarellato);"><span class="swatch-name">Amarellato</span><span class="swatch-hex">#F8D48D</span></div></div>
-                    <div class="col-6 col-md-3 mb-3"><div class="color-swatch text-dark" style="background-color: var(--bcb-gray-200);"><span class="swatch-name">Gray 200</span><span class="swatch-hex">#E6EAEF</span></div></div>
-                </div>
-            </section>
+        <!-- ============ SEÇÃO 1: PILARES DO DESIGN SYSTEM ============ -->
+        <section id="principios" class="mb-5">
+            <h2 class="h3 font-weight-bold mb-3" style="color: var(--bcb-gray-900);">Pilares e Princípios Fundamentais</h2>
+            <p class="text-body mb-4">O BCB Design System fundamenta-se em três pilares essenciais para assegurar a excelência técnica e a confiança pública dos serviços monetários e financeiros do país:</p>
 
-            <!-- ============ TIPOGRAFIA ============ -->
-            <section id="tipografia">
-                <h2>Tipografia</h2>
-                <p class="text-body mb-4">A família principal é <strong>Ubuntu</strong>. Peso 300 para light, 400 regular, 500 médio e 700 bold. Títulos editoriais podem usar <strong>Cormorant Garamond</strong>.</p>
-                <div class="h1 mb-2">Título h1 — Ubuntu Medium</div>
-                <div class="h2 mb-2">Subtítulo h2 — Ubuntu</div>
-                <div class="h3 mb-2">Subtítulo h3 — Ubuntu</div>
-                <p class="text-body mb-1">Corpo de texto padrão: <code>.text-body</code> (Ubuntu Regular, #606060)</p>
-                <p class="light text-muted mb-1">Texto leve: <code>.light</code> (peso 300)</p>
-                <p class="bold mb-1">Texto negrito: <code>.bold</code> (peso 700)</p>
-                <p class="italic text-muted">Texto em itálico: <code>.italic</code></p>
-            </section>
-
-            <!-- ============ BOTÕES ============ -->
-            <section id="botoes">
-                <h2>Botões (Buttons)</h2>
-                <p class="text-body mb-4">Variantes, tamanhos e estados de botões baseados nos tokens do Design System.</p>
-                
-                <h3 class="h5 medium">Variantes</h3>
-                <div class="d-flex flex-wrap mb-3" style="gap: 1rem;">
-                    <button type="button" class="btn btn-primary">Salvar relatório</button>
-                    <button type="button" class="btn btn-secondary">Confirmar dados</button>
-                    <button type="button" class="btn btn-outline-primary">Ação alternativa</button>
-                    <button type="button" class="btn btn-link">Limpar formulário</button>
+            <div class="row">
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="principle-card">
+                        <span class="material-icons principle-icon" aria-hidden="true">accessibility</span>
+                        <h3 class="h5 font-weight-bold" style="color: var(--bcb-brand-azul-blue);">Acessibilidade Universal</h3>
+                        <p class="text-body small mb-0">Conformidade estrita com as diretrizes e-MAG 3.1 e WCAG 2.2 níveis AA e AAA. Suporte nativo e automático a Modo Escuro, Alto Contraste de alto alcance visual e navegação 100% por teclado com anéis de foco visíveis.</p>
+                    </div>
                 </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;button type="button" class="btn btn-primary"&gt;Salvar relatório&lt;/button&gt;
-&lt;button type="button" class="btn btn-secondary"&gt;Confirmar dados&lt;/button&gt;
-&lt;button type="button" class="btn btn-outline-primary"&gt;Ação alternativa&lt;/button&gt;
-&lt;button type="button" class="btn btn-link"&gt;Limpar formulário&lt;/button&gt;</code></pre>
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="principle-card">
+                        <span class="material-icons principle-icon" aria-hidden="true">palette</span>
+                        <h3 class="h5 font-weight-bold" style="color: var(--bcb-brand-azul-blue);">Identidade Visual Oficial</h3>
+                        <p class="text-body small mb-0">100% fiel ao Manual de Marca oficial do Banco Central do Brasil. Paleta canônica de 11 cores (Pantone, RGB, CMYK e HEX), tipografia oficial Ubuntu e Cormorant Garamond, e escala modular de espaçamento em base de 4px.</p>
+                    </div>
                 </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="principle-card">
+                        <span class="material-icons principle-icon" aria-hidden="true">smart_toy</span>
+                        <h3 class="h5 font-weight-bold" style="color: var(--bcb-brand-azul-blue);">Prototipagem por IA</h3>
+                        <p class="text-body small mb-0">Estruturado para automação ágil via inteligência artificial. Inclui especificação W3C em <code>tokens.json</code>, contratos de componentes em <code>.docs-ia/</code> e skill especializada para transformar briefings em telas oficiais.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <h3 class="h5 medium">Tamanhos</h3>
-                <div class="d-flex flex-wrap align-items-center mb-3" style="gap: 1rem;">
-                    <button type="button" class="btn btn-primary btn-sm">Pequeno (.btn-sm)</button>
-                    <button type="button" class="btn btn-primary">Padrão</button>
-                    <button type="button" class="btn btn-primary btn-lg">Grande (.btn-lg)</button>
+        <!-- ============ SEÇÃO 2: GRID DE MÓDULOS E ACESSO RÁPIDO ============ -->
+        <section id="modulos" class="mb-5">
+            <h2 class="h3 font-weight-bold mb-3" style="color: var(--bcb-gray-900);">Módulos e Recursos do Ecossistema</h2>
+            <p class="text-body mb-4">Acesse as áreas especializadas da documentação para consultar variáveis, copiar código HTML canônico ou explorar modelos de páginas:</p>
+
+            <div class="row">
+                <!-- Card 1: Tokens -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="hub-card card-tokens">
+                        <div>
+                            <div class="hub-card-icon">
+                                <span class="material-icons" aria-hidden="true">palette</span>
+                            </div>
+                            <h3 class="hub-card-title">Design Tokens</h3>
+                            <p class="hub-card-description">Paleta oficial do Manual de Marca (11 cores com Pantone, RGB, CMYK e HEX), tipografia responsiva com <code>clamp()</code>, grid de espaçamentos e elevação.</p>
+                        </div>
+                        <a href="pages/tokens.html" class="btn btn-outline-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
+                            <span>Ver Tokens</span>
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
 
-                <h3 class="h5 medium">Com Ícones e Estado Desabilitado</h3>
-                <div class="d-flex flex-wrap mb-3" style="gap: 1rem;">
-                    <button type="button" class="btn btn-primary d-flex align-items-center">Ver conteúdo <span class="material-icons-outlined ml-2" aria-hidden="true">chevron_right</span></button>
-                    <button type="button" class="btn btn-secondary d-flex align-items-center">Baixar <span class="material-icons-outlined ml-2" aria-hidden="true">file_download</span></button>
-                    <button type="button" class="btn btn-primary" disabled>Indisponível</button>
+                <!-- Card 2: Componentes -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="hub-card card-components">
+                        <div>
+                            <div class="hub-card-icon">
+                                <span class="material-icons" aria-hidden="true">widgets</span>
+                            </div>
+                            <h3 class="hub-card-title">Catálogo Vivo</h3>
+                            <p class="hub-card-description">Vitrine interativa de 29 blocos de componentes: botões, cards de indicadores, tabelas ordenáveis com paginação, exportação de dados abertos e modais.</p>
+                        </div>
+                        <a href="pages/components.html" class="btn btn-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
+                            <span>Abrir Catálogo</span>
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;button class="btn btn-primary d-flex align-items-center"&gt;
-  Ver conteúdo &lt;span class="material-icons-outlined ml-2" aria-hidden="true"&gt;chevron_right&lt;/span&gt;
-&lt;/button&gt;</code></pre>
-                </div>
-            </section>
 
-            <!-- ============ LINKS ============ -->
-            <section id="links">
-                <h2>Links e Âncoras</h2>
-                <div class="mb-4">
-                    <h3 class="h5 medium">Link Padrão</h3>
-                    <a href="#" class="text-link">Informações adicionais sobre normativos</a>
+                <!-- Card 3: Templates -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="hub-card card-templates">
+                        <div>
+                            <div class="hub-card-icon">
+                                <span class="material-icons" aria-hidden="true">dashboard</span>
+                            </div>
+                            <h3 class="hub-card-title">Templates Prontos</h3>
+                            <p class="hub-card-description">Blueprints oficiais montados com H1 único e miolo semântico para Indicadores Econômicos, Serviços ao Cidadão, Notícias de Imprensa, Drex e Aposentadoria.</p>
+                        </div>
+                        <a href="templates/template-indicadores.html" class="btn btn-outline-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
+                            <span>Ver Modelos</span>
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <h3 class="h5 medium">Link em Nova Aba</h3>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)">Acessar Portal do Registrato <span class="material-icons-outlined ml-1" style="font-size:1rem; vertical-align:middle;" aria-hidden="true">open_in_new</span></a>
-                </div>
-                <div class="mb-4">
-                    <h3 class="h5 medium">Download de Arquivo</h3>
-                    <a href="#" class="text-link" aria-label="baixe o relatório econômico anual (PDF, 2MB)">Relatório Econômico Anual (PDF, 2MB)</a>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;a href="#" class="text-link"&gt;Informações adicionais sobre normativos&lt;/a&gt;
-&lt;a href="#" target="_blank" rel="noopener noreferrer" class="text-link" aria-label="Acesse o Registrato (abrirá em nova aba)"&gt;Portal do Registrato&lt;/a&gt;</code></pre>
-                </div>
-            </section>
 
-            <!-- ============ TABELAS, ALERTAS E DOCUMENTOS ============ -->
-            <section id="tabelas-alertas">
-                <h2>Tabelas, Alertas e Downloads</h2>
-                
-                <h3 class="h5 medium">Tabela de Dados</h3>
-                <div class="table-responsive mb-3">
-                  <table class="table table-striped table-bordered">
-                    <caption class="sr-only">Tabela demonstrativa de indicadores econômicos recentes</caption>
-                    <thead class="thead-primary">
-                      <tr><th>Indicador</th><th>Jan/2026</th><th>Fev/2026</th></tr>
+                <!-- Card 4: Guia de IA -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="hub-card card-ai">
+                        <div>
+                            <div class="hub-card-icon">
+                                <span class="material-icons" aria-hidden="true">psychology</span>
+                            </div>
+                            <h3 class="hub-card-title">Automação IA</h3>
+                            <p class="hub-card-description">Instruções para ativar a skill <code>gerador-ui-bcb</code> e documentação estruturada em <code>.docs-ia/</code> para geração de páginas governamentais acessíveis.</p>
+                        </div>
+                        <a href="pages/changelog.html" class="btn btn-outline-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
+                            <span>Ver Changelog</span>
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SEÇÃO 3: QUICK START ============ -->
+        <section id="quick-start" class="mb-5">
+            <h2 class="h3 font-weight-bold mb-3" style="color: var(--bcb-gray-900);">Início Rápido (Quick Start)</h2>
+            <p class="text-body mb-3">Para iniciar uma nova página ou protótipo oficial do BCB, copie o boilerplate HTML5 estruturado abaixo. Todo protótipo deve focar exclusivamente na área de conteúdo semântico (&lt;main id="conteudo-principal"&gt;) iniciando no &lt;h1&gt; único da página:</p>
+
+            <div class="code-snippet-box">
+                <button type="button" class="btn-copy-code" onclick="navigator.clipboard.writeText(document.getElementById('boilerplateCode').innerText); this.innerText='Copiado!'; setTimeout(() => this.innerText='Copiar', 2000);">Copiar</button>
+                <pre id="boilerplateCode"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Título da Página — Banco Central do Brasil&lt;/title&gt;
+    &lt;meta name="description" content="Descrição objetiva da página para mecanismos de busca e acessibilidade."&gt;
+    
+    &lt;!-- Bootstrap 4.6 CSS --&gt;
+    &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"&gt;
+    
+    &lt;!-- Tipografia Institucional (Ubuntu + Cormorant Garamond) --&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet"&gt;
+    
+    &lt;!-- Material Icons --&gt;
+    &lt;link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet"&gt;
+    
+    &lt;!-- BCB Design System CSS --&gt;
+    &lt;link rel="stylesheet" href="../assets/css/bcb-style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- ÁREA DE CONTEÚDO PRINCIPAL (Iniciada rigorosamente com o H1 único) --&gt;
+    &lt;main id="conteudo-principal" class="container py-4 mb-5"&gt;
+        &lt;!-- Trilha de Navegação (Breadcrumb) --&gt;
+        &lt;nav aria-label="Trilha de navegação" class="mb-3"&gt;
+            &lt;ul class="breadcrumb-bcb"&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Página Inicial&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Área Temática&lt;/a&gt;&lt;/li&gt;
+                &lt;li aria-current="page"&gt;Página Atual&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+
+        &lt;div class="mb-4"&gt;
+            &lt;h1 class="bcb-page-title"&gt;Título da Página&lt;/h1&gt;
+            &lt;div class="bcb-page-meta"&gt;
+                &lt;span class="tag-bcb primary"&gt;Categoria&lt;/span&gt;
+                &lt;span&gt;Atualizado em: DD/MM/AAAA &bull; Fonte: Banco Central do Brasil&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Seções estruturadas com h2, h3 e componentes do BCB Design System --&gt;
+    &lt;/main&gt;
+
+    &lt;!-- Scripts Bootstrap e Micro-scripts Interativos BCB --&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+    &lt;script src="../assets/js/bcb-ui.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- ============ SEÇÃO 4: STATUS DOS COMPONENTES E CONFORMIDADE ============ -->
+        <section id="status-componentes" class="mb-5">
+            <h2 class="h3 font-weight-bold mb-3" style="color: var(--bcb-gray-900);">Status dos Componentes e Conformidade</h2>
+            <p class="text-body mb-3">Quadro de homologação dos componentes canônicos implementados no ecossistema:</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" style="background-color: var(--bcb-color-white);">
+                    <caption class="text-muted small">Inventário e status de homologação dos componentes do BCB Design System</caption>
+                    <thead style="background-color: var(--bcb-gray-100); color: var(--bcb-gray-900);">
+                        <tr>
+                            <th scope="col" style="width: 25%;">Componente / Módulo</th>
+                            <th scope="col" style="width: 15%;">Categoria</th>
+                            <th scope="col" style="width: 20%;">Conformidade WCAG</th>
+                            <th scope="col" style="width: 20%;">Suporte a Temas</th>
+                            <th scope="col" style="width: 20%;">Status</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr><td>IPCA</td><td>0,42%</td><td>0,83%</td></tr>
-                      <tr><td>Selic (meta)</td><td>14,25%</td><td>14,25%</td></tr>
+                        <tr>
+                            <td><strong>Design Tokens & Cores</strong></td>
+                            <td>Fundação</td>
+                            <td><span class="badge badge-success">WCAG AAA / AA</span></td>
+                            <td>Claro / Escuro / Alto Contraste</td>
+                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Botões & Ações</strong></td>
+                            <td>Átomos</td>
+                            <td><span class="badge badge-success">WCAG AAA / AA</span></td>
+                            <td>Foco Acessível 3px</td>
+                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cards de Indicadores</strong></td>
+                            <td>Moléculas</td>
+                            <td><span class="badge badge-success">WCAG AA</span></td>
+                            <td>Tendências Direcionais</td>
+                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Table Responsiva</strong></td>
+                            <td>Organismos</td>
+                            <td><span class="badge badge-success">WCAG AA &bull; 1.3.1</span></td>
+                            <td>Ordenação JS + Paginação</td>
+                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exportação de Dados Abertos</strong></td>
+                            <td>Moléculas</td>
+                            <td><span class="badge badge-success">WCAG AAA / AA</span></td>
+                            <td>Formatos CSV, JSON, API</td>
+                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Callouts & Alertas</strong></td>
+                            <td>Moléculas</td>
+                            <td><span class="badge badge-success">WCAG AA &bull; 1.4.1</span></td>
+                            <td>4 Variantes Semânticas</td>
+                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accordions & Tabs</strong></td>
+                            <td>Organismos</td>
+                            <td><span class="badge badge-success">WCAG AA &bull; 4.1.2</span></td>
+                            <td>ARIA Expanded / Selected</td>
+                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Templates de Página</strong></td>
+                            <td>Blueprints</td>
+                            <td><span class="badge badge-success">e-MAG 3.1 &bull; H1 Único</span></td>
+                            <td>6 Modelos de Produção</td>
+                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                        </tr>
                     </tbody>
-                  </table>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="table-responsive"&gt;
-  &lt;table class="table table-striped table-bordered"&gt;
-    &lt;thead class="thead-primary"&gt;...&lt;/thead&gt;
-    &lt;tbody&gt;...&lt;/tbody&gt;
-  &lt;/table&gt;
-&lt;/div&gt;</code></pre>
-                </div>
+                </table>
+            </div>
+        </section>
 
-                <h3 class="h5 medium">Alertas</h3>
-                <div class="alert alert-success" role="alert"><strong>Dica:</strong> Use <code>.alert-success</code> para seções informativas.</div>
-                <div class="alert alert-danger" role="alert"><strong>Restrição:</strong> Use <code>.alert-danger</code> para alertas críticos.</div>
+        <!-- ============ SEÇÃO 5: FONTES DA VERDADE E GOVERNANÇA ============ -->
+        <section id="fontes-ia" class="mb-4">
+            <h2 class="h3 font-weight-bold mb-3" style="color: var(--bcb-gray-900);">Fontes da Verdade e Governança</h2>
+            <p class="text-body mb-3">O ecossistema é mantido de forma sincronizada através de especificações consumíveis por humanos e ferramentas de IA:</p>
 
-                <h3 class="h5 medium">Lista de Documentos</h3>
-                <div class="documentos">
-                  <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Relatório de Inflação (PDF, 1.8 MB)">
-                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
-                      <div class="d-flex flex-column position-relative">
-                        <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
-                        <span class="extensao bg-color-1">pdf</span>
-                      </div>
-                    </div>
-                    <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
-                      <span class="documento-title">Relatório de Inflação — Mar/2026 (PDF, 1.8 MB)</span>
-                      <span class="documento-data">Publicado em: 12/03/2026</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="documentos"&gt;
-  &lt;a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="arquivo.pdf" aria-label="Baixar Relatório (PDF)"&gt;
-    &lt;div class="icone text-white bg-color-1 ..."&gt;...&lt;/div&gt;
-    &lt;div class="texto ..."&gt;
-      &lt;span class="documento-title"&gt;Título&lt;/span&gt;
-      &lt;span class="documento-data"&gt;Data&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ MANUAL DE TABELAS E GRÁFICOS ============ -->
-            <section id="tabelas-graficos-oficiais">
-                <h2>Manual Corporativo de Padrão Visual para Tabelas e Gráficos</h2>
-                <div class="subtitle-lead">Diretrizes de Formatação e Design — Banco Central do Brasil</div>
-                <p class="text-body mb-4">Este documento estabelece as diretrizes de design, formatação e acessibilidade para todos os gráficos e tabelas produzidos pelas diversas áreas técnicas do Banco Central do Brasil (BC), por meio de automações de código, planilhas eletrônicas ou plataformas digitais.</p>
-
-                <!-- SECÇÃO 1: CORES ESTRUTURAIS PARA TABELAS -->
-                <h3 class="h5 medium mt-4">1. Cores Estruturais e Funcionais (Tabelas)</h3>
-                <p class="text-body mb-3">Para garantir a sobriedade institucional e a legibilidade massiva de tabelas complexas, utiliza-se um conjunto restrito de cores funcionais. A paleta expandida de doze cores destina-se <strong>exclusivamente</strong> a séries de dados em gráficos.</p>
-                
-                <div class="color-row">
-                    <div class="color-col">
-                        <div class="color-card" style="background-color: #606060; color: #ffffff;">
-                            <div class="color-title">Tipografia e bordas</div>
-                            <div class="color-code">HEX: #606060<br>Obrigatório: cor padrão para títulos, textos e linhas.</div>
-                        </div>
-                    </div>
-                    <div class="color-col">
-                        <div class="color-card" style="background-color: #ffffff; color: #B30000; border: 2px solid #B30000;">
-                            <div class="color-title">Números negativos</div>
-                            <div class="color-code" style="color: #606060;">
-                                <strong style="color: #B30000;">HEX: #B30000</strong><br>Alto contraste (WCAG). Ex.: <code>-0,5</code>.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="color-col">
-                        <div class="color-card" style="background-color: #2E4C59; color: #ffffff;">
-                            <div class="color-title">Cabeçalhos (digital)</div>
-                            <div class="color-code">HEX: #2E4C59<br>Exclusivo para fundos de cabeçalho em telas e painéis.</div>
-                        </div>
-                    </div>
-                    <div class="color-col">
-                        <div class="color-card" style="background-color: rgba(46, 76, 89, 0.04); color: #606060; border: 1px solid #dcdcdc;">
-                            <div class="color-title" style="color: #2E4C59;">Zebrado (digital)</div>
-                            <div class="color-code">Azul (4% Opacidade)<br>Linhas alternadas para guiar a leitura em telas.</div>
-                        </div>
-                    </div>
-                    <div class="color-col">
-                        <div class="color-card" style="background-color: rgba(242, 181, 87, 0.15); color: #4a3107; border: 1px solid #dcdcdc;">
-                            <div class="color-title">Realce suave (digital)</div>
-                            <div class="color-code">Amarelo (15% opacidade)<br>Realce de totais sem ofuscar dados negativos.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SECÇÃO 2: REGRAS ESTRUTURAIS E HIERARQUIA -->
-                <h3 class="h5 medium mt-4">2. Regras de Hierarquia e Formatação (Diretrizes Exatas)</h3>
-                <p class="text-body mb-3">O principal desafio em relatórios analíticos é a leitura de dados densos. Ao construir matrizes tabulares, a aplicação das seguintes regras é estritamente necessária para aprovação visual:</p>
-
-                <div class="rules-grid">
-                    <div class="rules-col">
-                        <h4>A. Tipografia e Dimensões Oficiais</h4>
-                        <ul>
-                            <li><strong>Título e Subtítulo:</strong> fonte Arial <code>8 pt</code>. O título deve ser obrigatoriamente <strong>Negrito</strong> e o subtítulo Regular/Itálico.</li>
-                            <li><strong>Conteúdo (Dados):</strong> Arial, Regular, tamanho <code>7 pt</code>.</li>
-                            <li><strong>Notas de Rodapé:</strong> Arial, Regular, tamanho <code>6 pt</code>. Restrição: omitir a citação ao "BC" quando o banco for a fonte exclusiva.</li>
-                            <li><strong>Altura da Linha (<em>Line-height</em>):</strong> configurar exatamente em <code>12,75 pt</code>. Essa é a proporção áurea definida para evitar o "esmagamento" dos dados sem desperdiçar espaço em relatórios longos.</li>
-                        </ul>
-                    </div>
-                    <div class="rules-col">
-                        <h4>B. Estrutura, Numeração e Nomenclatura</h4>
-                        <ul>
-                            <li><strong>Numeração:</strong> utilizar padrão contínuo (Ex.: <em>Tabela 1 – Título</em>). O formato aninhado (Ex.: <em>Tabela 1.2.1</em>) é reservado exclusivamente ao REF.</li>
-                            <li><strong>Nomenclatura:</strong> categorias de soma devem ser nomeadas como <code>Total</code> (não SFN ou Pessoa Física). Para controle acionário, use sempre <code>Bancos públicos</code> e <code>Bancos privados</code>.</li>
-                            <li><strong>Agrupamento Visual (Bordas e Zebrado):</strong> 
-                                <ul style="margin-top: 4pt;">
-                                    <li>Linha pontilhada separa o cabeçalho do conteúdo.</li>
-                                    <li><strong>Obrigatório em tabelas largas:</strong> utilizar uma coluna vertical fina (<code>0,5 pt</code>) para separar grupos de períodos temporais, evitando fadiga visual horizontal.</li>
-                                    <li><strong>Obrigatório em tabelas digitais:</strong> utilizar zebrado (linhas com fundo alternado) com exatamente <strong>4% de opacidade da Cor 1 (azul)</strong> para guiar a leitura sem interferir no contraste dos dados.</li>
-                                </ul>
-                            </li>
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="card p-3 border h-100" style="background-color: var(--bcb-color-white);">
+                        <h3 class="h6 font-weight-bold" style="color: var(--bcb-brand-azul-blue);"><span class="material-icons" style="font-size: 1.1rem; vertical-align: middle;" aria-hidden="true">folder_open</span> Especificações para IA (<code>.docs-ia/</code>)</h3>
+                        <ul class="text-body small mb-0 pl-3">
+                            <li><code>.docs-ia/components.md</code>: 29 assinaturas canônicas e regras Do/Don't.</li>
+                            <li><code>.docs-ia/layouts-patterns.md</code>: Blueprints e matriz de decisão de layout.</li>
+                            <li><code>.docs-ia/tokens.md</code>: Manual de marca e códigos cromáticos.</li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- SECÇÃO 3: TABELAS COMPLEXAS -->
-                <h3 class="h5 medium mt-4">3. Aplicação em Tabelas de Alta Densidade (Resumo PMS)</h3>
-                <p class="text-body mb-3">Abaixo aplicamos os padrões institucionais a uma matriz real de alta complexidade. Observe como o uso estrito das <strong>linhas verticais (separadores de 0,5pt)</strong> elimina a necessidade de desenhar caixas isoladas no cabeçalho.</p>
-
-                <!-- MODELO A: DIGITAL -->
-                <div class="card-container">
-                    <div class="card-title">Padrão A: Variante Digital (Telas e Painéis)</div>
-                    <div class="card-desc">Utiliza cabeçalho institucional (cor azul). As partições de colunas são feitas por bordas sutis no CSS. O zebrado (4% de opacidade) e o realce de totais (15% de amarelo) permitem que os negativos (vermelhos) saltem à vista de imediato.</div>
-                    
-                    <div class="bcb-table-wrapper">
-                        <div class="bcb-table-header-flex">
-                            <div class="bcb-table-title-box">
-                                <div class="bcb-table-title">Tabela 1 – Resumo PMS</div>
-                                <div class="bcb-table-subtitle"><em>Abril 2026</em></div>
-                            </div>
-                            <div class="bcb-table-unit-box">%</div>
-                        </div>
-                        <table class="bcb-table table-digital">
-                            <caption class="sr-only">Tabela 1 – Resumo PMS (Abril 2026)</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col" rowspan="2" class="bcb-col-separator" style="vertical-align: bottom;">Atividade</th>
-                                    <th scope="col" rowspan="2" class="bcb-col-separator" style="vertical-align: bottom;">Peso</th>
-                                    <th scope="colgroup" colspan="3" class="bcb-col-separator" style="text-align: center;">Var. período anterior, a.s.</th>
-                                    <th scope="colgroup" colspan="4" class="bcb-col-separator" style="text-align: center;">Var. ano anterior</th>
-                                    <th scope="colgroup" colspan="2" style="text-align: center;">Carry over</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Mês</th>
-                                    <th scope="col">Trim</th>
-                                    <th scope="col" class="bcb-col-separator">Fev20</th>
-                                    <th scope="col">Mês</th>
-                                    <th scope="col">Trim</th>
-                                    <th scope="col">Ano</th>
-                                    <th scope="col" class="bcb-col-separator">12 m.</th>
-                                    <th scope="col">2T</th>
-                                    <th scope="col">2026</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bcb-row-highlight">
-                                    <td class="bcb-col-separator">Serviços – Total</td>
-                                    <td class="bcb-col-separator">100,0</td>
-                                    <td>1,2</td>
-                                    <td><span class="num-negative">-0,4</span></td>
-                                    <td class="bcb-col-separator">19,9</td>
-                                    <td>1,9</td>
-                                    <td>1,9</td>
-                                    <td>2,2</td>
-                                    <td class="bcb-col-separator">2,9</td>
-                                    <td>0,5</td>
-                                    <td>1,1</td>
-                                </tr>
-                                <tr>
-                                    <td class="bcb-col-separator">Serviços prestados às famílias</td>
-                                    <td class="bcb-col-separator">8,2</td>
-                                    <td>1,4</td>
-                                    <td>0,9</td>
-                                    <td class="bcb-col-separator">6,9</td>
-                                    <td>2,7</td>
-                                    <td>1,8</td>
-                                    <td>1,9</td>
-                                    <td class="bcb-col-separator">1,1</td>
-                                    <td>1,1</td>
-                                    <td>2,3</td>
-                                </tr>
-                                <tr>
-                                    <td class="bcb-col-separator">Serviços de informação e comunicação</td>
-                                    <td class="bcb-col-separator">23,5</td>
-                                    <td>0,5</td>
-                                    <td>2,2</td>
-                                    <td class="bcb-col-separator">38,7</td>
-                                    <td>6,3</td>
-                                    <td>6,4</td>
-                                    <td>6,4</td>
-                                    <td class="bcb-col-separator">5,6</td>
-                                    <td>0,4</td>
-                                    <td>4,9</td>
-                                </tr>
-                                <tr>
-                                    <td class="bcb-col-separator">Serv. profissionais, adm. e complementares</td>
-                                    <td class="bcb-col-separator">21,7</td>
-                                    <td>0,4</td>
-                                    <td><span class="num-negative">-1,3</span></td>
-                                    <td class="bcb-col-separator">22,0</td>
-                                    <td>1,2</td>
-                                    <td>1,0</td>
-                                    <td>1,6</td>
-                                    <td class="bcb-col-separator">2,6</td>
-                                    <td><span class="num-negative">-0,4</span></td>
-                                    <td>0,1</td>
-                                </tr>
-                                <tr>
-                                    <td class="bcb-col-separator">Transportes, serv. auxiliares e correio</td>
-                                    <td class="bcb-col-separator">36,4</td>
-                                    <td>0,9</td>
-                                    <td><span class="num-negative">-1,1</span></td>
-                                    <td class="bcb-col-separator">19,1</td>
-                                    <td><span class="num-negative">-1,4</span></td>
-                                    <td><span class="num-negative">-0,5</span></td>
-                                    <td><span class="num-negative">-0,1</span></td>
-                                    <td class="bcb-col-separator">2,1</td>
-                                    <td>0,0</td>
-                                    <td><span class="num-negative">-1,6</span></td>
-                                </tr>
-                                <tr class="bcb-row-highlight">
-                                    <td class="bcb-col-separator">Total (pesos PIB)*</td>
-                                    <td class="bcb-col-separator">100,0</td>
-                                    <td>1,0</td>
-                                    <td>0,2</td>
-                                    <td class="bcb-col-separator">29,5</td>
-                                    <td>2,6</td>
-                                    <td>2,5</td>
-                                    <td>2,8</td>
-                                    <td class="bcb-col-separator">3,3</td>
-                                    <td>0,2</td>
-                                    <td>1,5</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="card p-3 border h-100" style="background-color: var(--bcb-color-white);">
+                        <h3 class="h6 font-weight-bold" style="color: var(--bcb-brand-azul-blue);"><span class="material-icons" style="font-size: 1.1rem; vertical-align: middle;" aria-hidden="true">code</span> Automação e Tokens (<code>tokens.json</code>)</h3>
+                        <ul class="text-body small mb-0 pl-3">
+                            <li><code>tokens.json</code>: Decisões de design no padrão W3C DTCG.</li>
+                            <li><code>scripts/build-tokens.js</code>: Compilador e verificador de paridade CSS.</li>
+                            <li><code>.agent/skills/gerador-ui-bcb/</code>: Skill oficial para prototipagem.</li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- MODELO B: STRICT -->
-                <div class="card-container">
-                    <div class="card-title">Padrão B: Variante Estrita (Relatórios Oficiais e PDF)</div>
-                    <div class="card-desc">Padrão obrigatório para o REF e documentos densos. A ausência de preenchimentos, aliada à fonte hierárquica (Totais em Negrito na Cor 1) e aos <strong>separadores verticais</strong>, forma a base analítica do BC.</div>
-                    
-                    <div class="bcb-table-wrapper">
-                        <div class="bcb-table-header-flex">
-                            <div class="bcb-table-title-box">
-                                <div class="bcb-table-title">Tabela 2 – Resumo PMS (Versão Documental)</div>
-                                <div class="bcb-table-subtitle"><em>Abril 2026</em></div>
-                            </div>
-                            <div class="bcb-table-unit-box">%</div>
-                        </div>
-                        <table class="bcb-table table-strict">
-                            <caption class="sr-only">Tabela 2 – Resumo PMS (Versão Documental, Abril 2026)</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col" rowspan="2" class="bcb-col-separator" style="vertical-align: bottom;">Atividade</th>
-                                    <th scope="col" rowspan="2" class="bcb-col-separator" style="vertical-align: bottom;">Peso</th>
-                                    <th scope="colgroup" colspan="3" class="bcb-col-separator" style="text-align: center;">Var. período anterior, a.s.</th>
-                                    <th scope="colgroup" colspan="4" class="bcb-col-separator" style="text-align: center;">Var. ano anterior</th>
-                                    <th scope="colgroup" colspan="2" style="text-align: center;">Carry over</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Mês</th>
-                                    <th scope="col">Trim</th>
-                                    <th scope="col" class="bcb-col-separator">Fev20</th>
-                                    <th scope="col">Mês</th>
-                                    <th scope="col">Trim</th>
-                                    <th scope="col">Ano</th>
-                                    <th scope="col" class="bcb-col-separator">12 m.</th>
-                                    <th scope="col">2T</th>
-                                    <th scope="col">2026</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bcb-row-total">
-                                    <td class="bcb-col-separator">Serviços - Total</td>
-                                    <td class="bcb-col-separator">100,0</td>
-                                    <td>1,2</td>
-                                    <td><span class="num-negative">-0,4</span></td>
-                                    <td class="bcb-col-separator">19,9</td>
-                                    <td>1,9</td>
-                                    <td>1,9</td>
-                                    <td>2,2</td>
-                                    <td class="bcb-col-separator">2,9</td>
-                                    <td>0,5</td>
-                                    <td>1,1</td>
-                                </tr>
-                                <tr>
-                                    <td class="bcb-col-separator">Serviços prestados às famílias</td>
-                                    <td class="bcb-col-separator">8,2</td>
-                                    <td>1,4</td>
-                                    <td>0,9</td>
-                                    <td class="bcb-col-separator">6,9</td>
-                                    <td>2,7</td>
-                                    <td>1,8</td>
-                                    <td>1,9</td>
-                                    <td class="bcb-col-separator">1,1</td>
-                                    <td>1,1</td>
-                                    <td>2,3</td>
-                                </tr>
-                                <tr>
-                                    <td class="bcb-col-separator">Serviços de informação e comunicação</td>
-                                    <td class="bcb-col-separator">23,5</td>
-                                    <td>0,5</td>
-                                    <td>2,2</td>
-                                    <td class="bcb-col-separator">38,7</td>
-                                    <td>6,3</td>
-                                    <td>6,4</td>
-                                    <td>6,4</td>
-                                    <td class="bcb-col-separator">5,6</td>
-                                    <td>0,4</td>
-                                    <td>4,9</td>
-                                </tr>
-                                <tr>
-                                    <td class="bcb-col-separator">Serv. profissionais, adm. e complementares</td>
-                                    <td class="bcb-col-separator">21,7</td>
-                                    <td>0,4</td>
-                                    <td><span class="num-negative">-1,3</span></td>
-                                    <td class="bcb-col-separator">22,0</td>
-                                    <td>1,2</td>
-                                    <td>1,0</td>
-                                    <td>1,6</td>
-                                    <td class="bcb-col-separator">2,6</td>
-                                    <td><span class="num-negative">-0,4</span></td>
-                                    <td>0,1</td>
-                                </tr>
-                                <tr>
-                                    <td class="bcb-col-separator">Transportes, serv. auxiliares e correio</td>
-                                    <td class="bcb-col-separator">36,4</td>
-                                    <td>0,9</td>
-                                    <td><span class="num-negative">-1,1</span></td>
-                                    <td class="bcb-col-separator">19,1</td>
-                                    <td><span class="num-negative">-1,4</span></td>
-                                    <td><span class="num-negative">-0,5</span></td>
-                                    <td><span class="num-negative">-0,1</span></td>
-                                    <td class="bcb-col-separator">2,1</td>
-                                    <td>0,0</td>
-                                    <td><span class="num-negative">-1,6</span></td>
-                                </tr>
-                                <tr class="bcb-row-total">
-                                    <td class="bcb-col-separator">Total (pesos PIB)*</td>
-                                    <td class="bcb-col-separator">100,0</td>
-                                    <td>1,0</td>
-                                    <td>0,2</td>
-                                    <td class="bcb-col-separator">29,5</td>
-                                    <td>2,6</td>
-                                    <td>2,5</td>
-                                    <td>2,8</td>
-                                    <td class="bcb-col-separator">3,3</td>
-                                    <td>0,2</td>
-                                    <td>1,5</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="11" class="bcb-table-source">
-                                        Fontes: IBGE e BC<br>
-                                        * Pesos reponderados de acordo com os pesos e a metodologia das Contas Nacionais.<br>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
+    </main>
 
-                <!-- SECÇÃO 4: GRÁFICOS E PALETA 12 CORES -->
-                <h3 class="h5 medium mt-4">4. Integração com Gráficos e Paleta Mestra (doze cores)</h3>
-                <p class="text-body mb-4">Para representações gráficas geradas por automação (Highcharts, Python etc.), as doze cores institucionais devem ser aplicadas sequencialmente (da 1ª à 12ª) para garantir a diferenciação de múltiplas séries de dados no mesmo eixo. As linhas de grade ao fundo (<em>gridlines</em>) devem ser aplicadas sempre com 50% de transparência.</p>
-                
-                <div class="svg-chart-container">
-                    <svg width="100%" height="260" viewBox="0 0 900 260" style="font-family: var(--bcb-font-ubuntu); max-width: 900px; margin: 0 auto; display: block;" role="img" aria-label="Gráfico de barras simulando o uso das doze cores da paleta institucional">
-                        <title>Gráfico de Barras (Paleta Mestra BCB)</title>
-                        
-                        <!-- Gridlines: Transparência 50% -->
-                        <line x1="50" y1="40" x2="850" y2="40" stroke="#606060" stroke-opacity="0.3" stroke-dasharray="2,2"/>
-                        <line x1="50" y1="90" x2="850" y2="90" stroke="#606060" stroke-opacity="0.3" stroke-dasharray="2,2"/>
-                        <line x1="50" y1="140" x2="850" y2="140" stroke="#606060" stroke-opacity="1"/>
-                        
-                        <!-- Barras - 12 Cores Sequenciais -->
-                        <rect x="70" y="50" width="35" height="90" fill="#2E4C59" />
-                        <text x="87.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">1ª</text>
-                        <rect x="130" y="70" width="35" height="70" fill="#F2B557" />
-                        <text x="147.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">2ª</text>
-                        <rect x="190" y="40" width="35" height="100" fill="#6BAEBF" />
-                        <text x="207.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">3ª</text>
-                        <rect x="250" y="80" width="35" height="60" fill="#804C29" />
-                        <text x="267.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">4ª</text>
-                        <rect x="310" y="60" width="35" height="80" fill="#87007C" />
-                        <text x="327.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">5ª</text>
-                        <rect x="370" y="90" width="35" height="50" fill="#D46C6B" />
-                        <text x="387.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">6ª</text>
-                        <rect x="430" y="55" width="35" height="85" fill="#088492" />
-                        <text x="447.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">7ª</text>
-                        <rect x="490" y="100" width="35" height="40" fill="#D295BE" />
-                        <text x="507.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">8ª</text>
-                        <rect x="550" y="65" width="35" height="75" fill="#ECCAB1" />
-                        <text x="567.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">9ª</text>
-                        <rect x="610" y="85" width="35" height="55" fill="#AEAEAE" />
-                        <text x="627.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">10ª</text>
-                        <rect x="670" y="45" width="35" height="95" fill="#736063" />
-                        <text x="687.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">11ª</text>
-                        <rect x="730" y="75" width="35" height="65" fill="#C3A061" />
-                        <text x="747.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">12ª</text>
-
-                        <!-- Labels Y -->
-                        <text x="45" y="43" font-size="7pt" fill="#606060" text-anchor="end">20</text>
-                        <text x="45" y="93" font-size="7pt" fill="#606060" text-anchor="end">10</text>
-                        <text x="45" y="143" font-size="7pt" fill="#606060" text-anchor="end">0</text>
-
-                        <!-- Chart Title -->
-                        <text x="50" y="15" font-size="9pt" font-weight="bold" fill="#606060">Gráfico 1 – Exemplo de aplicação da paleta mestra completa (doze cores sequenciais)</text>
-                        
-                        <!-- Legenda Paletas -->
-                        <text x="222" y="200" font-size="8pt" font-weight="bold" fill="#2E4C59" text-anchor="middle">PALETA PRIMÁRIA (1 a 6)</text>
-                        <text x="587" y="200" font-size="8pt" font-weight="bold" fill="#2E4C59" text-anchor="middle">PALETA SECUNDÁRIA (7 a 12)</text>
-                    </svg>
-                </div>
-
-                <!-- CARDS DE COR -->
-                <div>
-                    <h4 class="h6 font-weight-bold mb-3 mt-4">Paleta Primária (Séries 1 a 6)</h4>
-                    <div class="color-row">
-                        <div class="color-col"><div class="color-card" style="background-color: #2E4C59; color: #ffffff;"><div class="color-title">1ª Cor (Azul)</div><div class="color-code">HEX: #2E4C59<br>RGB: 46,76,89</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #F2B557; color: #333333;"><div class="color-title">2ª Cor (Amarelo)</div><div class="color-code">HEX: #F2B557<br>RGB: 242,181,87</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #6BAEBF; color: #333333;"><div class="color-title">3ª Cor (Ciano)</div><div class="color-code">HEX: #6BAEBF<br>RGB: 107,174,191</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #804C29; color: #ffffff;"><div class="color-title">4ª Cor (Marrom)</div><div class="color-code">HEX: #804C29<br>RGB: 128,76,41</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #87007C; color: #ffffff;"><div class="color-title">5ª Cor (Púrpura)</div><div class="color-code">HEX: #87007C<br>RGB: 135,0,124</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #D46C6B; color: #333333;"><div class="color-title">6ª Cor (Coral)</div><div class="color-code">HEX: #D46C6B<br>RGB: 212,108,107</div></div></div>
-                    </div>
-
-                    <h4 class="h6 font-weight-bold mb-3 mt-4">Paleta Secundária (Séries 7 a 12)</h4>
-                    <div class="color-row">
-                        <div class="color-col"><div class="color-card" style="background-color: #088492; color: #ffffff;"><div class="color-title">7ª Cor (Verde-Azul)</div><div class="color-code">HEX: #088492<br>RGB: 8,132,146</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #D295BE; color: #333333;"><div class="color-title">8ª Cor (Rosa)</div><div class="color-code">HEX: #D295BE<br>RGB: 210,149,190</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #ECCAB1; color: #333333;"><div class="color-title">9ª Cor (Pêssego)</div><div class="color-code">HEX: #ECCAB1<br>RGB: 236,202,177</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #AEAEAE; color: #333333;"><div class="color-title">10ª Cor (Cinza)</div><div class="color-code">HEX: #AEAEAE<br>RGB: 174,174,174</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #736063; color: #ffffff;"><div class="color-title">11ª Cor (Castanho)</div><div class="color-code">HEX: #736063<br>RGB: 115,96,99</div></div></div>
-                        <div class="color-col"><div class="color-card" style="background-color: #C3A061; color: #333333;"><div class="color-title">12ª Cor (Ocre)</div><div class="color-code">HEX: #C3A061<br>RGB: 195,160,97</div></div></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ============ FORMULÁRIOS ============ -->
-            <section id="forms">
-                <h2>Formulários e Inputs</h2>
-                <p class="text-body mb-4">Diretrizes USWDS adaptadas: foco em legibilidade dos rótulos, contraste e estados de foco visíveis.</p>
-                
-                <h3 class="h5 medium">Campo de Texto</h3>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="inputNome">Nome completo</label>
-                      <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp">
-                      <small id="nomeHelp" class="form-text text-muted">Insira seu nome conforme documento oficial.</small>
-                    </div>
-                  </div>
-                </div>
-
-                <h3 class="h5 medium">Checkboxes e Radios</h3>
-                <div class="p-3 bg-light border rounded mb-3">
-                  <h4 class="h6 mb-3">Tipo de pessoa:</h4>
-                  <div class="custom-control custom-radio mb-2">
-                    <input type="radio" id="rpf" name="tp" class="custom-control-input">
-                    <label class="custom-control-label" for="rpf">Pessoa Física (CPF)</label>
-                  </div>
-                  <div class="custom-control custom-radio mb-3">
-                    <input type="radio" id="rpj" name="tp" class="custom-control-input">
-                    <label class="custom-control-label" for="rpj">Pessoa Jurídica (CNPJ)</label>
-                  </div>
-                  <div class="custom-control custom-checkbox mt-3">
-                    <input type="checkbox" class="custom-control-input" id="chk1">
-                    <label class="custom-control-label" for="chk1">Declaro que li e concordo com os termos de uso.</label>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="custom-control custom-radio mb-2"&gt;
-  &lt;input type="radio" id="rpf" name="tp" class="custom-control-input"&gt;
-  &lt;label class="custom-control-label" for="rpf"&gt;Pessoa Física (CPF)&lt;/label&gt;
-&lt;/div&gt;
-&lt;div class="custom-control custom-checkbox"&gt;
-  &lt;input type="checkbox" class="custom-control-input" id="chk1"&gt;
-  &lt;label class="custom-control-label" for="chk1"&gt;Concordo com os termos.&lt;/label&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-
-                <h3 class="h5 medium">Select (Menu Suspenso)</h3>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="selectUF">Estado (UF)</label>
-                      <select class="custom-select" id="selectUF">
-                        <option selected disabled>Selecione...</option>
-                        <option>Distrito Federal</option>
-                        <option>São Paulo</option>
-                        <option>Rio de Janeiro</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <h3 class="h5 medium">Anexo de Arquivo (File Input)</h3>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="fileAnexo">Documento comprobatório</label>
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="fileAnexo" aria-describedby="fileHelp">
-                        <label class="custom-file-label" for="fileAnexo">Nenhum arquivo selecionado</label>
-                      </div>
-                      <small id="fileHelp" class="form-text text-muted">Formatos aceitos: PDF, JPG, PNG. Tamanho máximo: 5MB.</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;select class="custom-select" id="selectUF"&gt;
-  &lt;option selected disabled&gt;Selecione...&lt;/option&gt;
-  &lt;option&gt;Distrito Federal&lt;/option&gt;
-&lt;/select&gt;
-
-&lt;div class="custom-file"&gt;
-  &lt;input type="file" class="custom-file-input" id="fileAnexo"&gt;
-  &lt;label class="custom-file-label" for="fileAnexo"&gt;Nenhum arquivo selecionado&lt;/label&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-
-                <h3 class="h5 medium">Estados de Validação</h3>
-                <div class="row mb-3">
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <label for="inputEmailOk">E-mail (válido)</label>
-                      <input type="email" class="form-control is-valid" id="inputEmailOk" value="usuario@exemplo.com" aria-describedby="emailOkFeedback">
-                      <div class="valid-feedback" id="emailOkFeedback">E-mail verificado com sucesso.</div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <label for="inputCPFErro">CPF (inválido)</label>
-                      <input type="text" class="form-control is-invalid" id="inputCPFErro" value="123.456.789-0" aria-describedby="cpfErroFeedback">
-                      <div class="invalid-feedback" id="cpfErroFeedback">CPF inválido. Verifique o número digitado.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="inputObrig">Nome (obrigatório)</label>
-                      <input type="text" class="form-control is-invalid" id="inputObrig" value="" aria-required="true" aria-describedby="obrigErroFeedback">
-                      <div class="invalid-feedback" id="obrigErroFeedback">Campo obrigatório.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;!-- Input Válido --&gt;
-&lt;label for="inputEmail"&gt;E-mail&lt;/label&gt;
-&lt;input type="email" class="form-control is-valid" id="inputEmail" value="ok@mail.com" aria-describedby="emailFeedback"&gt;
-&lt;div class="valid-feedback" id="emailFeedback"&gt;E-mail verificado com sucesso.&lt;/div&gt;
-
-&lt;!-- Input Inválido --&gt;
-&lt;label for="inputCPF"&gt;CPF&lt;/label&gt;
-&lt;input type="text" class="form-control is-invalid" id="inputCPF" value="123.456.789-0" aria-describedby="cpfFeedback"&gt;
-&lt;div class="invalid-feedback" id="cpfFeedback"&gt;CPF inválido. Verifique o número digitado.&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ ABAS ============ -->
-            <section id="abas">
-                <h2>Abas de Navegação (Tabs)</h2>
-                <div class="bcb-navegacaoabas">
-                    <nav>
-                        <div class="nav nav-tabs" role="tablist">
-                            <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">
-                                <span class="line"></span>
-                                <div class="icone d-inline-block align-middle mr-1" style="width:auto; height:auto"><span class="material-icons" aria-hidden="true">person</span></div>
-                                <div class="texto d-inline-block align-middle">Cidadão</div>
-                            </a>
-                            <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">
-                                <span class="line"></span>
-                                <div class="icone d-inline-block align-middle mr-1" style="width:auto; height:auto"><span class="material-icons" aria-hidden="true">account_balance</span></div>
-                                <div class="texto d-inline-block align-middle">Sistema Financeiro</div>
-                            </a>
-                        </div>
-                    </nav>
-                    <div class="tab-content border border-top-0 p-3 mb-3">
-                        <span class="line"></span>
-                        <div class="tab-pane fade show active" id="tab1" role="tabpanel">Conteúdo da aba Cidadão.</div>
-                        <div class="tab-pane fade" id="tab2" role="tabpanel">Conteúdo da aba Sistema Financeiro.</div>
-                    </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="bcb-navegacaoabas"&gt;
-  &lt;nav&gt;
-    &lt;div class="nav nav-tabs" role="tablist"&gt;
-      &lt;a class="nav-link active" data-toggle="tab" href="#tab1" role="tab"&gt;
-        &lt;span class="line"&gt;&lt;/span&gt;
-        &lt;div class="icone"&gt;&lt;span class="material-icons"&gt;person&lt;/span&gt;&lt;/div&gt;
-        &lt;div class="texto"&gt;Cidadão&lt;/div&gt;
-      &lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/nav&gt;
-  &lt;div class="tab-content"&gt;
-    &lt;span class="line"&gt;&lt;/span&gt;
-    &lt;div class="tab-pane fade show active" id="tab1" role="tabpanel"&gt;...&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ CARDS DE LINKS RÁPIDOS ============ -->
-            <section id="cards-links-rapidos">
-                <h2>Cards de Links Rápidos</h2>
-                <div class="bcb-listalinks">
-                    <div class="buffer">
-                        <div class="row">
-                            <div class="col-sm-6 mb-2">
-                                <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
-                                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
-                                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Busca de normas</div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 mb-2">
-                                <a class="hvr-shadow d-flex no-underline text-decoration-none" href="#">
-                                    <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"><span class="material-icons" aria-hidden="true">chevron_right</span></div>
-                                    <div class="texto d-flex align-items-center w-100 rounded-right font-color-1 px-3">Atendimento ao cidadão</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="bcb-listalinks"&gt;
-  &lt;div class="buffer"&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="col-sm-6 mb-2"&gt;
-        &lt;a class="hvr-shadow d-flex no-underline" href="#"&gt;
-          &lt;div class="icone text-white bg-color-1 ..."&gt;...&lt;/div&gt;
-          &lt;div class="texto ..."&gt;Busca de normas&lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ CARDS DE CONTEÚDO ============ -->
-            <section id="cards-conteudo">
-                <h2>Cards de Conteúdo (Listalinks Light)</h2>
-                
-                <h3 class="h5 medium">Modelo 1 (Com Sombra)</h3>
-                <div class="listalinks-light modelo-1 mb-3">
-                  <div class="row">
-                    <div class="col-md-6 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center rounded-left"><span class="material-icons md-36 color-1" aria-hidden="true">campaign</span></div>
-                          <div class="info-container align-self-center p-3">
-                            <p class="mb-0"><span class="title color-1">Comunicação e Imprensa</span><br><span class="description">Acesse os últimos comunicados.</span></p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center rounded-left"><span class="material-icons md-36 color-1" aria-hidden="true">hearing</span></div>
-                          <div class="info-container align-self-center p-3">
-                            <p class="mb-0"><span class="title color-1">Ouvidoria</span><br><span class="description">Fale com o Banco Central.</span></p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <h3 class="h5 medium">Modelo 5 (Vertical)</h3>
-                <div class="listalinks-light modelo-5 mb-3">
-                  <div class="row">
-                    <div class="col-md-4 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center"><span class="material-icons md-36 color-1" aria-hidden="true">support_agent</span></div>
-                          <div class="info-container align-self-center text-center">
-                            <p class="mb-0"><span class="title color-1 text-uppercase d-block mt-3">Atendimento</span><br><span class="description">Central de atendimento ao cidadão.</span></p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center"><span class="material-icons md-36 color-1" aria-hidden="true">outgoing_mail</span></div>
-                          <div class="info-container align-self-center text-center">
-                            <p class="mb-0"><span class="title color-1 text-uppercase d-block mt-3">Fale Conosco</span><br><span class="description">Envie suas dúvidas por email.</span></p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="h-100 d-flex align-items-center">
-                        <a href="#" class="flex-column align-items-center justify-content-center p-3 flex-grow-1 bg-light d-inline-flex rounded w-100 h-100">
-                          <div class="icon-container d-flex align-items-center justify-content-center"><span class="material-icons md-36 color-1" aria-hidden="true">help_outline</span></div>
-                          <div class="info-container align-self-center text-center">
-                            <p class="mb-0"><span class="title color-1 text-uppercase d-block mt-3">FAQ</span><br><span class="description">Perguntas frequentes.</span></p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="listalinks-light modelo-1"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-6 mb-3"&gt;
-      &lt;div class="h-100 d-flex align-items-center"&gt;
-        &lt;a href="#" class="d-inline-flex rounded w-100 h-100"&gt;
-          &lt;div class="icon-container ..."&gt;...&lt;/div&gt;
-          &lt;div class="info-container ..."&gt;
-            &lt;span class="title color-1"&gt;Título&lt;/span&gt;
-            &lt;span class="description"&gt;Descrição&lt;/span&gt;
-          &lt;/div&gt;
-        &lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ BREADCRUMB E TAGS ============ -->
-            <section id="breadcrumb-tags">
-                <h2>Breadcrumb e Tags</h2>
-                
-                <h3 class="h5 medium">Breadcrumb</h3>
-                <nav aria-label="Navegação secundária">
-                  <ul class="breadcrumb-bcb">
-                    <li><a href="/">Página Inicial</a></li>
-                    <li><a href="/estabilidade">Estabilidade Financeira</a></li>
-                    <li aria-current="page">Normas</li>
-                  </ul>
-                </nav>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;nav aria-label="Navegação secundária"&gt;
-  &lt;ul class="breadcrumb-bcb"&gt;
-    &lt;li&gt;&lt;a href="/"&gt;Página Inicial&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/estabilidade"&gt;Estabilidade Financeira&lt;/a&gt;&lt;/li&gt;
-    &lt;li aria-current="page"&gt;Normas&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;</code></pre>
-                </div>
-
-                <h3 class="h5 medium">Tags (Etiquetas)</h3>
-                <div class="mb-3">
-                  <span class="tag-bcb mr-1">Comunicado</span>
-                  <span class="tag-bcb primary mr-1">Novo</span>
-                  <span class="tag-bcb mr-1">Em consulta</span>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;span class="tag-bcb"&gt;Comunicado&lt;/span&gt;
-&lt;span class="tag-bcb primary"&gt;Novo&lt;/span&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ CONTEÚDO EDITORIAL ============ -->
-            <section id="conteudo-editorial">
-                <h2>Callout, Citação e Accordion</h2>
-                <p class="text-body mb-4">Simulação visual dos Custom Elements Angular do BCB, com o código do componente abaixo para uso em produção.</p>
-                
-                <h3 class="h5 medium">Callout (Evolução do "Olho")</h3>
-                <p class="text-body mb-3">O componente <strong>Callout</strong> substitui o antigo "Olho", trazendo hierarquia visual clara, ícones e semântica de cores. Pode ser usado em três variações estruturais: Padrão (borda lateral), Outline ou Elevated.</p>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Brand Info -->
-                        <div class="callout callout-brand callout-left-bordered">
-                            <span class="material-icons-outlined callout-icon" aria-hidden="true">info</span>
-                            <div class="callout-content">
-                                <h4 class="callout-title">Uso Padrão (Brand Blue)</h4>
-                                <p>Serve para destacar notas, curiosidades, dicas educacionais gerais. Não quebra o fluxo de leitura, mas ganha destaque visual pela margem pesada à esquerda.</p>
-                                <div class="callout-actions">
-                                    <button class="btn btn-bcb-primary px-4 py-2">Ação Primária</button>
-                                    <button class="btn btn-bcb-outline px-4 py-2">Ação Secundária</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Success Outline -->
-                        <div class="callout callout-success callout-outline">
-                            <span class="material-icons-outlined callout-icon" aria-hidden="true">check_circle</span>
-                            <div class="callout-content">
-                                <h4 class="callout-title">Sucesso (Outline)</h4>
-                                <p>Fundo 100% branco com borda fina acompanhando toda a caixa. Ótimo contraste para áreas densas ou fundos cinzas.</p>
-                            </div>
-                        </div>
-
-                        <!-- Warning Elevated -->
-                        <div class="callout callout-warning callout-elevated">
-                            <span class="material-icons-outlined callout-icon" aria-hidden="true">warning</span>
-                            <div class="callout-content">
-                                <h4 class="callout-title">Atenção (Elevated)</h4>
-                                <p>Usado para avisos que devem parecer flutuar sobre o conteúdo. Contém sombra suave e borda lateral. A cor de borda usa uma variação escurecida do Amarellato para acessibilidade visual em fundos brancos.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Danger -->
-                        <div class="callout callout-danger callout-left-bordered">
-                            <span class="material-icons-outlined callout-icon" aria-hidden="true">error</span>
-                            <div class="callout-content">
-                                <h4 class="callout-title">Crítico / Erro (Marsala Suave)</h4>
-                                <p>Reservado para ações destrutivas, proibições fortes ou erros severos. Age como o "vermelho institucional".</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Neutral -->
-                        <div class="callout callout-neutral callout-left-bordered">
-                            <span class="material-icons-outlined callout-icon" aria-hidden="true">article</span>
-                            <div class="callout-content">
-                                <h4 class="callout-title">Neutro / Referência</h4>
-                                <p>Usado para metadados, links de rodapé ou anexos. Não disputa atenção com os elementos coloridos primários.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;!-- Exemplo Padrão (Brand) --&gt;
-&lt;div class="callout callout-brand callout-left-bordered"&gt;
-    &lt;span class="material-icons-outlined callout-icon" aria-hidden="true"&gt;info&lt;/span&gt;
-    &lt;div class="callout-content"&gt;
-        &lt;h4 class="callout-title"&gt;Uso Padrão&lt;/h4&gt;
-        &lt;p&gt;Corpo de texto explicativo.&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-
-
-                <h3 class="h5 medium">Citação (Blockquote)</h3>
-                <blockquote class="bcb-citacao">
-                  <p class="mb-0">"Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade."</p>
-                  <footer>Banco Central do Brasil</footer>
-                </blockquote>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;bcb-citacao [autor]="'Banco Central do Brasil'" [citacao]="'Garantir a estabilidade de preços...'"&gt;&lt;/bcb-citacao&gt;</code></pre>
-                </div>
-
-                <h3 class="h5 medium">Accordion (Modelo 1)</h3>
-                <div class="accordion modelo-1" id="accordionDS">
-                  <div class="card">
-                    <div class="card-header" id="headDS1">
-                      <a role="button" data-toggle="collapse" class="btn d-flex justify-content-between align-items-center w-100 text-left text-decoration-none" href="#collapseDS1" aria-expanded="true" aria-controls="collapseDS1">
-                        <span>Título da Sanfona de Exemplo</span>
-                        <span class="material-icons" aria-hidden="true">expand_more</span>
-                      </a>
-                    </div>
-                    <div id="collapseDS1" class="collapse show" data-parent="#accordionDS">
-                      <div class="card-body"><p class="mb-0">Conteúdo HTML interno visível da sanfona.</p></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;bcb-accordion-page [card_header]="'Título'" [card_body]="'&lt;p&gt;Conteúdo&lt;/p&gt;'" [aria_expanded]="false" [modelo]="'1'"&gt;&lt;/bcb-accordion-page&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ NAVEGAÇÃO EDITORIAL ============ -->
-            <section id="navegacao-editorial">
-                <h2>Menu de Âncoras e Passo a Passo</h2>
-
-                <h3 class="h5 medium">Menu de Âncoras (In-page Navigation)</h3>
-                <div class="row mb-3">
-                  <div class="col-md-4">
-                    <aside class="bd-sidebar" style="position: static;">
-                      <div class="bd-toc">
-                        <strong>Nesta página</strong>
-                        <nav aria-label="Navegação âncora" class="bd-links">
-                          <ul class="list-unstyled mb-0">
-                            <li><a href="#" class="active">1. Introdução</a></li>
-                            <li><a href="#">2. Regras Gerais</a></li>
-                            <li><a href="#">3. Considerações</a></li>
-                          </ul>
-                        </nav>
-                      </div>
-                    </aside>
-                  </div>
-                  <div class="col-md-8">
-                    <p class="text-body text-muted border p-3 bg-light rounded">O menu à esquerda funciona com <code>position: sticky</code> em páginas reais. O conteúdo é rolado nesta coluna.</p>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;aside class="bd-sidebar"&gt;
-  &lt;div class="bd-toc"&gt;
-    &lt;strong&gt;Nesta página&lt;/strong&gt;
-    &lt;nav aria-label="Navegação âncora" class="bd-links"&gt;
-      &lt;ul class="list-unstyled mb-0"&gt;
-        &lt;li&gt;&lt;a href="#secao1" class="active"&gt;1. Introdução&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#secao2"&gt;2. Regras Gerais&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/nav&gt;
-  &lt;/div&gt;
-&lt;/aside&gt;</code></pre>
-                </div>
-
-                <h3 class="h5 medium">Process List (Passo a Passo)</h3>
-                <ul class="process-list mt-3">
-                  <li>
-                    <h4 class="h5 mt-0 mb-1 color-1">Acesse o sistema</h4>
-                    <p class="text-body">Faça login com sua conta gov.br nível prata ou ouro.</p>
-                  </li>
-                  <li>
-                    <h4 class="h5 mt-0 mb-1 color-1">Preencha os dados</h4>
-                    <p class="text-body">Insira as informações solicitadas no formulário.</p>
-                  </li>
-                  <li>
-                    <h4 class="h5 mt-0 mb-1 color-1">Envie e aguarde</h4>
-                    <p class="text-body">Você receberá o protocolo confirmando a operação no portal.</p>
-                  </li>
-                </ul>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;ul class="process-list"&gt;
-  &lt;li&gt;
-    &lt;h4 class="h5 mt-0 mb-1 color-1"&gt;Acesse o sistema&lt;/h4&gt;
-    &lt;p class="text-body"&gt;Faça login com sua conta gov.br.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-                </div>
-            </section>
-
-
-
-            <!-- ============ TEMPLATES ============ -->
-            <section id="templates">
-                <h2>Templates de Página</h2>
-                <p class="text-body mb-4">Páginas completas prontas para uso que demonstram o Design System funcionando em contexto real. Abra em nova aba para visualizar em tela cheia.</p>
-                <div class="row">
-                  <div class="col-md-4 mb-3">
-                    <a href="./templates/template-servico.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template de Serviço ao Cidadão (nova aba)">
-                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">assignment</span>
-                      <div class="text-left">
-                        <strong class="d-block" style="font-size: 1rem;">Serviço ao Cidadão</strong>
-                        <small style="opacity:0.85;">Registrato — Passo a Passo</small>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <a href="./templates/template-noticia.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template de Notícia Editorial (nova aba)">
-                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">article</span>
-                      <div class="text-left">
-                        <strong class="d-block" style="font-size: 1rem;">Notícia Editorial</strong>
-                        <small style="opacity:0.85;">Pix Agendado Recorrente</small>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <a href="./templates/drex.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template Drex: O Real Digital (nova aba)">
-                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">currency_exchange</span>
-                      <div class="text-left">
-                        <strong class="d-block" style="font-size: 1rem;">Drex — Real Digital</strong>
-                        <small class="text-muted">Landing Page Temática</small>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <a href="./templates/desastres-naturais.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template Desastres Naturais (nova aba)">
-                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">eco</span>
-                      <div class="text-left">
-                        <strong class="d-block" style="font-size: 1rem;">Desastres Naturais</strong>
-                        <small class="text-muted">Guia de Prevenção e Impactos</small>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <a href="./templates/planejando-a-aposentadoria.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template Planejando a Aposentadoria (nova aba)">
-                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">savings</span>
-                      <div class="text-left">
-                        <strong class="d-block" style="font-size: 1rem;">Aposentadoria</strong>
-                        <small class="text-muted">Educação Financeira</small>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <a href="./templates/componente-callout.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir estudo do Componente Callout (nova aba)">
-                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">view_quilt</span>
-                      <div class="text-left">
-                        <strong class="d-block" style="font-size: 1rem;">Estudo Callout</strong>
-                        <small class="text-muted">Evolução do Olho Editorial</small>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-            </section>
-
-            <!-- ============ BUSCA ============ -->
-            <section id="busca">
-                <h2>Busca Avançada com Filtros</h2>
-                <p class="text-body mb-4">Padrão de busca extraído do portal oficial <code>bcb.gov.br</code>. O input expande com foco e inclui chips de filtro por categoria.</p>
-                <div class="bcb-search-overlay">
-                  <div class="bcb-search-input-group">
-                    <span class="material-icons" aria-hidden="true">search</span>
-                    <input type="text" placeholder="O que você procura?" aria-label="Campo de busca">
-                  </div>
-                  <div class="bcb-search-filters">
-                    <label>Filtrar por:</label>
-                    <span class="bcb-chip active">Tudo</span>
-                    <span class="bcb-chip">Notícias</span>
-                    <span class="bcb-chip">Publicações</span>
-                    <span class="bcb-chip">Normativos</span>
-                    <span class="bcb-chip">Estatísticas</span>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="bcb-search-overlay"&gt;
-  &lt;div class="bcb-search-input-group"&gt;
-    &lt;span class="material-icons" aria-hidden="true"&gt;search&lt;/span&gt;
-    &lt;input type="text" placeholder="O que você procura?" aria-label="Campo de busca"&gt;
-  &lt;/div&gt;
-  &lt;div class="bcb-search-filters"&gt;
-    &lt;label&gt;Filtrar por:&lt;/label&gt;
-    &lt;span class="bcb-chip active"&gt;Tudo&lt;/span&gt;
-    &lt;span class="bcb-chip"&gt;Notícias&lt;/span&gt;
-    &lt;span class="bcb-chip"&gt;Publicações&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ INDICADORES ============ -->
-            <section id="indicadores">
-                <h2>Cards de Indicadores Econômicos</h2>
-                <p class="text-body mb-4">Cards com borda superior colorida para exibir indicadores-chave (Selic, IPCA, Câmbio). Padrão do Panorama Econômico do BCB.</p>
-                <div class="row mb-3">
-                  <div class="col-md-4 mb-3">
-                    <div class="bcb-indicator-card">
-                      <div class="bcb-indicator-label">Taxa Selic (Meta)</div>
-                      <div class="bcb-indicator-value">14,25% <small class="bcb-indicator-trend up"><span class="material-icons" aria-hidden="true">arrow_upward</span> +1,00 p.p.</small></div>
-                      <div class="bcb-indicator-meta">Copom — 12/03/2026</div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <div class="bcb-indicator-card accent-amber">
-                      <div class="bcb-indicator-label">IPCA (12 meses)</div>
-                      <div class="bcb-indicator-value">5,06%</div>
-                      <div class="bcb-indicator-meta">IBGE — Fev/2026</div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <div class="bcb-indicator-card accent-green">
-                      <div class="bcb-indicator-label">Dólar (PTAX)</div>
-                      <div class="bcb-indicator-value">R$ 5,7812 <small class="bcb-indicator-trend down"><span class="material-icons" aria-hidden="true">arrow_downward</span> -0,32%</small></div>
-                      <div class="bcb-indicator-meta">12/03/2026</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="bcb-indicator-card"&gt;
-  &lt;div class="bcb-indicator-label"&gt;Taxa Selic (Meta)&lt;/div&gt;
-  &lt;div class="bcb-indicator-value"&gt;14,25% 
-    &lt;small class="bcb-indicator-trend up"&gt;
-      &lt;span class="material-icons" aria-hidden="true"&gt;arrow_upward&lt;/span&gt; +1,00 p.p.
-    &lt;/small&gt;
-  &lt;/div&gt;
-  &lt;div class="bcb-indicator-meta"&gt;Copom — 12/03/2026&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Variantes: .accent-green | .accent-amber --&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ SERVIÇOS ============ -->
-            <section id="servicos">
-                <h2>Stepper, Paginação e Tooltip de Glossário</h2>
-                <p class="text-body mb-4">Componentes voltados para serviços ao cidadão: indicador de etapas em processos, navegação paginada e termos financeiros com explicação.</p>
-
-                <h3 class="h5 medium">Stepper (Indicador de Etapas)</h3>
-                <ul class="bcb-stepper">
-                  <li class="bcb-stepper-item completed">
-                    <div class="bcb-stepper-circle"><span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle;" aria-hidden="true">check</span></div>
-                    <span class="bcb-stepper-title">Autenticação</span>
-                  </li>
-                  <li class="bcb-stepper-item active">
-                    <div class="bcb-stepper-circle">2</div>
-                    <span class="bcb-stepper-title">Dados do Pedido</span>
-                  </li>
-                  <li class="bcb-stepper-item">
-                    <div class="bcb-stepper-circle">3</div>
-                    <span class="bcb-stepper-title">Confirmação</span>
-                  </li>
-                  <li class="bcb-stepper-item">
-                    <div class="bcb-stepper-circle">4</div>
-                    <span class="bcb-stepper-title">Protocolo</span>
-                  </li>
-                </ul>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;ul class="bcb-stepper"&gt;
-  &lt;li class="bcb-stepper-item completed"&gt;
-    &lt;div class="bcb-stepper-circle"&gt;
-      &lt;span class="material-icons-outlined" aria-hidden="true"&gt;check&lt;/span&gt;
-    &lt;/div&gt;
-    &lt;span class="bcb-stepper-title"&gt;Autenticação&lt;/span&gt;
-  &lt;/li&gt;
-  &lt;li class="bcb-stepper-item active"&gt;
-    &lt;div class="bcb-stepper-circle"&gt;2&lt;/div&gt;
-    &lt;span class="bcb-stepper-title"&gt;Dados do Pedido&lt;/span&gt;
-  &lt;/li&gt;
-  &lt;li class="bcb-stepper-item"&gt;
-    &lt;div class="bcb-stepper-circle"&gt;3&lt;/div&gt;
-    &lt;span class="bcb-stepper-title"&gt;Confirmação&lt;/span&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-                </div>
-
-                <h3 class="h5 medium mt-4">Paginação</h3>
-                <nav aria-label="Navegação de página">
-                  <ul class="pagination">
-                    <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-                    <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-                  </ul>
-                </nav>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;nav aria-label="Navegação de página"&gt;
-  &lt;ul class="pagination"&gt;
-    &lt;li class="page-item disabled"&gt;&lt;a class="page-link" href="#"&gt;Anterior&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="page-item active"&gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="page-item"&gt;&lt;a class="page-link" href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="page-item"&gt;&lt;a class="page-link" href="#"&gt;Próximo&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;</code></pre>
-                </div>
-
-                <h3 class="h5 medium mt-4">Tooltip de Glossário</h3>
-                <p class="text-body">O Comitê de Política Monetária (Copom) define periodicamente a meta para a <a href="#" class="bcb-tooltip-link" data-toggle="tooltip" data-placement="top" title="Taxa básica de juros da economia brasileira, definida pelo Copom a cada 45 dias. É o principal instrumento de política monetária.">Taxa Selic</a>, que é o principal instrumento de controle da <a href="#" class="bcb-tooltip-link" data-toggle="tooltip" data-placement="top" title="Aumento generalizado e persistente dos preços de bens e serviços em uma economia.">inflação</a> no Brasil. Alterações nessa taxa impactam diretamente o <a href="#" class="bcb-tooltip-link" data-toggle="tooltip" data-placement="top" title="Spread bancário é a diferença entre a taxa de juros cobrada nos empréstimos e a taxa paga nos depósitos.">spread bancário</a> e o custo do crédito para o cidadão.</p>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;a href="#" class="bcb-tooltip-link" 
-   data-toggle="tooltip" 
-   data-placement="top" 
-   title="Taxa básica de juros da economia brasileira."&gt;
-  Taxa Selic
-&lt;/a&gt;
-
-&lt;!-- Inicialização (jQuery): --&gt;
-&lt;script&gt;$('[data-toggle="tooltip"]').tooltip();&lt;/script&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ TIMELINE ============ -->
-            <section id="timeline">
-                <h2>Timeline Educativa (Storytelling)</h2>
-                <p class="text-body mb-4">Componente oficial de Cidadania Financeira para guiar o usuário por jornadas de aprendizado. Cada <code>.step-card</code> é conectado por uma linha vertical dourada.</p>
-
-                <div class="timeline-container">
-                  <!-- Step 1 -->
-                  <div class="card step-card d-block p-0">
-                    <div class="d-lg-flex flex-row-reverse align-items-stretch">
-                      <div class="img-placeholder" style="background-color: #e0ebee; display: flex; align-items: center; justify-content: center;">
-                        <span class="material-icons" style="font-size: 4rem; color: var(--bcb-brand-blue); opacity: 0.3;" aria-hidden="true">account_balance</span>
-                      </div>
-                      <div class="step-details border-0 w-100">
-                        <div class="step-header">
-                          <i class="material-icons step-icon" aria-hidden="true">school</i>
-                          <h3 class="step-title">1. O que é o Sistema Financeiro?</h3>
-                        </div>
-                        <div class="step-content pt-2 px-4 pb-0">
-                          <p>O Sistema Financeiro Nacional (SFN) é formado por um conjunto de entidades e instituições que promovem a intermediação financeira — o encontro entre quem tem dinheiro sobrando e quem precisa de recursos.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: var(--bcb-gray-100);">
-                      <div class="step-content pt-0 p-0 m-0">
-                        <p>O Banco Central é a autoridade monetária principal do Brasil. Ele regula e supervisiona as instituições financeiras, emite moeda e controla a liquidez da economia.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Step 2 -->
-                  <div class="card step-card d-block p-0">
-                    <div class="d-lg-flex flex-row-reverse align-items-stretch">
-                      <div class="img-placeholder" style="background-color: #e8f0e0; display: flex; align-items: center; justify-content: center;">
-                        <span class="material-icons" style="font-size: 4rem; color: #067078; opacity: 0.3;" aria-hidden="true">savings</span>
-                      </div>
-                      <div class="step-details border-0 w-100">
-                        <div class="step-header">
-                          <i class="material-icons step-icon" aria-hidden="true">monetization_on</i>
-                          <h3 class="step-title">2. Planejamento Financeiro Pessoal</h3>
-                        </div>
-                        <div class="step-content pt-2 px-4 pb-0">
-                          <p>Planejar suas finanças é o primeiro passo para conquistar objetivos. Comece registrando suas receitas e despesas mensais, defina metas de curto e longo prazo e crie uma reserva de emergência.</p>
-                          <div class="tip-box">
-                            <p class="mb-0"><strong>Dica:</strong> O programa <em>Aprender Valor</em> do Banco Central oferece materiais gratuitos para professores e estudantes sobre educação financeira. <a href="#" class="text-link">Acesse o portal</a> e saiba mais!</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: var(--bcb-gray-100);">
-                      <div class="step-content pt-0 p-0 m-0">
-                        <p>Utilize ferramentas como a <strong>Calculadora do Cidadão</strong> do BC para simular investimentos, financiamentos e correções de valores.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="timeline-container"&gt;
-  &lt;div class="card step-card d-block p-0"&gt;
-    &lt;div class="d-lg-flex flex-row-reverse align-items-stretch"&gt;
-      &lt;div class="img-placeholder" style="background-image: url('...');"&gt;&lt;/div&gt;
-      &lt;div class="step-details border-0 w-100"&gt;
-        &lt;div class="step-header"&gt;
-          &lt;i class="material-icons step-icon" aria-hidden="true"&gt;school&lt;/i&gt;
-          &lt;h3 class="step-title"&gt;1. Título do Passo&lt;/h3&gt;
-        &lt;/div&gt;
-        &lt;div class="step-content pt-2 px-4 pb-0"&gt;
-          &lt;p&gt;Conteúdo descritivo.&lt;/p&gt;
-          &lt;div class="tip-box"&gt;
-            &lt;p class="mb-0"&gt;&lt;strong&gt;Dica:&lt;/strong&gt; Texto da dica.&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="w-100 px-4 pb-4 pt-3" style="background-color: #F8F9FB;"&gt;
-      &lt;div class="step-content pt-0 p-0 m-0"&gt;
-        &lt;p&gt;Conteúdo adicional full-width.&lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ HERO BANNER ============ -->
-            <section id="hero-banner">
-                <h2>Hero Banner (Destaque Principal)</h2>
-                <p class="text-body mb-4">Banner de abertura para páginas temáticas. Aceita variações de cor institucional. Sempre posicionado logo após o <code>&lt;h1&gt;</code>.</p>
-
-                <h3 class="h5 medium">Azul Institucional (Padrão)</h3>
-                <div class="bcb-hero-banner shadow-sm mb-4">
-                  <div class="row">
-                    <div class="col-md-6 bcb-hero-content">
-                      <div class="h2 bcb-hero-title">Pix: o pagamento instantâneo brasileiro</div>
-                      <div class="bcb-hero-text">
-                        O Pix é o meio de pagamento criado pelo Banco Central em que os recursos são transferidos entre contas em poucos segundos, a qualquer hora ou dia.
-                      </div>
-                      <div class="mt-auto text-md-right text-left">
-                        <a href="#" class="btn btn-sm btn-outline-primary bg-white">Conheça o funcionamento do Pix</a>
-                      </div>
-                    </div>
-                    <div class="col-md-6 bcb-hero-img-container">
-                      <div style="width:100%; height:100%; min-height:220px; background-color: rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center;">
-                        <span class="material-icons" style="font-size:5rem; opacity:0.2; color: var(--bcb-brand-amarellato);" aria-hidden="true">pix</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <h3 class="h5 medium">Verde Sustentabilidade</h3>
-                <div class="bcb-hero-banner bg-verde-susta shadow-sm mb-4">
-                  <div class="row">
-                    <div class="col-md-6 bcb-hero-content">
-                      <div class="h2 bcb-hero-title">Agenda BC# Sustentabilidade</div>
-                      <div class="bcb-hero-text">
-                        A dimensão Sustentabilidade do BC# visa promover finanças sustentáveis e incorporar riscos climáticos à regulação do sistema financeiro.
-                      </div>
-                      <div class="mt-auto text-md-right text-left">
-                        <a href="#" class="btn btn-sm btn-outline-primary bg-white">Conheça a Agenda</a>
-                      </div>
-                    </div>
-                    <div class="col-md-6 bcb-hero-img-container">
-                      <div style="width:100%; height:100%; min-height:220px; background-color: rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center;">
-                        <span class="material-icons" style="font-size:5rem; opacity:0.2; color: #A8D5BA;" aria-hidden="true">eco</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="bcb-hero-banner shadow-sm"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-6 bcb-hero-content"&gt;
-      &lt;h2 class="bcb-hero-title"&gt;Título de Impacto&lt;/h2&gt;
-      &lt;div class="bcb-hero-text"&gt;
-        Texto descritivo do tema da página.
-      &lt;/div&gt;
-      &lt;div class="mt-auto text-md-right text-left"&gt;
-        &lt;a href="#" class="btn btn-sm btn-outline-primary bg-white"&gt;Ação&lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-md-6 bcb-hero-img-container"&gt;
-      &lt;img src="imagem.jpg" alt="Descrição"&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Variantes: .bg-verde-susta | .bg-vinho --&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ CARROSSEL DE VÍDEOS ============ -->
-            <section id="videos-carousel">
-                <h2>Carrossel de Vídeos (YouTube)</h2>
-                <p class="text-body mb-4">Scroll horizontal com snap para agrupar vídeos sem poluir a verticalidade da página. Arraste para o lado ou use a scrollbar.</p>
-
-                <div class="videos-destaque">
-                  <div class="video-item">
-                    <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/253qlxanAK4" allowfullscreen title="LIVE BC #10 - O que muda para mim com o Drex?"></iframe>
-                    </div>
-                    <p class="video-title">LIVE BC #10 - O que muda para mim com o Drex?</p>
-                  </div>
-                  <div class="video-item">
-                    <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/R0z0p8YoBVY" allowfullscreen title="Pix: o pagamento instantâneo brasileiro"></iframe>
-                    </div>
-                    <p class="video-title">Pix: o pagamento instantâneo brasileiro</p>
-                  </div>
-                  <div class="video-item">
-                    <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/4o8GU3Fmnxs" allowfullscreen title="O que é o Open Finance?"></iframe>
-                    </div>
-                    <p class="video-title">O que é o Open Finance?</p>
-                  </div>
-                  <div class="video-item">
-                    <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/FgJVkjB5EEQ" allowfullscreen title="Valores a Receber (SVR): como consultar"></iframe>
-                    </div>
-                    <p class="video-title">Valores a Receber (SVR): como consultar</p>
-                  </div>
-                </div>
-
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="videos-destaque"&gt;
-  &lt;div class="video-item"&gt;
-    &lt;div class="video-container"&gt;
-      &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID" 
-              allowfullscreen title="Título do vídeo"&gt;&lt;/iframe&gt;
-    &lt;/div&gt;
-    &lt;p class="video-title"&gt;Título descritivo&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;!-- Repita .video-item para cada vídeo --&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- ============ TIMELINE HORIZONTAL ============ -->
-            <section id="timeline-h">
-                <h2>Timeline Horizontal (Marcos e Fases)</h2>
-                <p class="text-body mb-4">Ideal para demonstrar a evolução de projetos com datas e fases. Exemplo: Fases do Open Finance Brasil.</p>
-
-                <div class="timeline-horizontal">
-                  <div class="timeline-h-step active">
-                    <div class="timeline-h-circle"></div>
-                    <div class="timeline-h-date">Fev/2021</div>
-                    <div class="timeline-h-text">Fase 1: Dados Abertos de Produtos e Serviços</div>
-                  </div>
-                  <div class="timeline-h-step active">
-                    <div class="timeline-h-circle"></div>
-                    <div class="timeline-h-date">Ago/2021</div>
-                    <div class="timeline-h-text">Fase 2: Compartilhamento de Dados de Clientes</div>
-                  </div>
-                  <div class="timeline-h-step active">
-                    <div class="timeline-h-circle"></div>
-                    <div class="timeline-h-date">Out/2021</div>
-                    <div class="timeline-h-text">Fase 3: Iniciação de Pagamentos (Pix)</div>
-                  </div>
-                  <div class="timeline-h-step active">
-                    <div class="timeline-h-circle"></div>
-                    <div class="timeline-h-date">Dez/2022</div>
-                    <div class="timeline-h-text">Fase 4: Seguros, Previdência e Câmbio</div>
-                  </div>
-                  <div class="timeline-h-step">
-                    <div class="timeline-h-circle"></div>
-                    <div class="timeline-h-date">2026</div>
-                    <div class="timeline-h-text">Fase 5: Investimentos e Portabilidade</div>
-                  </div>
-                </div>
-
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;div class="timeline-horizontal"&gt;
-  &lt;div class="timeline-h-step active"&gt;
-    &lt;div class="timeline-h-circle"&gt;&lt;/div&gt;
-    &lt;div class="timeline-h-date"&gt;Fev/2021&lt;/div&gt;
-    &lt;div class="timeline-h-text"&gt;Fase 1: Dados Abertos&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="timeline-h-step"&gt;
-    &lt;div class="timeline-h-circle"&gt;&lt;/div&gt;
-    &lt;div class="timeline-h-date"&gt;2026&lt;/div&gt;
-    &lt;div class="timeline-h-text"&gt;Fase futura&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-            </section>
-
-        </main>
-    </div>
-
-    <!-- jQuery & Bootstrap Bundle -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
+    <!-- Scripts Bootstrap e Micro-scripts BCB -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bcb-ui.js"></script>
     <script>
-        // Copy button functionality
-        document.querySelectorAll('.btn-copy').forEach(button => {
-            button.addEventListener('click', () => {
-                const codeSnippet = button.nextElementSibling.innerText;
-                navigator.clipboard.writeText(codeSnippet).then(() => {
-                    const originalText = button.innerText;
-                    button.innerText = 'Copiado!';
-                    button.style.backgroundColor = 'rgba(2, 92, 117, 0.4)';
-                    setTimeout(() => {
-                        button.innerText = originalText;
-                        button.style.backgroundColor = '';
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Erro ao copiar texto: ', err);
+        // Micro-script de alternância de 3 temas
+        (function() {
+            const btnLight = document.getElementById('btnThemeLight');
+            const btnDark = document.getElementById('btnThemeDark');
+            const btnHighContrast = document.getElementById('btnThemeHighContrast');
+            const html = document.documentElement;
+
+            function setTheme(theme, contrast) {
+                html.setAttribute('data-theme', theme);
+                html.setAttribute('data-contrast', contrast);
+                
+                [btnLight, btnDark, btnHighContrast].forEach(b => {
+                    if (b) {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-pressed', 'false');
+                    }
                 });
-            });
-        });
 
-        // Sidebar active state on scroll
-        const sections = document.querySelectorAll('.ds-main section[id]');
-        const navLinks = document.querySelectorAll('.ds-sidebar .nav-link');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    const activeLink = document.querySelector(`.ds-sidebar .nav-link[href="#${entry.target.id}"]`);
-                    if (activeLink) activeLink.classList.add('active');
+                if (contrast === 'high' && btnHighContrast) {
+                    btnHighContrast.classList.add('active');
+                    btnHighContrast.setAttribute('aria-pressed', 'true');
+                } else if (theme === 'dark' && btnDark) {
+                    btnDark.classList.add('active');
+                    btnDark.setAttribute('aria-pressed', 'true');
+                } else if (btnLight) {
+                    btnLight.classList.add('active');
+                    btnLight.setAttribute('aria-pressed', 'true');
                 }
-            });
-        }, { rootMargin: '-20% 0px -70% 0px' });
-        
-        sections.forEach(section => observer.observe(section));
-
-        // Back to top button
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
             }
-        });
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
 
-        // Chip filter toggle
-        document.querySelectorAll('.bcb-chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-                chip.closest('.bcb-search-filters').querySelectorAll('.bcb-chip').forEach(c => c.classList.remove('active'));
-                chip.classList.add('active');
-            });
-        });
-    </script>
-
-    <script>
-        // Initialize Bootstrap tooltips
-        $(function () { $('[data-toggle="tooltip"]').tooltip(); });
-    </script>
-
-    <!-- Back to Top Button -->
-    <button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
-        <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
-    </button>
-    <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const rootElement = document.documentElement;
-        
-        // Verifica preferência salva ou fallback para sistema
-        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        rootElement.setAttribute('data-theme', currentTheme);
-
-        // Alterna entre os temas
-        themeToggleBtn.addEventListener('click', () => {
-            let newTheme = rootElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            rootElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
+            if (btnLight) btnLight.addEventListener('click', () => setTheme('light', 'normal'));
+            if (btnDark) btnDark.addEventListener('click', () => setTheme('dark', 'normal'));
+            if (btnHighContrast) btnHighContrast.addEventListener('click', () => setTheme('light', 'high'));
+        })();
     </script>
 </body>
 </html>

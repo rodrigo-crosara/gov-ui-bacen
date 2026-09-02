@@ -21,17 +21,27 @@
   --bcb-gray-900: #FFFFFF;
   --bcb-gray-1000: #FFFFFF;
 
-  --bcb-brand-blue: #4DC8FF;
-  --bcb-brand-blue-dark: #3AB8EE;
+  --bcb-brand-azul-blue: #4DC8FF;
   --bcb-brand-azulcinti: #4DE8F0;
   --bcb-brand-azulpetro: #4DC8FF;
   --bcb-brand-azulnetuno: #80D0FF;
-  --bcb-brand-vinho: #FFFFFF;
-  --bcb-brand-marsala: #FF9999;
   --bcb-brand-verde-susta: #00FF88;
   --bcb-brand-verde-castell: #FFFF88;
+  --bcb-brand-cinza-80: #CCCCCC;
+  --bcb-brand-amarellato-biscoito: #FFFF88;
   --bcb-brand-cafellato: #FFFFFF;
+  --bcb-brand-vinho-autentico: #FFFFFF;
+  --bcb-brand-marsala-suave: #FF9999;
+
+  /* Aliases de compatibilidade */
+  --bcb-brand-blue: #4DC8FF;
+  --bcb-brand-blue-dark: #3AB8EE;
+  --bcb-brand-vinho: #FFFFFF;
+  --bcb-brand-marsala: #FF9999;
+  --bcb-brand-amarellato: #FFFF88;
   --bcb-brand-gray80: #CCCCCC;
+  --bcb-color-azulcinti: #4DE8F0;
+  --bcb-color-verde-castell: #FFFF88;
 
   --bcb-btn-primary-bg: #4DC8FF;
   --bcb-btn-primary-hover: #70D6FF;

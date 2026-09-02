@@ -220,9 +220,13 @@
             <h1>
                 <span class="material-icons" aria-hidden="true">history</span>
                 Changelog BCB
-                <span class="badge-version">v1.0.0</span>
+                <span class="badge-version">v2.0.0</span>
             </h1>
             <div class="d-flex align-items-center" style="gap: 0.75rem;">
+                <a href="../index.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Voltar ao Hub Central de Documentação" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">home</span>
+                    <span class="d-none d-sm-inline">Hub Início</span>
+                </a>
                 <a href="components.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar catálogo de componentes" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
                     <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">widgets</span>
                     <span class="d-none d-sm-inline">Componentes</span>
@@ -243,11 +247,14 @@
         <aside class="ds-sidebar">
             <nav class="nav flex-column" aria-label="Navegação do Changelog">
                 <div class="ds-sidebar-title">Navegação Rápida</div>
-                <a class="nav-link" href="../index.html">← Vitrine de Componentes</a>
+                <a class="nav-link" href="../index.html">← Hub de Documentação</a>
+                <a class="nav-link" href="components.html">Catálogo de Componentes</a>
                 <a class="nav-link" href="tokens.html">Design Tokens</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v1-0-0">v1.0.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-0-0">v2.0.0 (Atual)</a>
+                <a class="nav-link" href="#v1-1-0">v1.1.0</a>
+                <a class="nav-link" href="#v1-0-0">v1.0.0</a>
                 <a class="nav-link" href="#convencoes">Convenções e Padrões</a>
                 <a class="nav-link" href="#roadmap">Roadmap e Futuras Versões</a>
             </nav>
@@ -265,13 +272,54 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.0.0 ============ -->
+            <section id="v2-0-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.0.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Manual de Marca Oficial</span>
+                        </div>
+                        <div class="version-date">
+                            <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">event</span>
+                            <span>02 de setembro de 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Bloco Adicionado -->
+                    <div class="change-category">
+                        <div class="category-badge badge-added">
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">add_circle</span>
+                            Adicionado
+                        </div>
+                        <ul class="changelog-list">
+                            <li><strong>Paleta Oficial do Manual de Marca do BCB:</strong> 11 cores institucionais com nomes canônicos e especificações Pantone, CMYK, RGB e HEX (<code>azul-blue</code>, <code>azulcinti</code>, <code>azulpetro</code>, <code>azulnetuno</code>, <code>verde-susta</code>, <code>verde-castell</code>, <code>cinza-80</code>, <code>amarellato-biscoito</code>, <code>cafellato</code>, <code>vinho-autentico</code>, <code>marsala-suave</code>).</li>
+                            <li><strong>Tokens Semânticos:</strong> Mapeamento formal de <code>action.primary.*</code>, <code>action.secondary.*</code>, <code>feedback.*</code> e <code>text.secondary</code> em conformidade com W3C Design Tokens Spec.</li>
+                            <li><strong>Resolução Dinâmica de Aliases:</strong> Compilador de tokens com dereferenciamento recursivo e suporte a retrocompatibilidade completa com componentes legados.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloco Modificado -->
+                    <div class="change-category">
+                        <div class="category-badge badge-changed" style="background-color: #fff8e1; color: #f57f17; border: 1px solid #ffe082;">
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">published_with_changes</span>
+                            Modificado
+                        </div>
+                        <ul class="changelog-list">
+                            <li><strong>Calibração de Contraste e Dark Mode:</strong> Calibração de <code>_dark-mode.css</code> e <code>_high-contrast.css</code> mantendo acessibilidade WCAG 2.2 AA / AAA.</li>
+                            <li><strong>Documentação IA e Catálogo:</strong> Atualização de <code>.docs-ia/tokens.md</code> e <code>pages/tokens.html</code> com especificações técnicas e ratios de contraste.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 1.1.0 ============ -->
             <section id="v1-1-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[1.1.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
                             <span class="version-tag">Acessibilidade & Dark Mode</span>
                         </div>
                         <div class="version-date">

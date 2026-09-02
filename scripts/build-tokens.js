@@ -28,6 +28,23 @@ function toKebab(str) {
   return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
 }
 
+// Resolução de referências de tokens no formato {color.brand.azul-blue}
+function resolveValue(val) {
+  if (typeof val !== 'string') return val;
+  if (val.startsWith('{') && val.endsWith('}')) {
+    const pathParts = val.slice(1, -1).split('.');
+    let cur = tokens;
+    for (const p of pathParts) {
+      if (!cur) break;
+      cur = cur[p];
+    }
+    if (cur && cur.$value !== undefined) {
+      return resolveValue(cur.$value);
+    }
+  }
+  return val;
+}
+
 const lines = [];
 lines.push('/* ============= BCB Design System — Settings / Tokens ============= */');
 lines.push('/* ATENÇÃO: Este arquivo é gerado automaticamente a partir de tokens.json. */');
@@ -41,132 +58,181 @@ lines.push('     1. BASE E TEXTO');
 lines.push('     ========================================== */');
 if (tokens.color && tokens.color.base) {
   for (const [k, v] of Object.entries(tokens.color.base)) {
-    lines.push(`  --bcb-color-${toKebab(k)}: ${v.$value};`);
+    lines.push(`  --bcb-color-${toKebab(k)}: ${resolveValue(v.$value)};`);
   }
 }
 lines.push('');
 
-// 2. Brand (Primárias Oficiais)
+// 2. Brand (Cores Oficiais do Manual de Marca do BCB)
 lines.push('  /* ==========================================');
-lines.push('     2. BRAND (Primárias Oficiais)');
+lines.push('     2. BRAND (Cores Oficiais do Manual de Marca)');
 lines.push('     ========================================== */');
 if (tokens.color && tokens.color.brand) {
-  const primaryKeys = ['blue', 'blueDark', 'gray80'];
-  for (const k of primaryKeys) {
-    if (tokens.color.brand[k]) {
-      lines.push(`  --bcb-brand-${toKebab(k)}: ${tokens.color.brand[k].$value};`);
-    }
-  }
-}
-lines.push('');
-
-// 3. Brand (Complementares)
-lines.push('  /* ==========================================');
-lines.push('     3. BRAND (Complementares)');
-lines.push('     ========================================== */');
-if (tokens.color && tokens.color.brand) {
-  const primaryKeys = new Set(['blue', 'blueDark', 'gray80']);
   for (const [k, v] of Object.entries(tokens.color.brand)) {
-    if (!primaryKeys.has(k)) {
-      lines.push(`  --bcb-brand-${toKebab(k)}: ${v.$value};`);
-    }
+    lines.push(`  --bcb-brand-${toKebab(k)}: ${resolveValue(v.$value)};`);
   }
+  // Aliases de compatibilidade para código e templates legados
+  lines.push('  /* Aliases de compatibilidade */');
+  lines.push(`  --bcb-brand-blue: ${resolveValue(tokens.color.brand['azul-blue']?.$value || '#025C75')};`);
+  lines.push('  --bcb-brand-blue-dark: #013F50;');
+  lines.push(`  --bcb-brand-gray80: ${resolveValue(tokens.color.brand['cinza-80']?.$value || '#606062')};`);
+  lines.push(`  --bcb-brand-vinho: ${resolveValue(tokens.color.brand['vinho-autentico']?.$value || '#47373A')};`);
+  lines.push(`  --bcb-brand-marsala: ${resolveValue(tokens.color.brand['marsala-suave']?.$value || '#736063')};`);
+  lines.push(`  --bcb-brand-amarellato: ${resolveValue(tokens.color.brand['amarellato-biscoito']?.$value || '#F8D48D')};`);
+  lines.push(`  --bcb-color-azulcinti: ${resolveValue(tokens.color.brand['azulcinti']?.$value || '#077391')};`);
+  lines.push(`  --bcb-color-verde-castell: ${resolveValue(tokens.color.brand['verde-castell']?.$value || '#088694')};`);
 }
 lines.push('');
 
-// 4. Interação e Botões
+// 3. Ações e Interação
 lines.push('  /* ==========================================');
-lines.push('     4. INTERAÇÃO E BOTÕES');
+lines.push('     3. AÇÕES E INTERAÇÃO (Botões e Links)');
 lines.push('     ========================================== */');
-if (tokens.color && tokens.color.interaction) {
-  for (const [k, v] of Object.entries(tokens.color.interaction)) {
-    lines.push(`  --bcb-${toKebab(k)}: ${v.$value};`);
+if (tokens.color && tokens.color.action) {
+  const primary = tokens.color.action.primary;
+  if (primary) {
+    lines.push(`  --bcb-btn-primary-bg: ${resolveValue(primary.default?.$value)};`);
+    lines.push(`  --bcb-btn-primary-hover: ${resolveValue(primary.hover?.$value)};`);
+    lines.push(`  --bcb-btn-primary-active: ${resolveValue(primary.active?.$value)};`);
+    lines.push(`  --bcb-action-primary-default: ${resolveValue(primary.default?.$value)};`);
+    lines.push(`  --bcb-action-primary-hover: ${resolveValue(primary.hover?.$value)};`);
+    lines.push(`  --bcb-action-primary-active: ${resolveValue(primary.active?.$value)};`);
+  }
+  const secondary = tokens.color.action.secondary;
+  if (secondary) {
+    lines.push(`  --bcb-btn-secondary-bg: ${resolveValue(secondary.default?.$value)};`);
+    lines.push(`  --bcb-btn-secondary-hover: ${resolveValue(secondary.hover?.$value)};`);
+    lines.push(`  --bcb-btn-secondary-active: ${resolveValue(secondary.active?.$value)};`);
+    lines.push(`  --bcb-action-secondary-default: ${resolveValue(secondary.default?.$value)};`);
+    lines.push(`  --bcb-action-secondary-hover: ${resolveValue(secondary.hover?.$value)};`);
+    lines.push(`  --bcb-action-secondary-active: ${resolveValue(secondary.active?.$value)};`);
+  }
+  const link = tokens.color.action.link;
+  if (link) {
+    lines.push(`  --bcb-link-color: ${resolveValue(link.default?.$value)};`);
+    lines.push(`  --bcb-link-hover: ${resolveValue(link.hover?.$value)};`);
   }
 }
 lines.push('');
 
-// 5. Alto Contraste
+// 4. Feedback Semântico
 lines.push('  /* ==========================================');
-lines.push('     5. MODO ALTO CONTRASTE (Acessibilidade)');
+lines.push('     4. FEEDBACK SEMÂNTICO (Success, Warning, Danger, Info)');
+lines.push('     ========================================== */');
+if (tokens.color && tokens.color.feedback) {
+  for (const [k, v] of Object.entries(tokens.color.feedback)) {
+    lines.push(`  --bcb-feedback-${toKebab(k)}: ${resolveValue(v.$value)};`);
+  }
+  if (tokens.color.feedback.warningBorder) {
+    lines.push(`  --bcb-feedback-warning: ${resolveValue(tokens.color.feedback.warningBorder.$value)};`);
+  }
+}
+lines.push('');
+
+// 5. Texto e Superfície
+lines.push('  /* ==========================================');
+lines.push('     5. TEXTO E SUPERFÍCIE');
+lines.push('     ========================================== */');
+if (tokens.color && tokens.color.text) {
+  for (const [k, v] of Object.entries(tokens.color.text)) {
+    lines.push(`  --bcb-text-${toKebab(k)}: ${resolveValue(v.$value)};`);
+  }
+}
+if (tokens.color && tokens.color.surface) {
+  for (const [k, v] of Object.entries(tokens.color.surface)) {
+    lines.push(`  --bcb-surface-${toKebab(k)}: ${resolveValue(v.$value)};`);
+  }
+}
+lines.push('');
+
+// 6. Alto Contraste
+lines.push('  /* ==========================================');
+lines.push('     6. MODO ALTO CONTRASTE (Acessibilidade)');
 lines.push('     ========================================== */');
 if (tokens.color && tokens.color.highContrast) {
   for (const [k, v] of Object.entries(tokens.color.highContrast)) {
-    lines.push(`  --bcb-hc-${toKebab(k)}: ${v.$value};`);
+    lines.push(`  --bcb-hc-${toKebab(k)}: ${resolveValue(v.$value)};`);
   }
 }
 lines.push('');
 
-// 6. Escala de Cinzas UI
+// 7. Escala de Cinzas UI
 lines.push('  /* ==========================================');
-lines.push('     6. ESCALA DE CINZAS UI (Superfícies e Bordas)');
+lines.push('     7. ESCALA DE CINZAS UI (Superfícies e Bordas)');
 lines.push('     ========================================== */');
 if (tokens.color && tokens.color.gray) {
   for (const [k, v] of Object.entries(tokens.color.gray)) {
-    lines.push(`  --bcb-gray-${k}: ${v.$value};`);
+    lines.push(`  --bcb-gray-${k}: ${resolveValue(v.$value)};`);
   }
 }
 lines.push('');
 
-// 7. Tamanhos de Fonte
+// 8. Tints dos Callouts
 lines.push('  /* ==========================================');
-lines.push('     7. TAMANHOS DE FONTE (Fluída com clamp)');
+lines.push('     8. TINTS DE SUPERFÍCIE (Callouts e Destaques)');
+lines.push('     ========================================== */');
+if (tokens.color && tokens.color.tint) {
+  for (const [k, v] of Object.entries(tokens.color.tint)) {
+    lines.push(`  --bg-${toKebab(k).replace('-light', '')}-light: ${resolveValue(v.$value)};`);
+  }
+}
+lines.push('');
+
+// 9. Tamanhos de Fonte
+lines.push('  /* ==========================================');
+lines.push('     9. TAMANHOS DE FONTE (Fluída com clamp)');
 lines.push('     ========================================== */');
 if (tokens.typography && tokens.typography.fontSize) {
   for (const [k, v] of Object.entries(tokens.typography.fontSize)) {
-    lines.push(`  --bcb-font-${k}: ${v.$value};`);
+    lines.push(`  --bcb-font-${k}: ${resolveValue(v.$value)};`);
   }
 }
 lines.push('');
 
-// 8. Espaçamentos
+// 10. Espaçamentos
 lines.push('  /* ==========================================');
-lines.push('     8. ESPAÇAMENTOS (Grid de 4px, base 16px)');
+lines.push('     10. ESPAÇAMENTOS (Grid de 4px, base 16px)');
 lines.push('     ========================================== */');
 if (tokens.spacing) {
   for (const [k, v] of Object.entries(tokens.spacing)) {
-    lines.push(`  --bcb-space-${k}: ${v.$value};`);
+    lines.push(`  --bcb-space-${k}: ${resolveValue(v.$value)};`);
   }
 }
 lines.push('');
 
-// 9. Bordas e Sombras
+// 11. Bordas e Sombras
 lines.push('  /* ==========================================');
-lines.push('     9. BORDAS E SOMBRAS (Elevation)');
+lines.push('     11. BORDAS E SOMBRAS (Elevation)');
 lines.push('     ========================================== */');
 if (tokens.borderRadius) {
   for (const [k, v] of Object.entries(tokens.borderRadius)) {
-    lines.push(`  --bcb-radius-${toKebab(k)}: ${v.$value};`);
+    lines.push(`  --bcb-radius-${toKebab(k)}: ${resolveValue(v.$value)};`);
   }
 }
 lines.push('');
 if (tokens.boxShadow) {
   for (const [k, v] of Object.entries(tokens.boxShadow)) {
-    lines.push(`  --bcb-shadow-${k}: ${v.$value};`);
+    lines.push(`  --bcb-shadow-${k}: ${resolveValue(v.$value)};`);
   }
 }
 lines.push('');
 
-// 10. Famílias Tipográficas
+// 12. Famílias Tipográficas
 lines.push('  /* ==========================================');
-lines.push('     10. FAMÍLIAS TIPOGRÁFICAS');
+lines.push('     12. FAMÍLIAS TIPOGRÁFICAS');
 lines.push('     ========================================== */');
 if (tokens.typography && tokens.typography.fontFamily) {
   for (const [k, v] of Object.entries(tokens.typography.fontFamily)) {
-    lines.push(`  --bcb-font-${toKebab(k)}: ${v.$value};`);
+    lines.push(`  --bcb-font-${toKebab(k)}: ${resolveValue(v.$value)};`);
   }
 }
 lines.push('');
 
-// 11. Portal Primary e Feedback
+// 13. Portal Primary
 lines.push('  /* ==========================================');
-lines.push('     11. FEEDBACK E PORTAL');
+lines.push('     13. PORTAL PRIMARY');
 lines.push('     ========================================== */');
 lines.push('  --bcb-portal-primary: #22272B;');
-if (tokens.color && tokens.color.feedback) {
-  for (const [k, v] of Object.entries(tokens.color.feedback)) {
-    lines.push(`  --bcb-feedback-${toKebab(k)}: ${v.$value};`);
-  }
-}
 
 lines.push('}');
 lines.push('');
@@ -191,3 +257,4 @@ if (isCheckMode) {
   fs.writeFileSync(TOKENS_CSS_PATH, outputCSS, 'utf8');
   console.log(`✅ Design Tokens compilados com sucesso em ${TOKENS_CSS_PATH}`);
 }
+
