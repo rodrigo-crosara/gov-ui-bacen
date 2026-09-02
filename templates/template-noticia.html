@@ -6,9 +6,12 @@
     <title>BC lança nova funcionalidade do Pix — Banco Central do Brasil</title>
     <meta name="description" content="O Banco Central anunciou nova funcionalidade de Pix agendado recorrente, que permite transferências automáticas periódicas a partir de outubro.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Fontes Institucionais (Ubuntu, Cormorant Garamond, Roboto, Inter) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols Outlined & Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/bcb-style.css">
     <style>
@@ -17,10 +20,10 @@
 </head>
 <body>
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="bcb-container container py-4 my-4" id="conteudo-principal">
+    <main id="conteudo-principal" class="bcb-container">
       
       <!-- [SLOT CMS: 70% Conteúdo Noticioso | 30% Sidebar Relacionadas] -->
-      <section class="bcb-section">
+      <section class="bcb-section py-4">
         <div class="bcb-row">
           
           <!-- ARTIGO PRINCIPAL (70% - 8 Colunas) -->
@@ -28,21 +31,21 @@
             <article>
               <h1 class="bcb-page-title">BC lança nova funcionalidade do Pix para pagamentos recorrentes</h1>
               <div class="bcb-page-meta">
-                <span><span class="material-icons-outlined mr-1" style="font-size:1rem; vertical-align:middle;" aria-hidden="true">calendar_today</span> 12/03/2026</span>
+                <span><span class="material-symbols-outlined material-icons-outlined mr-1 md-18 align-middle" aria-hidden="true">calendar_today</span> 12/03/2026</span>
                 <span class="tag-bcb primary">Pix</span>
                 <span class="tag-bcb">Pagamentos</span>
                 <a href="#" class="bcb-share-btn" aria-label="Compartilhar esta notícia">
-                  <span class="material-icons-outlined" style="font-size:1rem;" aria-hidden="true">share</span> Compartilhar
+                  <span class="material-symbols-outlined material-icons-outlined md-18" aria-hidden="true">share</span> Compartilhar
                 </a>
               </div>
 
-              <p class="text-body" style="font-size: 1.1rem; line-height: 1.8;">O Banco Central do Brasil anunciou nesta quarta-feira (12) a nova funcionalidade de <strong>Pix agendado recorrente</strong>, que permitirá aos cidadãos e empresas programarem transferências automáticas e periódicas diretamente pelo aplicativo de sua instituição financeira.</p>
+              <p class="lead text-body">O Banco Central do Brasil anunciou nesta quarta-feira (12) a nova funcionalidade de <strong>Pix agendado recorrente</strong>, que permitirá aos cidadãos e empresas programarem transferências automáticas e periódicas diretamente pelo aplicativo de sua instituição financeira.</p>
 
-              <p class="text-body" style="line-height: 1.8;">A funcionalidade entra em vigor a partir de <strong>28 de outubro de 2026</strong> e será obrigatória para todas as instituições participantes do Pix. A medida busca modernizar o ecossistema de pagamentos brasileiro, reduzindo custos com boletos recorrentes e simplificando o dia a dia do cidadão.</p>
+              <p class="text-body">A funcionalidade entra em vigor a partir de <strong>28 de outubro de 2026</strong> e será obrigatória para todas as instituições participantes do Pix. A medida busca modernizar o ecossistema de pagamentos brasileiro, reduzindo custos com boletos recorrentes e simplificando o dia a dia do cidadão.</p>
 
-              <h2 class="h4 mt-4 mb-3 color-1">Como vai funcionar</h2>
-              <p class="text-body" style="line-height: 1.8;">O usuário poderá, dentro do aplicativo do seu banco, selecionar a opção "Pix Agendado Recorrente" e definir:</p>
-              <ul class="spacing-scale-2x text-body" style="line-height: 1.8;">
+              <h2 class="h4 mt-4 mb-3">Como vai funcionar</h2>
+              <p class="text-body">O usuário poderá, dentro do aplicativo do seu banco, selecionar a opção "Pix Agendado Recorrente" e definir:</p>
+              <ul class="spacing-scale-2x text-body">
                 <li>O valor fixo ou variável da transferência;</li>
                 <li>A periodicidade (semanal, quinzenal, mensal);</li>
                 <li>A data de início e fim (opcional);</li>
@@ -55,25 +58,25 @@
                 <footer class="blockquote-footer">Roberto Campos Neto, Presidente do Banco Central</footer>
               </blockquote>
 
-              <h2 class="h4 mt-4 mb-3 color-1">Impacto esperado</h2>
-              <p class="text-body" style="line-height: 1.8;">De acordo com os estudos do Departamento de Competição e Estrutura do Mercado Financeiro (Decem), a funcionalidade pode substituir até <strong>30% dos boletos bancários recorrentes</strong> emitidos mensalmente, representando economia de R$ 2,8 bilhões por ano em taxas para consumidores e empresas.</p>
+              <h2 class="h4 mt-4 mb-3">Impacto esperado</h2>
+              <p class="text-body">De acordo com os estudos do Departamento de Competição e Estrutura do Mercado Financeiro (Decem), a funcionalidade pode substituir até <strong>30% dos boletos bancários recorrentes</strong> emitidos mensalmente, representando economia de R$ 2,8 bilhões por ano em taxas para consumidores e empresas.</p>
 
               <!-- Callout Segurança -->
               <div class="callout callout-success callout-outline">
-                <span class="material-icons-outlined callout-icon" aria-hidden="true">check_circle</span>
+                <span class="material-symbols-outlined material-icons-outlined callout-icon" aria-hidden="true">check_circle</span>
                 <div class="callout-content">
                   <h3 class="callout-title">Segurança</h3>
                   <p class="mb-0">Todo agendamento recorrente exigirá autenticação biométrica ou por senha a cada nova configuração. O usuário poderá cancelar a recorrência a qualquer momento, sem custos.</p>
                 </div>
               </div>
 
-              <h2 class="h4 mt-4 mb-3 color-1">Documentos</h2>
+              <h2 class="h4 mt-4 mb-3">Documentos</h2>
               <div class="documentos">
-                <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Resolução BCB nº 412/2026 (PDF, 180 KB)">
-                  <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
+                <a role="button" class="documento d-flex text-decoration-none" href="#" aria-label="Baixar Resolução BCB nº 412/2026 (PDF, 180 KB)">
+                  <div class="icone text-white bg-primary d-flex align-items-center justify-content-center rounded-left">
                     <div class="d-flex flex-column position-relative">
-                      <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
-                      <span class="extensao bg-color-1">pdf</span>
+                      <span class="material-symbols-outlined material-icons md-36" aria-hidden="true">insert_drive_file</span>
+                      <span class="extensao bg-primary">pdf</span>
                     </div>
                   </div>
                   <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
@@ -88,27 +91,27 @@
           <!-- SIDEBAR (Notícias Relacionadas - 30% - 4 Colunas) -->
           <div class="bcb-col-12 bcb-col-lg-4 mt-4 mt-lg-0">
             <aside class="border-left pl-lg-4">
-              <h3 class="h6 text-uppercase mb-3" style="letter-spacing:1px; color: var(--bcb-gray-500);">Relacionadas</h3>
+              <h3 class="h6 text-uppercase text-muted mb-3">Relacionadas</h3>
               
               <div class="mb-3 pb-3 border-bottom">
-                <a href="#" class="text-link d-block mb-1" style="font-weight: 500;">BC ajusta regras para Pix parcelado em compras online</a>
+                <a href="#" class="text-link d-block mb-1 font-weight-bold">BC ajusta regras para Pix parcelado em compras online</a>
                 <small class="text-muted">08/03/2026</small>
               </div>
               <div class="mb-3 pb-3 border-bottom">
-                <a href="#" class="text-link d-block mb-1" style="font-weight: 500;">Pix bate recorde de 180 milhões de transações em um dia</a>
+                <a href="#" class="text-link d-block mb-1 font-weight-bold">Pix bate recorde de 180 milhões de transações em um dia</a>
                 <small class="text-muted">01/03/2026</small>
               </div>
               <div class="mb-3 pb-3 border-bottom">
-                <a href="#" class="text-link d-block mb-1" style="font-weight: 500;">Banco Central publica relatório anual do Pix 2025</a>
+                <a href="#" class="text-link d-block mb-1 font-weight-bold">Banco Central publica relatório anual do Pix 2025</a>
                 <small class="text-muted">15/02/2026</small>
               </div>
               <div class="mb-3 pb-3">
-                <a href="#" class="text-link d-block mb-1" style="font-weight: 500;">Nova funcionalidade permite Pix por aproximação (NFC)</a>
+                <a href="#" class="text-link d-block mb-1 font-weight-bold">Nova funcionalidade permite Pix por aproximação (NFC)</a>
                 <small class="text-muted">28/01/2026</small>
               </div>
 
-              <a class="btn btn-outline-primary btn-sm btn-block mt-3" href="/noticias" style="border-color: var(--bcb-brand-blue); color: var(--bcb-brand-blue);">
-                Mais notas à imprensa <span class="material-icons md-18" aria-hidden="true">chevron_right</span>
+              <a class="btn btn-outline-primary btn-sm btn-block mt-3" href="/noticias">
+                Mais notas à imprensa <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">chevron_right</span>
               </a>
             </aside>
           </div>

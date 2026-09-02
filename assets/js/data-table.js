@@ -86,6 +86,9 @@
 
   const BcbDataTable = {
     init() {
+      const tables = document.querySelectorAll('.bcb-data-table, table.table th.sortable, table th[aria-sort]');
+      if (tables.length === 0) return;
+
       document.addEventListener('click', (event) => {
         const th = event.target.closest('.bcb-data-table th.sortable, table.table th.sortable');
         if (th) {

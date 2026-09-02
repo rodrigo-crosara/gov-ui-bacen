@@ -80,6 +80,9 @@
     },
 
     init() {
+      const toastTriggers = document.querySelectorAll('[data-bcb-toast], .bcb-toast, .bcb-toast-container');
+      if (toastTriggers.length === 0) return;
+
       // Escutar cliques em gatilhos data-bcb-toast
       document.addEventListener('click', (event) => {
         const trigger = event.target.closest('[data-bcb-toast]');

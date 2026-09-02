@@ -9,12 +9,13 @@
     <!-- Bootstrap 4.6 CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     
-    <!-- Google Fonts (Ubuntu + Cormorant Garamond) -->
+    <!-- Fontes Institucionais (Ubuntu, Cormorant Garamond, Roboto, Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     
-    <!-- Material Icons -->
+    <!-- Material Symbols Outlined & Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     
     <!-- BCB Styles -->
@@ -27,70 +28,6 @@
             font-family: var(--bcb-font-ubuntu);
             margin: 0;
             padding: 0;
-        }
-
-        .header-bcb {
-            background-color: var(--bcb-brand-azul-blue);
-            color: var(--bcb-color-white);
-            padding: 0.75rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1040;
-            box-shadow: var(--bcb-shadow-300);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .header-bcb h1 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--bcb-color-white);
-        }
-
-        .badge-version {
-            font-size: 0.75rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.2rem 0.5rem;
-            border-radius: var(--bcb-radius-pill);
-            font-weight: 500;
-        }
-
-        .theme-switcher-group {
-            display: inline-flex;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 2px;
-            border-radius: var(--bcb-radius-pill);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .theme-btn {
-            border: none;
-            background: transparent;
-            color: rgba(255, 255, 255, 0.85);
-            padding: 0.25rem 0.65rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border-radius: var(--bcb-radius-pill);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .theme-btn:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .theme-btn.active {
-            background: var(--bcb-brand-amarellato-biscoito);
-            color: #002244;
-            font-weight: 700;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
         /* Hub Cards */
@@ -260,9 +197,9 @@
         <li><a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span></a></li>
     </ul>
 
-    <!-- Header Sticky da Documentação (.bcb-ds-navbar) -->
-    <header class="bcb-ds-navbar" role="banner">
-        <div class="container-fluid px-4">
+    <!-- Header Sticky da Documentação (.bcb-ds-header) -->
+    <header class="bcb-ds-header" role="banner">
+        <div class="bcb-container bcb-ds-header__inner">
             <a href="index.html" class="bcb-ds-brand" aria-label="Página inicial do BCB Design System">
                 <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Banco Central do Brasil" class="bcb-ds-logo" onerror="this.style.display='none'">
                 <span class="bcb-ds-brand-text">Design System</span>
@@ -271,25 +208,25 @@
 
             <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação da Documentação">
                 <ul class="bcb-ds-nav">
-                    <li><a href="index.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-icons md-18" aria-hidden="true">home</span> Início</a></li>
-                    <li><a href="pages/components.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">widgets</span> Componentes</a></li>
-                    <li><a href="pages/tokens.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">palette</span> Tokens</a></li>
-                    <li><a href="pages/templates.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">dashboard</span> Templates</a></li>
-                    <li><a href="pages/automacao-ia.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
-                    <li><a href="pages/changelog.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">history</span> Changelog</a></li>
+                    <li><a href="index.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-symbols-outlined md-18" aria-hidden="true">home</span> Início</a></li>
+                    <li><a href="pages/components.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">widgets</span> Componentes</a></li>
+                    <li><a href="pages/tokens.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">palette</span> Tokens</a></li>
+                    <li><a href="pages/templates.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">dashboard</span> Templates</a></li>
+                    <li><a href="pages/automacao-ia.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
+                    <li><a href="pages/changelog.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">history</span> Changelog</a></li>
                 </ul>
             </nav>
 
-            <!-- Seletor de Temas Funcional -->
-            <div class="bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
+            <!-- Seletor de Temas Agrupado (.bcb-theme-toggle) -->
+            <div class="bcb-theme-toggle bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
                 <button type="button" class="bcb-ds-theme-btn active" id="btnThemeLight" aria-pressed="true" title="Tema Claro Padrão">
-                    <span class="material-icons md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
+                    <span class="material-symbols-outlined md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
                 </button>
                 <button type="button" class="bcb-ds-theme-btn" id="btnThemeDark" aria-pressed="false" title="Modo Escuro">
-                    <span class="material-icons md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
+                    <span class="material-symbols-outlined md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
                 </button>
                 <button type="button" class="bcb-ds-theme-btn" id="btnThemeHighContrast" aria-pressed="false" title="Alto Contraste Acessível (e-MAG)">
-                    <span class="material-icons md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
+                    <span class="material-symbols-outlined md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
                 </button>
             </div>
         </div>
@@ -302,13 +239,13 @@
         <section class="hero-hub">
             <div class="d-flex align-items-center flex-wrap gap-2 mb-2" style="gap: 0.5rem;">
                 <span class="status-badge status-brand">
-                    <span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">verified</span> Versão 2.0.0 Oficial
+                    <span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">verified</span> Versão 2.0.0 Oficial
                 </span>
                 <span class="status-badge status-wcag">
-                    <span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">accessibility_new</span> WCAG 2.2 AA / AAA &bull; e-MAG 3.1
+                    <span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">accessibility_new</span> WCAG 2.2 AA / AAA &bull; e-MAG 3.1
                 </span>
                 <span class="status-badge status-ready">
-                    <span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Pronto para Produção & IA
+                    <span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Pronto para Produção & IA
                 </span>
             </div>
             
@@ -317,13 +254,13 @@
             
             <div class="d-flex flex-wrap gap-3" style="gap: 0.75rem;">
                 <a href="pages/components.html" class="btn btn-primary d-inline-flex align-items-center" style="gap: 0.5rem;">
-                    <span class="material-icons" aria-hidden="true">widgets</span> Explorar Catálogo de Componentes
+                    <span class="material-symbols-outlined material-icons" aria-hidden="true">widgets</span> Explorar Catálogo de Componentes
                 </a>
                 <a href="pages/tokens.html" class="btn btn-outline-primary d-inline-flex align-items-center" style="gap: 0.5rem;">
-                    <span class="material-icons" aria-hidden="true">palette</span> Consultar Design Tokens
+                    <span class="material-symbols-outlined material-icons" aria-hidden="true">palette</span> Consultar Design Tokens
                 </a>
                 <a href="#quick-start" class="btn btn-light d-inline-flex align-items-center border" style="gap: 0.5rem;">
-                    <span class="material-icons" aria-hidden="true">bolt</span> Guia Rápido (Quick Start)
+                    <span class="material-symbols-outlined material-icons" aria-hidden="true">bolt</span> Guia Rápido (Quick Start)
                 </a>
             </div>
         </section>
@@ -336,21 +273,21 @@
             <div class="row">
                 <div class="col-12 col-md-4 mb-3">
                     <div class="principle-card">
-                        <span class="material-icons principle-icon" aria-hidden="true">accessibility</span>
+                        <span class="material-symbols-outlined material-icons principle-icon" aria-hidden="true">accessibility</span>
                         <h3 class="h5 font-weight-bold" style="color: var(--bcb-brand-azul-blue);">Acessibilidade Universal</h3>
                         <p class="text-body small mb-0">Conformidade estrita com as diretrizes e-MAG 3.1 e WCAG 2.2 níveis AA e AAA. Suporte nativo e automático a Modo Escuro, Alto Contraste de alto alcance visual e navegação 100% por teclado com anéis de foco visíveis.</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                     <div class="principle-card">
-                        <span class="material-icons principle-icon" aria-hidden="true">palette</span>
+                        <span class="material-symbols-outlined material-icons principle-icon" aria-hidden="true">palette</span>
                         <h3 class="h5 font-weight-bold" style="color: var(--bcb-brand-azul-blue);">Identidade Visual Oficial</h3>
                         <p class="text-body small mb-0">100% fiel ao Manual de Marca oficial do Banco Central do Brasil. Paleta canônica de 11 cores (Pantone, RGB, CMYK e HEX), tipografia oficial Ubuntu e Cormorant Garamond, e escala modular de espaçamento em base de 4px.</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                     <div class="principle-card">
-                        <span class="material-icons principle-icon" aria-hidden="true">smart_toy</span>
+                        <span class="material-symbols-outlined material-icons principle-icon" aria-hidden="true">smart_toy</span>
                         <h3 class="h5 font-weight-bold" style="color: var(--bcb-brand-azul-blue);">Prototipagem por IA</h3>
                         <p class="text-body small mb-0">Estruturado para automação ágil via inteligência artificial. Inclui especificação W3C em <code>tokens.json</code>, contratos de componentes em <code>.docs-ia/</code> e skill especializada para transformar briefings em telas oficiais.</p>
                     </div>
@@ -369,14 +306,14 @@
                     <div class="hub-card card-tokens">
                         <div>
                             <div class="hub-card-icon">
-                                <span class="material-icons" aria-hidden="true">palette</span>
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">palette</span>
                             </div>
                             <h3 class="hub-card-title">Design Tokens</h3>
                             <p class="hub-card-description">Paleta oficial do Manual de Marca (11 cores com Pantone, RGB, CMYK e HEX), tipografia responsiva com <code>clamp()</code>, grid de espaçamentos e elevação.</p>
                         </div>
                         <a href="pages/tokens.html" class="btn btn-outline-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
                             <span>Ver Tokens</span>
-                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                            <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
                         </a>
                     </div>
                 </div>
@@ -386,14 +323,14 @@
                     <div class="hub-card card-components">
                         <div>
                             <div class="hub-card-icon">
-                                <span class="material-icons" aria-hidden="true">widgets</span>
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">widgets</span>
                             </div>
                             <h3 class="hub-card-title">Catálogo Vivo</h3>
                             <p class="hub-card-description">Vitrine interativa de 29 blocos de componentes: botões, cards de indicadores, tabelas ordenáveis com paginação, exportação de dados abertos e modais.</p>
                         </div>
                         <a href="pages/components.html" class="btn btn-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
                             <span>Abrir Catálogo</span>
-                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                            <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
                         </a>
                     </div>
                 </div>
@@ -403,14 +340,14 @@
                     <div class="hub-card card-templates">
                         <div>
                             <div class="hub-card-icon">
-                                <span class="material-icons" aria-hidden="true">dashboard</span>
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">dashboard</span>
                             </div>
                             <h3 class="hub-card-title">Casos Diagramados</h3>
                             <p class="hub-card-description">Showcase de casos reais gerados pelo Motor Heurístico de IA (Selic, Pix, SVR, Drex e Emergências) com H1 único e sem cascas externas.</p>
                         </div>
                         <a href="pages/templates.html" class="btn btn-outline-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
                             <span>Ver Casos Diagramados</span>
-                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                            <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
                         </a>
                     </div>
                 </div>
@@ -420,14 +357,14 @@
                     <div class="hub-card card-ai">
                         <div>
                             <div class="hub-card-icon">
-                                <span class="material-icons" aria-hidden="true">smart_toy</span>
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">smart_toy</span>
                             </div>
                             <h3 class="hub-card-title">Motor Heurístico IA</h3>
                             <p class="hub-card-description">Guia para webdesigners: conversão heurística de textos brutos, gerador interativo de prompts e caso prático Entrada vs. Saída.</p>
                         </div>
                         <a href="pages/automacao-ia.html" class="btn btn-outline-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
                             <span>Acessar Guia de IA</span>
-                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                            <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
                         </a>
                     </div>
                 </div>
@@ -509,56 +446,56 @@
                             <td>Fundação</td>
                             <td><span class="badge badge-success">WCAG AAA / AA</span></td>
                             <td>Claro / Escuro / Alto Contraste</td>
-                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                            <td><span class="status-badge status-ready"><span class="material-symbols-outlined material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
                         </tr>
                         <tr>
                             <td><strong>Botões & Ações</strong></td>
                             <td>Átomos</td>
                             <td><span class="badge badge-success">WCAG AAA / AA</span></td>
                             <td>Foco Acessível 3px</td>
-                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                            <td><span class="status-badge status-ready"><span class="material-symbols-outlined material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
                         </tr>
                         <tr>
                             <td><strong>Cards de Indicadores</strong></td>
                             <td>Moléculas</td>
                             <td><span class="badge badge-success">WCAG AA</span></td>
                             <td>Tendências Direcionais</td>
-                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                            <td><span class="status-badge status-ready"><span class="material-symbols-outlined material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
                         </tr>
                         <tr>
                             <td><strong>Data Table Responsiva</strong></td>
                             <td>Organismos</td>
                             <td><span class="badge badge-success">WCAG AA &bull; 1.3.1</span></td>
                             <td>Ordenação JS + Paginação</td>
-                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                            <td><span class="status-badge status-ready"><span class="material-symbols-outlined material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
                         </tr>
                         <tr>
                             <td><strong>Exportação de Dados Abertos</strong></td>
                             <td>Moléculas</td>
                             <td><span class="badge badge-success">WCAG AAA / AA</span></td>
                             <td>Formatos CSV, JSON, API</td>
-                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                            <td><span class="status-badge status-ready"><span class="material-symbols-outlined material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
                         </tr>
                         <tr>
                             <td><strong>Callouts & Alertas</strong></td>
                             <td>Moléculas</td>
                             <td><span class="badge badge-success">WCAG AA &bull; 1.4.1</span></td>
                             <td>4 Variantes Semânticas</td>
-                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                            <td><span class="status-badge status-ready"><span class="material-symbols-outlined material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
                         </tr>
                         <tr>
                             <td><strong>Accordions & Tabs</strong></td>
                             <td>Organismos</td>
                             <td><span class="badge badge-success">WCAG AA &bull; 4.1.2</span></td>
                             <td>ARIA Expanded / Selected</td>
-                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                            <td><span class="status-badge status-ready"><span class="material-symbols-outlined material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
                         </tr>
                         <tr>
                             <td><strong>Templates de Página</strong></td>
                             <td>Blueprints</td>
                             <td><span class="badge badge-success">e-MAG 3.1 &bull; H1 Único</span></td>
                             <td>6 Modelos de Produção</td>
-                            <td><span class="status-badge status-ready"><span class="material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
+                            <td><span class="status-badge status-ready"><span class="material-symbols-outlined material-icons" style="font-size: 0.8rem;" aria-hidden="true">check_circle</span> Homologado v2.0</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -573,7 +510,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 mb-3">
                     <div class="card p-3 border h-100" style="background-color: var(--bcb-color-white);">
-                        <h3 class="h6 font-weight-bold" style="color: var(--bcb-brand-azul-blue);"><span class="material-icons" style="font-size: 1.1rem; vertical-align: middle;" aria-hidden="true">folder_open</span> Especificações para IA (<code>.docs-ia/</code>)</h3>
+                        <h3 class="h6 font-weight-bold" style="color: var(--bcb-brand-azul-blue);"><span class="material-symbols-outlined material-icons" style="font-size: 1.1rem; vertical-align: middle;" aria-hidden="true">folder_open</span> Especificações para IA (<code>.docs-ia/</code>)</h3>
                         <ul class="text-body small mb-0 pl-3">
                             <li><code>.docs-ia/components.md</code>: 29 assinaturas canônicas e regras Do/Don't.</li>
                             <li><code>.docs-ia/layouts-patterns.md</code>: Blueprints e matriz de decisão de layout.</li>
@@ -583,7 +520,7 @@
                 </div>
                 <div class="col-12 col-md-6 mb-3">
                     <div class="card p-3 border h-100" style="background-color: var(--bcb-color-white);">
-                        <h3 class="h6 font-weight-bold" style="color: var(--bcb-brand-azul-blue);"><span class="material-icons" style="font-size: 1.1rem; vertical-align: middle;" aria-hidden="true">code</span> Automação e Tokens (<code>tokens.json</code>)</h3>
+                        <h3 class="h6 font-weight-bold" style="color: var(--bcb-brand-azul-blue);"><span class="material-symbols-outlined material-icons" style="font-size: 1.1rem; vertical-align: middle;" aria-hidden="true">code</span> Automação e Tokens (<code>tokens.json</code>)</h3>
                         <ul class="text-body small mb-0 pl-3">
                             <li><code>tokens.json</code>: Decisões de design no padrão W3C DTCG.</li>
                             <li><code>scripts/build-tokens.js</code>: Compilador e verificador de paridade CSS.</li>

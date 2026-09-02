@@ -1,125 +1,295 @@
 /**
  * BCB Design System — Pacote Unificado de Micro-scripts (Vanilla JS)
- * Inicializa Modal, Toast, Tabs, Accordion, Data Table e Seletor de Temas.
+ * Inicializa Seletor de Temas (IIFE autônoma imediata), Modal, Toast, Tabs, Accordion e Data Table.
+ * Arquitetura defensiva com tolerância a falhas e verificação estrita de nulidade.
  */
 
-(function () {
+// 1. Alternador de Temas — Isolado em Função Autônoma Imediata (IIFE)
+(function initBcbThemeImmediate() {
   'use strict';
 
-  // Gerenciador Global de Temas (Claro/Padrão, Escuro e Alto Contraste)
-  const BcbTheme = {
-    init() {
+  function applyTheme(themeKey) {
+    let themeAttr = 'light';
+    let contrastAttr = 'normal';
+
+    if (themeKey === 'dark') {
+      themeAttr = 'dark';
+      contrastAttr = 'normal';
+    } else if (themeKey === 'high-contrast' || themeKey === 'high') {
+      themeAttr = 'high-contrast';
+      contrastAttr = 'high';
+    } else {
+      themeAttr = 'light';
+      contrastAttr = 'normal';
+    }
+
+    // Aplicação imediata no DOM (HTML e Body)
+    try {
+      if (document.documentElement) {
+        document.documentElement.setAttribute('data-theme', themeAttr);
+        document.documentElement.setAttribute('data-contrast', contrastAttr);
+      }
+      if (document.body) {
+        document.body.setAttribute('data-theme', themeAttr);
+        document.body.setAttribute('data-contrast', contrastAttr);
+      }
+    } catch (e) {}
+
+    // Persistência segura em localStorage
+    try {
+      localStorage.setItem('bcb-theme', themeKey);
+      localStorage.setItem('bcb-contrast', contrastAttr);
+    } catch (e) {}
+
+    // Atualização defensiva dos botões do seletor
+    try {
       const btnLight = document.getElementById('btnThemeLight');
       const btnDark = document.getElementById('btnThemeDark');
       const btnContrast = document.getElementById('btnThemeHighContrast');
-      const allSwitchers = Array.from(document.querySelectorAll('[data-theme-switcher]'));
+      const standardButtons = [btnLight, btnDark, btnContrast].filter(Boolean);
 
-      function applyTheme(themeKey) {
-        let themeAttr = 'light';
-        let contrastAttr = 'normal';
+      standardButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
 
-        if (themeKey === 'dark') {
-          themeAttr = 'dark';
-          contrastAttr = 'normal';
-        } else if (themeKey === 'high-contrast' || themeKey === 'high') {
-          themeAttr = 'high-contrast';
-          contrastAttr = 'high';
-        } else {
-          themeAttr = 'light';
-          contrastAttr = 'normal';
+      if (contrastAttr === 'high') {
+        if (btnContrast) {
+          btnContrast.classList.add('active');
+          btnContrast.setAttribute('aria-pressed', 'true');
         }
-
-        // Aplica na tag html e body
-        document.documentElement.setAttribute('data-theme', themeAttr);
-        document.documentElement.setAttribute('data-contrast', contrastAttr);
-        if (document.body) {
-          document.body.setAttribute('data-theme', themeAttr);
-          document.body.setAttribute('data-contrast', contrastAttr);
+      } else if (themeAttr === 'dark') {
+        if (btnDark) {
+          btnDark.classList.add('active');
+          btnDark.setAttribute('aria-pressed', 'true');
         }
-
-        try {
-          localStorage.setItem('bcb-theme', themeKey);
-          localStorage.setItem('bcb-contrast', contrastAttr);
-        } catch (e) {}
-
-        // Sincroniza botões da navbar padrão
-        [btnLight, btnDark, btnContrast].forEach(b => {
-          if (b) {
-            b.classList.remove('active');
-            b.setAttribute('aria-pressed', 'false');
-          }
-        });
-
-        if (contrastAttr === 'high') {
-          if (btnContrast) {
-            btnContrast.classList.add('active');
-            btnContrast.setAttribute('aria-pressed', 'true');
-          }
-        } else if (themeAttr === 'dark') {
-          if (btnDark) {
-            btnDark.classList.add('active');
-            btnDark.setAttribute('aria-pressed', 'true');
-          }
-        } else {
-          if (btnLight) {
-            btnLight.classList.add('active');
-            btnLight.setAttribute('aria-pressed', 'true');
-          }
+      } else {
+        if (btnLight) {
+          btnLight.classList.add('active');
+          btnLight.setAttribute('aria-pressed', 'true');
         }
-
-        // Sincroniza botões genéricos [data-theme-switcher]
-        allSwitchers.forEach(b => {
-          const target = b.getAttribute('data-theme-switcher');
-          const isMatch = (target === themeKey) ||
-                          (target === 'default' && (themeKey === 'light' || themeKey === 'default')) ||
-                          (target === 'light' && (themeKey === 'light' || themeKey === 'default')) ||
-                          (target === 'high-contrast' && (themeKey === 'high-contrast' || themeKey === 'high'));
-          if (isMatch) {
-            b.classList.add('active');
-            b.setAttribute('aria-pressed', 'true');
-          } else {
-            b.classList.remove('active');
-            b.setAttribute('aria-pressed', 'false');
-          }
-        });
       }
+
+      // Sincronizar seletores genéricos e em pílula (.bcb-theme-toggle button, [data-theme-switcher])
+      const allButtons = document.querySelectorAll('.bcb-theme-toggle button, [data-theme-switcher]');
+      allButtons.forEach(b => {
+        const target = b.getAttribute('data-theme-switcher') ||
+                       (b.id === 'btnThemeHighContrast' ? 'high-contrast' :
+                        b.id === 'btnThemeDark' ? 'dark' : 'light');
+
+        const isMatch = (target === themeKey) ||
+                        (target === 'default' && (themeKey === 'light' || themeKey === 'default')) ||
+                        (target === 'light' && (themeKey === 'light' || themeKey === 'default')) ||
+                        (target === 'high-contrast' && (themeKey === 'high-contrast' || themeKey === 'high'));
+
+        if (isMatch) {
+          b.classList.add('active');
+          b.setAttribute('aria-pressed', 'true');
+        } else {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        }
+      });
+    } catch (e) {}
+  }
+
+  function bindEvents() {
+    try {
+      const btnLight = document.getElementById('btnThemeLight');
+      const btnDark = document.getElementById('btnThemeDark');
+      const btnContrast = document.getElementById('btnThemeHighContrast');
 
       if (btnLight) btnLight.addEventListener('click', () => applyTheme('light'));
       if (btnDark) btnDark.addEventListener('click', () => applyTheme('dark'));
       if (btnContrast) btnContrast.addEventListener('click', () => applyTheme('high-contrast'));
 
-      allSwitchers.forEach(b => {
+      document.querySelectorAll('[data-theme-switcher]').forEach(b => {
         b.addEventListener('click', () => {
           const mode = b.getAttribute('data-theme-switcher');
           applyTheme(mode);
         });
       });
+    } catch (e) {}
+  }
 
-      // Restaurar preferência salva do usuário ou padrão
-      try {
-        const savedTheme = localStorage.getItem('bcb-theme') ||
-                           document.documentElement.getAttribute('data-theme') ||
-                           'light';
-        applyTheme(savedTheme);
-      } catch (e) {}
+  // Leitura fluida e aplicação da preferência salva
+  let savedTheme = 'light';
+  try {
+    savedTheme = localStorage.getItem('bcb-theme') ||
+                 (document.documentElement ? document.documentElement.getAttribute('data-theme') : null) ||
+                 'light';
+  } catch (e) {}
+
+  applyTheme(savedTheme);
+
+  // Vincular eventos assim que o DOM estiver interativo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      bindEvents();
+      applyTheme(savedTheme);
+    });
+  } else {
+    bindEvents();
+    applyTheme(savedTheme);
+  }
+
+  // Exportar para escopo global para acesso programático
+  window.BcbTheme = {
+    applyTheme,
+    init: () => {
+      bindEvents();
+      applyTheme(savedTheme);
     }
   };
+})();
 
-  // Inicializador geral do Design System
+// 2. Módulos de Componentes — Inicialização Defensiva Condicional
+(function initBcbComponents() {
+  'use strict';
+
   const BcbUI = {
     version: '2.1.0',
     init() {
-      BcbTheme.init();
-      if (window.BcbModal && typeof window.BcbModal.init === 'function') window.BcbModal.init();
-      if (window.BcbToast && typeof window.BcbToast.init === 'function') window.BcbToast.init();
-      if (window.BcbTabs && typeof window.BcbTabs.init === 'function') window.BcbTabs.init();
-      if (window.BcbAccordion && typeof window.BcbAccordion.init === 'function') window.BcbAccordion.init();
-      if (window.BcbDataTable && typeof window.BcbDataTable.init === 'function') window.BcbDataTable.init();
+      // 1. Modais
+      try {
+        const modals = document.querySelectorAll('.bcb-modal, [data-toggle="bcb-modal"], [data-bcb-modal-target]');
+        if (modals.length > 0) {
+          if (window.BcbModal && typeof window.BcbModal.init === 'function') {
+            window.BcbModal.init();
+          } else {
+            // Fallback embutido caso modal.js não tenha sido importado separadamente
+            document.addEventListener('click', (event) => {
+              const trigger = event.target.closest('[data-toggle="bcb-modal"], [data-bcb-modal-target]');
+              if (trigger) {
+                event.preventDefault();
+                const targetId = trigger.getAttribute('data-target') || trigger.getAttribute('data-bcb-modal-target') || trigger.getAttribute('href');
+                if (targetId) {
+                  const modal = document.getElementById(targetId.replace('#', ''));
+                  if (modal) {
+                    modal.classList.add('active');
+                    modal.setAttribute('aria-hidden', 'false');
+                    modal.setAttribute('aria-modal', 'true');
+                    document.body.style.overflow = 'hidden';
+                  }
+                }
+              }
+              const closeTrigger = event.target.closest('.bcb-modal-close, [data-dismiss="bcb-modal"]');
+              if (closeTrigger) {
+                event.preventDefault();
+                const modal = closeTrigger.closest('.bcb-modal-backdrop, [role="dialog"]');
+                if (modal) {
+                  modal.classList.remove('active');
+                  modal.setAttribute('aria-hidden', 'true');
+                  document.body.style.overflow = '';
+                }
+              }
+              if (event.target.classList.contains('bcb-modal-backdrop') && event.target.classList.contains('active')) {
+                event.target.classList.remove('active');
+                event.target.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+              }
+            });
+          }
+        }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de modal', e);
+      }
+
+      // 2. Navegação em Abas (Tabs)
+      try {
+        const tabs = document.querySelectorAll('.bcb-navegacaoabas, .nav-tabs, [role="tablist"]');
+        if (tabs.length > 0) {
+          if (window.BcbTabs && typeof window.BcbTabs.init === 'function') {
+            window.BcbTabs.init();
+          } else {
+            document.addEventListener('click', (event) => {
+              const tab = event.target.closest('[role="tab"], .bcb-navegacaoabas .nav-link, .nav-tabs .nav-link[data-toggle="tab"]');
+              if (tab) {
+                event.preventDefault();
+                const tabList = tab.closest('[role="tablist"], .nav-tabs');
+                if (tabList) {
+                  tabList.querySelectorAll('[role="tab"], .nav-link').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                  });
+                  tab.classList.add('active');
+                  tab.setAttribute('aria-selected', 'true');
+                }
+                const targetSelector = tab.getAttribute('href') || tab.getAttribute('data-target');
+                if (targetSelector) {
+                  const panel = document.querySelector(targetSelector);
+                  if (panel) {
+                    const content = panel.closest('.tab-content');
+                    if (content) {
+                      content.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active', 'show'));
+                    }
+                    panel.classList.add('active', 'show');
+                  }
+                }
+              }
+            });
+          }
+        }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de tabs', e);
+      }
+
+      // 3. Accordions
+      try {
+        const accordions = document.querySelectorAll('.accordion, [data-toggle="collapse"]');
+        if (accordions.length > 0) {
+          if (window.BcbAccordion && typeof window.BcbAccordion.init === 'function') {
+            window.BcbAccordion.init();
+          } else {
+            document.addEventListener('click', (event) => {
+              const button = event.target.closest('.accordion [data-toggle="collapse"], .accordion .card-header button');
+              if (button) {
+                event.preventDefault();
+                const targetSelector = button.getAttribute('data-target') || button.getAttribute('href');
+                if (targetSelector) {
+                  const target = document.querySelector(targetSelector);
+                  if (target) {
+                    const isShown = target.classList.contains('show');
+                    button.setAttribute('aria-expanded', !isShown ? 'true' : 'false');
+                    button.classList.toggle('collapsed', isShown);
+                    target.classList.toggle('show', !isShown);
+                  }
+                }
+              }
+            });
+          }
+        }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de accordion', e);
+      }
+
+      // 4. Data Tables
+      try {
+        const tables = document.querySelectorAll('.bcb-data-table, table.table th.sortable');
+        if (tables.length > 0) {
+          if (window.BcbDataTable && typeof window.BcbDataTable.init === 'function') {
+            window.BcbDataTable.init();
+          }
+        }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de data-table', e);
+      }
+
+      // 5. Toasts
+      try {
+        const toasts = document.querySelectorAll('[data-bcb-toast], .bcb-toast, .bcb-toast-container');
+        if (toasts.length > 0) {
+          if (window.BcbToast && typeof window.BcbToast.init === 'function') {
+            window.BcbToast.init();
+          }
+        }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de toast', e);
+      }
     }
   };
 
   window.BcbUI = BcbUI;
-  window.BcbTheme = BcbTheme;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => BcbUI.init());
@@ -127,3 +297,4 @@
     BcbUI.init();
   }
 })();
+

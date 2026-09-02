@@ -11,12 +11,13 @@
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
           crossorigin="anonymous">
 
-    <!-- Tipografia Institucional (Ubuntu + Cormorant Garamond) -->
+        <!-- Fontes Institucionais (Ubuntu, Cormorant Garamond, Roboto, Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols Outlined & Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 
     <!-- BCB Design System CSS -->
@@ -235,9 +236,9 @@
 </head>
 <body>
 
-    <!-- Header da Documentação (.bcb-ds-navbar) -->
-    <header class="bcb-ds-navbar" role="banner">
-        <div class="container-fluid px-4">
+    <!-- Header da Documentação (.bcb-ds-header) -->
+    <header class="bcb-ds-header" role="banner">
+        <div class="bcb-container bcb-ds-header__inner">
             <a href="../index.html" class="bcb-ds-brand" aria-label="Página inicial do BCB Design System">
                 <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Banco Central do Brasil" class="bcb-ds-logo" onerror="this.style.display='none'">
                 <span class="bcb-ds-brand-text">Design System</span>
@@ -246,25 +247,25 @@
 
             <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação da Documentação">
                 <ul class="bcb-ds-nav">
-                    <li><a href="../index.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">home</span> Início</a></li>
-                    <li><a href="components.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">widgets</span> Componentes</a></li>
-                    <li><a href="tokens.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">palette</span> Tokens</a></li>
-                    <li><a href="templates.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">dashboard</span> Templates</a></li>
-                    <li><a href="automacao-ia.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-icons md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
-                    <li><a href="changelog.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">history</span> Changelog</a></li>
+                    <li><a href="../index.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">home</span> Início</a></li>
+                    <li><a href="components.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">widgets</span> Componentes</a></li>
+                    <li><a href="tokens.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">palette</span> Tokens</a></li>
+                    <li><a href="templates.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">dashboard</span> Templates</a></li>
+                    <li><a href="automacao-ia.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
+                    <li><a href="changelog.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">history</span> Changelog</a></li>
                 </ul>
             </nav>
 
-            <!-- Seletor de Temas Funcional -->
-            <div class="bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
+            <!-- Seletor de Temas em Pílula (.bcb-theme-toggle) -->
+            <div class="bcb-theme-toggle bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
                 <button type="button" class="bcb-ds-theme-btn active" id="btnThemeLight" aria-pressed="true" title="Tema Claro Padrão">
-                    <span class="material-icons md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
+                    <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
                 </button>
                 <button type="button" class="bcb-ds-theme-btn" id="btnThemeDark" aria-pressed="false" title="Modo Escuro">
-                    <span class="material-icons md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
+                    <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
                 </button>
                 <button type="button" class="bcb-ds-theme-btn" id="btnThemeHighContrast" aria-pressed="false" title="Alto Contraste Acessível (e-MAG)">
-                    <span class="material-icons md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
+                    <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
                 </button>
             </div>
         </div>
@@ -285,7 +286,7 @@
 
         <!-- CALLOUT DE ROTINA DO DESIGNER -->
         <div class="callout callout-brand callout-elevated mb-5" role="region" aria-label="Rotina do designer de plantão">
-            <span class="material-icons callout-icon" aria-hidden="true">auto_fix_high</span>
+            <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">auto_fix_high</span>
             <div class="callout-content">
                 <h2 class="callout-title h4">A Rotina do Webdesigner de Plantão no BCB</h2>
                 <p class="mb-2">
@@ -300,7 +301,7 @@
         <!-- SEÇÃO 1: FLUXO DE 3 ETAPAS -->
         <section class="mb-5" aria-labelledby="sec-fluxo-title">
             <h2 id="sec-fluxo-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">alt_route</span> 1. Fluxo Ágil em 3 Passos
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">alt_route</span> 1. Fluxo Ágil em 3 Passos
             </h2>
             <div class="row">
                 <div class="col-md-4 mb-3">
@@ -342,7 +343,7 @@
         <!-- SEÇÃO 2: DEMONSTRAÇÃO PRÁTICA: ENTRADA BRUTA VS. SAÍDA DIAGRAMADA -->
         <section class="mb-5" aria-labelledby="sec-demo-title">
             <h2 id="sec-demo-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">compare_arrows</span> 2. Caso Real: Entrada Bruta vs. Saída Diagramada
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">compare_arrows</span> 2. Caso Real: Entrada Bruta vs. Saída Diagramada
             </h2>
             <p class="text-body mb-4">
                 Veja abaixo como uma minuta textual sobre mecanismos de segurança do Pix é convertida automaticamente pelo motor heurístico:
@@ -351,7 +352,7 @@
             <div class="showcase-comparison">
                 <div class="showcase-header">
                     <h3 class="h5 mb-1 text-white font-weight-bold d-flex align-items-center" style="gap: 0.5rem;">
-                        <span class="material-icons" aria-hidden="true">bolt</span> Demanda Real: Nova Resolução do Pix e Bloqueio Preventivo
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">bolt</span> Demanda Real: Nova Resolução do Pix e Bloqueio Preventivo
                     </h3>
                     <span class="small opacity-80">Conversão Heurística de Regras de Segurança, Limites Noturnos e Contestação</span>
                 </div>
@@ -361,7 +362,7 @@
                         <!-- Coluna 1: Entrada Bruta -->
                         <div class="col-lg-5 mb-4 mb-lg-0">
                             <h4 class="h6 font-weight-bold text-uppercase tracking-wider text-muted mb-2 d-flex align-items-center" style="gap: 0.4rem;">
-                                <span class="material-icons md-18 text-warning" aria-hidden="true">description</span> Texto Bruto Recebido (E-mail da Área Técnica)
+                                <span class="material-symbols-outlined material-icons md-18 text-warning" aria-hidden="true">description</span> Texto Bruto Recebido (E-mail da Área Técnica)
                             </h4>
                             <div class="raw-input-box">
                                 <strong>De:</strong> dicop-seguranca@bcb.gov.br<br>
@@ -388,7 +389,7 @@
                         <!-- Coluna 2: Saída Diagramada (Interface Viva Renderizada) -->
                         <div class="col-lg-7">
                             <h4 class="h6 font-weight-bold text-uppercase tracking-wider text-muted mb-2 d-flex align-items-center" style="gap: 0.4rem;">
-                                <span class="material-icons md-18 text-success" aria-hidden="true">check_circle</span> Saída Diagramada pelo Motor (Miolo do &lt;main&gt;)
+                                <span class="material-symbols-outlined material-icons md-18 text-success" aria-hidden="true">check_circle</span> Saída Diagramada pelo Motor (Miolo do &lt;main&gt;)
                             </h4>
                             <div class="rendered-output-box">
                                 <div class="mb-3">
@@ -404,7 +405,7 @@
 
                                 <!-- Alerta Callout -->
                                 <div class="callout callout-warning callout-left-bordered py-2 px-3 mb-3" style="font-size: 0.85rem;">
-                                    <span class="material-icons callout-icon" aria-hidden="true" style="font-size: 1.25rem;">security</span>
+                                    <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true" style="font-size: 1.25rem;">security</span>
                                     <div class="callout-content">
                                         <strong style="color: var(--bcb-brand-vinho-autentico);">Atenção às Transações Noturnas:</strong>
                                         O limite de R$ 1.000 é ativado automaticamente das 20h às 6h para proteger o cidadão.
@@ -449,7 +450,7 @@
                                 <!-- Bloco de Download -->
                                 <div class="documentos mb-0">
                                     <a role="button" class="documento d-flex text-decoration-none py-2 px-3 border rounded bg-light" href="#download-pdf" aria-label="Baixar Resolução BCB nº 412/2026 em formato PDF (210 KB)">
-                                        <span class="material-icons mr-2 text-primary" aria-hidden="true">picture_as_pdf</span>
+                                        <span class="material-symbols-outlined material-icons mr-2 text-primary" aria-hidden="true">picture_as_pdf</span>
                                         <div class="small">
                                             <strong class="d-block text-dark">Resolução BCB nº 412/2026</strong>
                                             <span class="text-muted" style="font-size: 0.75rem;">Normativo completo &bull; PDF (210 KB)</span>
@@ -466,7 +467,7 @@
         <!-- SEÇÃO 3: MATRIZ HEURÍSTICA DE CONVERSÃO -->
         <section class="mb-5" aria-labelledby="sec-matriz-title">
             <h2 id="sec-matriz-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">hub</span> 3. Matriz Heurística de Conversão do Conteúdo
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">hub</span> 3. Matriz Heurística de Conversão do Conteúdo
             </h2>
             <p class="text-body mb-3">
                 Quando você fornece um texto não estruturado, a IA aplica as seguintes regras de correspondência para selecionar os componentes adequados:
@@ -521,7 +522,7 @@
         <!-- SEÇÃO 4: ARQUITETURA DE LINHAS E SLOTS MODULARES (CMS BCB) -->
         <section class="bcb-section mb-5" aria-labelledby="sec-grid-slots-title">
             <h2 id="sec-grid-slots-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">dashboard_customize</span> 4. Raciocínio em Linhas e Slots Modulares (CMS BCB)
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">dashboard_customize</span> 4. Raciocínio em Linhas e Slots Modulares (CMS BCB)
             </h2>
             <p class="text-body mb-3">
                 Para permitir que o webdesigner copie e transplante blocos isolados diretamente para as áreas de conteúdo do CMS institucional do Banco Central, a IA não gera código monolítico. O texto bruto é segmentado em <strong>Linhas (<code>.bcb-row</code>)</strong> e <strong>Slots Modulares</strong> com comentários delimitadores semânticos:
@@ -532,7 +533,7 @@
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 border shadow-sm">
                         <div class="card-header bg-white font-weight-bold d-flex align-items-center justify-content-between" style="color: var(--bcb-brand-azul-blue);">
-                            <span><span class="material-icons md-18 align-middle" aria-hidden="true">view_headline</span> Slot 100% — .bcb-col-12</span>
+                            <span><span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">view_headline</span> Slot 100% — .bcb-col-12</span>
                             <span class="badge badge-primary">Largura Total</span>
                         </div>
                         <div class="card-body">
@@ -550,7 +551,7 @@
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 border shadow-sm">
                         <div class="card-header bg-white font-weight-bold d-flex align-items-center justify-content-between" style="color: var(--bcb-brand-azul-blue);">
-                            <span><span class="material-icons md-18 align-middle" aria-hidden="true">vertical_split</span> Slot 70/30 — .bcb-col-lg-8 + .bcb-col-lg-4</span>
+                            <span><span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">vertical_split</span> Slot 70/30 — .bcb-col-lg-8 + .bcb-col-lg-4</span>
                             <span class="badge badge-info">Conteúdo + Ações</span>
                         </div>
                         <div class="card-body">
@@ -567,7 +568,7 @@
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 border shadow-sm">
                         <div class="card-header bg-white font-weight-bold d-flex align-items-center justify-content-between" style="color: var(--bcb-brand-azul-blue);">
-                            <span><span class="material-icons md-18 align-middle" aria-hidden="true">view_column</span> Slot 50/50 — .bcb-col-md-6</span>
+                            <span><span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">view_column</span> Slot 50/50 — .bcb-col-md-6</span>
                             <span class="badge badge-success">Comparativo / Duplo</span>
                         </div>
                         <div class="card-body">
@@ -585,7 +586,7 @@
                 <div class="col-md-6 mb-4">
                     <div class="card h-100 border shadow-sm">
                         <div class="card-header bg-white font-weight-bold d-flex align-items-center justify-content-between" style="color: var(--bcb-brand-azul-blue);">
-                            <span><span class="material-icons md-18 align-middle" aria-hidden="true">grid_view</span> Slot 33/33/33 — .bcb-col-md-4</span>
+                            <span><span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">grid_view</span> Slot 33/33/33 — .bcb-col-md-4</span>
                             <span class="badge badge-warning">Trio de Indicadores</span>
                         </div>
                         <div class="card-body">
@@ -603,7 +604,7 @@
         <!-- SEÇÃO 5: GERADOR DE PROMPTS PARA O DESIGNER (PROMPT BUILDER) -->
         <section class="mb-5" aria-labelledby="sec-builder-title">
             <h2 id="sec-builder-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">tune</span> 5. Gerador de Prompts para o Webdesigner de Plantão
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">tune</span> 5. Gerador de Prompts para o Webdesigner de Plantão
             </h2>
             <p class="text-body mb-3">
                 Preencha os campos abaixo para montar e copiar instantaneamente um prompt estruturado pronto para colar no agente ou LLM:
@@ -613,7 +614,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="selectTipoDemanda" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
-                            <span class="material-icons md-18 align-middle" aria-hidden="true">category</span> Seletor de Tipo de Diagramação:
+                            <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">category</span> Seletor de Tipo de Diagramação:
                         </label>
                         <select class="form-control custom-select" id="selectTipoDemanda">
                             <option value="normativa">Página Normativa / Comunicado Copom (Layout 70/30)</option>
@@ -624,7 +625,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputTituloSugerido" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
-                            <span class="material-icons md-18 align-middle" aria-hidden="true">title</span> Título Oficial Previsto:
+                            <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">title</span> Título Oficial Previsto:
                         </label>
                         <input type="text" class="form-control" id="inputTituloSugerido" placeholder="Ex: Ajustes nos Limites Noturnos do Pix">
                     </div>
@@ -632,17 +633,17 @@
 
                 <div class="form-group">
                     <label for="textareaTextoBruto" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
-                        <span class="material-icons md-18 align-middle" aria-hidden="true">content_paste</span> Cole aqui o texto bruto da demanda (e-mail, minuta de norma, briefing):
+                        <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">content_paste</span> Cole aqui o texto bruto da demanda (e-mail, minuta de norma, briefing):
                     </label>
                     <textarea class="form-control" id="textareaTextoBruto" rows="5" placeholder="Cole aqui o texto cru recebido da área técnica ou briefing institucional..."></textarea>
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center flex-wrap pt-2" style="gap: 1rem;">
                     <span class="text-muted small">
-                        <span class="material-icons md-18 align-middle" aria-hidden="true">verified</span> O gerador injeta automaticamente o Grid 12 colunas, comentários de slots CMS e tokens oficiais do BCB.
+                        <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">verified</span> O gerador injeta automaticamente o Grid 12 colunas, comentários de slots CMS e tokens oficiais do BCB.
                     </span>
                     <button type="button" class="btn btn-primary d-inline-flex align-items-center" id="btnGerarPrompt" style="gap: 0.4rem;">
-                        <span class="material-icons md-18" aria-hidden="true">auto_fix_high</span>
+                        <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">auto_fix_high</span>
                         <span>Gerar Prompt para IA</span>
                     </button>
                 </div>
@@ -651,10 +652,10 @@
                 <div id="painelResultadoPrompt" class="mt-4 pt-3 border-top" style="display: none;">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <label for="textareaPromptGerado" class="font-weight-bold text-success mb-0 d-flex align-items-center" style="gap: 0.3rem;">
-                            <span class="material-icons md-18" aria-hidden="true">check_circle</span> Prompt Pronto para Envio à IA:
+                            <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">check_circle</span> Prompt Pronto para Envio à IA:
                         </label>
                         <button type="button" class="btn btn-sm btn-outline-success d-inline-flex align-items-center" id="btnCopiarPromptGerado" style="gap: 0.3rem;">
-                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar Instrução
+                            <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar Instrução
                         </button>
                     </div>
                     <textarea class="form-control" id="textareaPromptGerado" rows="8" readonly style="background-color: var(--bcb-gray-100); font-family: monospace; font-size: 0.85rem; line-height: 1.5;"></textarea>
@@ -665,13 +666,13 @@
         <!-- SEÇÃO 6: REGRAS MANDATÓRIAS DE GERAÇÃO -->
         <section class="mb-5" aria-labelledby="sec-regras-title">
             <h2 id="sec-regras-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">verified_user</span> 6. Regras Mandatórias de Diagramação e Grid
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">verified_user</span> 6. Regras Mandatórias de Diagramação e Grid
             </h2>
             <div class="rule-grid">
                 <!-- DO -->
                 <div class="rule-box do">
                     <div class="rule-title">
-                        <span class="material-icons" aria-hidden="true">check_circle</span> O QUE FAZER (Mandatório)
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> O QUE FAZER (Mandatório)
                     </div>
                     <ul class="rule-list">
                         <li><strong>Conteúdo Puro no &lt;main&gt;:</strong> Iniciar imediatamente com <code>&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;</code>.</li>
@@ -686,7 +687,7 @@
                 <!-- DON'T -->
                 <div class="rule-box dont">
                     <div class="rule-title">
-                        <span class="material-icons" aria-hidden="true">cancel</span> O QUE NÃO FAZER (Proibido)
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">cancel</span> O QUE NÃO FAZER (Proibido)
                     </div>
                     <ul class="rule-list">
                         <li><strong>Proibição de Casca Externa:</strong> NUNCA gerar <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>#barra-brasil</code> ou <code>.bcb-govbr-bar</code>.</li>
@@ -702,7 +703,7 @@
         <!-- SEÇÃO 7: BIBLIOTECA DE PROMPTS CANÔNICOS -->
         <section class="mb-5" aria-labelledby="sec-prompts-title">
             <h2 id="sec-prompts-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">library_books</span> 7. Biblioteca de Prompts Canônicos
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">library_books</span> 7. Biblioteca de Prompts Canônicos
             </h2>
 
             <!-- PROMPT 1: INDICADORES ECONÔMICOS -->
@@ -710,7 +711,7 @@
                 <div class="prompt-header">
                     <div>
                         <h3 class="prompt-title">
-                            <span class="material-icons" aria-hidden="true">analytics</span> Prompt Canônico: Indicadores Econômicos &amp; Séries SGS
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">analytics</span> Prompt Canônico: Indicadores Econômicos &amp; Séries SGS
                         </h3>
                         <span class="text-muted small">Base de referência: <code>templates/template-indicadores.html</code></span>
                     </div>
@@ -719,7 +720,7 @@
                 <div class="prompt-body">
                     <div class="prompt-code-wrapper">
                         <button type="button" class="btn-copy-prompt" data-target="code-prompt-1">
-                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar Prompt
+                            <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar Prompt
                         </button>
                         <pre class="prompt-code" id="code-prompt-1">Atue como Especialista em Diagramação e UI/UX do Banco Central do Brasil.
 Gere uma página HTML semântica completa para o Indicador Econômico baseada no template "templates/template-indicadores.html".
@@ -744,7 +745,7 @@ DADOS BRUTOS DO INDICADOR:
                 <div class="prompt-header">
                     <div>
                         <h3 class="prompt-title">
-                            <span class="material-icons" aria-hidden="true">contact_page</span> Prompt Canônico: Serviço ao Cidadão &amp; Passo a Passo
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">contact_page</span> Prompt Canônico: Serviço ao Cidadão &amp; Passo a Passo
                         </h3>
                         <span class="text-muted small">Base de referência: <code>templates/template-servico.html</code></span>
                     </div>
@@ -753,7 +754,7 @@ DADOS BRUTOS DO INDICADOR:
                 <div class="prompt-body">
                     <div class="prompt-code-wrapper">
                         <button type="button" class="btn-copy-prompt" data-target="code-prompt-2">
-                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar Prompt
+                            <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar Prompt
                         </button>
                         <pre class="prompt-code" id="code-prompt-2">Atue como Especialista em Diagramação e UI/UX do Banco Central do Brasil.
 Gere uma página de Serviço ao Cidadão baseada no template "templates/template-servico.html".
@@ -779,7 +780,7 @@ CONTEÚDO BRUTO DO SERVIÇO:
         <!-- SEÇÃO 8: COMO RODAR LOCALMENTE COM A SKILL -->
         <section class="mb-5" aria-labelledby="sec-local-title">
             <h2 id="sec-local-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">terminal</span> 8. Como Executar no Ambiente de Desenvolvimento
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">terminal</span> 8. Como Executar no Ambiente de Desenvolvimento
             </h2>
             <div class="card p-4 border-light shadow-sm">
                 <p class="text-body mb-2">
@@ -798,7 +799,7 @@ CONTEÚDO BRUTO DO SERVIÇO:
 
     <!-- Botão Flutuante Voltar ao Topo -->
     <button type="button" class="bcb-back-to-top" id="btnBackToTop" aria-label="Voltar ao topo da página">
-        <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">keyboard_arrow_up</span>
     </button>
 
     <!-- Scripts Bootstrap e Micro-scripts Vanilla BCB -->
@@ -858,7 +859,7 @@ CONTEÚDO BRUTO DO SERVIÇO:
                 if (targetEl) {
                     navigator.clipboard.writeText(targetEl.innerText).then(() => {
                         const originalHTML = btn.innerHTML;
-                        btn.innerHTML = '<span class="material-icons md-18" aria-hidden="true">check</span> Copiado!';
+                        btn.innerHTML = '<span class="material-symbols-outlined material-icons md-18" aria-hidden="true">check</span> Copiado!';
                         btn.style.backgroundColor = 'var(--bcb-brand-verde-susta, #067078)';
                         btn.style.borderColor = 'var(--bcb-brand-verde-susta, #067078)';
 
@@ -957,7 +958,7 @@ ${texto}`;
 
                 navigator.clipboard.writeText(promptMontado).then(() => {
                     const originalHTML = btnGerarPrompt.innerHTML;
-                    btnGerarPrompt.innerHTML = '<span class="material-icons md-18" aria-hidden="true">check</span> Prompt Gerado &amp; Copiado!';
+                    btnGerarPrompt.innerHTML = '<span class="material-symbols-outlined material-icons md-18" aria-hidden="true">check</span> Prompt Gerado &amp; Copiado!';
                     btnGerarPrompt.classList.remove('btn-primary');
                     btnGerarPrompt.classList.add('btn-success');
 

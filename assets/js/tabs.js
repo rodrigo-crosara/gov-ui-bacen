@@ -89,6 +89,9 @@
 
   const BcbTabs = {
     init() {
+      const tabLists = document.querySelectorAll('.bcb-navegacaoabas, .nav-tabs, [role="tablist"]');
+      if (tabLists.length === 0) return;
+
       // Escutar cliques em abas
       document.addEventListener('click', (event) => {
         const tab = event.target.closest('[role="tab"], .bcb-navegacaoabas .nav-link, .nav-tabs .nav-link[data-toggle="tab"]');

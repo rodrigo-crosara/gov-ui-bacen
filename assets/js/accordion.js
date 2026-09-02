@@ -49,6 +49,9 @@
 
   const BcbAccordion = {
     init() {
+      const accordions = document.querySelectorAll('.accordion, [data-toggle="collapse"]');
+      if (accordions.length === 0) return;
+
       document.addEventListener('click', (event) => {
         const button = event.target.closest('.accordion [data-toggle="collapse"], .accordion .card-header button');
         if (button) {

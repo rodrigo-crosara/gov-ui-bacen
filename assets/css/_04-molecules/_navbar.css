@@ -1,26 +1,30 @@
 /* ==========================================================================
-   BCB DESIGN SYSTEM — NAVBAR GLOBAL DA DOCUMENTAÇÃO (.bcb-ds-navbar)
-   Barra superior unificada para todas as páginas do ecossistema.
+   BCB DESIGN SYSTEM — HEADER GLOBAL DA DOCUMENTAÇÃO (.bcb-ds-header)
+   Barra superior unificada para todas as páginas do ecossistema de documentação.
    Aderente às diretrizes WCAG 2.2 AA / AAA e e-MAG 3.1.
    ========================================================================== */
 
+.bcb-ds-header,
 .bcb-ds-navbar {
-  background-color: var(--bcb-brand-azul-blue, #025C75);
-  border-bottom: 2px solid var(--bcb-brand-azulpetro, #2E4C59);
+  background: var(--bcb-color-surface, var(--bcb-color-white, #FFFFFF));
+  border-bottom: 1px solid var(--bcb-color-border, var(--bcb-gray-200, #E6EAEF));
   position: sticky;
   top: 0;
   z-index: 1050;
-  padding: 0.6rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
+.bcb-ds-header__inner,
 .bcb-ds-navbar .container-fluid {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  min-height: 64px;
   flex-wrap: wrap;
   gap: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Marca / Logo */
@@ -29,12 +33,12 @@
   align-items: center;
   text-decoration: none !important;
   gap: 0.6rem;
-  color: #FFFFFF !important;
+  color: var(--bcb-brand-azul-blue, #025C75) !important;
   transition: opacity 0.2s ease;
 }
 
 .bcb-ds-brand:hover {
-  opacity: 0.95;
+  opacity: 0.85;
   text-decoration: none !important;
 }
 
@@ -48,156 +52,209 @@
   font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  color: #FFFFFF;
+  color: var(--bcb-brand-azul-blue, #025C75);
 }
 
 .bcb-ds-version-badge {
-  background-color: rgba(255, 255, 255, 0.18);
-  color: #FFFFFF;
+  background-color: var(--bg-brand-light, #F0F7F9);
+  color: var(--bcb-brand-azul-blue, #025C75);
   font-family: var(--bcb-font-ubuntu, 'Ubuntu', sans-serif);
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.15rem 0.5rem;
+  padding: 0.15rem 0.55rem;
   border-radius: var(--bcb-radius-pill, 9999px);
   letter-spacing: 0.5px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--bcb-gray-300, #D0D7DF);
 }
 
 /* Links de Navegação */
+.bcb-ds-nav-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .bcb-ds-nav {
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .bcb-ds-nav-link {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: var(--bcb-color-body-text, #606060) !important;
+  font-family: var(--bcb-font-ubuntu, 'Ubuntu', sans-serif);
   font-weight: 500;
-  font-size: 0.9rem;
-  padding: 0.4rem 0.75rem;
+  font-size: 0.92rem;
+  padding: 0.5rem 0.85rem;
+  min-height: 44px;
   border-radius: var(--bcb-radius-4, 4px);
   text-decoration: none !important;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   border: 1px solid transparent;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Estado :hover — Fundo escurecido azulpetro com texto branco (Contraste > 8:1) */
+/* Estado :hover */
 .bcb-ds-nav-link:hover {
-  background-color: var(--bcb-brand-azulpetro, #2E4C59) !important;
-  color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--bcb-gray-100, #F3F5F7) !important;
+  color: var(--bcb-brand-azul-blue, #025C75) !important;
   text-decoration: none !important;
 }
 
 /* Estado :focus-visible (WCAG 2.2 AA) */
 .bcb-ds-nav-link:focus-visible,
 .bcb-ds-brand:focus-visible,
-.bcb-ds-theme-btn:focus-visible {
-  outline: 3px solid var(--bcb-brand-amarellato-biscoito, #F8D48D) !important;
+.bcb-ds-theme-btn:focus-visible,
+.bcb-theme-toggle button:focus-visible {
+  outline: 3px solid var(--bcb-brand-azul-blue, #025C75) !important;
   outline-offset: 2px !important;
 }
 
 /* Página Ativa (aria-current="page" ou .active) */
 .bcb-ds-nav-link.active,
 .bcb-ds-nav-link[aria-current="page"] {
-  background-color: var(--bcb-brand-azulcinti, #077391) !important;
-  color: #FFFFFF !important;
+  background-color: var(--bg-brand-light, #F0F7F9) !important;
+  color: var(--bcb-brand-azul-blue, #025C75) !important;
   font-weight: 700;
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: inset 0 -3px 0 var(--bcb-brand-amarellato-biscoito, #F8D48D);
+  border-color: var(--bcb-gray-300, #D0D7DF);
+  box-shadow: inset 0 -3px 0 var(--bcb-brand-azul-blue, #025C75);
 }
 
-/* Seletor de Temas */
+/* Seletor de Temas Agrupado (.bcb-theme-toggle) em Pílula / Segmented Control */
+.bcb-theme-toggle,
 .bcb-ds-theme-switcher {
   display: inline-flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: var(--bcb-radius-4, 4px);
+  background-color: var(--bcb-gray-100, #F3F5F7);
+  border: 1px solid var(--bcb-gray-300, #D0D7DF);
+  border-radius: var(--bcb-radius-pill, 9999px);
   padding: 3px;
   gap: 2px;
 }
 
+.bcb-theme-toggle button,
 .bcb-ds-theme-btn {
   background: transparent;
-  border: 1px solid transparent;
-  padding: 4px 9px;
+  border: none;
+  padding: 0.35rem 0.75rem;
   font-size: 0.82rem;
-  border-radius: var(--bcb-radius-4, 4px);
-  color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--bcb-radius-pill, 9999px);
+  color: var(--bcb-color-body-text, #606060);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.35rem;
   transition: all 0.2s ease;
   font-weight: 500;
   line-height: 1;
 }
 
+.bcb-theme-toggle button:hover,
 .bcb-ds-theme-btn:hover {
-  background-color: var(--bcb-brand-azulpetro, #2E4C59);
-  color: #FFFFFF;
+  background-color: var(--bcb-gray-200, #E6EAEF);
+  color: var(--bcb-gray-900, #22272B);
 }
 
+.bcb-theme-toggle button.active,
+.bcb-theme-toggle button[aria-pressed="true"],
 .bcb-ds-theme-btn.active,
 .bcb-ds-theme-btn[aria-pressed="true"] {
-  background-color: var(--bcb-brand-azulcinti, #077391);
-  color: #FFFFFF;
+  background-color: var(--bcb-brand-azul-blue, #025C75) !important;
+  color: #FFFFFF !important;
   font-weight: 700;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================
    Modo Escuro (Dark Mode)
    ========================================== */
+:root[data-theme="dark"] .bcb-ds-header,
 :root[data-theme="dark"] .bcb-ds-navbar {
+  background: var(--bcb-color-surface, #1A1F24);
+  border-bottom: 1px solid var(--bcb-color-border, #3E454B);
+}
+
+:root[data-theme="dark"] .bcb-ds-brand,
+:root[data-theme="dark"] .bcb-ds-brand-text {
+  color: #FFFFFF !important;
+}
+
+:root[data-theme="dark"] .bcb-ds-version-badge {
   background-color: #0B0D0E;
-  border-bottom: 2px solid var(--bcb-brand-azul-blue, #0A9FD4);
+  color: var(--bcb-brand-azul-blue, #0A9FD4);
+  border-color: #3E454B;
+}
+
+:root[data-theme="dark"] .bcb-ds-nav-link {
+  color: var(--bcb-gray-300, #D0D7DF) !important;
 }
 
 :root[data-theme="dark"] .bcb-ds-nav-link:hover {
-  background-color: #1A1F24 !important;
-  border-color: var(--bcb-brand-azul-blue, #0A9FD4);
+  background-color: #2A3038 !important;
+  color: #FFFFFF !important;
 }
 
 :root[data-theme="dark"] .bcb-ds-nav-link.active,
 :root[data-theme="dark"] .bcb-ds-nav-link[aria-current="page"] {
-  background-color: #1A1F24 !important;
+  background-color: #2A3038 !important;
   color: var(--bcb-brand-azul-blue, #0A9FD4) !important;
   border-color: var(--bcb-brand-azul-blue, #0A9FD4);
   box-shadow: inset 0 -3px 0 var(--bcb-brand-azul-blue, #0A9FD4);
 }
 
+:root[data-theme="dark"] .bcb-theme-toggle,
 :root[data-theme="dark"] .bcb-ds-theme-switcher {
-  background-color: #1A1F24;
-  border-color: #2A3038;
+  background-color: #0B0D0E;
+  border-color: #3E454B;
 }
 
+:root[data-theme="dark"] .bcb-theme-toggle button,
+:root[data-theme="dark"] .bcb-ds-theme-btn {
+  color: #D0D7DF;
+}
+
+:root[data-theme="dark"] .bcb-theme-toggle button:hover,
+:root[data-theme="dark"] .bcb-ds-theme-btn:hover {
+  background-color: #2A3038;
+  color: #FFFFFF;
+}
+
+:root[data-theme="dark"] .bcb-theme-toggle button.active,
+:root[data-theme="dark"] .bcb-theme-toggle button[aria-pressed="true"],
 :root[data-theme="dark"] .bcb-ds-theme-btn.active,
 :root[data-theme="dark"] .bcb-ds-theme-btn[aria-pressed="true"] {
-  background-color: var(--bcb-brand-azul-blue, #0A9FD4);
-  color: #000000;
+  background-color: var(--bcb-brand-azul-blue, #0A9FD4) !important;
+  color: #000000 !important;
   font-weight: 700;
 }
 
 /* ==========================================
    Modo Alto Contraste (High Contrast AAA)
    ========================================== */
+:root[data-contrast="high"] .bcb-ds-header,
 :root[data-contrast="high"] .bcb-ds-navbar {
   background-color: #000000 !important;
   border-bottom: 2px solid #FFFFFF !important;
 }
 
+:root[data-contrast="high"] .bcb-ds-brand,
+:root[data-contrast="high"] .bcb-ds-brand-text {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-ds-version-badge {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #FFFFFF !important;
+}
+
 :root[data-contrast="high"] .bcb-ds-nav-link {
-  border: 2px solid #FFFFFF !important;
+  border: 1px solid #FFFFFF !important;
   color: #FFFFFF !important;
   margin-right: 2px;
 }
@@ -217,22 +274,27 @@
   outline: 2px solid #FFFF00 !important;
 }
 
+:root[data-contrast="high"] .bcb-theme-toggle,
 :root[data-contrast="high"] .bcb-ds-theme-switcher {
   border: 2px solid #FFFFFF !important;
   background-color: #000000 !important;
 }
 
+:root[data-contrast="high"] .bcb-theme-toggle button,
 :root[data-contrast="high"] .bcb-ds-theme-btn {
   border: 1px solid #FFFFFF !important;
   color: #FFFFFF !important;
 }
 
+:root[data-contrast="high"] .bcb-theme-toggle button:hover,
 :root[data-contrast="high"] .bcb-ds-theme-btn:hover {
   background-color: #222222 !important;
   color: #FFFF00 !important;
   border-color: #FFFF00 !important;
 }
 
+:root[data-contrast="high"] .bcb-theme-toggle button.active,
+:root[data-contrast="high"] .bcb-theme-toggle button[aria-pressed="true"],
 :root[data-contrast="high"] .bcb-ds-theme-btn.active,
 :root[data-contrast="high"] .bcb-ds-theme-btn[aria-pressed="true"] {
   background-color: #FFFFFF !important;
@@ -240,3 +302,4 @@
   font-weight: 700 !important;
   border: 2px solid #FFFF00 !important;
 }
+

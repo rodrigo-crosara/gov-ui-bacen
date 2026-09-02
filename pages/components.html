@@ -7,16 +7,18 @@
     <meta name="description" content="Catálogo vivo de componentes, átomos, moléculas e organismos do Banco Central do Brasil.">
 
     <!-- Tipografia Institucional (Ubuntu + Cormorant Garamond) -->
+    <!-- Fontes Institucionais (Ubuntu, Cormorant Garamond, Roboto, Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 4.6 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
           crossorigin="anonymous">
 
-    <!-- Google Material Icons -->
+    <!-- Material Symbols Outlined & Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 
     <!-- BCB Design System CSS -->
@@ -271,9 +273,9 @@
         <li><a href="#ds-sidebar-nav" class="bcb-skip-link" accesskey="2">Ir para a barra de componentes <span class="accesskey-badge">Alt + 2</span></a></li>
     </ul>
 
-    <!-- Header da Documentação (.bcb-ds-navbar) -->
-    <header class="bcb-ds-navbar" role="banner">
-        <div class="container-fluid px-4">
+    <!-- Header da Documentação (.bcb-ds-header) -->
+    <header class="bcb-ds-header" role="banner">
+        <div class="bcb-container bcb-ds-header__inner">
             <a href="../index.html" class="bcb-ds-brand" aria-label="Página inicial do BCB Design System">
                 <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Banco Central do Brasil" class="bcb-ds-logo" onerror="this.style.display='none'">
                 <span class="bcb-ds-brand-text">Design System</span>
@@ -282,25 +284,25 @@
 
             <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação da Documentação">
                 <ul class="bcb-ds-nav">
-                    <li><a href="../index.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">home</span> Início</a></li>
-                    <li><a href="components.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-icons md-18" aria-hidden="true">widgets</span> Componentes</a></li>
-                    <li><a href="tokens.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">palette</span> Tokens</a></li>
-                    <li><a href="templates.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">dashboard</span> Templates</a></li>
-                    <li><a href="automacao-ia.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
-                    <li><a href="changelog.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">history</span> Changelog</a></li>
+                    <li><a href="../index.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">home</span> Início</a></li>
+                    <li><a href="components.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-symbols-outlined md-18" aria-hidden="true">widgets</span> Componentes</a></li>
+                    <li><a href="tokens.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">palette</span> Tokens</a></li>
+                    <li><a href="templates.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">dashboard</span> Templates</a></li>
+                    <li><a href="automacao-ia.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
+                    <li><a href="changelog.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">history</span> Changelog</a></li>
                 </ul>
             </nav>
 
-            <!-- Seletor de 3 Temas Funcional -->
-            <div class="bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
+            <!-- Seletor de 3 Temas em Pílula (.bcb-theme-toggle) -->
+            <div class="bcb-theme-toggle bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
                 <button type="button" class="bcb-ds-theme-btn active" id="btnThemeLight" title="Tema Claro Padrão" aria-pressed="true">
-                    <span class="material-icons md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
+                    <span class="material-symbols-outlined md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
                 </button>
                 <button type="button" class="bcb-ds-theme-btn" id="btnThemeDark" title="Modo Escuro" aria-pressed="false">
-                    <span class="material-icons md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
+                    <span class="material-symbols-outlined md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
                 </button>
                 <button type="button" class="bcb-ds-theme-btn" id="btnThemeHighContrast" title="Alto Contraste Acessível (e-MAG)" aria-pressed="false">
-                    <span class="material-icons md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
+                    <span class="material-symbols-outlined md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
                 </button>
             </div>
         </div>
@@ -313,7 +315,7 @@
         <nav class="ds-sidebar" id="ds-sidebar-nav" aria-label="Navegação do catálogo de componentes">
             <div class="ds-sidebar-title mb-2">
                 <a href="../index.html" class="d-flex align-items-center text-decoration-none" style="color: var(--bcb-brand-azul-blue); font-size: 0.85rem; font-weight: 700; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_back</span> Hub de Documentação
+                    <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_back</span> Hub de Documentação
                 </a>
             </div>
             
@@ -370,8 +372,8 @@
             <!-- 1.0 Grid e Diagramação (12 Colunas) -->
             <section id="atomo-grid" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">grid_view</span> 1.0 Grid 12 Colunas & Container 1440px</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Layout CMS BCB</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">grid_view</span> 1.0 Grid 12 Colunas & Container 1440px</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Layout CMS BCB</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-body small mb-3">
@@ -452,7 +454,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-grid"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-grid"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-grid">&lt;!-- Container Institucional (Max 1440px) --&gt;
 &lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;
 
@@ -490,8 +492,8 @@
             <!-- 1.1 Botões -->
             <section id="atomo-botoes" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">smart_button</span> 1.1 Botões e Variantes</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Foco Acessível 3px</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">smart_button</span> 1.1 Botões e Variantes</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Foco Acessível 3px</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="d-flex flex-wrap align-items-center" style="gap: 0.75rem;">
@@ -500,17 +502,17 @@
                         <button type="button" class="btn btn-outline-primary">Terciário / Outline</button>
                         <button type="button" class="btn btn-danger">Perigo / Danger</button>
                         <button type="button" class="btn btn-primary">
-                            <span class="material-icons" aria-hidden="true">download</span> Com Ícone
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">download</span> Com Ícone
                         </button>
                         <button type="button" class="btn btn-primary btn-icon" aria-label="Pesquisar">
-                            <span class="material-icons" aria-hidden="true">search</span>
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">search</span>
                         </button>
                         <button type="button" class="btn btn-primary" disabled>Desabilitado</button>
                         <button type="button" class="btn btn-link">Botão Link</button>
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-botoes"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-botoes"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-botoes">&lt;button type="button" class="btn btn-primary"&gt;Botão Primário&lt;/button&gt;
 &lt;button type="button" class="btn btn-secondary"&gt;Botão Secundário&lt;/button&gt;
 &lt;button type="button" class="btn btn-outline-primary"&gt;Terciário / Outline&lt;/button&gt;
@@ -526,8 +528,8 @@
             <!-- 1.2 Controles de Formulário -->
             <section id="atomo-formularios" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">edit_note</span> 1.2 Controles de Formulário (Form Controls)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> WCAG 2.2 AA</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">edit_note</span> 1.2 Controles de Formulário (Form Controls)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> WCAG 2.2 AA</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -597,7 +599,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-formularios"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-formularios"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-formularios">&lt;!-- Input Inválido com Acessibilidade --&gt;
 &lt;div class="form-group"&gt;
   &lt;label for="cpfInput"&gt;CPF do Titular&lt;/label&gt;
@@ -622,8 +624,8 @@
             <!-- 1.4 Tags e Badges -->
             <section id="atomo-tags-badges" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">label</span> 1.4 Tags e Badges</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Metadados</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">label</span> 1.4 Tags e Badges</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Metadados</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="d-flex flex-wrap align-items-center" style="gap: 0.75rem;">
@@ -639,7 +641,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-tags-badges"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-tags-badges"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-tags-badges">&lt;span class="tag-bcb primary"&gt;Política Monetária&lt;/span&gt;
 &lt;span class="tag-bcb neutral"&gt;Dados Abertos&lt;/span&gt;
 &lt;span class="tag-bcb outline"&gt;Regulamentação&lt;/span&gt;
@@ -651,15 +653,15 @@
             <!-- 1.5 Ícones & Tipografia -->
             <section id="atomo-icones-tipografia" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">format_size</span> 1.5 Material Icons e Tipografia</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Ubuntu / Cormorant</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_size</span> 1.5 Material Icons e Tipografia</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Ubuntu / Cormorant</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row align-items-center mb-4">
-                        <div class="col-auto"><span class="material-icons md-18 text-primary" aria-hidden="true">account_balance</span> <small>18px (.md-18)</small></div>
-                        <div class="col-auto"><span class="material-icons md-24 text-primary" aria-hidden="true">account_balance</span> <small>24px (.md-24)</small></div>
-                        <div class="col-auto"><span class="material-icons md-36 text-primary" aria-hidden="true">account_balance</span> <small>36px (.md-36)</small></div>
-                        <div class="col-auto"><span class="material-icons md-48 text-primary" aria-hidden="true">account_balance</span> <small>48px (.md-48)</small></div>
+                        <div class="col-auto"><span class="material-symbols-outlined material-icons md-18 text-primary" aria-hidden="true">account_balance</span> <small>18px (.md-18)</small></div>
+                        <div class="col-auto"><span class="material-symbols-outlined material-icons md-24 text-primary" aria-hidden="true">account_balance</span> <small>24px (.md-24)</small></div>
+                        <div class="col-auto"><span class="material-symbols-outlined material-icons md-36 text-primary" aria-hidden="true">account_balance</span> <small>36px (.md-36)</small></div>
+                        <div class="col-auto"><span class="material-symbols-outlined material-icons md-48 text-primary" aria-hidden="true">account_balance</span> <small>48px (.md-48)</small></div>
                     </div>
                     <div>
                         <span class="h1 font-cormorant mb-1 d-block" style="font-size: 2.2rem; color: var(--bcb-brand-blue);">Cormorant Garamond — Título Institucional Editorial</span>
@@ -667,7 +669,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-icones-tipografia"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-icones-tipografia"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-icones-tipografia">&lt;!-- Escala de Ícones --&gt;
 &lt;span class="material-icons md-24" aria-hidden="true"&gt;account_balance&lt;/span&gt;
 &lt;span class="material-icons md-36" aria-hidden="true"&gt;table_view&lt;/span&gt;
@@ -681,8 +683,8 @@
             <!-- 1.6 Tabelas Nativas Simples -->
             <section id="atomo-tabelas" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">table_chart</span> 1.6 Tabelas Nativas Simples</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Caption & Scope</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">table_chart</span> 1.6 Tabelas Nativas Simples</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Caption & Scope</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="table-responsive">
@@ -714,7 +716,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-tabelas"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-tabelas"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-tabelas">&lt;table class="table table-hover table-striped"&gt;
   &lt;caption class="sr-only"&gt;Descrição da tabela para leitores de tela.&lt;/caption&gt;
   &lt;thead class="thead-primary"&gt;
@@ -738,8 +740,8 @@
             <!-- 1.6 Skeleton Loading -->
             <section id="atomo-skeleton" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">hourglass_empty</span> 1.6 Skeleton Loading (.bcb-skeleton)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-busy="true" &bull; WCAG 2.2</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">hourglass_empty</span> 1.6 Skeleton Loading (.bcb-skeleton)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-busy="true" &bull; WCAG 2.2</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Animações de shimmer para suavizar estados assíncronos de carregamento em cards, tabelas e parágrafos sem quebrar o layout.</p>
@@ -792,7 +794,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-skeleton"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-skeleton"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-skeleton">&lt;!-- Skeleton de Texto e Parágrafo com Acessibilidade --&gt;
 &lt;div aria-busy="true" aria-label="Carregando dados..."&gt;
   &lt;div class="bcb-skeleton bcb-skeleton-title"&gt;&lt;/div&gt;
@@ -815,13 +817,13 @@
             <!-- 2.1 Callouts Estruturados -->
             <section id="molecula-callouts" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">chat_bubble_outline</span> 2.1 Callouts Estruturados</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> 5 Variantes Semânticas</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">chat_bubble_outline</span> 2.1 Callouts Estruturados</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> 5 Variantes Semânticas</span>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Brand -->
                     <div class="callout callout-brand callout-left-bordered mb-3">
-                        <span class="material-icons callout-icon" aria-hidden="true">info</span>
+                        <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">info</span>
                         <div class="callout-content">
                             <h4 class="callout-title">Callout Brand Institucional</h4>
                             <p>Utilizado para comunicados oficiais, decisões de diretoria e avisos institucionais do Banco Central.</p>
@@ -829,7 +831,7 @@
                     </div>
                     <!-- Warning -->
                     <div class="callout callout-warning callout-left-bordered mb-3">
-                        <span class="material-icons callout-icon" aria-hidden="true">warning</span>
+                        <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">warning</span>
                         <div class="callout-content">
                             <h4 class="callout-title">Atenção contra Golpes</h4>
                             <p>O Banco Central NÃO entra em contato por WhatsApp nem solicita senhas ou transferências financeiras.</p>
@@ -837,7 +839,7 @@
                     </div>
                     <!-- Success -->
                     <div class="callout callout-success callout-left-bordered mb-3">
-                        <span class="material-icons callout-icon" aria-hidden="true">check_circle</span>
+                        <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">check_circle</span>
                         <div class="callout-content">
                             <h4 class="callout-title">Operação Concluída com Sucesso</h4>
                             <p>Sua consulta de dados foi processada e os arquivos estão prontos para download.</p>
@@ -845,7 +847,7 @@
                     </div>
                     <!-- Danger -->
                     <div class="callout callout-danger callout-left-bordered">
-                        <span class="material-icons callout-icon" aria-hidden="true">error_outline</span>
+                        <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">error_outline</span>
                         <div class="callout-content">
                             <h4 class="callout-title">Alerta de Indisponibilidade</h4>
                             <p>O sistema de pagamentos estará em manutenção programada no próximo domingo das 02:00 às 04:00.</p>
@@ -853,7 +855,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-callouts"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-callouts"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-callouts">&lt;div class="callout callout-brand callout-left-bordered"&gt;
   &lt;span class="material-icons callout-icon" aria-hidden="true"&gt;info&lt;/span&gt;
   &lt;div class="callout-content"&gt;
@@ -867,20 +869,20 @@
             <!-- 2.3 Tip Box -->
             <section id="molecula-tipbox" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">lightbulb</span> 2.3 Tip Box Educativa</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Dicas de Educação Financeira</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">lightbulb</span> 2.3 Tip Box Educativa</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Dicas de Educação Financeira</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="tip-box">
                         <div class="d-flex align-items-center mb-2">
-                            <span class="material-icons mr-2 text-primary" aria-hidden="true">tips_and_updates</span>
+                            <span class="material-symbols-outlined material-icons mr-2 text-primary" aria-hidden="true">tips_and_updates</span>
                             <h4 class="h6 font-weight-bold mb-0 text-primary">Dica de Planejamento:</h4>
                         </div>
                         <p class="mb-0">Monte uma reserva de emergência equivalente a no mínimo 6 meses de suas despesas essenciais antes de iniciar investimentos de longo prazo.</p>
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-tipbox"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-tipbox"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-tipbox">&lt;div class="tip-box"&gt;
   &lt;div class="d-flex align-items-center mb-2"&gt;
     &lt;span class="material-icons mr-2 text-primary" aria-hidden="true"&gt;tips_and_updates&lt;/span&gt;
@@ -894,8 +896,8 @@
             <!-- 2.4 Download de Documentos -->
             <section id="molecula-documentos" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">cloud_download</span> 2.4 Download de Documentos (.documentos)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Metadados e Formato</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">cloud_download</span> 2.4 Download de Documentos (.documentos)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Metadados e Formato</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -903,7 +905,7 @@
                             <div class="documentos">
                                 <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Ata da 268ª Reunião do Copom (PDF, 850 KB)">
                                     <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
-                                        <span class="material-icons md-36" aria-hidden="true">picture_as_pdf</span>
+                                        <span class="material-symbols-outlined material-icons md-36" aria-hidden="true">picture_as_pdf</span>
                                     </div>
                                     <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
                                         <span class="documento-title">Ata da 268ª Reunião do Copom</span>
@@ -916,7 +918,7 @@
                             <div class="documentos">
                                 <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Série Histórica da Taxa Selic (CSV, 420 KB)">
                                     <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
-                                        <span class="material-icons md-36" aria-hidden="true">table_view</span>
+                                        <span class="material-symbols-outlined material-icons md-36" aria-hidden="true">table_view</span>
                                     </div>
                                     <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
                                         <span class="documento-title">Série Histórica da Taxa Selic</span>
@@ -928,7 +930,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-documentos"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-documentos"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-documentos">&lt;div class="documentos"&gt;
   &lt;a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Ata do Copom (PDF, 850 KB)"&gt;
     &lt;div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"&gt;
@@ -946,8 +948,8 @@
             <!-- 2.5 Card de Indicador Econômico -->
             <section id="molecula-indicadores" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">trending_up</span> 2.5 Card de Indicador Econômico (.bcb-indicator-card)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Séries Temporais & Mercado</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span> 2.5 Card de Indicador Econômico (.bcb-indicator-card)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Séries Temporais & Mercado</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -957,7 +959,7 @@
                                 <div class="bcb-indicator-value">
                                     14,25%
                                     <span class="bcb-indicator-trend positive">
-                                        <span class="material-icons" aria-hidden="true">arrow_upward</span> +1,00
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_upward</span> +1,00
                                     </span>
                                 </div>
                                 <div class="bcb-indicator-meta">Vigência: 13/03/2026 · 268ª Reunião</div>
@@ -969,7 +971,7 @@
                                 <div class="bcb-indicator-value value-positive">
                                     US$ 355,8 bi
                                     <span class="bcb-indicator-trend positive">
-                                        <span class="material-icons" aria-hidden="true">arrow_upward</span> +2,4%
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_upward</span> +2,4%
                                     </span>
                                 </div>
                                 <div class="bcb-indicator-meta">Posição líquida internacional</div>
@@ -981,7 +983,7 @@
                                 <div class="bcb-indicator-value value-negative">
                                     R$ 5,7420
                                     <span class="bcb-indicator-trend negative">
-                                        <span class="material-icons" aria-hidden="true">arrow_upward</span> +0,85%
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_upward</span> +0,85%
                                     </span>
                                 </div>
                                 <div class="bcb-indicator-meta">Cotação de fechamento diário</div>
@@ -993,7 +995,7 @@
                                 <div class="bcb-indicator-value">
                                     4,10%
                                     <span class="bcb-indicator-trend neutral">
-                                        <span class="material-icons" aria-hidden="true">trending_flat</span> 0,00
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">trending_flat</span> 0,00
                                     </span>
                                 </div>
                                 <div class="bcb-indicator-meta">Meta: 3,00% (Tolerância: 4,50%)</div>
@@ -1002,7 +1004,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-indicadores"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-indicadores"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-indicadores">&lt;!-- Indicador Positivo (Mercado/Alta Favorável) --&gt;
 &lt;div class="bcb-indicator-card indicator-positive"&gt;
   &lt;div class="bcb-indicator-label"&gt;Reservas Internacionais&lt;/div&gt;
@@ -1032,8 +1034,8 @@
             <!-- 2.6 Card Link / Lista Links -->
             <section id="molecula-listalinks" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">link</span> 2.6 Card Link / Lista de Links (.listalinks-light)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Modelos 1 e 5</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">link</span> 2.6 Card Link / Lista de Links (.listalinks-light)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Modelos 1 e 5</span>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Modelo 1 (Horizontal) -->
@@ -1042,7 +1044,7 @@
                         <div class="col-md-6 buffer mb-2">
                             <a href="#" class="d-flex text-decoration-none rounded hvr-shadow">
                                 <div class="icone bg-color-1 text-white d-flex align-items-center justify-content-center rounded-left">
-                                    <span class="material-icons md-24" aria-hidden="true">security</span>
+                                    <span class="material-symbols-outlined material-icons md-24" aria-hidden="true">security</span>
                                 </div>
                                 <div class="texto d-flex align-items-center font-color-1 font-weight-bold w-100 rounded-right">
                                     Registrato (Relatórios Financeiros)
@@ -1052,7 +1054,7 @@
                         <div class="col-md-6 buffer mb-2">
                             <a href="#" class="d-flex text-decoration-none rounded hvr-shadow">
                                 <div class="icone bg-color-1 text-white d-flex align-items-center justify-content-center rounded-left">
-                                    <span class="material-icons md-24" aria-hidden="true">payments</span>
+                                    <span class="material-symbols-outlined material-icons md-24" aria-hidden="true">payments</span>
                                 </div>
                                 <div class="texto d-flex align-items-center font-color-1 font-weight-bold w-100 rounded-right">
                                     Sistema de Valores a Receber (SVR)
@@ -1066,21 +1068,21 @@
                     <div class="row listalinks-light modelo-5">
                         <div class="col-md-4 mb-3">
                             <a href="#" class="d-block text-center text-decoration-none hvr-shadow p-4 rounded" style="border: 1px solid var(--bcb-gray-200); background: var(--bcb-color-white);">
-                                <span class="material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">currency_exchange</span>
+                                <span class="material-symbols-outlined material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">currency_exchange</span>
                                 <h4 class="h5 font-weight-bold" style="color: var(--bcb-brand-blue);">Drex</h4>
                                 <p class="text-muted small mb-0">A plataforma do Real Digital em desenvolvimento pelo Banco Central.</p>
                             </a>
                         </div>
                         <div class="col-md-4 mb-3">
                             <a href="#" class="d-block text-center text-decoration-none hvr-shadow p-4 rounded" style="border: 1px solid var(--bcb-gray-200); background: var(--bcb-color-white);">
-                                <span class="material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">qr_code_2</span>
+                                <span class="material-symbols-outlined material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">qr_code_2</span>
                                 <h4 class="h5 font-weight-bold" style="color: var(--bcb-brand-blue);">Pix</h4>
                                 <p class="text-muted small mb-0">O meio de pagamento instantâneo brasileiro gratuito e seguro.</p>
                             </a>
                         </div>
                         <div class="col-md-4 mb-3">
                             <a href="#" class="d-block text-center text-decoration-none hvr-shadow p-4 rounded" style="border: 1px solid var(--bcb-gray-200); background: var(--bcb-color-white);">
-                                <span class="material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">hub</span>
+                                <span class="material-symbols-outlined material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">hub</span>
                                 <h4 class="h5 font-weight-bold" style="color: var(--bcb-brand-blue);">Open Finance</h4>
                                 <p class="text-muted small mb-0">Compartilhamento padronizado de dados e serviços financeiros.</p>
                             </a>
@@ -1088,7 +1090,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-listalinks"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-listalinks"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-listalinks">&lt;!-- Card Link Modelo 1 --&gt;
 &lt;div class="bcb-listalinks"&gt;
   &lt;div class="buffer"&gt;
@@ -1108,14 +1110,14 @@
             <!-- 2.7 Stepper -->
             <section id="molecula-stepper" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">linear_scale</span> 2.7 Stepper (Passo a Passo Multi-etapas)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Jornada do Cidadão</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">linear_scale</span> 2.7 Stepper (Passo a Passo Multi-etapas)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Jornada do Cidadão</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="d-flex justify-content-between align-items-center position-relative my-3" style="max-width: 600px; margin: 0 auto;">
                         <div class="text-center position-relative" style="z-index: 2;">
                             <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--bcb-brand-verde-susta); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">
-                                <span class="material-icons" style="font-size: 1.2rem;" aria-hidden="true">check</span>
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.2rem;" aria-hidden="true">check</span>
                             </div>
                             <small class="d-block mt-1 font-weight-bold">1. Identificação</small>
                         </div>
@@ -1132,7 +1134,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-stepper"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-stepper"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-stepper">&lt;!-- Stepper Semântico em 3 Fases --&gt;
 &lt;nav aria-label="Progresso da solicitação"&gt;
   &lt;ol class="bcb-stepper list-unstyled d-flex justify-content-between"&gt;
@@ -1147,8 +1149,8 @@
             <!-- 2.8 Data Table Responsiva -->
             <section id="molecula-datatable" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">view_list</span> 2.8 Data Table Responsiva</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Ordenação Client-Side</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_list</span> 2.8 Data Table Responsiva</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Ordenação Client-Side</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-data-table-container">
@@ -1158,7 +1160,7 @@
                             </div>
                             <div class="bcb-data-table-actions">
                                 <button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center">
-                                    <span class="material-icons mr-1" aria-hidden="true">download</span> Exportar CSV
+                                    <span class="material-symbols-outlined material-icons mr-1" aria-hidden="true">download</span> Exportar CSV
                                 </button>
                             </div>
                         </div>
@@ -1167,10 +1169,10 @@
                                 <caption>Série histórica de metas para a taxa Selic definidas nas reuniões do Copom.</caption>
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="sortable" aria-sort="descending">Reunião <span class="material-icons sort-icon" aria-hidden="true">arrow_upward</span></th>
-                                        <th scope="col" class="sortable">Data da Decisão <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
-                                        <th scope="col" class="sortable">Início de Vigência <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
-                                        <th scope="col" class="text-numeric sortable">Meta Selic (% a.a.) <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
+                                        <th scope="col" class="sortable" aria-sort="descending">Reunião <span class="material-symbols-outlined material-icons sort-icon" aria-hidden="true">arrow_upward</span></th>
+                                        <th scope="col" class="sortable">Data da Decisão <span class="material-symbols-outlined material-icons sort-icon" aria-hidden="true">sort</span></th>
+                                        <th scope="col" class="sortable">Início de Vigência <span class="material-symbols-outlined material-icons sort-icon" aria-hidden="true">sort</span></th>
+                                        <th scope="col" class="text-numeric sortable">Meta Selic (% a.a.) <span class="material-symbols-outlined material-icons sort-icon" aria-hidden="true">sort</span></th>
                                         <th scope="col" class="text-center">Variação</th>
                                     </tr>
                                 </thead>
@@ -1228,7 +1230,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-datatable"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-datatable"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-datatable">&lt;div class="bcb-data-table-container"&gt;
   &lt;div class="table-responsive"&gt;
     &lt;table class="bcb-data-table"&gt;
@@ -1257,14 +1259,14 @@
             <!-- 2.9 Filtros e Busca Facetada -->
             <section id="molecula-filtros" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">filter_alt</span> 2.9 Filtros e Busca Facetada (.bcb-filter-panel)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Chips Removíveis</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">filter_alt</span> 2.9 Filtros e Busca Facetada (.bcb-filter-panel)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Chips Removíveis</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-filter-panel">
                         <div class="bcb-filter-panel-header">
                             <h4 class="bcb-filter-panel-title h5">
-                                <span class="material-icons" aria-hidden="true">filter_alt</span> Filtrar Séries Temporais
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">filter_alt</span> Filtrar Séries Temporais
                             </h4>
                         </div>
                         <div class="row">
@@ -1300,13 +1302,13 @@
                             <span class="bcb-filter-chip">
                                 Período: 2025 – 2026
                                 <button type="button" class="chip-remove-btn" aria-label="Remover filtro de período">
-                                    <span class="material-icons" aria-hidden="true">close</span>
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">close</span>
                                 </button>
                             </span>
                             <span class="bcb-filter-chip">
                                 Apenas Séries Ativas
                                 <button type="button" class="chip-remove-btn" aria-label="Remover filtro">
-                                    <span class="material-icons" aria-hidden="true">close</span>
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">close</span>
                                 </button>
                             </span>
                             <button type="button" class="bcb-clear-all-filters">Limpar todos os filtros</button>
@@ -1314,7 +1316,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-filtros"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-filtros"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-filtros">&lt;div class="bcb-filter-panel"&gt;
   &lt;div class="bcb-date-range"&gt;
     &lt;input type="date" class="form-control" aria-label="Data inicial"&gt;
@@ -1334,14 +1336,14 @@
             <!-- 2.10 Busca Avançada Local de Conteúdo -->
             <section id="molecula-search-overlay" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">search</span> 2.10 Busca Avançada Local de Conteúdo (.bcb-search-overlay)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> role="search" &bull; In-page</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">search</span> 2.10 Busca Avançada Local de Conteúdo (.bcb-search-overlay)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> role="search" &bull; In-page</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Módulo de pesquisa local in-page com chips de sugestões para filtragem em tabelas densas, normas e FAQs temáticos, operando dentro do miolo de conteúdo sem conflitar com a busca global do portal.</p>
                     <div class="bcb-search-overlay" role="search" style="box-shadow: none; border: 1px solid var(--bcb-gray-200);">
                         <div class="search-input-wrapper mb-3">
-                            <span class="material-icons search-icon" aria-hidden="true">search</span>
+                            <span class="material-symbols-outlined material-icons search-icon" aria-hidden="true">search</span>
                             <input type="search" class="form-control form-control-lg" placeholder="O que você está procurando no Banco Central?" aria-label="Campo de busca no portal">
                             <button type="button" class="btn btn-primary">Buscar</button>
                         </div>
@@ -1354,7 +1356,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-search-overlay"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-search-overlay"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-search-overlay">&lt;div class="bcb-search-overlay" role="search"&gt;
   &lt;div class="search-input-wrapper"&gt;
     &lt;span class="material-icons search-icon" aria-hidden="true"&gt;search&lt;/span&gt;
@@ -1368,22 +1370,22 @@
             <!-- 2.11 Toasts e Alertas -->
             <section id="molecula-toasts-alertas" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">notifications_active</span> 2.11 Toasts e Alertas</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-live="polite"</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">notifications_active</span> 2.11 Toasts e Alertas</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-live="polite"</span>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Alerta Inline -->
                     <div class="bcb-alert alert-info d-flex align-items-center mb-4" role="alert">
-                        <span class="material-icons mr-2" aria-hidden="true">info</span>
+                        <span class="material-symbols-outlined material-icons mr-2" aria-hidden="true">info</span>
                         <div><strong>Aviso do Sistema:</strong> O módulo de exportação foi atualizado para suporte a JSON Schema v2.</div>
                     </div>
 
                     <div class="d-flex flex-wrap align-items-center" style="gap: 0.75rem;">
                         <button type="button" class="btn btn-primary" id="btnDispararToast">
-                            <span class="material-icons" aria-hidden="true">notification_add</span> Disparar Toast de Sucesso
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">notification_add</span> Disparar Toast de Sucesso
                         </button>
                         <button type="button" class="btn btn-danger" id="btnDispararToastError">
-                            <span class="material-icons" aria-hidden="true">warning</span> Disparar Toast de Erro
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">warning</span> Disparar Toast de Erro
                         </button>
                     </div>
 
@@ -1391,7 +1393,7 @@
                     <div id="toastStack" class="bcb-toast-container" aria-live="polite"></div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-toasts-alertas"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-toasts-alertas"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-toasts-alertas">&lt;!-- Disparo via API JavaScript Vanilla --&gt;
 &lt;script&gt;
   window.BcbToast.show({
@@ -1407,14 +1409,14 @@
             <!-- 2.12 Exportação de Dados Abertos -->
             <section id="molecula-data-export" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">file_download</span> 2.12 Exportação de Dados Abertos (.bcb-data-export)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Dados Abertos & SGS</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">file_download</span> 2.12 Exportação de Dados Abertos (.bcb-data-export)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Dados Abertos & SGS</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-data-export">
                         <div class="bcb-data-export-info">
                             <div class="bcb-data-export-icon">
-                                <span class="material-icons" aria-hidden="true">dataset</span>
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">dataset</span>
                             </div>
                             <div>
                                 <h4 class="bcb-data-export-title">Exportar Série Histórica</h4>
@@ -1423,19 +1425,19 @@
                         </div>
                         <div class="bcb-data-export-actions">
                             <a href="#" class="bcb-btn-export export-csv" role="button" aria-label="Exportar série em formato CSV">
-                                <span class="material-icons" aria-hidden="true">table_view</span> <span class="export-ext">CSV</span> (450 KB)
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">table_view</span> <span class="export-ext">CSV</span> (450 KB)
                             </a>
                             <a href="#" class="bcb-btn-export export-json" role="button" aria-label="Exportar série em formato JSON">
-                                <span class="material-icons" aria-hidden="true">data_object</span> <span class="export-ext">JSON</span> API
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">data_object</span> <span class="export-ext">JSON</span> API
                             </a>
                             <a href="#" class="bcb-btn-export export-api" role="button" aria-label="Acessar documentação da API Swagger">
-                                <span class="material-icons" aria-hidden="true">api</span> <span class="export-ext">API</span> REST
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">api</span> <span class="export-ext">API</span> REST
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-data-export"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-data-export"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-data-export">&lt;div class="bcb-data-export"&gt;
   &lt;div class="bcb-data-export-info"&gt;
     &lt;div class="bcb-data-export-icon"&gt;
@@ -1464,8 +1466,8 @@
             <!-- 2.13 Empty State -->
             <section id="molecula-empty-state" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">inbox</span> 2.13 Empty State / Estado Vazio (.bcb-empty-state)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> WCAG 2.2 AA &bull; Resiliência</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">inbox</span> 2.13 Empty State / Estado Vazio (.bcb-empty-state)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> WCAG 2.2 AA &bull; Resiliência</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Utilizado quando uma consulta, filtro facetado ou busca de dados abertos não retorna registros, oferecendo orientação e ações corretivas claras.</p>
@@ -1475,16 +1477,16 @@
                             <!-- Empty State Padrão -->
                             <div class="bcb-empty-state bcb-empty-state-bordered">
                                 <div class="bcb-empty-state-icon">
-                                    <span class="material-icons" aria-hidden="true">search_off</span>
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">search_off</span>
                                 </div>
                                 <h4 class="bcb-empty-state-title">Nenhum indicador ou documento encontrado</h4>
                                 <p class="bcb-empty-state-desc">Não localizamos séries temporais com os filtros aplicados. Tente ajustar o período selecionado ou utilizar palavras-chave mais genéricas.</p>
                                 <div class="bcb-empty-state-actions">
                                     <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">filter_alt_off</span> Limpar Filtros
+                                        <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">filter_alt_off</span> Limpar Filtros
                                     </button>
                                     <button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">help_outline</span> Dúvidas Frequentes
+                                        <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">help_outline</span> Dúvidas Frequentes
                                     </button>
                                 </div>
                             </div>
@@ -1494,7 +1496,7 @@
                             <!-- Empty State Compacto -->
                             <div class="bcb-empty-state bcb-empty-state-compact">
                                 <div class="bcb-empty-state-icon">
-                                    <span class="material-icons" aria-hidden="true">folder_open</span>
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">folder_open</span>
                                 </div>
                                 <h4 class="bcb-empty-state-title">Pasta de downloads vazia</h4>
                                 <p class="bcb-empty-state-desc">Você ainda não selecionou planilhas para exportação.</p>
@@ -1504,7 +1506,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-empty-state"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-empty-state"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-empty-state">&lt;div class="bcb-empty-state bcb-empty-state-bordered" role="region" aria-label="Resultado da consulta"&gt;
   &lt;div class="bcb-empty-state-icon"&gt;
     &lt;span class="material-icons" aria-hidden="true"&gt;search_off&lt;/span&gt;
@@ -1525,8 +1527,8 @@
             <!-- 3.1 Accordion (Sanfona) -->
             <section id="organismo-accordion" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">view_day</span> 3.1 Accordion (Sanfona) (.accordion.modelo-1)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-expanded sincronizado</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_day</span> 3.1 Accordion (Sanfona) (.accordion.modelo-1)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-expanded sincronizado</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="accordion modelo-1" id="accordionDemo">
@@ -1536,7 +1538,7 @@
                                 <h4 class="mb-0">
                                     <button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center font-color-1 font-weight-bold" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         <span>Como consultar valores a receber no Banco Central?</span>
-                                        <span class="material-icons chevron-icon" aria-hidden="true">expand_more</span>
+                                        <span class="material-symbols-outlined material-icons chevron-icon" aria-hidden="true">expand_more</span>
                                     </button>
                                 </h4>
                             </div>
@@ -1552,7 +1554,7 @@
                                 <h4 class="mb-0">
                                     <button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center font-color-1 font-weight-bold collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         <span>O que fazer em caso de golpe com transferência via Pix?</span>
-                                        <span class="material-icons chevron-icon" aria-hidden="true">expand_more</span>
+                                        <span class="material-symbols-outlined material-icons chevron-icon" aria-hidden="true">expand_more</span>
                                     </button>
                                 </h4>
                             </div>
@@ -1565,7 +1567,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-accordion"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-accordion"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-accordion">&lt;div class="accordion modelo-1" id="faqAccordion"&gt;
   &lt;div class="card"&gt;
     &lt;div class="card-header" id="heading1"&gt;
@@ -1587,8 +1589,8 @@
             <!-- 3.4 Navegação em Abas -->
             <section id="organismo-abas" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">tab</span> 3.4 Navegação em Abas (.bcb-navegacaoabas)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Chanfro Angular</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">tab</span> 3.4 Navegação em Abas (.bcb-navegacaoabas)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Chanfro Angular</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-navegacaoabas">
@@ -1616,7 +1618,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-abas"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-abas"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-abas">&lt;div class="bcb-navegacaoabas"&gt;
   &lt;span class="line"&gt;&lt;/span&gt;
   &lt;ul class="nav nav-tabs" role="tablist"&gt;
@@ -1634,8 +1636,8 @@
             <!-- 3.5 Timelines -->
             <section id="organismo-timelines" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">timeline</span> 3.5 Timelines (Vertical Educativa e Horizontal)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Cronograma & Jornada</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">timeline</span> 3.5 Timelines (Vertical Educativa e Horizontal)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Cronograma & Jornada</span>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Timeline Educativa Vertical -->
@@ -1658,7 +1660,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-timelines"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-timelines"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-timelines">&lt;!-- Card de Etapa da Timeline Vertical --&gt;
 &lt;div class="step-card p-3 rounded" style="border-left: 4px solid var(--bcb-brand-blue); background: var(--bcb-gray-50);"&gt;
   &lt;div class="d-flex align-items-center mb-1"&gt;
@@ -1673,8 +1675,8 @@
             <!-- 3.6 Hero Banner -->
             <section id="organismo-hero-banner" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">panorama</span> 3.6 Hero Banner (.bcb-hero-banner)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Destaque Principal</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">panorama</span> 3.6 Hero Banner (.bcb-hero-banner)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Destaque Principal</span>
                 </div>
                 <div class="ds-component-preview p-0">
                     <div class="p-5" style="background: linear-gradient(135deg, var(--bcb-brand-blue) 0%, var(--bcb-brand-blue-dark) 100%); color: white; border-radius: var(--bcb-radius-4);">
@@ -1685,7 +1687,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-hero-banner"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-hero-banner"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-hero-banner">&lt;div class="p-5" style="background: linear-gradient(135deg, var(--bcb-brand-blue) 0%, var(--bcb-brand-blue-dark) 100%); color: white;"&gt;
   &lt;h1 class="font-cormorant"&gt;Título do Hero Banner&lt;/h1&gt;
   &lt;p class="lead"&gt;Descrição de alto impacto institucional.&lt;/p&gt;
@@ -1697,8 +1699,8 @@
             <!-- 3.7 Lista de Notícias -->
             <section id="organismo-noticias" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">newspaper</span> 3.7 Lista de Notícias (News List)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Editorial</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">newspaper</span> 3.7 Lista de Notícias (News List)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Editorial</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="list-group list-group-flush">
@@ -1713,7 +1715,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-noticias"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-noticias"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-noticias">&lt;div class="list-group-item px-0 py-3"&gt;
   &lt;div class="d-flex justify-content-between mb-1"&gt;
     &lt;span class="tag-bcb primary"&gt;Categoria&lt;/span&gt;
@@ -1728,8 +1730,8 @@
             <!-- 3.8 Process List -->
             <section id="organismo-process-list" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">format_list_numbered</span> 3.8 Process List (Passo a Passo Sequencial)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Numeração em Grade</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_list_numbered</span> 3.8 Process List (Passo a Passo Sequencial)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Numeração em Grade</span>
                 </div>
                 <div class="ds-component-preview">
                     <ol class="process-list">
@@ -1744,7 +1746,7 @@
                     </ol>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-process-list"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-process-list"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-process-list">&lt;ol class="process-list"&gt;
   &lt;li&gt;
     &lt;h4 class="h6 font-weight-bold"&gt;Título do Passo 1&lt;/h4&gt;
@@ -1761,12 +1763,12 @@
             <!-- 3.9 Modal / Dialog Acessível -->
             <section id="organismo-modal" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">picture_in_picture</span> 3.9 Modal / Dialog Acessível (.bcb-modal)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Focus-Trap & ESC</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">picture_in_picture</span> 3.9 Modal / Dialog Acessível (.bcb-modal)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Focus-Trap & ESC</span>
                 </div>
                 <div class="ds-component-preview">
                     <button type="button" class="btn btn-primary" id="btnAbrirModal">
-                        <span class="material-icons" aria-hidden="true">open_in_browser</span> Abrir Demonstração de Modal
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">open_in_browser</span> Abrir Demonstração de Modal
                     </button>
 
                     <!-- Estrutura do Modal Acessível -->
@@ -1775,7 +1777,7 @@
                             <div class="bcb-modal-header">
                                 <h4 class="bcb-modal-title" id="modalDemoTitle">Confirmar Solicitação de Dados</h4>
                                 <button type="button" class="bcb-modal-close" id="btnFecharModal" aria-label="Fechar janela modal">
-                                    <span class="material-icons" aria-hidden="true">close</span>
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">close</span>
                                 </button>
                             </div>
                             <div class="bcb-modal-body">
@@ -1789,7 +1791,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-modal"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-modal"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-modal">&lt;!-- Disparo via API Vanilla --&gt;
 &lt;button type="button" class="btn btn-primary" onclick="window.BcbModal.open('modalId')"&gt;Abrir Modal&lt;/button&gt;
 
@@ -1811,8 +1813,8 @@
             <!-- 3.10 Container de Vídeos -->
             <section id="organismo-videos" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">play_circle</span> 3.10 Container de Vídeos (.videos-destaque)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Aspect Ratio 16:9</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">play_circle</span> 3.10 Container de Vídeos (.videos-destaque)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Aspect Ratio 16:9</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row videos-destaque">
@@ -1824,7 +1826,7 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-videos"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-videos"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-videos">&lt;div class="embed-responsive embed-responsive-16by9 rounded"&gt;
   &lt;iframe class="embed-responsive-item" src="https://www.youtube.com/embed/VIDEO_ID" title="Título descritivo do vídeo" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;</code></pre>
@@ -1838,17 +1840,17 @@
             <!-- 4.1 Botão Voltar ao Topo -->
             <section id="utilitario-backtotop" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">arrow_upward</span> 4.1 Botão Voltar ao Topo (.bcb-back-to-top)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Scroll Suave</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_upward</span> 4.1 Botão Voltar ao Topo (.bcb-back-to-top)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Scroll Suave</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-2">Botão fixo que surge no canto inferior direito da tela após rolagem superior a 300px.</p>
                     <button type="button" class="btn btn-primary" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
-                        <span class="material-icons mr-1" aria-hidden="true">arrow_upward</span> Testar rolagem ao topo
+                        <span class="material-symbols-outlined material-icons mr-1" aria-hidden="true">arrow_upward</span> Testar rolagem ao topo
                     </button>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-backtotop"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-backtotop"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-backtotop">&lt;button type="button" class="bcb-back-to-top" id="btnBackToTop" aria-label="Voltar ao topo da página"&gt;
   &lt;span class="material-icons" aria-hidden="true"&gt;keyboard_arrow_up&lt;/span&gt;
 &lt;/button&gt;</code></pre>
@@ -1858,17 +1860,17 @@
             <!-- 4.2 Transição e Setas -->
             <section id="utilitario-transicoes" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">swap_vert</span> 4.2 Bloco de Transição e Setas (.transition-block)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Separador Animado</span>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">swap_vert</span> 4.2 Bloco de Transição e Setas (.transition-block)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Separador Animado</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="transition-block text-center py-4">
-                        <span class="material-icons animated-arrow" style="font-size: 2.5rem; color: var(--bcb-brand-blue);" aria-hidden="true">keyboard_double_arrow_down</span>
+                        <span class="material-symbols-outlined material-icons animated-arrow" style="font-size: 2.5rem; color: var(--bcb-brand-blue);" aria-hidden="true">keyboard_double_arrow_down</span>
                         <p class="text-muted small mt-2 mb-0">Role para continuar a leitura da jornada.</p>
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-transicoes"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <button class="btn-copy-code" data-code="code-transicoes"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-transicoes">&lt;div class="transition-block text-center"&gt;
   &lt;span class="material-icons animated-arrow" aria-hidden="true"&gt;keyboard_double_arrow_down&lt;/span&gt;
 &lt;/div&gt;</code></pre>
@@ -1880,7 +1882,7 @@
 
     <!-- Botão Flutuante Voltar ao Topo -->
     <button type="button" class="bcb-back-to-top" id="btnBackToTop" aria-label="Voltar ao topo da página">
-        <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">keyboard_arrow_up</span>
     </button>
 
     <!-- Scripts Bootstrap e Micro-scripts Vanilla BCB -->
@@ -1944,7 +1946,7 @@
                 if (codeElement) {
                     navigator.clipboard.writeText(codeElement.innerText).then(() => {
                         const originalHTML = btn.innerHTML;
-                        btn.innerHTML = '<span class="material-icons md-18" aria-hidden="true">check</span> Copiado!';
+                        btn.innerHTML = '<span class="material-symbols-outlined material-icons md-18" aria-hidden="true">check</span> Copiado!';
                         btn.style.background = 'var(--bcb-brand-verde-susta, #067078)';
                         btn.style.color = '#ffffff';
                         setTimeout(() => {

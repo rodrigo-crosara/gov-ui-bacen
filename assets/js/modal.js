@@ -112,6 +112,9 @@
     },
 
     init() {
+      const modals = document.querySelectorAll('.bcb-modal, [data-toggle="bcb-modal"], [data-bcb-modal-target]');
+      if (modals.length === 0) return;
+
       // Gatilhos de abertura
       document.addEventListener('click', (event) => {
         const trigger = event.target.closest('[data-toggle="bcb-modal"], [data-bcb-modal-target]');

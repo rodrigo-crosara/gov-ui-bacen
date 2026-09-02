@@ -1,6 +1,13 @@
 /* ============= BCB Design System — Generic / Reset ============= */
 
 /* ==========================================
+   BOX-SIZING UNIVERSAL (Eliminação de overflow e scroll horizontal)
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================
    BODY GLOBAL E SOBRESCRITA BOOTSTRAP
    ========================================== */
 body {
