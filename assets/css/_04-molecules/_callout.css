@@ -85,11 +85,11 @@
 .callout-success.callout-outline { border-color: var(--bcb-brand-verde-susta); }
 .callout-success .callout-icon, .callout-success .callout-title { color: var(--bcb-brand-verde-susta); }
 
-/* Alerta / Atenção (Usando Amarellato escurecido para contraste ou outline) */
-.callout-warning { background-color: #fdfaf3; }
-.callout-warning.callout-left-bordered, .callout-warning.callout-elevated { border-left-color: #d6a13b; }
-.callout-warning.callout-outline { border-color: #d6a13b; }
-.callout-warning .callout-icon, .callout-warning .callout-title { color: #b07e1b; }
+/* Alerta / Atenção (Baseado em Amarellato Biscoito / Cafellato com texto em Vinho Autêntico para ratio WCAG AAA > 7.7:1) */
+.callout-warning { background-color: var(--bg-amarellato-light, #fefbfa); }
+.callout-warning.callout-left-bordered, .callout-warning.callout-elevated { border-left-color: var(--bcb-feedback-warning-border, #DEBE7F); }
+.callout-warning.callout-outline { border-color: var(--bcb-feedback-warning-border, #DEBE7F); }
+.callout-warning .callout-icon, .callout-warning .callout-title { color: var(--bcb-brand-vinho-autentico, #47373A); }
 
 /* Erro / Crítico (Marsala Suave - var(--bcb-brand-marsala)) */
 .callout-danger { background-color: var(--bg-vinho-light); }

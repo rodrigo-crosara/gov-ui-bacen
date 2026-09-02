@@ -293,7 +293,7 @@
                     <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
                     <span class="d-none d-sm-inline">Changelog</span>
                 </a>
-                <a href="../templates/template-indicadores.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Templates" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
+                <a href="templates.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Galeria de Templates" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
                     <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
                     <span class="d-none d-sm-inline">Templates</span>
                 </a>
@@ -335,6 +335,7 @@
             <a class="nav-link" href="#atomo-tags-badges">1.3 Tags e Badges</a>
             <a class="nav-link" href="#atomo-icones-tipografia">1.4 Ícones & Tipografia</a>
             <a class="nav-link" href="#atomo-tabelas">1.5 Tabelas Nativas</a>
+            <a class="nav-link" href="#atomo-skeleton">1.6 Skeleton Loading</a>
 
             <div class="ds-sidebar-title">2. Moléculas (Compostos)</div>
             <a class="nav-link" href="#molecula-breadcrumb">2.1 Breadcrumb</a>
@@ -346,9 +347,10 @@
             <a class="nav-link" href="#molecula-stepper">2.7 Stepper (Passo a Passo)</a>
             <a class="nav-link" href="#molecula-datatable">2.8 Data Table Responsiva</a>
             <a class="nav-link" href="#molecula-filtros">2.9 Filtros e Busca Facetada</a>
-            <a class="nav-link" href="#molecula-search-overlay">2.10 Search Overlay</a>
+            <a class="nav-link" href="#molecula-search-overlay">2.10 Busca Avançada Local (Search)</a>
             <a class="nav-link" href="#molecula-toasts-alertas">2.11 Toasts e Alertas</a>
             <a class="nav-link" href="#molecula-data-export">2.12 Exportação de Dados Abertos</a>
+            <a class="nav-link" href="#molecula-empty-state">2.13 Empty State</a>
 
             <div class="ds-sidebar-title">3. Organismos (Estruturas)</div>
             <a class="nav-link" href="#organismo-accordion">3.1 Accordion (Sanfona)</a>
@@ -622,6 +624,79 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- 1.6 Skeleton Loading -->
+            <section id="atomo-skeleton" class="ds-component-card">
+                <div class="ds-component-header">
+                    <h3><span class="material-icons" aria-hidden="true">hourglass_empty</span> 1.6 Skeleton Loading (.bcb-skeleton)</h3>
+                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-busy="true" &bull; WCAG 2.2</span>
+                </div>
+                <div class="ds-component-preview">
+                    <p class="text-muted small mb-3">Animações de shimmer para suavizar estados assíncronos de carregamento em cards, tabelas e parágrafos sem quebrar o layout.</p>
+                    
+                    <div class="row mb-4">
+                        <!-- Simulação de Parágrafo -->
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <div class="p-3 border rounded bg-white" aria-busy="true" aria-label="Carregando conteúdo de texto">
+                                <div class="bcb-skeleton bcb-skeleton-title"></div>
+                                <div class="bcb-skeleton bcb-skeleton-text"></div>
+                                <div class="bcb-skeleton bcb-skeleton-text w-75"></div>
+                                <div class="bcb-skeleton bcb-skeleton-text w-50"></div>
+                            </div>
+                        </div>
+
+                        <!-- Simulação de Card Indicador -->
+                        <div class="col-md-6">
+                            <div class="bcb-skeleton-indicator" aria-busy="true" aria-label="Carregando taxa Selic">
+                                <div class="bcb-skeleton bcb-skeleton-text w-50 mb-2"></div>
+                                <div class="bcb-skeleton" style="height: 2.25rem; width: 40%; margin-bottom: 0.5rem;"></div>
+                                <div class="bcb-skeleton bcb-skeleton-text w-75 mb-0"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simulação em Tabela -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0" aria-busy="true" aria-label="Tabela em carregamento">
+                            <caption class="sr-only">Carregando dados da série histórica</caption>
+                            <thead class="thead-primary">
+                                <tr>
+                                    <th scope="col" style="width: 25%;">Data da Reunião</th>
+                                    <th scope="col" style="width: 40%;">Decisão do Copom</th>
+                                    <th scope="col" style="width: 35%;">Taxa Meta (% a.a.)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-skeleton">
+                                    <td><div class="bcb-skeleton bcb-skeleton-text mb-0"></div></td>
+                                    <td><div class="bcb-skeleton bcb-skeleton-text mb-0 w-75"></div></td>
+                                    <td><div class="bcb-skeleton bcb-skeleton-text mb-0 w-50"></div></td>
+                                </tr>
+                                <tr class="table-skeleton">
+                                    <td><div class="bcb-skeleton bcb-skeleton-text mb-0"></div></td>
+                                    <td><div class="bcb-skeleton bcb-skeleton-text mb-0 w-75"></div></td>
+                                    <td><div class="bcb-skeleton bcb-skeleton-text mb-0 w-50"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <button class="btn-copy-code" data-code="code-skeleton"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <pre><code id="code-skeleton">&lt;!-- Skeleton de Texto e Parágrafo com Acessibilidade --&gt;
+&lt;div aria-busy="true" aria-label="Carregando dados..."&gt;
+  &lt;div class="bcb-skeleton bcb-skeleton-title"&gt;&lt;/div&gt;
+  &lt;div class="bcb-skeleton bcb-skeleton-text"&gt;&lt;/div&gt;
+  &lt;div class="bcb-skeleton bcb-skeleton-text w-75"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Skeleton em Linha de Tabela --&gt;
+&lt;tr class="table-skeleton"&gt;
+  &lt;td&gt;&lt;div class="bcb-skeleton bcb-skeleton-text mb-0"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div class="bcb-skeleton bcb-skeleton-text mb-0 w-75"&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
                 </div>
             </section>
 
@@ -1175,13 +1250,14 @@
                 </div>
             </section>
 
-            <!-- 2.10 Search Overlay -->
+            <!-- 2.10 Busca Avançada Local de Conteúdo -->
             <section id="molecula-search-overlay" class="ds-component-card">
                 <div class="ds-component-header">
-                    <h3><span class="material-icons" aria-hidden="true">search</span> 2.10 Search Overlay (Busca com Sugestões)</h3>
-                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> role="search"</span>
+                    <h3><span class="material-icons" aria-hidden="true">search</span> 2.10 Busca Avançada Local de Conteúdo (.bcb-search-overlay)</h3>
+                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> role="search" &bull; In-page</span>
                 </div>
                 <div class="ds-component-preview">
+                    <p class="text-muted small mb-3">Módulo de pesquisa local in-page com chips de sugestões para filtragem em tabelas densas, normas e FAQs temáticos, operando dentro do miolo de conteúdo sem conflitar com a busca global do portal.</p>
                     <div class="bcb-search-overlay" role="search" style="box-shadow: none; border: 1px solid var(--bcb-gray-200);">
                         <div class="search-input-wrapper mb-3">
                             <span class="material-icons search-icon" aria-hidden="true">search</span>
@@ -1299,6 +1375,63 @@
     &lt;a href="/swagger" class="bcb-btn-export export-api" role="button"&gt;
       &lt;span class="material-icons" aria-hidden="true"&gt;api&lt;/span&gt; &lt;span class="export-ext"&gt;API&lt;/span&gt; REST
     &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- 2.13 Empty State -->
+            <section id="molecula-empty-state" class="ds-component-card">
+                <div class="ds-component-header">
+                    <h3><span class="material-icons" aria-hidden="true">inbox</span> 2.13 Empty State / Estado Vazio (.bcb-empty-state)</h3>
+                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> WCAG 2.2 AA &bull; Resiliência</span>
+                </div>
+                <div class="ds-component-preview">
+                    <p class="text-muted small mb-3">Utilizado quando uma consulta, filtro facetado ou busca de dados abertos não retorna registros, oferecendo orientação e ações corretivas claras.</p>
+                    
+                    <div class="row">
+                        <div class="col-lg-7 mb-3 mb-lg-0">
+                            <!-- Empty State Padrão -->
+                            <div class="bcb-empty-state bcb-empty-state-bordered">
+                                <div class="bcb-empty-state-icon">
+                                    <span class="material-icons" aria-hidden="true">search_off</span>
+                                </div>
+                                <h4 class="bcb-empty-state-title">Nenhum indicador ou documento encontrado</h4>
+                                <p class="bcb-empty-state-desc">Não localizamos séries temporais com os filtros aplicados. Tente ajustar o período selecionado ou utilizar palavras-chave mais genéricas.</p>
+                                <div class="bcb-empty-state-actions">
+                                    <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">filter_alt_off</span> Limpar Filtros
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">help_outline</span> Dúvidas Frequentes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <!-- Empty State Compacto -->
+                            <div class="bcb-empty-state bcb-empty-state-compact">
+                                <div class="bcb-empty-state-icon">
+                                    <span class="material-icons" aria-hidden="true">folder_open</span>
+                                </div>
+                                <h4 class="bcb-empty-state-title">Pasta de downloads vazia</h4>
+                                <p class="bcb-empty-state-desc">Você ainda não selecionou planilhas para exportação.</p>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Explorar Catálogo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <button class="btn-copy-code" data-code="code-empty-state"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <pre><code id="code-empty-state">&lt;div class="bcb-empty-state bcb-empty-state-bordered" role="region" aria-label="Resultado da consulta"&gt;
+  &lt;div class="bcb-empty-state-icon"&gt;
+    &lt;span class="material-icons" aria-hidden="true"&gt;search_off&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h4 class="bcb-empty-state-title"&gt;Nenhum registro encontrado&lt;/h4&gt;
+  &lt;p class="bcb-empty-state-desc"&gt;Tente alterar os filtros da pesquisa para encontrar os dados desejados.&lt;/p&gt;
+  &lt;div class="bcb-empty-state-actions"&gt;
+    &lt;button type="button" class="btn btn-primary btn-sm"&gt;Limpar Filtros&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
@@ -1726,7 +1859,7 @@
         if (btnContrast) btnContrast.addEventListener('click', () => applyTheme('dark', 'high'));
 
         // ==========================================
-        // 2. BOTÕES DE COPIAR CÓDIGO
+        // 2. BOTÕES DE COPIAR CÓDIGO COM TOAST NATIVO
         // ==========================================
         document.querySelectorAll('.btn-copy-code').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1736,11 +1869,24 @@
                     navigator.clipboard.writeText(codeElement.innerText).then(() => {
                         const originalHTML = btn.innerHTML;
                         btn.innerHTML = '<span class="material-icons md-18" aria-hidden="true">check</span> Copiado!';
-                        btn.style.background = '#28a745';
+                        btn.style.background = 'var(--bcb-brand-verde-susta, #067078)';
+                        btn.style.color = '#ffffff';
                         setTimeout(() => {
                             btn.innerHTML = originalHTML;
                             btn.style.background = '';
+                            btn.style.color = '';
                         }, 2000);
+
+                        if (window.BcbToast) {
+                            window.BcbToast.show({
+                                title: 'Código Copiado!',
+                                message: 'O snippet HTML foi copiado com sucesso para a área de transferência.',
+                                type: 'success',
+                                duration: 3000
+                            });
+                        }
+                    }).catch(err => {
+                        console.error('Erro ao copiar código:', err);
                     });
                 }
             });

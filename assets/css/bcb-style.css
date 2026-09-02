@@ -17,6 +17,7 @@
 @import '_03-atoms/_tags.css';
 @import '_03-atoms/_tables.css';
 @import '_03-atoms/_form-controls.css';
+@import '_03-atoms/_skeleton.css';
 @import '_04-molecules/_breadcrumb.css';
 @import '_04-molecules/_callout.css';
 @import '_04-molecules/_card-indicator.css';
@@ -28,6 +29,7 @@
 @import '_04-molecules/_data-table.css';
 @import '_04-molecules/_faceted-search.css';
 @import '_04-molecules/_toast.css';
+@import '_04-molecules/_empty-state.css';
 @import '_05-organisms/_tabs.css';
 @import '_05-organisms/_accordion.css';
 @import '_05-organisms/_modal.css';
@@ -1165,11 +1167,11 @@ p { font-size: var(--bcb-font-100); }
 .callout-success.callout-outline { border-color: var(--bcb-brand-verde-susta); }
 .callout-success .callout-icon, .callout-success .callout-title { color: var(--bcb-brand-verde-susta); }
 
-/* Alerta / Atenção */
-.callout-warning { background-color: var(--bg-amarellato-light); }
-.callout-warning.callout-left-bordered, .callout-warning.callout-elevated { border-left-color: #d6a13b; }
-.callout-warning.callout-outline { border-color: #d6a13b; }
-.callout-warning .callout-icon, .callout-warning .callout-title { color: #b07e1b; }
+/* Alerta / Atenção (Baseado em Amarellato Biscoito / Cafellato com texto em Vinho Autêntico para ratio WCAG AAA > 7.7:1) */
+.callout-warning { background-color: var(--bg-amarellato-light, #fefbfa); }
+.callout-warning.callout-left-bordered, .callout-warning.callout-elevated { border-left-color: var(--bcb-feedback-warning-border, #DEBE7F); }
+.callout-warning.callout-outline { border-color: var(--bcb-feedback-warning-border, #DEBE7F); }
+.callout-warning .callout-icon, .callout-warning .callout-title { color: var(--bcb-brand-vinho-autentico, #47373A); }
 
 /* Erro / Crítico (Marsala) */
 .callout-danger { background-color: var(--bg-vinho-light); }
@@ -1295,8 +1297,8 @@ p { font-size: var(--bcb-font-100); }
 
 .bcb-toast.toast-success, .bcb-alert.alert-success { border-left-color: #28A745; }
 .bcb-toast.toast-success .bcb-toast-icon, .bcb-alert.alert-success .alert-icon { color: #28A745; }
-.bcb-toast.toast-warning, .bcb-alert.alert-warning { border-left-color: #D6A13B; }
-.bcb-toast.toast-warning .bcb-toast-icon, .bcb-alert.alert-warning .alert-icon { color: #B07E1B; }
+.bcb-toast.toast-warning, .bcb-alert.alert-warning { border-left-color: var(--bcb-feedback-warning-border, #DEBE7F); background-color: var(--bg-amarellato-light, #fefbfa); }
+.bcb-toast.toast-warning .bcb-toast-icon, .bcb-alert.alert-warning .alert-icon, .bcb-alert.alert-warning .alert-title { color: var(--bcb-brand-vinho-autentico, #47373A); }
 .bcb-toast.toast-danger, .bcb-alert.alert-danger { border-left-color: var(--bcb-brand-marsala); }
 .bcb-toast.toast-danger .bcb-toast-icon, .bcb-alert.alert-danger .alert-icon { color: var(--bcb-brand-marsala); }
 .bcb-toast.toast-info, .bcb-alert.alert-info { border-left-color: var(--bcb-brand-blue); }
@@ -1334,5 +1336,99 @@ p { font-size: var(--bcb-font-100); }
 .bcb-btn-export.export-json .export-ext { color: var(--bcb-brand-azulpetro, #0080A4); font-weight: 700; }
 .bcb-btn-export.export-api .export-ext { color: var(--bcb-brand-vinho, #491026); font-weight: 700; }
 .bcb-btn-export:hover .export-ext { color: inherit; }
+
+/* ==========================================
+   38. SKELETON LOADING (ÁTOMO)
+   ========================================== */
+@keyframes bcbShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.bcb-skeleton {
+  display: inline-block;
+  height: 1rem;
+  width: 100%;
+  background: linear-gradient(90deg, var(--bcb-gray-200) 25%, var(--bcb-gray-100) 37%, var(--bcb-gray-200) 63%);
+  background-size: 400% 100%;
+  animation: bcbShimmer 1.5s ease-in-out infinite;
+  border-radius: var(--bcb-radius-4);
+  vertical-align: middle;
+}
+.bcb-skeleton-text { height: 0.875rem; margin-bottom: 0.5rem; border-radius: var(--bcb-radius-4); }
+.bcb-skeleton-text.w-75 { width: 75% !important; }
+.bcb-skeleton-text.w-50 { width: 50% !important; }
+.bcb-skeleton-text.w-25 { width: 25% !important; }
+.bcb-skeleton-title { height: 1.5rem; width: 60%; margin-bottom: 1rem; border-radius: var(--bcb-radius-4); }
+.bcb-skeleton-avatar { width: 48px; height: 48px; border-radius: var(--bcb-radius-pill); }
+.bcb-skeleton-button { width: 120px; height: 38px; border-radius: var(--bcb-radius-4); }
+.bcb-skeleton-card { border: 1px solid var(--bcb-gray-200); border-radius: var(--bcb-radius-8); padding: 1.5rem; background-color: var(--bcb-color-white); }
+.bcb-skeleton-indicator { border-left: 4px solid var(--bcb-gray-300); padding: 1.25rem; border-radius: var(--bcb-radius-8); background-color: var(--bcb-color-white); border: 1px solid var(--bcb-gray-200); }
+.table-skeleton td { padding: 0.85rem 1rem; }
+.table-skeleton .bcb-skeleton { margin-bottom: 0; }
+[data-theme="dark"] .bcb-skeleton { background: linear-gradient(90deg, var(--bcb-gray-200) 25%, var(--bcb-gray-300) 37%, var(--bcb-gray-200) 63%); background-size: 400% 100%; }
+[data-contrast="high"] .bcb-skeleton { animation: none; background: transparent !important; border: 1px dashed var(--bcb-hc-border); }
+@media (prefers-reduced-motion: reduce) { .bcb-skeleton { animation: none; } }
+
+/* ==========================================
+   39. EMPTY STATE (MOLÉCULA)
+   ========================================== */
+.bcb-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background-color: var(--bcb-gray-50);
+  border-radius: var(--bcb-radius-8);
+  margin: 1.5rem 0;
+}
+.bcb-empty-state-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--bcb-brand-azulcinti);
+  background-color: var(--bg-brand-light);
+  width: 80px;
+  height: 80px;
+  border-radius: var(--bcb-radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(2, 92, 117, 0.15);
+}
+.bcb-empty-state-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bcb-gray-900);
+  margin-bottom: 0.5rem;
+  max-width: 480px;
+}
+.bcb-empty-state-desc {
+  font-size: 0.95rem;
+  color: var(--bcb-gray-700);
+  max-width: 520px;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.bcb-empty-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+.bcb-empty-state-bordered { border: 1px dashed var(--bcb-gray-300); background-color: var(--bcb-color-white); }
+.bcb-empty-state-compact { padding: 2rem 1rem; }
+.bcb-empty-state-compact .bcb-empty-state-icon { width: 56px; height: 56px; font-size: 2.25rem; margin-bottom: 0.75rem; }
+.bcb-empty-state-compact .bcb-empty-state-title { font-size: 1.05rem; }
+.bcb-empty-state-compact .bcb-empty-state-desc { font-size: 0.85rem; margin-bottom: 1rem; }
+[data-theme="dark"] .bcb-empty-state { background-color: var(--bcb-gray-100); }
+[data-theme="dark"] .bcb-empty-state-bordered { background-color: var(--bcb-color-white); border-color: var(--bcb-gray-300); }
+[data-theme="dark"] .bcb-empty-state-icon { background-color: rgba(7, 115, 145, 0.2); color: var(--bcb-brand-azul-blue); border-color: rgba(7, 115, 145, 0.4); }
+[data-contrast="high"] .bcb-empty-state { background-color: var(--bcb-hc-bg-level1) !important; border: 2px solid var(--bcb-hc-border); }
+[data-contrast="high"] .bcb-empty-state-icon { background: transparent !important; border: 2px solid var(--bcb-hc-border); color: var(--bcb-hc-text) !important; }
+[data-contrast="high"] .bcb-empty-state-title, [data-contrast="high"] .bcb-empty-state-desc { color: var(--bcb-hc-text) !important; }
+
 
 

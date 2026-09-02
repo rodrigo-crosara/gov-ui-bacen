@@ -101,11 +101,13 @@
 
 .bcb-toast.toast-warning,
 .bcb-alert.alert-warning {
-  border-left-color: #D6A13B;
+  border-left-color: var(--bcb-feedback-warning-border, #DEBE7F);
+  background-color: var(--bg-amarellato-light, #fefbfa);
 }
 .bcb-toast.toast-warning .bcb-toast-icon,
-.bcb-alert.alert-warning .alert-icon {
-  color: #B07E1B;
+.bcb-alert.alert-warning .alert-icon,
+.bcb-alert.alert-warning .alert-title {
+  color: var(--bcb-brand-vinho-autentico, #47373A);
 }
 
 .bcb-toast.toast-danger,

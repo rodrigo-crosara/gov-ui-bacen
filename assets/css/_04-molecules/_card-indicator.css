@@ -30,17 +30,17 @@
 
 .bcb-indicator-card.accent-green,
 .bcb-indicator-card.indicator-positive {
-  border-top-color: var(--bcb-brand-verde-susta, #0A663A);
+  border-top-color: var(--bcb-brand-verde-susta, #067078);
 }
 
 .bcb-indicator-card.accent-red,
 .bcb-indicator-card.indicator-negative {
-  border-top-color: var(--bcb-brand-marsala, #C62828);
+  border-top-color: var(--bcb-brand-vinho-autentico, #47373A);
 }
 
 .bcb-indicator-card.accent-amber,
 .bcb-indicator-card.indicator-warning {
-  border-top-color: var(--bcb-brand-amarellato, #F8D48D);
+  border-top-color: var(--bcb-brand-cafellato, #DEBE7F);
 }
 
 /* Tipografia e Rótulos */
@@ -66,11 +66,11 @@
 }
 
 .bcb-indicator-value.value-positive {
-  color: var(--bcb-brand-verde-susta, #0A663A);
+  color: var(--bcb-brand-verde-susta, #067078);
 }
 
 .bcb-indicator-value.value-negative {
-  color: var(--bcb-brand-marsala, #C62828);
+  color: var(--bcb-brand-vinho-autentico, #47373A);
 }
 
 .bcb-indicator-meta {
@@ -93,14 +93,14 @@
 
 .bcb-indicator-trend.positive,
 .bcb-indicator-trend.trend-positive {
-  color: var(--bcb-brand-verde-susta, #0A663A);
-  background-color: rgba(10, 102, 58, 0.12);
+  color: var(--bcb-brand-verde-susta, #067078);
+  background-color: rgba(6, 112, 120, 0.12);
 }
 
 .bcb-indicator-trend.negative,
 .bcb-indicator-trend.trend-negative {
-  color: var(--bcb-brand-marsala, #C62828);
-  background-color: rgba(198, 40, 40, 0.12);
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+  background-color: rgba(71, 55, 58, 0.12);
 }
 
 .bcb-indicator-trend.neutral,

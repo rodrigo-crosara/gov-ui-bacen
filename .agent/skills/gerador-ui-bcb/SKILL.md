@@ -21,19 +21,21 @@ Antes de gerar qualquer layout, consulte as fontes da verdade do repositório:
 | **Componentes Canônicos** | Assinaturas HTML exatas, variantes e regras Do/Don't | `/.docs-ia/components.md` |
 | **Blueprints de Layout** | 4 Blueprints completos + Padrões de Estados de UI | `/.docs-ia/layouts-patterns.md` |
 
-### Templates Oficiais de Referência:
-- **Indicador Econômico & Séries**: `/templates/template-indicadores.html`
-- **Serviço ao Cidadão & FAQ**: `/templates/template-servico.html`
-- **Notícia & Comunicado de Imprensa**: `/templates/template-noticia.html`
-- **Produto / Landing Page Institucional**: `/templates/drex.html`
-- **Guia Educativo / Jornada Longa**: `/templates/planejando-a-aposentadoria.html`
-- **Orientações em Emergências**: `/templates/desastres-naturais.html`
+### Templates Oficiais de Referência (Galeria em `pages/templates.html`):
+- **Indicador Econômico & Séries**: `/templates/template-indicadores.html` (Selic, Câmbio, IPCA, séries temporais)
+- **Serviço ao Cidadão & FAQ**: `/templates/template-servico.html` (Registrato, Valores a Receber, Pix, passos)
+- **Notícia & Comunicado de Imprensa**: `/templates/template-noticia.html` (Comunicados Copom, atas, notas)
+- **Produto / Landing Page Institucional**: `/templates/drex.html` (Projetos estratégicos, timelines)
+- **Guia Educativo / Jornada Longa**: `/templates/planejando-a-aposentadoria.html` (Cartilhas, âncoras, tip boxes)
+- **Orientações em Emergências**: `/templates/desastres-naturais.html` (Calamidades públicas, medidas emergenciais)
 
 > ⚠️ **REGRAS ABSOLUTAS DE ARQUITETURA E ACESSIBILIDADE**:
-> 1. **FOCO EXCLUSIVO NO CONTEÚDO**: Todo protótipo gerado deve conter apenas a tag `<main id="conteudo-principal" class="container">` iniciando rigorosamente com a tag `<h1>` do título da página (`<h1 class="bcb-page-title">...</h1>`).
-> 2. **H1 ÚNICO ESTRITO**: É obrigatório ter **apenas 1 tag <h1> por página**. Todas as seções e subtítulos devem utilizar rigorosamente `<h2>`, `<h3>` etc., sem pular níveis na hierarquia.
-> 3. **PROIBIÇÃO DE CASCA GLOBAL**: É terminantemente **PROIBIDO** gerar `<header>`, `<footer>`, `#barra-brasil`, `.bcb-govbr-bar` ou qualquer casca de portal. O Design System foca exclusivamente na área de conteúdo.
-> 4. **USO EXCLUSIVO DE TOKENS**: Use APENAS as variáveis CSS oficiais (`var(--bcb-*)`). É PROIBIDO inventar cores hexadecimais arbitrárias.
+> 1. **ADOÇÃO OBRIGATÓRIA DE TEMPLATES**: Ao criar qualquer nova página ou protótipo, **SEMPRE identifique qual dos 6 templates acima é o mais próximo do conteúdo solicitado**, clone o esqueleto estrutural desse template a partir da pasta `/templates/` e adapte os dados e componentes. **NUNCA crie uma página do zero** sem se basear no blueprint homologado.
+> 2. **FOCO EXCLUSIVO NO CONTEÚDO**: Todo protótipo gerado deve conter apenas a tag `<main id="conteudo-principal" class="container">` iniciando rigorosamente com a tag `<h1>` do título da página (`<h1 class="bcb-page-title">...</h1>`).
+> 3. **H1 ÚNICO ESTRITO**: É obrigatório ter **apenas 1 tag <h1> por página**. Todas as seções e subtítulos devem utilizar rigorosamente `<h2>`, `<h3>` etc., sem pular níveis na hierarquia.
+> 4. **PROIBIÇÃO DE CASCA GLOBAL**: É terminantemente **PROIBIDO** gerar `<header>`, `<footer>`, `#barra-brasil`, `.bcb-govbr-bar` ou qualquer casca de portal. O Design System foca exclusivamente na área de conteúdo.
+> 5. **USO EXCLUSIVO DE TOKENS**: Use APENAS as variáveis CSS oficiais (`var(--bcb-*)`). É PROIBIDO inventar cores hexadecimais arbitrárias.
+> 6. **RESILIÊNCIA DE DADOS**: Para tabelas e cards assíncronos, utilize o átomo de Skeleton Loading (`.bcb-skeleton`, `.table-skeleton`) durante carregamento e a molécula de Empty State (`.bcb-empty-state`) para resultados vazios.
 
 ---
 

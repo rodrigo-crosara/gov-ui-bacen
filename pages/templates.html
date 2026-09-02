@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-contrast="normal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos e Templates de Páginas — BCB Design System</title>
+    <meta name="description" content="Galeria oficial de modelos e templates canônicos do Banco Central do Brasil: Indicadores Econômicos, Serviços, Notícias, Drex e Guias Educativos.">
+    
+    <!-- Bootstrap 4.6 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <!-- Google Fonts (Ubuntu + Cormorant Garamond) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    
+    <!-- BCB Styles -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+    
+    <style>
+        body {
+            background-color: var(--bcb-color-bg-light);
+            color: var(--bcb-color-body-text);
+            font-family: var(--bcb-font-ubuntu);
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-bcb {
+            background-color: var(--bcb-brand-azul-blue);
+            color: var(--bcb-color-white);
+            padding: 0.75rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1040;
+            box-shadow: var(--bcb-shadow-300);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--bcb-color-white);
+        }
+
+        .badge-version {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--bcb-radius-pill);
+            font-weight: 500;
+        }
+
+        .theme-switcher-group {
+            display: inline-flex;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 2px;
+            border-radius: var(--bcb-radius-pill);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .theme-btn {
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 0.25rem 0.65rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: var(--bcb-radius-pill);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .theme-btn.active {
+            background: var(--bcb-brand-amarellato-biscoito);
+            color: #002244;
+            font-weight: 700;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Template Card */
+        .template-card {
+            background-color: var(--bcb-color-white);
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            box-shadow: var(--bcb-shadow-100);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .template-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--bcb-shadow-300);
+            border-color: var(--bcb-brand-azulcinti);
+        }
+
+        .template-card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--bcb-gray-200);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .template-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--bcb-radius-8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .template-card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .template-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--bcb-gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .template-desc {
+            font-size: 0.9rem;
+            color: var(--bcb-color-body-text);
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+
+        .template-components {
+            margin-bottom: 1.5rem;
+        }
+
+        .template-components-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--bcb-gray-600);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .template-chip {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--bcb-gray-100);
+            color: var(--bcb-gray-800);
+            padding: 0.2rem 0.55rem;
+            border-radius: var(--bcb-radius-4);
+            font-size: 0.75rem;
+            margin-right: 0.35rem;
+            margin-bottom: 0.35rem;
+            border: 1px solid var(--bcb-gray-200);
+        }
+
+        .template-card-footer {
+            padding: 1rem 1.5rem;
+            background-color: var(--bcb-gray-50);
+            border-top: 1px solid var(--bcb-gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Variantes de Card por Categoria */
+        .card-indicadores .template-icon { background-color: var(--bg-brand-light); color: var(--bcb-brand-azul-blue); }
+        .card-noticia .template-icon { background-color: var(--bg-verde-light); color: var(--bcb-brand-verde-susta); }
+        .card-servico .template-icon { background-color: var(--bg-brand-light); color: var(--bcb-brand-azulcinti); }
+        .card-drex .template-icon { background-color: rgba(46, 76, 89, 0.1); color: var(--bcb-brand-azulpetro); }
+        .card-aposentadoria .template-icon { background-color: var(--bg-verde-light); color: var(--bcb-brand-verde-castell); }
+        .card-desastres .template-icon { background-color: var(--bg-vinho-light); color: var(--bcb-brand-vinho-autentico); }
+
+        [data-theme="dark"] .template-card {
+            background-color: var(--bcb-gray-100);
+            border-color: var(--bcb-gray-300);
+        }
+
+        [data-theme="dark"] .template-card-header,
+        [data-theme="dark"] .template-card-footer {
+            background-color: var(--bcb-gray-50);
+            border-color: var(--bcb-gray-200);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skip Links de Acessibilidade (e-MAG) -->
+    <ul class="bcb-skip-links" aria-label="Atalhos de acessibilidade">
+        <li><a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span></a></li>
+    </ul>
+
+    <!-- Header Sticky Oficial -->
+    <header class="header-bcb" role="banner">
+        <div class="container-fluid px-4 d-flex align-items-center justify-content-between flex-wrap">
+            <div class="header-logo">
+                <span class="material-icons" aria-hidden="true">dashboard</span>
+                BCB Design System — Galeria de Templates
+                <span class="badge-version">v2.0.0</span>
+            </div>
+
+            <div class="d-flex align-items-center flex-wrap my-1" style="gap: 0.75rem;">
+                <a href="../index.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Voltar ao Hub Central de Documentação" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">home</span>
+                    <span class="d-none d-sm-inline">Hub Início</span>
+                </a>
+                <a href="components.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar catálogo vivo de componentes" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">widgets</span>
+                    <span class="d-none d-sm-inline">Componentes</span>
+                </a>
+                <a href="tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar página interativa de design tokens" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
+                    <span class="d-none d-sm-inline">Tokens</span>
+                </a>
+                <a href="changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar histórico de versões e changelog" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
+                    <span class="d-none d-sm-inline">Changelog</span>
+                </a>
+
+                <!-- Seletor de Temas Funcional -->
+                <div class="theme-switcher-group" role="group" aria-label="Alternador de Tema Visual">
+                    <button type="button" class="theme-btn active" id="btnThemeLight" title="Tema Claro Padrão" aria-pressed="true">
+                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">light_mode</span> Padrão
+                    </button>
+                    <button type="button" class="theme-btn" id="btnThemeDark" title="Modo Escuro" aria-pressed="false">
+                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">dark_mode</span> Escuro
+                    </button>
+                    <button type="button" class="theme-btn" id="btnThemeHighContrast" title="Alto Contraste Acessível (e-MAG)" aria-pressed="false">
+                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">contrast</span> Alto Contraste
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
+        
+        <!-- Breadcrumb Oficial -->
+        <nav aria-label="Trilha de navegação" class="mb-3">
+            <ul class="breadcrumb-bcb">
+                <li><a href="../index.html">Início</a></li>
+                <li aria-current="page">Modelos e Templates</li>
+            </ul>
+        </nav>
+
+        <div class="mb-4">
+            <h1 class="bcb-page-title">Modelos e Templates de Páginas do Banco Central</h1>
+            <div class="bcb-page-meta">
+                <span class="tag-bcb primary">Blueprints Oficiais v2.0.0</span>
+                <span>Conformidade com WCAG 2.2 AA / AAA e e-MAG 3.1 &bull; Foco Estrito no Miolo de Conteúdo</span>
+            </div>
+            <p class="lead mt-3 text-body">
+                Galeria oficial de modelos de layout completos para o ecossistema digital do Banco Central do Brasil.
+                Cada template foi projetado com arquitetura semântica rigorosa (iniciando diretamente no <code>&lt;h1&gt;</code> único da página),
+                componentes canônicos homologados e suporte total aos modos claro, escuro e alto contraste.
+            </p>
+        </div>
+
+        <!-- Callout de Governança para Desenvolvedores e Agentes de IA -->
+        <div class="callout callout-brand callout-left-bordered mb-5">
+            <span class="material-icons callout-icon" aria-hidden="true">psychology</span>
+            <div class="callout-content">
+                <h2 class="h5 font-weight-bold" style="color: var(--bcb-brand-azul-blue); margin-top: 0;">Diretriz Arquitetural para IA e Designers</h2>
+                <p class="mb-0">
+                    Ao criar uma nova página, <strong>SEMPRE selecione o template mais próximo nesta galeria como ponto de partida</strong>.
+                    Não construa layouts a partir do zero: clone a estrutura semântica do template correspondente na pasta <code>templates/</code>
+                    e preencha os dados mantendo estritamente a hierarquia de cabeçalhos (<code>&lt;h1&gt;</code> &rarr; <code>&lt;h2&gt;</code> &rarr; <code>&lt;h3&gt;</code>)
+                    e as variáveis do Design System.
+                </p>
+            </div>
+        </div>
+
+        <!-- ============ GRID DE TEMPLATES ============ -->
+        <section id="galeria-templates" class="mb-5">
+            <h2 class="h4 font-weight-bold mb-4" style="color: var(--bcb-gray-900);">Catálogo de Modelos Homologados</h2>
+
+            <div class="row">
+                <!-- 1. Template Indicadores Econômicos -->
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="template-card card-indicadores">
+                        <div class="template-card-header">
+                            <div class="template-icon">
+                                <span class="material-icons" aria-hidden="true">trending_up</span>
+                            </div>
+                            <div>
+                                <span class="badge badge-primary mb-1">Dados &amp; Mercado</span>
+                                <h3 class="template-title">Indicadores Econômicos &amp; Séries</h3>
+                            </div>
+                        </div>
+                        <div class="template-card-body">
+                            <p class="template-desc">
+                                Projetado para divulgação de índices financeiros, taxas básicas de juros (Meta Selic), câmbio PTAX, inflação (IPCA) e dados abertos do SGS com atualização periódica.
+                            </p>
+                            <div class="template-components">
+                                <div class="template-components-title">Componentes Inclusos:</div>
+                                <span class="template-chip">Cards de Indicadores</span>
+                                <span class="template-chip">Data Table Ordenável</span>
+                                <span class="template-chip">Exportação CSV/JSON/API</span>
+                                <span class="template-chip">Filtros Facetados</span>
+                                <span class="template-chip">Callout de Decisão</span>
+                            </div>
+                        </div>
+                        <div class="template-card-footer">
+                            <span class="small text-muted"><code>templates/template-indicadores.html</code></span>
+                            <a href="../templates/template-indicadores.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span>Abrir Template</span>
+                                <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Template Notícia / Comunicação -->
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="template-card card-noticia">
+                        <div class="template-card-header">
+                            <div class="template-icon">
+                                <span class="material-icons" aria-hidden="true">newspaper</span>
+                            </div>
+                            <div>
+                                <span class="badge badge-success mb-1">Comunicação Social</span>
+                                <h3 class="template-title">Notícia &amp; Comunicado de Imprensa</h3>
+                            </div>
+                        </div>
+                        <div class="template-card-body">
+                            <p class="template-desc">
+                                Estrutura editorial para notas oficiais à imprensa, comunicados da Diretoria Colegiada, atas do Copom e anúncios regulatórios com autoria e datação clara.
+                            </p>
+                            <div class="template-components">
+                                <div class="template-components-title">Componentes Inclusos:</div>
+                                <span class="template-chip">Breadcrumb</span>
+                                <span class="template-chip">Meta do Artigo</span>
+                                <span class="template-chip">Lead Editorial</span>
+                                <span class="template-chip">Citação em Bloco</span>
+                                <span class="template-chip">Download de Documentos</span>
+                                <span class="template-chip">Tags Temáticas</span>
+                            </div>
+                        </div>
+                        <div class="template-card-footer">
+                            <span class="small text-muted"><code>templates/template-noticia.html</code></span>
+                            <a href="../templates/template-noticia.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span>Abrir Template</span>
+                                <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Template Serviço ao Cidadão -->
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="template-card card-servico">
+                        <div class="template-card-header">
+                            <div class="template-icon">
+                                <span class="material-icons" aria-hidden="true">touch_app</span>
+                            </div>
+                            <div>
+                                <span class="badge badge-info mb-1">Cidadania &amp; Serviços</span>
+                                <h3 class="template-title">Serviço ao Cidadão &amp; FAQ</h3>
+                            </div>
+                        </div>
+                        <div class="template-card-body">
+                            <p class="template-desc">
+                                Focado em orientar o usuário passo a passo para acessar serviços como Registrato, Sistema de Valores a Receber (SVR), canais de atendimento e perguntas frequentes.
+                            </p>
+                            <div class="template-components">
+                                <div class="template-components-title">Componentes Inclusos:</div>
+                                <span class="template-chip">Process List / Stepper</span>
+                                <span class="template-chip">Cards de Acesso Rápido</span>
+                                <span class="template-chip">Acordeão de FAQ (WAI-ARIA)</span>
+                                <span class="template-chip">Alerta de Segurança (Golpes)</span>
+                                <span class="template-chip">Botão CTA Primário</span>
+                            </div>
+                        </div>
+                        <div class="template-card-footer">
+                            <span class="small text-muted"><code>templates/template-servico.html</code></span>
+                            <a href="../templates/template-servico.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span>Abrir Template</span>
+                                <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Template Drex / Inovação -->
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="template-card card-drex">
+                        <div class="template-card-header">
+                            <div class="template-icon">
+                                <span class="material-icons" aria-hidden="true">token</span>
+                            </div>
+                            <div>
+                                <span class="badge badge-secondary mb-1">Inovação Financeira</span>
+                                <h3 class="template-title">Drex / Produtos Estratégicos</h3>
+                            </div>
+                        </div>
+                        <div class="template-card-body">
+                            <p class="template-desc">
+                                Modelo de produto e landing page institucional para iniciativas de transformação tecnológica, como o Drex (Real Digital), Pix e Open Finance.
+                            </p>
+                            <div class="template-components">
+                                <div class="template-components-title">Componentes Inclusos:</div>
+                                <span class="template-chip">Hero Banner</span>
+                                <span class="template-chip">Linha do Tempo (Timeline)</span>
+                                <span class="template-chip">Cards Informativos de Pilares</span>
+                                <span class="template-chip">Callout de Benefícios</span>
+                                <span class="template-chip">Abas de Funcionalidades</span>
+                            </div>
+                        </div>
+                        <div class="template-card-footer">
+                            <span class="small text-muted"><code>templates/drex.html</code></span>
+                            <a href="../templates/drex.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span>Abrir Template</span>
+                                <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Template Aposentadoria / Educação Financeira -->
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="template-card card-aposentadoria">
+                        <div class="template-card-header">
+                            <div class="template-icon">
+                                <span class="material-icons" aria-hidden="true">savings</span>
+                            </div>
+                            <div>
+                                <span class="badge badge-info mb-1" style="background-color: var(--bcb-brand-verde-castell); color: #fff;">Educação Financeira</span>
+                                <h3 class="template-title">Guia Educativo de Longo Formato</h3>
+                            </div>
+                        </div>
+                        <div class="template-card-body">
+                            <p class="template-desc">
+                                Para publicações educativas, cadernos de cidadania financeira, planejamento previdenciário e cartilhas técnicas com menu âncora e leitura sequencial.
+                            </p>
+                            <div class="template-components">
+                                <div class="template-components-title">Componentes Inclusos:</div>
+                                <span class="template-chip">Menu Lateral de Âncoras</span>
+                                <span class="template-chip">Tip Box Educativa</span>
+                                <span class="template-chip">Caixas de Destaque</span>
+                                <span class="template-chip">Tabelas Comparativas</span>
+                                <span class="template-chip">Download de Cartilhas</span>
+                            </div>
+                        </div>
+                        <div class="template-card-footer">
+                            <span class="small text-muted"><code>templates/planejando-a-aposentadoria.html</code></span>
+                            <a href="../templates/planejando-a-aposentadoria.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span>Abrir Template</span>
+                                <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Template Desastres Naturais / Emergências -->
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="template-card card-desastres">
+                        <div class="template-card-header">
+                            <div class="template-icon">
+                                <span class="material-icons" aria-hidden="true">health_and_safety</span>
+                            </div>
+                            <div>
+                                <span class="badge badge-danger mb-1">Apoio &amp; Contingência</span>
+                                <h3 class="template-title">Orientações em Emergências</h3>
+                            </div>
+                        </div>
+                        <div class="template-card-body">
+                            <p class="template-desc">
+                                Layout de alta visibilidade e clareza para situações de calamidade pública, medidas emergenciais do sistema financeiro, prorrogação de prazos e crédito facilitado.
+                            </p>
+                            <div class="template-components">
+                                <div class="template-components-title">Componentes Inclusos:</div>
+                                <span class="template-chip">Alertas Críticos (WCAG AAA)</span>
+                                <span class="template-chip">Cards de Medidas Adotadas</span>
+                                <span class="template-chip">Linha de Apoio Bancário</span>
+                                <span class="template-chip">FAQ Rápido de Direitos</span>
+                                <span class="template-chip">Contatos Oficiais</span>
+                            </div>
+                        </div>
+                        <div class="template-card-footer">
+                            <span class="small text-muted"><code>templates/desastres-naturais.html</code></span>
+                            <a href="../templates/desastres-naturais.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span>Abrir Template</span>
+                                <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SEÇÃO: COMO CRIAR UMA NOVA PÁGINA ============ -->
+        <section id="como-criar" class="mb-4">
+            <div class="card p-4 border" style="background-color: var(--bcb-color-white);">
+                <h2 class="h5 font-weight-bold mb-3" style="color: var(--bcb-brand-azul-blue);">
+                    <span class="material-icons" style="vertical-align: middle; font-size: 1.25rem;" aria-hidden="true">code</span>
+                    Fluxo Rápido de Criação a Partir de um Template
+                </h2>
+                <ol class="text-body mb-0 pl-3">
+                    <li class="mb-2"><strong>Escolha o modelo correspondente:</strong> Identifique na galeria acima qual template tem a estrutura mais parecida com seu conteúdo (dados numéricos, notícia, serviço ou guia longo).</li>
+                    <li class="mb-2"><strong>Copie o arquivo base:</strong> Duplique o arquivo correspondente localizado na pasta <code>templates/</code>.</li>
+                    <li class="mb-2"><strong>Preserve a estrutura de acessibilidade:</strong> Mantenha o elemento <code>&lt;main id="conteudo-principal"&gt;</code> iniciando obrigatoriamente com o <code>&lt;h1 class="bcb-page-title"&gt;</code> da sua página (exatamente um H1 por página).</li>
+                    <li class="mb-0"><strong>Substitua o conteúdo sem quebrar os estilos:</strong> Atualize textos, tabelas e links utilizando apenas classes e tokens canônicos (<code>var(--bcb-*)</code>).</li>
+                </ol>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts Bootstrap e Micro-scripts BCB -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bcb-ui.js"></script>
+    <script>
+        // Micro-script de alternância de 3 temas
+        (function() {
+            const btnLight = document.getElementById('btnThemeLight');
+            const btnDark = document.getElementById('btnThemeDark');
+            const btnHighContrast = document.getElementById('btnThemeHighContrast');
+            const html = document.documentElement;
+
+            function setTheme(theme, contrast) {
+                html.setAttribute('data-theme', theme);
+                html.setAttribute('data-contrast', contrast);
+                
+                [btnLight, btnDark, btnHighContrast].forEach(b => {
+                    if (b) {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-pressed', 'false');
+                    }
+                });
+
+                if (contrast === 'high' && btnHighContrast) {
+                    btnHighContrast.classList.add('active');
+                    btnHighContrast.setAttribute('aria-pressed', 'true');
+                } else if (theme === 'dark' && btnDark) {
+                    btnDark.classList.add('active');
+                    btnDark.setAttribute('aria-pressed', 'true');
+                } else if (btnLight) {
+                    btnLight.classList.add('active');
+                    btnLight.setAttribute('aria-pressed', 'true');
+                }
+            }
+
+            if (btnLight) btnLight.addEventListener('click', () => setTheme('light', 'normal'));
+            if (btnDark) btnDark.addEventListener('click', () => setTheme('dark', 'normal'));
+            if (btnHighContrast) btnHighContrast.addEventListener('click', () => setTheme('light', 'high'));
+        })();
+    </script>
+</body>
+</html>

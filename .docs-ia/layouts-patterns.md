@@ -1,7 +1,23 @@
 # BCB UI – Layouts & Architecture Blueprints
 
-> **Status**: v1.0 (Padrões Oficiais de Layout para Automação por IA — Mar/2026).
-> Este documento fornece **blueprints estruturais completos** dos 4 padrões de página mais frequentes no portal do Banco Central do Brasil. Os agentes de IA devem utilizar estes esqueletos como base garantida de composição.
+> **Status**: v2.0.0 (Padrões Oficiais de Layout e Galeria de Templates para Automação por IA).
+> Este documento fornece os **blueprints estruturais e o catálogo canônico de templates** do Banco Central do Brasil.
+> A galeria viva interativa está disponível em [`pages/templates.html`](file:///c:/Users/rodri/OneDrive%20-%20BCB%20Azure/ATIVIDADES/gov-ui-bacen/pages/templates.html).
+
+---
+
+## 0. Catálogo Canônico de Templates Homologados
+
+Todo desenvolvimento de novas interfaces pelo time ou por agentes de IA deve partir do template mais próximo abaixo:
+
+| Template | Arquivo Base | Casos de Uso | Componentes Principais |
+|---|---|---|---|
+| **Indicadores Econômicos** | `templates/template-indicadores.html` | Taxa Selic, Câmbio PTAX, IPCA, Séries Temporais | Cards de Indicador, Data Table, Filtros, Exportação CSV/JSON |
+| **Notícia / Comunicação** | `templates/template-noticia.html` | Notas à Imprensa, Decisões do Copom, Comunicados | Breadcrumb, Meta do Artigo, Lead, Citação, Download Doc |
+| **Serviço ao Cidadão** | `templates/template-servico.html` | Registrato, Valores a Receber, Pix, Atendimento | Stepper / Process List, Acordeão FAQ, Alertas de Segurança |
+| **Drex / Inovação** | `templates/drex.html` | Real Digital, Pilares Estratégicos, Open Finance | Hero Banner, Timeline, Cards de Pilares, Abas |
+| **Educação Financeira** | `templates/planejando-a-aposentadoria.html` | Cartilhas, Guias Longos, Planejamento Financeiro | Menu Lateral de Âncoras, Tip Box, Caixas de Destaque |
+| **Orientações em Emergências** | `templates/desastres-naturais.html` | Apoio em Calamidades, Medidas Emergenciais | Alertas WCAG AAA, Cards de Medidas, Linha de Apoio, FAQ |
 
 ---
 
@@ -234,17 +250,19 @@ Para tabelas financeiras, consultas de dados e componentes assíncronos, utilize
 Quando uma consulta ou filtro não retornar registros:
 
 ```html
-<div class="bcb-empty-state text-center py-5 px-3">
-  <div class="empty-state-icon mb-3">
-    <span class="material-icons" style="font-size: 4rem; color: var(--bcb-gray-400);" aria-hidden="true">search_off</span>
+<div class="bcb-empty-state bcb-empty-state-bordered" role="region" aria-label="Resultado da consulta">
+  <div class="bcb-empty-state-icon">
+    <span class="material-icons" aria-hidden="true">search_off</span>
   </div>
-  <h3 class="h5 font-weight-bold text-dark mb-2">Nenhum registro encontrado</h3>
-  <p class="text-muted mb-4" style="max-width: 480px; margin-left: auto; margin-right: auto;">
-    Não foram encontrados normativos ou decisões para o período e critérios selecionados. Tente ajustar os filtros de busca.
+  <h3 class="bcb-empty-state-title">Nenhum registro encontrado</h3>
+  <p class="bcb-empty-state-desc">
+    Não foram encontrados dados para o período e critérios selecionados. Tente ajustar os filtros de busca.
   </p>
-  <button type="button" class="btn btn-outline-primary btn-sm bcb-clear-all-filters">
-    <span class="material-icons mr-1" aria-hidden="true">refresh</span> Limpar todos os filtros
-  </button>
+  <div class="bcb-empty-state-actions">
+    <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+      <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">filter_alt_off</span> Limpar Filtros
+    </button>
+  </div>
 </div>
 ```
 
@@ -255,32 +273,32 @@ Durante a requisição de séries temporais ou cálculo de indicadores:
 
 ```html
 <!-- Skeleton para Cards de Indicador -->
-<div class="row">
-  <div class="col-md-4">
-    <div class="bcb-indicator-card bcb-skeleton-loading" aria-busy="true" aria-label="Carregando indicador...">
-      <div class="skeleton-line" style="height: 14px; width: 60%; background: var(--bcb-gray-200); border-radius: 4px; margin-bottom: 12px;"></div>
-      <div class="skeleton-line" style="height: 36px; width: 85%; background: var(--bcb-gray-300); border-radius: 6px; margin-bottom: 8px;"></div>
-      <div class="skeleton-line" style="height: 12px; width: 50%; background: var(--bcb-gray-200); border-radius: 4px;"></div>
+<div class="row" aria-busy="true" aria-label="Carregando indicadores...">
+  <div class="col-md-6">
+    <div class="bcb-skeleton-indicator">
+      <div class="bcb-skeleton bcb-skeleton-text w-50 mb-2"></div>
+      <div class="bcb-skeleton" style="height: 2.25rem; width: 40%; margin-bottom: 0.5rem;"></div>
+      <div class="bcb-skeleton bcb-skeleton-text w-75 mb-0"></div>
     </div>
   </div>
 </div>
 
 <!-- Skeleton para Linhas de Tabela de Dados -->
 <div class="table-responsive" aria-busy="true">
-  <table class="bcb-data-table">
+  <table class="table table-bordered">
     <caption class="sr-only">Carregando dados da série histórica...</caption>
-    <thead>
+    <thead class="thead-primary">
       <tr>
         <th scope="col">Reunião</th>
         <th scope="col">Data</th>
-        <th scope="col" class="text-numeric">Meta (% a.a.)</th>
+        <th scope="col">Meta (% a.a.)</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><div style="height: 16px; width: 80px; background: var(--bcb-gray-200); border-radius: 4px;"></div></td>
-        <td><div style="height: 16px; width: 100px; background: var(--bcb-gray-200); border-radius: 4px;"></div></td>
-        <td class="text-numeric"><div style="height: 16px; width: 60px; background: var(--bcb-gray-300); border-radius: 4px; margin-left: auto;"></div></td>
+      <tr class="table-skeleton">
+        <td><div class="bcb-skeleton bcb-skeleton-text mb-0"></div></td>
+        <td><div class="bcb-skeleton bcb-skeleton-text mb-0 w-75"></div></td>
+        <td><div class="bcb-skeleton bcb-skeleton-text mb-0 w-50"></div></td>
       </tr>
     </tbody>
   </table>

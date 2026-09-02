@@ -50,9 +50,15 @@
   --bcb-btn-primary-bg: #077391;
   --bcb-btn-primary-hover: #088694;
   --bcb-btn-primary-active: #0A9FD4;
+  --bcb-action-primary-default: #077391;
+  --bcb-action-primary-hover: #088694;
+  --bcb-action-primary-active: #0A9FD4;
   --bcb-btn-secondary-bg: #088694;
   --bcb-btn-secondary-hover: #0EB880;
   --bcb-btn-secondary-active: #077391;
+  --bcb-action-secondary-default: #088694;
+  --bcb-action-secondary-hover: #0EB880;
+  --bcb-action-secondary-active: #077391;
   --bcb-link-color: #5BB8E8;
   --bcb-link-hover: #8AD0F5;
 
@@ -120,9 +126,15 @@
     --bcb-btn-primary-bg: #077391;
     --bcb-btn-primary-hover: #088694;
     --bcb-btn-primary-active: #0A9FD4;
+    --bcb-action-primary-default: #077391;
+    --bcb-action-primary-hover: #088694;
+    --bcb-action-primary-active: #0A9FD4;
     --bcb-btn-secondary-bg: #088694;
     --bcb-btn-secondary-hover: #0EB880;
     --bcb-btn-secondary-active: #077391;
+    --bcb-action-secondary-default: #088694;
+    --bcb-action-secondary-hover: #0EB880;
+    --bcb-action-secondary-active: #077391;
     --bcb-link-color: #5BB8E8;
     --bcb-link-hover: #8AD0F5;
 

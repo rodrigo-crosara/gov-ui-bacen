@@ -1,0 +1,114 @@
+/* ============= BCB Design System — Molecules / Empty State =============
+ * Componente para retornos vazios em consultas, dados abertos e filtros.
+ * Fornece contexto claro, instrução amigável e ações de recuperação.
+ * ======================================================================= */
+
+.bcb-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background-color: var(--bcb-gray-50);
+  border-radius: var(--bcb-radius-8);
+  margin: 1.5rem 0;
+}
+
+.bcb-empty-state-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--bcb-brand-azulcinti);
+  background-color: var(--bg-brand-light);
+  width: 80px;
+  height: 80px;
+  border-radius: var(--bcb-radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(2, 92, 117, 0.15);
+}
+
+.bcb-empty-state-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bcb-gray-900);
+  margin-bottom: 0.5rem;
+  max-width: 480px;
+}
+
+.bcb-empty-state-desc {
+  font-size: 0.95rem;
+  color: var(--bcb-gray-700);
+  max-width: 520px;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.bcb-empty-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Variantes */
+.bcb-empty-state-bordered {
+  border: 1px dashed var(--bcb-gray-300);
+  background-color: var(--bcb-color-white);
+}
+
+.bcb-empty-state-compact {
+  padding: 2rem 1rem;
+}
+
+.bcb-empty-state-compact .bcb-empty-state-icon {
+  width: 56px;
+  height: 56px;
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.bcb-empty-state-compact .bcb-empty-state-title {
+  font-size: 1.05rem;
+}
+
+.bcb-empty-state-compact .bcb-empty-state-desc {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* Modo Escuro */
+[data-theme="dark"] .bcb-empty-state {
+  background-color: var(--bcb-gray-100);
+}
+
+[data-theme="dark"] .bcb-empty-state-bordered {
+  background-color: var(--bcb-color-white);
+  border-color: var(--bcb-gray-300);
+}
+
+[data-theme="dark"] .bcb-empty-state-icon {
+  background-color: rgba(7, 115, 145, 0.2);
+  color: var(--bcb-brand-azul-blue);
+  border-color: rgba(7, 115, 145, 0.4);
+}
+
+/* Alto Contraste */
+[data-contrast="high"] .bcb-empty-state {
+  background-color: var(--bcb-hc-bg-level1) !important;
+  border: 2px solid var(--bcb-hc-border);
+}
+
+[data-contrast="high"] .bcb-empty-state-icon {
+  background: transparent !important;
+  border: 2px solid var(--bcb-hc-border);
+  color: var(--bcb-hc-text) !important;
+}
+
+[data-contrast="high"] .bcb-empty-state-title,
+[data-contrast="high"] .bcb-empty-state-desc {
+  color: var(--bcb-hc-text) !important;
+}

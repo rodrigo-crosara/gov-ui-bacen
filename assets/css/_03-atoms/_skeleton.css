@@ -1,0 +1,107 @@
+/* ============= BCB Design System — Atoms / Skeleton Loading =============
+ * Animação de carregamento (shimmer) para componentes, tabelas e cards.
+ * Utiliza variáveis oficiais do BCB e suporta Modo Escuro e Alto Contraste.
+ * ======================================================================= */
+
+@keyframes bcbShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.bcb-skeleton {
+  display: inline-block;
+  height: 1rem;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--bcb-gray-200) 25%,
+    var(--bcb-gray-100) 37%,
+    var(--bcb-gray-200) 63%
+  );
+  background-size: 400% 100%;
+  animation: bcbShimmer 1.5s ease-in-out infinite;
+  border-radius: var(--bcb-radius-4);
+  vertical-align: middle;
+}
+
+/* Variantes Atômicas */
+.bcb-skeleton-text {
+  height: 0.875rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--bcb-radius-4);
+}
+
+.bcb-skeleton-text.w-75 { width: 75% !important; }
+.bcb-skeleton-text.w-50 { width: 50% !important; }
+.bcb-skeleton-text.w-25 { width: 25% !important; }
+
+.bcb-skeleton-title {
+  height: 1.5rem;
+  width: 60%;
+  margin-bottom: 1rem;
+  border-radius: var(--bcb-radius-4);
+}
+
+.bcb-skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--bcb-radius-pill);
+}
+
+.bcb-skeleton-button {
+  width: 120px;
+  height: 38px;
+  border-radius: var(--bcb-radius-4);
+}
+
+.bcb-skeleton-card {
+  border: 1px solid var(--bcb-gray-200);
+  border-radius: var(--bcb-radius-8);
+  padding: 1.5rem;
+  background-color: var(--bcb-color-white);
+}
+
+.bcb-skeleton-indicator {
+  border-left: 4px solid var(--bcb-gray-300);
+  padding: 1.25rem;
+  border-radius: var(--bcb-radius-8);
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-gray-200);
+}
+
+/* Linha de Tabela com Skeleton */
+.table-skeleton td {
+  padding: 0.85rem 1rem;
+}
+
+.table-skeleton .bcb-skeleton {
+  margin-bottom: 0;
+}
+
+/* Modo Escuro */
+[data-theme="dark"] .bcb-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bcb-gray-200) 25%,
+    var(--bcb-gray-300) 37%,
+    var(--bcb-gray-200) 63%
+  );
+  background-size: 400% 100%;
+}
+
+/* Alto Contraste (Desativa animação, mantém borda de alto relevo) */
+[data-contrast="high"] .bcb-skeleton {
+  animation: none;
+  background: transparent !important;
+  border: 1px dashed var(--bcb-hc-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bcb-skeleton {
+    animation: none;
+  }
+}
