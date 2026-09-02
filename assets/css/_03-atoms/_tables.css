@@ -1,0 +1,65 @@
+/* ============= BCB Design System — Atoms / Tables =============
+ * Estilização básica de tabelas semânticas do BCB.
+ * ============================================================== */
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1.5rem;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: var(--bcb-color-body-text);
+  border-collapse: collapse;
+  font-family: var(--bcb-font-ubuntu);
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid var(--bcb-gray-200);
+  font-size: 0.9rem;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid var(--bcb-gray-300);
+  font-weight: 700;
+  color: var(--bcb-gray-900);
+  background-color: var(--bcb-gray-100);
+}
+
+.table .thead-primary th {
+  background-color: var(--bcb-brand-blue);
+  color: var(--bcb-color-white);
+  border-color: var(--bcb-brand-blue);
+  font-weight: 500;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table-bordered {
+  border: 1px solid var(--bcb-gray-300);
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid var(--bcb-gray-300);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(2, 92, 117, 0.04);
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+}

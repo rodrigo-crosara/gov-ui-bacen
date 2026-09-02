@@ -1,17 +1,122 @@
-/* ============= BCB Design System — Organisms / Tabs ============= */
+/* ============= BCB Design System — Organisms / Tabs =============
+ * Navegação em Abas (Tabs) com chanfro característico do BCB.
+ * Totalmente compatível com WAI-ARIA Tabpanel Pattern.
+ * ================================================================ */
 
-/* NAVEGACAOABAS */
-.bcb-navegacaoabas .nav-tabs { padding-left: 5px; border-bottom: 0; position: relative; z-index: 2; }
-.bcb-navegacaoabas .nav-tabs:first-child { padding-left: 0; }
-.bcb-navegacaoabas .nav-link { position: relative; border-top-left-radius: 0; border-top-right-radius: 0.5rem; border-bottom: none; display: flex; align-items: center; line-height: 15px; padding: 0.5rem 0.7rem 0.5rem 1rem; font-size: 0.8rem; transition: background-color 0.2s, color 0.2s; height: 48px; background-color: var(--bcb-gray-200); border-color: var(--bcb-gray-400); color: var(--bcb-gray-700); margin-bottom: 0; }
-.bcb-navegacaoabas .nav-link:not(:last-child) { margin-right: 2px; }
-.bcb-navegacaoabas .nav-link:focus, .bcb-navegacaoabas .nav-link:hover { border-color: var(--bcb-gray-400); }
-.bcb-navegacaoabas .nav-link::before { content: ""; position: absolute; top: -1px; left: -2px; border-bottom: 21px solid transparent; border-left: 21px solid var(--bcb-color-white); }
-.bcb-navegacaoabas .nav-link.active { color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); background-color: var(--bcb-color-white); position: relative; bottom: -1px; }
-.bcb-navegacaoabas .nav-link:not(.active) .icone { display: none; }
-.bcb-navegacaoabas .nav-link .line { display: block; width: 0; height: 26px; border-left: 1px solid var(--bcb-gray-400); transform: rotate(45deg); position: absolute; left: 8px; top: -4px; }
-.bcb-navegacaoabas .nav-link.active .line { border-color: var(--bcb-brand-blue); }
-.bcb-navegacaoabas .nav-link:not(.active) img { filter: grayscale(1); }
-.bcb-navegacaoabas .nav-link .texto { margin-left: 8px; }
-.bcb-navegacaoabas .tab-content { border: 1px solid var(--bcb-brand-blue); border-radius: 0 0 5px 5px; position: relative; z-index: 1; }
-.bcb-navegacaoabas .tab-content > .tab-pane { padding: 1rem; }
+.bcb-navegacaoabas .nav-tabs,
+.bcb-navegacaoabas [role="tablist"] {
+  padding-left: 5px;
+  border-bottom: 0;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.bcb-navegacaoabas .nav-tabs:first-child,
+.bcb-navegacaoabas [role="tablist"]:first-child {
+  padding-left: 0;
+}
+
+.bcb-navegacaoabas .nav-link,
+.bcb-navegacaoabas [role="tab"] {
+  position: relative;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0.5rem;
+  border: 1px solid var(--bcb-gray-400);
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  line-height: 15px;
+  padding: 0.5rem 0.7rem 0.5rem 1rem;
+  font-size: 0.8rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  height: 48px;
+  background-color: var(--bcb-gray-200);
+  color: var(--bcb-gray-700);
+  margin-bottom: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bcb-navegacaoabas .nav-link:not(:last-child),
+.bcb-navegacaoabas [role="tab"]:not(:last-child) {
+  margin-right: 2px;
+}
+
+.bcb-navegacaoabas .nav-link:focus,
+.bcb-navegacaoabas .nav-link:hover,
+.bcb-navegacaoabas [role="tab"]:focus,
+.bcb-navegacaoabas [role="tab"]:hover {
+  border-color: var(--bcb-gray-400);
+  background-color: var(--bcb-gray-300);
+}
+
+.bcb-navegacaoabas .nav-link::before,
+.bcb-navegacaoabas [role="tab"]::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -2px;
+  border-bottom: 21px solid transparent;
+  border-left: 21px solid var(--bcb-color-white);
+}
+
+.bcb-navegacaoabas .nav-link.active,
+.bcb-navegacaoabas .nav-link[aria-selected="true"],
+.bcb-navegacaoabas [role="tab"][aria-selected="true"] {
+  color: var(--bcb-brand-blue);
+  border-color: var(--bcb-brand-blue);
+  background-color: var(--bcb-color-white);
+  position: relative;
+  bottom: -1px;
+  font-weight: 700;
+}
+
+.bcb-navegacaoabas .nav-link:not(.active):not([aria-selected="true"]) .icone,
+.bcb-navegacaoabas [role="tab"]:not([aria-selected="true"]) .icone {
+  display: none;
+}
+
+.bcb-navegacaoabas .nav-link .line,
+.bcb-navegacaoabas [role="tab"] .line {
+  display: block;
+  width: 0;
+  height: 26px;
+  border-left: 1px solid var(--bcb-gray-400);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 8px;
+  top: -4px;
+}
+
+.bcb-navegacaoabas .nav-link.active .line,
+.bcb-navegacaoabas .nav-link[aria-selected="true"] .line,
+.bcb-navegacaoabas [role="tab"][aria-selected="true"] .line {
+  border-color: var(--bcb-brand-blue);
+}
+
+.bcb-navegacaoabas .nav-link:not(.active):not([aria-selected="true"]) img,
+.bcb-navegacaoabas [role="tab"]:not([aria-selected="true"]) img {
+  filter: grayscale(1);
+}
+
+.bcb-navegacaoabas .nav-link .texto,
+.bcb-navegacaoabas [role="tab"] .texto {
+  margin-left: 8px;
+}
+
+.bcb-navegacaoabas .tab-content {
+  border: 1px solid var(--bcb-brand-blue);
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  z-index: 1;
+  background-color: var(--bcb-color-white);
+}
+
+.bcb-navegacaoabas .tab-content > .tab-pane,
+.bcb-navegacaoabas [role="tabpanel"] {
+  padding: 1.25rem;
+}

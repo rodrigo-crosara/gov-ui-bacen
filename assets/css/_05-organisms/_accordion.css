@@ -1,8 +1,77 @@
-/* ============= BCB Design System — Organisms / Accordion ============= */
+/* ============= BCB Design System — Organisms / Accordion =============
+ * Accordion / Sanfona expansível do BCB.
+ * Compatível com WAI-ARIA Accordion Pattern (aria-expanded, aria-controls).
+ * ==================================================================== */
 
-/* Ajuste Accordion Bootstrap para BCB */
-.accordion.modelo-1 .card { border: none; margin-bottom: 5px; border-radius: var(--bcb-radius-4); overflow: hidden; }
-.accordion.modelo-1 .card-header { background-color: var(--bcb-gray-100); border-bottom: none; padding: 0; transition: background-color 0.2s; }
-.accordion.modelo-1 .card-header:hover { background-color: var(--bcb-gray-200); }
-.accordion.modelo-1 .card-header .btn { padding: 1rem 1.25rem; font-weight: 500; color: var(--bcb-brand-blue); text-decoration: none; }
-.accordion.modelo-1 .card-body { border: 1px solid var(--bcb-gray-200); border-top: none; }
+.accordion.modelo-1 .card,
+.bcb-accordion .card {
+  border: none;
+  margin-bottom: 8px;
+  border-radius: var(--bcb-radius-4);
+  overflow: hidden;
+  background-color: var(--bcb-color-white);
+  box-shadow: var(--bcb-shadow-100);
+}
+
+.accordion.modelo-1 .card-header,
+.bcb-accordion .card-header {
+  background-color: var(--bcb-gray-100);
+  border-bottom: none;
+  padding: 0;
+  transition: background-color 0.2s;
+}
+
+.accordion.modelo-1 .card-header:hover,
+.bcb-accordion .card-header:hover {
+  background-color: var(--bcb-gray-200);
+}
+
+.accordion.modelo-1 .card-header .btn,
+.bcb-accordion .card-header .btn,
+.bcb-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.25rem;
+  font-weight: 500;
+  color: var(--bcb-brand-blue);
+  text-decoration: none;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.accordion.modelo-1 .card-header .btn:hover,
+.bcb-accordion .card-header .btn:hover,
+.bcb-accordion-trigger:hover {
+  color: var(--bcb-brand-blue-dark);
+  text-decoration: none;
+}
+
+.accordion.modelo-1 .card-header .btn .material-icons,
+.bcb-accordion-trigger .accordion-chevron {
+  font-size: 1.5rem;
+  transition: transform 0.25s ease-in-out;
+  color: var(--bcb-brand-blue);
+}
+
+/* Rotação automática do ícone quando expandido via aria-expanded="true" */
+.accordion.modelo-1 .card-header .btn[aria-expanded="true"] .material-icons,
+.bcb-accordion-trigger[aria-expanded="true"] .accordion-chevron,
+.accordion.modelo-1 .card-header .btn:not(.collapsed) .material-icons {
+  transform: rotate(180deg);
+}
+
+.accordion.modelo-1 .card-body,
+.bcb-accordion .card-body,
+.bcb-accordion-content {
+  border: 1px solid var(--bcb-gray-200);
+  border-top: none;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bcb-color-white);
+  color: var(--bcb-color-body-text);
+  line-height: 1.5;
+}

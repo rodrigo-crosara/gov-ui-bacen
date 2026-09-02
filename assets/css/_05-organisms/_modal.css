@@ -1,0 +1,129 @@
+/* ============= BCB Design System — Organisms / Modal e Dialog Acessível =============
+ * Componente de diálogo modal com bloqueio de foco, atributos ARIA e suporte a teclado.
+ * Compatível com WAI-ARIA Modal Dialog Pattern.
+ * ================================================================================= */
+
+.bcb-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 13, 14, 0.65);
+  backdrop-filter: blur(2px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+}
+
+.bcb-modal-backdrop.active,
+.bcb-modal-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bcb-modal-dialog {
+  background-color: var(--bcb-color-white);
+  border-radius: var(--bcb-radius-8);
+  box-shadow: var(--bcb-shadow-600);
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100vh - 3rem);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(-20px) scale(0.98);
+  transition: transform 0.25s ease-in-out;
+  border: 1px solid var(--bcb-gray-200);
+}
+
+.bcb-modal-backdrop.active .bcb-modal-dialog,
+.bcb-modal-backdrop.show .bcb-modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.bcb-modal-dialog.modal-lg {
+  max-width: 800px;
+}
+
+.bcb-modal-dialog.modal-sm {
+  max-width: 400px;
+}
+
+/* Modal Header */
+.bcb-modal-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--bcb-gray-200);
+  background-color: var(--bcb-gray-50);
+}
+
+.bcb-modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bcb-gray-900);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bcb-modal-close {
+  background: none;
+  border: none;
+  padding: 4px;
+  color: var(--bcb-gray-600);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--bcb-radius-4);
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.bcb-modal-close:hover,
+.bcb-modal-close:focus-visible {
+  color: var(--bcb-gray-900);
+  background-color: var(--bcb-gray-200);
+}
+
+/* Modal Body */
+.bcb-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex-grow: 1;
+  color: var(--bcb-color-body-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Modal Footer */
+.bcb-modal-footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid var(--bcb-gray-200);
+  background-color: var(--bcb-gray-50);
+}
+
+@media (max-width: 576px) {
+  .bcb-modal-backdrop {
+    padding: 0.75rem;
+  }
+  .bcb-modal-footer {
+    flex-direction: column-reverse;
+  }
+  .bcb-modal-footer .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Componentes — BCB Design System</title>
+    <meta name="description" content="Vitrine viva interativa de componentes do Design System do Banco Central do Brasil. Átomos, moléculas e organismos prontos para uso.">
+    
+    <!-- Bootstrap 4.6 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <!-- Google Fonts (Ubuntu + Cormorant Garamond) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    
+    <!-- BCB Styles -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+    
+    <style>
+        .header-bcb {
+            background-color: var(--bcb-brand-blue);
+            color: var(--bcb-color-white);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .header-bcb h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header-bcb .badge-version {
+            font-size: 0.65rem;
+            background-color: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: 400;
+        }
+
+        .ds-component-card {
+            background-color: var(--bcb-color-white);
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            margin-bottom: 2.5rem;
+            box-shadow: var(--bcb-shadow-100);
+            overflow: hidden;
+        }
+        .ds-component-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--bcb-gray-200);
+            background-color: var(--bcb-gray-50);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .ds-component-title {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bcb-gray-900);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .ds-component-desc {
+            font-size: 0.9rem;
+            color: var(--bcb-gray-600);
+            margin: 0.25rem 0 0 0;
+        }
+        .ds-component-preview {
+            padding: 2rem;
+            background-color: var(--bcb-color-white);
+        }
+        .ds-component-code {
+            background-color: var(--bcb-gray-900);
+            color: #E6EAEF;
+            padding: 1.25rem;
+            border-top: 1px solid var(--bcb-gray-200);
+            position: relative;
+        }
+        .ds-component-code pre {
+            margin: 0;
+            color: #E6EAEF;
+            font-family: 'Ubuntu Mono', 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+        .btn-copy-code {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #FFFFFF;
+            border-radius: var(--bcb-radius-4);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-copy-code:hover {
+            background: var(--bcb-brand-blue);
+            color: #FFFFFF;
+        }
+
+        .ds-search-box {
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .ds-search-box input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+            border: 1px solid var(--bcb-gray-300);
+            border-radius: var(--bcb-radius-4);
+            background-color: var(--bcb-color-white);
+            color: var(--bcb-color-body-text);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Links -->
+    <ul class="bcb-skip-links">
+        <li><a href="#conteudo-principal" class="bcb-skip-link">Ir para os componentes</a></li>
+    </ul>
+
+    <!-- Header Fixo da Documentação -->
+    <header class="header-bcb" role="banner">
+        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+            <h1>
+                <span class="material-icons" aria-hidden="true">widgets</span>
+                Catálogo de Componentes
+                <span class="badge-version">v1.2.0</span>
+            </h1>
+            <div class="d-flex align-items-center" style="gap: 0.75rem;">
+                <a href="../index.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Página Principal" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons md-18" aria-hidden="true">home</span>
+                    <span class="d-none d-md-inline">Início</span>
+                </a>
+                <a href="tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Design Tokens" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons md-18" aria-hidden="true">palette</span>
+                    <span class="d-none d-md-inline">Tokens</span>
+                </a>
+                <a href="changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Histórico de versões" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons md-18" aria-hidden="true">history</span>
+                    <span class="d-none d-md-inline">Changelog</span>
+                </a>
+                <button id="theme-toggle" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Alternar tema claro/escuro" style="border-color: rgba(255,255,255,0.3); color: white; background: transparent;">
+                    <span class="material-icons md-18" aria-hidden="true">brightness_medium</span>
+                </button>
+                <button id="contrast-toggle" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Alternar modo de alto contraste" style="border-color: rgba(255,255,255,0.3); color: white; background: transparent;">
+                    <span class="material-icons md-18" aria-hidden="true">contrast</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Layout Wrapper: Sidebar + Main -->
+    <div class="ds-wrapper">
+        <!-- Sidebar de Navegação de Componentes -->
+        <nav class="ds-sidebar" aria-label="Navegação do catálogo de componentes">
+            <div class="ds-search-box">
+                <input type="text" id="componentSearch" placeholder="Buscar componente..." aria-label="Filtrar componentes na lista">
+            </div>
+
+            <div class="ds-sidebar-title">Átomos (Base)</div>
+            <ul class="nav flex-column mb-3 list-unstyled">
+                <li><a class="nav-link" href="#comp-buttons">Botões (Buttons)</a></li>
+                <li><a class="nav-link" href="#comp-links">Links & Âncoras</a></li>
+                <li><a class="nav-link" href="#comp-icons">Material Icons</a></li>
+                <li><a class="nav-link" href="#comp-govbr">Barra Gov.br & Skip Links</a></li>
+                <li><a class="nav-link" href="#comp-tags">Tags & Badges</a></li>
+                <li><a class="nav-link" href="#comp-forms">Controles de Formulário</a></li>
+            </ul>
+
+            <div class="ds-sidebar-title">Moléculas (Compostos)</div>
+            <ul class="nav flex-column mb-3 list-unstyled">
+                <li><a class="nav-link" href="#comp-callout">Callouts & Destaques</a></li>
+                <li><a class="nav-link" href="#comp-indicator">Cards de Indicadores</a></li>
+                <li><a class="nav-link" href="#comp-datatable">Data Table Responsiva</a></li>
+                <li><a class="nav-link" href="#comp-filters">Filtros & Busca Facetada</a></li>
+                <li><a class="nav-link" href="#comp-toasts">Toast & Alertas</a></li>
+                <li><a class="nav-link" href="#comp-cards">Cards de Links (Listalinks)</a></li>
+                <li><a class="nav-link" href="#comp-downloads">Download de Documentos</a></li>
+                <li><a class="nav-link" href="#comp-breadcrumb">Breadcrumb</a></li>
+            </ul>
+
+            <div class="ds-sidebar-title">Organismos (Estruturas)</div>
+            <ul class="nav flex-column mb-3 list-unstyled">
+                <li><a class="nav-link" href="#comp-tabs">Navegação em Abas (Tabs)</a></li>
+                <li><a class="nav-link" href="#comp-accordion">Accordions (Sanfonas)</a></li>
+                <li><a class="nav-link" href="#comp-modal">Modal & Dialog Acessível</a></li>
+                <li><a class="nav-link" href="#comp-hero">Hero Banner</a></li>
+                <li><a class="nav-link" href="#comp-process">Process List (Passos)</a></li>
+                <li><a class="nav-link" href="#comp-stepper">Stepper (Wizards)</a></li>
+                <li><a class="nav-link" href="#comp-timelines">Timelines (Educativa & H)</a></li>
+                <li><a class="nav-link" href="#comp-videos">Carrossel de Vídeos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="ds-main" id="conteudo-principal">
+            <div class="d-flex justify-content-between align-items-start mb-4 border-bottom pb-3">
+                <div>
+                    <h2 class="h1 font-weight-bold color-1 mb-1">Catálogo Vivo de Componentes</h2>
+                    <p class="lead text-muted mb-0">Biblioteca oficial com código HTML canônico, variantes válidas e conformidade WCAG 2.2 / e-MAG.</p>
+                </div>
+            </div>
+
+            <!-- ================= ÁTOMOS ================= -->
+            <section class="mb-5">
+                <span class="tag-bcb primary mb-2">Atomic Design · Átomos</span>
+                <h3 class="h2 font-weight-bold mb-4">Elementos Fundamentais</h3>
+
+                <!-- COMPONENTE: BOTÕES -->
+                <div class="ds-component-card" id="comp-buttons">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Botões (Buttons)</h4>
+                            <p class="ds-component-desc">Ações principais, secundárias, com contorno e suporte a ícones.</p>
+                        </div>
+                        <span class="tag-bcb">WCAG 2.2 AAA</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="d-flex flex-wrap align-items-center" style="gap: 1rem;">
+                            <button type="button" class="btn btn-primary">Ação Primária</button>
+                            <button type="button" class="btn btn-secondary">Ação Secundária</button>
+                            <button type="button" class="btn btn-outline-primary">Outline</button>
+                            <button type="button" class="btn btn-primary d-inline-flex align-items-center">
+                                <span class="material-icons mr-1" aria-hidden="true">file_download</span> Baixar Relatório
+                            </button>
+                            <button type="button" class="btn btn-primary" disabled>Desabilitado</button>
+                        </div>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-buttons">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-buttons">&lt;button type="button" class="btn btn-primary"&gt;Ação Primária&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Ação Secundária&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-primary"&gt;Outline&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary d-inline-flex align-items-center"&gt;
+  &lt;span class="material-icons mr-1" aria-hidden="true"&gt;file_download&lt;/span&gt; Baixar Relatório
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- COMPONENTE: BARRA GOV.BR & SKIP LINKS -->
+                <div class="ds-component-card" id="comp-govbr">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Barra Gov.br e Skip Links</h4>
+                            <p class="ds-component-desc">Identidade oficial do Governo Federal e atalhos de navegação por teclado.</p>
+                        </div>
+                        <span class="tag-bcb">e-MAG 1.1</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="bcb-govbr-bar mb-3">
+                            <span class="govbr-logo">
+                                <span class="material-icons md-18" aria-hidden="true">flag</span> Brasil.gov.br
+                            </span>
+                            <span>Ministério da Fazenda / BCB</span>
+                        </div>
+                        <p class="small text-muted mb-0">Pressione a tecla <kbd>Tab</kbd> no início da página para visualizar os skip links flutuantes.</p>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-govbr">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-govbr">&lt;!-- Skip Links --&gt;
+&lt;ul class="bcb-skip-links" aria-label="Atalhos de acessibilidade"&gt;
+  &lt;li&gt;&lt;a href="#conteudo-principal" class="bcb-skip-link" accesskey="1"&gt;Ir para o conteúdo &lt;span class="accesskey-badge"&gt;Alt + 1&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Barra Brasil --&gt;
+&lt;div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px; display:block;"&gt;
+  &lt;ul id="menu-barra-temp" style="list-style:none; margin:0; padding:0; display:flex; align-items:center; height:100%;"&gt;
+    &lt;li&gt;&lt;a href="https://brasil.gov.br" style="color:white; text-decoration:none; font-size:12px;"&gt;Brasil.gov.br&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- COMPONENTE: CONTROLES DE FORMULÁRIO -->
+                <div class="ds-component-card" id="comp-forms">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Controles de Formulário e Validação</h4>
+                            <p class="ds-component-desc">Inputs textuais, selects customizados, switch toggles e estados de validação.</p>
+                        </div>
+                        <span class="tag-bcb">WCAG 3.3.1</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="demoInputValid" class="font-weight-bold">E-mail Corporativo</label>
+                                <input type="email" class="form-control is-valid" id="demoInputValid" value="servidor@bcb.gov.br">
+                                <div class="valid-feedback">E-mail verificado na base institucional.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="demoInputInvalid" class="font-weight-bold">Número de Protocolo</label>
+                                <input type="text" class="form-control is-invalid" id="demoInputInvalid" value="1234">
+                                <div class="invalid-feedback">Protocolo deve conter exatamente 8 dígitos.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch mt-2">
+                                    <input type="checkbox" class="custom-control-input" id="demoSwitch" checked>
+                                    <label class="custom-control-label" for="demoSwitch">Receber alertas de cotação diária</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-forms">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-forms">&lt;div class="form-group"&gt;
+  &lt;label for="email"&gt;E-mail Corporativo&lt;/label&gt;
+  &lt;input type="email" class="form-control is-valid" id="email"&gt;
+  &lt;div class="valid-feedback"&gt;E-mail verificado.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="custom-control custom-switch"&gt;
+  &lt;input type="checkbox" class="custom-control-input" id="switch1" checked&gt;
+  &lt;label class="custom-control-label" for="switch1"&gt;Receber alertas&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= MOLÉCULAS ================= -->
+            <section class="mb-5">
+                <span class="tag-bcb primary mb-2">Atomic Design · Moléculas</span>
+                <h3 class="h2 font-weight-bold mb-4">Compostos e Padrões Funcionais</h3>
+
+                <!-- COMPONENTE: CALLOUTS -->
+                <div class="ds-component-card" id="comp-callout">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Callouts e Alertas Estruturados</h4>
+                            <p class="ds-component-desc">5 variantes semânticas com 3 opções de estrutura visual (left-bordered, outline, elevated).</p>
+                        </div>
+                        <span class="tag-bcb">Design System Oficial</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="callout callout-brand callout-left-bordered mb-3">
+                            <span class="material-icons callout-icon" aria-hidden="true">info</span>
+                            <div class="callout-content">
+                                <h5 class="callout-title">Informativo Institucional (Brand)</h5>
+                                <p class="mb-0">Orientações normativas e comunicados de rotina do Banco Central.</p>
+                            </div>
+                        </div>
+                        <div class="callout callout-warning callout-left-bordered mb-3">
+                            <span class="material-icons callout-icon" aria-hidden="true">warning</span>
+                            <div class="callout-content">
+                                <h5 class="callout-title">Atenção e Prazos (Warning)</h5>
+                                <p class="mb-0">Prazos de entrega de declarações de capitais brasileiros no exterior.</p>
+                            </div>
+                        </div>
+                        <div class="callout callout-danger callout-left-bordered mb-0">
+                            <span class="material-icons callout-icon" aria-hidden="true">gpp_bad</span>
+                            <div class="callout-content">
+                                <h5 class="callout-title">Alerta de Fraude e Segurança (Danger)</h5>
+                                <p class="mb-0">O Banco Central não realiza cobrança de taxas para liberação de empréstimos ou resgates.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-callout">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-callout">&lt;div class="callout callout-brand callout-left-bordered"&gt;
+  &lt;span class="material-icons callout-icon" aria-hidden="true"&gt;info&lt;/span&gt;
+  &lt;div class="callout-content"&gt;
+    &lt;h4 class="callout-title"&gt;Título do Callout&lt;/h4&gt;
+    &lt;p&gt;Mensagem detalhada do aviso.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- COMPONENTE: DATA TABLE RESPONSIVA -->
+                <div class="ds-component-card" id="comp-datatable">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Data Table Responsiva (Séries e Taxas)</h4>
+                            <p class="ds-component-desc">Cabeçalhos ordenáveis, paginação integrada, alinhamento numérico tabular e badges de variação.</p>
+                        </div>
+                        <span class="tag-bcb">WCAG 1.3.1</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="bcb-data-table-container mb-0">
+                            <div class="bcb-data-table-header">
+                                <div>
+                                    <h5 class="bcb-data-table-title mb-0">Metas da Taxa Selic (Copom)</h5>
+                                </div>
+                                <div class="bcb-data-table-actions">
+                                    <button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center">
+                                        <span class="material-icons mr-1" aria-hidden="true">file_download</span> CSV
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="bcb-data-table">
+                                    <caption>Histórico recente de decisões do Copom sobre a taxa básica de juros.</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="sortable" aria-sort="descending">Reunião <span class="material-icons sort-icon" aria-hidden="true">arrow_upward</span></th>
+                                            <th scope="col" class="sortable">Data <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
+                                            <th scope="col" class="text-numeric sortable">Meta (% a.a.) <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
+                                            <th scope="col" class="text-center">Variação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">268ª Reunião</th>
+                                            <td>12/03/2026</td>
+                                            <td class="text-numeric"><strong>14,25%</strong></td>
+                                            <td class="text-center"><span class="bcb-trend-badge positive">+1,00 p.p.</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">267ª Reunião</th>
+                                            <td>29/01/2026</td>
+                                            <td class="text-numeric"><strong>13,25%</strong></td>
+                                            <td class="text-center"><span class="bcb-trend-badge neutral">0,00 p.p.</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="bcb-table-pagination">
+                                <span>Exibindo 2 de 268 reuniões</span>
+                                <nav aria-label="Paginação">
+                                    <ul class="pagination pagination-sm">
+                                        <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-datatable">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-datatable">&lt;div class="bcb-data-table-container"&gt;
+  &lt;div class="table-responsive"&gt;
+    &lt;table class="bcb-data-table"&gt;
+      &lt;caption&gt;Descrição da série.&lt;/caption&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col" class="sortable" aria-sort="descending"&gt;Reunião&lt;/th&gt;
+          &lt;th scope="col" class="text-numeric"&gt;Meta (% a.a.)&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;th scope="row"&gt;268ª&lt;/th&gt;
+          &lt;td class="text-numeric"&gt;14,25%&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- COMPONENTE: FILTROS E BUSCA FACETADA -->
+                <div class="ds-component-card" id="comp-filters">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Filtros e Busca Facetada</h4>
+                            <p class="ds-component-desc">Painéis de refinamento por período, categorias e chips de filtros ativos.</p>
+                        </div>
+                        <span class="tag-bcb">Busca Avançada</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="bcb-filter-panel mb-0">
+                            <div class="bcb-filter-panel-header">
+                                <h5 class="bcb-filter-panel-title">
+                                    <span class="material-icons" aria-hidden="true">filter_list</span> Filtrar Normativos
+                                </h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 bcb-filter-group">
+                                    <label class="bcb-filter-label" for="dateStartDemo">Período</label>
+                                    <div class="bcb-date-range">
+                                        <input type="date" class="form-control" id="dateStartDemo" aria-label="Data inicial">
+                                        <span class="bcb-date-separator">até</span>
+                                        <input type="date" class="form-control" id="dateEndDemo" aria-label="Data final">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 bcb-filter-group">
+                                    <span class="bcb-filter-label">Tipo de Norma</span>
+                                    <div class="d-flex" style="gap: 1.5rem;">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="chkResolucao" checked>
+                                            <label class="custom-control-label" for="chkResolucao">Resoluções BCB</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="chkInstrucao">
+                                            <label class="custom-control-label" for="chkInstrucao">Instruções</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bcb-active-filters mt-3 mb-0">
+                                <span class="bcb-active-filters-label">Filtros ativos:</span>
+                                <span class="bcb-filter-chip">
+                                    Resoluções BCB
+                                    <button type="button" class="chip-remove-btn" aria-label="Remover filtro Resoluções BCB">
+                                        <span class="material-icons" aria-hidden="true">close</span>
+                                    </button>
+                                </span>
+                                <button type="button" class="bcb-clear-all-filters">Limpar filtros</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-filters">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-filters">&lt;div class="bcb-filter-panel"&gt;
+  &lt;div class="bcb-date-range"&gt;
+    &lt;input type="date" class="form-control" aria-label="Data inicial"&gt;
+    &lt;span class="bcb-date-separator"&gt;até&lt;/span&gt;
+    &lt;input type="date" class="form-control" aria-label="Data final"&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-active-filters"&gt;
+    &lt;span class="bcb-filter-chip"&gt;Resoluções BCB &lt;button type="button" class="chip-remove-btn"&gt;×&lt;/button&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- COMPONENTE: TOASTS E ALERTAS -->
+                <div class="ds-component-card" id="comp-toasts">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Alertas e Notificações (Toast)</h4>
+                            <p class="ds-component-desc">Notificações em tempo real com suporte a leitores de tela via <code>role="alert"</code>.</p>
+                        </div>
+                        <span class="tag-bcb">WAI-ARIA Live</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="bcb-alert alert-success mb-3" role="status">
+                            <span class="material-icons alert-icon" aria-hidden="true">check_circle</span>
+                            <div class="alert-body">
+                                <h5 class="alert-title">Operação Concluída com Sucesso</h5>
+                                <p class="mb-0">Sua solicitação de certidão negativa foi gerada e enviada por e-mail.</p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" id="btnDispararToast">
+                            <span class="material-icons mr-1" aria-hidden="true">notifications</span> Testar Notificação Flutuante (Toast)
+                        </button>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-toasts">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-toasts">&lt;div class="bcb-toast toast-success" role="status"&gt;
+  &lt;span class="material-icons bcb-toast-icon" aria-hidden="true"&gt;check_circle&lt;/span&gt;
+  &lt;div class="bcb-toast-body"&gt;
+    &lt;h5 class="bcb-toast-title"&gt;Sucesso&lt;/h5&gt;
+    &lt;p class="bcb-toast-message"&gt;Arquivo exportado com sucesso.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;button type="button" class="bcb-toast-close" aria-label="Fechar"&gt;×&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= ORGANISMOS ================= -->
+            <section class="mb-5">
+                <span class="tag-bcb primary mb-2">Atomic Design · Organismos</span>
+                <h3 class="h2 font-weight-bold mb-4">Estruturas Complexas de Layout</h3>
+
+                <!-- COMPONENTE: MODAL ACESSÍVEL -->
+                <div class="ds-component-card" id="comp-modal">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Modal e Diálogo Acessível</h4>
+                            <p class="ds-component-desc">Janela modal com backdrop suave, bloqueio de foco e atributos ARIA.</p>
+                        </div>
+                        <span class="tag-bcb">WAI-ARIA Dialog</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <button type="button" class="btn btn-primary" id="btnAbrirModal">
+                            <span class="material-icons mr-1" aria-hidden="true">open_in_browser</span> Abrir Demonstração de Modal
+                        </button>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-modal">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-modal">&lt;div class="bcb-modal-backdrop" id="meuModal" role="dialog" aria-modal="true" aria-labelledby="modalTitulo"&gt;
+  &lt;div class="bcb-modal-dialog"&gt;
+    &lt;div class="bcb-modal-header"&gt;
+      &lt;h4 class="bcb-modal-title" id="modalTitulo"&gt;Título do Modal&lt;/h4&gt;
+      &lt;button type="button" class="bcb-modal-close" aria-label="Fechar modal"&gt;×&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-modal-body"&gt;
+      &lt;p&gt;Conteúdo do diálogo.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-modal-footer"&gt;
+      &lt;button type="button" class="btn btn-outline-primary"&gt;Cancelar&lt;/button&gt;
+      &lt;button type="button" class="btn btn-primary"&gt;Confirmar&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- COMPONENTE: TABS (ABAS) -->
+                <div class="ds-component-card" id="comp-tabs">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Navegação em Abas (Tabs com Chanfro)</h4>
+                            <p class="ds-component-desc">Abas estilizadas com o chanfro angular característico do Banco Central.</p>
+                        </div>
+                        <span class="tag-bcb">Identidade BCB</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="bcb-navegacaoabas">
+                            <nav>
+                                <div class="nav nav-tabs" role="tablist">
+                                    <a class="nav-link active" id="tab-demo-1" data-toggle="tab" href="#pane-demo-1" role="tab" aria-controls="pane-demo-1" aria-selected="true">
+                                        <span class="line"></span>
+                                        <div class="icone"><span class="material-icons" aria-hidden="true">person</span></div>
+                                        <div class="texto">Pessoa Física</div>
+                                    </a>
+                                    <a class="nav-link" id="tab-demo-2" data-toggle="tab" href="#pane-demo-2" role="tab" aria-controls="pane-demo-2" aria-selected="false">
+                                        <span class="line"></span>
+                                        <div class="icone"><span class="material-icons" aria-hidden="true">business</span></div>
+                                        <div class="texto">Pessoa Jurídica</div>
+                                    </a>
+                                </div>
+                            </nav>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="pane-demo-1" role="tabpanel" aria-labelledby="tab-demo-1">
+                                    <p class="mb-0">Serviços e consultas para o cidadão: Registrato, chaves Pix e moedas comemorativas.</p>
+                                </div>
+                                <div class="tab-pane fade" id="pane-demo-2" role="tabpanel" aria-labelledby="tab-demo-2">
+                                    <p class="mb-0">Serviços para instituições reguladas, autorizações de funcionamento e normativos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-tabs">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-tabs">&lt;div class="bcb-navegacaoabas"&gt;
+  &lt;nav&gt;
+    &lt;div class="nav nav-tabs" role="tablist"&gt;
+      &lt;a class="nav-link active" data-toggle="tab" href="#aba1" role="tab" aria-selected="true"&gt;
+        &lt;span class="line"&gt;&lt;/span&gt;
+        &lt;div class="icone"&gt;&lt;span class="material-icons" aria-hidden="true"&gt;person&lt;/span&gt;&lt;/div&gt;
+        &lt;div class="texto"&gt;Aba 1&lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+  &lt;div class="tab-content"&gt;
+    &lt;div class="tab-pane fade show active" id="aba1" role="tabpanel"&gt;Conteúdo&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- COMPONENTE: ACCORDIONS -->
+                <div class="ds-component-card" id="comp-accordion">
+                    <div class="ds-component-header">
+                        <div>
+                            <h4 class="ds-component-title">Accordions (Sanfonas Expansíveis)</h4>
+                            <p class="ds-component-desc">Estrutura acessível para FAQs e seções retráteis com animação de seta.</p>
+                        </div>
+                        <span class="tag-bcb">WAI-ARIA Accordion</span>
+                    </div>
+                    <div class="ds-component-preview">
+                        <div class="accordion modelo-1" id="accordionShowcase">
+                            <div class="card">
+                                <div class="card-header" id="accHead1">
+                                    <button class="btn text-left" type="button" data-toggle="collapse" data-target="#accCol1" aria-expanded="true" aria-controls="accCol1">
+                                        <span>Como consultar o Registrato?</span>
+                                        <span class="material-icons" aria-hidden="true">expand_more</span>
+                                    </button>
+                                </div>
+                                <div id="accCol1" class="collapse show" aria-labelledby="accHead1" data-parent="#accordionShowcase">
+                                    <div class="card-body">
+                                        O acesso é realizado gratuitamente pelo portal gov.br com nível de segurança prata ou ouro.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="accHead2">
+                                    <button class="btn text-left collapsed" type="button" data-toggle="collapse" data-target="#accCol2" aria-expanded="false" aria-controls="accCol2">
+                                        <span>Quais relatórios estão disponíveis?</span>
+                                        <span class="material-icons" aria-hidden="true">expand_more</span>
+                                    </button>
+                                </div>
+                                <div id="accCol2" class="collapse" aria-labelledby="accHead2" data-parent="#accordionShowcase">
+                                    <div class="card-body">
+                                        Relatórios de chaves Pix, operações de câmbio, contas bancárias e empréstimos/financiamentos (SCR).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ds-component-code">
+                        <button type="button" class="btn-copy-code" data-code="code-accordion">
+                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar HTML
+                        </button>
+                        <pre><code id="code-accordion">&lt;div class="accordion modelo-1" id="faq"&gt;
+  &lt;div class="card"&gt;
+    &lt;div class="card-header" id="h1"&gt;
+      &lt;button class="btn text-left" type="button" data-toggle="collapse" data-target="#c1" aria-expanded="true" aria-controls="c1"&gt;
+        &lt;span&gt;Pergunta?&lt;/span&gt;
+        &lt;span class="material-icons" aria-hidden="true"&gt;expand_more&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id="c1" class="collapse show" aria-labelledby="h1" data-parent="#faq"&gt;
+      &lt;div class="card-body"&gt;Resposta.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Interativo de Demonstração -->
+    <div class="bcb-modal-backdrop" id="modalDemo" role="dialog" aria-modal="true" aria-labelledby="modalDemoTitulo" aria-describedby="modalDemoDesc">
+        <div class="bcb-modal-dialog">
+            <div class="bcb-modal-header">
+                <h4 class="bcb-modal-title" id="modalDemoTitulo">
+                    <span class="material-icons text-primary" aria-hidden="true">security</span>
+                    Autenticação Gov.br
+                </h4>
+                <button type="button" class="bcb-modal-close" id="btnFecharModal" aria-label="Fechar janela modal">
+                    <span class="material-icons" aria-hidden="true">close</span>
+                </button>
+            </div>
+            <div class="bcb-modal-body" id="modalDemoDesc">
+                <p>Este é um exemplo do organismo <strong>Modal Acessível</strong> do Banco Central do Brasil. Ele suporta fechamento por teclado (ESC), foco restrito e conformidade total com WCAG.</p>
+            </div>
+            <div class="bcb-modal-footer">
+                <button type="button" class="btn btn-outline-primary" id="btnCancelarModal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmarModal">Confirmar e Prosseguir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container Flutuante de Toasts -->
+    <div class="bcb-toast-container" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+        <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
+    </button>
+
+    <!-- Scripts Bootstrap e Interatividade da Vitrine -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // 1. Alternância de Modo Escuro
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+        });
+
+        // 2. Alternância de Modo de Alto Contraste
+        const contrastBtn = document.getElementById('contrast-toggle');
+        contrastBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-contrast');
+            const target = current === 'high' ? 'normal' : 'high';
+            document.documentElement.setAttribute('data-contrast', target);
+        });
+
+        // 3. Botões de Copiar Código com feedback
+        document.querySelectorAll('.btn-copy-code').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const codeId = btn.getAttribute('data-code');
+                const codeElement = document.getElementById(codeId);
+                if (codeElement) {
+                    navigator.clipboard.writeText(codeElement.innerText).then(() => {
+                        const originalHTML = btn.innerHTML;
+                        btn.innerHTML = '<span class="material-icons md-18" aria-hidden="true">check</span> Copiado!';
+                        btn.style.background = '#28a745';
+                        setTimeout(() => {
+                            btn.innerHTML = originalHTML;
+                            btn.style.background = '';
+                        }, 2000);
+                    });
+                }
+            });
+        });
+
+        // 4. Interatividade do Modal
+        const modal = document.getElementById('modalDemo');
+        const openModalBtn = document.getElementById('btnAbrirModal');
+        const closeModalBtn = document.getElementById('btnFecharModal');
+        const cancelModalBtn = document.getElementById('btnCancelarModal');
+        const confirmModalBtn = document.getElementById('btnConfirmarModal');
+
+        function toggleModal(show) {
+            modal.classList.toggle('active', show);
+        }
+        if (openModalBtn) openModalBtn.addEventListener('click', () => toggleModal(true));
+        if (closeModalBtn) closeModalBtn.addEventListener('click', () => toggleModal(false));
+        if (cancelModalBtn) cancelModalBtn.addEventListener('click', () => toggleModal(false));
+        if (confirmModalBtn) confirmModalBtn.addEventListener('click', () => {
+            toggleModal(false);
+            mostrarToast('Operação Confirmada', 'Ação executada com sucesso no sistema.');
+        });
+
+        // 5. Interatividade do Toast
+        function mostrarToast(titulo, mensagem) {
+            const container = document.getElementById('toastStack');
+            const toast = document.createElement('div');
+            toast.className = 'bcb-toast toast-success';
+            toast.setAttribute('role', 'status');
+            toast.innerHTML = `
+                <span class="material-icons bcb-toast-icon" aria-hidden="true">check_circle</span>
+                <div class="bcb-toast-body">
+                    <h5 class="bcb-toast-title">${titulo}</h5>
+                    <p class="bcb-toast-message">${mensagem}</p>
+                </div>
+                <button type="button" class="bcb-toast-close" aria-label="Fechar notificação">
+                    <span class="material-icons" aria-hidden="true">close</span>
+                </button>
+            `;
+            container.appendChild(toast);
+            toast.querySelector('.bcb-toast-close').addEventListener('click', () => toast.remove());
+            setTimeout(() => { if (toast.parentNode) toast.remove(); }, 4000);
+        }
+
+        const toastTestBtn = document.getElementById('btnDispararToast');
+        if (toastTestBtn) {
+            toastTestBtn.addEventListener('click', () => {
+                mostrarToast('Notificação do Sistema', 'Dados sincronizados com sucesso.');
+            });
+        }
+
+        // 6. Filtro dinâmico na Sidebar
+        const searchInput = document.getElementById('componentSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const termo = e.target.value.toLowerCase();
+                document.querySelectorAll('.ds-sidebar .nav-link').forEach(link => {
+                    const texto = link.textContent.toLowerCase();
+                    link.style.display = texto.includes(termo) ? 'block' : 'none';
+                });
+            });
+        }
+
+        // 7. Botão Voltar ao Topo
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (backToTop) backToTop.classList.toggle('visible', window.scrollY > 300);
+        });
+        if (backToTop) {
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    </script>
+</body>
+</html>

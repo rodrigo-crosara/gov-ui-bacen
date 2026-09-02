@@ -1,0 +1,211 @@
+/* ============= BCB Design System — Molecules / Data Table Responsiva =============
+ * Componente avançado para exibição de séries temporais, cotações e taxas Selic.
+ * Suporte a ordenação de colunas, paginação embutida, alinhamento numérico e acessibilidade.
+ * =============================================================================== */
+
+.bcb-data-table-container {
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-gray-200);
+  border-radius: var(--bcb-radius-8);
+  box-shadow: var(--bcb-shadow-100);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.bcb-data-table-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--bcb-gray-50);
+  border-bottom: 1px solid var(--bcb-gray-200);
+}
+
+.bcb-data-table-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bcb-gray-900);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bcb-data-table-subtitle {
+  font-size: 0.85rem;
+  color: var(--bcb-gray-600);
+  margin-top: 0.25rem;
+}
+
+.bcb-data-table-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bcb-data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--bcb-font-ubuntu);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.bcb-data-table caption {
+  padding: 0.75rem 1.5rem;
+  color: var(--bcb-gray-600);
+  caption-side: bottom;
+  font-size: 0.8rem;
+  font-style: italic;
+  border-top: 1px solid var(--bcb-gray-200);
+  background-color: var(--bcb-gray-50);
+}
+
+.bcb-data-table thead th {
+  background-color: var(--bcb-gray-100);
+  color: var(--bcb-gray-800);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.85rem 1rem;
+  border-bottom: 2px solid var(--bcb-gray-300);
+  border-top: none;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.bcb-data-table thead th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.bcb-data-table thead th.sortable:hover {
+  background-color: var(--bcb-gray-200);
+  color: var(--bcb-brand-blue);
+}
+
+.bcb-data-table thead th .sort-icon {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 4px;
+  font-size: 1rem;
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.bcb-data-table thead th[aria-sort="ascending"] .sort-icon,
+.bcb-data-table thead th[aria-sort="descending"] .sort-icon {
+  opacity: 1;
+  color: var(--bcb-brand-blue);
+}
+
+.bcb-data-table thead th[aria-sort="descending"] .sort-icon {
+  transform: rotate(180deg);
+}
+
+.bcb-data-table tbody td,
+.bcb-data-table tbody th {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+  border-top: 1px solid var(--bcb-gray-200);
+  color: var(--bcb-gray-800);
+  background-color: var(--bcb-color-white);
+  transition: background-color 0.15s;
+}
+
+.bcb-data-table tbody tr:hover td,
+.bcb-data-table tbody tr:hover th {
+  background-color: rgba(2, 92, 117, 0.04);
+}
+
+/* Alinhamento Numérico e Formatação Financeira */
+.bcb-data-table .text-numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.bcb-data-table .text-center {
+  text-align: center;
+}
+
+/* Badges e Destaques de Variação */
+.bcb-trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 8px;
+  border-radius: var(--bcb-radius-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.bcb-trend-badge.positive {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.bcb-trend-badge.negative {
+  background-color: #FFEBEE;
+  color: #C62828;
+}
+
+.bcb-trend-badge.neutral {
+  background-color: var(--bcb-gray-100);
+  color: var(--bcb-gray-700);
+}
+
+/* Rodapé de Paginação Integrada */
+.bcb-table-pagination {
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--bcb-gray-50);
+  border-top: 1px solid var(--bcb-gray-200);
+  font-size: 0.85rem;
+  color: var(--bcb-gray-600);
+}
+
+.bcb-table-pagination .pagination {
+  margin-bottom: 0;
+}
+
+/* Variações Visuais de Tabela */
+.bcb-data-table-container.theme-brand thead th {
+  background-color: var(--bcb-brand-blue);
+  color: var(--bcb-color-white);
+  border-color: var(--bcb-brand-blue);
+}
+
+.bcb-data-table-container.theme-brand thead th.sortable:hover {
+  background-color: var(--bcb-brand-blue-dark);
+  color: var(--bcb-brand-amarellato);
+}
+
+.bcb-data-table-container.theme-brand thead th[aria-sort="ascending"] .sort-icon,
+.bcb-data-table-container.theme-brand thead th[aria-sort="descending"] .sort-icon {
+  color: var(--bcb-brand-amarellato);
+}
+
+/* Responsividade Mobile: Tabela com scroll horizontal ou visual em cards */
+@media (max-width: 768px) {
+  .bcb-data-table-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .bcb-table-pagination {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}

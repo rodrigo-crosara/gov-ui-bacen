@@ -1,0 +1,154 @@
+/* ============= BCB Design System — Molecules / Alert e Toast Notification =============
+ * Notificações flutuantes (Toasts) e Alertas de status do sistema.
+ * Totalmente compatíveis com leitores de tela via role="alert" e aria-live="polite".
+ * ==================================================================================== */
+
+/* Container Flutuante de Toasts */
+.bcb-toast-container {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1060;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+  width: calc(100% - 3rem);
+  pointer-events: none;
+}
+
+.bcb-toast {
+  pointer-events: auto;
+  background-color: var(--bcb-color-white);
+  border-radius: var(--bcb-radius-8);
+  box-shadow: var(--bcb-shadow-600);
+  border-left: 5px solid var(--bcb-brand-blue);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  animation: slideInToast 0.3s ease-out;
+}
+
+@keyframes slideInToast {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.bcb-toast-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.bcb-toast-body {
+  flex-grow: 1;
+}
+
+.bcb-toast-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: var(--bcb-gray-900);
+}
+
+.bcb-toast-message {
+  font-size: 0.85rem;
+  color: var(--bcb-gray-700);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.bcb-toast-close {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--bcb-gray-500);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.bcb-toast-close:hover,
+.bcb-toast-close:focus-visible {
+  color: var(--bcb-gray-900);
+}
+
+/* Variantes Semânticas de Toast e Alert */
+.bcb-toast.toast-success,
+.bcb-alert.alert-success {
+  border-left-color: #28A745;
+}
+.bcb-toast.toast-success .bcb-toast-icon,
+.bcb-alert.alert-success .alert-icon {
+  color: #28A745;
+}
+
+.bcb-toast.toast-warning,
+.bcb-alert.alert-warning {
+  border-left-color: #D6A13B;
+}
+.bcb-toast.toast-warning .bcb-toast-icon,
+.bcb-alert.alert-warning .alert-icon {
+  color: #B07E1B;
+}
+
+.bcb-toast.toast-danger,
+.bcb-alert.alert-danger {
+  border-left-color: var(--bcb-brand-marsala);
+}
+.bcb-toast.toast-danger .bcb-toast-icon,
+.bcb-alert.alert-danger .alert-icon {
+  color: var(--bcb-brand-marsala);
+}
+
+.bcb-toast.toast-info,
+.bcb-alert.alert-info {
+  border-left-color: var(--bcb-brand-blue);
+}
+.bcb-toast.toast-info .bcb-toast-icon,
+.bcb-alert.alert-info .alert-icon {
+  color: var(--bcb-brand-blue);
+}
+
+/* Alertas em Linha (Inline Alerts) */
+.bcb-alert {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--bcb-radius-4);
+  border: 1px solid var(--bcb-gray-300);
+  border-left-width: 5px;
+  background-color: var(--bcb-gray-50);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.bcb-alert .alert-body {
+  flex-grow: 1;
+}
+
+.bcb-alert .alert-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.bcb-alert p:last-child {
+  margin-bottom: 0;
+}

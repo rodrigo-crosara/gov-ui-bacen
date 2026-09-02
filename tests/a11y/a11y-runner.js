@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * BCB Design System — Testes de Acessibilidade (WCAG 2.1 AA)
- * Roda pa11y contra cada template HTML do projeto.
+ * BCB Design System — Testes de Acessibilidade (WCAG 2.2 / 2.1 AA)
+ * Executa pa11y contra cada página e template HTML do projeto descoberto dinamicamente.
  * Uso: node tests/a11y/a11y-runner.js
  */
 
@@ -12,28 +12,38 @@ const path = require('path');
 const RAIZ_PROJETO = path.resolve(__dirname, '..', '..');
 const SERVIDOR_BASE = process.env.BASE_URL || 'http://localhost:8080';
 
-// Páginas para testar
-const PAGINAS = [
-  '/index.html',
-  '/templates/template-servico.html',
-  '/templates/template-noticia.html',
-  '/templates/drex.html',
-  '/templates/desastres-naturais.html',
-  '/templates/planejando-a-aposentadoria.html',
-  '/templates/componente-callout.html',
-  '/pages/tokens.html',
-  '/pages/changelog.html',
-];
+// Função para descobrir dinamicamente todas as páginas HTML do projeto
+function descobrirPaginasHTML(diretorio) {
+  const paginas = [];
+  const itens = fs.readdirSync(diretorio, { withFileTypes: true });
+
+  for (const item of itens) {
+    const caminhoCompleto = path.join(diretorio, item.name);
+    if (['node_modules', '.git', '.docs-ia', '.agent'].includes(item.name)) continue;
+
+    if (item.isDirectory()) {
+      paginas.push(...descobrirPaginasHTML(caminhoCompleto));
+    } else if (item.name.endsWith('.html')) {
+      const caminhoRelativo = '/' + path.relative(RAIZ_PROJETO, caminhoCompleto).replace(/\\/g, '/');
+      paginas.push(caminhoRelativo);
+    }
+  }
+
+  return paginas.sort();
+}
+
+const PAGINAS = descobrirPaginasHTML(RAIZ_PROJETO);
 
 let falhas = 0;
 let sucessos = 0;
 
-console.log('\n🔍 BCB Design System — Auditoria de Acessibilidade (WCAG 2.1 AA)');
-console.log('='.repeat(65));
+console.log('\n🔍 BCB Design System — Auditoria Dinâmica de Acessibilidade (WCAG 2.2 / 2.1 AA)');
+console.log('='.repeat(70));
+console.log(`Descobertas ${PAGINAS.length} página(s) HTML para auditoria:\n`);
 
 for (const pagina of PAGINAS) {
   const url = `${SERVIDOR_BASE}${pagina}`;
-  const nomeArquivo = path.basename(pagina);
+  const nomeRelativo = pagina;
 
   try {
     const resultado = execSync(
@@ -44,23 +54,22 @@ for (const pagina of PAGINAS) {
     const problemas = JSON.parse(resultado);
 
     if (Array.isArray(problemas) && problemas.length > 0) {
-      console.log(`\n❌ ${nomeArquivo} — ${problemas.length} problema(s):`);
+      console.log(`\n❌ ${nomeRelativo} — ${problemas.length} problema(s):`);
       problemas.forEach((p, i) => {
         console.log(`   ${i + 1}. [${p.type}] ${p.message}`);
         if (p.selector) console.log(`      Seletor: ${p.selector}`);
       });
       falhas++;
     } else {
-      console.log(`✅ ${nomeArquivo} — Sem problemas de acessibilidade`);
+      console.log(`✅ ${nomeRelativo} — Aprovado em acessibilidade`);
       sucessos++;
     }
   } catch (erro) {
-    // pa11y retorna exit code 2 quando encontra problemas
     if (erro.stdout) {
       try {
         const problemas = JSON.parse(erro.stdout);
         if (Array.isArray(problemas) && problemas.length > 0) {
-          console.log(`\n⚠️  ${nomeArquivo} — ${problemas.length} problema(s):`);
+          console.log(`\n⚠️  ${nomeRelativo} — ${problemas.length} problema(s):`);
           problemas.slice(0, 5).forEach((p, i) => {
             console.log(`   ${i + 1}. [${p.type}] ${p.message}`);
           });
@@ -70,17 +79,17 @@ for (const pagina of PAGINAS) {
           falhas++;
         }
       } catch {
-        console.log(`⚠️  ${nomeArquivo} — Não foi possível conectar (servidor ativo?)`);
+        console.log(`⚠️  ${nomeRelativo} — Não foi possível conectar ao servidor (${SERVIDOR_BASE})`);
         falhas++;
       }
     } else {
-      console.log(`⚠️  ${nomeArquivo} — Erro: ${erro.message.split('\n')[0]}`);
+      console.log(`⚠️  ${nomeRelativo} — Erro: ${erro.message.split('\n')[0]}`);
     }
   }
 }
 
-console.log('\n' + '='.repeat(65));
+console.log('\n' + '='.repeat(70));
 console.log(`Resultado: ${sucessos} aprovado(s), ${falhas} com problemas`);
-console.log('='.repeat(65) + '\n');
+console.log('='.repeat(70) + '\n');
 
 process.exit(falhas > 0 ? 1 : 0);

@@ -5,6 +5,25 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.2.0] — 2026-09-02
+
+### Adicionado
+- **Exportação de Design Tokens (W3C / Figma):** Criação do `tokens.json` padronizado para consumo programático por IA, scripts de build e plugins Figma.
+- **Data Table Responsiva (Átomo/Molécula):** Componente `.bcb-data-table-container` com ordenação de cabeçalhos (`aria-sort`), paginação embutida, alinhamento numérico tabular (`.text-numeric`), badges de variação (`.bcb-trend-badge`) e presets para cotações e taxa Selic.
+- **Filtros e Busca Facetada (Molécula):** Componente `.bcb-filter-panel` com suporte a date ranges (`.bcb-date-range`), switch toggles (`.custom-switch`), checkboxes agrupados e barra de chips ativos (`.bcb-active-filters`).
+- **Organismo Modal/Dialog Acessível:** Componente `.bcb-modal-backdrop` e `.bcb-modal-dialog` em conformidade com WAI-ARIA Dialog Pattern (`role="dialog"`, `aria-modal="true"`, bloqueio de foco).
+- **Alertas e Toast Notifications:** Componentes `.bcb-toast` e `.bcb-alert` com `role="alert"`, `aria-live="polite"` e variantes semânticas (success, warning, danger, info).
+- **Identidade Federal e Skip Links:** Módulos oficiais `_govbr-bar.css` (Barra Brasil) e `_skip-links.css` para navegação rápida acessível por teclado (Alt + 1..4).
+- **Módulo Dedicado de Alto Contraste:** Folha `_high-contrast.css` em `assets/css/_02-generic/` com regras completas e bordas forçadas para e-MAG 3.1 e WCAG 2.2 AAA.
+- **Vitrine Viva de Componentes:** Criação de `pages/components.html` com alternador em tempo real de temas (Claro, Escuro, Alto Contraste), preview interativo, filtros na sidebar e cópia de snippets HTML.
+- **Blueprints Estruturais de Layout:** Criação de `.docs-ia/layouts-patterns.md` com 4 blueprints oficiais (Indicador Econômico, Consulta de Normativos, FAQ/Serviço ao Cidadão, Landing Institucional).
+- **Linter Automatizado de Templates:** Script `npm run lint:templates` (`tests/templates/templates-lint.test.js`) para validação contínua de tokens, classes e acessibilidade.
+- **Auditoria Dinâmica de Acessibilidade:** Atualização de `tests/a11y/a11y-runner.js` com auto-descoberta de todas as páginas e templates.
+
+### Atualizado
+- **Documentação de Componentes (.docs-ia/components.md):** Assinaturas HTML canônicas, variantes suportadas e regras rigorosas de "O que fazer (Do)" vs "O que não fazer (Don't)" para todos os componentes.
+- **Skill IA (.agent/skills/gerador-ui-bcb/SKILL.md v2.1):** Inclusão de Few-Shot Prompts estruturados para geração de protótipos de alta fidelidade a partir de briefings sintéticos.
+
 ## [1.1.0] — 2026-09-01
 
 ### Corrigido

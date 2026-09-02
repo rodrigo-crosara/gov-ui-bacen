@@ -9,10 +9,14 @@
 @import '_01-tools/_mixins.css';
 @import '_02-generic/_reset.css';
 @import '_02-generic/_dark-mode.css';
+@import '_02-generic/_high-contrast.css';
+@import '_03-atoms/_govbr-bar.css';
+@import '_03-atoms/_skip-links.css';
 @import '_03-atoms/_buttons.css';
 @import '_03-atoms/_links.css';
 @import '_03-atoms/_icons.css';
 @import '_03-atoms/_tags.css';
+@import '_03-atoms/_tables.css';
 @import '_03-atoms/_form-controls.css';
 @import '_04-molecules/_breadcrumb.css';
 @import '_04-molecules/_callout.css';
@@ -22,10 +26,14 @@
 @import '_04-molecules/_search-overlay.css';
 @import '_04-molecules/_stepper.css';
 @import '_04-molecules/_tip-box.css';
+@import '_04-molecules/_data-table.css';
+@import '_04-molecules/_faceted-search.css';
+@import '_04-molecules/_toast.css';
 @import '_05-organisms/_header.css';
 @import '_05-organisms/_footer.css';
 @import '_05-organisms/_tabs.css';
 @import '_05-organisms/_accordion.css';
+@import '_05-organisms/_modal.css';
 @import '_05-organisms/_hero-banner.css';
 @import '_05-organisms/_news-list.css';
 @import '_05-organisms/_timeline.css';
@@ -1139,3 +1147,147 @@ footer[role="contentinfo"] .arts .line { display: block; width: 0; height: 85px;
     align-items: center;
     flex-wrap: wrap;
 }
+
+/* ==========================================
+   31. BARRA GOV.BR E SKIP LINKS DE ACESSIBILIDADE
+   ========================================== */
+#barra-brasil {
+  background-color: #7F7F7F;
+  height: 20px;
+  padding: 0 0 0 10px;
+  display: block;
+  position: relative;
+  z-index: 1040;
+  font-family: var(--bcb-font-ubuntu);
+  font-size: 0.75rem;
+}
+#barra-brasil #menu-barra-temp { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; height: 100%; }
+#barra-brasil #menu-barra-temp li { margin-right: 1rem; }
+#barra-brasil #menu-barra-temp li a { color: #FFFFFF; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; transition: opacity 0.2s; }
+#barra-brasil #menu-barra-temp li a:hover, #barra-brasil #menu-barra-temp li a:focus-visible { opacity: 0.85; text-decoration: underline; }
+
+.bcb-govbr-bar { background: #002244; color: #FFFFFF; min-height: 24px; padding: 2px 1rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-family: var(--bcb-font-ubuntu); position: relative; z-index: 1040; }
+.bcb-govbr-bar a { color: #FFFFFF; text-decoration: none; font-weight: 500; }
+.bcb-govbr-bar a:hover, .bcb-govbr-bar a:focus-visible { text-decoration: underline; }
+.bcb-govbr-bar .govbr-logo { font-weight: 700; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 4px; }
+
+.bcb-skip-links { position: absolute; top: 0; left: 0; width: 100%; z-index: 1050; pointer-events: none; list-style: none; margin: 0; padding: 0; }
+.bcb-skip-links li { margin: 0; padding: 0; }
+.bcb-skip-link { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); background-color: var(--bcb-brand-blue); color: var(--bcb-color-white) !important; padding: 0.75rem 1.5rem; font-weight: 700; font-size: 0.9rem; border-radius: 0 0 var(--bcb-radius-4) var(--bcb-radius-4); box-shadow: var(--bcb-shadow-600); text-decoration: none; z-index: 1060; transition: top 0.2s ease-in-out; pointer-events: auto; outline: none; white-space: nowrap; }
+.bcb-skip-link:focus, .bcb-skip-link:focus-visible { top: 0; outline: 3px solid var(--bcb-brand-amarellato); outline-offset: 2px; text-decoration: underline; color: var(--bcb-color-white) !important; }
+.bcb-skip-link .accesskey-badge { display: inline-block; background: rgba(255, 255, 255, 0.25); padding: 1px 6px; border-radius: var(--bcb-radius-4); font-size: 0.75rem; margin-left: 6px; font-family: monospace; }
+
+/* ==========================================
+   32. DATA TABLE RESPONSIVA (SÉRIES E TAXAS)
+   ========================================== */
+.bcb-data-table-container { background-color: var(--bcb-color-white); border: 1px solid var(--bcb-gray-200); border-radius: var(--bcb-radius-8); box-shadow: var(--bcb-shadow-100); margin-bottom: 2rem; overflow: hidden; }
+.bcb-data-table-header { padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background-color: var(--bcb-gray-50); border-bottom: 1px solid var(--bcb-gray-200); }
+.bcb-data-table-title { margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--bcb-gray-900); display: flex; align-items: center; gap: 0.5rem; }
+.bcb-data-table-subtitle { font-size: 0.85rem; color: var(--bcb-gray-600); margin-top: 0.25rem; }
+.bcb-data-table-actions { display: flex; align-items: center; gap: 0.5rem; }
+.bcb-data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-family: var(--bcb-font-ubuntu); font-size: 0.9rem; margin-bottom: 0; }
+.bcb-data-table caption { padding: 0.75rem 1.5rem; color: var(--bcb-gray-600); caption-side: bottom; font-size: 0.8rem; font-style: italic; border-top: 1px solid var(--bcb-gray-200); background-color: var(--bcb-gray-50); }
+.bcb-data-table thead th { background-color: var(--bcb-gray-100); color: var(--bcb-gray-800); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; padding: 0.85rem 1rem; border-bottom: 2px solid var(--bcb-gray-300); border-top: none; white-space: nowrap; vertical-align: middle; }
+.bcb-data-table thead th.sortable { cursor: pointer; user-select: none; transition: background-color 0.2s, color 0.2s; }
+.bcb-data-table thead th.sortable:hover { background-color: var(--bcb-gray-200); color: var(--bcb-brand-blue); }
+.bcb-data-table thead th .sort-icon { display: inline-flex; vertical-align: middle; margin-left: 4px; font-size: 1rem; opacity: 0.4; transition: opacity 0.2s, transform 0.2s; }
+.bcb-data-table thead th[aria-sort="ascending"] .sort-icon, .bcb-data-table thead th[aria-sort="descending"] .sort-icon { opacity: 1; color: var(--bcb-brand-blue); }
+.bcb-data-table thead th[aria-sort="descending"] .sort-icon { transform: rotate(180deg); }
+.bcb-data-table tbody td, .bcb-data-table tbody th { padding: 0.85rem 1rem; vertical-align: middle; border-top: 1px solid var(--bcb-gray-200); color: var(--bcb-gray-800); background-color: var(--bcb-color-white); transition: background-color 0.15s; }
+.bcb-data-table tbody tr:hover td, .bcb-data-table tbody tr:hover th { background-color: rgba(2, 92, 117, 0.04); }
+.bcb-data-table .text-numeric { text-align: right; font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+.bcb-data-table .text-center { text-align: center; }
+
+.bcb-trend-badge { display: inline-flex; align-items: center; gap: 2px; padding: 2px 8px; border-radius: var(--bcb-radius-pill); font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.bcb-trend-badge.positive { background-color: #E8F5E9; color: #2E7D32; }
+.bcb-trend-badge.negative { background-color: #FFEBEE; color: #C62828; }
+.bcb-trend-badge.neutral { background-color: var(--bcb-gray-100); color: var(--bcb-gray-700); }
+
+.bcb-table-pagination { padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background-color: var(--bcb-gray-50); border-top: 1px solid var(--bcb-gray-200); font-size: 0.85rem; color: var(--bcb-gray-600); }
+.bcb-table-pagination .pagination { margin-bottom: 0; }
+.bcb-data-table-container.theme-brand thead th { background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); border-color: var(--bcb-brand-blue); }
+.bcb-data-table-container.theme-brand thead th.sortable:hover { background-color: var(--bcb-brand-blue-dark); color: var(--bcb-brand-amarellato); }
+.bcb-data-table-container.theme-brand thead th[aria-sort="ascending"] .sort-icon, .bcb-data-table-container.theme-brand thead th[aria-sort="descending"] .sort-icon { color: var(--bcb-brand-amarellato); }
+
+/* ==========================================
+   33. FILTROS E BUSCA FACETADA
+   ========================================== */
+.bcb-filter-panel { background-color: var(--bcb-color-white); border: 1px solid var(--bcb-gray-200); border-radius: var(--bcb-radius-8); padding: 1.5rem; box-shadow: var(--bcb-shadow-100); margin-bottom: 2rem; }
+.bcb-filter-panel-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--bcb-gray-200); }
+.bcb-filter-panel-title { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--bcb-gray-900); display: flex; align-items: center; gap: 0.5rem; }
+.bcb-filter-group { margin-bottom: 1.5rem; }
+.bcb-filter-group:last-child { margin-bottom: 0; }
+.bcb-filter-label { font-size: 0.9rem; font-weight: 700; color: var(--bcb-gray-800); margin-bottom: 0.5rem; display: block; }
+.bcb-date-range { display: flex; align-items: center; gap: 0.5rem; }
+.bcb-date-range input[type="date"], .bcb-date-range input[type="text"] { width: 100%; }
+.bcb-date-separator { color: var(--bcb-gray-500); font-weight: 500; padding: 0 4px; }
+
+.custom-switch { padding-left: 2.5rem; position: relative; display: flex; align-items: center; min-height: 1.5rem; }
+.custom-switch .custom-control-input { position: absolute; left: 0; z-index: -1; width: 1rem; height: 1rem; opacity: 0; }
+.custom-switch .custom-control-label { position: relative; margin-bottom: 0; vertical-align: top; cursor: pointer; font-size: 0.95rem; color: var(--bcb-gray-800); user-select: none; }
+.custom-switch .custom-control-label::before { position: absolute; top: 0.15rem; left: -2.5rem; display: block; width: 2rem; height: 1.2rem; pointer-events: all; content: ""; background-color: var(--bcb-gray-400); border-radius: var(--bcb-radius-pill); transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out; }
+.custom-switch .custom-control-label::after { position: absolute; top: calc(0.15rem + 2px); left: calc(-2.5rem + 2px); display: block; width: calc(1.2rem - 4px); height: calc(1.2rem - 4px); content: ""; background-color: var(--bcb-color-white); border-radius: 50%; transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; }
+.custom-switch .custom-control-input:checked ~ .custom-control-label::before { background-color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); }
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after { transform: translateX(0.8rem); background-color: var(--bcb-color-white); }
+.custom-switch .custom-control-input:focus ~ .custom-control-label::before { box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); }
+
+.bcb-active-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; padding: 0.75rem 1rem; background-color: var(--bcb-gray-100); border-radius: var(--bcb-radius-4); border: 1px solid var(--bcb-gray-200); }
+.bcb-active-filters-label { font-size: 0.85rem; font-weight: 700; color: var(--bcb-gray-700); margin-right: 0.25rem; }
+.bcb-filter-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background-color: var(--bcb-color-white); border: 1px solid var(--bcb-brand-blue); color: var(--bcb-brand-blue); border-radius: var(--bcb-radius-pill); font-size: 0.8rem; font-weight: 500; }
+.bcb-filter-chip .chip-remove-btn { background: none; border: none; padding: 0; color: var(--bcb-brand-blue); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; line-height: 1; transition: color 0.15s; }
+.bcb-filter-chip .chip-remove-btn:hover, .bcb-filter-chip .chip-remove-btn:focus-visible { color: #DC3545; }
+.bcb-clear-all-filters { font-size: 0.8rem; color: var(--bcb-link-color); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; margin-left: auto; }
+.bcb-clear-all-filters:hover { color: var(--bcb-link-hover); }
+
+/* ==========================================
+   34. ORGANISMOS: MODAL E DIALOG ACESSÍVEL
+   ========================================== */
+.bcb-modal-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(11, 13, 14, 0.65); backdrop-filter: blur(2px); z-index: 1050; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; visibility: hidden; transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out; }
+.bcb-modal-backdrop.active, .bcb-modal-backdrop.show { opacity: 1; visibility: visible; }
+.bcb-modal-dialog { background-color: var(--bcb-color-white); border-radius: var(--bcb-radius-8); box-shadow: var(--bcb-shadow-600); width: 100%; max-width: 600px; max-height: calc(100vh - 3rem); display: flex; flex-direction: column; position: relative; overflow: hidden; transform: translateY(-20px) scale(0.98); transition: transform 0.25s ease-in-out; border: 1px solid var(--bcb-gray-200); }
+.bcb-modal-backdrop.active .bcb-modal-dialog, .bcb-modal-backdrop.show .bcb-modal-dialog { transform: translateY(0) scale(1); }
+.bcb-modal-dialog.modal-lg { max-width: 800px; }
+.bcb-modal-dialog.modal-sm { max-width: 400px; }
+.bcb-modal-header { padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--bcb-gray-200); background-color: var(--bcb-gray-50); }
+.bcb-modal-title { margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--bcb-gray-900); display: flex; align-items: center; gap: 0.5rem; }
+.bcb-modal-close { background: none; border: none; padding: 4px; color: var(--bcb-gray-600); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--bcb-radius-4); transition: color 0.15s, background-color 0.15s; }
+.bcb-modal-close:hover, .bcb-modal-close:focus-visible { color: var(--bcb-gray-900); background-color: var(--bcb-gray-200); }
+.bcb-modal-body { padding: 1.5rem; overflow-y: auto; flex-grow: 1; color: var(--bcb-color-body-text); font-size: 0.95rem; line-height: 1.5; }
+.bcb-modal-footer { padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid var(--bcb-gray-200); background-color: var(--bcb-gray-50); }
+
+/* ==========================================
+   35. ALERTAS E TOAST NOTIFICATIONS
+   ========================================== */
+.bcb-toast-container { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1060; display: flex; flex-direction: column; gap: 0.75rem; max-width: 400px; width: calc(100% - 3rem); pointer-events: none; }
+.bcb-toast { pointer-events: auto; background-color: var(--bcb-color-white); border-radius: var(--bcb-radius-8); box-shadow: var(--bcb-shadow-600); border-left: 5px solid var(--bcb-brand-blue); padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.75rem; position: relative; overflow: hidden; transition: transform 0.3s ease, opacity 0.3s ease; animation: slideInToast 0.3s ease-out; }
+@keyframes slideInToast { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.bcb-toast-icon { font-size: 1.5rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+.bcb-toast-body { flex-grow: 1; }
+.bcb-toast-title { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.25rem 0; color: var(--bcb-gray-900); }
+.bcb-toast-message { font-size: 0.85rem; color: var(--bcb-gray-700); margin: 0; line-height: 1.35; }
+.bcb-toast-close { background: none; border: none; padding: 0; color: var(--bcb-gray-500); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; line-height: 1; transition: color 0.15s; flex-shrink: 0; }
+.bcb-toast-close:hover, .bcb-toast-close:focus-visible { color: var(--bcb-gray-900); }
+
+.bcb-toast.toast-success, .bcb-alert.alert-success { border-left-color: #28A745; }
+.bcb-toast.toast-success .bcb-toast-icon, .bcb-alert.alert-success .alert-icon { color: #28A745; }
+.bcb-toast.toast-warning, .bcb-alert.alert-warning { border-left-color: #D6A13B; }
+.bcb-toast.toast-warning .bcb-toast-icon, .bcb-alert.alert-warning .alert-icon { color: #B07E1B; }
+.bcb-toast.toast-danger, .bcb-alert.alert-danger { border-left-color: var(--bcb-brand-marsala); }
+.bcb-toast.toast-danger .bcb-toast-icon, .bcb-alert.alert-danger .alert-icon { color: var(--bcb-brand-marsala); }
+.bcb-toast.toast-info, .bcb-alert.alert-info { border-left-color: var(--bcb-brand-blue); }
+.bcb-toast.toast-info .bcb-toast-icon, .bcb-alert.alert-info .alert-icon { color: var(--bcb-brand-blue); }
+
+.bcb-alert { padding: 1rem 1.25rem; margin-bottom: 1.5rem; border-radius: var(--bcb-radius-4); border: 1px solid var(--bcb-gray-300); border-left-width: 5px; background-color: var(--bcb-gray-50); display: flex; align-items: flex-start; gap: 1rem; }
+.bcb-alert .alert-body { flex-grow: 1; }
+.bcb-alert .alert-title { font-size: 1rem; font-weight: 700; margin: 0 0 0.25rem 0; }
+.bcb-alert p:last-child { margin-bottom: 0; }
+
+/* ==========================================
+   36. ARIA HOOKS & ATRIBUTOS DE ACESSIBILIDADE
+   ========================================== */
+.bcb-navegacaoabas [role="tablist"] { display: flex; flex-wrap: wrap; list-style: none; margin-bottom: 0; }
+.bcb-navegacaoabas .nav-link[aria-selected="true"], .bcb-navegacaoabas [role="tab"][aria-selected="true"] { color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); background-color: var(--bcb-color-white); position: relative; bottom: -1px; font-weight: 700; }
+.bcb-navegacaoabas .nav-link[aria-selected="true"] .line, .bcb-navegacaoabas [role="tab"][aria-selected="true"] .line { border-color: var(--bcb-brand-blue); }
+.accordion.modelo-1 .card-header .btn[aria-expanded="true"] .material-icons, .bcb-accordion-trigger[aria-expanded="true"] .accordion-chevron { transform: rotate(180deg); }
+.bcb-chip[aria-pressed="true"] { background: var(--bcb-brand-blue); color: var(--bcb-color-white) !important; border-color: var(--bcb-brand-blue); font-weight: 500; }
+

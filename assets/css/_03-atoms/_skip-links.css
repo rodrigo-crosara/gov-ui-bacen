@@ -1,0 +1,60 @@
+/* ============= BCB Design System — Atoms / Skip Links =============
+ * Links de salto de acessibilidade (WCAG 2.4.1 / e-MAG Requisito 1.1).
+ * Ocultos visualmente por padrão, revelam-se ao receber foco pelo teclado.
+ * ==================================================================== */
+
+.bcb-skip-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+  pointer-events: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bcb-skip-links li {
+  margin: 0;
+  padding: 0;
+}
+
+.bcb-skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bcb-brand-blue);
+  color: var(--bcb-color-white) !important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 0 0 var(--bcb-radius-4) var(--bcb-radius-4);
+  box-shadow: var(--bcb-shadow-600);
+  text-decoration: none;
+  z-index: 1060;
+  transition: top 0.2s ease-in-out;
+  pointer-events: auto;
+  outline: none;
+  white-space: nowrap;
+}
+
+.bcb-skip-link:focus,
+.bcb-skip-link:focus-visible {
+  top: 0;
+  outline: 3px solid var(--bcb-brand-amarellato);
+  outline-offset: 2px;
+  text-decoration: underline;
+  color: var(--bcb-color-white) !important;
+}
+
+.bcb-skip-link .accesskey-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 1px 6px;
+  border-radius: var(--bcb-radius-4);
+  font-size: 0.75rem;
+  margin-left: 6px;
+  font-family: monospace;
+}

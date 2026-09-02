@@ -1,0 +1,77 @@
+/* ============= BCB Design System — Atoms / Barra Gov.br =============
+ * Componente oficial de identificação do Governo Federal / Barra Brasil.
+ * Conforme Portaria SEGES/MGI e Diretrizes de Identidade Visual Federal.
+ * ==================================================================== */
+
+#barra-brasil {
+  background-color: #7F7F7F;
+  height: 20px;
+  padding: 0 0 0 10px;
+  display: block;
+  position: relative;
+  z-index: 1040;
+  font-family: var(--bcb-font-ubuntu);
+  font-size: 0.75rem;
+}
+
+#barra-brasil #menu-barra-temp {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#barra-brasil #menu-barra-temp li {
+  margin-right: 1rem;
+}
+
+#barra-brasil #menu-barra-temp li a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+#barra-brasil #menu-barra-temp li a:hover,
+#barra-brasil #menu-barra-temp li a:focus-visible {
+  opacity: 0.85;
+  text-decoration: underline;
+}
+
+/* Fallback Estilizado de Barra Federal */
+.bcb-govbr-bar {
+  background: #002244;
+  color: #FFFFFF;
+  min-height: 24px;
+  padding: 2px 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-family: var(--bcb-font-ubuntu);
+  position: relative;
+  z-index: 1040;
+}
+
+.bcb-govbr-bar a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.bcb-govbr-bar a:hover,
+.bcb-govbr-bar a:focus-visible {
+  text-decoration: underline;
+}
+
+.bcb-govbr-bar .govbr-logo {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
