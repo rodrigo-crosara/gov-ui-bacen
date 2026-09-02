@@ -1,128 +1,153 @@
-/* ============= BCB Design System — Atoms / Buttons ============= */
+﻿/* ==========================================================================
+   BCB DESIGN SYSTEM — ATOMS / BUTTONS (.bcb-btn)
+   ========================================================================== */
 
-.btn,
 .bcb-btn {
-  font-family: var(--bcb-font-ubuntu);
-  font-weight: 500;
-  border-radius: var(--bcb-radius-4);
-  transition: all 0.2s ease-in-out;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--bcb-spacing-sm, 8px);
+  padding: 10px 20px;
+  font-family: var(--bcb-font-sans, inherit);
+  font-size: var(--bcb-font-size-sm, 14px);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  border-radius: var(--bcb-radius-md, 6px);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--bcb-transition-fast, 0.15s ease-in-out);
+  box-sizing: border-box;
 }
 
-.btn:focus-visible,
 .bcb-btn:focus-visible {
-  outline: 3px solid var(--bcb-brand-blue);
+  outline: 3px solid var(--bcb-color-verde-castell, #088694);
   outline-offset: 2px;
 }
 
-/* 1. Botão Primário */
-.bcb-btn--primary,
-.btn-primary {
+/* Primário (Azul Blue Oficial BCB) */
+.bcb-btn--primary {
   background-color: var(--bcb-color-azul-blue, #025C75);
   border-color: var(--bcb-color-azul-blue, #025C75);
   color: #ffffff;
 }
-
-.bcb-btn--primary:hover,
-.btn-primary:hover {
+.bcb-btn--primary:hover {
   background-color: var(--bcb-color-azulcinti, #077391);
   border-color: var(--bcb-color-azulcinti, #077391);
   color: #ffffff;
-  transform: translateY(-1px);
+}
+.bcb-btn--primary:active {
+  background-color: var(--bcb-color-azulpetro, #2E4C59);
+  border-color: var(--bcb-color-azulpetro, #2E4C59);
 }
 
-.bcb-btn--primary:active,
-.bcb-btn--primary:focus,
+/* Secundário (Outline / Borda Azulpetro) */
+.bcb-btn--secondary {
+  background-color: transparent;
+  border-color: var(--bcb-color-azul-blue, #025C75);
+  color: var(--bcb-color-azul-blue, #025C75);
+}
+.bcb-btn--secondary:hover {
+  background-color: rgba(2, 92, 117, 0.08);
+  color: var(--bcb-color-azulcinti, #077391);
+}
+
+/* Terciário / Ghost */
+.bcb-btn--tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--bcb-color-azul-blue, #025C75);
+}
+.bcb-btn--tertiary:hover {
+  background-color: rgba(2, 92, 117, 0.06);
+  color: var(--bcb-color-azulcinti, #077391);
+}
+
+/* Perigo / Alerta (Vinho Autêntico) */
+.bcb-btn--danger {
+  background-color: var(--bcb-color-vinho-autentico, #47373A);
+  border-color: var(--bcb-color-vinho-autentico, #47373A);
+  color: #ffffff;
+}
+.bcb-btn--danger:hover {
+  background-color: #35282a;
+}
+
+/* Tamanhos */
+.bcb-btn--sm {
+  padding: 6px 12px;
+  font-size: var(--bcb-font-size-xs, 12px);
+}
+.bcb-btn--lg {
+  padding: 14px 28px;
+  font-size: var(--bcb-font-size-md, 16px);
+}
+
+/* Desabilitado */
+.bcb-btn:disabled,
+.bcb-btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Compatibilidade retroativa com classes legadas (.btn, .btn-primary) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bcb-spacing-sm, 8px);
+  padding: 10px 20px;
+  font-family: var(--bcb-font-ubuntu, sans-serif);
+  font-size: var(--bcb-font-size-sm, 14px);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  border-radius: var(--bcb-radius-md, 6px);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background-color: var(--bcb-color-azul-blue, #025C75) !important;
+  border-color: var(--bcb-color-azul-blue, #025C75) !important;
+  color: #ffffff !important;
+}
+.btn-primary:hover {
+  background-color: var(--bcb-color-azulcinti, #077391) !important;
+  border-color: var(--bcb-color-azulcinti, #077391) !important;
+  color: #ffffff !important;
+}
 .btn-primary:active,
 .btn-primary:focus {
   background-color: var(--bcb-color-azulpetro, #2E4C59) !important;
   border-color: var(--bcb-color-azulpetro, #2E4C59) !important;
-  color: #ffffff;
 }
 
-.btn-primary:disabled,
-.btn-primary.disabled {
-  background-color: var(--bcb-gray-400);
-  border-color: var(--bcb-gray-400);
-  color: var(--bcb-gray-100);
-  cursor: not-allowed;
-  transform: none;
-  opacity: 0.65;
-}
-
-/* 2. Botão Secundário */
-.btn-secondary {
-  background-color: var(--bcb-btn-secondary-bg);
-  border-color: var(--bcb-btn-secondary-bg);
-  color: var(--bcb-color-white);
-}
-
-.btn-secondary:hover {
-  background-color: var(--bcb-btn-secondary-hover);
-  border-color: var(--bcb-btn-secondary-hover);
-  color: var(--bcb-color-white);
-  transform: translateY(-1px);
-}
-
-.btn-secondary:active,
-.btn-secondary:focus {
-  background-color: var(--bcb-btn-secondary-active) !important;
-  border-color: var(--bcb-btn-secondary-active) !important;
-  color: var(--bcb-color-white);
-}
-
-/* 3. Botão Outline / Terciário */
+.btn-secondary,
 .btn-outline-primary {
-  color: var(--bcb-brand-blue);
-  border-color: var(--bcb-brand-blue);
-  background-color: transparent;
+  background-color: transparent !important;
+  border-color: var(--bcb-color-azul-blue, #025C75) !important;
+  color: var(--bcb-color-azul-blue, #025C75) !important;
 }
-
+.btn-secondary:hover,
 .btn-outline-primary:hover {
-  background-color: var(--bcb-brand-blue);
-  border-color: var(--bcb-brand-blue);
-  color: var(--bcb-color-white);
-  transform: translateY(-1px);
+  background-color: rgba(2, 92, 117, 0.08) !important;
+  color: var(--bcb-color-azulcinti, #077391) !important;
 }
 
-/* 4. Botão de Perigo / Danger */
 .btn-danger {
-  background-color: var(--bcb-brand-marsala);
-  border-color: var(--bcb-brand-marsala);
-  color: var(--bcb-color-white);
+  background-color: var(--bcb-color-vinho-autentico, #47373A) !important;
+  border-color: var(--bcb-color-vinho-autentico, #47373A) !important;
+  color: #ffffff !important;
 }
-
 .btn-danger:hover {
-  background-color: #5a4b4e;
-  border-color: #5a4b4e;
-  color: var(--bcb-color-white);
-  transform: translateY(-1px);
-}
-
-.btn-danger:focus-visible {
-  outline: 3px solid var(--bcb-brand-marsala);
-  outline-offset: 2px;
-}
-
-/* 5. Botão Link */
-.btn-link {
-  color: var(--bcb-link-color);
-  background: transparent;
-  border: none;
-  text-decoration: underline;
-}
-
-.btn-link:hover {
-  color: var(--bcb-link-hover);
-  text-decoration: underline;
-}
-
-/* 6. Botão com Ícone Apenas */
-.btn-icon {
-  padding: 0.5rem;
-  border-radius: var(--bcb-radius-4);
-  line-height: 1;
+  background-color: #35282a !important;
 }

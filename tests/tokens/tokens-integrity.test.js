@@ -18,8 +18,21 @@ let sucessos = 0;
 console.log('\n🎨 BCB Design System — Integridade de Design Tokens');
 console.log('='.repeat(55));
 
-// Ler o arquivo CSS
-const conteudoCSS = fs.readFileSync(CAMINHO_CSS, 'utf8');
+// Ler o arquivo CSS e resolver diretivas @import recursivamente (Arquitetura ITCSS)
+function lerCSSComImports(caminhoArquivo, visitados = new Set()) {
+  if (visitados.has(caminhoArquivo)) return '';
+  visitados.add(caminhoArquivo);
+  if (!fs.existsSync(caminhoArquivo)) return '';
+  const dir = path.dirname(caminhoArquivo);
+  let conteudo = fs.readFileSync(caminhoArquivo, 'utf8');
+  conteudo = conteudo.replace(/@import\s+['"]([^'"]+)['"];/g, (match, importRel) => {
+    const importPath = path.resolve(dir, importRel);
+    return '\n' + lerCSSComImports(importPath, visitados) + '\n';
+  });
+  return conteudo;
+}
+
+const conteudoCSS = lerCSSComImports(CAMINHO_CSS);
 
 // ============================================
 // TESTE 1: Tokens obrigatórios existem no :root

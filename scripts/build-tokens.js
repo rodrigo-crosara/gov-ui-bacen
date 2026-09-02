@@ -79,8 +79,11 @@ if (tokens.color && tokens.color.brand) {
   lines.push(`  --bcb-brand-vinho: ${resolveValue(tokens.color.brand['vinho-autentico']?.$value || '#47373A')};`);
   lines.push(`  --bcb-brand-marsala: ${resolveValue(tokens.color.brand['marsala-suave']?.$value || '#736063')};`);
   lines.push(`  --bcb-brand-amarellato: ${resolveValue(tokens.color.brand['amarellato-biscoito']?.$value || '#F8D48D')};`);
+  lines.push(`  --bcb-color-azul-blue: ${resolveValue(tokens.color.brand['azul-blue']?.$value || '#025C75')};`);
   lines.push(`  --bcb-color-azulcinti: ${resolveValue(tokens.color.brand['azulcinti']?.$value || '#077391')};`);
+  lines.push(`  --bcb-color-azulpetro: ${resolveValue(tokens.color.brand['azulpetro']?.$value || '#2E4C59')};`);
   lines.push(`  --bcb-color-verde-castell: ${resolveValue(tokens.color.brand['verde-castell']?.$value || '#088694')};`);
+  lines.push(`  --bcb-color-vinho-autentico: ${resolveValue(tokens.color.brand['vinho-autentico']?.$value || '#47373A')};`);
 }
 lines.push('');
 
