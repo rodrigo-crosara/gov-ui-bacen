@@ -1,0 +1,8 @@
+/* ============= BCB Design System — Organisms / Header ============= */
+
+/* HEADER */
+header[role=banner] { transition: height .3s; height: 60px; background: #fff; position: relative; z-index: 3; border-bottom: 1px solid #e9ecef; }
+header[role=banner] .brand { position: absolute; left: 50%; transform: translateX(-50%); top: 12px; z-index: 1; width: 126px; }
+#portal-siteactions { border-bottom: 1px dotted var(--bcb-brand-blue); background: hsla(0,0%,100%,.8); }
+#portal-siteactions li:not(:last-child) { margin-right: 1rem; }
+#accessibility-wrapper { position: absolute; top: 5px; z-index: 1031; right: 15px; font-size: .7rem; }

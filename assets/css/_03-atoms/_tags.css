@@ -1,0 +1,6 @@
+/* ============= BCB Design System — Atoms / Tags ============= */
+
+.tag-bcb { display: inline-block; padding: 0.25em 0.6em; font-size: 0.75em; font-weight: 700; background-color: var(--bcb-gray-200); color: var(--bcb-brand-blue); border-radius: var(--bcb-radius-4); text-transform: uppercase; transition: background-color 0.2s; }
+.tag-bcb:hover { background-color: var(--bcb-gray-300); }
+.tag-bcb.primary { background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
+.tag-bcb.primary:hover { background-color: var(--bcb-btn-primary-hover); }

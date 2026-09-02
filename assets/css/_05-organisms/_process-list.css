@@ -1,0 +1,5 @@
+/* ============= BCB Design System — Organisms / Process List ============= */
+
+.process-list { list-style: none; padding-left: 0; counter-reset: bcb-counter; }
+.process-list > li { position: relative; margin-bottom: 1.5rem; padding-left: 2.5rem; }
+.process-list > li::before { counter-increment: bcb-counter; content: counter(bcb-counter); position: absolute; left: 0; top: 0; width: 1.8rem; height: 1.8rem; border-radius: 50%; background-color: var(--bcb-brand-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }

@@ -1,0 +1,25 @@
+/* ============= BCB Design System — Generic / Reset ============= */
+
+/* ==========================================
+   BODY GLOBAL E SOBRESCRITA BOOTSTRAP
+   ========================================== */
+body {
+  background-color: var(--bcb-color-white);
+  color: var(--bcb-color-body-text);
+  font-family: var(--bcb-font-ubuntu);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bg-light, .bg-white { 
+  background-color: var(--bcb-color-white) !important; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.text-dark { color: var(--bcb-gray-900) !important; transition: color 0.3s ease; }
+.text-muted { color: var(--bcb-gray-600) !important; transition: color 0.3s ease; }
+.border { border-color: var(--bcb-gray-200) !important; transition: border-color 0.3s ease; }
+
+/* Foco Acessível Padrão (WCAG 2.1) */
+:focus-visible {
+  outline: 3px solid var(--bcb-brand-amarellato);
+  outline-offset: 2px;
+}

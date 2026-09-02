@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog — BCB Design System</title>
+    <meta name="description" content="Histórico oficial de versões, atualizações e melhorias do Design System do Banco Central do Brasil.">
+    
+    <!-- Bootstrap 4.6 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <!-- Google Fonts (Ubuntu + Cormorant Garamond) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    
+    <!-- BCB Styles -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+    
+    <style>
+        /* Estilos do cabeçalho oficial sticky */
+        .header-bcb {
+            background-color: var(--bcb-brand-blue);
+            color: var(--bcb-color-white);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .header-bcb h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header-bcb .badge-version {
+            font-size: 0.65rem;
+            background-color: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: 400;
+        }
+
+        /* Seções e Divisores */
+        .ds-main section {
+            padding-bottom: 2.5rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--bcb-gray-200);
+            scroll-margin-top: 30px;
+        }
+        .ds-main section:last-child {
+            border-bottom: none;
+        }
+        .ds-main h2 {
+            color: var(--bcb-gray-900);
+            font-weight: 500;
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
+        .ds-main h3 {
+            color: var(--bcb-gray-800);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        /* Cartões de Versão do Changelog */
+        .version-card {
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            background-color: var(--bcb-color-white);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--bcb-shadow-100);
+            position: relative;
+            border-left: 5px solid var(--bcb-brand-blue);
+        }
+        .version-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--bcb-gray-200);
+        }
+        .version-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .version-number {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--bcb-brand-blue);
+        }
+        .version-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--bcb-radius-pill);
+            font-weight: 500;
+            text-transform: uppercase;
+            background-color: rgba(2, 92, 117, 0.1);
+            color: var(--bcb-brand-blue);
+        }
+        .version-tag.tag-current {
+            background-color: var(--bcb-brand-blue);
+            color: var(--bcb-color-white);
+        }
+        .version-date {
+            font-size: 0.9rem;
+            color: var(--bcb-gray-600);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Categorias de Alterações */
+        .change-category {
+            margin-bottom: 1.5rem;
+        }
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--bcb-radius-4);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-added {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        .badge-maintained {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #bbdefb;
+        }
+        .badge-changed {
+            background-color: #fff8e1;
+            color: #f57f17;
+            border: 1px solid #ffe082;
+        }
+        .badge-fixed {
+            background-color: #ede7f6;
+            color: #512da8;
+            border: 1px solid #d1c4e9;
+        }
+        .badge-security {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+
+        /* Lista de Itens do Changelog */
+        .changelog-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .changelog-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--bcb-color-body-text);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .changelog-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: var(--bcb-brand-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+            line-height: 1.2;
+        }
+        .changelog-list code {
+            background-color: var(--bcb-gray-100);
+            color: var(--bcb-brand-blue);
+            padding: 0.15rem 0.4rem;
+            border-radius: var(--bcb-radius-4);
+            font-size: 0.85em;
+            border: 1px solid var(--bcb-gray-300);
+        }
+
+        /* Tabela de Convenções */
+        .convention-card {
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            background-color: var(--bcb-gray-50);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Oficial Sticky -->
+    <header class="header-bcb">
+        <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
+            <h1>
+                <span class="material-icons" aria-hidden="true">history</span>
+                Changelog BCB
+                <span class="badge-version">v1.0.0</span>
+            </h1>
+            <div class="d-flex align-items-center" style="gap: 0.75rem;">
+                <a href="../index.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Retornar à página principal da documentação" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
+                    <span class="d-none d-sm-inline">Componentes</span>
+                </a>
+                <a href="tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar página de design tokens" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
+                    <span class="d-none d-sm-inline">Tokens</span>
+                </a>
+                <button id="theme-toggle" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Alternar tema claro/escuro" style="border-color: rgba(255,255,255,0.3); color: white; background: transparent;">
+                    <span class="material-icons" style="font-size: 1.2rem;" aria-hidden="true">brightness_medium</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Layout da Documentação com Sidebar -->
+    <div class="ds-wrapper">
+        <aside class="ds-sidebar">
+            <nav class="nav flex-column" aria-label="Navegação do Changelog">
+                <div class="ds-sidebar-title">Navegação Rápida</div>
+                <a class="nav-link" href="../index.html">← Vitrine de Componentes</a>
+                <a class="nav-link" href="tokens.html">Design Tokens</a>
+
+                <div class="ds-sidebar-title">Histórico de Versões</div>
+                <a class="nav-link active" href="#v1-0-0">v1.0.0 (Atual)</a>
+                <a class="nav-link" href="#convencoes">Convenções e Padrões</a>
+                <a class="nav-link" href="#roadmap">Roadmap e Futuras Versões</a>
+            </nav>
+        </aside>
+
+        <main class="ds-main">
+
+            <!-- Banner Informativo -->
+            <div class="callout callout-brand callout-left-bordered mb-4">
+                <span class="material-icons callout-icon" aria-hidden="true">receipt_long</span>
+                <div class="callout-content">
+                    <div class="callout-title">Registro de Alterações do Design System</div>
+                    <p class="mb-1">Todas as mudanças notáveis deste projeto são documentadas de acordo com as boas práticas do <strong>Keep a Changelog</strong> e aderem rigorosamente ao <strong>Versionamento Semântico (SemVer)</strong>.</p>
+                    <p class="text-muted mb-0" style="font-size: 0.85rem;">Pacote oficial: <code>@bcb/gov-ui</code> • Mantido pelo Departamento de Tecnologia da Informação (DEINF/BCB).</p>
+                </div>
+            </div>
+
+            <!-- ============ VERSÃO 1.1.0 ============ -->
+            <section id="v1-1-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[1.1.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Acessibilidade & Dark Mode</span>
+                        </div>
+                        <div class="version-date">
+                            <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">event</span>
+                            <span>01 de setembro de 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Bloco Corrigido -->
+                    <div class="change-category">
+                        <div class="category-badge badge-fixed" style="background-color: #e3f2fd; color: #1565c0;">
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">build</span>
+                            Corrigido
+                        </div>
+                        <ul class="changelog-list">
+                            <li><strong>Modo Escuro Completo:</strong> Sobrescrita integral de todos os tokens de superfície, textos, botões, links, escala de cinzas e sombras.</li>
+                            <li><strong>Sintaxe CSS de Alto Contraste:</strong> Correção dos blocos de sobrescrita e escopo com seletores padrão do W3C.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloco Adicionado -->
+                    <div class="change-category">
+                        <div class="category-badge badge-added">
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">add_circle</span>
+                            Adicionado
+                        </div>
+                        <ul class="changelog-list">
+                            <li><strong>Modo Alto Contraste:</strong> Ativação dupla via <code>prefers-contrast: more</code> e <code>data-contrast="high"</code> com contraste máximo (e-Mag 3.1 / WCAG AAA).</li>
+                            <li><strong>Skill IA v2.0:</strong> Atualização completa da skill <code>gerador-ui-bcb</code> com árvore de decisão de layout, matriz de 20 padrões, snippets e diretrizes de Webdesigner Sênior.</li>
+                            <li><strong>Utilitários de Ícones:</strong> Classes <code>.md-18</code>, <code>.md-24</code>, <code>.md-36</code>, <code>.md-48</code> para dimensionamento de Material Icons.</li>
+                            <li><strong>Classe Cormorant:</strong> Utilitário <code>.cormorant</code> para títulos editoriais com fonte Cormorant Garamond.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ VERSÃO 1.0.0 ============ -->
+            <section id="v1-0-0">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[1.0.0]</h2>
+                            <span class="version-tag">Lançamento Oficial</span>
+                        </div>
+                        <div class="version-date">
+                            <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">event</span>
+                            <span>01 de setembro de 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Bloco Adicionado -->
+                    <div class="change-category" id="v1-0-0-adicionado">
+                        <div class="category-badge badge-added">
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">add_circle</span>
+                            Adicionado
+                        </div>
+                        <ul class="changelog-list">
+                            <li><strong>Estrutura de Pacote:</strong> Inicialização do projeto como pacote npm registrado sob o escopo <code>@bcb/gov-ui</code>.</li>
+                            <li><strong>Arquitetura Modular CSS:</strong> Reestruturação do design system baseada na metodologia Atomic Design (Settings, Tools, Generic, Atoms, Molecules, Organisms, Utilities).</li>
+                            <li><strong>Esteira CI/CD Automatizada:</strong> Pipeline de integração e entrega contínua com GitHub Actions, incluindo checagem de linter CSS, linter HTML e testes de acessibilidade.</li>
+                            <li><strong>Ferramental de Qualidade:</strong> Integração com Stylelint para CSS e HTMLHint para conformidade semântica de marcação HTML.</li>
+                            <li><strong>Suíte de Testes Automatizados:</strong> Testes de integridade de design tokens (<code>tests/tokens/tokens-integrity.test.js</code>) e validação semântica/e-MAG (<code>tests/html/html-integrity.test.js</code>).</li>
+                            <li><strong>Auditoria de Acessibilidade:</strong> Execução automatizada com pa11y para garantia de conformidade WCAG 2.1 nível AA em todos os templates oficiais (<code>tests/a11y/a11y-runner.js</code>).</li>
+                            <li><strong>Documentação Interativa de Tokens:</strong> Nova página interativa para exploração visual de tokens de cor, escala de cinzas, tipografia, espaçamento e sombras (<code>pages/tokens.html</code>).</li>
+                            <li><strong>Visualização Web do Changelog:</strong> Página formatada e responsiva para consulta do histórico de versões (<code>pages/changelog.html</code>).</li>
+                            <li><strong>Padronização de Ambiente:</strong> Arquivo <code>.editorconfig</code> para assegurar indentação, charset e consistência entre diferentes editores.</li>
+                            <li><strong>Governança de Versões:</strong> Adoção estrita de Versionamento Semântico (SemVer 2.0.0) para previsibilidade de atualizações.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloco Mantido -->
+                    <div class="change-category" id="v1-0-0-mantido">
+                        <div class="category-badge badge-maintained">
+                            <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">shield</span>
+                            Mantido
+                        </div>
+                        <ul class="changelog-list">
+                            <li><strong>Catálogo de Componentes:</strong> Todos os 38 componentes documentados e padronizados no guia de referência institucional.</li>
+                            <li><strong>Compatibilidade Retroativa:</strong> Arquivo CSS monolítico <code>assets/css/bcb-style.css</code> mantido como fallback seguro para sistemas legados.</li>
+                            <li><strong>Templates Institucionais:</strong> Preservação e compatibilidade total dos modelos de página oficiais (<code>template-servico.html</code>, <code>template-noticia.html</code>, <code>drex.html</code>, <code>desastres-naturais.html</code>, etc.).</li>
+                            <li><strong>Servidor Local:</strong> Configuração Docker Compose com servidor Nginx pronto para desenvolvimento e homologação local.</li>
+                            <li><strong>Modo Escuro (Dark Mode):</strong> Suporte completo via media query <code>prefers-color-scheme</code> e alternância manual via atributo <code>data-theme</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ CONVENÇÕES E PADRÕES ============ -->
+            <section id="convencoes">
+                <h2>Convenções de Versionamento</h2>
+                <p class="text-body mb-3">O Design System do Banco Central do Brasil adota o modelo <strong>SemVer (Semantic Versioning)</strong> no formato <code>MAJOR.MINOR.PATCH</code>:</p>
+
+                <div class="row mb-4">
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="card p-3 border h-100">
+                            <h3 class="h6 font-weight-bold text-danger mb-2">MAJOR (Quebra de Compatibilidade)</h3>
+                            <p class="text-muted" style="font-size: 0.85rem;">Incrementado quando são realizadas mudanças incompatíveis na API de tokens, classes CSS descontinuadas ou reestruturações profundas de componentes.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="card p-3 border h-100">
+                            <h3 class="h6 font-weight-bold text-primary mb-2">MINOR (Novas Funcionalidades)</h3>
+                            <p class="text-muted" style="font-size: 0.85rem;">Incrementado quando novos componentes, tokens adicionais ou melhorias retrocompatíveis são adicionados à biblioteca.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="card p-3 border h-100">
+                            <h3 class="h6 font-weight-bold text-success mb-2">PATCH (Correções de Bugs)</h3>
+                            <p class="text-muted" style="font-size: 0.85rem;">Incrementado para correções de bugs, ajustes de contraste visual, refinamentos de documentação ou correções de CSS menores.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="convention-card">
+                    <h3 class="h6 font-weight-bold mb-3" style="color: var(--bcb-brand-blue);">Categorias Padronizadas de Alteração</h3>
+                    <div class="row">
+                        <div class="col-6 col-md-4 mb-2"><span class="category-badge badge-added">Adicionado</span> <small class="text-muted d-block">Novos recursos e tokens</small></div>
+                        <div class="col-6 col-md-4 mb-2"><span class="category-badge badge-changed">Modificado</span> <small class="text-muted d-block">Alterações em recursos existentes</small></div>
+                        <div class="col-6 col-md-4 mb-2"><span class="category-badge badge-fixed">Corrigido</span> <small class="text-muted d-block">Correções de bugs e alinhamento</small></div>
+                        <div class="col-6 col-md-4 mb-2"><span class="category-badge badge-maintained">Mantido</span> <small class="text-muted d-block">Garantias de estabilidade</small></div>
+                        <div class="col-6 col-md-4 mb-2"><span class="category-badge badge-security">Segurança</span> <small class="text-muted d-block">Vulnerabilidades e sanitização</small></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ ROADMAP ============ -->
+            <section id="roadmap">
+                <h2>Roadmap e Próximas Versões</h2>
+                <p class="text-body mb-4">Planejamento das próximas evoluções programadas para o Design System oficial:</p>
+
+                <div class="timeline-horizontal">
+                    <div class="timeline-h-step active">
+                        <div class="timeline-h-circle"><span class="material-icons" style="font-size: 1rem;" aria-hidden="true">check</span></div>
+                        <div class="timeline-h-date">v1.0.0 (Set/2026)</div>
+                        <div class="timeline-h-text">Lançamento do pacote npm, CI/CD, testes a11y e páginas de documentação interativa.</div>
+                    </div>
+                    <div class="timeline-h-step">
+                        <div class="timeline-h-circle"><span class="material-icons" style="font-size: 1rem;" aria-hidden="true">schedule</span></div>
+                        <div class="timeline-h-date">v1.1.0 (Previsto)</div>
+                        <div class="timeline-h-text">Empacotamento de Web Components nativos e gerador interativo de snippets.</div>
+                    </div>
+                    <div class="timeline-h-step">
+                        <div class="timeline-h-circle"><span class="material-icons" style="font-size: 1rem;" aria-hidden="true">flag</span></div>
+                        <div class="timeline-h-date">v2.0.0 (Futuro)</div>
+                        <div class="timeline-h-text">Migração completa de base para Bootstrap 5 e tokens sincronizados via Figma Tokens API.</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+        <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
+    </button>
+
+    <!-- Scripts de Interatividade -->
+    <script>
+        // Alternador de Tema Claro/Escuro
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const rootElement = document.documentElement;
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        rootElement.setAttribute('data-theme', currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            let newTheme = rootElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            rootElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Botão Voltar ao Topo
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Sincronização do Sidebar Ativo no Scroll
+        const sections = document.querySelectorAll('.ds-main section[id]');
+        const navLinks = document.querySelectorAll('.ds-sidebar .nav-link');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === `#${entry.target.id}`) {
+                            link.classList.add('active');
+                        } else if (link.getAttribute('href').startsWith('#')) {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>

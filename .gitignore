@@ -1,1 +1,10 @@
 RO-NOTAS.txt
+node_modules/
+dist/
+coverage/
+.cache/
+storybook-static/
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db

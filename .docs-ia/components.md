@@ -31,11 +31,11 @@ Para botões que indicam continuidade ou download, utilize os ícones do Materia
 
 ```html
 <button type="button" class="btn btn-primary d-flex align-items-center">
-  Ver conteúdo <span class="material-icons-outlined ml-2">chevron_right</span>
+  Ver conteúdo <span class="material-icons-outlined ml-2" aria-hidden="true">chevron_right</span>
 </button>
 
 <button type="button" class="btn btn-primary d-flex align-items-center">
-  Baixar <span class="material-icons-outlined ml-2">file_download</span>
+  Baixar <span class="material-icons-outlined ml-2" aria-hidden="true">file_download</span>
 </button>
 ```
 
@@ -56,7 +56,7 @@ Links (`<a>`) são usados para navegação entre páginas, download de arquivos 
 | --- | --- |
 | **Link Padrão** | `<a href="/destino">Texto</a>` |
 | **Abre em Nova Aba** | `<a href="/destino" target="_blank" rel="noopener noreferrer">Texto</a>` |
-| **Download de Arquivo** | `<a href="arquivo.pdf" aria-label="baixe a planilha completa">Baixar (pdf/1Mb)</a>` |
+| **Download de Arquivo** | `<a href="arquivo.pdf" aria-label="baixe a planilha completa (PDF, 1MB)">Baixar (PDF, 1MB)</a>` |
 | **Âncora (Mesma Pág)** | `<a href="#secao-alvo">Ir para Seção</a>` (Usa `#` no href) |
 
 ### 2.2 Links em Títulos (Headings)
@@ -65,9 +65,9 @@ Quando um título ou subtítulo for um link, ele deve herdar a formatação do t
 
 ```html
 <h6>
-  <a href="#" aria-label="Abre em nova aba ou janela">
+  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Abre em nova aba ou janela">
     Link para outra página
-    <i class="bi bi-box-arrow-in-up-right"></i>
+    <span class="material-icons" aria-hidden="true" style="font-size: 1rem; vertical-align: middle;">open_in_new</span>
   </a>
 </h6>
 ```
@@ -87,10 +87,11 @@ O portal utiliza a biblioteca **Material Icons** do Google.
 ### 3.1 Estilos Disponíveis
 * **Padrão (Filled):** Use a classe `material-icons`. Possui a biblioteca completa e melhor legibilidade geral.
 * **Alternativo (Outlined):** Use a classe `material-icons-outlined` para ícones secundários ou que exijam traço fino.
+* **Utilitários de Tamanho:** `.md-18` (18px), `.md-24` (24px - padrão), `.md-36` (36px), `.md-48` (48px).
 
 ### 3.2 Inserção HTML
 Você pode usar a tag `<span>` ou `<i>`. O padrão preferencial da IA deve ser o `<span>`.
-Exemplo: `<span class="material-icons">home</span>` ou `<i class="material-icons-outlined">search</i>`.
+Exemplo: `<span class="material-icons" aria-hidden="true">home</span>` ou `<i class="material-icons-outlined" aria-hidden="true">search</i>`.
 
 ### ⚠️ Diretrizes Inquebráveis para a IA (Acessibilidade)
 1. **Ícones Decorativos:** Devem ter `aria-hidden="true"`. Ex: `<span class="material-icons" aria-hidden="true">chevron_right</span>`
@@ -99,20 +100,20 @@ Exemplo: `<span class="material-icons">home</span>` ou `<i class="material-icons
 ---
 
 ## 4. Navegação em Abas (Tabs / navegacaoabas)
-O BCB utiliza abas baseadas no Bootstrap 4, mas encapsuladas e estilizadas para conter o "chanfro" da identidade visual.
+O BCB utiliza abas baseadas no Bootstrap 4, mas encapsuladas com a classe `.bcb-navegacaoabas` para conter o "chanfro" da identidade visual.
 
 ### 4.1 Estrutura HTML Padrão
-Sempre envolva o bloco na tag semântica (ou pseudo-componente) `<navegacaoabas>`. 
+Sempre envolva o bloco na classe `<div class="bcb-navegacaoabas">` (ou pseudo-componente `<navegacaoabas class="bcb-navegacaoabas">`). 
 
 **Atenção à regra do Chanfro:** Toda tag `<a>` com a classe `.nav-link` DEVE ter como seu primeiro filho um `<span class="line"></span>`. Isso gera o detalhe visual de marcação do BCB.
 
 ```html
-<navegacaoabas>
+<div class="bcb-navegacaoabas">
   <nav>
     <div class="nav nav-tabs" role="tablist">
       <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab">
         <span class="line"></span>
-        <div class="icone"><span class="material-icons">person</span></div>
+        <div class="icone"><span class="material-icons" aria-hidden="true">person</span></div>
         <div class="texto">Cidadão</div>
       </a>
     </div>
@@ -121,19 +122,19 @@ Sempre envolva o bloco na tag semântica (ou pseudo-componente) `<navegacaoabas>
     <span class="line"></span>
     <div class="tab-pane fade show active" id="tab1" role="tabpanel">Conteúdo</div>
   </div>
-</navegacaoabas>
+</div>
 ```
 
 ---
 
 ## 5. Cards de Links Rápidos (listalinks)
-Usados para navegação em formato de grade (Grid). O ícone fica em um bloco à esquerda com a cor primária, e o texto à direita.
+Usados para navegação em formato de grade (Grid). O ícone fica em um bloco à esquerda com a cor primária, e o texto à direita. Envolva em `<div class="bcb-listalinks">`.
 
 ### 5.1 Estrutura HTML Padrão
 Devem ser renderizados dentro de uma div com a classe `.row` para usar o grid do Bootstrap. A tag `<a>` principal deve ter as classes `.hvr-shadow .d-flex .no-underline`.
 
 ```html
-<listalinks>
+<div class="bcb-listalinks">
   <div class="buffer">
     <div class="row">
       <div class="col-sm-6 mb-2">
@@ -192,7 +193,7 @@ Deve ser injetada logo após a abertura do `<body>`.
 ```html
 <div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px;display:block;">
   <ul id="menu-barra-temp" style="list-style:none;">
-    </li>
+    <li><a href="https://brasil.gov.br" style="color:white;text-decoration:none;">Brasil.gov.br</a></li>
   </ul>
 </div>
 <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
@@ -249,6 +250,7 @@ O rodapé contém links úteis, redes sociais e a missão da instituição.
           <ul class="list-inline text-lg-right mb-0">
             <li class="list-inline-item"><a href="#">Fale conosco</a></li>
             <li class="list-inline-item"><a href="#">Política de privacidade</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -460,11 +462,11 @@ Usado para explicar fluxos de serviços ou instruções sequenciais.
 <ul class="process-list">
   <li>
     <h4 class="h5 mt-0 mb-1 color-1">Acesse o sistema</h4>
-    <p class="text-body text-sm">Faça login com sua conta gov.br nível prata ou ouro.</p>
+    <p class="text-body small mb-0">Faça login com sua conta gov.br nível prata ou ouro.</p>
   </li>
   <li>
     <h4 class="h5 mt-0 mb-1 color-1">Preencha os dados</h4>
-    <p class="text-body text-sm">Insira as informações solicitadas no formulário.</p>
+    <p class="text-body small mb-0">Insira as informações solicitadas no formulário.</p>
   </li>
 </ul>
 ```

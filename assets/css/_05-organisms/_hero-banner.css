@@ -1,0 +1,18 @@
+/* ============= BCB Design System — Organisms / Hero Banner ============= */
+
+.bcb-hero-banner { border-radius: var(--bcb-radius-8); overflow: hidden; margin-bottom: 2.5rem; background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
+.bcb-hero-banner .row { margin: 0; }
+.bcb-hero-content { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+.bcb-hero-title { color: var(--bcb-brand-amarellato); margin-bottom: 1rem; font-weight: 500; font-size: var(--bcb-font-600); line-height: 1.2; }
+.bcb-hero-text { font-size: 1.125rem; margin-bottom: 1.5rem; color: var(--bcb-color-white); }
+.bcb-hero-img-container { padding: 0; display: flex; justify-content: flex-end; }
+.bcb-hero-img-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 var(--bcb-radius-8) var(--bcb-radius-8) 0; }
+
+/* Variações de Cor Institucional */
+.bcb-hero-banner.bg-verde-susta { background-color: #0A663A; }
+.bcb-hero-banner.bg-vinho { background-color: var(--bcb-brand-vinho); }
+
+@media (max-width: 768px) {
+    .bcb-hero-content { padding: 2rem 1.5rem; }
+    .bcb-hero-img-container img { border-radius: 0 0 var(--bcb-radius-8) var(--bcb-radius-8); }
+}

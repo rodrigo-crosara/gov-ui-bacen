@@ -21,12 +21,6 @@
     <link rel="stylesheet" href="./assets/css/bcb-style.css">
     
     <style>
-        body {
-            font-family: var(--bcb-font-ubuntu);
-            color: var(--bcb-color-body-text);
-            background-color: var(--bcb-color-white);
-            margin: 0;
-        }
         .header-bcb {
             background-color: var(--bcb-brand-blue);
             color: var(--bcb-color-white);
@@ -87,13 +81,30 @@
                 Design System BCB
                 <span class="badge-version">v1.0</span>
             </h1>
-            <span class="d-none d-md-inline" style="font-size:0.8rem; opacity:0.7;">Banco Central do Brasil</span>
+            <div class="d-flex align-items-center" style="gap: 0.75rem;">
+                <a href="pages/tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar página interativa de design tokens" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
+                    <span class="d-none d-sm-inline">Tokens</span>
+                </a>
+                <a href="pages/changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar histórico de versões e changelog" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
+                    <span class="d-none d-sm-inline">Changelog</span>
+                </a>
+                <button id="theme-toggle" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Alternar tema claro/escuro" style="border-color: rgba(255,255,255,0.3); color: white; background: transparent;">
+                    <span class="material-icons" style="font-size: 1.2rem;" aria-hidden="true">brightness_medium</span>
+                </button>
+                <span class="d-none d-md-inline" style="font-size:0.8rem; opacity:0.7;">Banco Central do Brasil</span>
+            </div>
         </div>
     </header>
 
     <div class="ds-wrapper">
         <aside class="ds-sidebar">
             <nav class="nav flex-column">
+                <div class="ds-sidebar-title">Documentação Interativa</div>
+                <a class="nav-link" href="pages/tokens.html">Design Tokens (Interativo)</a>
+                <a class="nav-link" href="pages/changelog.html">Changelog do Projeto</a>
+
                 <div class="ds-sidebar-title">Fundação</div>
                 <a class="nav-link" href="#cores">Cores e Tokens</a>
                 <a class="nav-link" href="#tipografia">Tipografia</a>
@@ -102,6 +113,7 @@
                 <a class="nav-link" href="#botoes">Botões</a>
                 <a class="nav-link" href="#links">Links e Âncoras</a>
                 <a class="nav-link" href="#tabelas-alertas">Tabelas, Alertas e Downloads</a>
+                <a class="nav-link" href="#tabelas-graficos-oficiais">Tabelas e Gráficos (Manual)</a>
                 <a class="nav-link" href="#forms">Formulários e Inputs</a>
 
                 <div class="ds-sidebar-title">Navegação</div>
@@ -111,7 +123,7 @@
                 <a class="nav-link" href="#breadcrumb-tags">Breadcrumb e Tags</a>
 
                 <div class="ds-sidebar-title">Editorial</div>
-                <a class="nav-link" href="#conteudo-editorial">Olho, Citação e Accordion</a>
+                <a class="nav-link" href="#conteudo-editorial">Callout, Citação e Accordion</a>
                 <a class="nav-link" href="#navegacao-editorial">Menu de Âncoras e Passo a Passo</a>
 
                 <div class="ds-sidebar-title">Estrutura</div>
@@ -157,9 +169,9 @@
             <section id="tipografia">
                 <h2>Tipografia</h2>
                 <p class="text-body mb-4">A família principal é <strong>Ubuntu</strong>. Peso 300 para light, 400 regular, 500 médio e 700 bold. Títulos editoriais podem usar <strong>Cormorant Garamond</strong>.</p>
-                <h1 class="mb-2" style="font-family: var(--bcb-font-ubuntu);">Título h1 — Ubuntu Medium</h1>
-                <h2 class="mb-2">Subtítulo h2 — Ubuntu</h2>
-                <h3 class="mb-2">Subtítulo h3 — Ubuntu</h3>
+                <div class="h1 mb-2">Título h1 — Ubuntu Medium</div>
+                <div class="h2 mb-2">Subtítulo h2 — Ubuntu</div>
+                <div class="h3 mb-2">Subtítulo h3 — Ubuntu</div>
                 <p class="text-body mb-1">Corpo de texto padrão: <code>.text-body</code> (Ubuntu Regular, #606060)</p>
                 <p class="light text-muted mb-1">Texto leve: <code>.light</code> (peso 300)</p>
                 <p class="bold mb-1">Texto negrito: <code>.bold</code> (peso 700)</p>
@@ -220,7 +232,7 @@
                 </div>
                 <div class="mb-4">
                     <h3 class="h5 medium">Download de Arquivo</h3>
-                    <a href="#" class="text-link" aria-label="baixe o relatório econômico anual">Relatório Econômico Anual (PDF, 2MB)</a>
+                    <a href="#" class="text-link" aria-label="baixe o relatório econômico anual (PDF, 2MB)">Relatório Econômico Anual (PDF, 2MB)</a>
                 </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
@@ -236,6 +248,7 @@
                 <h3 class="h5 medium">Tabela de Dados</h3>
                 <div class="table-responsive mb-3">
                   <table class="table table-striped table-bordered">
+                    <caption class="sr-only">Tabela demonstrativa de indicadores econômicos recentes</caption>
                     <thead class="thead-primary">
                       <tr><th>Indicador</th><th>Jan/2026</th><th>Fev/2026</th></tr>
                     </thead>
@@ -261,7 +274,7 @@
 
                 <h3 class="h5 medium">Lista de Documentos</h3>
                 <div class="documentos">
-                  <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Relatório (PDF)">
+                  <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Relatório de Inflação (PDF, 1.8 MB)">
                     <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
                       <div class="d-flex flex-column position-relative">
                         <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
@@ -269,7 +282,7 @@
                       </div>
                     </div>
                     <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
-                      <span class="documento-title">Relatório de Inflação — Mar/2026</span>
+                      <span class="documento-title">Relatório de Inflação — Mar/2026 (PDF, 1.8 MB)</span>
                       <span class="documento-data">Publicado em: 12/03/2026</span>
                     </div>
                   </a>
@@ -285,6 +298,408 @@
     &lt;/div&gt;
   &lt;/a&gt;
 &lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ============ MANUAL DE TABELAS E GRÁFICOS ============ -->
+            <section id="tabelas-graficos-oficiais">
+                <h2>Manual Corporativo de Padrão Visual para Tabelas e Gráficos</h2>
+                <div class="subtitle-lead">Diretrizes de Formatação e Design — Banco Central do Brasil</div>
+                <p class="text-body mb-4">Este documento estabelece as diretrizes de design, formatação e acessibilidade para todos os gráficos e tabelas produzidos pelas diversas áreas técnicas do Banco Central do Brasil (BC), por meio de automações de código, planilhas eletrônicas ou plataformas digitais.</p>
+
+                <!-- SECÇÃO 1: CORES ESTRUTURAIS PARA TABELAS -->
+                <h3 class="h5 medium mt-4">1. Cores Estruturais e Funcionais (Tabelas)</h3>
+                <p class="text-body mb-3">Para garantir a sobriedade institucional e a legibilidade massiva de tabelas complexas, utiliza-se um conjunto restrito de cores funcionais. A paleta expandida de doze cores destina-se <strong>exclusivamente</strong> a séries de dados em gráficos.</p>
+                
+                <div class="color-row">
+                    <div class="color-col">
+                        <div class="color-card" style="background-color: #606060; color: #ffffff;">
+                            <div class="color-title">Tipografia e bordas</div>
+                            <div class="color-code">HEX: #606060<br>Obrigatório: cor padrão para títulos, textos e linhas.</div>
+                        </div>
+                    </div>
+                    <div class="color-col">
+                        <div class="color-card" style="background-color: #ffffff; color: #B30000; border: 2px solid #B30000;">
+                            <div class="color-title">Números negativos</div>
+                            <div class="color-code" style="color: #606060;">
+                                <strong style="color: #B30000;">HEX: #B30000</strong><br>Alto contraste (WCAG). Ex.: <code>-0,5</code>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="color-col">
+                        <div class="color-card" style="background-color: #2E4C59; color: #ffffff;">
+                            <div class="color-title">Cabeçalhos (digital)</div>
+                            <div class="color-code">HEX: #2E4C59<br>Exclusivo para fundos de cabeçalho em telas e painéis.</div>
+                        </div>
+                    </div>
+                    <div class="color-col">
+                        <div class="color-card" style="background-color: rgba(46, 76, 89, 0.04); color: #606060; border: 1px solid #dcdcdc;">
+                            <div class="color-title" style="color: #2E4C59;">Zebrado (digital)</div>
+                            <div class="color-code">Azul (4% Opacidade)<br>Linhas alternadas para guiar a leitura em telas.</div>
+                        </div>
+                    </div>
+                    <div class="color-col">
+                        <div class="color-card" style="background-color: rgba(242, 181, 87, 0.15); color: #4a3107; border: 1px solid #dcdcdc;">
+                            <div class="color-title">Realce suave (digital)</div>
+                            <div class="color-code">Amarelo (15% opacidade)<br>Realce de totais sem ofuscar dados negativos.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECÇÃO 2: REGRAS ESTRUTURAIS E HIERARQUIA -->
+                <h3 class="h5 medium mt-4">2. Regras de Hierarquia e Formatação (Diretrizes Exatas)</h3>
+                <p class="text-body mb-3">O principal desafio em relatórios analíticos é a leitura de dados densos. Ao construir matrizes tabulares, a aplicação das seguintes regras é estritamente necessária para aprovação visual:</p>
+
+                <div class="rules-grid">
+                    <div class="rules-col">
+                        <h4>A. Tipografia e Dimensões Oficiais</h4>
+                        <ul>
+                            <li><strong>Título e Subtítulo:</strong> fonte Arial <code>8 pt</code>. O título deve ser obrigatoriamente <strong>Negrito</strong> e o subtítulo Regular/Itálico.</li>
+                            <li><strong>Conteúdo (Dados):</strong> Arial, Regular, tamanho <code>7 pt</code>.</li>
+                            <li><strong>Notas de Rodapé:</strong> Arial, Regular, tamanho <code>6 pt</code>. Restrição: omitir a citação ao "BC" quando o banco for a fonte exclusiva.</li>
+                            <li><strong>Altura da Linha (<em>Line-height</em>):</strong> configurar exatamente em <code>12,75 pt</code>. Essa é a proporção áurea definida para evitar o "esmagamento" dos dados sem desperdiçar espaço em relatórios longos.</li>
+                        </ul>
+                    </div>
+                    <div class="rules-col">
+                        <h4>B. Estrutura, Numeração e Nomenclatura</h4>
+                        <ul>
+                            <li><strong>Numeração:</strong> utilizar padrão contínuo (Ex.: <em>Tabela 1 – Título</em>). O formato aninhado (Ex.: <em>Tabela 1.2.1</em>) é reservado exclusivamente ao REF.</li>
+                            <li><strong>Nomenclatura:</strong> categorias de soma devem ser nomeadas como <code>Total</code> (não SFN ou Pessoa Física). Para controle acionário, use sempre <code>Bancos públicos</code> e <code>Bancos privados</code>.</li>
+                            <li><strong>Agrupamento Visual (Bordas e Zebrado):</strong> 
+                                <ul style="margin-top: 4pt;">
+                                    <li>Linha pontilhada separa o cabeçalho do conteúdo.</li>
+                                    <li><strong>Obrigatório em tabelas largas:</strong> utilizar uma coluna vertical fina (<code>0,5 pt</code>) para separar grupos de períodos temporais, evitando fadiga visual horizontal.</li>
+                                    <li><strong>Obrigatório em tabelas digitais:</strong> utilizar zebrado (linhas com fundo alternado) com exatamente <strong>4% de opacidade da Cor 1 (azul)</strong> para guiar a leitura sem interferir no contraste dos dados.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SECÇÃO 3: TABELAS COMPLEXAS -->
+                <h3 class="h5 medium mt-4">3. Aplicação em Tabelas de Alta Densidade (Resumo PMS)</h3>
+                <p class="text-body mb-3">Abaixo aplicamos os padrões institucionais a uma matriz real de alta complexidade. Observe como o uso estrito das <strong>linhas verticais (separadores de 0,5pt)</strong> elimina a necessidade de desenhar caixas isoladas no cabeçalho.</p>
+
+                <!-- MODELO A: DIGITAL -->
+                <div class="card-container">
+                    <div class="card-title">Padrão A: Variante Digital (Telas e Painéis)</div>
+                    <div class="card-desc">Utiliza cabeçalho institucional (cor azul). As partições de colunas são feitas por bordas sutis no CSS. O zebrado (4% de opacidade) e o realce de totais (15% de amarelo) permitem que os negativos (vermelhos) saltem à vista de imediato.</div>
+                    
+                    <div class="bcb-table-wrapper">
+                        <div class="bcb-table-header-flex">
+                            <div class="bcb-table-title-box">
+                                <div class="bcb-table-title">Tabela 1 – Resumo PMS</div>
+                                <div class="bcb-table-subtitle"><em>Abril 2026</em></div>
+                            </div>
+                            <div class="bcb-table-unit-box">%</div>
+                        </div>
+                        <table class="bcb-table table-digital">
+                            <caption class="sr-only">Tabela 1 – Resumo PMS (Abril 2026)</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" rowspan="2" class="bcb-col-separator" style="vertical-align: bottom;">Atividade</th>
+                                    <th scope="col" rowspan="2" class="bcb-col-separator" style="vertical-align: bottom;">Peso</th>
+                                    <th scope="colgroup" colspan="3" class="bcb-col-separator" style="text-align: center;">Var. período anterior, a.s.</th>
+                                    <th scope="colgroup" colspan="4" class="bcb-col-separator" style="text-align: center;">Var. ano anterior</th>
+                                    <th scope="colgroup" colspan="2" style="text-align: center;">Carry over</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Mês</th>
+                                    <th scope="col">Trim</th>
+                                    <th scope="col" class="bcb-col-separator">Fev20</th>
+                                    <th scope="col">Mês</th>
+                                    <th scope="col">Trim</th>
+                                    <th scope="col">Ano</th>
+                                    <th scope="col" class="bcb-col-separator">12 m.</th>
+                                    <th scope="col">2T</th>
+                                    <th scope="col">2026</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bcb-row-highlight">
+                                    <td class="bcb-col-separator">Serviços – Total</td>
+                                    <td class="bcb-col-separator">100,0</td>
+                                    <td>1,2</td>
+                                    <td><span class="num-negative">-0,4</span></td>
+                                    <td class="bcb-col-separator">19,9</td>
+                                    <td>1,9</td>
+                                    <td>1,9</td>
+                                    <td>2,2</td>
+                                    <td class="bcb-col-separator">2,9</td>
+                                    <td>0,5</td>
+                                    <td>1,1</td>
+                                </tr>
+                                <tr>
+                                    <td class="bcb-col-separator">Serviços prestados às famílias</td>
+                                    <td class="bcb-col-separator">8,2</td>
+                                    <td>1,4</td>
+                                    <td>0,9</td>
+                                    <td class="bcb-col-separator">6,9</td>
+                                    <td>2,7</td>
+                                    <td>1,8</td>
+                                    <td>1,9</td>
+                                    <td class="bcb-col-separator">1,1</td>
+                                    <td>1,1</td>
+                                    <td>2,3</td>
+                                </tr>
+                                <tr>
+                                    <td class="bcb-col-separator">Serviços de informação e comunicação</td>
+                                    <td class="bcb-col-separator">23,5</td>
+                                    <td>0,5</td>
+                                    <td>2,2</td>
+                                    <td class="bcb-col-separator">38,7</td>
+                                    <td>6,3</td>
+                                    <td>6,4</td>
+                                    <td>6,4</td>
+                                    <td class="bcb-col-separator">5,6</td>
+                                    <td>0,4</td>
+                                    <td>4,9</td>
+                                </tr>
+                                <tr>
+                                    <td class="bcb-col-separator">Serv. profissionais, adm. e complementares</td>
+                                    <td class="bcb-col-separator">21,7</td>
+                                    <td>0,4</td>
+                                    <td><span class="num-negative">-1,3</span></td>
+                                    <td class="bcb-col-separator">22,0</td>
+                                    <td>1,2</td>
+                                    <td>1,0</td>
+                                    <td>1,6</td>
+                                    <td class="bcb-col-separator">2,6</td>
+                                    <td><span class="num-negative">-0,4</span></td>
+                                    <td>0,1</td>
+                                </tr>
+                                <tr>
+                                    <td class="bcb-col-separator">Transportes, serv. auxiliares e correio</td>
+                                    <td class="bcb-col-separator">36,4</td>
+                                    <td>0,9</td>
+                                    <td><span class="num-negative">-1,1</span></td>
+                                    <td class="bcb-col-separator">19,1</td>
+                                    <td><span class="num-negative">-1,4</span></td>
+                                    <td><span class="num-negative">-0,5</span></td>
+                                    <td><span class="num-negative">-0,1</span></td>
+                                    <td class="bcb-col-separator">2,1</td>
+                                    <td>0,0</td>
+                                    <td><span class="num-negative">-1,6</span></td>
+                                </tr>
+                                <tr class="bcb-row-highlight">
+                                    <td class="bcb-col-separator">Total (pesos PIB)*</td>
+                                    <td class="bcb-col-separator">100,0</td>
+                                    <td>1,0</td>
+                                    <td>0,2</td>
+                                    <td class="bcb-col-separator">29,5</td>
+                                    <td>2,6</td>
+                                    <td>2,5</td>
+                                    <td>2,8</td>
+                                    <td class="bcb-col-separator">3,3</td>
+                                    <td>0,2</td>
+                                    <td>1,5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- MODELO B: STRICT -->
+                <div class="card-container">
+                    <div class="card-title">Padrão B: Variante Estrita (Relatórios Oficiais e PDF)</div>
+                    <div class="card-desc">Padrão obrigatório para o REF e documentos densos. A ausência de preenchimentos, aliada à fonte hierárquica (Totais em Negrito na Cor 1) e aos <strong>separadores verticais</strong>, forma a base analítica do BC.</div>
+                    
+                    <div class="bcb-table-wrapper">
+                        <div class="bcb-table-header-flex">
+                            <div class="bcb-table-title-box">
+                                <div class="bcb-table-title">Tabela 2 – Resumo PMS (Versão Documental)</div>
+                                <div class="bcb-table-subtitle"><em>Abril 2026</em></div>
+                            </div>
+                            <div class="bcb-table-unit-box">%</div>
+                        </div>
+                        <table class="bcb-table table-strict">
+                            <caption class="sr-only">Tabela 2 – Resumo PMS (Versão Documental, Abril 2026)</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" rowspan="2" class="bcb-col-separator" style="vertical-align: bottom;">Atividade</th>
+                                    <th scope="col" rowspan="2" class="bcb-col-separator" style="vertical-align: bottom;">Peso</th>
+                                    <th scope="colgroup" colspan="3" class="bcb-col-separator" style="text-align: center;">Var. período anterior, a.s.</th>
+                                    <th scope="colgroup" colspan="4" class="bcb-col-separator" style="text-align: center;">Var. ano anterior</th>
+                                    <th scope="colgroup" colspan="2" style="text-align: center;">Carry over</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Mês</th>
+                                    <th scope="col">Trim</th>
+                                    <th scope="col" class="bcb-col-separator">Fev20</th>
+                                    <th scope="col">Mês</th>
+                                    <th scope="col">Trim</th>
+                                    <th scope="col">Ano</th>
+                                    <th scope="col" class="bcb-col-separator">12 m.</th>
+                                    <th scope="col">2T</th>
+                                    <th scope="col">2026</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bcb-row-total">
+                                    <td class="bcb-col-separator">Serviços - Total</td>
+                                    <td class="bcb-col-separator">100,0</td>
+                                    <td>1,2</td>
+                                    <td><span class="num-negative">-0,4</span></td>
+                                    <td class="bcb-col-separator">19,9</td>
+                                    <td>1,9</td>
+                                    <td>1,9</td>
+                                    <td>2,2</td>
+                                    <td class="bcb-col-separator">2,9</td>
+                                    <td>0,5</td>
+                                    <td>1,1</td>
+                                </tr>
+                                <tr>
+                                    <td class="bcb-col-separator">Serviços prestados às famílias</td>
+                                    <td class="bcb-col-separator">8,2</td>
+                                    <td>1,4</td>
+                                    <td>0,9</td>
+                                    <td class="bcb-col-separator">6,9</td>
+                                    <td>2,7</td>
+                                    <td>1,8</td>
+                                    <td>1,9</td>
+                                    <td class="bcb-col-separator">1,1</td>
+                                    <td>1,1</td>
+                                    <td>2,3</td>
+                                </tr>
+                                <tr>
+                                    <td class="bcb-col-separator">Serviços de informação e comunicação</td>
+                                    <td class="bcb-col-separator">23,5</td>
+                                    <td>0,5</td>
+                                    <td>2,2</td>
+                                    <td class="bcb-col-separator">38,7</td>
+                                    <td>6,3</td>
+                                    <td>6,4</td>
+                                    <td>6,4</td>
+                                    <td class="bcb-col-separator">5,6</td>
+                                    <td>0,4</td>
+                                    <td>4,9</td>
+                                </tr>
+                                <tr>
+                                    <td class="bcb-col-separator">Serv. profissionais, adm. e complementares</td>
+                                    <td class="bcb-col-separator">21,7</td>
+                                    <td>0,4</td>
+                                    <td><span class="num-negative">-1,3</span></td>
+                                    <td class="bcb-col-separator">22,0</td>
+                                    <td>1,2</td>
+                                    <td>1,0</td>
+                                    <td>1,6</td>
+                                    <td class="bcb-col-separator">2,6</td>
+                                    <td><span class="num-negative">-0,4</span></td>
+                                    <td>0,1</td>
+                                </tr>
+                                <tr>
+                                    <td class="bcb-col-separator">Transportes, serv. auxiliares e correio</td>
+                                    <td class="bcb-col-separator">36,4</td>
+                                    <td>0,9</td>
+                                    <td><span class="num-negative">-1,1</span></td>
+                                    <td class="bcb-col-separator">19,1</td>
+                                    <td><span class="num-negative">-1,4</span></td>
+                                    <td><span class="num-negative">-0,5</span></td>
+                                    <td><span class="num-negative">-0,1</span></td>
+                                    <td class="bcb-col-separator">2,1</td>
+                                    <td>0,0</td>
+                                    <td><span class="num-negative">-1,6</span></td>
+                                </tr>
+                                <tr class="bcb-row-total">
+                                    <td class="bcb-col-separator">Total (pesos PIB)*</td>
+                                    <td class="bcb-col-separator">100,0</td>
+                                    <td>1,0</td>
+                                    <td>0,2</td>
+                                    <td class="bcb-col-separator">29,5</td>
+                                    <td>2,6</td>
+                                    <td>2,5</td>
+                                    <td>2,8</td>
+                                    <td class="bcb-col-separator">3,3</td>
+                                    <td>0,2</td>
+                                    <td>1,5</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="11" class="bcb-table-source">
+                                        Fontes: IBGE e BC<br>
+                                        * Pesos reponderados de acordo com os pesos e a metodologia das Contas Nacionais.<br>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SECÇÃO 4: GRÁFICOS E PALETA 12 CORES -->
+                <h3 class="h5 medium mt-4">4. Integração com Gráficos e Paleta Mestra (doze cores)</h3>
+                <p class="text-body mb-4">Para representações gráficas geradas por automação (Highcharts, Python etc.), as doze cores institucionais devem ser aplicadas sequencialmente (da 1ª à 12ª) para garantir a diferenciação de múltiplas séries de dados no mesmo eixo. As linhas de grade ao fundo (<em>gridlines</em>) devem ser aplicadas sempre com 50% de transparência.</p>
+                
+                <div class="svg-chart-container">
+                    <svg width="100%" height="260" viewBox="0 0 900 260" style="font-family: var(--bcb-font-ubuntu); max-width: 900px; margin: 0 auto; display: block;" role="img" aria-label="Gráfico de barras simulando o uso das doze cores da paleta institucional">
+                        <title>Gráfico de Barras (Paleta Mestra BCB)</title>
+                        
+                        <!-- Gridlines: Transparência 50% -->
+                        <line x1="50" y1="40" x2="850" y2="40" stroke="#606060" stroke-opacity="0.3" stroke-dasharray="2,2"/>
+                        <line x1="50" y1="90" x2="850" y2="90" stroke="#606060" stroke-opacity="0.3" stroke-dasharray="2,2"/>
+                        <line x1="50" y1="140" x2="850" y2="140" stroke="#606060" stroke-opacity="1"/>
+                        
+                        <!-- Barras - 12 Cores Sequenciais -->
+                        <rect x="70" y="50" width="35" height="90" fill="#2E4C59" />
+                        <text x="87.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">1ª</text>
+                        <rect x="130" y="70" width="35" height="70" fill="#F2B557" />
+                        <text x="147.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">2ª</text>
+                        <rect x="190" y="40" width="35" height="100" fill="#6BAEBF" />
+                        <text x="207.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">3ª</text>
+                        <rect x="250" y="80" width="35" height="60" fill="#804C29" />
+                        <text x="267.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">4ª</text>
+                        <rect x="310" y="60" width="35" height="80" fill="#87007C" />
+                        <text x="327.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">5ª</text>
+                        <rect x="370" y="90" width="35" height="50" fill="#D46C6B" />
+                        <text x="387.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">6ª</text>
+                        <rect x="430" y="55" width="35" height="85" fill="#088492" />
+                        <text x="447.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">7ª</text>
+                        <rect x="490" y="100" width="35" height="40" fill="#D295BE" />
+                        <text x="507.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">8ª</text>
+                        <rect x="550" y="65" width="35" height="75" fill="#ECCAB1" />
+                        <text x="567.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">9ª</text>
+                        <rect x="610" y="85" width="35" height="55" fill="#AEAEAE" />
+                        <text x="627.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">10ª</text>
+                        <rect x="670" y="45" width="35" height="95" fill="#736063" />
+                        <text x="687.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">11ª</text>
+                        <rect x="730" y="75" width="35" height="65" fill="#C3A061" />
+                        <text x="747.5" y="155" font-size="7pt" fill="#606060" text-anchor="middle">12ª</text>
+
+                        <!-- Labels Y -->
+                        <text x="45" y="43" font-size="7pt" fill="#606060" text-anchor="end">20</text>
+                        <text x="45" y="93" font-size="7pt" fill="#606060" text-anchor="end">10</text>
+                        <text x="45" y="143" font-size="7pt" fill="#606060" text-anchor="end">0</text>
+
+                        <!-- Chart Title -->
+                        <text x="50" y="15" font-size="9pt" font-weight="bold" fill="#606060">Gráfico 1 – Exemplo de aplicação da paleta mestra completa (doze cores sequenciais)</text>
+                        
+                        <!-- Legenda Paletas -->
+                        <text x="222" y="200" font-size="8pt" font-weight="bold" fill="#2E4C59" text-anchor="middle">PALETA PRIMÁRIA (1 a 6)</text>
+                        <text x="587" y="200" font-size="8pt" font-weight="bold" fill="#2E4C59" text-anchor="middle">PALETA SECUNDÁRIA (7 a 12)</text>
+                    </svg>
+                </div>
+
+                <!-- CARDS DE COR -->
+                <div>
+                    <h4 class="h6 font-weight-bold mb-3 mt-4">Paleta Primária (Séries 1 a 6)</h4>
+                    <div class="color-row">
+                        <div class="color-col"><div class="color-card" style="background-color: #2E4C59; color: #ffffff;"><div class="color-title">1ª Cor (Azul)</div><div class="color-code">HEX: #2E4C59<br>RGB: 46,76,89</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #F2B557; color: #333333;"><div class="color-title">2ª Cor (Amarelo)</div><div class="color-code">HEX: #F2B557<br>RGB: 242,181,87</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #6BAEBF; color: #333333;"><div class="color-title">3ª Cor (Ciano)</div><div class="color-code">HEX: #6BAEBF<br>RGB: 107,174,191</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #804C29; color: #ffffff;"><div class="color-title">4ª Cor (Marrom)</div><div class="color-code">HEX: #804C29<br>RGB: 128,76,41</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #87007C; color: #ffffff;"><div class="color-title">5ª Cor (Púrpura)</div><div class="color-code">HEX: #87007C<br>RGB: 135,0,124</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #D46C6B; color: #333333;"><div class="color-title">6ª Cor (Coral)</div><div class="color-code">HEX: #D46C6B<br>RGB: 212,108,107</div></div></div>
+                    </div>
+
+                    <h4 class="h6 font-weight-bold mb-3 mt-4">Paleta Secundária (Séries 7 a 12)</h4>
+                    <div class="color-row">
+                        <div class="color-col"><div class="color-card" style="background-color: #088492; color: #ffffff;"><div class="color-title">7ª Cor (Verde-Azul)</div><div class="color-code">HEX: #088492<br>RGB: 8,132,146</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #D295BE; color: #333333;"><div class="color-title">8ª Cor (Rosa)</div><div class="color-code">HEX: #D295BE<br>RGB: 210,149,190</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #ECCAB1; color: #333333;"><div class="color-title">9ª Cor (Pêssego)</div><div class="color-code">HEX: #ECCAB1<br>RGB: 236,202,177</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #AEAEAE; color: #333333;"><div class="color-title">10ª Cor (Cinza)</div><div class="color-code">HEX: #AEAEAE<br>RGB: 174,174,174</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #736063; color: #ffffff;"><div class="color-title">11ª Cor (Castanho)</div><div class="color-code">HEX: #736063<br>RGB: 115,96,99</div></div></div>
+                        <div class="color-col"><div class="color-card" style="background-color: #C3A061; color: #333333;"><div class="color-title">12ª Cor (Ocre)</div><div class="color-code">HEX: #C3A061<br>RGB: 195,160,97</div></div></div>
+                    </div>
                 </div>
             </section>
 
@@ -378,15 +793,15 @@
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                       <label for="inputEmailOk">E-mail (válido)</label>
-                      <input type="email" class="form-control is-valid" id="inputEmailOk" value="usuario@exemplo.com">
-                      <div class="valid-feedback">E-mail verificado com sucesso.</div>
+                      <input type="email" class="form-control is-valid" id="inputEmailOk" value="usuario@exemplo.com" aria-describedby="emailOkFeedback">
+                      <div class="valid-feedback" id="emailOkFeedback">E-mail verificado com sucesso.</div>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                       <label for="inputCPFErro">CPF (inválido)</label>
-                      <input type="text" class="form-control is-invalid" id="inputCPFErro" value="123.456.789-0">
-                      <div class="invalid-feedback">CPF inválido. Verifique o número digitado.</div>
+                      <input type="text" class="form-control is-invalid" id="inputCPFErro" value="123.456.789-0" aria-describedby="cpfErroFeedback">
+                      <div class="invalid-feedback" id="cpfErroFeedback">CPF inválido. Verifique o número digitado.</div>
                     </div>
                   </div>
                 </div>
@@ -394,35 +809,37 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="inputObrig">Nome (obrigatório)</label>
-                      <input type="text" class="form-control is-invalid" id="inputObrig" value="">
-                      <div class="invalid-feedback">Campo obrigatório.</div>
+                      <input type="text" class="form-control is-invalid" id="inputObrig" value="" aria-required="true" aria-describedby="obrigErroFeedback">
+                      <div class="invalid-feedback" id="obrigErroFeedback">Campo obrigatório.</div>
                     </div>
                   </div>
                 </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
                     <pre><code>&lt;!-- Input Válido --&gt;
-&lt;input type="email" class="form-control is-valid" id="inputEmail" value="ok@mail.com"&gt;
-&lt;div class="valid-feedback"&gt;E-mail verificado com sucesso.&lt;/div&gt;
+&lt;label for="inputEmail"&gt;E-mail&lt;/label&gt;
+&lt;input type="email" class="form-control is-valid" id="inputEmail" value="ok@mail.com" aria-describedby="emailFeedback"&gt;
+&lt;div class="valid-feedback" id="emailFeedback"&gt;E-mail verificado com sucesso.&lt;/div&gt;
 
 &lt;!-- Input Inválido --&gt;
-&lt;input type="text" class="form-control is-invalid" id="inputCPF" value="123.456.789-0"&gt;
-&lt;div class="invalid-feedback"&gt;CPF inválido. Verifique o número digitado.&lt;/div&gt;</code></pre>
+&lt;label for="inputCPF"&gt;CPF&lt;/label&gt;
+&lt;input type="text" class="form-control is-invalid" id="inputCPF" value="123.456.789-0" aria-describedby="cpfFeedback"&gt;
+&lt;div class="invalid-feedback" id="cpfFeedback"&gt;CPF inválido. Verifique o número digitado.&lt;/div&gt;</code></pre>
                 </div>
             </section>
 
             <!-- ============ ABAS ============ -->
             <section id="abas">
                 <h2>Abas de Navegação (Tabs)</h2>
-                <navegacaoabas>
+                <div class="bcb-navegacaoabas">
                     <nav>
                         <div class="nav nav-tabs" role="tablist">
-                            <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab">
+                            <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">
                                 <span class="line"></span>
                                 <div class="icone d-inline-block align-middle mr-1" style="width:auto; height:auto"><span class="material-icons">person</span></div>
                                 <div class="texto d-inline-block align-middle">Cidadão</div>
                             </a>
-                            <a class="nav-link" data-toggle="tab" href="#tab2" role="tab">
+                            <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">
                                 <span class="line"></span>
                                 <div class="icone d-inline-block align-middle mr-1" style="width:auto; height:auto"><span class="material-icons">account_balance</span></div>
                                 <div class="texto d-inline-block align-middle">Sistema Financeiro</div>
@@ -434,10 +851,10 @@
                         <div class="tab-pane fade show active" id="tab1" role="tabpanel">Conteúdo da aba Cidadão.</div>
                         <div class="tab-pane fade" id="tab2" role="tabpanel">Conteúdo da aba Sistema Financeiro.</div>
                     </div>
-                </navegacaoabas>
+                </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;navegacaoabas&gt;
+                    <pre><code>&lt;div class="bcb-navegacaoabas"&gt;
   &lt;nav&gt;
     &lt;div class="nav nav-tabs" role="tablist"&gt;
       &lt;a class="nav-link active" data-toggle="tab" href="#tab1" role="tab"&gt;
@@ -451,14 +868,14 @@
     &lt;span class="line"&gt;&lt;/span&gt;
     &lt;div class="tab-pane fade show active" id="tab1" role="tabpanel"&gt;...&lt;/div&gt;
   &lt;/div&gt;
-&lt;/navegacaoabas&gt;</code></pre>
+&lt;/div&gt;</code></pre>
                 </div>
             </section>
 
             <!-- ============ CARDS DE LINKS RÁPIDOS ============ -->
             <section id="cards-links-rapidos">
                 <h2>Cards de Links Rápidos</h2>
-                <listalinks>
+                <div class="bcb-listalinks">
                     <div class="buffer">
                         <div class="row">
                             <div class="col-sm-6 mb-2">
@@ -475,10 +892,10 @@
                             </div>
                         </div>
                     </div>
-                </listalinks>
+                </div>
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;listalinks&gt;
+                    <pre><code>&lt;div class="bcb-listalinks"&gt;
   &lt;div class="buffer"&gt;
     &lt;div class="row"&gt;
       &lt;div class="col-sm-6 mb-2"&gt;
@@ -489,7 +906,7 @@
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/listalinks&gt;</code></pre>
+&lt;/div&gt;</code></pre>
                 </div>
             </section>
 
@@ -616,18 +1033,77 @@
 
             <!-- ============ CONTEÚDO EDITORIAL ============ -->
             <section id="conteudo-editorial">
-                <h2>Olho, Citação e Accordion</h2>
+                <h2>Callout, Citação e Accordion</h2>
                 <p class="text-body mb-4">Simulação visual dos Custom Elements Angular do BCB, com o código do componente abaixo para uso em produção.</p>
                 
-                <h3 class="h5 medium">Box "Olho" (Callout)</h3>
-                <div class="bcb-olho">
-                  <h4>Atenção</h4>
-                  <p class="mb-0">Este é um texto de destaque renderizado simulando o componente Angular <code>&lt;bcb-olho&gt;</code>.</p>
+                <h3 class="h5 medium">Callout (Evolução do "Olho")</h3>
+                <p class="text-body mb-3">O componente <strong>Callout</strong> substitui o antigo "Olho", trazendo hierarquia visual clara, ícones e semântica de cores. Pode ser usado em três variações estruturais: Padrão (borda lateral), Outline ou Elevated.</p>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Brand Info -->
+                        <div class="callout callout-brand callout-left-bordered">
+                            <span class="material-icons-outlined callout-icon" aria-hidden="true">info</span>
+                            <div class="callout-content">
+                                <h4 class="callout-title">Uso Padrão (Brand Blue)</h4>
+                                <p>Serve para destacar notas, curiosidades, dicas educacionais gerais. Não quebra o fluxo de leitura, mas ganha destaque visual pela margem pesada à esquerda.</p>
+                                <div class="callout-actions">
+                                    <button class="btn btn-bcb-primary px-4 py-2">Ação Primária</button>
+                                    <button class="btn btn-bcb-outline px-4 py-2">Ação Secundária</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Success Outline -->
+                        <div class="callout callout-success callout-outline">
+                            <span class="material-icons-outlined callout-icon" aria-hidden="true">check_circle</span>
+                            <div class="callout-content">
+                                <h4 class="callout-title">Sucesso (Outline)</h4>
+                                <p>Fundo 100% branco com borda fina acompanhando toda a caixa. Ótimo contraste para áreas densas ou fundos cinzas.</p>
+                            </div>
+                        </div>
+
+                        <!-- Warning Elevated -->
+                        <div class="callout callout-warning callout-elevated">
+                            <span class="material-icons-outlined callout-icon" aria-hidden="true">warning</span>
+                            <div class="callout-content">
+                                <h4 class="callout-title">Atenção (Elevated)</h4>
+                                <p>Usado para avisos que devem parecer flutuar sobre o conteúdo. Contém sombra suave e borda lateral. A cor de borda usa uma variação escurecida do Amarellato para acessibilidade visual em fundos brancos.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Danger -->
+                        <div class="callout callout-danger callout-left-bordered">
+                            <span class="material-icons-outlined callout-icon" aria-hidden="true">error</span>
+                            <div class="callout-content">
+                                <h4 class="callout-title">Crítico / Erro (Marsala Suave)</h4>
+                                <p>Reservado para ações destrutivas, proibições fortes ou erros severos. Age como o "vermelho institucional".</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Neutral -->
+                        <div class="callout callout-neutral callout-left-bordered">
+                            <span class="material-icons-outlined callout-icon" aria-hidden="true">article</span>
+                            <div class="callout-content">
+                                <h4 class="callout-title">Neutro / Referência</h4>
+                                <p>Usado para metadados, links de rodapé ou anexos. Não disputa atenção com os elementos coloridos primários.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="code-snippet">
                     <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;bcb-olho [texto]="'&lt;h4&gt;Atenção&lt;/h4&gt;&lt;p&gt;Texto de destaque.&lt;/p&gt;'"&gt;&lt;/bcb-olho&gt;</code></pre>
+                    <pre><code>&lt;!-- Exemplo Padrão (Brand) --&gt;
+&lt;div class="callout callout-brand callout-left-bordered"&gt;
+    &lt;span class="material-icons-outlined callout-icon" aria-hidden="true"&gt;info&lt;/span&gt;
+    &lt;div class="callout-content"&gt;
+        &lt;h4 class="callout-title"&gt;Uso Padrão&lt;/h4&gt;
+        &lt;p&gt;Corpo de texto explicativo.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
                 </div>
+
 
                 <h3 class="h5 medium">Citação (Blockquote)</h3>
                 <blockquote class="bcb-citacao">
@@ -643,7 +1119,7 @@
                 <div class="accordion modelo-1" id="accordionDS">
                   <div class="card">
                     <div class="card-header" id="headDS1">
-                      <a role="button" data-toggle="collapse" class="btn d-flex justify-content-between align-items-center w-100 text-left text-decoration-none" href="#collapseDS1" aria-expanded="true">
+                      <a role="button" data-toggle="collapse" class="btn d-flex justify-content-between align-items-center w-100 text-left text-decoration-none" href="#collapseDS1" aria-expanded="true" aria-controls="collapseDS1">
                         <span>Título da Sanfona de Exemplo</span>
                         <span class="material-icons" aria-hidden="true">expand_more</span>
                       </a>
@@ -785,21 +1261,57 @@
                 <h2>Templates de Página</h2>
                 <p class="text-body mb-4">Páginas completas prontas para uso que demonstram o Design System funcionando em contexto real. Abra em nova aba para visualizar em tela cheia.</p>
                 <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <a href="./templates/template-servico.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg d-flex align-items-center justify-content-center" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template de Serviço ao Cidadão (nova aba)">
+                  <div class="col-md-4 mb-3">
+                    <a href="./templates/template-servico.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template de Serviço ao Cidadão (nova aba)">
                       <span class="material-icons" aria-hidden="true" style="font-size:2rem;">assignment</span>
                       <div class="text-left">
-                        <strong class="d-block">Serviço ao Cidadão</strong>
-                        <small style="opacity:0.8;">Registrato — Passo a Passo</small>
+                        <strong class="d-block" style="font-size: 1rem;">Serviço ao Cidadão</strong>
+                        <small style="opacity:0.85;">Registrato — Passo a Passo</small>
                       </div>
                     </a>
                   </div>
-                  <div class="col-md-6 mb-3">
-                    <a href="./templates/template-noticia.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg d-flex align-items-center justify-content-center" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template de Notícia Editorial (nova aba)">
+                  <div class="col-md-4 mb-3">
+                    <a href="./templates/template-noticia.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template de Notícia Editorial (nova aba)">
                       <span class="material-icons" aria-hidden="true" style="font-size:2rem;">article</span>
                       <div class="text-left">
-                        <strong class="d-block">Notícia Editorial</strong>
-                        <small style="opacity:0.8;">Pix Agendado Recorrente</small>
+                        <strong class="d-block" style="font-size: 1rem;">Notícia Editorial</strong>
+                        <small style="opacity:0.85;">Pix Agendado Recorrente</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <a href="./templates/drex.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template Drex: O Real Digital (nova aba)">
+                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">currency_exchange</span>
+                      <div class="text-left">
+                        <strong class="d-block" style="font-size: 1rem;">Drex — Real Digital</strong>
+                        <small class="text-muted">Landing Page Temática</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <a href="./templates/desastres-naturais.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template Desastres Naturais (nova aba)">
+                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">eco</span>
+                      <div class="text-left">
+                        <strong class="d-block" style="font-size: 1rem;">Desastres Naturais</strong>
+                        <small class="text-muted">Guia de Prevenção e Impactos</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <a href="./templates/planejando-a-aposentadoria.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir template Planejando a Aposentadoria (nova aba)">
+                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">savings</span>
+                      <div class="text-left">
+                        <strong class="d-block" style="font-size: 1rem;">Aposentadoria</strong>
+                        <small class="text-muted">Educação Financeira</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <a href="./templates/componente-callout.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg d-flex align-items-center justify-content-start p-3 w-100" style="min-height: 80px; gap: 0.75rem;" aria-label="Abrir estudo do Componente Callout (nova aba)">
+                      <span class="material-icons" aria-hidden="true" style="font-size:2rem;">view_quilt</span>
+                      <div class="text-left">
+                        <strong class="d-block" style="font-size: 1rem;">Estudo Callout</strong>
+                        <small class="text-muted">Evolução do Olho Editorial</small>
                       </div>
                     </a>
                   </div>
@@ -990,7 +1502,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: #F8F9FB;">
+                    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: var(--bcb-gray-100);">
                       <div class="step-content pt-0 p-0 m-0">
                         <p>O Banco Central é a autoridade monetária principal do Brasil. Ele regula e supervisiona as instituições financeiras, emite moeda e controla a liquidez da economia.</p>
                       </div>
@@ -1016,7 +1528,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: #F8F9FB;">
+                    <div class="w-100 px-4 pb-4 pt-3 position-relative" style="background-color: var(--bcb-gray-100);">
                       <div class="step-content pt-0 p-0 m-0">
                         <p>Utilize ferramentas como a <strong>Calculadora do Cidadão</strong> do BC para simular investimentos, financiamentos e correções de valores.</p>
                       </div>
@@ -1062,12 +1574,12 @@
                 <div class="bcb-hero-banner shadow-sm mb-4">
                   <div class="row">
                     <div class="col-md-6 bcb-hero-content">
-                      <h2 class="bcb-hero-title">Pix: o pagamento instantâneo brasileiro</h2>
+                      <div class="h2 bcb-hero-title">Pix: o pagamento instantâneo brasileiro</div>
                       <div class="bcb-hero-text">
                         O Pix é o meio de pagamento criado pelo Banco Central em que os recursos são transferidos entre contas em poucos segundos, a qualquer hora ou dia.
                       </div>
                       <div class="mt-auto text-md-right text-left">
-                        <a href="#" class="btn btn-sm btn-outline-primary bg-white">Saiba mais sobre o Pix</a>
+                        <a href="#" class="btn btn-sm btn-outline-primary bg-white">Conheça o funcionamento do Pix</a>
                       </div>
                     </div>
                     <div class="col-md-6 bcb-hero-img-container">
@@ -1082,7 +1594,7 @@
                 <div class="bcb-hero-banner bg-verde-susta shadow-sm mb-4">
                   <div class="row">
                     <div class="col-md-6 bcb-hero-content">
-                      <h2 class="bcb-hero-title">Agenda BC# Sustentabilidade</h2>
+                      <div class="h2 bcb-hero-title">Agenda BC# Sustentabilidade</div>
                       <div class="bcb-hero-text">
                         A dimensão Sustentabilidade do BC# visa promover finanças sustentáveis e incorporar riscos climáticos à regulação do sistema financeiro.
                       </div>
@@ -1291,5 +1803,20 @@
     <button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
         <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
     </button>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const rootElement = document.documentElement;
+        
+        // Verifica preferência salva ou fallback para sistema
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        rootElement.setAttribute('data-theme', currentTheme);
+
+        // Alterna entre os temas
+        themeToggleBtn.addEventListener('click', () => {
+            let newTheme = rootElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            rootElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
 </html>

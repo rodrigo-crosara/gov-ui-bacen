@@ -1,0 +1,5 @@
+/* ============= BCB Design System — Utilities / Back to Top ============= */
+
+.bcb-back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); border: none; border-radius: var(--bcb-radius-8); display: flex; align-items: center; justify-content: center; box-shadow: var(--bcb-shadow-300); cursor: pointer; z-index: 999; transition: all 0.3s; opacity: 0; visibility: hidden; transform: translateY(10px); }
+.bcb-back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.bcb-back-to-top:hover { background-color: var(--bcb-btn-primary-hover); transform: translateY(-2px); box-shadow: var(--bcb-shadow-600); }

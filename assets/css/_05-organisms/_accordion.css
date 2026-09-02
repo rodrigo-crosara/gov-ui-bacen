@@ -1,0 +1,8 @@
+/* ============= BCB Design System — Organisms / Accordion ============= */
+
+/* Ajuste Accordion Bootstrap para BCB */
+.accordion.modelo-1 .card { border: none; margin-bottom: 5px; border-radius: var(--bcb-radius-4); overflow: hidden; }
+.accordion.modelo-1 .card-header { background-color: var(--bcb-gray-100); border-bottom: none; padding: 0; transition: background-color 0.2s; }
+.accordion.modelo-1 .card-header:hover { background-color: var(--bcb-gray-200); }
+.accordion.modelo-1 .card-header .btn { padding: 1rem 1.25rem; font-weight: 500; color: var(--bcb-brand-blue); text-decoration: none; }
+.accordion.modelo-1 .card-body { border: 1px solid var(--bcb-gray-200); border-top: none; }

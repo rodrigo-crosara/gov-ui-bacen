@@ -1,3 +1,41 @@
+/* ============= BCB Design System — Módulos Atômicos =============
+ * Estrutura ITCSS + Atomic Design
+ * Cada módulo pode ser importado individualmente.
+ * O CSS abaixo (monolítico) serve como fallback retrocompatível.
+ * ================================================================ */
+/*
+@import '_00-settings/_tokens.css';
+@import '_00-settings/_typography.css';
+@import '_01-tools/_mixins.css';
+@import '_02-generic/_reset.css';
+@import '_02-generic/_dark-mode.css';
+@import '_03-atoms/_buttons.css';
+@import '_03-atoms/_links.css';
+@import '_03-atoms/_icons.css';
+@import '_03-atoms/_tags.css';
+@import '_03-atoms/_form-controls.css';
+@import '_04-molecules/_breadcrumb.css';
+@import '_04-molecules/_callout.css';
+@import '_04-molecules/_card-indicator.css';
+@import '_04-molecules/_card-link.css';
+@import '_04-molecules/_document-download.css';
+@import '_04-molecules/_search-overlay.css';
+@import '_04-molecules/_stepper.css';
+@import '_04-molecules/_tip-box.css';
+@import '_05-organisms/_header.css';
+@import '_05-organisms/_footer.css';
+@import '_05-organisms/_tabs.css';
+@import '_05-organisms/_accordion.css';
+@import '_05-organisms/_hero-banner.css';
+@import '_05-organisms/_news-list.css';
+@import '_05-organisms/_timeline.css';
+@import '_05-organisms/_process-list.css';
+@import '_05-organisms/_videos.css';
+@import '_05-organisms/_pagination.css';
+@import '_06-utilities/_back-to-top.css';
+@import '_06-utilities/_transitions.css';
+*/
+
 :root {
   /* ==========================================
      1. BASE E TEXTO
@@ -38,8 +76,9 @@
   --bcb-btn-secondary-hover: #066974;
   --bcb-btn-secondary-active: #055861;
 
-  --bcb-link-color: #3298D5;
-  --bcb-link-hover: #0056B3;
+  /* Links */
+  --bcb-link-color: #1B75A6;
+  --bcb-link-hover: #013F50;
 
   /* ==========================================
      5. MODO ALTO CONTRASTE (Acessibilidade)
@@ -67,40 +106,40 @@
   --bcb-gray-1000: #0B0D0E;
 
   /* ==========================================
-     7. TAMANHOS DE FONTE (Base 16px)
+     7. TAMANHOS DE FONTE (Fluída com clamp - Base 16px)
      ========================================== */
   --bcb-font-50:   0.75rem;
-  --bcb-font-75:   0.875rem;
-  --bcb-font-100:  1rem;
-  --bcb-font-200:  1.125rem;
-  --bcb-font-300:  1.25rem;
-  --bcb-font-400:  1.5rem;
-  --bcb-font-500:  1.75rem;
-  --bcb-font-600:  2rem;
-  --bcb-font-700:  2.25rem;
-  --bcb-font-800:  3rem;
+  --bcb-font-75:   clamp(0.75rem, 0.675rem + 0.38vw, 0.875rem);
+  --bcb-font-100:  clamp(0.875rem, 0.8rem + 0.38vw, 1rem);
+  --bcb-font-200:  clamp(1rem, 0.925rem + 0.38vw, 1.125rem);
+  --bcb-font-300:  clamp(1.125rem, 1.05rem + 0.38vw, 1.25rem);
+  --bcb-font-400:  clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --bcb-font-500:  clamp(1.4rem, 1.19rem + 1.05vw, 1.75rem);
+  --bcb-font-600:  clamp(1.6rem, 1.36rem + 1.2vw, 2rem);
+  --bcb-font-700:  clamp(1.8rem, 1.53rem + 1.35vw, 2.25rem);
+  --bcb-font-800:  clamp(2.2rem, 1.72rem + 2.4vw, 3rem);
 
   /* ==========================================
-     8. ESPAÇAMENTOS (Grid de 4px)
+     8. ESPAÇAMENTOS (Grid de 4px, base 16px)
      ========================================== */
-  --bcb-space-0:  0px;
-  --bcb-space-1:  4px;
-  --bcb-space-2:  8px;
-  --bcb-space-3:  12px;
-  --bcb-space-4:  16px;
-  --bcb-space-5:  20px;
-  --bcb-space-6:  24px;
-  --bcb-space-8:  32px;
-  --bcb-space-12: 48px;
-  --bcb-space-16: 64px;
-  --bcb-space-24: 96px;
+  --bcb-space-0:  0;
+  --bcb-space-1:  0.25rem;
+  --bcb-space-2:  0.5rem;
+  --bcb-space-3:  0.75rem;
+  --bcb-space-4:  1rem;
+  --bcb-space-5:  1.25rem;
+  --bcb-space-6:  1.5rem;
+  --bcb-space-8:  2rem;
+  --bcb-space-12: 3rem;
+  --bcb-space-16: 4rem;
+  --bcb-space-24: 6rem;
 
   /* ==========================================
      9. BORDAS E SOMBRAS (Elevation)
      ========================================== */
-  --bcb-radius-0:   0px;
-  --bcb-radius-4:   4px;
-  --bcb-radius-8:   8px;
+  --bcb-radius-0:   0;
+  --bcb-radius-4:   0.25rem;
+  --bcb-radius-8:   0.5rem;
   --bcb-radius-pill: 9999px;
 
   --bcb-shadow-100: 0 1px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04);
@@ -115,56 +154,487 @@
   --bcb-font-istok: 'Istok Web', sans-serif;
 
   /* ==========================================
-     PORTAL PRIMARY (Usado em Breadcrumb etc.)
+     11. PORTAL PRIMARY (Breadcrumbs, etc.)
      ========================================== */
   --bcb-portal-primary: #22272B;
+
+  /* ==========================================
+     12. TINTS DE SUPERFÍCIE (Callouts / Destaques)
+     ========================================== */
+  --bg-brand-light:      #f0f7f9;
+  --bg-verde-light:      #f0f8f8;
+  --bg-amarellato-light: #fefbfa;
+  --bg-vinho-light:      #f5f7f8;
+  --bg-gray-light:       #f8f9fb;
 }
+
+/* ==========================================
+   MODO ESCURO (DATA-THEME E MEDIA QUERY)
+   ========================================== */
+:root[data-theme="dark"] {
+  /* Base e Texto */
+  --bcb-color-white: #121212;
+  --bcb-color-black: #FFFFFF;
+  --bcb-color-body-text: #D0D7DF;
+  --bcb-color-bg-light: #1A1F24;
+
+  /* Escala de Cinzas (invertida) */
+  --bcb-gray-50:  #0B0D0E;
+  --bcb-gray-100: #1A1F24;
+  --bcb-gray-200: #2A3038;
+  --bcb-gray-300: #3E454B;
+  --bcb-gray-400: #606062;
+  --bcb-gray-500: #7E8A95;
+  --bcb-gray-600: #9AA6B2;
+  --bcb-gray-700: #B7C0CB;
+  --bcb-gray-800: #D0D7DF;
+  --bcb-gray-900: #E6EAEF;
+  --bcb-gray-1000: #F3F5F7;
+
+  /* Brand (mais vibrantes para contraste) */
+  --bcb-brand-blue: #0A9FD4;
+  --bcb-brand-blue-dark: #0888B8;
+  --bcb-brand-azulcinti: #0BB0C0;
+  --bcb-brand-azulpetro: #0998B8;
+  --bcb-brand-azulnetuno: #6B94A8;
+  --bcb-brand-vinho: #528096;
+  --bcb-brand-marsala: #9E8589;
+  --bcb-brand-verde-susta: #0EB880;
+  --bcb-brand-verde-castell: #E5CA92;
+  --bcb-brand-amarellato: #F9DEAA;
+  --bcb-brand-cafellato: #8A7276;
+  --bcb-brand-gray80: #9AA6B2;
+
+  /* Interação */
+  --bcb-btn-primary-bg: #0A9FD4;
+  --bcb-btn-primary-hover: #0888B8;
+  --bcb-btn-primary-active: #077099;
+  --bcb-btn-secondary-bg: #0BB0C0;
+  --bcb-btn-secondary-hover: #099BA8;
+  --bcb-btn-secondary-active: #088590;
+  --bcb-link-color: #5BB8E8;
+  --bcb-link-hover: #8AD0F5;
+
+  /* Sombras (mais fortes em fundo escuro) */
+  --bcb-shadow-100: 0 1px 3px rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.20);
+  --bcb-shadow-300: 0 3px 6px rgba(0,0,0,0.35), 0 3px 4px rgba(0,0,0,0.25);
+  --bcb-shadow-600: 3px 3px 15px 0 rgba(0,0,0,0.50);
+
+  /* Portal */
+  --bcb-portal-primary: #0B0D0E;
+
+  /* Tints dos Callouts (escurecidos) */
+  --bg-brand-light: #0d2a33;
+  --bg-verde-light: #0d2a25;
+  --bg-amarellato-light: #2a2210;
+  --bg-vinho-light: #1a2228;
+  --bg-gray-light: #1A1F24;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* Base e Texto */
+    --bcb-color-white: #121212;
+    --bcb-color-black: #FFFFFF;
+    --bcb-color-body-text: #D0D7DF;
+    --bcb-color-bg-light: #1A1F24;
+
+    /* Escala de Cinzas (invertida) */
+    --bcb-gray-50:  #0B0D0E;
+    --bcb-gray-100: #1A1F24;
+    --bcb-gray-200: #2A3038;
+    --bcb-gray-300: #3E454B;
+    --bcb-gray-400: #606062;
+    --bcb-gray-500: #7E8A95;
+    --bcb-gray-600: #9AA6B2;
+    --bcb-gray-700: #B7C0CB;
+    --bcb-gray-800: #D0D7DF;
+    --bcb-gray-900: #E6EAEF;
+    --bcb-gray-1000: #F3F5F7;
+
+    /* Brand (mais vibrantes para contraste) */
+    --bcb-brand-blue: #0A9FD4;
+    --bcb-brand-blue-dark: #0888B8;
+    --bcb-brand-azulcinti: #0BB0C0;
+    --bcb-brand-azulpetro: #0998B8;
+    --bcb-brand-azulnetuno: #6B94A8;
+    --bcb-brand-vinho: #528096;
+    --bcb-brand-marsala: #9E8589;
+    --bcb-brand-verde-susta: #0EB880;
+    --bcb-brand-verde-castell: #E5CA92;
+    --bcb-brand-amarellato: #F9DEAA;
+    --bcb-brand-cafellato: #8A7276;
+    --bcb-brand-gray80: #9AA6B2;
+
+    /* Interação */
+    --bcb-btn-primary-bg: #0A9FD4;
+    --bcb-btn-primary-hover: #0888B8;
+    --bcb-btn-primary-active: #077099;
+    --bcb-btn-secondary-bg: #0BB0C0;
+    --bcb-btn-secondary-hover: #099BA8;
+    --bcb-btn-secondary-active: #088590;
+    --bcb-link-color: #5BB8E8;
+    --bcb-link-hover: #8AD0F5;
+
+    /* Sombras (mais fortes em fundo escuro) */
+    --bcb-shadow-100: 0 1px 3px rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.20);
+    --bcb-shadow-300: 0 3px 6px rgba(0,0,0,0.35), 0 3px 4px rgba(0,0,0,0.25);
+    --bcb-shadow-600: 3px 3px 15px 0 rgba(0,0,0,0.50);
+
+    /* Portal */
+    --bcb-portal-primary: #0B0D0E;
+
+    /* Tints dos Callouts (escurecidos) */
+    --bg-brand-light: #0d2a33;
+    --bg-verde-light: #0d2a25;
+    --bg-amarellato-light: #2a2210;
+    --bg-vinho-light: #1a2228;
+    --bg-gray-light: #1A1F24;
+  }
+}
+
+/* ==========================================
+   MODO ALTO CONTRASTE (e-Mag 3.1 / WCAG AAA)
+   Ativado via OS (prefers-contrast: more) ou
+   botão "Alto Contraste" do portal (data-contrast)
+   ========================================== */
+:root[data-contrast="high"] {
+  --bcb-color-white: #000000;
+  --bcb-color-black: #FFFFFF;
+  --bcb-color-body-text: #FFFFFF;
+  --bcb-color-bg-light: #000000;
+
+  --bcb-gray-50:  #000000;
+  --bcb-gray-100: #111111;
+  --bcb-gray-200: #333333;
+  --bcb-gray-300: #555555;
+  --bcb-gray-400: #888888;
+  --bcb-gray-500: #AAAAAA;
+  --bcb-gray-600: #CCCCCC;
+  --bcb-gray-700: #DDDDDD;
+  --bcb-gray-800: #EEEEEE;
+  --bcb-gray-900: #FFFFFF;
+  --bcb-gray-1000: #FFFFFF;
+
+  --bcb-brand-blue: #4DC8FF;
+  --bcb-brand-blue-dark: #3AB8EE;
+  --bcb-brand-azulcinti: #4DE8F0;
+  --bcb-brand-azulpetro: #4DC8FF;
+  --bcb-brand-azulnetuno: #80D0FF;
+  --bcb-brand-vinho: #FFFFFF;
+  --bcb-brand-marsala: #FF9999;
+  --bcb-brand-verde-susta: #00FF88;
+  --bcb-brand-verde-castell: #FFFF88;
+  --bcb-brand-cafellato: #FFFFFF;
+  --bcb-brand-gray80: #CCCCCC;
+
+  --bcb-btn-primary-bg: #4DC8FF;
+  --bcb-btn-primary-hover: #70D6FF;
+  --bcb-btn-primary-active: #90E0FF;
+  --bcb-btn-secondary-bg: #4DE8F0;
+  --bcb-btn-secondary-hover: #70F0F8;
+  --bcb-btn-secondary-active: #90F5FA;
+
+  --bcb-link-color: #FFFF00;
+  --bcb-link-hover: #FFFF66;
+
+  --bcb-brand-amarellato: #FFFF00;
+
+  --bcb-shadow-100: none;
+  --bcb-shadow-300: none;
+  --bcb-shadow-600: none;
+
+  --bcb-portal-primary: #000000;
+
+  --bg-brand-light: #000000;
+  --bg-verde-light: #000000;
+  --bg-amarellato-light: #000000;
+  --bg-vinho-light: #000000;
+  --bg-gray-light: #000000;
+
+  --bcb-radius-0: 0;
+  --bcb-radius-4: 0;
+  --bcb-radius-8: 0;
+  --bcb-radius-pill: 0;
+}
+
+@media (prefers-contrast: more) {
+  :root:not([data-contrast="normal"]) {
+    --bcb-color-white: #000000;
+    --bcb-color-black: #FFFFFF;
+    --bcb-color-body-text: #FFFFFF;
+    --bcb-color-bg-light: #000000;
+
+    --bcb-gray-50:  #000000;
+    --bcb-gray-100: #111111;
+    --bcb-gray-200: #333333;
+    --bcb-gray-300: #555555;
+    --bcb-gray-400: #888888;
+    --bcb-gray-500: #AAAAAA;
+    --bcb-gray-600: #CCCCCC;
+    --bcb-gray-700: #DDDDDD;
+    --bcb-gray-800: #EEEEEE;
+    --bcb-gray-900: #FFFFFF;
+    --bcb-gray-1000: #FFFFFF;
+
+    --bcb-brand-blue: #4DC8FF;
+    --bcb-brand-blue-dark: #3AB8EE;
+    --bcb-brand-azulcinti: #4DE8F0;
+    --bcb-brand-azulpetro: #4DC8FF;
+    --bcb-brand-azulnetuno: #80D0FF;
+    --bcb-brand-vinho: #FFFFFF;
+    --bcb-brand-marsala: #FF9999;
+    --bcb-brand-verde-susta: #00FF88;
+    --bcb-brand-verde-castell: #FFFF88;
+    --bcb-brand-cafellato: #FFFFFF;
+    --bcb-brand-gray80: #CCCCCC;
+
+    --bcb-btn-primary-bg: #4DC8FF;
+    --bcb-btn-primary-hover: #70D6FF;
+    --bcb-btn-primary-active: #90E0FF;
+    --bcb-btn-secondary-bg: #4DE8F0;
+    --bcb-btn-secondary-hover: #70F0F8;
+    --bcb-btn-secondary-active: #90F5FA;
+
+    --bcb-link-color: #FFFF00;
+    --bcb-link-hover: #FFFF66;
+
+    --bcb-brand-amarellato: #FFFF00;
+
+    --bcb-shadow-100: none;
+    --bcb-shadow-300: none;
+    --bcb-shadow-600: none;
+
+    --bcb-portal-primary: #000000;
+
+    --bg-brand-light: #000000;
+    --bg-verde-light: #000000;
+    --bg-amarellato-light: #000000;
+    --bg-vinho-light: #000000;
+    --bg-gray-light: #000000;
+
+    --bcb-radius-0: 0;
+    --bcb-radius-4: 0;
+    --bcb-radius-8: 0;
+    --bcb-radius-pill: 0;
+  }
+}
+
+/* ==========================================
+   Overrides de componentes — Alto Contraste
+   Bordas forçadas pois sombras são removidas.
+   ========================================== */
+:root[data-contrast="high"] header[role="banner"] {
+  border-bottom: 2px solid #FFFFFF !important;
+}
+:root[data-contrast="high"] footer[role="contentinfo"] {
+  border-top: 2px solid #FFFFFF !important;
+}
+:root[data-contrast="high"] .card,
+:root[data-contrast="high"] .bcb-citacao,
+:root[data-contrast="high"] .bcb-olho,
+:root[data-contrast="high"] .callout,
+:root[data-contrast="high"] .bcb-indicator-card,
+:root[data-contrast="high"] .listalinks-light a,
+:root[data-contrast="high"] .bcb-search-overlay,
+:root[data-contrast="high"] .step-card {
+  border: 1px solid #FFFFFF !important;
+}
+:root[data-contrast="high"] .table-bordered,
+:root[data-contrast="high"] .bcb-table,
+:root[data-contrast="high"] .table-bordered th,
+:root[data-contrast="high"] .table-bordered td {
+  border: 1px solid #FFFFFF !important;
+}
+:root[data-contrast="high"] .form-control,
+:root[data-contrast="high"] .custom-select,
+:root[data-contrast="high"] .custom-file-label {
+  border: 2px solid #FFFFFF !important;
+}
+:root[data-contrast="high"] :focus-visible {
+  outline: 4px solid #FFFF00 !important;
+  outline-offset: 2px;
+}
+
+@media (prefers-contrast: more) {
+  :root:not([data-contrast="normal"]) header[role="banner"] {
+    border-bottom: 2px solid #FFFFFF !important;
+  }
+  :root:not([data-contrast="normal"]) footer[role="contentinfo"] {
+    border-top: 2px solid #FFFFFF !important;
+  }
+  :root:not([data-contrast="normal"]) .card,
+  :root:not([data-contrast="normal"]) .bcb-citacao,
+  :root:not([data-contrast="normal"]) .bcb-olho,
+  :root:not([data-contrast="normal"]) .callout,
+  :root:not([data-contrast="normal"]) .bcb-indicator-card,
+  :root:not([data-contrast="normal"]) .listalinks-light a,
+  :root:not([data-contrast="normal"]) .bcb-search-overlay,
+  :root:not([data-contrast="normal"]) .step-card {
+    border: 1px solid #FFFFFF !important;
+  }
+  :root:not([data-contrast="normal"]) .table-bordered,
+  :root:not([data-contrast="normal"]) .bcb-table,
+  :root:not([data-contrast="normal"]) .table-bordered th,
+  :root:not([data-contrast="normal"]) .table-bordered td {
+    border: 1px solid #FFFFFF !important;
+  }
+  :root:not([data-contrast="normal"]) .form-control,
+  :root:not([data-contrast="normal"]) .custom-select,
+  :root:not([data-contrast="normal"]) .custom-file-label {
+    border: 2px solid #FFFFFF !important;
+  }
+  :root:not([data-contrast="normal"]) :focus-visible {
+    outline: 4px solid #FFFF00 !important;
+    outline-offset: 2px;
+  }
+}
+
+/* ==========================================
+   BODY GLOBAL E SOBRESCRITA BOOTSTRAP
+   ========================================== */
+body {
+  background-color: var(--bcb-color-white);
+  color: var(--bcb-color-body-text);
+  font-family: var(--bcb-font-ubuntu);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bg-light, .bg-white { 
+  background-color: var(--bcb-color-white) !important; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.text-dark { color: var(--bcb-gray-900) !important; transition: color 0.3s ease; }
+.text-muted { color: var(--bcb-gray-600) !important; transition: color 0.3s ease; }
+.border { border-color: var(--bcb-gray-200) !important; transition: border-color 0.3s ease; }
 
 /* ==========================================
    UTILITÁRIOS DE TIPOGRAFIA E ACESSIBILIDADE
    ========================================== */
+h1, .h1 { font-size: var(--bcb-font-700); font-family: var(--bcb-font-ubuntu); }
+h2, .h2 { font-size: var(--bcb-font-600); font-family: var(--bcb-font-ubuntu); }
+h3, .h3 { font-size: var(--bcb-font-500); font-family: var(--bcb-font-ubuntu); }
+h4, .h4 { font-size: var(--bcb-font-400); font-family: var(--bcb-font-ubuntu); }
+h5, .h5 { font-size: var(--bcb-font-300); font-family: var(--bcb-font-ubuntu); }
+h6, .h6 { font-size: var(--bcb-font-200); font-family: var(--bcb-font-ubuntu); }
+p { font-size: var(--bcb-font-100); }
+
+.cormorant { font-family: var(--bcb-font-cormorant) !important; font-weight: 600; }
 .light   { font-weight: 300; }
 .medium  { font-weight: 500; }
 .bold    { font-weight: 700; }
 .italic  { font-style: italic; }
 
 .text-body { color: var(--bcb-color-body-text); }
-.text-link { color: var(--bcb-link-color); text-decoration: none; transition: color 0.2s; }
+.text-link { color: var(--bcb-link-color); text-decoration: none; transition: color 0.2s, outline 0.2s; }
 .text-link:hover { color: var(--bcb-link-hover); text-decoration: underline; }
 
+/* Utilitários de Ícones Material */
+.material-icons.md-18, .material-icons-outlined.md-18 { font-size: 18px !important; }
+.material-icons.md-24, .material-icons-outlined.md-24 { font-size: 24px !important; }
+.material-icons.md-36, .material-icons-outlined.md-36 { font-size: 36px !important; }
+.material-icons.md-48, .material-icons-outlined.md-48 { font-size: 48px !important; }
+
+/* Foco Acessível Padrão (WCAG 2.1 AA — Mínimo 3:1) */
+:focus-visible {
+  outline: 3px solid var(--bcb-brand-blue);
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   BOTÕES BCB
+   ========================================== */
+.btn-primary {
+  background-color: var(--bcb-btn-primary-bg) !important;
+  border-color: var(--bcb-btn-primary-bg) !important;
+  color: var(--bcb-color-white) !important;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: var(--bcb-btn-primary-hover) !important;
+  border-color: var(--bcb-btn-primary-hover) !important;
+  color: var(--bcb-color-white) !important;
+}
+.btn-primary:active, .btn-primary:focus {
+  background-color: var(--bcb-btn-primary-active) !important;
+  border-color: var(--bcb-btn-primary-active) !important;
+}
+.btn-primary:disabled {
+  background-color: var(--bcb-gray-400) !important;
+  border-color: var(--bcb-gray-400) !important;
+  color: var(--bcb-gray-100) !important;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: var(--bcb-btn-secondary-bg) !important;
+  border-color: var(--bcb-btn-secondary-bg) !important;
+  color: var(--bcb-color-white) !important;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--bcb-btn-secondary-hover) !important;
+  border-color: var(--bcb-btn-secondary-hover) !important;
+  color: var(--bcb-color-white) !important;
+}
+.btn-secondary:active, .btn-secondary:focus {
+  background-color: var(--bcb-btn-secondary-active) !important;
+  border-color: var(--bcb-btn-secondary-active) !important;
+}
+
+.btn-outline-primary {
+  color: var(--bcb-brand-blue) !important;
+  border-color: var(--bcb-brand-blue) !important;
+  background-color: transparent !important;
+  transition: all 0.2s ease;
+}
+.btn-outline-primary:hover {
+  background-color: var(--bcb-brand-blue) !important;
+  color: var(--bcb-color-white) !important;
+}
+
+.btn-link {
+  color: var(--bcb-link-color) !important;
+  text-decoration: none;
+}
+.btn-link:hover {
+  color: var(--bcb-link-hover) !important;
+  text-decoration: underline;
+}
+
 /* AJUSTES GERAIS BCB */
-.font-weight-bold { font-weight: 500!important; }
-.text-uppercase { text-transform: uppercase!important; }
+.font-weight-bold { font-weight: 500 !important; }
+.text-uppercase { text-transform: uppercase !important; }
 
 /* ==========================================
    11. COMPONENTES ANGULAR EXTRAÍDOS (DEINF)
    ========================================== */
 
 /* NAVEGACAOABAS */
-navegacaoabas .nav-tabs { padding-left: 5px; border-bottom: 0; position: relative; z-index: 2; }
-navegacaoabas .nav-tabs:first-child { padding-left: 0; }
-navegacaoabas .nav-link { position: relative; border-top-left-radius: 0; border-top-right-radius: 0.5rem; border-bottom: none; display: flex; align-items: center; line-height: 15px; padding: 0.5rem 0.7rem 0.5rem 1rem; font-size: 0.8rem; transition: background-color 0.2s, color 0.2s; height: 48px; background-color: var(--bcb-gray-200); border-color: var(--bcb-gray-400); color: var(--bcb-gray-700); margin-bottom: 0; }
-navegacaoabas .nav-link:not(:last-child) { margin-right: 2px; }
-navegacaoabas .nav-link:focus, navegacaoabas .nav-link:hover { border-color: var(--bcb-gray-400); }
-navegacaoabas .nav-link::before { content: ""; position: absolute; top: -1px; left: -2px; border-bottom: 21px solid transparent; border-left: 21px solid var(--bcb-color-white); }
-navegacaoabas .nav-link.active { color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); background-color: var(--bcb-color-white); position: relative; bottom: -1px; }
-navegacaoabas .nav-link:not(.active) .icone { display: none; }
-navegacaoabas .nav-link .line { display: block; width: 0; height: 26px; border-left: 1px solid var(--bcb-gray-400); transform: rotate(45deg); position: absolute; left: 8px; top: -4px; }
-navegacaoabas .nav-link.active .line { border-color: var(--bcb-brand-blue); }
-navegacaoabas .nav-link:not(.active) img { filter: grayscale(1); }
-navegacaoabas .nav-link .texto { margin-left: 8px; }
-navegacaoabas .tab-content { border: 1px solid var(--bcb-brand-blue); border-radius: 0 0 5px 5px; position: relative; z-index: 1; }
-navegacaoabas .tab-content > .tab-pane { padding: 1rem; }
+.bcb-navegacaoabas .nav-tabs { padding-left: 5px; border-bottom: 0; position: relative; z-index: 2; }
+.bcb-navegacaoabas .nav-tabs:first-child { padding-left: 0; }
+.bcb-navegacaoabas .nav-link { position: relative; border-top-left-radius: 0; border-top-right-radius: 0.5rem; border-bottom: none; display: flex; align-items: center; line-height: 15px; padding: 0.5rem 0.7rem 0.5rem 1rem; font-size: 0.8rem; transition: background-color 0.2s, color 0.2s, border-color 0.2s; height: 48px; background-color: var(--bcb-gray-200); border-color: var(--bcb-gray-400); color: var(--bcb-gray-700); margin-bottom: 0; }
+.bcb-navegacaoabas .nav-link:not(:last-child) { margin-right: 2px; }
+.bcb-navegacaoabas .nav-link:focus, .bcb-navegacaoabas .nav-link:hover { border-color: var(--bcb-gray-400); }
+.bcb-navegacaoabas .nav-link::before { content: ""; position: absolute; top: -1px; left: -2px; border-bottom: 21px solid transparent; border-left: 21px solid var(--bcb-color-white); }
+.bcb-navegacaoabas .nav-link.active { color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); background-color: var(--bcb-color-white); bottom: -1px; }
+.bcb-navegacaoabas .nav-link:not(.active) .icone { display: none; }
+.bcb-navegacaoabas .nav-link .line { display: block; width: 0; height: 26px; border-left: 1px solid var(--bcb-gray-400); transform: rotate(45deg); position: absolute; left: 8px; top: -4px; }
+.bcb-navegacaoabas .nav-link.active .line { border-color: var(--bcb-brand-blue); }
+.bcb-navegacaoabas .nav-link:not(.active) img { filter: grayscale(1); }
+.bcb-navegacaoabas .nav-link .texto { margin-left: 8px; }
+.bcb-navegacaoabas .tab-content { border: 1px solid var(--bcb-brand-blue); border-radius: 0 0 5px 5px; position: relative; z-index: 1; }
+.bcb-navegacaoabas .tab-content > .tab-pane { padding: 1rem; }
 
 /* LISTALINKS */
-listalinks .buffer a { height: 3rem; }
-listalinks .buffer .texto { font-size: 0.9rem; line-height: 1.1; background-color: var(--bcb-gray-100); padding: 5px 10px; transition: background-color 0.3s, box-shadow 0.3s; }
-listalinks .buffer a:hover .texto { background-color: var(--bcb-gray-200); }
-listalinks .buffer .icone { width: 3rem; min-width: 3rem; }
+.bcb-listalinks .buffer a { height: 3rem; }
+.bcb-listalinks .buffer .texto { font-size: 0.9rem; line-height: 1.1; background-color: var(--bcb-gray-100); padding: 5px 10px; transition: background-color 0.3s, box-shadow 0.3s; }
+.bcb-listalinks .buffer a:hover .texto { background-color: var(--bcb-gray-200); }
+.bcb-listalinks .buffer .icone { width: 3rem; min-width: 3rem; }
 
 /* UTILITÁRIOS BCB (Cores e Efeitos) */
 .bg-color-1 { background-color: var(--bcb-brand-blue) !important; color: var(--bcb-color-white) !important; }
-.font-color-1 { color: var(--bcb-brand-blue) !important; font-weight: 500; border: 1px solid var(--bcb-gray-200); border-left: none;}
+.font-color-1 { color: var(--bcb-brand-blue) !important; font-weight: 500; border: 1px solid var(--bcb-gray-200); border-left: none; }
 .color-1 { color: var(--bcb-brand-blue) !important; }
 .hvr-shadow { transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out; }
 .hvr-shadow:hover { box-shadow: var(--bcb-shadow-300); transform: translateY(-1px); }
@@ -174,24 +644,24 @@ listalinks .buffer .icone { width: 3rem; min-width: 3rem; }
    ========================================== */
 
 /* HEADER */
-header[role=banner] { transition: height .3s; height: 60px; background: #fff; position: relative; z-index: 3; border-bottom: 1px solid #e9ecef; }
-header[role=banner] .brand { position: absolute; left: 50%; transform: translateX(-50%); top: 12px; z-index: 1; width: 126px; }
-#portal-siteactions { border-bottom: 1px dotted var(--bcb-brand-blue); background: hsla(0,0%,100%,.8); }
+header[role="banner"] { transition: height 0.3s, background-color 0.3s, border-color 0.3s; height: 60px; background-color: var(--bcb-color-white); position: relative; z-index: 3; border-bottom: 1px solid var(--bcb-gray-200); }
+header[role="banner"] .brand { position: absolute; left: 50%; transform: translateX(-50%); top: 12px; z-index: 1; width: 126px; }
+#portal-siteactions { border-bottom: 1px dotted var(--bcb-brand-blue); background: var(--bcb-color-white); opacity: 0.9; }
 #portal-siteactions li:not(:last-child) { margin-right: 1rem; }
-#accessibility-wrapper { position: absolute; top: 5px; z-index: 1031; right: 15px; font-size: .7rem; }
+#accessibility-wrapper { position: absolute; top: 5px; z-index: 1031; right: 15px; font-size: 0.75rem; }
 
 /* FOOTER */
-footer[role=contentinfo] { display: block; position: relative; border-top: 1px solid #e9ecef; background-color: #f9f9f9; margin-top: 30px; font-size: 0.9rem; }
-footer[role=contentinfo] .m, footer[role=contentinfo] .t { border-bottom: 1px solid #e9ecef; }
-footer[role=contentinfo] .m > .container, footer[role=contentinfo] .t > .container { padding-top: 25px; padding-bottom: 25px; }
-footer[role=contentinfo] .redes-sociais { display: flex; flex-wrap: wrap; flex-direction: row; align-items: center; justify-content: center; gap: 10px; }
-footer[role=contentinfo] .redes-sociais li { display: flex; width: 30px; height: 30px; background: var(--bcb-brand-blue); border-radius: 50%; }
-footer[role=contentinfo] .redes-sociais li a { display: flex; flex-grow: 1; align-items: center; justify-content: center; transition: transform .3s ease; color: white; text-decoration: none; font-size: 14px; font-weight: bold; }
-footer[role=contentinfo] .redes-sociais li a:hover { transform: scale(1.1) translateY(-2px); }
-footer[role=contentinfo] .missao { max-width: 550px; font-style: italic; }
-footer[role=contentinfo] .info li:not(:last-child):after { content: "|"; display: inline-block; margin-left: 7px; color: #ccc; }
-footer[role=contentinfo] .arts { position: relative; }
-footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; border-right: 1px solid #e9ecef; transform: rotate(-45deg); right: 36px; top: -13px; z-index: 2; position: absolute; }
+footer[role="contentinfo"] { display: block; position: relative; border-top: 1px solid var(--bcb-gray-200); background-color: var(--bcb-gray-50); margin-top: 30px; font-size: 0.9rem; transition: background-color 0.3s, border-color 0.3s; }
+footer[role="contentinfo"] .m, footer[role="contentinfo"] .t { border-bottom: 1px solid var(--bcb-gray-200); }
+footer[role="contentinfo"] .m > .container, footer[role="contentinfo"] .t > .container { padding-top: 25px; padding-bottom: 25px; }
+footer[role="contentinfo"] .redes-sociais { display: flex; flex-wrap: wrap; flex-direction: row; align-items: center; justify-content: center; gap: 10px; }
+footer[role="contentinfo"] .redes-sociais li { display: flex; width: 30px; height: 30px; background: var(--bcb-brand-blue); border-radius: 50%; }
+footer[role="contentinfo"] .redes-sociais li a { display: flex; flex-grow: 1; align-items: center; justify-content: center; transition: transform 0.3s ease; color: var(--bcb-color-white); text-decoration: none; font-size: 14px; font-weight: bold; }
+footer[role="contentinfo"] .redes-sociais li a:hover { transform: scale(1.1) translateY(-2px); }
+footer[role="contentinfo"] .missao { max-width: 550px; font-style: italic; }
+footer[role="contentinfo"] .info li:not(:last-child)::after { content: "|"; display: inline-block; margin-left: 7px; color: var(--bcb-gray-400); }
+footer[role="contentinfo"] .arts { position: relative; }
+footer[role="contentinfo"] .arts .line { display: block; width: 0; height: 85px; border-right: 1px solid var(--bcb-gray-200); transform: rotate(-45deg); right: 36px; top: -13px; z-index: 2; position: absolute; }
 
 /* ==========================================
    13. SIMULAÇÃO VISUAL (CONTEÚDO EDITORIAL)
@@ -289,8 +759,9 @@ footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; b
    17. FORMULÁRIOS E INPUTS (FORMS)
    ========================================== */
 .form-group label { font-weight: 500; color: var(--bcb-gray-900); margin-bottom: 0.5rem; display: block; }
-.form-control { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-gray-900); box-shadow: inset 0 1px 2px rgba(0,0,0,0.075); transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+.form-control { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-color-body-text); background-color: var(--bcb-color-white); box-shadow: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.3s ease, color 0.3s ease; }
 .form-control:focus { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); outline: 0; }
+.form-control:disabled, .form-control[readonly] { background-color: var(--bcb-gray-100); opacity: 0.7; cursor: not-allowed; }
 .form-text.text-muted { font-size: 0.85rem; margin-top: 0.25rem; color: var(--bcb-gray-600) !important; }
 
 /* Checkboxes e Radios Customizados */
@@ -337,11 +808,12 @@ footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; b
    20. FORMULÁRIOS AVANÇADOS E VALIDAÇÃO
    ========================================== */
 /* Select Customizado */
-.custom-select { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-gray-900); background-color: var(--bcb-color-white); transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+.custom-select { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-color-body-text); background-color: var(--bcb-color-white); transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.3s ease, color 0.3s ease; }
 .custom-select:focus { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); outline: 0; }
+.custom-select:disabled { background-color: var(--bcb-gray-100); opacity: 0.7; cursor: not-allowed; }
 
 /* File Input */
-.custom-file-label { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-gray-600); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.custom-file-label { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-color-body-text); background-color: var(--bcb-color-white); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; transition: background-color 0.3s ease, color 0.3s ease; }
 .custom-file-label::after { content: "Selecionar"; background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); border-left: 1px solid var(--bcb-gray-500); padding: 0.75rem 1rem; height: 100%; display: flex; align-items: center; font-weight: 500; transition: background-color 0.2s; }
 .custom-file-input:focus ~ .custom-file-label { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); }
 
@@ -504,4 +976,166 @@ footer[role=contentinfo] .arts .line { display: block; width: 0; height: 85px; b
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
     40% { transform: translateY(-15px); }
     60% { transform: translateY(-7px); }
+}
+
+/* ==========================================
+   29. PADRÃO VISUAL DE TABELAS E GRÁFICOS
+   ========================================== */
+.subtitle-lead { font-size: 1.2rem; color: var(--bcb-color-body-text); font-style: italic; margin-bottom: 1rem; }
+
+.color-row { display: flex; width: 100%; margin-bottom: 1rem; gap: 0.5rem; flex-wrap: wrap; }
+.color-col { flex: 1; min-width: 140px; padding: 0.25rem; text-align: center; }
+.color-card { border: 1px solid var(--bcb-gray-300); border-radius: var(--bcb-radius-4); padding: 0.5rem; height: 100%; display: flex; flex-direction: column; }
+.color-title { font-weight: 700; font-size: 0.8rem; margin-bottom: 0.25rem; }
+.color-code { font-size: 0.75rem; margin-top: 0.25rem; line-height: 1.2; }
+
+.card-container { border: 1px solid var(--bcb-gray-200); border-radius: var(--bcb-radius-8); padding: 1.5rem; margin-bottom: 2rem; background-color: var(--bcb-gray-50); }
+.card-title { font-size: 1.1rem; color: var(--bcb-brand-vinho); font-weight: 700; margin-bottom: 0.25rem; }
+.card-desc { font-size: 0.9rem; color: var(--bcb-gray-600); margin-bottom: 1rem; }
+
+/* Grelha de Regras */
+.rules-grid { display: flex; width: 100%; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.rules-col { flex: 1; min-width: 300px; padding: 1rem; background: var(--bcb-gray-50); border: 1px solid var(--bcb-gray-200); border-radius: var(--bcb-radius-4); }
+.rules-col h4 { margin-top: 0; color: var(--bcb-brand-vinho); font-size: 1rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--bcb-gray-300); padding-bottom: 0.25rem; }
+.rules-col ul { margin-bottom: 0; padding-left: 1rem; font-size: 0.9rem; }
+.rules-col li { margin-bottom: 0.25rem; }
+.rules-col strong { color: var(--bcb-brand-vinho); }
+
+/* PADRÃO DE TABELAS */
+.bcb-table-wrapper { margin-top: 1rem; margin-bottom: 1rem; overflow-x: auto; }
+.bcb-table-header-flex { display: flex; width: 100%; justify-content: space-between; align-items: flex-end; margin-bottom: 0.2rem; min-width: 600px; }
+.bcb-table-title-box { text-align: left; }
+.bcb-table-unit-box { text-align: right; font-family: var(--bcb-font-ubuntu); font-size: 0.8rem; color: var(--bcb-color-body-text); }
+
+.bcb-table-title { font-family: var(--bcb-font-ubuntu); font-weight: 700; font-size: 0.9rem; color: var(--bcb-color-body-text); line-height: 1.2; }
+.bcb-table-subtitle { font-family: var(--bcb-font-ubuntu); font-style: italic; font-size: 0.8rem; color: var(--bcb-color-body-text); line-height: 1.2; margin-top: 0.1rem; }
+
+.bcb-table { width: 100%; min-width: 600px; border-collapse: collapse; font-family: var(--bcb-font-ubuntu); background: var(--bcb-color-white); }
+
+.bcb-table th, .bcb-table td { 
+    font-size: 0.85rem; 
+    line-height: 1.4; 
+    color: var(--bcb-color-body-text); 
+    padding: 0.4rem 0.6rem; 
+    text-align: right; 
+    vertical-align: middle; 
+}
+
+.bcb-table tbody tr td:first-child, 
+.bcb-table tbody tr th:first-child,
+.bcb-table thead tr:first-child th:first-child { 
+    text-align: left; 
+}
+
+.bcb-col-separator { border-right: 1px solid var(--bcb-gray-300); }
+.num-negative { color: #B30000; font-weight: 700; }
+.bcb-table-source { font-size: 0.75rem; padding-top: 0.5rem !important; text-align: left !important; border-top: 1px solid var(--bcb-gray-400); line-height: 1.2; }
+
+/* MODELOS DE TABELAS */
+.table-digital thead tr { background-color: var(--bcb-brand-vinho); }
+.table-digital thead th { color: var(--bcb-color-white); border: none; font-weight: 700; }
+.table-digital thead th.bcb-col-separator { border-right: 1px solid rgba(255,255,255,0.2); }
+.table-digital tbody tr:nth-child(even) { background-color: rgba(46, 76, 89, 0.04); }
+.table-digital .bcb-row-highlight td, .table-digital .bcb-row-highlight th { background-color: rgba(242, 181, 87, 0.15); font-weight: 700; color: var(--bcb-gray-900); }
+
+.table-strict thead tr:last-child th { border-bottom: 1px dotted var(--bcb-color-body-text); }
+.table-strict tbody { border-top: 1px solid var(--bcb-color-body-text); border-bottom: 1px solid var(--bcb-color-body-text); }
+.table-strict tbody tr { background-color: transparent; }
+.table-strict .bcb-row-total th, .table-strict .bcb-row-total td { font-weight: 700; color: var(--bcb-brand-vinho); }
+
+.svg-chart-container { text-align: center; margin-top: 1.5rem; margin-bottom: 1.5rem; overflow-x: auto; }
+
+/* ==========================================
+   30. CALLOUT E ALERTAS (EVOLUÇÃO DO OLHO)
+   ========================================== */
+
+.callout {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--bcb-radius-8);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.callout-content {
+    flex-grow: 1;
+}
+
+.callout-title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.callout p:last-child {
+    margin-bottom: 0;
+}
+
+.callout-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+/* 30.1 Variações Estruturais */
+.callout-left-bordered {
+    border-left: 6px solid transparent;
+    border-top-left-radius: var(--bcb-radius-4);
+    border-bottom-left-radius: var(--bcb-radius-4);
+}
+
+.callout-outline {
+    border: 1px solid transparent;
+    background-color: var(--bcb-color-white) !important;
+}
+
+.callout-elevated {
+    box-shadow: var(--bcb-shadow-300);
+    background-color: var(--bcb-color-white);
+    border-left: 6px solid transparent;
+}
+
+/* 30.2 Variações Semânticas (Cores) */
+
+/* Brand / Informação Padrão */
+.callout-brand { background-color: var(--bg-brand-light); }
+.callout-brand.callout-left-bordered, .callout-brand.callout-elevated { border-left-color: var(--bcb-brand-blue); }
+.callout-brand.callout-outline { border-color: var(--bcb-brand-blue); }
+.callout-brand .callout-icon, .callout-brand .callout-title { color: var(--bcb-brand-blue); }
+
+/* Sucesso */
+.callout-success { background-color: var(--bg-verde-light); }
+.callout-success.callout-left-bordered, .callout-success.callout-elevated { border-left-color: var(--bcb-brand-verde-susta); }
+.callout-success.callout-outline { border-color: var(--bcb-brand-verde-susta); }
+.callout-success .callout-icon, .callout-success .callout-title { color: var(--bcb-brand-verde-susta); }
+
+/* Alerta / Atenção */
+.callout-warning { background-color: var(--bg-amarellato-light); }
+.callout-warning.callout-left-bordered, .callout-warning.callout-elevated { border-left-color: #d6a13b; }
+.callout-warning.callout-outline { border-color: #d6a13b; }
+.callout-warning .callout-icon, .callout-warning .callout-title { color: #b07e1b; }
+
+/* Erro / Crítico (Marsala) */
+.callout-danger { background-color: var(--bg-vinho-light); }
+.callout-danger.callout-left-bordered, .callout-danger.callout-elevated { border-left-color: var(--bcb-brand-marsala); }
+.callout-danger.callout-outline { border-color: var(--bcb-brand-marsala); }
+.callout-danger .callout-icon, .callout-danger .callout-title { color: var(--bcb-brand-marsala); }
+
+/* Neutro */
+.callout-neutral { background-color: var(--bg-gray-light); }
+.callout-neutral.callout-left-bordered, .callout-neutral.callout-elevated { border-left-color: var(--bcb-gray-400); }
+.callout-neutral.callout-outline { border-color: var(--bcb-gray-300); }
+.callout-neutral .callout-icon, .callout-neutral .callout-title { color: var(--bcb-gray-800); }
+
+/* 30.3 Botões e Links no Callout */
+.callout-actions {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
 }

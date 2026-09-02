@@ -1,0 +1,113 @@
+/* ============= BCB Design System — Molecules / Callout ============= */
+
+.bcb-olho { background-color: rgba(2, 92, 117, 0.08); border-left: 4px solid var(--bcb-brand-blue); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 var(--bcb-radius-4) var(--bcb-radius-4) 0; transition: box-shadow 0.2s; }
+.bcb-olho:hover { box-shadow: var(--bcb-shadow-100); }
+.bcb-olho h1, .bcb-olho h2, .bcb-olho h3, .bcb-olho h4 { color: var(--bcb-brand-blue); font-weight: 500; margin-top: 0; }
+.bcb-citacao { border-left: 4px solid var(--bcb-gray-400); padding: 1rem 1.5rem; margin: 1.5rem 0; background-color: var(--bcb-gray-50); font-style: italic; transition: border-color 0.2s; }
+.bcb-citacao:hover { border-left-color: var(--bcb-brand-blue); }
+.bcb-citacao footer { font-style: normal; font-weight: 500; color: var(--bcb-brand-blue); margin-top: 0.5rem; }
+.bcb-citacao footer::before { content: "— "; }
+
+/* ==========================================
+   CALLOUT E ALERTAS (EVOLUÇÃO DO OLHO)
+   ========================================== */
+
+:root {
+    /* Tints (fundos super claros para contraste acessível) */
+    --bg-brand-light: #f0f7f9;
+    --bg-verde-light: #f0f8f8;
+    --bg-amarellato-light: #fefbfa;
+    --bg-vinho-light: #f5f7f8;
+    --bg-gray-light: #f8f9fb;
+}
+
+.callout {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 7px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.callout-content {
+    flex-grow: 1;
+}
+
+.callout-title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.callout p:last-child {
+    margin-bottom: 0;
+}
+
+.callout-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+/* 15.1 Variações Estruturais */
+.callout-left-bordered {
+    border-left: 6px solid transparent;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.callout-outline {
+    border: 1px solid transparent;
+    background-color: white !important;
+}
+
+.callout-elevated {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    background-color: white;
+    border-left: 6px solid transparent;
+}
+
+/* 15.2 Variações Semânticas (Cores) */
+
+/* Brand / Informação Padrão */
+.callout-brand { background-color: var(--bg-brand-light); }
+.callout-brand.callout-left-bordered, .callout-brand.callout-elevated { border-left-color: var(--bcb-brand-blue); }
+.callout-brand.callout-outline { border-color: var(--bcb-brand-blue); }
+.callout-brand .callout-icon, .callout-brand .callout-title { color: var(--bcb-brand-blue); }
+
+/* Sucesso */
+.callout-success { background-color: var(--bg-verde-light); }
+.callout-success.callout-left-bordered, .callout-success.callout-elevated { border-left-color: var(--bcb-brand-verde-susta); }
+.callout-success.callout-outline { border-color: var(--bcb-brand-verde-susta); }
+.callout-success .callout-icon, .callout-success .callout-title { color: var(--bcb-brand-verde-susta); }
+
+/* Alerta / Atenção (Usando Amarellato escurecido para contraste ou outline) */
+.callout-warning { background-color: #fdfaf3; }
+.callout-warning.callout-left-bordered, .callout-warning.callout-elevated { border-left-color: #d6a13b; }
+.callout-warning.callout-outline { border-color: #d6a13b; }
+.callout-warning .callout-icon, .callout-warning .callout-title { color: #b07e1b; }
+
+/* Erro / Crítico (Marsala Suave - var(--bcb-brand-marsala)) */
+.callout-danger { background-color: var(--bg-vinho-light); }
+.callout-danger.callout-left-bordered, .callout-danger.callout-elevated { border-left-color: var(--bcb-brand-marsala); }
+.callout-danger.callout-outline { border-color: var(--bcb-brand-marsala); }
+.callout-danger .callout-icon, .callout-danger .callout-title { color: var(--bcb-brand-marsala); }
+
+/* Neutro */
+.callout-neutral { background-color: var(--bg-gray-light); }
+.callout-neutral.callout-left-bordered, .callout-neutral.callout-elevated { border-left-color: #a0aec0; }
+.callout-neutral.callout-outline { border-color: var(--bcb-gray-200); }
+.callout-neutral .callout-icon, .callout-neutral .callout-title { color: #4a5568; }
+
+/* 15.3 Botões e Links no Callout */
+.callout-actions {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}

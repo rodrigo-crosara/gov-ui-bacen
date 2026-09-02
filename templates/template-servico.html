@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/bcb-style.css">
     <style>
@@ -25,6 +25,11 @@
             <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
               <li class="d-none d-lg-block"><a class="font-color-1" href="#">Acessibilidade</a></li>
               <li><a class="font-color-1" href="#">Alto Contraste</a></li>
+              <li>
+                <button id="theme-toggle" class="btn btn-link font-color-1 p-0 ml-3 d-flex align-items-center h-100" aria-label="Alternar tema claro/escuro" style="border:none; text-decoration:none;">
+                  <span class="material-icons" aria-hidden="true" style="font-size: 1.2rem;">brightness_medium</span>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -77,19 +82,19 @@
 
           <ul class="process-list">
             <li>
-              <h4 class="h5 mt-0 mb-1 color-1">Acesse o Registrato</h4>
+              <h3 class="h5 mt-0 mb-1 color-1">Acesse o Registrato</h3>
               <p class="text-body">Entre no endereço <a href="https://registrato.bcb.gov.br" class="text-link" target="_blank" rel="noopener noreferrer" aria-label="Acesse o Registrato (abrirá em nova aba)">registrato.bcb.gov.br</a> pelo navegador de sua preferência.</p>
             </li>
             <li>
-              <h4 class="h5 mt-0 mb-1 color-1">Faça login com o Gov.br</h4>
+              <h3 class="h5 mt-0 mb-1 color-1">Faça login com o Gov.br</h3>
               <p class="text-body">Utilize sua conta <strong>gov.br</strong> com nível de segurança <strong>Prata</strong> ou <strong>Ouro</strong>. Se ainda não possui, crie sua conta no portal gov.br.</p>
             </li>
             <li>
-              <h4 class="h5 mt-0 mb-1 color-1">Selecione o relatório desejado</h4>
+              <h3 class="h5 mt-0 mb-1 color-1">Selecione o relatório desejado</h3>
               <p class="text-body">Escolha entre os relatórios disponíveis: CCS (Contas e Relacionamentos), CCR (Operações de Crédito), CCS-Pix (Chaves Pix) ou Câmbio.</p>
             </li>
             <li>
-              <h4 class="h5 mt-0 mb-1 color-1">Gere e baixe o relatório</h4>
+              <h3 class="h5 mt-0 mb-1 color-1">Gere e baixe o relatório</h3>
               <p class="text-body">Clique em "Gerar relatório". O sistema processará e exibirá as informações na tela, com opção de download em PDF.</p>
             </li>
           </ul>
@@ -98,6 +103,7 @@
 
           <div class="table-responsive mb-4">
             <table class="table table-striped table-bordered">
+              <caption class="sr-only">Relação de relatórios disponíveis no Registrato, descrições e periodicidade</caption>
               <thead class="thead-primary">
                 <tr><th>Relatório</th><th>O que mostra</th><th>Atualização</th></tr>
               </thead>
@@ -110,13 +116,16 @@
             </table>
           </div>
 
-          <!-- BOX OLHO (Alerta de Fraude) -->
+          <!-- BOX CALLOUT (Alerta de Fraude) -->
           <div id="atencao"></div>
-          <bcb-olho [texto]="'<h4>Atenção: Golpe do falso Registrato</h4><p>O Banco Central <strong>nunca</strong> entra em contato por telefone, e-mail ou WhatsApp para solicitar dados pessoais. Se alguém pedir sua senha ou código de acesso informando ser do BC, trata-se de tentativa de golpe. Denuncie imediatamente.</p>'"></bcb-olho>
+          <bcb-callout [tipo]="'warning'" [titulo]="'Atenção: Golpe do falso Registrato'" [texto]="'O Banco Central <strong>nunca</strong> entra em contato por telefone, e-mail ou WhatsApp para solicitar dados pessoais. Se alguém pedir sua senha ou código de acesso informando ser do BC, trata-se de tentativa de golpe. Denuncie imediatamente.'"></bcb-callout>
           <!-- Simulação visual -->
-          <div class="bcb-olho">
-            <h4>Atenção: Golpe do falso Registrato</h4>
-            <p class="mb-0">O Banco Central <strong>nunca</strong> entra em contato por telefone, e-mail ou WhatsApp para solicitar dados pessoais. Se alguém pedir sua senha ou código de acesso informando ser do BC, trata-se de tentativa de golpe. Denuncie imediatamente.</p>
+          <div class="callout callout-warning callout-elevated">
+            <span class="material-icons-outlined callout-icon" aria-hidden="true">warning</span>
+            <div class="callout-content">
+              <h3 class="callout-title">Atenção: Golpe do falso Registrato</h3>
+              <p class="mb-0">O Banco Central <strong>nunca</strong> entra em contato por telefone, e-mail ou WhatsApp para solicitar dados pessoais. Se alguém pedir sua senha ou código de acesso informando ser do BC, trata-se de tentativa de golpe. Denuncie imediatamente.</p>
+            </div>
           </div>
 
           <!-- CARDS DE LINKS RÁPIDOS -->
@@ -189,5 +198,20 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const rootElement = document.documentElement;
+        
+        // Verifica preferência salva ou fallback para sistema
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        rootElement.setAttribute('data-theme', currentTheme);
+
+        // Alterna entre os temas
+        themeToggleBtn.addEventListener('click', () => {
+            let newTheme = rootElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            rootElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
 </html>

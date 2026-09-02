@@ -1,0 +1,12 @@
+/* ============= BCB Design System — Molecules / Document Download ============= */
+
+/* Lista de Documentos / Downloads */
+.documentos .documento { min-height: 4rem; margin-bottom: 0.25rem; transition: transform 0.2s; }
+.documentos .documento:hover { transform: translateX(4px); }
+.documentos .documento .texto { background-color: var(--bcb-gray-100); padding: 5px 10px; line-height: 1.2rem; transition: background-color 0.3s; }
+.documentos .documento:hover .texto { background-color: var(--bcb-gray-200); }
+.documentos .documento .icone { min-width: 4rem; width: 4rem; position: relative; }
+.documentos .documento-title { display: block; font-weight: 500; font-size: 1rem; }
+.documentos .documento:hover .documento-title { text-decoration: underline; }
+.documentos .documento-data { font-size: .8rem; color: var(--bcb-gray-700); display: block; }
+.documentos .extensao { width: 26px; position: absolute; font-size: 0.5rem; text-align: center; bottom: 5px; left: 5px; line-height: 0.6rem; letter-spacing: 0.1px; padding: 1px 0; text-transform: uppercase; }

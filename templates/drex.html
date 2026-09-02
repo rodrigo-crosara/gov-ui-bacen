@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drex: O Real Digital - Banco Central do Brasil</title>
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -46,10 +48,13 @@
             <!-- Centralizando conteúdo por ser página de leitura longa (Padrão 32) -->
             <div class="col-md-8 offset-md-2">
                 
-                <!-- 2. Olho (Alerta Cidadão) -->
-                <div class="bcb-olho">
-                    <h3>Cuidado com fraudes!</h3>
-                    <p class="mb-0">O Banco Central <strong>não liga</strong> para os cidadãos pedindo senhas, dados bancários ou transferências via Pix para cadastrar o Drex.</p>
+                <!-- 2. Callout (Alerta Cidadão) -->
+                <div class="callout callout-warning callout-elevated">
+                    <span class="material-icons-outlined callout-icon" aria-hidden="true">warning</span>
+                    <div class="callout-content">
+                        <h3 class="callout-title">Cuidado com fraudes!</h3>
+                        <p class="mb-0">O Banco Central <strong>não liga</strong> para os cidadãos pedindo senhas, dados bancários ou transferências via Pix para cadastrar o Drex.</p>
+                    </div>
                 </div>
 
                 <!-- 3. Citação -->
@@ -160,9 +165,17 @@
                 <!-- 8. Documentos Úteis -->
                 <h3 class="mb-3">Arquivos Úteis</h3>
                 <div class="documentos">
-                    <a href="#" class="documento d-flex text-decoration-none">
-                        <div class="icone bg-danger text-white p-3 font-weight-bold d-flex align-items-center justify-content-center">PDF</div>
-                        <div class="texto p-3 flex-grow-1 bg-light border text-dark d-flex align-items-center">Apresentação Completa do Projeto Drex</div>
+                    <a href="#" class="documento hvr-shadow d-flex text-decoration-none color-1" aria-label="Baixar Apresentação Completa do Projeto Drex (PDF, 2.4 MB)">
+                        <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
+                            <div class="d-flex flex-column position-relative">
+                                <span class="material-icons md-36" aria-hidden="true">insert_drive_file</span>
+                                <span class="extensao bg-color-1">pdf</span>
+                            </div>
+                        </div>
+                        <div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3">
+                            <span class="documento-title">Apresentação Completa do Projeto Drex (PDF, 2.4 MB)</span>
+                            <span class="documento-data">Publicado em: 15/02/2026</span>
+                        </div>
                     </a>
                 </div>
 
@@ -170,5 +183,14 @@
         </div>
     </div>
 
+    <!-- Scripts Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const rootElement = document.documentElement;
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        rootElement.setAttribute('data-theme', currentTheme);
+    </script>
 </body>
 </html>

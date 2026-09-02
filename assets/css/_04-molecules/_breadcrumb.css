@@ -1,0 +1,7 @@
+/* ============= BCB Design System — Molecules / Breadcrumb ============= */
+
+.breadcrumb-bcb { background-color: var(--bcb-portal-primary); padding: .5rem 1rem; border-radius: 0; display: flex; list-style: none; margin-bottom: 1rem; }
+.breadcrumb-bcb li { display: flex; align-items: center; color: var(--bcb-gray-400); font-size: 0.9rem; }
+.breadcrumb-bcb li a { color: var(--bcb-color-white); text-decoration: none; transition: opacity 0.2s; }
+.breadcrumb-bcb li a:hover { text-decoration: underline; opacity: 0.85; }
+.breadcrumb-bcb li + li::before { content: '>'; color: var(--bcb-gray-400); margin: 0 0.5rem; }

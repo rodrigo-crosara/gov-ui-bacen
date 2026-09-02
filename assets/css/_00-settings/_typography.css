@@ -1,0 +1,18 @@
+/* ============= BCB Design System — Settings / Typography ============= */
+
+h1, .h1 { font-size: var(--bcb-font-700); font-family: var(--bcb-font-ubuntu); }
+h2, .h2 { font-size: var(--bcb-font-600); font-family: var(--bcb-font-ubuntu); }
+h3, .h3 { font-size: var(--bcb-font-500); font-family: var(--bcb-font-ubuntu); }
+h4, .h4 { font-size: var(--bcb-font-400); font-family: var(--bcb-font-ubuntu); }
+h5, .h5 { font-size: var(--bcb-font-300); font-family: var(--bcb-font-ubuntu); }
+h6, .h6 { font-size: var(--bcb-font-200); font-family: var(--bcb-font-ubuntu); }
+p { font-size: var(--bcb-font-100); }
+
+.light   { font-weight: 300; }
+.medium  { font-weight: 500; }
+.bold    { font-weight: 700; }
+.italic  { font-style: italic; }
+
+.text-body { color: var(--bcb-color-body-text); }
+.text-link { color: var(--bcb-link-color); text-decoration: none; transition: color 0.2s, outline 0.2s; }
+.text-link:hover { color: var(--bcb-link-hover); text-decoration: underline; }

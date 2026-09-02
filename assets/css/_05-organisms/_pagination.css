@@ -1,0 +1,11 @@
+/* ============= BCB Design System — Organisms / Pagination ============= */
+
+/* Paginação (Sobrescrita Bootstrap) */
+.pagination .page-link { color: var(--bcb-brand-blue); border-color: var(--bcb-gray-200); transition: all 0.2s; }
+.pagination .page-link:hover { background-color: rgba(2, 92, 117, 0.08); color: var(--bcb-brand-blue); }
+.pagination .page-item.active .page-link { background-color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
+.pagination .page-item.disabled .page-link { color: var(--bcb-gray-400); }
+
+/* Tooltip de Glossário (Termos Financeiros) */
+.bcb-tooltip-link { text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--bcb-gray-500); cursor: help; color: inherit; }
+.bcb-tooltip-link:hover { color: var(--bcb-brand-blue); text-decoration-color: var(--bcb-brand-blue); }

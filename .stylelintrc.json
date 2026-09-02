@@ -1,0 +1,28 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "no-descending-specificity": null,
+    "selector-type-no-unknown": [true, {
+      "ignoreTypes": ["navegacaoabas", "listalinks", "bcb-noticias", "bcb-olho", "bcb-citacao", "bcb-accordion-page", "bcb-callout", "listalinks-light"]
+    }],
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "shorthand-property-no-redundant-values": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "import-notation": null,
+    "no-duplicate-selectors": null,
+    "font-family-no-missing-generic-family-keyword": [true, {
+      "ignoreFontFamilies": ["Material Icons", "Material Icons Outlined"]
+    }],
+    "comment-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+    "length-zero-no-unit": null
+  },
+  "ignoreFiles": ["node_modules/**", "storybook-static/**"]
+}

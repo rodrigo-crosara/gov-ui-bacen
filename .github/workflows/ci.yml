@@ -1,0 +1,64 @@
+name: CI — Design System BCB
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-e-testes:
+    name: Lint e Testes
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Lint CSS (Stylelint)
+        run: npm run lint:css
+
+      - name: Lint HTML (HTMLHint)
+        run: npm run lint:html
+
+      - name: Testes de integridade de tokens
+        run: npm run test:tokens
+
+      - name: Testes de integridade HTML
+        run: npm run test:html
+
+  acessibilidade:
+    name: Acessibilidade (WCAG 2.1)
+    runs-on: ubuntu-latest
+    needs: lint-e-testes
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Iniciar servidor local
+        run: npx http-server . -p 8080 -c-1 &
+        
+      - name: Aguardar servidor
+        run: sleep 3
+
+      - name: Testes de acessibilidade (pa11y)
+        run: npm run test:a11y

@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Tokens — BCB Design System</title>
+    <meta name="description" content="Visualização interativa dos Design Tokens do Design System do Banco Central do Brasil.">
+    
+    <!-- Bootstrap 4.6 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <!-- Google Fonts (Ubuntu + Cormorant Garamond) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    
+    <!-- BCB Styles -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+    
+    <style>
+        /* Estilos do cabeçalho oficial sticky */
+        .header-bcb {
+            background-color: var(--bcb-brand-blue);
+            color: var(--bcb-color-white);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .header-bcb h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header-bcb .badge-version {
+            font-size: 0.65rem;
+            background-color: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: 400;
+        }
+        
+        /* Botões padronizados com tokens */
+        .btn-primary { background-color: var(--bcb-btn-primary-bg); border-color: var(--bcb-btn-primary-bg); color: var(--bcb-color-white); transition: all 0.2s; }
+        .btn-primary:hover { background-color: var(--bcb-btn-primary-hover); border-color: var(--bcb-btn-primary-hover); color: var(--bcb-color-white); }
+        .btn-primary:active { background-color: var(--bcb-btn-primary-active) !important; border-color: var(--bcb-btn-primary-active) !important; }
+        .btn-secondary { background-color: var(--bcb-btn-secondary-bg); border-color: var(--bcb-btn-secondary-bg); color: var(--bcb-color-white); transition: all 0.2s; }
+        .btn-secondary:hover { background-color: var(--bcb-btn-secondary-hover); border-color: var(--bcb-btn-secondary-hover); color: var(--bcb-color-white); }
+        .btn-secondary:active, .btn-secondary:focus { background-color: var(--bcb-btn-secondary-active) !important; border-color: var(--bcb-btn-secondary-active) !important; }
+        .btn-outline-primary { color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); transition: all 0.2s; }
+        .btn-outline-primary:hover { background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
+        .btn-link { color: var(--bcb-link-color); }
+        .btn-link:hover { color: var(--bcb-link-hover); }
+
+        /* Estilização das amostras de cores (Swatches) */
+        .token-swatch-card {
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            background-color: var(--bcb-color-white);
+            overflow: hidden;
+            box-shadow: var(--bcb-shadow-100);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .token-swatch-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--bcb-shadow-300);
+        }
+        .token-swatch-preview {
+            height: 90px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 8px 12px;
+            position: relative;
+        }
+        .token-swatch-preview .copy-badge {
+            font-size: 0.7rem;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: var(--bcb-radius-4);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .token-swatch-card:hover .token-swatch-preview .copy-badge {
+            opacity: 1;
+        }
+        .token-swatch-info {
+            padding: 12px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: var(--bcb-color-white);
+        }
+        .token-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--bcb-gray-900);
+            margin-bottom: 2px;
+        }
+        .token-var {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--bcb-brand-blue);
+            margin-bottom: 2px;
+            word-break: break-all;
+        }
+        .token-value {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--bcb-gray-600);
+        }
+
+        /* Amostras de Espaçamento */
+        .spacing-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--bcb-gray-200);
+        }
+        .spacing-bar-label {
+            width: 140px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--bcb-gray-800);
+            flex-shrink: 0;
+        }
+        .spacing-bar-value {
+            width: 90px;
+            font-size: 0.75rem;
+            color: var(--bcb-gray-600);
+            flex-shrink: 0;
+        }
+        .spacing-bar-visual-wrap {
+            flex-grow: 1;
+            background-color: var(--bcb-gray-100);
+            border-radius: var(--bcb-radius-4);
+            padding: 4px;
+            display: flex;
+            align-items: center;
+        }
+        .spacing-bar-fill {
+            height: 20px;
+            background-color: var(--bcb-brand-azulcinti);
+            border-radius: 2px;
+            transition: background-color 0.2s;
+        }
+        .spacing-bar-container:hover .spacing-bar-fill {
+            background-color: var(--bcb-brand-blue);
+        }
+
+        /* Cartões de Sombra e Elevação */
+        .elevation-card {
+            background-color: var(--bcb-color-white);
+            border-radius: var(--bcb-radius-8);
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--bcb-gray-200);
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        /* Cartões de Raio de Borda */
+        .radius-card {
+            background-color: var(--bcb-gray-100);
+            border: 2px solid var(--bcb-brand-blue);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--bcb-brand-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Bloco de Alto Contraste */
+        .hc-showcase-box {
+            background-color: var(--bcb-hc-bg-level-1);
+            color: var(--bcb-hc-text);
+            border: 2px solid var(--bcb-hc-border);
+            border-radius: var(--bcb-radius-8);
+            padding: 2rem;
+        }
+        .hc-showcase-box a {
+            color: var(--bcb-hc-link);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .hc-card-level2 {
+            background-color: var(--bcb-hc-bg-level-2);
+            border: 1px solid var(--bcb-hc-border);
+            padding: 1rem;
+            border-radius: var(--bcb-radius-4);
+            margin-bottom: 1rem;
+        }
+        .hc-card-level3 {
+            background-color: var(--bcb-hc-bg-level-3);
+            border: 1px dashed var(--bcb-hc-border);
+            padding: 0.75rem;
+            border-radius: var(--bcb-radius-4);
+        }
+
+        /* Seções e Divisores */
+        .ds-main section {
+            padding-bottom: 2.5rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--bcb-gray-200);
+            scroll-margin-top: 30px;
+        }
+        .ds-main section:last-child {
+            border-bottom: none;
+        }
+        .ds-main h2 {
+            color: var(--bcb-gray-900);
+            font-weight: 500;
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
+        .ds-main h3 {
+            color: var(--bcb-gray-800);
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        /* Toast de Cópia */
+        #tokenToast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--bcb-gray-900);
+            color: var(--bcb-color-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--bcb-radius-pill);
+            box-shadow: var(--bcb-shadow-600);
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 1050;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            pointer-events: none;
+        }
+        #tokenToast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Oficial Sticky -->
+    <header class="header-bcb">
+        <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
+            <h1>
+                <span class="material-icons" aria-hidden="true">palette</span>
+                Design Tokens BCB
+                <span class="badge-version">v1.0</span>
+            </h1>
+            <div class="d-flex align-items-center" style="gap: 0.75rem;">
+                <a href="../index.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Retornar à página principal da documentação" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
+                    <span class="d-none d-sm-inline">Componentes</span>
+                </a>
+                <a href="changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar histórico de versões e changelog" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
+                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
+                    <span class="d-none d-sm-inline">Changelog</span>
+                </a>
+                <button id="theme-toggle" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Alternar tema claro/escuro" style="border-color: rgba(255,255,255,0.3); color: white; background: transparent;">
+                    <span class="material-icons" style="font-size: 1.2rem;" aria-hidden="true">brightness_medium</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Layout da Documentação com Sidebar -->
+    <div class="ds-wrapper">
+        <aside class="ds-sidebar">
+            <nav class="nav flex-column" aria-label="Navegação dos Design Tokens">
+                <div class="ds-sidebar-title">Navegação Rápida</div>
+                <a class="nav-link" href="../index.html">← Vitrine de Componentes</a>
+                <a class="nav-link" href="changelog.html">Changelog do Projeto</a>
+
+                <div class="ds-sidebar-title">Categorias de Tokens</div>
+                <a class="nav-link active" href="#cores-brand">Cores Brand</a>
+                <a class="nav-link" href="#escala-cinzas">Escala de Cinzas</a>
+                <a class="nav-link" href="#interacao">Cores de Interação</a>
+                <a class="nav-link" href="#tipografia">Tipografia e Escala</a>
+                <a class="nav-link" href="#espacamentos">Espaçamentos</a>
+                <a class="nav-link" href="#bordas-sombras">Bordas e Sombras</a>
+                <a class="nav-link" href="#alto-contraste">Alto Contraste</a>
+            </nav>
+        </aside>
+
+        <main class="ds-main">
+            
+            <!-- Banner Informativo -->
+            <div class="callout callout-brand callout-left-bordered mb-4">
+                <span class="material-icons callout-icon" aria-hidden="true">info</span>
+                <div class="callout-content">
+                    <div class="callout-title">Biblioteca Central de Design Tokens</div>
+                    <p>Design Tokens são as decisões atômicas de estilo do Banco Central do Brasil. Utilize sempre as variáveis CSS (ex: <code>var(--bcb-brand-blue)</code>) para garantir coerência visual, suporte a tema escuro e conformidade com os padrões de acessibilidade do Governo Federal e do BCB.</p>
+                    <p class="text-muted mt-1" style="font-size: 0.8rem;"><span class="material-icons" style="font-size: 0.9rem; vertical-align: middle;" aria-hidden="true">touch_app</span> Clique em qualquer amostra para copiar a variável CSS correspondente para a área de transferência.</p>
+                </div>
+            </div>
+
+            <!-- ============ A) CORES BRAND ============ -->
+            <section id="cores-brand">
+                <h2>Cores Brand (Institucionais)</h2>
+                <p class="text-body mb-4">Paleta cromática oficial do Banco Central do Brasil, contemplando as cores primárias de identidade visual e a gama de cores complementares para produtos, serviços e publicações editoriais.</p>
+
+                <h3 class="h5">Cores Primárias Oficiais</h3>
+                <div class="row mb-4">
+                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-blue)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-blue); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Brand Blue (Azul Principal)</div>
+                                <div class="token-var">--bcb-brand-blue</div>
+                                <div class="token-value">#025C75</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-blue-dark)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-blue-dark); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Blue Dark (Azul Escuro / Hover)</div>
+                                <div class="token-var">--bcb-brand-blue-dark</div>
+                                <div class="token-value">#013F50</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-gray80)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-gray80); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Brand Gray 80 (Cinza Marca)</div>
+                                <div class="token-var">--bcb-brand-gray80</div>
+                                <div class="token-value">#606062</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="h5">Cores Complementares e Editoriais</h3>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-vinho)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-vinho); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Vinho / Slate Blue</div>
+                                <div class="token-var">--bcb-brand-vinho</div>
+                                <div class="token-value">#2E4C59</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-marsala)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-marsala); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Marsala</div>
+                                <div class="token-var">--bcb-brand-marsala</div>
+                                <div class="token-value">#736063</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-azulpetro)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-azulpetro); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Azul Petro</div>
+                                <div class="token-var">--bcb-brand-azulpetro</div>
+                                <div class="token-value">#077391</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-azulnetuno)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-azulnetuno); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Azul Netuno</div>
+                                <div class="token-var">--bcb-brand-azulnetuno</div>
+                                <div class="token-value">#476F82</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-azulcinti)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-azulcinti); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Azul Cinti</div>
+                                <div class="token-var">--bcb-brand-azulcinti</div>
+                                <div class="token-value">#088694</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-verde-susta)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-verde-susta); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Verde Susta</div>
+                                <div class="token-var">--bcb-brand-verde-susta</div>
+                                <div class="token-value">#067078</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-verde-castell)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-verde-castell); color: var(--bcb-gray-900);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Verde Castell</div>
+                                <div class="token-var">--bcb-brand-verde-castell</div>
+                                <div class="token-value">#DEBE7F</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-amarellato)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-amarellato); color: var(--bcb-gray-900);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Amarellato (Foco / Alerta)</div>
+                                <div class="token-var">--bcb-brand-amarellato</div>
+                                <div class="token-value">#F8D48D</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-cafellato)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-cafellato); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Cafellato</div>
+                                <div class="token-var">--bcb-brand-cafellato</div>
+                                <div class="token-value">#47373A</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-portal-primary)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-portal-primary); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Portal Primary</div>
+                                <div class="token-var">--bcb-portal-primary</div>
+                                <div class="token-value">#22272B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ B) ESCALA DE CINZAS ============ -->
+            <section id="escala-cinzas">
+                <h2>Escala de Cinzas UI</h2>
+                <p class="text-body mb-4">Graduação completa de cinzas para controle de hierarquia visual, fundos de tela, cartões, divisores e legibilidade tipográfica conforme os níveis WCAG AA.</p>
+
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-50)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-50); border-bottom: 1px solid var(--bcb-gray-200);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 50 (Fundo Leve)</div>
+                                <div class="token-var">--bcb-gray-50</div>
+                                <div class="token-value">#FAFBFC</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-100)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-100); border-bottom: 1px solid var(--bcb-gray-200);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 100 (Header/Fundo)</div>
+                                <div class="token-var">--bcb-gray-100</div>
+                                <div class="token-value">#F3F5F7</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-200)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-200);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 200 (Divisores)</div>
+                                <div class="token-var">--bcb-gray-200</div>
+                                <div class="token-value">#E6EAEF</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-300)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-300);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 300 (Bordas)</div>
+                                <div class="token-var">--bcb-gray-300</div>
+                                <div class="token-value">#D0D7DF</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-400)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-400); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 400 (Separadores)</div>
+                                <div class="token-var">--bcb-gray-400</div>
+                                <div class="token-value">#B7C0CB</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-500)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-500); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 500 (Bordas Input)</div>
+                                <div class="token-var">--bcb-gray-500</div>
+                                <div class="token-value">#9AA6B2</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-600)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-600); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 600 (Texto Secundário)</div>
+                                <div class="token-var">--bcb-gray-600</div>
+                                <div class="token-value">#7E8A95</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-700)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-700); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 700 (Rótulos)</div>
+                                <div class="token-var">--bcb-gray-700</div>
+                                <div class="token-value">#606062</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-800)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-800); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 800 (Títulos Sub)</div>
+                                <div class="token-var">--bcb-gray-800</div>
+                                <div class="token-value">#3E454B</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-900)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-900); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 900 (Títulos H1/H2)</div>
+                                <div class="token-var">--bcb-gray-900</div>
+                                <div class="token-value">#22272B</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-gray-1000)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-gray-1000); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Gray 1000 (Escuro Profundo)</div>
+                                <div class="token-var">--bcb-gray-1000</div>
+                                <div class="token-value">#0B0D0E</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ C) INTERAÇÃO ============ -->
+            <section id="interacao">
+                <h2>Cores de Interação e Estados</h2>
+                <p class="text-body mb-4">Valores oficiais mapeados a partir do ambiente produtivo do BCB para botões de ação primária, secundária e hiperlinks em todos os seus ciclos de vida (Repouso, Hover, Active e Foco).</p>
+
+                <div class="row mb-4">
+                    <div class="col-12 col-md-6 mb-3">
+                        <div class="card p-3 border h-100">
+                            <h3 class="h6 font-weight-bold mb-3" style="color: var(--bcb-brand-blue);">Botão Primário (Ações Principais)</h3>
+                            <div class="d-flex flex-wrap gap-2 align-items-center mb-3" style="gap: 0.75rem;">
+                                <button type="button" class="btn btn-primary">Padrão</button>
+                                <button type="button" class="btn" style="background-color: var(--bcb-btn-primary-hover); color: var(--bcb-color-white);">Hover Simulado</button>
+                                <button type="button" class="btn" style="background-color: var(--bcb-btn-primary-active); color: var(--bcb-color-white);">Active Simulado</button>
+                            </div>
+                            <div style="font-size: 0.8rem; font-family: monospace;">
+                                <div><code>--bcb-btn-primary-bg: #025C75</code></div>
+                                <div><code>--bcb-btn-primary-hover: #013F50</code></div>
+                                <div><code>--bcb-btn-primary-active: #012F3C</code></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <div class="card p-3 border h-100">
+                            <h3 class="h6 font-weight-bold mb-3" style="color: var(--bcb-brand-azulcinti);">Botão Secundário (Ações de Apoio)</h3>
+                            <div class="d-flex flex-wrap gap-2 align-items-center mb-3" style="gap: 0.75rem;">
+                                <button type="button" class="btn btn-secondary">Padrão</button>
+                                <button type="button" class="btn" style="background-color: var(--bcb-btn-secondary-hover); color: var(--bcb-color-white);">Hover Simulado</button>
+                                <button type="button" class="btn" style="background-color: var(--bcb-btn-secondary-active); color: var(--bcb-color-white);">Active Simulado</button>
+                            </div>
+                            <div style="font-size: 0.8rem; font-family: monospace;">
+                                <div><code>--bcb-btn-secondary-bg: #088694</code></div>
+                                <div><code>--bcb-btn-secondary-hover: #066974</code></div>
+                                <div><code>--bcb-btn-secondary-active: #055861</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
+                        <div class="card p-3 border h-100">
+                            <h3 class="h6 font-weight-bold mb-2">Links e Âncoras</h3>
+                            <p class="mb-2"><a href="#interacao" class="text-link">Link em estado normal</a> (<code>--bcb-link-color: #3298D5</code>)</p>
+                            <p class="mb-2"><a href="#interacao" style="color: var(--bcb-link-hover); text-decoration: underline;">Link em estado hover</a> (<code>--bcb-link-hover: #0056B3</code>)</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <div class="card p-3 border h-100">
+                            <h3 class="h6 font-weight-bold mb-2">Indicador de Foco Acessível (WCAG 2.1)</h3>
+                            <p class="text-muted" style="font-size: 0.85rem;">Todos os elementos interativos utilizam o anel de foco visível de 3px na cor Amarellato:</p>
+                            <button type="button" class="btn btn-primary" style="outline: 3px solid var(--bcb-brand-amarellato); outline-offset: 2px;">Exemplo de Elemento Focado</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ D) TIPOGRAFIA ============ -->
+            <section id="tipografia">
+                <h2>Tipografia e Escala Fluida</h2>
+                <p class="text-body mb-4">O Banco Central do Brasil adota a fonte <strong>Ubuntu</strong> para interfaces digitais e <strong>Cormorant Garamond</strong> para composições editoriais refinadas. A escala tipográfica é construída com funções CSS <code>clamp()</code> para fluidez responsiva automática.</p>
+
+                <div class="card p-3 mb-4 border">
+                    <h3 class="h6 font-weight-bold mb-3">Famílias de Fontes Registradas</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="p-3 bg-light rounded border">
+                                <div class="font-weight-bold" style="font-family: var(--bcb-font-ubuntu); font-size: 1.25rem;">Ubuntu</div>
+                                <code style="font-size: 0.75rem;">--bcb-font-ubuntu: 'Ubuntu', 'Segoe UI', Arial, sans-serif;</code>
+                                <p class="mt-2 mb-0" style="font-family: var(--bcb-font-ubuntu);">Texto de exemplo: Transparência e estabilidade para o sistema financeiro nacional.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="p-3 bg-light rounded border">
+                                <div class="font-weight-bold" style="font-family: var(--bcb-font-cormorant); font-size: 1.4rem;">Cormorant Garamond</div>
+                                <code style="font-size: 0.75rem;">--bcb-font-cormorant: 'Cormorant Garamond', serif;</code>
+                                <p class="mt-2 mb-0" style="font-family: var(--bcb-font-cormorant); font-size: 1.1rem;">Texto editorial: Relatório de Estabilidade Financeira e Políticas Monetárias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="h5">Escala Tipográfica Responsiva (Base 16px)</h3>
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered table-striped">
+                        <caption class="sr-only">Escala tipográfica responsiva com valores fluidos clamp e demonstração visual</caption>
+                        <thead class="thead-primary">
+                            <tr>
+                                <th>Nível / Token</th>
+                                <th>Fórmula CSS clamp</th>
+                                <th>Equivalente em Desktop</th>
+                                <th>Demonstração Visual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--bcb-font-800</code></td>
+                                <td><code>clamp(2.2rem, 1.72rem + 2.4vw, 3rem)</code></td>
+                                <td>35.2px – 48px</td>
+                                <td><span style="font-size: var(--bcb-font-800); font-weight: 500; line-height: 1.1;">Display / Hero</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-700</code> (h1)</td>
+                                <td><code>clamp(1.8rem, 1.53rem + 1.35vw, 2.25rem)</code></td>
+                                <td>28.8px – 36px</td>
+                                <td><span style="font-size: var(--bcb-font-700); font-weight: 500;">Título Principal h1</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-600</code> (h2)</td>
+                                <td><code>clamp(1.6rem, 1.36rem + 1.2vw, 2rem)</code></td>
+                                <td>25.6px – 32px</td>
+                                <td><span style="font-size: var(--bcb-font-600); font-weight: 500;">Seção de Página h2</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-500</code> (h3)</td>
+                                <td><code>clamp(1.4rem, 1.19rem + 1.05vw, 1.75rem)</code></td>
+                                <td>22.4px – 28px</td>
+                                <td><span style="font-size: var(--bcb-font-500); font-weight: 500;">Subseção h3</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-400</code> (h4)</td>
+                                <td><code>clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem)</code></td>
+                                <td>20px – 24px</td>
+                                <td><span style="font-size: var(--bcb-font-400); font-weight: 500;">Card Title h4</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-300</code> (h5)</td>
+                                <td><code>clamp(1.125rem, 1.05rem + 0.38vw, 1.25rem)</code></td>
+                                <td>18px – 20px</td>
+                                <td><span style="font-size: var(--bcb-font-300); font-weight: 500;">Bloco Menor h5</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-200</code> (h6)</td>
+                                <td><code>clamp(1rem, 0.925rem + 0.38vw, 1.125rem)</code></td>
+                                <td>16px – 18px</td>
+                                <td><span style="font-size: var(--bcb-font-200); font-weight: 500;">Rótulo Destacado h6</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-100</code> (p)</td>
+                                <td><code>clamp(0.875rem, 0.8rem + 0.38vw, 1rem)</code></td>
+                                <td>14px – 16px</td>
+                                <td><span style="font-size: var(--bcb-font-100);">Corpo de texto padrão para leitura contínua.</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-75</code></td>
+                                <td><code>clamp(0.75rem, 0.675rem + 0.38vw, 0.875rem)</code></td>
+                                <td>12px – 14px</td>
+                                <td><span style="font-size: var(--bcb-font-75); color: var(--bcb-gray-600);">Legendas, metadados e data de publicação</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-font-50</code></td>
+                                <td><code>0.75rem</code></td>
+                                <td>12px</td>
+                                <td><span style="font-size: var(--bcb-font-50); text-transform: uppercase; font-weight: bold;">MICROCOPY E EXTENSÕES PDF/CSV</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ============ E) ESPAÇAMENTOS ============ -->
+            <section id="espacamentos">
+                <h2>Espaçamentos (Grid de 4px)</h2>
+                <p class="text-body mb-4">O sistema de espaçamentos baseia-se em múltiplos de 4px, permitindo ritmo vertical harmonioso em layouts, padding de componentes e margens tipográficas.</p>
+
+                <div class="card p-3 border">
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-0</div>
+                        <div class="spacing-bar-value">0 (0px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 0px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-1</div>
+                        <div class="spacing-bar-value">0.25rem (4px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 4px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-2</div>
+                        <div class="spacing-bar-value">0.5rem (8px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 8px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-3</div>
+                        <div class="spacing-bar-value">0.75rem (12px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 12px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-4</div>
+                        <div class="spacing-bar-value">1rem (16px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 16px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-5</div>
+                        <div class="spacing-bar-value">1.25rem (20px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 20px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-6</div>
+                        <div class="spacing-bar-value">1.5rem (24px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 24px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-8</div>
+                        <div class="spacing-bar-value">2rem (32px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 32px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-12</div>
+                        <div class="spacing-bar-value">3rem (48px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 48px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-16</div>
+                        <div class="spacing-bar-value">4rem (64px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 64px;"></div></div>
+                    </div>
+                    <div class="spacing-bar-container">
+                        <div class="spacing-bar-label">--bcb-space-24</div>
+                        <div class="spacing-bar-value">6rem (96px)</div>
+                        <div class="spacing-bar-visual-wrap"><div class="spacing-bar-fill" style="width: 96px;"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ F) BORDAS E SOMBRAS ============ -->
+            <section id="bordas-sombras">
+                <h2>Bordas e Sombras (Elevation)</h2>
+                <p class="text-body mb-4">Definição dos raios de curvatura e elevação em camadas para dar profundidade e clareza visual aos componentes de interface.</p>
+
+                <h3 class="h5">Raios de Arredondamento (Border Radius)</h3>
+                <div class="row mb-4">
+                    <div class="col-6 col-md-3 mb-3">
+                        <div class="radius-card" style="border-radius: var(--bcb-radius-0);">
+                            --bcb-radius-0 (0px)
+                        </div>
+                        <div class="text-center text-muted" style="font-size: 0.75rem;">Elementos retos / tabelas</div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <div class="radius-card" style="border-radius: var(--bcb-radius-4);">
+                            --bcb-radius-4 (4px)
+                        </div>
+                        <div class="text-center text-muted" style="font-size: 0.75rem;">Botões, inputs, tags</div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <div class="radius-card" style="border-radius: var(--bcb-radius-8);">
+                            --bcb-radius-8 (8px)
+                        </div>
+                        <div class="text-center text-muted" style="font-size: 0.75rem;">Cards de conteúdo, modais</div>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <div class="radius-card" style="border-radius: var(--bcb-radius-pill);">
+                            --bcb-radius-pill (Pílula)
+                        </div>
+                        <div class="text-center text-muted" style="font-size: 0.75rem;">Chips, badges, pílulas</div>
+                    </div>
+                </div>
+
+                <h3 class="h5">Elevação e Sombras (Box Shadow)</h3>
+                <div class="row">
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-100);">
+                            <div class="font-weight-bold mb-1">Nível 100 (Sutil)</div>
+                            <code>--bcb-shadow-100</code>
+                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Cards estáticos, painéis padrão</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-300);">
+                            <div class="font-weight-bold mb-1">Nível 300 (Médio)</div>
+                            <code>--bcb-shadow-300</code>
+                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Hover de cartões, menus dropdown</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-600);">
+                            <div class="font-weight-bold mb-1">Nível 600 (Profundo)</div>
+                            <code>--bcb-shadow-600</code>
+                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Diálogos modais, botões flutuantes</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ G) ALTO CONTRASTE ============ -->
+            <section id="alto-contraste">
+                <h2>Tokens para Modo Alto Contraste</h2>
+                <p class="text-body mb-4">Conjunto de tokens dedicados para usuários que ativam recursos de acessibilidade para baixa visão e contraste máximo, seguindo as diretrizes do Modelo de Acessibilidade em Governo Eletrônico (e-MAG).</p>
+
+                <div class="hc-showcase-box mb-4">
+                    <h3 class="h4 mb-3" style="color: var(--bcb-hc-text); border-bottom: 2px solid var(--bcb-hc-border); padding-bottom: 0.5rem;">Simulação de Superfície em Alto Contraste</h3>
+                    
+                    <div class="hc-card-level2">
+                        <div class="font-weight-bold mb-2">Superfície Nível 2 (<code>--bcb-hc-bg-level-2: #222222</code>)</div>
+                        <p class="mb-2">O texto de leitura principal utiliza contraste puro (<code>--bcb-hc-text: #FFFFFF</code>) com fundo escuro profundo.</p>
+                        <p class="mb-0"><a href="#alto-contraste" aria-label="Exemplo de hiperlink em modo alto contraste">Hiperlinks são destacados em amarelo puro (--bcb-hc-link: #FFFF00)</a></p>
+                    </div>
+
+                    <div class="hc-card-level3">
+                        <div class="font-weight-bold mb-1">Superfície Nível 3 (<code>--bcb-hc-bg-level-3: #333333</code>)</div>
+                        <div style="font-size: 0.85rem;">Bordas de separação possuem contraste nítido (<code>--bcb-hc-border: #FFFFFF</code>).</div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <caption class="sr-only">Relação de tokens do modo de alto contraste e suas funções de acessibilidade</caption>
+                        <thead class="thead-primary">
+                            <tr>
+                                <th>Token</th>
+                                <th>Valor Hexadecimal</th>
+                                <th>Função de Acessibilidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>--bcb-hc-bg-level-1</code></td><td>#000000</td><td>Fundo principal da tela</td></tr>
+                            <tr><td><code>--bcb-hc-bg-level-2</code></td><td>#222222</td><td>Superfície de cartões e blocos de conteúdo</td></tr>
+                            <tr><td><code>--bcb-hc-bg-level-3</code></td><td>#333333</td><td>Camada de destaque interno e formulários</td></tr>
+                            <tr><td><code>--bcb-hc-text</code></td><td>#FFFFFF</td><td>Cor do texto base com contraste 21:1</td></tr>
+                            <tr><td><code>--bcb-hc-link</code></td><td>#FFFF00</td><td>Cor de links e elementos clicáveis</td></tr>
+                            <tr><td><code>--bcb-hc-border</code></td><td>#FFFFFF</td><td>Bordas de delimitação de foco e componentes</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Toast Informativo ao Copiar -->
+    <div id="tokenToast" role="status" aria-live="polite">
+        <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">check_circle</span>
+        <span id="toastMessage">Token copiado!</span>
+    </div>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+        <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
+    </button>
+
+    <!-- Scripts de Interatividade -->
+    <script>
+        // Cópia de token ao clicar nos cartões
+        const toast = document.getElementById('tokenToast');
+        const toastMessage = document.getElementById('toastMessage');
+        let toastTimeout;
+
+        document.querySelectorAll('.token-swatch-card[data-token]').forEach(card => {
+            card.addEventListener('click', () => {
+                const token = card.getAttribute('data-token');
+                navigator.clipboard.writeText(token).then(() => {
+                    toastMessage.textContent = `${token} copiado!`;
+                    toast.classList.add('show');
+                    clearTimeout(toastTimeout);
+                    toastTimeout = setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 2500);
+                }).catch(err => {
+                    console.error('Erro ao copiar token: ', err);
+                });
+            });
+        });
+
+        // Alternador de Tema Claro/Escuro
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const rootElement = document.documentElement;
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        rootElement.setAttribute('data-theme', currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            let newTheme = rootElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            rootElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Botão Voltar ao Topo
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Sincronização do Sidebar Ativo no Scroll
+        const sections = document.querySelectorAll('.ds-main section[id]');
+        const navLinks = document.querySelectorAll('.ds-sidebar .nav-link');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === `#${entry.target.id}`) {
+                            link.classList.add('active');
+                        } else if (link.getAttribute('href').startsWith('#')) {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>

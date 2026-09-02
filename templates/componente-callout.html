@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System: Componente Callout - BCB</title>
+
+    <!-- Fontes e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Bootstrap 4.6 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- BCB Design System -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+
+    <style>
+        body {
+            font-family: var(--bcb-font-ubuntu);
+            color: var(--bcb-color-body-text);
+            background-color: var(--bcb-gray-100);
+            line-height: 1.6;
+        }
+
+        .ds-header {
+            background-color: var(--bcb-brand-blue);
+            color: var(--bcb-color-white);
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .ds-header h1 {
+            color: var(--bcb-brand-amarellato);
+            font-weight: 700;
+        }
+
+        .ux-card {
+            background: var(--bcb-color-white);
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--bcb-shadow-100);
+        }
+
+        .ux-card h2 {
+            color: var(--bcb-brand-blue);
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--bcb-gray-200);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ux-card h3 {
+            color: var(--bcb-brand-vinho);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .diff-box-old {
+            border: 1px dashed var(--bcb-brand-marsala);
+            background-color: var(--bg-vinho-light);
+            padding: 1rem;
+            border-radius: var(--bcb-radius-4);
+        }
+
+        .diff-box-new {
+            border: 1px solid var(--bcb-brand-verde-susta);
+            background-color: var(--bg-verde-light);
+            padding: 1rem;
+            border-radius: var(--bcb-radius-4);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header do Estudo -->
+    <header class="ds-header">
+        <div class="container">
+            <h1 class="mb-2">Estudo de UI/UX: Evolução do "Olho" para "Callout"</h1>
+            <p class="lead mb-0">Padronização de design system para o portal institucional do Banco Central do Brasil.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Seção 1: Por que mudar? -->
+        <section class="ux-card">
+            <h2>Por que padronizar o Callout? (Visão UX)</h2>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <p>O antigo componente "Olho" cumpria a função de destacar informações, porém sem uma hierarquia visual clara e sem semântica de cores. A migração para o conceito global de <strong>Callout</strong> traz benefícios diretos baseados nas heurísticas de usabilidade:</p>
+                    <ul class="mb-4">
+                        <li><strong>Escaneabilidade:</strong> O uso de ícones combinados à cor guia o olho do usuário instantaneamente para a intenção da mensagem (informar, alertar, proibir).</li>
+                        <li><strong>Carga Cognitiva Reduzida:</strong> Limitamos as opções a <strong>5 tipos semânticos</strong>. A Lei de Hick prova que excesso de variações visuais confunde o usuário. 5 tipos cobrem 99% das necessidades de comunicação do BCB.</li>
+                        <li><strong>Acessibilidade (WCAG):</strong> Em vez de fundos sólidos que dificultam a leitura, usamos "tints" (fundos em 5% de opacidade) garantindo alto contraste no texto, reservando a cor forte apenas para a borda lateral e ícone.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h5 class="mb-3 text-muted">Paleta Aplicada</h5>
+                    <div class="d-flex flex-wrap justify-content-center gap-3" style="gap: 15px;">
+                        <div style="width: 80px;"><div class="palette-swatch" style="background: var(--bcb-brand-blue)"></div><small>Brand</small></div>
+                        <div style="width: 80px;"><div class="palette-swatch" style="background: var(--bcb-verde-susta)"></div><small>Verde Susta</small></div>
+                        <div style="width: 80px;"><div class="palette-swatch" style="background: var(--bcb-amarellato)"></div><small>Amarellato</small></div>
+                        <div style="width: 80px;"><div class="palette-swatch" style="background: var(--bcb-vinho)"></div><small>Marsala Suave</small></div>
+                        <div style="width: 80px;"><div class="palette-swatch" style="background: var(--bcb-gray-200)"></div><small>Gray 200</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Padrão Estrutural -->
+        <section class="ux-card">
+            <h2 class="mb-4">1. Variações de Estrutura</h2>
+            <p>O componente pode ser apresentado em três formatos estruturais, dependendo do "peso" que a informação exige na página, com ou sem ícone.</p>
+
+            <div class="row">
+                <!-- Modelo A -->
+                <div class="col-lg-12">
+                    <h5 class="mb-3">A. Padrão (Left Border)</h5>
+                    <p class="small text-muted mb-3">Ideal para o miolo do texto. Não quebra o fluxo de leitura, mas ganha destaque visual pela margem pesada à esquerda.</p>
+                    
+                    <div class="callout callout-brand callout-left-bordered">
+                        <span class="material-icons-outlined callout-icon" aria-hidden="true">info</span>
+                        <div class="callout-content">
+                            <h4 class="callout-title">Uso Padrão</h4>
+                            <p>Corpo de texto explicativo com borda lateral grossa. Substitui o antigo "olho" perfeitamente.</p>
+                        </div>
+                    </div>
+
+                    <div class="callout callout-brand callout-left-bordered">
+                        <div class="callout-content">
+                            <h4 class="callout-title">Sem ícone</h4>
+                            <p>A versão sem ícone é usada quando o destaque é puramente tipográfico, sem necessidade de reforço visual (ex: citação longa).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo B -->
+                <div class="col-lg-12">
+                    <h5 class="mb-3">B. Outline (Com Borda)</h5>
+                    <p class="small text-muted mb-3">Ideal para fundos que já são coloridos (ex: cinza claro). A borda cheia separa o bloco do restante da página.</p>
+                    
+                    <div class="callout callout-brand callout-outline">
+                        <span class="material-icons-outlined callout-icon" aria-hidden="true">lightbulb</span>
+                        <div class="callout-content">
+                            <h4 class="callout-title">Uso Outline</h4>
+                            <p>Fundo 100% branco com borda fina acompanhando toda a caixa. Ótimo contraste para áreas densas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo C -->
+                <div class="col-lg-12">
+                    <h5 class="mb-3">C. Elevated (Card/Sombra)</h5>
+                    <p class="small text-muted mb-3">Usado para avisos críticos que devem parecer flutuar sobre o conteúdo, chamando atenção máxima estrutural.</p>
+                    
+                    <div class="callout callout-brand callout-elevated">
+                        <span class="material-icons-outlined callout-icon" aria-hidden="true">campaign</span>
+                        <div class="callout-content">
+                            <h4 class="callout-title">Uso Elevated</h4>
+                            <p>Contém sombra suave (shadow-sm) e borda lateral. Transmite a sensação de um "card" autônomo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Variações Semânticas -->
+        <section class="ux-card">
+            <h2 class="mb-4">2. Variações Semânticas (O Sistema de Cores)</h2>
+            <p>Por que apenas 5 cores? Porque em UX, cores devem significar ações, não apenas enfeites. Para manter o tom institucional do BCB, evitamos o uso do "vermelho puro" e "verde limão", adequando a paleta da marca para funções semânticas.</p>
+
+            <!-- Brand Info -->
+            <div class="callout callout-brand callout-left-bordered">
+                <span class="material-icons-outlined callout-icon" aria-hidden="true">info</span>
+                <div class="callout-content">
+                    <h4 class="callout-title">Brand / Informação (Brand Blue)</h4>
+                    <p>O caso de uso mais comum. Serve para destacar notas, curiosidades, dicas educacionais gerais (como o "Dica de Ouro" das cartilhas). Utiliza o <code>#025C75</code> como âncora visual.</p>
+                </div>
+            </div>
+
+            <!-- Success -->
+            <div class="callout callout-success callout-left-bordered">
+                <span class="material-icons-outlined callout-icon" aria-hidden="true">check_circle</span>
+                <div class="callout-content">
+                    <h4 class="callout-title">Sucesso / Recomendado (Verde Susta)</h4>
+                    <p>Usado estritamente para boas práticas, confirmações ou caminhos recomendados ao cidadão. O <code>#067078</code> traz a positividade necessária sem sair do tom sóbrio.</p>
+                </div>
+            </div>
+
+            <!-- Warning -->
+            <div class="callout callout-warning callout-left-bordered">
+                <span class="material-icons-outlined callout-icon" aria-hidden="true">warning</span>
+                <div class="callout-content">
+                    <h4 class="callout-title">Atenção / Alerta (Amarellato Ajustado)</h4>
+                    <p>Aplicado em situações que exigem cuidado do usuário (ex: "Cuidado com fraudes" ou prazos importantes). A borda usa uma variação escurecida do Amarellato para garantir acessibilidade visual em fundos brancos.</p>
+                </div>
+            </div>
+
+            <!-- Danger -->
+            <div class="callout callout-danger callout-left-bordered">
+                <span class="material-icons-outlined callout-icon" aria-hidden="true">error</span>
+                <div class="callout-content">
+                    <h4 class="callout-title">Crítico / Erro (Marsala Suave)</h4>
+                    <p>Reservado para ações destrutivas, proibições fortes ou erros severos. O <code>#736063</code> age como o "vermelho institucional" da comunicação.</p>
+                </div>
+            </div>
+
+            <!-- Neutral -->
+            <div class="callout callout-neutral callout-left-bordered">
+                <span class="material-icons-outlined callout-icon" aria-hidden="true">article</span>
+                <div class="callout-content">
+                    <h4 class="callout-title">Neutro / Referência (Gray)</h4>
+                    <p>Usado para metadados, links de rodapé de página ou anexos. Não disputa atenção com os elementos coloridos primários.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 4: Elementos Internos (Rich Content) -->
+        <section class="ux-card">
+            <h2 class="mb-4">3. Rich Content: Botões e Links no Callout</h2>
+            <p>Conforme os padrões levantados do componente legado, o novo Callout suporta nativamente interações avançadas (Botões e Links). A semântica das tags de título (H4, H5, H6) foi mantida visualmente, mas atualizada para seguir a arquitetura da informação da página host.</p>
+
+            <div class="callout callout-brand callout-left-bordered">
+                <span class="material-icons-outlined callout-icon" aria-hidden="true">touch_app</span>
+                <div class="callout-content">
+                    <h4 class="callout-title">H4 - Títulos do Callout (Substituindo o "Olho")</h4>
+                    <p>O título de maior nível do callout será equivalente ao H4. Dentro do conteúdo poderá ter listas, links e botões perfeitamente alinhados.</p>
+                    
+                    <h5 class="mt-4 mb-2" style="font-size: 1.05rem;">H5 - Uso de Links Inline</h5>
+                    <p>Links ganham destaque com as mudanças. Pra saber mais sobre recomendação de acessibilidade <a href="#" style="color: var(--bcb-brand-blue); font-weight: 500;">baixe o e-Mag (pdf - 110kb)</a>.</p>
+
+                    <h5 class="mt-4 mb-3 text-uppercase text-muted" style="font-size: 0.85rem; letter-spacing: 1px;">H6 - Uso de Botões</h5>
+                    <p>Com o intuito de ampliar o uso de elementos, o callout passa a aceitar o uso de botões perfeitamente espaçados. O padrão geral pro site também se aplica a esse caso:</p>
+                    
+                    <div class="callout-actions">
+                        <button class="btn btn-bcb-primary px-4 py-2">Primary</button>
+                        <button class="btn btn-bcb-outline px-4 py-2">Primary Outline</button>
+                        <button class="btn-bcb-link px-3">Button Link</button>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="mt-4 small text-muted text-center"><i class="material-icons-outlined align-middle" style="font-size: 1rem;" aria-hidden="true">info</i> Nota de UX: Os botões internos sempre herdam a cor Brand Blue para garantir a consistência dos Call-to-Actions globais, independentemente da cor de fundo (warning/success) do Callout.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 text-center border-top">
+        <div class="container">
+            <p class="text-muted small mb-0 font-weight-bold" style="color: var(--bcb-blue-dark) !important;">Proposta de Padronização de Design System UI/UX - Banco Central do Brasil</p>
+            <p class="text-muted small">Arquitetura baseada em Bootstrap 4.6 • Material Symbols • WCAG Compliance</p>
+        </div>
+    </footer>
+
+    <!-- Scripts Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

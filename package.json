@@ -1,0 +1,30 @@
+{
+  "name": "@bcb/gov-ui",
+  "version": "1.1.0",
+  "description": "Design System oficial do Banco Central do Brasil — Biblioteca de componentes, tokens e padrões visuais.",
+  "main": "index.html",
+  "scripts": {
+    "serve": "npx http-server . -p 8080 -c-1",
+    "lint:css": "npx stylelint \"assets/css/**/*.css\"",
+    "lint:html": "npx htmlhint \"**/*.html\" --ignore \"node_modules/**\"",
+    "test:a11y": "node tests/a11y/a11y-runner.js",
+    "test:tokens": "node tests/tokens/tokens-integrity.test.js",
+    "test:html": "node tests/html/html-integrity.test.js",
+    "test": "npm run test:tokens && npm run test:html && npm run test:a11y",
+    "validate": "npm run lint:css && npm run lint:html && npm run test"
+  },
+  "keywords": ["design-system", "bcb", "banco-central", "gov-br", "acessibilidade", "wcag"],
+  "author": "Banco Central do Brasil — DEINF",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "htmlhint": "^1.1.0",
+    "pa11y": "^8.0.0",
+    "http-server": "^14.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

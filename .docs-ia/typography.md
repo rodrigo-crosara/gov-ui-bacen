@@ -40,44 +40,41 @@ O portal utiliza três famílias tipográficas com propósitos semânticos bem d
 
 Os títulos possuem tamanhos responsivos (Desktop / Mobile) e uma variação opcional serifada. A fonte padrão dos títulos é a **Ubuntu (peso 500)**.
 
-### Títulos Padrão (Sans-Serif)
-| Nível | Desktop (>= 992px) | Mobile (< 992px) | Peso | Estilo Extra |
-| :--- | :--- | :--- | :--- | :--- |
-| `<h1>` | 2.5rem (40px) | 1.8rem | 500 | - |
-| `<h2>` | 1.8rem (28.8px) | 1.6rem | 500 | - |
-| `<h3>` | 1.5rem (24px) | 1.3rem | 500 | - |
-| `<h4>` | 1.32rem (~21px) | 1.1rem | 500 | - |
-| `<h5>` | 1.2rem (19.2px) | 1.15rem | 500 | - |
-| `<h6>` | 1.0rem (16px) | 0.9rem | 500 | `text-transform: uppercase` |
+### Títulos Padrão (Sans-Serif — Fonte Ubuntu)
+A escala tipográfica é fluida e responsiva baseada nas Custom Properties com `clamp()`:
 
-### Títulos Excepcionais (Serif - Classe `.cormorant`)
-Para usar esta variação, adicione a classe CSS `.cormorant` à tag de título. A fonte muda para **Cormorant Garamond** e o peso base passa a ser **600**.
+| Nível / Seletor | Custom Property | Faixa Fluida | Peso Base |
+| :--- | :--- | :--- | :--- |
+| `<h1>`, `.h1` | `var(--bcb-font-700)` | 1.8rem (28.8px) a 2.25rem (36px) | 500 (Medium) |
+| `<h2>`, `.h2` | `var(--bcb-font-600)` | 1.6rem (25.6px) a 2.0rem (32px) | 500 (Medium) |
+| `<h3>`, `.h3` | `var(--bcb-font-500)` | 1.4rem (22.4px) a 1.75rem (28px) | 500 (Medium) |
+| `<h4>`, `.h4` | `var(--bcb-font-400)` | 1.25rem (20px) a 1.5rem (24px) | 500 (Medium) |
+| `<h5>`, `.h5` | `var(--bcb-font-300)` | 1.125rem (18px) a 1.25rem (20px) | 500 (Medium) |
+| `<h6>`, `.h6` | `var(--bcb-font-200)` | 1.0rem (16px) a 1.125rem (18px) | 500 (Medium), `text-transform: uppercase` |
 
-| Nível / Classe | Desktop | Peso |
-| :--- | :--- | :--- |
-| `<h1 class="cormorant">` | 2.2rem | 600 |
-| `<h2 class="cormorant">` | 2.0rem | 600 |
-| `<h3 class="cormorant">` | 1.9rem | 600 |
-| `<h4 class="cormorant">` | 1.8rem | 600 |
-| `<h5 class="cormorant">` | 1.7rem | 600 |
-| `<h6 class="cormorant">` | 1.6rem | 600 |
+### Títulos Excepcionais (Serif — Classe `.cormorant`)
+Para usar esta variação serifada, adicione a classe CSS `.cormorant` à tag de título. A fonte muda para **Cormorant Garamond** com peso base **600**.
+
+```html
+<h2 class="cormorant">Notas à imprensa</h2>
+```
 
 ---
 
 ## 4. Corpo de Texto (Body)
 
-O portal utiliza uma fórmula de tipografia fluida para o corpo do site, garantindo leitura agradável em qualquer dispositivo.
+O portal utiliza uma escala fluida responsiva para o corpo do site, garantindo leitura agradável e acessível em qualquer dispositivo.
 
 * **Cor Padrão:** `--bcb-color-body-text` (`#606060`).
-* **Font-size base:** `calc(15px + 0.1vw)` (Mínimo de 15px, crescendo suavemente em telas grandes).
-* **Line-height:** `1.5rem` (Proporciona ótimo respiro entre as linhas).
-* **Links:** `--bcb-link-color` (`#3298D5`), sublinhados apenas no `:hover` (`#0056B3`).
+* **Font-size base (`p`):** `var(--bcb-font-100)` (`clamp(0.875rem, 0.8rem + 0.38vw, 1rem)` — 14px a 16px).
+* **Line-height:** `1.5rem` (proporciona ótimo respiro e ritmo vertical).
+* **Links:** `--bcb-link-color` (`#1B75A6`), sublinhados no `:hover` (`#013F50`).
 
 ---
 
 ## 5. CSS Custom Properties & Classes Utilitárias
 
-O código abaixo deve ser usado pelo Agente para gerar estilos consistentes:
+O código abaixo é aplicado globalmente pelo `bcb-style.css`:
 
 ```css
 /* Famílias */
@@ -85,6 +82,12 @@ O código abaixo deve ser usado pelo Agente para gerar estilos consistentes:
   --bcb-font-ubuntu: 'Ubuntu', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --bcb-font-cormorant: 'Cormorant Garamond', serif;
   --bcb-font-istok: 'Istok Web', sans-serif;
+}
+
+/* Utilitário Serifado */
+.cormorant {
+  font-family: var(--bcb-font-cormorant) !important;
+  font-weight: 600;
 }
 
 /* Utilitários de Peso e Estilo */
@@ -97,3 +100,4 @@ O código abaixo deve ser usado pelo Agente para gerar estilos consistentes:
 .text-body { color: var(--bcb-color-body-text); }
 .text-link { color: var(--bcb-link-color); text-decoration: none; }
 .text-link:hover { color: var(--bcb-link-hover); text-decoration: underline; }
+```
