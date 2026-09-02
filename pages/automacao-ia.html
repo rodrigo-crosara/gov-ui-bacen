@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia de Automação com Inteligência Artificial — Banco Central do Brasil</title>
-    <meta name="description" content="Guia oficial de automação com Inteligência Artificial e LLMs para geração acelerada de páginas e layouts no padrão do Banco Central do Brasil.">
+    <title>Guia de Automação e Diagramação com IA — Banco Central do Brasil</title>
+    <meta name="description" content="Guia oficial de automação e diagramação heurística de conteúdo bruto com Inteligência Artificial para o portal do Banco Central do Brasil.">
 
     <!-- Bootstrap 4.6 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -26,7 +26,7 @@
         /* Header Sticky de Navegação Local */
         .ds-navbar {
             background-color: var(--bcb-color-white);
-            border-bottom: 2px solid var(--bcb-brand-blue);
+            border-bottom: 2px solid var(--bcb-brand-azul-blue);
             position: sticky;
             top: 0;
             z-index: 1020;
@@ -43,7 +43,7 @@
             transition: all 0.2s ease;
         }
         .ds-nav-link:hover, .ds-nav-link.active {
-            color: var(--bcb-brand-blue);
+            color: var(--bcb-brand-azul-blue);
             background-color: var(--bcb-color-action-secondary-hover);
             text-decoration: none;
         }
@@ -70,9 +70,43 @@
             transition: all 0.2s;
         }
         .theme-selector-btn.active {
-            background-color: var(--bcb-brand-blue);
+            background-color: var(--bcb-brand-azul-blue);
             color: #ffffff;
             font-weight: 600;
+        }
+
+        /* Cards de Fluxo e Demonstração */
+        .showcase-comparison {
+            background-color: var(--bcb-color-white);
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+        }
+        .showcase-header {
+            background: linear-gradient(135deg, var(--bcb-brand-azul-blue), var(--bcb-brand-azulcinti));
+            color: #ffffff;
+            padding: 1.25rem 1.75rem;
+        }
+        .raw-input-box {
+            background-color: #f8f9fa;
+            border: 1px dashed var(--bcb-gray-400);
+            border-radius: var(--bcb-radius-4);
+            padding: 1.25rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.88rem;
+            color: #2c3e50;
+            line-height: 1.6;
+            max-height: 380px;
+            overflow-y: auto;
+        }
+        .rendered-output-box {
+            background-color: var(--bcb-color-white);
+            border: 1px solid var(--bcb-gray-300);
+            border-radius: var(--bcb-radius-4);
+            padding: 1.5rem;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
         }
 
         /* Cards de Prompts */
@@ -86,7 +120,7 @@
             transition: box-shadow 0.2s ease, border-color 0.2s ease;
         }
         .prompt-card:hover {
-            border-color: var(--bcb-brand-blue);
+            border-color: var(--bcb-brand-azul-blue);
             box-shadow: 0 6px 16px rgba(0,0,0,0.08);
         }
         .prompt-header {
@@ -102,7 +136,7 @@
         .prompt-title {
             font-size: 1.15rem;
             font-weight: 700;
-            color: var(--bcb-brand-blue);
+            color: var(--bcb-brand-azul-blue);
             margin: 0;
             display: flex;
             align-items: center;
@@ -121,7 +155,7 @@
         .prompt-code {
             color: #d4d4d4;
             font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             white-space: pre-wrap;
             word-break: break-word;
             margin: 0;
@@ -144,8 +178,8 @@
             transition: all 0.2s ease;
         }
         .btn-copy-prompt:hover {
-            background-color: var(--bcb-brand-blue);
-            border-color: var(--bcb-brand-blue);
+            background-color: var(--bcb-brand-azul-blue);
+            border-color: var(--bcb-brand-azul-blue);
             color: #ffffff;
         }
 
@@ -182,11 +216,20 @@
         }
         .rule-box.do .rule-title { color: var(--bcb-brand-verde-susta, #067078); }
         .rule-box.dont .rule-title { color: var(--bcb-brand-vinho-autentico, #47373A); }
-
         .rule-list {
             padding-left: 1.25rem;
             margin-bottom: 0;
             line-height: 1.7;
+        }
+
+        /* Prompt Builder Interativo */
+        .prompt-builder-card {
+            background-color: var(--bcb-color-white);
+            border: 2px solid var(--bcb-brand-azul-blue);
+            border-radius: var(--bcb-radius-8);
+            padding: 1.75rem;
+            box-shadow: 0 4px 14px rgba(2,92,117,0.08);
+            margin-bottom: 2.5rem;
         }
     </style>
 </head>
@@ -198,7 +241,7 @@
             <div class="d-flex align-items-center">
                 <a href="../index.html" class="d-flex align-items-center text-decoration-none mr-4">
                     <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Logo Banco Central do Brasil" style="height: 34px; margin-right: 12px;" onerror="this.style.display='none'">
-                    <span style="font-family: var(--bcb-font-cormorant); font-size: 1.4rem; font-weight: 600; color: var(--bcb-brand-blue); letter-spacing: 0.5px;">Design System</span>
+                    <span style="font-family: var(--bcb-font-cormorant); font-size: 1.4rem; font-weight: 600; color: var(--bcb-brand-azul-blue); letter-spacing: 0.5px;">Design System</span>
                 </a>
                 <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação do Design System">
                     <a href="../index.html" class="ds-nav-link">Início</a>
@@ -230,248 +273,426 @@
     <!-- CONTEÚDO PRINCIPAL (Iniciado rigorosamente com o H1 único) -->
     <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
         <div class="mb-4">
-            <h1 class="bcb-page-title">Guia de Automação com Inteligência Artificial</h1>
+            <h1 class="bcb-page-title">Guia de Automação e Diagramação com IA</h1>
             <div class="bcb-page-meta">
-                <span class="tag-bcb primary">Engenharia de Prompt & IA</span>
-                <span>Diretrizes Oficiais para LLMs • Banco Central do Brasil • v2.0.0</span>
+                <span class="tag-bcb primary">Motor Heurístico de UI/UX</span>
+                <span>Banco Central do Brasil &bull; Diretrizes para Webdesigners e LLMs &bull; v4.0</span>
             </div>
             <p class="lead mt-3 text-body">
-                Como webdesigners, comunicadores e desenvolvedores do Banco Central do Brasil podem utilizar Grandes Modelos de Linguagem (LLMs) e o agente integrado para prototipar telas completas e homologadas em questão de minutos.
+                Como os webdesigners de plantão do Banco Central do Brasil transformam textos brutos, e-mails técnicos, minutas de resoluções e tabelas desestruturadas em interfaces governamentais de alta fidelidade e 100% acessíveis (e-MAG / WCAG 2.2) em poucos minutos.
             </p>
         </div>
 
-        <!-- CALLOUT DE INTRODUÇÃO -->
-        <div class="callout callout-brand callout-elevated mb-5" role="region" aria-label="Visão geral da automação">
-            <span class="material-icons callout-icon" aria-hidden="true">smart_toy</span>
+        <!-- CALLOUT DE ROTINA DO DESIGNER -->
+        <div class="callout callout-brand callout-elevated mb-5" role="region" aria-label="Rotina do designer de plantão">
+            <span class="material-icons callout-icon" aria-hidden="true">auto_fix_high</span>
             <div class="callout-content">
-                <h2 class="callout-title h4">O Propósito deste Guia</h2>
+                <h2 class="callout-title h4">A Rotina do Webdesigner de Plantão no BCB</h2>
                 <p class="mb-2">
-                    O ecossistema do BCB Design System foi desenhado com arquitetura semântica estrita para permitir que modelos como <strong>Google Gemini, Claude, ChatGPT e agentes Antigravity</strong> gerem código 100% pronto para produção, livre de alucinações e em total conformidade com o <strong>e-MAG 3.1</strong> e <strong>WCAG 2.2 AA / AAA</strong>.
+                    No dia a dia do Banco Central, demandas de publicação urgente surgem em formato bruto: o texto de um e-mail de um diretor sobre nova taxa Selic, a minuta de uma resolução sobre segurança do Pix, ou uma planilha de dados do SGS.
                 </p>
                 <p class="mb-0">
-                    Basta fornecer o conteúdo em texto bruto ou dados da planilha ao modelo e combinar com um dos prompts estruturados abaixo.
+                    O <strong>Motor Heurístico do BCB</strong> permite que você simplesmente cole essa demanda crua no agente de IA. O motor analisa o texto, detecta números-chave, prazos e advertências, e devolve a página HTML5 diagramada, com componentes canônicos, H1 único e sem cascas legadas.
                 </p>
             </div>
         </div>
 
-        <!-- SEÇÃO 1: REGRAS MANDATÓRIAS -->
-        <section class="mb-5" aria-labelledby="sec-regras-title">
-            <h2 id="sec-regras-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">verified_user</span> 1. Regras Mandatórias de Geração de Código
+        <!-- SEÇÃO 1: FLUXO DE 3 ETAPAS -->
+        <section class="mb-5" aria-labelledby="sec-fluxo-title">
+            <h2 id="sec-fluxo-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                <span class="material-icons" aria-hidden="true">alt_route</span> 1. Fluxo Ágil em 3 Passos
+            </h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 p-3 border-light shadow-sm">
+                        <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                            <span class="badge badge-primary px-2 py-1" style="font-size: 1rem;">1</span>
+                            <h3 class="h5 mb-0 font-weight-bold">Copie a Demanda Bruta</h3>
+                        </div>
+                        <p class="text-body small mb-0">
+                            Copie o texto cru recebido (e-mail, documento Word, PDF de portaria ou briefing de reunião) sem se preocupar com a formatação inicial.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 p-3 border-light shadow-sm">
+                        <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                            <span class="badge badge-primary px-2 py-1" style="font-size: 1rem;">2</span>
+                            <h3 class="h5 mb-0 font-weight-bold">Instrua o Motor com Contexto</h3>
+                        </div>
+                        <p class="text-body small mb-0">
+                            Utilize um dos templates de prompt abaixo ou o Prompt Builder para passar o texto ao agente com as diretrizes do Design System.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 p-3 border-light shadow-sm">
+                        <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                            <span class="badge badge-primary px-2 py-1" style="font-size: 1rem;">3</span>
+                            <h3 class="h5 mb-0 font-weight-bold">Valide e Publique</h3>
+                        </div>
+                        <p class="text-body small mb-0">
+                            A IA devolverá a página pronta no miolo <code>&lt;main&gt;</code> com H1 único. Execute <code>npm test</code> para auditoria e envie para publicação.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: DEMONSTRAÇÃO PRÁTICA: ENTRADA BRUTA VS. SAÍDA DIAGRAMADA -->
+        <section class="mb-5" aria-labelledby="sec-demo-title">
+            <h2 id="sec-demo-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                <span class="material-icons" aria-hidden="true">compare_arrows</span> 2. Caso Real: Entrada Bruta vs. Saída Diagramada
             </h2>
             <p class="text-body mb-4">
-                Qualquer inteligência artificial ou desenvolvedor deve obedecer rigorosamente às 5 regras fundamentais de composição de interfaces do Banco Central:
+                Veja abaixo como uma minuta textual sobre mecanismos de segurança do Pix é convertida automaticamente pelo motor heurístico:
             </p>
 
+            <div class="showcase-comparison">
+                <div class="showcase-header">
+                    <h3 class="h5 mb-1 text-white font-weight-bold d-flex align-items-center" style="gap: 0.5rem;">
+                        <span class="material-icons" aria-hidden="true">bolt</span> Demanda Real: Nova Resolução do Pix e Bloqueio Preventivo
+                    </h3>
+                    <span class="small opacity-80">Conversão Heurística de Regras de Segurança, Limites Noturnos e Contestação</span>
+                </div>
+
+                <div class="p-4">
+                    <div class="row">
+                        <!-- Coluna 1: Entrada Bruta -->
+                        <div class="col-lg-5 mb-4 mb-lg-0">
+                            <h4 class="h6 font-weight-bold text-uppercase tracking-wider text-muted mb-2 d-flex align-items-center" style="gap: 0.4rem;">
+                                <span class="material-icons md-18 text-warning" aria-hidden="true">description</span> Texto Bruto Recebido (E-mail da Área Técnica)
+                            </h4>
+                            <div class="raw-input-box">
+                                <strong>De:</strong> dicop-seguranca@bcb.gov.br<br>
+                                <strong>Para:</strong> equipe-webdesign@bcb.gov.br<br>
+                                <strong>Assunto:</strong> Publicação URGENTE: Medidas de Segurança do Pix<br>
+                                <hr style="margin: 0.5rem 0;">
+                                Colegas, favor subir no portal as novas regras aprovadas pela Diretoria.<br><br>
+                                "O Banco Central determinou o limite de transferência noturna de R$ 1.000 para pessoas físicas no período entre 20h e 6h, visando reduzir sequestros-relâmpago e fraudes. O cliente pode pedir ampliação pelo aplicativo de seu banco, que responderá em prazo de 24h a 48h.<br><br>
+                                Além disso, os bancos devem realizar o Bloqueio Cautelar de transações atípicas por até 72 horas para análise de risco.<br><br>
+                                Caso o cliente seja vítima de golpe, o procedimento de socorro exige três etapas imediatas: primeiro fazer o boletim de ocorrência na polícia civil; segundo registrar o pedido de contestação (MED) no banco em até 80 dias da transferência; e terceiro acompanhar o reembolso pela conta corrente.<br><br>
+                                Anexem a Resolução BCB nº 412/2026 para download."
+                            </div>
+                            <div class="mt-3 p-3 bg-light rounded border">
+                                <h5 class="h6 font-weight-bold mb-2" style="color: var(--bcb-brand-azul-blue);">Heurísticas Acionadas pela IA:</h5>
+                                <ul class="small text-muted mb-0 pl-3">
+                                    <li>Identificou valores &rarr; <code>.bcb-indicator-card</code> (R$ 1.000, 72h e 80 dias).</li>
+                                    <li>Identificou alerta contra fraudes &rarr; <code>.callout.callout-warning</code>.</li>
+                                    <li>Identificou sequência 1º, 2º e 3º &rarr; <code>.process-list</code> (Stepper).</li>
+                                    <li>Identificou normativo anexo &rarr; <code>.documentos</code> para download.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Coluna 2: Saída Diagramada (Interface Viva Renderizada) -->
+                        <div class="col-lg-7">
+                            <h4 class="h6 font-weight-bold text-uppercase tracking-wider text-muted mb-2 d-flex align-items-center" style="gap: 0.4rem;">
+                                <span class="material-icons md-18 text-success" aria-hidden="true">check_circle</span> Saída Diagramada pelo Motor (Miolo do &lt;main&gt;)
+                            </h4>
+                            <div class="rendered-output-box">
+                                <div class="mb-3">
+                                    <span class="tag-bcb primary mb-2 d-inline-block">Segurança &amp; Pix</span>
+                                    <h5 class="h4 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
+                                        Mecanismos de Segurança do Pix: Limite Noturno e Bloqueio Preventivo
+                                    </h5>
+                                    <span class="small text-muted">Atualizado em 02/09/2026 &bull; Banco Central do Brasil</span>
+                                    <p class="lead mt-2 mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                                        Novas medidas regulatórias aprovadas pela Diretoria Colegiada estabelecem limites automáticos para transações noturnas e prazos para bloqueio cautelar de valores suspeitos.
+                                    </p>
+                                </div>
+
+                                <!-- Alerta Callout -->
+                                <div class="callout callout-warning callout-left-bordered py-2 px-3 mb-3" style="font-size: 0.85rem;">
+                                    <span class="material-icons callout-icon" aria-hidden="true" style="font-size: 1.25rem;">security</span>
+                                    <div class="callout-content">
+                                        <strong style="color: var(--bcb-brand-vinho-autentico);">Atenção às Transações Noturnas:</strong>
+                                        O limite de R$ 1.000 é ativado automaticamente das 20h às 6h para proteger o cidadão.
+                                    </div>
+                                </div>
+
+                                <!-- Grid de Indicadores Extraídos -->
+                                <div class="row no-gutters mb-3" style="gap: 0.5rem;">
+                                    <div class="col">
+                                        <div class="bcb-indicator-card p-2">
+                                            <div class="bcb-indicator-label" style="font-size: 0.75rem;">Limite Noturno</div>
+                                            <div class="bcb-indicator-value" style="font-size: 1.1rem;">R$ 1.000</div>
+                                            <div class="bcb-indicator-meta" style="font-size: 0.65rem;">Período 20h às 6h</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="bcb-indicator-card p-2">
+                                            <div class="bcb-indicator-label" style="font-size: 0.75rem;">Bloqueio Cautelar</div>
+                                            <div class="bcb-indicator-value" style="font-size: 1.1rem;">Até 72h</div>
+                                            <div class="bcb-indicator-meta" style="font-size: 0.65rem;">Análise antifraude</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="bcb-indicator-card p-2">
+                                            <div class="bcb-indicator-label" style="font-size: 0.75rem;">Prazo de Defesa MED</div>
+                                            <div class="bcb-indicator-value" style="font-size: 1.1rem;">80 Dias</div>
+                                            <div class="bcb-indicator-meta" style="font-size: 0.65rem;">Contestação formal</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Stepper de Processo -->
+                                <div class="mb-3">
+                                    <strong class="d-block mb-2" style="font-size: 0.85rem; color: var(--bcb-brand-azul-blue);">Como agir em caso de suspeita ou golpe:</strong>
+                                    <ol class="process-list pl-3 mb-0" style="font-size: 0.82rem;">
+                                        <li class="mb-1"><strong>Boletim de Ocorrência:</strong> Registre imediatamente o BO na Polícia Civil com os dados do comprovante Pix.</li>
+                                        <li class="mb-1"><strong>Notificação ao Banco:</strong> Acione o Mecanismo Especial de Devolução (MED) no app do seu banco em até 80 dias.</li>
+                                        <li><strong>Acompanhamento:</strong> Acompanhe a devolução cautelar diretamente pelo extrato da conta bancária.</li>
+                                    </ol>
+                                </div>
+
+                                <!-- Bloco de Download -->
+                                <div class="documentos mb-0">
+                                    <a role="button" class="documento d-flex text-decoration-none py-2 px-3 border rounded bg-light" href="#download-pdf" aria-label="Baixar Resolução BCB nº 412/2026 em formato PDF (210 KB)">
+                                        <span class="material-icons mr-2 text-primary" aria-hidden="true">picture_as_pdf</span>
+                                        <div class="small">
+                                            <strong class="d-block text-dark">Resolução BCB nº 412/2026</strong>
+                                            <span class="text-muted" style="font-size: 0.75rem;">Normativo completo &bull; PDF (210 KB)</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: MATRIZ HEURÍSTICA DE CONVERSÃO -->
+        <section class="mb-5" aria-labelledby="sec-matriz-title">
+            <h2 id="sec-matriz-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                <span class="material-icons" aria-hidden="true">hub</span> 3. Matriz Heurística de Conversão do Conteúdo
+            </h2>
+            <p class="text-body mb-3">
+                Quando você fornece um texto não estruturado, a IA aplica as seguintes regras de correspondência para selecionar os componentes adequados:
+            </p>
+
+            <div class="table-responsive shadow-sm border rounded">
+                <table class="table table-striped table-hover mb-0">
+                    <caption>Matriz de correspondência heurística entre dados brutos e componentes canônicos do BCB.</caption>
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" style="width: 32%;">Padrão Detectado no Texto Bruto</th>
+                            <th scope="col" style="width: 28%;">Decisão de UI/UX</th>
+                            <th scope="col" style="width: 40%;">Componente e Classe Canônica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Números-chave, taxas, metas ou índices</strong> (ex: "Selic em 14,25%", "inflação de 4,5%")</td>
+                            <td>Grid de destaque numérico com tendência visual</td>
+                            <td><code>.bcb-indicator-card</code> com <code>.bcb-indicator-trend up/down</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Instruções sequenciais / fluxos ordenados</strong> (ex: "1º passo...", "depois acesse...", "por fim...")</td>
+                            <td>Lista numerada progressiva (Stepper)</td>
+                            <td><code>&lt;ol class="process-list"&gt;</code> ou <code>.bcb-stepper</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Avisos de segurança, sanções, riscos ou prazos</strong> (ex: "Atenção: golpe!", "Prazo improrrogável")</td>
+                            <td>Caixa de destaque com contraste calibrado</td>
+                            <td><code>.callout.callout-warning</code> / <code>.callout.callout-danger</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tabelas de valores, faixas, alíquotas ou dados</strong> (ex: séries históricas, cronogramas)</td>
+                            <td>Tabela responsiva semântica com exportação</td>
+                            <td><code>.table.table-bordered</code> com <code>&lt;caption&gt;</code> e <code>.bcb-data-export</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conteúdo secundário denso, dúvidas frequentes</strong> (ex: regras detalhadas, perguntas comuns)</td>
+                            <td>Acordeão colapsável acessível (WAI-ARIA)</td>
+                            <td><code>.accordion.modelo-1</code> com <code>aria-expanded</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anexos de arquivos, resoluções ou formulários</strong> (ex: editais, minutas em PDF)</td>
+                            <td>Card de download com formato e tamanho</td>
+                            <td><code>.documentos .documento</code> com metadados</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: GERADOR DE PROMPTS PARA O DESIGNER (PROMPT BUILDER) -->
+        <section class="mb-5" aria-labelledby="sec-builder-title">
+            <h2 id="sec-builder-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                <span class="material-icons" aria-hidden="true">tune</span> 4. Gerador de Prompts para o Webdesigner de Plantão
+            </h2>
+            <p class="text-body mb-3">
+                Preencha os campos abaixo para montar e copiar instantaneamente um prompt estruturado pronto para colar no agente ou LLM:
+            </p>
+
+            <div class="prompt-builder-card">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="selectTipoDemanda" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
+                            <span class="material-icons md-18 align-middle" aria-hidden="true">category</span> Tipo de Demanda Institucional:
+                        </label>
+                        <select class="form-control custom-select" id="selectTipoDemanda">
+                            <option value="minuta">Minuta Normativa / Comunicado Regulatório (Pix, Resoluções)</option>
+                            <option value="indicadores">Indicador Econômico / Séries Temporais (Selic, Inflação, Câmbio)</option>
+                            <option value="servico">Serviço ao Cidadão / Passo a Passo (Registrato, Valores a Receber)</option>
+                            <option value="noticia">Notícia Oficial / Decisão do Copom / Imprensa</option>
+                            <option value="educativo">Guia Educativo / Leitura Longa / Cartilha</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputTituloSugerido" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
+                            <span class="material-icons md-18 align-middle" aria-hidden="true">title</span> Título Oficial Previsto (ou Tema Central):
+                        </label>
+                        <input type="text" class="form-control" id="inputTituloSugerido" placeholder="Ex: Ajustes nos Limites Noturnos do Pix">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="textareaTextoBruto" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
+                        <span class="material-icons md-18 align-middle" aria-hidden="true">content_paste</span> Cole o Texto Bruto da Demanda (E-mail, Nota Técnica ou Resolução):
+                    </label>
+                    <textarea class="form-control" id="textareaTextoBruto" rows="4" placeholder="Cole aqui o texto cru recebido da área técnica..."></textarea>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap pt-2" style="gap: 1rem;">
+                    <span class="text-muted small">
+                        <span class="material-icons md-18 align-middle" aria-hidden="true">verified</span> O prompt incluirá automaticamente todas as regras de acessibilidade e tokens oficiais.
+                    </span>
+                    <button type="button" class="btn btn-primary d-inline-flex align-items-center" id="btnGerarPrompt" style="gap: 0.4rem;">
+                        <span class="material-icons md-18" aria-hidden="true">copy_all</span>
+                        <span>Copiar Prompt Estruturado</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: REGRAS MANDATÓRIAS DE GERAÇÃO -->
+        <section class="mb-5" aria-labelledby="sec-regras-title">
+            <h2 id="sec-regras-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                <span class="material-icons" aria-hidden="true">verified_user</span> 5. Regras Mandatórias de Diagramação e Grid
+            </h2>
             <div class="rule-grid">
-                <!-- DO (O QUE FAZER) -->
+                <!-- DO -->
                 <div class="rule-box do">
                     <div class="rule-title">
                         <span class="material-icons" aria-hidden="true">check_circle</span> O QUE FAZER (Mandatório)
                     </div>
                     <ul class="rule-list">
-                        <li><strong>Conteúdo Puro no &lt;main&gt;:</strong> Iniciar imediatamente a área de conteúdo com <code>&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;</code>.</li>
-                        <li><strong>H1 Único Rigoroso:</strong> Conter rigorosamente <strong>1 tag &lt;h1&gt;</strong> por página com a classe <code>.bcb-page-title</code>. Subseções devem usar hierarquia estrita <code>&lt;h2&gt;</code> e <code>&lt;h3&gt;</code>.</li>
-                        <li><strong>Tokens Oficiais do Manual:</strong> Utilizar exclusivamente variáveis de design tokens (<code>var(--bcb-brand-*)</code>, <code>var(--bcb-color-*)</code>, <code>var(--bcb-feedback-*)</code>).</li>
-                        <li><strong>Resiliência de Dados:</strong> Sempre incluir Skeleton Loading (<code>.bcb-skeleton</code>, <code>.table-skeleton</code>) para carregamento e Empty State (<code>.bcb-empty-state</code>) para consultas sem retorno.</li>
-                        <li><strong>Clonagem de Templates:</strong> Iniciar sempre a criação a partir do template mais próximo da pasta <code>templates/</code>.</li>
+                        <li><strong>Conteúdo Puro no &lt;main&gt;:</strong> Iniciar imediatamente com <code>&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;</code>.</li>
+                        <li><strong>H1 Único Rigoroso:</strong> Exatamente <strong>1 tag &lt;h1&gt;</strong> por página com a classe <code>.bcb-page-title</code>. Subseções utilizam estritamente <code>&lt;h2&gt;</code> e <code>&lt;h3&gt;</code>.</li>
+                        <li><strong>Tokens do Manual de Marca:</strong> Utilizar exclusivamente variáveis CSS oficiais (<code>#025C75</code>, <code>#077391</code>, <code>#067078</code>, <code>#606062</code>, <code>#47373A</code>).</li>
+                        <li><strong>Resiliência de Dados:</strong> Sempre incluir Skeleton Loading (<code>.table-skeleton</code>) e Empty State (<code>.bcb-empty-state</code>) em tabelas dinâmicas.</li>
+                        <li><strong>Material Icons Semânticos:</strong> Usar ícones com significado funcional e atributo <code>aria-hidden="true"</code>.</li>
                     </ul>
                 </div>
 
-                <!-- DON'T (O QUE NUNCA FAZER) -->
+                <!-- DON'T -->
                 <div class="rule-box dont">
                     <div class="rule-title">
                         <span class="material-icons" aria-hidden="true">cancel</span> O QUE NÃO FAZER (Proibido)
                     </div>
                     <ul class="rule-list">
-                        <li><strong>Proibição de Casca do Portal:</strong> NUNCA gerar <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>#barra-brasil</code> ou <code>.bcb-govbr-bar</code>. O Design System foca 100% no miolo.</li>
-                        <li><strong>Proibição Definitiva de Breadcrumbs:</strong> NUNCA gerar <code>&lt;nav aria-label="breadcrumb"&gt;</code> ou <code>.breadcrumb-bcb</code>. A trilha de navegação é provida pela casca do CMS.</li>
-                        <li><strong>Cores Hexadecimais Arbitrárias:</strong> NUNCA inventar hexadecimais aleatórios no CSS inline. O contraste deve respeitar a identidade oficial do BCB.</li>
-                        <li><strong>Links Genéricos Proibidos:</strong> NUNCA criar links com texto "clique aqui", "saiba mais" ou "leia mais" (violação do critério WCAG 2.4.4).</li>
-                        <li><strong>Modo Escuro Fixo:</strong> NUNCA aplicar a classe <code>.dark-mode</code> fixa no <code>&lt;body&gt;</code> ou <code>&lt;main&gt;</code>. O tema é gerenciado globalmente via <code>data-theme</code>.</li>
+                        <li><strong>Proibição de Casca Externa:</strong> NUNCA gerar <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>#barra-brasil</code> ou <code>.bcb-govbr-bar</code>.</li>
+                        <li><strong>Proibição Definitiva de Breadcrumbs:</strong> NUNCA gerar <code>&lt;nav aria-label="breadcrumb"&gt;</code> ou <code>.breadcrumb-bcb</code>.</li>
+                        <li><strong>Cores Hexadecimais Arbitrárias:</strong> NUNCA aplicar cores aleatórias que violem o contraste mínimo de 4.5:1 ou 7:1.</li>
+                        <li><strong>Links Genéricos Proibidos:</strong> NUNCA criar links "clique aqui" ou "saiba mais" (violação do critério WCAG 2.4.4).</li>
+                        <li><strong>Modo Escuro Fixo:</strong> NUNCA aplicar <code>.dark-mode</code> fixo no código HTML gerado.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 2: BIBLIOTECA DE PROMPTS PRONTOS -->
+        <!-- SEÇÃO 6: BIBLIOTECA DE PROMPTS CANÔNICOS -->
         <section class="mb-5" aria-labelledby="sec-prompts-title">
-            <h2 id="sec-prompts-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">content_paste</span> 2. Biblioteca de Prompts Prontos para Uso
+            <h2 id="sec-prompts-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                <span class="material-icons" aria-hidden="true">library_books</span> 6. Biblioteca de Prompts Canônicos
             </h2>
-            <p class="text-body mb-4">
-                Copie o prompt adequado para a sua tarefa, cole no chat do LLM ou agente e preencha a seção <code>[INFORMAÇÕES / TEXTO BRUTO]</code>:
-            </p>
 
             <!-- PROMPT 1: INDICADORES ECONÔMICOS -->
             <div class="prompt-card">
                 <div class="prompt-header">
                     <div>
                         <h3 class="prompt-title">
-                            <span class="material-icons" aria-hidden="true">analytics</span> Prompt 1: Indicadores Econômicos / Séries Temporais
+                            <span class="material-icons" aria-hidden="true">analytics</span> Prompt Canônico: Indicadores Econômicos &amp; Séries SGS
                         </h3>
-                        <span class="text-muted small">Template de referência: <code>templates/template-indicadores.html</code></span>
+                        <span class="text-muted small">Base de referência: <code>templates/template-indicadores.html</code></span>
                     </div>
-                    <span class="tag-bcb primary">Séries & Tabelas</span>
+                    <span class="tag-bcb primary">Séries &amp; Tabelas</span>
                 </div>
                 <div class="prompt-body">
-                    <p class="text-body small mb-2">Ideal para Taxa Selic, Inflação (IPCA), Câmbio PTAX, Reservas Internacionais e taxas diárias:</p>
                     <div class="prompt-code-wrapper">
                         <button type="button" class="btn-copy-prompt" data-target="code-prompt-1">
                             <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar Prompt
                         </button>
-                        <pre class="prompt-code" id="code-prompt-1">Atue como Especialista em Front-end e Design System do Banco Central do Brasil.
-Gere uma página HTML completa para a consulta de Indicador Econômico baseada no template "templates/template-indicadores.html".
+                        <pre class="prompt-code" id="code-prompt-1">Atue como Especialista em Diagramação e UI/UX do Banco Central do Brasil.
+Gere uma página HTML semântica completa para o Indicador Econômico baseada no template "templates/template-indicadores.html".
 
-REGRAS ARQUITETURAIS MANDATÓRIAS:
-1. Comece diretamente com &lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt; e contenha apenas 1 tag &lt;h1 class="bcb-page-title"&gt;.
-2. É ESTRITAMENTE PROIBIDO gerar &lt;header&gt;, &lt;footer&gt;, Barra Gov.br ou Breadcrumbs (são providos pelo portal).
-3. Utilize os componentes oficiais: cards de indicador (.bcb-indicator-card) com valor e variação (.bcb-indicator-trend up/down), painel de busca facetada (.bcb-filter-panel) com chips, tabela de séries temporais (.table .table-bordered com &lt;caption&gt; e thead-primary) e bloco de exportação (.bcb-data-export) para CSV e JSON.
-4. Inclua estados de resiliência: Skeleton Loading (.table-skeleton) e Empty State (.bcb-empty-state).
-5. Utilize exclusivamente as fontes oficiais (Ubuntu e Cormorant Garamond), Material Icons e a folha "bcb-style.css".
+DIRETRIZES MANDATÓRIAS:
+1. Inicie com &lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt; e 1 único &lt;h1 class="bcb-page-title"&gt;.
+2. É ESTRITAMENTE PROIBIDO gerar Header, Footer, Barra Gov.br ou Breadcrumbs.
+3. Extraia os números-chave em cards de indicador (.bcb-indicator-card) com tendência (.bcb-indicator-trend up/down).
+4. Organize a série histórica em tabela (.table .table-bordered) com &lt;caption&gt;, thead institucional e bloco de exportação (.bcb-data-export).
+5. Inclua estados de resiliência: Skeleton Loading (.table-skeleton) e Empty State (.bcb-empty-state).
+6. Utilize exclusivamente a tipografia oficial (Ubuntu e Cormorant Garamond) e os tokens de cor do BCB.
 
-DADOS E INFORMAÇÕES DO INDICADOR:
-[Insira aqui: Nome do indicador, valor atual, periodicidade, dados das últimas reuniões/meses e notas técnicas]</pre>
+DADOS BRUTOS DO INDICADOR:
+[Insira aqui os dados da reunião, meta e série histórica]</pre>
                     </div>
                 </div>
             </div>
 
-            <!-- PROMPT 2: NOTÍCIA / COMUNICADO -->
+            <!-- PROMPT 2: SERVIÇO AO CIDADÃO -->
             <div class="prompt-card">
                 <div class="prompt-header">
                     <div>
                         <h3 class="prompt-title">
-                            <span class="material-icons" aria-hidden="true">newspaper</span> Prompt 2: Notícia / Notas à Imprensa / Decisões do Copom
+                            <span class="material-icons" aria-hidden="true">contact_page</span> Prompt Canônico: Serviço ao Cidadão &amp; Passo a Passo
                         </h3>
-                        <span class="text-muted small">Template de referência: <code>templates/template-noticia.html</code></span>
-                    </div>
-                    <span class="tag-bcb primary">Comunicação Oficial</span>
-                </div>
-                <div class="prompt-body">
-                    <p class="text-body small mb-2">Ideal para atas do Copom, anúncios da Diretoria Colegiada, novidades regulatórias e matérias do portal:</p>
-                    <div class="prompt-code-wrapper">
-                        <button type="button" class="btn-copy-prompt" data-target="code-prompt-2">
-                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar Prompt
-                        </button>
-                        <pre class="prompt-code" id="code-prompt-2">Atue como Especialista em Front-end e Design System do Banco Central do Brasil.
-Gere uma página editorial de notícia/comunicado baseada no template "templates/template-noticia.html".
-
-REGRAS ARQUITETURAIS MANDATÓRIAS:
-1. Comece diretamente com &lt;main id="conteudo-principal" class="bcb-container container py-4 my-4"&gt;.
-2. A página deve conter 1 H1 único visível (&lt;h1 class="bcb-page-title"&gt;) no topo da matéria.
-3. É ESTRITAMENTE PROIBIDO incluir Header, Footer, Barra Gov.br ou Breadcrumbs.
-4. Estruture a notícia com:
-   - Meta do artigo (.bcb-page-meta) com data de publicação, tags temáticas (.tag-bcb) e botão de compartilhar.
-   - Parágrafo de abertura com lead em destaque (font-size: 1.1rem; line-height: 1.8).
-   - Citação oficial em bloco (.bcb-citacao) com fala de autoridade do BCB.
-   - Bloco de download de documentos (.documentos / .documento) com metadados do PDF/normativo anexo.
-5. Use apenas tokens do BCB e a folha "bcb-style.css". Não use texto genérico de link ("clique aqui").
-
-TEXTO BRUTO DA NOTÍCIA:
-[Cole aqui o rascunho da matéria, comunicado ou decisão]</pre>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PROMPT 3: SERVIÇO AO CIDADÃO -->
-            <div class="prompt-card">
-                <div class="prompt-header">
-                    <div>
-                        <h3 class="prompt-title">
-                            <span class="material-icons" aria-hidden="true">contact_page</span> Prompt 3: Serviços ao Cidadão / Passo a Passo & FAQ
-                        </h3>
-                        <span class="text-muted small">Template de referência: <code>templates/template-servico.html</code></span>
+                        <span class="text-muted small">Base de referência: <code>templates/template-servico.html</code></span>
                     </div>
                     <span class="tag-bcb primary">Cidadania Financeira</span>
                 </div>
                 <div class="prompt-body">
-                    <p class="text-body small mb-2">Ideal para serviços como Registrato, Valores a Receber (SVR), Pix, Reclamações e Calculadora do Cidadão:</p>
                     <div class="prompt-code-wrapper">
-                        <button type="button" class="btn-copy-prompt" data-target="code-prompt-3">
+                        <button type="button" class="btn-copy-prompt" data-target="code-prompt-2">
                             <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar Prompt
                         </button>
-                        <pre class="prompt-code" id="code-prompt-3">Atue como Especialista em Front-end e Design System do Banco Central do Brasil.
+                        <pre class="prompt-code" id="code-prompt-2">Atue como Especialista em Diagramação e UI/UX do Banco Central do Brasil.
 Gere uma página de Serviço ao Cidadão baseada no template "templates/template-servico.html".
 
-REGRAS ARQUITETURAIS MANDATÓRIAS:
-1. Inicie com &lt;main id="conteudo-principal" class="bcb-container container py-4 my-4"&gt; com &lt;h1 class="bcb-page-title"&gt;.
-2. É ESTRITAMENTE PROIBIDO incluir Header, Footer, Barra Gov.br ou Breadcrumbs.
-3. Estrutura recomendada em 2 colunas:
-   - Coluna Lateral (col-md-4): Menu sticky de âncoras (.bd-sidebar / .bd-toc) com links para seções internas.
-   - Coluna Principal (col-md-8):
-     * Explicação clara do serviço e quem tem direito.
-     * Stepper ordenado de instruções (.process-list) passo a passo numerado.
-     * Callout de Alerta contra Golpes (.callout .callout-warning) com texto e ícone no token Vinho Autêntico (#47373A).
-     * Acordeão de Perguntas Frequentes (.accordion .modelo-1) com aria-expanded acessível.
-     * Grade de cards para serviços relacionados.
-4. Todos os links externos devem ter texto descritivo e atributo aria-label indicando abertura em nova aba se aplicável.
-
-INFORMAÇÕES DO SERVIÇO:
-[Cole aqui o passo a passo, requisitos de conta gov.br e dúvidas comuns]</pre>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PROMPT 4: RELATÓRIO INSTITUCIONAL / EDUCAÇÃO -->
-            <div class="prompt-card">
-                <div class="prompt-header">
-                    <div>
-                        <h3 class="prompt-title">
-                            <span class="material-icons" aria-hidden="true">menu_book</span> Prompt 4: Relatórios Institucionais, Cartilhas e Guias
-                        </h3>
-                        <span class="text-muted small">Template de referência: <code>templates/planejando-a-aposentadoria.html</code></span>
-                    </div>
-                    <span class="tag-bcb primary">Long-form & Educação</span>
-                </div>
-                <div class="prompt-body">
-                    <p class="text-body small mb-2">Ideal para relatórios de estabilidade, cadernos de educação financeira, manuais e cartilhas:</p>
-                    <div class="prompt-code-wrapper">
-                        <button type="button" class="btn-copy-prompt" data-target="code-prompt-4">
-                            <span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar Prompt
-                        </button>
-                        <pre class="prompt-code" id="code-prompt-4">Atue como Especialista em Front-end e Design System do Banco Central do Brasil.
-Gere um guia educativo de leitura longa (Long-form Guide) baseado no template "templates/planejando-a-aposentadoria.html".
-
-REGRAS ARQUITETURAIS MANDATÓRIAS:
-1. Inicie diretamente com &lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt; com &lt;h1 class="bcb-page-title"&gt;.
+DIRETRIZES MANDATÓRIAS:
+1. Inicie com &lt;main id="conteudo-principal" class="bcb-container container py-4 my-4"&gt; com 1 único &lt;h1 class="bcb-page-title"&gt;.
 2. É ESTRITAMENTE PROIBIDO gerar Header, Footer, Barra Gov.br ou Breadcrumbs.
-3. Utilize tipografia com alto conforto de leitura (Ubuntu / Cormorant Garamond), espaçamento generoso e seções bem demarcadas com &lt;h2&gt; e marcadores numerados.
-4. Inclua componentes de apoio didático:
-   - Caixas de Dica Educativa (.tip-box) com ícones Material Icons.
-   - Callouts com perguntas de reflexão (.callout .callout-elevated).
-   - Citações em destaque (.bcb-citacao) com aspas estilizadas.
-   - Listas verificadas (.custom-list) e tabelas informativas responsivas.
-5. Toda cor utilizada deve derivar exclusivamente das variáveis oficiais do BCB Design System.
+3. Estrutura recomendada:
+   - Menu sticky lateral (.bd-sidebar / .bd-toc) para âncoras da página.
+   - Stepper (.process-list) para o passo a passo com números de destaque.
+   - Callout de alerta de segurança (.callout.callout-warning) com alto contraste contra golpes.
+   - Acordeão de FAQ (.accordion.modelo-1) com suporte a WAI-ARIA.
+4. Utilize exclusivamente os tokens de cor do BCB e a folha "bcb-style.css".
 
-CONTEÚDO DA CARTILHA / GUIA:
-[Cole aqui os tópicos, exercícios e textos do material institucional]</pre>
+CONTEÚDO BRUTO DO SERVIÇO:
+[Cole aqui o passo a passo, requisitos de conta gov.br e dúvidas frequentes]</pre>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 3: COMO RODAR LOCALMENTE -->
+        <!-- SEÇÃO 7: COMO RODAR LOCALMENTE COM A SKILL -->
         <section class="mb-5" aria-labelledby="sec-local-title">
-            <h2 id="sec-local-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">terminal</span> 3. Como Rodar Localmente com Agentes Autônomos
+            <h2 id="sec-local-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                <span class="material-icons" aria-hidden="true">terminal</span> 7. Como Executar no Ambiente de Desenvolvimento
             </h2>
-            <p class="text-body mb-3">
-                Se você estiver utilizando o <strong>Google Antigravity IDE</strong> ou executando agentes na linha de comando, o projeto conta com uma skill nativa configurada em <code>.agent/skills/gerador-ui-bcb/</code>.
-            </p>
-
-            <div class="card p-4 border-light shadow-sm mb-4">
-                <h3 class="h5 font-weight-bold" style="color: var(--bcb-brand-blue);">Fluxo de Execução com a Skill da IA</h3>
-                <ol class="mb-3 pl-3" style="line-height: 1.8;">
-                    <li>Abra o workspace <code>gov-ui-bacen</code> no Antigravity.</li>
-                    <li>Abra o chat com o agente e peça a criação da tela fornecendo o briefing (a skill <code>gerador-ui-bcb</code> será ativada automaticamente).</li>
-                    <li>O agente analisará a necessidade, clonará o template mais próximo da pasta <code>templates/</code> e aplicará as diretrizes semânticas.</li>
-                    <li>Valide a nova página executando a suíte completa de testes automatizados no terminal:</li>
-                </ol>
-                <div class="bg-dark text-white p-3 rounded font-monospace small">
+            <div class="card p-4 border-light shadow-sm">
+                <p class="text-body mb-2">
+                    A skill do motor heurístico está configurada em <code>.agent/skills/gerador-ui-bcb/SKILL.md</code>. Ao conversar com o agente no Google Antigravity IDE ou CLI, forneça o comando de geração e valide com o pipeline de testes:
+                </p>
+                <div class="bg-dark text-white p-3 rounded font-monospace small mb-2">
                     <code>npm test</code>
                 </div>
-                <p class="text-muted small mt-2 mb-0">
-                    O comando valida integridade de tokens CSS, contraste WCAG 2.2, presença de H1 único e ausência de cascas externas e breadcrumbs.
+                <p class="text-muted small mb-0">
+                    O pipeline executa automaticamente: verificação de sincronia de tokens, integridade de cores do Manual de Marca, conformidade com 1 H1 único (e-MAG) e ausência de breadcrumbs e cascas legadas.
                 </p>
             </div>
         </section>
@@ -531,7 +752,7 @@ CONTEÚDO DA CARTILHA / GUIA:
         if (btnContrast) btnContrast.addEventListener('click', () => applyTheme('dark', 'high'));
 
         // ==========================================
-        // 2. CÓPIA DE PROMPTS COM TOAST NATIVO
+        // 2. CÓPIA DE PROMPTS CANÔNICOS COM TOAST
         // ==========================================
         document.querySelectorAll('.btn-copy-prompt').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -553,7 +774,7 @@ CONTEÚDO DA CARTILHA / GUIA:
                         if (window.BcbToast) {
                             window.BcbToast.show({
                                 title: 'Prompt Copiado!',
-                                message: 'O prompt estruturado foi copiado com sucesso para a sua área de transferência.',
+                                message: 'O prompt estruturado foi copiado para sua área de transferência.',
                                 type: 'success',
                                 duration: 3000
                             });
@@ -564,6 +785,59 @@ CONTEÚDO DA CARTILHA / GUIA:
                 }
             });
         });
+
+        // ==========================================
+        // 3. PROMPT BUILDER INTERATIVO DO DESIGNER
+        // ==========================================
+        const btnGerarPrompt = document.getElementById('btnGerarPrompt');
+        if (btnGerarPrompt) {
+            btnGerarPrompt.addEventListener('click', () => {
+                const tipo = document.getElementById('selectTipoDemanda').value;
+                const titulo = document.getElementById('inputTituloSugerido').value.trim() || 'Título da Demanda';
+                const texto = document.getElementById('textareaTextoBruto').value.trim() || '[Insira aqui o texto bruto da demanda recebida]';
+
+                const promptMontado = `Atue como Especialista em Diagramação e UI/UX do Banco Central do Brasil.
+Gere uma página HTML5 oficial e homologada para a demanda "${titulo}".
+
+REGRAS ARQUITETURAIS MANDATÓRIAS:
+1. Inicie diretamente com <main id="conteudo-principal" class="bcb-container container py-4 mb-5"> e contenha exatamente 1 tag <` + `h1 class="bcb-page-title">${titulo}</` + `h1>.
+2. É ESTRITAMENTE PROIBIDO incluir <header>, <footer>, Barra Gov.br ou Breadcrumbs (providos pelo portal).
+3. Aplique a Matriz de Conversão Heurística do BCB:
+   - Extraia dados e números-chave em cards (.bcb-indicator-card).
+   - Converta sequências cronológicas em stepper (.process-list).
+   - Destaque avisos regulatórios e alertas em callouts (.callout) com contraste acessível.
+   - Tabule dados com .table .table-bordered e inclua exportação (.bcb-data-export).
+   - Disponibilize downloads oficiais com .documentos .documento.
+4. Utilize exclusivamente os tokens oficiais de cor e tipografia do BCB Design System.
+
+TEXTO BRUTO DA DEMANDA:
+${texto}`;
+
+                navigator.clipboard.writeText(promptMontado).then(() => {
+                    const originalHTML = btnGerarPrompt.innerHTML;
+                    btnGerarPrompt.innerHTML = '<span class="material-icons md-18" aria-hidden="true">check</span> Prompt Copiado com Sucesso!';
+                    btnGerarPrompt.classList.remove('btn-primary');
+                    btnGerarPrompt.classList.add('btn-success');
+
+                    setTimeout(() => {
+                        btnGerarPrompt.innerHTML = originalHTML;
+                        btnGerarPrompt.classList.remove('btn-success');
+                        btnGerarPrompt.classList.add('btn-primary');
+                    }, 2500);
+
+                    if (window.BcbToast) {
+                        window.BcbToast.show({
+                            title: 'Prompt Estruturado Criado!',
+                            message: 'O prompt personalizado foi montado e copiado. Cole no chat do agente para gerar a tela!',
+                            type: 'success',
+                            duration: 3500
+                        });
+                    }
+                }).catch(err => {
+                    console.error('Erro ao copiar prompt gerado:', err);
+                });
+            });
+        }
     </script>
 </body>
 </html>

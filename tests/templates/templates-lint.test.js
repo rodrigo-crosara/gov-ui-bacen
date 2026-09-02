@@ -118,7 +118,7 @@ for (const arquivo of arquivosHTML) {
     }
 
     // 7.5 Proibição de tags customizadas legadas ou órfãs
-    const tagsOrfas = conteudo.match(/<(?:bcb-accordion-page|bcb-callout|listalinks)[\s>]/gi) || [];
+    const tagsOrfas = conteudo.match(/<(?:bcb-accordion-page|bcb-callout|bcb-citacao|bcb-olho|listalinks)[\s>]/gi) || [];
     if (tagsOrfas.length > 0) {
       problemas.push(`${tagsOrfas.length} tag(s) customizada(s) órfã(s) detectada(s). Use apenas componentes em HTML5 nativo.`);
     }
