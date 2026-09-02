@@ -1,4 +1,4 @@
-﻿/* ============= BCB Design System — Atoms / Skip Links =============
+/* ============= BCB Design System — Atoms / Skip Links =============
  * Links de salto de acessibilidade (WCAG 2.4.1 / e-MAG Requisito 1.1).
  * Ocultos visualmente por padrão, revelam-se ao receber foco pelo teclado.
  * ==================================================================== */
@@ -22,21 +22,21 @@
 
 .bcb-skip-link {
   position: absolute !important;
-  left: -9999px !important;
-  top: 0 !important;
+  top: -9999px !important;
+  left: 1rem !important;
   z-index: 99999 !important;
   padding: 10px 18px !important;
   background-color: var(--bcb-color-azul-blue, #025C75) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
   text-decoration: none !important;
-  border-radius: 0 0 6px 6px !important;
+  border-radius: var(--bcb-radius-sm, 4px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
 }
 
 .bcb-skip-link:focus,
 .bcb-skip-link:focus-visible {
-  left: 20px !important;
-  top: 0 !important;
+  top: 1rem !important;
 }
 
 .bcb-skip-link .accesskey-badge {

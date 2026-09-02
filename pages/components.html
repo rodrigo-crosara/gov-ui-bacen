@@ -1887,44 +1887,10 @@
 
     <script>
         // ==========================================
-        // 1. GERENCIAMENTO ROBUSTO DE 3 TEMAS
+        // 1. GERENCIAMENTO ROBUSTO DE TEMAS (BCB THEME)
         // ==========================================
-        const btnLight = document.getElementById('btnThemeLight');
-        const btnDark = document.getElementById('btnThemeDark');
-        const btnContrast = document.getElementById('btnThemeHighContrast');
-
-        function applyTheme(theme, contrast) {
-            document.documentElement.setAttribute('data-theme', theme);
-            document.documentElement.setAttribute('data-contrast', contrast);
-            
-            [btnLight, btnDark, btnContrast].forEach(b => {
-                if (b) {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-pressed', 'false');
-                }
-            });
-
-            if (contrast === 'high') {
-                if (btnContrast) {
-                    btnContrast.classList.add('active');
-                    btnContrast.setAttribute('aria-pressed', 'true');
-                }
-            } else if (theme === 'dark') {
-                if (btnDark) {
-                    btnDark.classList.add('active');
-                    btnDark.setAttribute('aria-pressed', 'true');
-                }
-            } else {
-                if (btnLight) {
-                    btnLight.classList.add('active');
-                    btnLight.setAttribute('aria-pressed', 'true');
-                }
-            }
-        }
-
-        if (btnLight) btnLight.addEventListener('click', () => applyTheme('light', 'normal'));
-        if (btnDark) btnDark.addEventListener('click', () => applyTheme('dark', 'normal'));
-        if (btnContrast) btnContrast.addEventListener('click', () => applyTheme('dark', 'high'));
+        // A alternância, persistência em localStorage e sincronização com a tag <html>
+        // são coordenadas automaticamente de forma autônoma pelo bcb-ui.js.
 
         // ==========================================
         // 2. BOTÕES DE COPIAR CÓDIGO COM TOAST NATIVO

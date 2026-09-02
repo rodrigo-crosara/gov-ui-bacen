@@ -1,8 +1,8 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    DESIGN SYSTEM BANCO CENTRAL DO BRASIL - ARQUITETURA ITCSS
    ========================================================================== */
 
-/* 00 - Settings (Tokens e Tipografia da Marca BCB) */
+/* 00 - Settings (Tokens Oficiais do Manual de Marca BCB) */
 @import "_00-settings/_tokens.css";
 @import "_00-settings/_typography.css";
 

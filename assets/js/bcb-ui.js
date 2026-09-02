@@ -23,7 +23,7 @@
       contrastAttr = 'normal';
     }
 
-    // Aplicação imediata no DOM (HTML e Body)
+    // Aplicação imediata no DOM (na tag <html> e <body>)
     try {
       if (document.documentElement) {
         document.documentElement.setAttribute('data-theme', themeAttr);
@@ -41,41 +41,16 @@
       localStorage.setItem('bcb-contrast', contrastAttr);
     } catch (e) {}
 
-    // Atualização defensiva dos botões do seletor
+    // Atualização defensiva dos botões do seletor (.bcb-theme-btn--active e .active)
     try {
-      const btnLight = document.getElementById('btnThemeLight');
-      const btnDark = document.getElementById('btnThemeDark');
-      const btnContrast = document.getElementById('btnThemeHighContrast');
-      const standardButtons = [btnLight, btnDark, btnContrast].filter(Boolean);
+      const allButtons = document.querySelectorAll(
+        '.bcb-theme-toggle button, .bcb-theme-btn, [data-theme-switcher], #btnThemeLight, #btnThemeDark, #btnThemeHighContrast'
+      );
 
-      standardButtons.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-
-      if (contrastAttr === 'high') {
-        if (btnContrast) {
-          btnContrast.classList.add('active');
-          btnContrast.setAttribute('aria-pressed', 'true');
-        }
-      } else if (themeAttr === 'dark') {
-        if (btnDark) {
-          btnDark.classList.add('active');
-          btnDark.setAttribute('aria-pressed', 'true');
-        }
-      } else {
-        if (btnLight) {
-          btnLight.classList.add('active');
-          btnLight.setAttribute('aria-pressed', 'true');
-        }
-      }
-
-      // Sincronizar seletores genéricos e em pílula (.bcb-theme-toggle button, [data-theme-switcher])
-      const allButtons = document.querySelectorAll('.bcb-theme-toggle button, [data-theme-switcher]');
       allButtons.forEach(b => {
         const target = b.getAttribute('data-theme-switcher') ||
                        (b.id === 'btnThemeHighContrast' ? 'high-contrast' :
-                        b.id === 'btnThemeDark' ? 'dark' : 'light');
+                        b.id === 'btnThemeDark' ? 'dark' : 'default');
 
         const isMatch = (target === themeKey) ||
                         (target === 'default' && (themeKey === 'light' || themeKey === 'default')) ||
@@ -83,10 +58,10 @@
                         (target === 'high-contrast' && (themeKey === 'high-contrast' || themeKey === 'high'));
 
         if (isMatch) {
-          b.classList.add('active');
+          b.classList.add('active', 'bcb-theme-btn--active');
           b.setAttribute('aria-pressed', 'true');
         } else {
-          b.classList.remove('active');
+          b.classList.remove('active', 'bcb-theme-btn--active');
           b.setAttribute('aria-pressed', 'false');
         }
       });
@@ -95,29 +70,27 @@
 
   function bindEvents() {
     try {
-      const btnLight = document.getElementById('btnThemeLight');
-      const btnDark = document.getElementById('btnThemeDark');
-      const btnContrast = document.getElementById('btnThemeHighContrast');
+      const buttons = document.querySelectorAll(
+        '.bcb-theme-toggle button, .bcb-theme-btn, [data-theme-switcher], #btnThemeLight, #btnThemeDark, #btnThemeHighContrast'
+      );
 
-      if (btnLight) btnLight.addEventListener('click', () => applyTheme('light'));
-      if (btnDark) btnDark.addEventListener('click', () => applyTheme('dark'));
-      if (btnContrast) btnContrast.addEventListener('click', () => applyTheme('high-contrast'));
-
-      document.querySelectorAll('[data-theme-switcher]').forEach(b => {
+      buttons.forEach(b => {
         b.addEventListener('click', () => {
-          const mode = b.getAttribute('data-theme-switcher');
+          const mode = b.getAttribute('data-theme-switcher') ||
+                       (b.id === 'btnThemeHighContrast' ? 'high-contrast' :
+                        b.id === 'btnThemeDark' ? 'dark' : 'default');
           applyTheme(mode);
         });
       });
     } catch (e) {}
   }
 
-  // Leitura fluida e aplicação da preferência salva
-  let savedTheme = 'light';
+  // Leitura fluida e aplicação imediata da preferência salva na tag <html>
+  let savedTheme = 'default';
   try {
     savedTheme = localStorage.getItem('bcb-theme') ||
                  (document.documentElement ? document.documentElement.getAttribute('data-theme') : null) ||
-                 'light';
+                 'default';
   } catch (e) {}
 
   applyTheme(savedTheme);
@@ -285,6 +258,48 @@
         }
       } catch (e) {
         console.warn('BCB UI: Verificação defensiva de toast', e);
+      }
+
+      // 6. Botões de Copiar Código (.btn-copy-code)
+      try {
+        const copyButtons = document.querySelectorAll('.btn-copy-code');
+        if (copyButtons.length > 0) {
+          copyButtons.forEach(btn => {
+            if (btn._hasCopyListener) return;
+            btn._hasCopyListener = true;
+            btn.addEventListener('click', () => {
+              const codeId = btn.getAttribute('data-code');
+              const codeElement = codeId ? document.getElementById(codeId) : (btn.nextElementSibling && btn.nextElementSibling.querySelector('code'));
+              if (codeElement) {
+                const textToCopy = codeElement.innerText || codeElement.textContent;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                  const originalHTML = btn.innerHTML;
+                  btn.innerHTML = '<span class="material-symbols-outlined material-icons md-18" aria-hidden="true">check</span> Copiado!';
+                  btn.style.background = 'var(--bcb-color-verde-castell, #088694)';
+                  btn.style.color = '#ffffff';
+                  setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                  }, 2000);
+
+                  if (window.BcbToast && typeof window.BcbToast.show === 'function') {
+                    window.BcbToast.show({
+                      title: 'Código Copiado!',
+                      message: 'O snippet HTML foi copiado para a área de transferência.',
+                      type: 'success',
+                      duration: 3000
+                    });
+                  }
+                }).catch(err => {
+                  console.error('BCB UI: Erro ao copiar código:', err);
+                });
+              }
+            });
+          });
+        }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de copiar código', e);
       }
     }
   };
