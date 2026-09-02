@@ -1,12 +1,12 @@
 ---
 name: gerador-ui-bcb
-version: "2.1"
+version: "3.0"
 description: Ative esta habilidade SEMPRE que o usuário fornecer um conteúdo em texto bruto, documento Word ou rascunho e pedir para transformá-lo em uma página interna oficial do portal do Banco Central do Brasil (BCB). Também ative quando pedirem criação de protótipos, wireframes ou layouts de interface para o BCB.
 ---
 
-# DIRETRIZES DE OPERAÇÃO: GERADOR AUTOMÁTICO DE PÁGINAS (BCB) v2.1
+# DIRETRIZES DE OPERAÇÃO: GERADOR AUTOMÁTICO DE PÁGINAS (BCB) v3.0
 
-Você é um **Engenheiro de Design System e Arquiteto de Conteúdo Sênior** do Banco Central do Brasil. Sua missão é transformar textos brutos, documentos, briefings ou rascunhos em código HTML5 semântico, 100% acessível (WCAG 2.2 / e-MAG 3.1) e visualmente idêntico ao portal oficial do BCB, utilizando EXCLUSIVAMENTE os componentes e tokens do Design System.
+Você é um **Engenheiro de Design System e Arquiteto de Conteúdo Sênior** do Banco Central do Brasil. Sua missão é transformar textos brutos, documentos, briefings ou rascunhos em código HTML5 semântico, 100% acessível (WCAG 2.2 / e-MAG 3.1) focado exclusivamente na **área de conteúdo semântico**, iniciando diretamente no `<h1>` único da página.
 
 ---
 
@@ -19,9 +19,21 @@ Antes de gerar qualquer layout, consulte as fontes da verdade do repositório:
 | **Tokens JSON** | Tokens DTCG / W3C (Cores, espaçamentos, tipografia, sombras) | `/tokens.json` |
 | **Documentação de Tokens** | Guia detalhado de tokens CSS | `/.docs-ia/tokens.md` |
 | **Componentes Canônicos** | Assinaturas HTML exatas, variantes e regras Do/Don't | `/.docs-ia/components.md` |
-| **Blueprints de Layout** | 4 Blueprints completos de arquitetura de tela | `/.docs-ia/layouts-patterns.md` |
+| **Blueprints de Layout** | 4 Blueprints completos + Padrões de Estados de UI | `/.docs-ia/layouts-patterns.md` |
 
-> ⚠️ **REGRA ABSOLUTA**: Use APENAS as variáveis CSS oficiais (`var(--bcb-*)`). É terminantemente PROIBIDO usar estilos inline arbitrários, Tailwind CSS, Bootstrap 5 ou qualquer biblioteca externa não documentada.
+### Templates Oficiais de Referência:
+- **Indicador Econômico & Séries**: `/templates/template-indicadores.html`
+- **Serviço ao Cidadão & FAQ**: `/templates/template-servico.html`
+- **Notícia & Comunicado de Imprensa**: `/templates/template-noticia.html`
+- **Produto / Landing Page Institucional**: `/templates/drex.html`
+- **Guia Educativo / Jornada Longa**: `/templates/planejando-a-aposentadoria.html`
+- **Orientações em Emergências**: `/templates/desastres-naturais.html`
+
+> ⚠️ **REGRAS ABSOLUTAS DE ARQUITETURA E ACESSIBILIDADE**:
+> 1. **FOCO EXCLUSIVO NO CONTEÚDO**: Todo protótipo gerado deve conter apenas a tag `<main id="conteudo-principal" class="container">` iniciando rigorosamente com a tag `<h1>` do título da página (`<h1 class="bcb-page-title">...</h1>`).
+> 2. **H1 ÚNICO ESTRITO**: É obrigatório ter **apenas 1 tag <h1> por página**. Todas as seções e subtítulos devem utilizar rigorosamente `<h2>`, `<h3>` etc., sem pular níveis na hierarquia.
+> 3. **PROIBIÇÃO DE CASCA GLOBAL**: É terminantemente **PROIBIDO** gerar `<header>`, `<footer>`, `#barra-brasil`, `.bcb-govbr-bar` ou qualquer casca de portal. O Design System foca exclusivamente na área de conteúdo.
+> 4. **USO EXCLUSIVO DE TOKENS**: Use APENAS as variáveis CSS oficiais (`var(--bcb-*)`). É PROIBIDO inventar cores hexadecimais arbitrárias.
 
 ---
 
@@ -55,43 +67,32 @@ Toda página gerada DEVE conter rigorosamente a seguinte estrutura:
     <link rel="stylesheet" href="../assets/css/bcb-style.css">
 </head>
 <body>
-    <!-- Skip Links de Acessibilidade -->
-    <ul class="bcb-skip-links" aria-label="Atalhos de acessibilidade">
-        <li><a href="#conteudo-principal" class="bcb-skip-link">Ir para o conteúdo principal</a></li>
-        <li><a href="#menu-principal" class="bcb-skip-link">Ir para o menu</a></li>
-    </ul>
+    <!-- CONTEÚDO PRINCIPAL DA PÁGINA (Iniciado com H1 único) -->
+    <main class="container py-4 mb-5" id="conteudo-principal">
+        <!-- Trilha de Navegação (Breadcrumb) Opcional -->
+        <nav aria-label="Trilha de navegação" class="mb-3">
+            <ul class="breadcrumb-bcb">
+                <li><a href="/">Página Inicial</a></li>
+                <li><a href="#">Área Temática</a></li>
+                <li aria-current="page">[Título Curto]</li>
+            </ul>
+        </nav>
 
-    <!-- Barra Gov.br -->
-    <div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px; display:block;">
-        <ul id="menu-barra-temp" style="list-style:none; margin:0; padding:0; display:flex; align-items:center; height:100%;">
-            <li style="margin-right:1rem;"><a href="https://brasil.gov.br" style="color:white; text-decoration:none; font-size:12px;">Brasil.gov.br</a></li>
-        </ul>
-    </div>
-    <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
-
-    <!-- Cabeçalho Oficial -->
-    <header role="banner">
-        <div class="container position-relative h-100">
-            <div id="accessibility-wrapper">
-                <div class="d-flex justify-content-end">
-                    <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
-                        <li><a class="font-color-1" href="#conteudo-principal">Acessibilidade</a></li>
-                        <li><a class="font-color-1" href="javascript:void(0);" id="toggleAltoContraste" role="button">Alto Contraste</a></li>
-                    </ul>
-                </div>
+        <div class="mb-4">
+            <h1 class="bcb-page-title">[Título da Página]</h1>
+            <div class="bcb-page-meta">
+                <span class="tag-bcb primary">[Categoria]</span>
+                <span>Atualizado em: DD/MM/AAAA · Fonte: Banco Central do Brasil</span>
             </div>
-            <a title="Banco Central do Brasil" href="/"><img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"></a>
         </div>
-    </header>
 
-    <!-- CONTEÚDO PRINCIPAL DA PÁGINA (com id="conteudo-principal") -->
+        <!-- Seções de Conteúdo Estruturado com H2, H3 e Componentes -->
+    </main>
 
-    <!-- Scripts Bootstrap -->
+    <!-- Scripts Bootstrap e Micro-scripts BCB -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(function () { $('[data-toggle="tooltip"]').tooltip(); });
-    </script>
+    <script src="../assets/js/bcb-ui.js"></script>
 </body>
 </html>
 ```
@@ -322,11 +323,12 @@ Toda página gerada DEVE conter rigorosamente a seguinte estrutura:
 
 ## 4. CHECKLIST FINAL DE QUALIDADE ANTES DE ENTREGAR
 
-- [ ] Apenas **UM** `<h1>` por página.
+- [ ] Apenas **UM** `<h1>` por página iniciando o `<main id="conteudo-principal">`.
+- [ ] Subtítulos estruturados hierarquicamente (`<h2>`, `<h3>`).
+- [ ] Nenhuma casca externa presente (sem `<header>`, `<footer>`, `#barra-brasil`).
 - [ ] Nenhum texto de link proibido ("clique aqui", "saiba mais").
 - [ ] Links de download com `(Formato, Tamanho)`.
 - [ ] Ícones decorativos com `aria-hidden="true"`.
 - [ ] Tabelas com `<caption>` e `<th scope="col">`.
 - [ ] Variáveis CSS utilizadas em 100% dos estilos (`var(--bcb-*)`).
-- [ ] Skip links e Barra Brasil inseridos no topo do `<body>`.
 - [ ] Comentário técnico explicativo ao final do arquivo HTML.

@@ -11,35 +11,31 @@
 1. [Botões (Buttons)](#1-botões-buttons)
 2. [Links e Âncoras](#2-links-e-âncoras)
 3. [Iconografia (Material Icons)](#3-iconografia-material-icons)
-4. [Barra Gov.br e Identidade Federal](#4-barra-govbr-e-identidade-federal)
-5. [Skip Links de Acessibilidade](#5-skip-links-de-acessibilidade)
-6. [Cabeçalho Oficial (Header)](#6-cabeçalho-oficial-header)
-7. [Rodapé Institucional (Footer)](#7-rodapé-institucional-footer)
-8. [Breadcrumb (Trilha de Navegação)](#8-breadcrumb-trilha-de-navegação)
-9. [Menu de Âncoras / Sidebar TOC](#9-menu-de-âncoras--sidebar-toc)
-10. [Callouts e Alertas Estruturados](#10-callouts-e-alertas-estruturados)
-11. [Tip Box (Dica Educativa)](#11-tip-box-dica-educativa)
-12. [Citações e Testemunhos (Blockquotes)](#12-citações-e-testemunhos-blockquotes)
-13. [Tags e Badges](#13-tags-e-badges)
-14. [Process List (Passo a Passo)](#14-process-list-passo-a-passo)
-15. [Stepper (Indicador de Etapas)](#15-stepper-indicador-de-etapas)
-16. [Controles de Formulário e Validação](#16-controles-de-formulário-e-validação)
-17. [Filtros e Busca Facetada](#17-filtros-e-busca-facetada)
-18. [Data Table Responsiva (Séries e Taxas)](#18-data-table-responsiva-séries-e-taxas)
-19. [Modais e Diálogos Acessíveis](#19-modais-e-diálogos-acessíveis)
-20. [Alertas e Toast Notifications](#20-alertas-e-toast-notifications)
-21. [Navegação em Abas (Tabs)](#21-navegação-em-abas-tabs)
-22. [Accordions (Sanfonas Expansíveis)](#22-accordions-sanfonas-expansíveis)
-23. [Cards de Links Rápidos (Listalinks)](#23-cards-de-links-rápidos-listalinks)
-24. [Cards de Indicadores Econômicos](#24-cards-de-indicadores-econômicos)
-25. [Download de Documentos](#25-download-de-documentos)
-26. [Hero Banner Institucional](#26-hero-banner-institucional)
-27. [Timeline Educativa (Storytelling)](#27-timeline-educativa-storytelling)
-28. [Timeline Horizontal (Fases de Projeto)](#28-timeline-horizontal-fases-de-projeto)
-29. [Carrossel de Vídeos](#29-carrossel-de-vídeos)
-30. [Bloco de Transição Narrativa](#30-bloco-de-transição-narrativa)
-31. [Botão Voltar ao Topo](#31-botão-voltar-ao-topo)
-32. [Paginação e Tooltips de Glossário](#32-paginação-e-tooltips-de-glossário)
+4. [Breadcrumb (Trilha de Navegação)](#4-breadcrumb-trilha-de-navegação)
+5. [Menu de Âncoras / Sidebar TOC](#5-menu-de-âncoras--sidebar-toc)
+6. [Callouts e Alertas Estruturados](#6-callouts-e-alertas-estruturados)
+7. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa)
+8. [Citações e Testemunhos (Blockquotes)](#8-citações-e-testemunhos-blockquotes)
+9. [Tags e Badges](#9-tags-e-badges)
+10. [Process List (Passo a Passo)](#10-process-list-passo-a-passo)
+11. [Stepper (Indicador de Etapas)](#11-stepper-indicador-de-etapas)
+12. [Controles de Formulário e Validação](#12-controles-de-formulário-e-validação)
+13. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada)
+14. [Data Table Responsiva (Séries e Taxas)](#14-data-table-responsiva-séries-e-taxas)
+15. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis)
+16. [Alertas e Toast Notifications](#16-alertas-e-toast-notifications)
+17. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs)
+18. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis)
+19. [Cards de Links Rápidos (Listalinks)](#19-cards-de-links-rápidos-listalinks)
+20. [Cards de Indicadores Econômicos](#20-cards-de-indicadores-econômicos)
+21. [Download de Documentos](#21-download-de-documentos)
+22. [Hero Banner Institucional](#22-hero-banner-institucional)
+23. [Timeline Educativa (Storytelling)](#23-timeline-educativa-storytelling)
+24. [Timeline Horizontal (Fases de Projeto)](#24-timeline-horizontal-fases-de-projeto)
+25. [Carrossel de Vídeos](#25-carrossel-de-vídeos)
+26. [Bloco de Transição Narrativa](#26-bloco-de-transição-narrativa)
+27. [Botão Voltar ao Topo](#27-botão-voltar-ao-topo)
+28. [Paginação e Tooltips de Glossário](#28-paginação-e-tooltips-de-glossário)
 
 ---
 
@@ -64,12 +60,22 @@ Botões são usados exclusivamente para **ações** (Call to Action - CTA), como
 <button type="button" class="btn btn-outline-primary">
   Voltar
 </button>
+
+<!-- Ação Crítica / Perigo -->
+<button type="button" class="btn btn-danger">
+  Excluir chave
+</button>
+
+<!-- Botão de Ação Apenas com Ícone -->
+<button type="button" class="btn btn-primary btn-icon" aria-label="Pesquisar registros">
+  <span class="material-icons" aria-hidden="true">search</span>
+</button>
 ```
 
 ### Variantes Válidas
-- **Cores**: `.btn-primary` (Azul BCB), `.btn-secondary` (Azul Cinti), `.btn-outline-primary` (Contorno azul), `.btn-link` (Sem moldura).
+- **Cores**: `.btn-primary` (Azul BCB), `.btn-secondary` (Azul Cinti), `.btn-outline-primary` (Contorno azul), `.btn-danger` (Marsala / Ação Crítica), `.btn-link` (Sem moldura).
 - **Tamanhos**: `.btn-sm` (tabelas e ações densas), regular (padrão 40px), `.btn-lg` (conversão e hero).
-- **Modificadores**: `.btn-block` (largura total 100%).
+- **Modificadores**: `.btn-block` (largura total 100%), `.btn-icon` (botão quadrado para ícone isolado com `aria-label`).
 
 | O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
 |---|---|
@@ -129,128 +135,7 @@ Utilize os ícones da biblioteca Google Material Icons.
 
 ---
 
-## 4. Barra Gov.br e Identidade Federal
-
-Elemento institucional de topo obrigatório em todos os sites da administração pública federal.
-
-### Assinatura HTML Canônica
-```html
-<div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px; display:block;">
-  <ul id="menu-barra-temp" style="list-style:none; margin:0; padding:0; display:flex; align-items:center; height:100%;">
-    <li style="margin-right:1rem;"><a href="https://brasil.gov.br" style="color:white; text-decoration:none; font-size:12px;">Brasil.gov.br</a></li>
-  </ul>
-</div>
-<script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
-```
-
-| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
-|---|---|
-| Insira como primeiro filho imediatamente após a abertura da tag `<body>`. | NUNCA oculte ou altere a cor oficial da Barra Brasil. |
-
----
-
-## 5. Skip Links de Acessibilidade
-
-Mecanismo para navegação rápida por teclado (WCAG 2.4.1 / e-MAG Requisito 1.1).
-
-### Assinatura HTML Canônica
-```html
-<ul class="bcb-skip-links" aria-label="Atalhos de acessibilidade">
-  <li>
-    <a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">
-      Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span>
-    </a>
-  </li>
-  <li>
-    <a href="#menu-principal" class="bcb-skip-link" accesskey="2">
-      Ir para o menu de navegação <span class="accesskey-badge">Alt + 2</span>
-    </a>
-  </li>
-  <li>
-    <a href="#busca-principal" class="bcb-skip-link" accesskey="3">
-      Ir para a busca <span class="accesskey-badge">Alt + 3</span>
-    </a>
-  </li>
-  <li>
-    <a href="#rodape-principal" class="bcb-skip-link" accesskey="4">
-      Ir para o rodapé <span class="accesskey-badge">Alt + 4</span>
-    </a>
-  </li>
-</ul>
-```
-
-| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
-|---|---|
-| Garanta que os IDs alvos existam na página (`id="conteudo-principal"`). | NUNCA posicione os skip links fora do topo do HTML. |
-
----
-
-## 6. Cabeçalho Oficial (Header)
-
-Contém a logomarca do BCB e a barra de ações de acessibilidade / alto contraste.
-
-### Assinatura HTML Canônica
-```html
-<header role="banner">
-  <div class="container position-relative h-100">
-    <div id="accessibility-wrapper">
-      <div class="d-flex justify-content-end">
-        <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
-          <li class="d-none d-lg-block"><a class="font-color-1" href="#conteudo-principal">Acessibilidade</a></li>
-          <li><a class="font-color-1" href="javascript:void(0);" id="toggleAltoContraste" role="button">Alto Contraste</a></li>
-        </ul>
-      </div>
-    </div>
-    <a title="Banco Central do Brasil — Página Inicial" href="/">
-      <img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand">
-    </a>
-  </div>
-</header>
-```
-
----
-
-## 7. Rodapé Institucional (Footer)
-
-Exibe a missão do BCB, redes sociais oficiais e informações legais.
-
-### Assinatura HTML Canônica
-```html
-<footer role="contentinfo" id="rodape-principal">
-  <div class="container arts"><span class="line"></span></div>
-  <div class="t px-4 px-md-0">
-    <div class="container">
-      <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
-        <span class="font-weight-bold font-color-1 mr-lg-3 mb-2 mb-lg-0">Siga o BC</span>
-        <ul class="list-unstyled redes-sociais mb-0">
-          <li><a href="https://www.youtube.com/bancocentraldobrasil" target="_blank" rel="noopener noreferrer" aria-label="YouTube do Banco Central"><span class="material-icons md-18" aria-hidden="true">play_arrow</span></a></li>
-          <li><a href="https://www.instagram.com/bancocentraldobrasil" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Banco Central"><span class="material-icons md-18" aria-hidden="true">camera_alt</span></a></li>
-          <li><a href="https://twitter.com/BancoCentralBR" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter do Banco Central"><span class="material-icons md-18" aria-hidden="true">alternate_email</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="b">
-    <div class="container">
-      <div class="d-lg-flex align-items-lg-center justify-content-lg-between py-3 bottom">
-        <div class="missao mb-2 mb-lg-0 mr-lg-3">
-          Garantir a estabilidade do poder de compra da moeda, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade.
-        </div>
-        <div class="info">
-          <ul class="list-inline text-lg-right mb-0">
-            <li class="list-inline-item"><a href="/acesso-informacao" class="text-link">Acesso à Informação</a></li>
-            <li class="list-inline-item"><a href="/privacidade" class="text-link">Privacidade</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-```
-
----
-
-## 8. Breadcrumb (Trilha de Navegação)
+## 4. Breadcrumb (Trilha de Navegação)
 
 Indica a hierarquia da página dentro do portal.
 

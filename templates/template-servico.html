@@ -16,38 +16,17 @@
     </style>
 </head>
 <body>
-
-    <!-- HEADER OFICIAL -->
-    <header role="banner">
-      <div class="container position-relative h-100">
-        <div id="accessibility-wrapper">
-          <div class="d-flex justify-content-end">
-            <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
-              <li class="d-none d-lg-block"><a class="font-color-1" href="#">Acessibilidade</a></li>
-              <li><a class="font-color-1" href="#">Alto Contraste</a></li>
-              <li>
-                <button id="theme-toggle" class="btn btn-link font-color-1 p-0 ml-3 d-flex align-items-center h-100" aria-label="Alternar tema claro/escuro" style="border:none; text-decoration:none;">
-                  <span class="material-icons" aria-hidden="true" style="font-size: 1.2rem;">brightness_medium</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <a title="Banco Central do Brasil" href="/"><img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"></a>
-      </div>
-    </header>
-
-    <!-- BREADCRUMB -->
-    <nav aria-label="Navegação secundária">
-      <ul class="breadcrumb-bcb">
-        <li><a href="/">Página Inicial</a></li>
-        <li><a href="/cidadania-financeira">Cidadania Financeira</a></li>
-        <li aria-current="page">Como consultar o Registrato</li>
-      </ul>
-    </nav>
-
     <!-- CONTEÚDO PRINCIPAL -->
-    <div class="container mt-4 mb-5">
+    <main class="container py-4 my-4" id="conteudo-principal">
+      <!-- BREADCRUMB -->
+      <nav aria-label="Navegação secundária" class="mb-3">
+        <ul class="breadcrumb-bcb">
+          <li><a href="/">Página Inicial</a></li>
+          <li><a href="/cidadania-financeira">Cidadania Financeira</a></li>
+          <li aria-current="page">Como consultar o Registrato</li>
+        </ul>
+      </nav>
+
       <div class="row">
         
         <!-- SIDEBAR (Menu de Âncoras) -->
@@ -163,41 +142,11 @@
 
         </div>
       </div>
-    </div>
-
-    <!-- FOOTER OFICIAL -->
-    <footer role="contentinfo">
-      <div class="container arts"><span class="line"></span></div>
-      <div class="t px-4 px-md-0">
-        <div class="container">
-          <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
-            <span class="font-weight-bold font-color-1 mr-lg-3 mb-2 mb-lg-0">Siga o BC</span>
-            <ul class="list-unstyled redes-sociais mb-0">
-              <li><a href="#" title="Instagram">IG</a></li>
-              <li><a href="#" title="LinkedIn">IN</a></li>
-              <li><a href="#" title="X">X</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="b">
-        <div class="container">
-          <div class="d-lg-flex align-items-lg-center justify-content-lg-between py-3 bottom">
-            <div class="missao mb-2 mb-lg-0 mr-lg-3">Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade.</div>
-            <div class="info">
-              <ul class="list-inline text-lg-right mb-0">
-                <li class="list-inline-item"><a href="#">Fale conosco</a></li>
-                <li class="list-inline-item"><a href="#">Política de privacidade</a></li>
-              </ul>
-              <div class="text-lg-right mt-2 text-muted"> © Banco Central do Brasil</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="../assets/js/bcb-ui.js"></script>
     <script>
         const themeToggleBtn = document.getElementById('theme-toggle');
         const rootElement = document.documentElement;

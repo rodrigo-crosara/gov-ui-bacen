@@ -24,6 +24,9 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Sincronização de Design Tokens (W3C / CSS)
+        run: npm run check:tokens-sync
+
       - name: Lint CSS (Stylelint)
         run: npm run lint:css
 
@@ -36,8 +39,11 @@ jobs:
       - name: Testes de integridade HTML
         run: npm run test:html
 
+      - name: Linter e Testes de Templates
+        run: npm run test:templates
+
   acessibilidade:
-    name: Acessibilidade (WCAG 2.1)
+    name: Acessibilidade (WCAG 2.2 / e-MAG)
     runs-on: ubuntu-latest
     needs: lint-e-testes
     

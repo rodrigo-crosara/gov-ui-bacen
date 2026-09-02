@@ -5,14 +5,17 @@
   "main": "index.html",
   "scripts": {
     "serve": "npx http-server . -p 8080 -c-1",
+    "build:tokens": "node scripts/build-tokens.js",
+    "check:tokens-sync": "node scripts/build-tokens.js --check",
     "lint:css": "npx stylelint \"assets/css/**/*.css\"",
     "lint:html": "npx htmlhint \"**/*.html\" --ignore \"node_modules/**\"",
     "lint:templates": "node tests/templates/templates-lint.test.js",
+    "test:templates": "node tests/templates/templates-lint.test.js",
     "test:a11y": "node tests/a11y/a11y-runner.js",
     "test:tokens": "node tests/tokens/tokens-integrity.test.js",
     "test:html": "node tests/html/html-integrity.test.js",
-    "test": "npm run test:tokens && npm run test:html && npm run lint:templates && npm run test:a11y",
-    "validate": "npm run lint:css && npm run lint:html && npm run lint:templates && npm run test"
+    "test": "npm run check:tokens-sync && npm run test:tokens && npm run test:html && npm run test:templates && npm run test:a11y",
+    "validate": "npm run check:tokens-sync && npm run lint:css && npm run lint:html && npm run test"
   },
   "keywords": ["design-system", "bcb", "banco-central", "gov-br", "acessibilidade", "wcag"],
   "author": "Banco Central do Brasil — DEINF",

@@ -47,7 +47,7 @@ for (const pagina of PAGINAS) {
 
   try {
     const resultado = execSync(
-      `npx pa11y --standard WCAG2AA --reporter json "${url}"`,
+      `npx pa11y --standard WCAG2AA --root-element "main" --reporter json "${url}"`,
       { encoding: 'utf8', timeout: 30000, stdio: ['pipe', 'pipe', 'pipe'] }
     );
 

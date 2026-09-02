@@ -10,7 +10,6 @@
 @import '_02-generic/_reset.css';
 @import '_02-generic/_dark-mode.css';
 @import '_02-generic/_high-contrast.css';
-@import '_03-atoms/_govbr-bar.css';
 @import '_03-atoms/_skip-links.css';
 @import '_03-atoms/_buttons.css';
 @import '_03-atoms/_links.css';
@@ -29,8 +28,6 @@
 @import '_04-molecules/_data-table.css';
 @import '_04-molecules/_faceted-search.css';
 @import '_04-molecules/_toast.css';
-@import '_05-organisms/_header.css';
-@import '_05-organisms/_footer.css';
 @import '_05-organisms/_tabs.css';
 @import '_05-organisms/_accordion.css';
 @import '_05-organisms/_modal.css';
@@ -601,6 +598,18 @@ p { font-size: var(--bcb-font-100); }
   color: var(--bcb-color-white) !important;
 }
 
+.btn-danger {
+  background-color: var(--bcb-brand-marsala) !important;
+  border-color: var(--bcb-brand-marsala) !important;
+  color: var(--bcb-color-white) !important;
+  transition: all 0.2s ease;
+}
+.btn-danger:hover {
+  background-color: #5a4b4e !important;
+  border-color: #5a4b4e !important;
+  color: var(--bcb-color-white) !important;
+}
+
 .btn-link {
   color: var(--bcb-link-color) !important;
   text-decoration: none;
@@ -608,6 +617,12 @@ p { font-size: var(--bcb-font-100); }
 .btn-link:hover {
   color: var(--bcb-link-hover) !important;
   text-decoration: underline;
+}
+
+.btn-icon {
+  padding: 0.5rem;
+  border-radius: var(--bcb-radius-4);
+  line-height: 1;
 }
 
 /* AJUSTES GERAIS BCB */
@@ -642,37 +657,13 @@ p { font-size: var(--bcb-font-100); }
 
 /* UTILITÁRIOS BCB (Cores e Efeitos) */
 .bg-color-1 { background-color: var(--bcb-brand-blue) !important; color: var(--bcb-color-white) !important; }
-.font-color-1 { color: var(--bcb-brand-blue) !important; font-weight: 500; border: 1px solid var(--bcb-gray-200); border-left: none; }
+.font-color-1 { color: var(--bcb-brand-blue) !important; font-weight: 500; }
 .color-1 { color: var(--bcb-brand-blue) !important; }
 .hvr-shadow { transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out; }
 .hvr-shadow:hover { box-shadow: var(--bcb-shadow-300); transform: translateY(-1px); }
 
 /* ==========================================
-   12. ESTRUTURA PRINCIPAL (HEADER E FOOTER)
-   ========================================== */
-
-/* HEADER */
-header[role="banner"] { transition: height 0.3s, background-color 0.3s, border-color 0.3s; height: 60px; background-color: var(--bcb-color-white); position: relative; z-index: 3; border-bottom: 1px solid var(--bcb-gray-200); }
-header[role="banner"] .brand { position: absolute; left: 50%; transform: translateX(-50%); top: 12px; z-index: 1; width: 126px; }
-#portal-siteactions { border-bottom: 1px dotted var(--bcb-brand-blue); background: var(--bcb-color-white); opacity: 0.9; }
-#portal-siteactions li:not(:last-child) { margin-right: 1rem; }
-#accessibility-wrapper { position: absolute; top: 5px; z-index: 1031; right: 15px; font-size: 0.75rem; }
-
-/* FOOTER */
-footer[role="contentinfo"] { display: block; position: relative; border-top: 1px solid var(--bcb-gray-200); background-color: var(--bcb-gray-50); margin-top: 30px; font-size: 0.9rem; transition: background-color 0.3s, border-color 0.3s; }
-footer[role="contentinfo"] .m, footer[role="contentinfo"] .t { border-bottom: 1px solid var(--bcb-gray-200); }
-footer[role="contentinfo"] .m > .container, footer[role="contentinfo"] .t > .container { padding-top: 25px; padding-bottom: 25px; }
-footer[role="contentinfo"] .redes-sociais { display: flex; flex-wrap: wrap; flex-direction: row; align-items: center; justify-content: center; gap: 10px; }
-footer[role="contentinfo"] .redes-sociais li { display: flex; width: 30px; height: 30px; background: var(--bcb-brand-blue); border-radius: 50%; }
-footer[role="contentinfo"] .redes-sociais li a { display: flex; flex-grow: 1; align-items: center; justify-content: center; transition: transform 0.3s ease; color: var(--bcb-color-white); text-decoration: none; font-size: 14px; font-weight: bold; }
-footer[role="contentinfo"] .redes-sociais li a:hover { transform: scale(1.1) translateY(-2px); }
-footer[role="contentinfo"] .missao { max-width: 550px; font-style: italic; }
-footer[role="contentinfo"] .info li:not(:last-child)::after { content: "|"; display: inline-block; margin-left: 7px; color: var(--bcb-gray-400); }
-footer[role="contentinfo"] .arts { position: relative; }
-footer[role="contentinfo"] .arts .line { display: block; width: 0; height: 85px; border-right: 1px solid var(--bcb-gray-200); transform: rotate(-45deg); right: 36px; top: -13px; z-index: 2; position: absolute; }
-
-/* ==========================================
-   13. SIMULAÇÃO VISUAL (CONTEÚDO EDITORIAL)
+   12. SIMULAÇÃO VISUAL (CONTEÚDO EDITORIAL)
    ========================================== */
 .bcb-olho { background-color: rgba(2, 92, 117, 0.08); border-left: 4px solid var(--bcb-brand-blue); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 var(--bcb-radius-4) var(--bcb-radius-4) 0; transition: box-shadow 0.2s; }
 .bcb-olho:hover { box-shadow: var(--bcb-shadow-100); }
@@ -1149,27 +1140,8 @@ footer[role="contentinfo"] .arts .line { display: block; width: 0; height: 85px;
 }
 
 /* ==========================================
-   31. BARRA GOV.BR E SKIP LINKS DE ACESSIBILIDADE
+   31. SKIP LINKS DE ACESSIBILIDADE
    ========================================== */
-#barra-brasil {
-  background-color: #7F7F7F;
-  height: 20px;
-  padding: 0 0 0 10px;
-  display: block;
-  position: relative;
-  z-index: 1040;
-  font-family: var(--bcb-font-ubuntu);
-  font-size: 0.75rem;
-}
-#barra-brasil #menu-barra-temp { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; height: 100%; }
-#barra-brasil #menu-barra-temp li { margin-right: 1rem; }
-#barra-brasil #menu-barra-temp li a { color: #FFFFFF; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; transition: opacity 0.2s; }
-#barra-brasil #menu-barra-temp li a:hover, #barra-brasil #menu-barra-temp li a:focus-visible { opacity: 0.85; text-decoration: underline; }
-
-.bcb-govbr-bar { background: #002244; color: #FFFFFF; min-height: 24px; padding: 2px 1rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-family: var(--bcb-font-ubuntu); position: relative; z-index: 1040; }
-.bcb-govbr-bar a { color: #FFFFFF; text-decoration: none; font-weight: 500; }
-.bcb-govbr-bar a:hover, .bcb-govbr-bar a:focus-visible { text-decoration: underline; }
-.bcb-govbr-bar .govbr-logo { font-weight: 700; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 4px; }
 
 .bcb-skip-links { position: absolute; top: 0; left: 0; width: 100%; z-index: 1050; pointer-events: none; list-style: none; margin: 0; padding: 0; }
 .bcb-skip-links li { margin: 0; padding: 0; }

@@ -1,4 +1,122 @@
-/* ============= BCB Design System — Atoms / Buttons =============
- * Módulo reservado para futura extração.
- * Os estilos atuais estão no bcb-style.css monolítico.
- * ================================================================== */
+/* ============= BCB Design System — Atoms / Buttons ============= */
+
+.btn {
+  font-family: var(--bcb-font-ubuntu);
+  font-weight: 500;
+  border-radius: var(--bcb-radius-4);
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--bcb-brand-blue);
+  outline-offset: 2px;
+}
+
+/* 1. Botão Primário */
+.btn-primary {
+  background-color: var(--bcb-btn-primary-bg);
+  border-color: var(--bcb-btn-primary-bg);
+  color: var(--bcb-color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--bcb-btn-primary-hover);
+  border-color: var(--bcb-btn-primary-hover);
+  color: var(--bcb-color-white);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--bcb-btn-primary-active) !important;
+  border-color: var(--bcb-btn-primary-active) !important;
+  color: var(--bcb-color-white);
+}
+
+.btn-primary:disabled,
+.btn-primary.disabled {
+  background-color: var(--bcb-gray-400);
+  border-color: var(--bcb-gray-400);
+  color: var(--bcb-gray-100);
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.65;
+}
+
+/* 2. Botão Secundário */
+.btn-secondary {
+  background-color: var(--bcb-btn-secondary-bg);
+  border-color: var(--bcb-btn-secondary-bg);
+  color: var(--bcb-color-white);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bcb-btn-secondary-hover);
+  border-color: var(--bcb-btn-secondary-hover);
+  color: var(--bcb-color-white);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: var(--bcb-btn-secondary-active) !important;
+  border-color: var(--bcb-btn-secondary-active) !important;
+  color: var(--bcb-color-white);
+}
+
+/* 3. Botão Outline / Terciário */
+.btn-outline-primary {
+  color: var(--bcb-brand-blue);
+  border-color: var(--bcb-brand-blue);
+  background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--bcb-brand-blue);
+  border-color: var(--bcb-brand-blue);
+  color: var(--bcb-color-white);
+  transform: translateY(-1px);
+}
+
+/* 4. Botão de Perigo / Danger */
+.btn-danger {
+  background-color: var(--bcb-brand-marsala);
+  border-color: var(--bcb-brand-marsala);
+  color: var(--bcb-color-white);
+}
+
+.btn-danger:hover {
+  background-color: #5a4b4e;
+  border-color: #5a4b4e;
+  color: var(--bcb-color-white);
+  transform: translateY(-1px);
+}
+
+.btn-danger:focus-visible {
+  outline: 3px solid var(--bcb-brand-marsala);
+  outline-offset: 2px;
+}
+
+/* 5. Botão Link */
+.btn-link {
+  color: var(--bcb-link-color);
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: var(--bcb-link-hover);
+  text-decoration: underline;
+}
+
+/* 6. Botão com Ícone Apenas */
+.btn-icon {
+  padding: 0.5rem;
+  border-radius: var(--bcb-radius-4);
+  line-height: 1;
+}

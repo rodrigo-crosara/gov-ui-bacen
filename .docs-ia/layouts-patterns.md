@@ -12,8 +12,6 @@
 ### Diagrama Estrutural (Wireframe)
 ```
 +---------------------------------------------------------------+
-| Barra Brasil + Skip Links                                     |
-| Header Oficial (Logo + Acessibilidade)                        |
 | Breadcrumb: Início > Economia > Taxa Selic                   |
 +---------------------------------------------------------------+
 | H1: Taxa Selic (Meta Copom)                                   |
@@ -26,8 +24,6 @@
 | Data Table Responsiva (Série Histórica com Ordenação/Paging)  |
 +---------------------------------------------------------------+
 | Downloads de Dados Abertos (CSV, JSON, PDF)                   |
-+---------------------------------------------------------------+
-| Footer Institucional                                          |
 +---------------------------------------------------------------+
 ```
 
@@ -46,46 +42,17 @@
   <link rel="stylesheet" href="../assets/css/bcb-style.css">
 </head>
 <body>
-  <!-- Skip Links -->
-  <ul class="bcb-skip-links">
-    <li><a href="#conteudo-principal" class="bcb-skip-link">Ir para o conteúdo</a></li>
-  </ul>
-
-  <!-- Barra Brasil -->
-  <div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px; display:block;">
-    <ul id="menu-barra-temp" style="list-style:none; margin:0; padding:0; display:flex; align-items:center; height:100%;">
-      <li><a href="https://brasil.gov.br" style="color:white; text-decoration:none; font-size:12px;">Brasil.gov.br</a></li>
-    </ul>
-  </div>
-
-  <!-- Header -->
-  <header role="banner">
-    <div class="container position-relative h-100">
-      <div id="accessibility-wrapper">
-        <div class="d-flex justify-content-end">
-          <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
-            <li><a class="font-color-1" href="#conteudo-principal">Acessibilidade</a></li>
-            <li><a class="font-color-1" href="javascript:void(0);" id="toggleAltoContraste" role="button">Alto Contraste</a></li>
-          </ul>
-        </div>
-      </div>
-      <a href="/"><img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"></a>
-    </div>
-  </header>
-
-  <!-- Breadcrumb -->
-  <div class="container mt-3">
-    <nav aria-label="Trilha de navegação">
+  <!-- Conteúdo Principal -->
+  <main class="container py-4 mb-5" id="conteudo-principal">
+    <!-- Breadcrumb -->
+    <nav aria-label="Trilha de navegação" class="mb-3">
       <ul class="breadcrumb-bcb">
         <li><a href="/">Início</a></li>
         <li><a href="/estabilidade-financeira">Estabilidade Financeira</a></li>
         <li aria-current="page">Taxa Selic</li>
       </ul>
     </nav>
-  </div>
 
-  <!-- Conteúdo Principal -->
-  <main class="container mb-5" id="conteudo-principal">
     <h1 class="bcb-page-title">Taxa Selic (Meta Copom)</h1>
     <div class="bcb-page-meta">
       <span class="tag-bcb primary">Indicador Oficial</span>
@@ -163,11 +130,7 @@
     </div>
   </main>
 
-  <footer role="contentinfo" id="rodape-principal">
-    <div class="container text-center py-4">
-      <p class="mb-0">Banco Central do Brasil — Todos os direitos reservados.</p>
-    </div>
-  </footer>
+  <script src="../assets/js/bcb-ui.js"></script>
 </body>
 </html>
 ```
@@ -181,7 +144,7 @@
 ### Diagrama Estrutural (Wireframe)
 ```
 +---------------------------------------------------------------+
-| Header Oficial + Breadcrumb                                   |
+| Breadcrumb: Início > Normas > Consulta                       |
 +---------------------------------------------------------------+
 | H1: Busca de Normativos e Resoluções                          |
 +---------------------------------------------------------------+
@@ -190,8 +153,6 @@
 | ROW (2 Colunas):                                              |
 | - Col 4: Painel de Filtros (Datas, Tipo de Ato, Situação)     |
 | - Col 8: Filtros Ativos + Lista/Tabela de Resultados Paginada |
-+---------------------------------------------------------------+
-| Footer Oficial                                                |
 +---------------------------------------------------------------+
 ```
 
@@ -210,7 +171,7 @@
 ### Diagrama Estrutural (Wireframe)
 ```
 +---------------------------------------------------------------+
-| Header Oficial + Breadcrumb                                   |
+| Breadcrumb: Início > Cidadania Financeira > Serviço           |
 +---------------------------------------------------------------+
 | ROW (Layout 2 Colunas com Sidebar Sticky):                    |
 | - Col 4 (Sidebar): Menu de Âncoras (.bd-sidebar TOC)          |
@@ -223,7 +184,6 @@
 |     - H2: Downloads de Manuais e Guias                        |
 +---------------------------------------------------------------+
 | Botão Voltar ao Topo (.bcb-back-to-top)                       |
-| Footer Oficial                                                |
 +---------------------------------------------------------------+
 ```
 
@@ -243,7 +203,7 @@
 ### Diagrama Estrutural (Wireframe)
 ```
 +---------------------------------------------------------------+
-| Barra Brasil + Header Oficial                                 |
+| Breadcrumb Opcional                                           |
 +---------------------------------------------------------------+
 | H1 Institucional + Hero Banner com Imagem e CTA Principal     |
 +---------------------------------------------------------------+
@@ -255,8 +215,6 @@
 +---------------------------------------------------------------+
 | Abas de Navegação (.bcb-navegacaoabas) para diferentes perfis |
 +---------------------------------------------------------------+
-| Footer Institucional Completo                                 |
-+---------------------------------------------------------------+
 ```
 
 ### Componentes Chave:
@@ -265,3 +223,84 @@
 - `.timeline-horizontal` com `.timeline-h-step.active`.
 - `.videos-destaque` com `.video-item` e iframes acessíveis.
 - `.bcb-navegacaoabas` com chanfro `.line` e abas Cidadão / Empresas.
+
+---
+
+## 5. Padrões de Estados de Interface (UI States)
+
+Para tabelas financeiras, consultas de dados e componentes assíncronos, utilize sempre os padrões de estado oficiais:
+
+### 5.1 Estado Vazio (Empty State)
+Quando uma consulta ou filtro não retornar registros:
+
+```html
+<div class="bcb-empty-state text-center py-5 px-3">
+  <div class="empty-state-icon mb-3">
+    <span class="material-icons" style="font-size: 4rem; color: var(--bcb-gray-400);" aria-hidden="true">search_off</span>
+  </div>
+  <h3 class="h5 font-weight-bold text-dark mb-2">Nenhum registro encontrado</h3>
+  <p class="text-muted mb-4" style="max-width: 480px; margin-left: auto; margin-right: auto;">
+    Não foram encontrados normativos ou decisões para o período e critérios selecionados. Tente ajustar os filtros de busca.
+  </p>
+  <button type="button" class="btn btn-outline-primary btn-sm bcb-clear-all-filters">
+    <span class="material-icons mr-1" aria-hidden="true">refresh</span> Limpar todos os filtros
+  </button>
+</div>
+```
+
+---
+
+### 5.2 Estado de Carregamento (Skeleton Screen / Loading)
+Durante a requisição de séries temporais ou cálculo de indicadores:
+
+```html
+<!-- Skeleton para Cards de Indicador -->
+<div class="row">
+  <div class="col-md-4">
+    <div class="bcb-indicator-card bcb-skeleton-loading" aria-busy="true" aria-label="Carregando indicador...">
+      <div class="skeleton-line" style="height: 14px; width: 60%; background: var(--bcb-gray-200); border-radius: 4px; margin-bottom: 12px;"></div>
+      <div class="skeleton-line" style="height: 36px; width: 85%; background: var(--bcb-gray-300); border-radius: 6px; margin-bottom: 8px;"></div>
+      <div class="skeleton-line" style="height: 12px; width: 50%; background: var(--bcb-gray-200); border-radius: 4px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Skeleton para Linhas de Tabela de Dados -->
+<div class="table-responsive" aria-busy="true">
+  <table class="bcb-data-table">
+    <caption class="sr-only">Carregando dados da série histórica...</caption>
+    <thead>
+      <tr>
+        <th scope="col">Reunião</th>
+        <th scope="col">Data</th>
+        <th scope="col" class="text-numeric">Meta (% a.a.)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div style="height: 16px; width: 80px; background: var(--bcb-gray-200); border-radius: 4px;"></div></td>
+        <td><div style="height: 16px; width: 100px; background: var(--bcb-gray-200); border-radius: 4px;"></div></td>
+        <td class="text-numeric"><div style="height: 16px; width: 60px; background: var(--bcb-gray-300); border-radius: 4px; margin-left: auto;"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+---
+
+### 5.3 Estado de Erro / Indisponibilidade de Dados (Error State)
+Em caso de falha de conexão com os serviços de dados abertos ou timeout de API:
+
+```html
+<div class="callout callout-danger callout-left-bordered my-4" role="alert">
+  <span class="material-icons callout-icon" aria-hidden="true">error_outline</span>
+  <div class="callout-content">
+    <h3 class="callout-title h5">Não foi possível carregar a série histórica</h3>
+    <p class="mb-3">O serviço de dados do Banco Central está temporariamente indisponível para esta consulta. Por favor, tente novamente em alguns instantes.</p>
+    <button type="button" class="btn btn-danger btn-sm d-inline-flex align-items-center" onclick="window.location.reload();">
+      <span class="material-icons mr-1" aria-hidden="true">refresh</span> Tentar Novamente
+    </button>
+  </div>
+</div>
+```

@@ -1,4 +1,6 @@
 /* ============= BCB Design System — Settings / Tokens ============= */
+/* ATENÇÃO: Este arquivo é gerado automaticamente a partir de tokens.json. */
+/* Para modificar tokens, edite tokens.json e execute: npm run build:tokens */
 
 :root {
   /* ==========================================
@@ -7,7 +9,7 @@
   --bcb-color-white: #FFFFFF;
   --bcb-color-black: #000000;
   --bcb-color-body-text: #606060;
-  --bcb-color-bg-light: #e0ebee;
+  --bcb-color-bg-light: #E0EBEE;
 
   /* ==========================================
      2. BRAND (Primárias Oficiais)
@@ -30,33 +32,31 @@
   --bcb-brand-cafellato: #47373A;
 
   /* ==========================================
-     4. INTERAÇÃO E BOTÕES (Extraído de Produção)
+     4. INTERAÇÃO E BOTÕES
      ========================================== */
   --bcb-btn-primary-bg: #025C75;
   --bcb-btn-primary-hover: #013F50;
   --bcb-btn-primary-active: #012F3C;
-  
   --bcb-btn-secondary-bg: #088694;
   --bcb-btn-secondary-hover: #066974;
   --bcb-btn-secondary-active: #055861;
-
-  --bcb-link-color: #3298D5;
-  --bcb-link-hover: #0056B3;
+  --bcb-link-color: #1B75A6;
+  --bcb-link-hover: #013F50;
 
   /* ==========================================
      5. MODO ALTO CONTRASTE (Acessibilidade)
      ========================================== */
-  --bcb-hc-bg-level-1: #000000;
-  --bcb-hc-bg-level-2: #222222;
-  --bcb-hc-bg-level-3: #333333;
+  --bcb-hc-bg-level1: #000000;
+  --bcb-hc-bg-level2: #222222;
+  --bcb-hc-bg-level3: #333333;
   --bcb-hc-text: #FFFFFF;
   --bcb-hc-link: #FFFF00;
   --bcb-hc-border: #FFFFFF;
-  
+
   /* ==========================================
      6. ESCALA DE CINZAS UI (Superfícies e Bordas)
      ========================================== */
-  --bcb-gray-50:  #FAFBFC;
+  --bcb-gray-50: #FAFBFC;
   --bcb-gray-100: #F3F5F7;
   --bcb-gray-200: #E6EAEF;
   --bcb-gray-300: #D0D7DF;
@@ -69,30 +69,30 @@
   --bcb-gray-1000: #0B0D0E;
 
   /* ==========================================
-     7. TAMANHOS DE FONTE (Fluída com clamp - Base 16px)
+     7. TAMANHOS DE FONTE (Fluída com clamp)
      ========================================== */
-  --bcb-font-50:   0.75rem;
-  --bcb-font-75:   clamp(0.75rem, 0.675rem + 0.38vw, 0.875rem);
-  --bcb-font-100:  clamp(0.875rem, 0.8rem + 0.38vw, 1rem);
-  --bcb-font-200:  clamp(1rem, 0.925rem + 0.38vw, 1.125rem);
-  --bcb-font-300:  clamp(1.125rem, 1.05rem + 0.38vw, 1.25rem);
-  --bcb-font-400:  clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
-  --bcb-font-500:  clamp(1.4rem, 1.19rem + 1.05vw, 1.75rem);
-  --bcb-font-600:  clamp(1.6rem, 1.36rem + 1.2vw, 2rem);
-  --bcb-font-700:  clamp(1.8rem, 1.53rem + 1.35vw, 2.25rem);
-  --bcb-font-800:  clamp(2.2rem, 1.72rem + 2.4vw, 3rem);
+  --bcb-font-50: 0.75rem;
+  --bcb-font-75: clamp(0.75rem, 0.675rem + 0.38vw, 0.875rem);
+  --bcb-font-100: clamp(0.875rem, 0.8rem + 0.38vw, 1rem);
+  --bcb-font-200: clamp(1rem, 0.925rem + 0.38vw, 1.125rem);
+  --bcb-font-300: clamp(1.125rem, 1.05rem + 0.38vw, 1.25rem);
+  --bcb-font-400: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --bcb-font-500: clamp(1.4rem, 1.19rem + 1.05vw, 1.75rem);
+  --bcb-font-600: clamp(1.6rem, 1.36rem + 1.2vw, 2rem);
+  --bcb-font-700: clamp(1.8rem, 1.53rem + 1.35vw, 2.25rem);
+  --bcb-font-800: clamp(2.2rem, 1.72rem + 2.4vw, 3rem);
 
   /* ==========================================
      8. ESPAÇAMENTOS (Grid de 4px, base 16px)
      ========================================== */
-  --bcb-space-0:  0;
-  --bcb-space-1:  0.25rem;
-  --bcb-space-2:  0.5rem;
-  --bcb-space-3:  0.75rem;
-  --bcb-space-4:  1rem;
-  --bcb-space-5:  1.25rem;
-  --bcb-space-6:  1.5rem;
-  --bcb-space-8:  2rem;
+  --bcb-space-0: 0;
+  --bcb-space-1: 0.25rem;
+  --bcb-space-2: 0.5rem;
+  --bcb-space-3: 0.75rem;
+  --bcb-space-4: 1rem;
+  --bcb-space-5: 1.25rem;
+  --bcb-space-6: 1.5rem;
+  --bcb-space-8: 2rem;
   --bcb-space-12: 3rem;
   --bcb-space-16: 4rem;
   --bcb-space-24: 6rem;
@@ -100,9 +100,9 @@
   /* ==========================================
      9. BORDAS E SOMBRAS (Elevation)
      ========================================== */
-  --bcb-radius-0:   0;
-  --bcb-radius-4:   0.25rem;
-  --bcb-radius-8:   0.5rem;
+  --bcb-radius-0: 0;
+  --bcb-radius-4: 0.25rem;
+  --bcb-radius-8: 0.5rem;
   --bcb-radius-pill: 9999px;
 
   --bcb-shadow-100: 0 1px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04);
@@ -117,7 +117,11 @@
   --bcb-font-istok: 'Istok Web', sans-serif;
 
   /* ==========================================
-     PORTAL PRIMARY (Usado em Breadcrumb etc.)
+     11. FEEDBACK E PORTAL
      ========================================== */
   --bcb-portal-primary: #22272B;
+  --bcb-feedback-success: #28A745;
+  --bcb-feedback-warning: #D6A13B;
+  --bcb-feedback-danger: #DC3545;
+  --bcb-feedback-info: #025C75;
 }

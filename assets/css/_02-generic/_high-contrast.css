@@ -129,13 +129,8 @@
    Overrides Estruturais — Modo Alto Contraste
    Bordas forçadas em branco para garantir separação de superfícies
    ========================================== */
-:root[data-contrast="high"] header[role="banner"],
 :root[data-contrast="high"] .header-bcb {
   border-bottom: 2px solid #FFFFFF !important;
-}
-
-:root[data-contrast="high"] footer[role="contentinfo"] {
-  border-top: 2px solid #FFFFFF !important;
 }
 
 :root[data-contrast="high"] .card,
@@ -176,19 +171,44 @@
   border: 2px solid #FFFFFF !important;
 }
 
+:root[data-contrast="high"] .ds-sidebar {
+  border-right: 2px solid #FFFFFF !important;
+  background-color: #000000 !important;
+}
+
+:root[data-contrast="high"] .ds-sidebar .nav-link {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .ds-sidebar .nav-link.active {
+  background-color: #222222 !important;
+  color: #FFFF00 !important;
+  border-left: 4px solid #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .ds-component-card {
+  border: 2px solid #FFFFFF !important;
+  background-color: #000000 !important;
+}
+
+:root[data-contrast="high"] .ds-component-header {
+  border-bottom: 2px solid #FFFFFF !important;
+  background-color: #111111 !important;
+}
+
+:root[data-contrast="high"] .ds-component-code {
+  border-top: 2px solid #FFFFFF !important;
+  background-color: #000000 !important;
+}
+
 :root[data-contrast="high"] :focus-visible {
   outline: 4px solid #FFFF00 !important;
   outline-offset: 2px;
 }
 
 @media (prefers-contrast: more) {
-  :root:not([data-contrast="normal"]) header[role="banner"],
   :root:not([data-contrast="normal"]) .header-bcb {
     border-bottom: 2px solid #FFFFFF !important;
-  }
-
-  :root:not([data-contrast="normal"]) footer[role="contentinfo"] {
-    border-top: 2px solid #FFFFFF !important;
   }
 
   :root:not([data-contrast="normal"]) .card,

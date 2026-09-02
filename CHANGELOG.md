@@ -5,6 +5,43 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.0.0] — 2026-09-02
+
+### Modificado (Breaking Change)
+- **Remoção do Invólucro Global do Portal:** Deletados os arquivos legados de casca (`_govbr-bar.css`, `_header.css`, `_footer.css`) e eliminados `@import` e estilos associados em `bcb-style.css`, `_high-contrast.css` e `_dark-mode.css`.
+- **Higienização de 100% dos Templates HTML:** Removidos `#barra-brasil`, scripts da barra Brasil, `<header>` e `<footer>` de todos os arquivos HTML (`index.html`, `pages/*.html`, `templates/*.html`).
+- **Reorientação do Design System para Miolo de Conteúdo:** Todas as páginas iniciam diretamente no container semântico `<main id="conteudo-principal" class="container">` com rigorosamente **um único `<h1>`** por página.
+- **Skill de IA v3.0 (.agent/skills/gerador-ui-bcb/SKILL.md):** Reorientada para geração exclusiva de miolo semântico, banindo explicitamente cabeçalhos, rodapés ou cascas de portal e fixando a validação de H1 único.
+- **Auditoria e Testes Automatizados:** Atualizados `html-integrity.test.js` e `templates-lint.test.js` para exigir estritamente `assert count(h1) === 1` e proibir cascas globais nos templates. `a11y-runner.js` atualizado para auditar diretamente o elemento `<main>`.
+
+## [1.3.0] — 2026-09-02
+
+### Adicionado
+- **Vitrine Completa de Componentes (`pages/components.html`):** Catálogo vivo com 29 blocos de demonstração interativa cobrindo 100% dos Átomos, Moléculas, Organismos e Utilitários do BCB.
+- **Alternador de 3 Temas Funcional:** Controles segmentados no cabeçalho para alternância instantânea entre Modo Padrão (Claro), Modo Escuro e Alto Contraste (e-MAG).
+- **Filtro de Busca na Sidebar:** Campo de busca em tempo real para filtragem instantânea de componentes no catálogo.
+- **Variantes de Botões:** Criação do módulo modular `assets/css/_03-atoms/_buttons.css` com `.btn-danger`, `.btn-icon` e estados de foco WCAG 2.2 AAA.
+
+### Corrigido e Otimizado
+- **Header e Contraste:** Limpeza completa de cores fixas em `_header.css` e vinculação de 100% dos elementos a variáveis semânticas CSS (`var(--bcb-*)`).
+- **Navegação do Alto Contraste:** Eliminação de quebra de layout ao alternar entre os modos de alto contraste e claro/escuro.
+- **Conformidade e-MAG 3.1:** 100% das páginas HTML (11/11) agora possuem H1 único, `lang="pt-BR"`, skip links, labels descritivos e zero alertas de ícones sem `aria-hidden`.
+- **Documentação IA (`.docs-ia/components.md`):** Atualização com variantes de botões críticos e classes padronizadas.
+
+## [1.2.1] — 2026-09-02
+
+### Adicionado
+- **Micro-scripts Vanilla JS (`assets/js/`):** Implementados `modal.js` (com focus-trap e ESC), `toast.js` (auto-dismiss e WAI-ARIA live region), `tabs.js` (navegação por setas e chanfro), `accordion.js` (sincronização de `aria-expanded`) e `data-table.js` (ordenação client-side numérica e alfanumérica).
+- **Entrypoint Unificado JS:** Criação de `assets/js/bcb-ui.js` para inicialização automática dos componentes interativos.
+- **Template Oficial de Indicadores:** Criação de `templates/template-indicadores.html` combinando cards de indicadores, painel de filtros facetados, série temporal histórica e download de dados abertos.
+- **Pipeline de Design Tokens:** Criação de `scripts/build-tokens.js` com suporte a compilação de `tokens.json` para `_tokens.css` e modo `--check` para validação no CI.
+- **Padrões de Estados de Interface (UI States):** Documentados em `.docs-ia/layouts-patterns.md` os padrões de *Empty State*, *Skeleton Screen / Loading* e *Error State*.
+
+### Corrigido e Padronizado
+- **Propagação de Acessibilidade:** Injeção da Barra Gov.br oficial e Skip Links e-MAG em todos os templates (`index.html`, `template-servico.html`, `template-noticia.html`, `drex.html`, `desastres-naturais.html`, `planejando-a-aposentadoria.html`, `componente-callout.html`, `tokens.html` e `changelog.html`).
+- **CI/CD Workflow (.github/workflows/ci.yml):** Adicionada validação de sincronização de tokens (`npm run check:tokens-sync`) e testes de templates obrigatórios.
+- **Skill IA (.agent/skills/gerador-ui-bcb/SKILL.md v2.2):** Inclusão da regra mandatória para inserção dos Skip Links e Barra Brasil no boilerplate de qualquer nova tela.
+
 ## [1.2.0] — 2026-09-02
 
 ### Adicionado

@@ -73,6 +73,10 @@
     </style>
 </head>
 <body>
+    <!-- Skip Links de Acessibilidade (e-MAG) -->
+    <ul class="bcb-skip-links" aria-label="Atalhos de acessibilidade">
+        <li><a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span></a></li>
+    </ul>
 
     <header class="header-bcb">
         <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
@@ -131,9 +135,6 @@
                 <a class="nav-link" href="#conteudo-editorial">Callout, Citação e Accordion</a>
                 <a class="nav-link" href="#navegacao-editorial">Menu de Âncoras e Passo a Passo</a>
 
-                <div class="ds-sidebar-title">Estrutura</div>
-                <a class="nav-link" href="#header-footer">Header e Footer</a>
-
                 <div class="ds-sidebar-title">Templates de Página</div>
                 <a class="nav-link" href="#templates">Ver Templates</a>
 
@@ -152,7 +153,7 @@
             </nav>
         </aside>
         
-        <main class="ds-main">
+        <main class="ds-main" id="conteudo-principal">
 
             <!-- ============ CORES ============ -->
             <section id="cores">
@@ -841,12 +842,12 @@
                         <div class="nav nav-tabs" role="tablist">
                             <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">
                                 <span class="line"></span>
-                                <div class="icone d-inline-block align-middle mr-1" style="width:auto; height:auto"><span class="material-icons">person</span></div>
+                                <div class="icone d-inline-block align-middle mr-1" style="width:auto; height:auto"><span class="material-icons" aria-hidden="true">person</span></div>
                                 <div class="texto d-inline-block align-middle">Cidadão</div>
                             </a>
                             <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">
                                 <span class="line"></span>
-                                <div class="icone d-inline-block align-middle mr-1" style="width:auto; height:auto"><span class="material-icons">account_balance</span></div>
+                                <div class="icone d-inline-block align-middle mr-1" style="width:auto; height:auto"><span class="material-icons" aria-hidden="true">account_balance</span></div>
                                 <div class="texto d-inline-block align-middle">Sistema Financeiro</div>
                             </a>
                         </div>
@@ -1205,61 +1206,7 @@
                 </div>
             </section>
 
-            <!-- ============ HEADER E FOOTER ============ -->
-            <section id="header-footer">
-                <h2>Header e Footer</h2>
-                
-                <h3 class="h5 medium">Cabeçalho (Header)</h3>
-                <header role="banner" class="border mb-3">
-                  <div class="container position-relative h-100">
-                    <div id="accessibility-wrapper">
-                      <div class="d-flex justify-content-end">
-                        <ul id="portal-siteactions" class="list-unstyled d-flex mb-0 text-uppercase">
-                          <li class="d-none d-lg-block"><a class="font-color-1" href="#">Acessibilidade</a></li>
-                          <li><a class="font-color-1" href="#">Alto Contraste</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <a title="Banco Central do Brasil" href="/"><img src="https://www.bcb.gov.br/assets/svg/logo-bcb.svg" alt="Banco Central do Brasil" class="brand"></a>
-                  </div>
-                </header>
 
-                <h3 class="h5 medium">Rodapé (Footer)</h3>
-                <footer role="contentinfo">
-                  <div class="container arts"><span class="line"></span></div>
-                  <div class="t px-4 px-md-0">
-                    <div class="container">
-                      <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
-                        <span class="font-weight-bold font-color-1 mr-lg-3 mb-2 mb-lg-0">Siga o BC</span>
-                        <ul class="list-unstyled redes-sociais mb-0">
-                          <li><a href="#" title="Instagram">IG</a></li>
-                          <li><a href="#" title="LinkedIn">IN</a></li>
-                          <li><a href="#" title="X">X</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="b">
-                    <div class="container">
-                      <div class="d-lg-flex align-items-lg-center justify-content-lg-between py-3 bottom">
-                        <div class="missao mb-2 mb-lg-0 mr-lg-3">Garantir a estabilidade de preços, zelar por um sistema financeiro sólido e eficiente, e fomentar o bem-estar econômico da sociedade.</div>
-                        <div class="info">
-                          <ul class="list-inline text-lg-right mb-0">
-                            <li class="list-inline-item"><a href="#">Fale conosco</a></li>
-                            <li class="list-inline-item"><a href="#">Política de privacidade</a></li>
-                          </ul>
-                          <div class="text-lg-right mt-2 text-muted"> © Banco Central do Brasil</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </footer>
-                <div class="code-snippet">
-                    <button class="btn-copy" type="button">Copiar</button>
-                    <pre><code>&lt;header role="banner"&gt;...&lt;/header&gt;
-&lt;footer role="contentinfo"&gt;...&lt;/footer&gt;</code></pre>
-                </div>
-            </section>
 
             <!-- ============ TEMPLATES ============ -->
             <section id="templates">

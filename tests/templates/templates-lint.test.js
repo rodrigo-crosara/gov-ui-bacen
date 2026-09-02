@@ -72,15 +72,29 @@ for (const arquivo of arquivosHTML) {
     alertas.push(`${totalTabelas - totalCaptions} tabela(s) sem elemento <caption>.`);
   }
 
-  // REGRA 5: H1 único por página
+  // REGRA 5: Exatamente um H1 por página (e-MAG 3.1)
   const totalH1 = (conteudo.match(/<h1[\s>]/gi) || []).length;
-  if (totalH1 > 1) {
-    problemas.push(`Múltiplos <h1> detectados (${totalH1}) — e-Mag 3.1 exige exatamente um H1 por página.`);
+  if (totalH1 !== 1) {
+    problemas.push(`Quantidade inválida de <h1> (${totalH1}) — e-Mag 3.1 exige rigorosamente 1 H1 por página.`);
   }
 
   // REGRA 6: Presença do CSS oficial do BCB
   if (!conteudo.includes('bcb-style.css')) {
     problemas.push('Folha de estilo oficial bcb-style.css não importada.');
+  }
+
+  // REGRA 7: Proibir casca de portal (Header, Footer, Barra Brasil) nos templates de conteúdo
+  if (nomeRelativo.startsWith('templates/')) {
+    if (conteudo.includes('id="barra-brasil"') || conteudo.includes("id='barra-brasil'")) {
+      problemas.push('Barra Brasil (#barra-brasil) detectada em template de conteúdo.');
+    }
+    if (conteudo.match(/<header[\s>]/gi)) {
+      problemas.push('Tag <header> detectada em template de conteúdo — templates devem focar exclusivamente no miolo semântico.');
+    }
+    const footersNaoCitacao = conteudo.match(/<footer(?![^>]*blockquote-footer)[^>]*>/gi) || [];
+    if (footersNaoCitacao.length > 0) {
+      problemas.push('Tag <footer> detectada em template de conteúdo — templates devem focar exclusivamente no miolo semântico.');
+    }
   }
 
   // Relatório do arquivo

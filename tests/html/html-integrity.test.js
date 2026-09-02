@@ -59,12 +59,10 @@ for (const arquivo of arquivosHTML) {
     problemas.push('Meta viewport ausente (responsividade)');
   }
 
-  // TESTE 4: H1 único
+  // TESTE 4: H1 único obrigatório (e-Mag 3.1)
   const h1Matches = conteudo.match(/<h1[\s>]/gi) || [];
-  if (h1Matches.length > 1) {
-    problemas.push(`Múltiplos <h1> encontrados (${h1Matches.length}) — e-Mag exige H1 único`);
-  } else if (h1Matches.length === 0) {
-    alertas.push('Nenhum <h1> encontrado (pode ser intencional em fragmentos)');
+  if (h1Matches.length !== 1) {
+    problemas.push(`Quantidade inválida de <h1> (${h1Matches.length}) — e-Mag exige exatamente um H1 por página`);
   }
 
   // TESTE 5: Imagens sem alt
@@ -106,6 +104,20 @@ for (const arquivo of arquivosHTML) {
   const linksBlankSemRel = conteudo.match(/<a[^>]*target="_blank"(?![^>]*rel=)[^>]*>/gi) || [];
   if (linksBlankSemRel.length > 0) {
     problemas.push(`${linksBlankSemRel.length} link(s) com target="_blank" sem rel="noopener noreferrer"`);
+  }
+
+  // TESTE 12: Proibição de casca do portal (Header, Footer, Barra Gov) nos templates de conteúdo
+  if (nomeRelativo.startsWith('templates/')) {
+    if (conteudo.includes('id="barra-brasil"') || conteudo.includes("id='barra-brasil'")) {
+      problemas.push('Barra Brasil (#barra-brasil) presente em template de conteúdo');
+    }
+    if (conteudo.match(/<header[\s>]/gi)) {
+      problemas.push('Tag <header> presente em template de conteúdo — templates devem focar no miolo semântico');
+    }
+    const footersNaoCitacao = conteudo.match(/<footer(?![^>]*blockquote-footer)[^>]*>/gi) || [];
+    if (footersNaoCitacao.length > 0) {
+      problemas.push('Tag <footer> de rodapé presente em template de conteúdo — templates devem focar no miolo semântico');
+    }
   }
 
   // Reportar resultados
