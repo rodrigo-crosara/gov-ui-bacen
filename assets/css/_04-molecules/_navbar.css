@@ -1,0 +1,242 @@
+/* ==========================================================================
+   BCB DESIGN SYSTEM — NAVBAR GLOBAL DA DOCUMENTAÇÃO (.bcb-ds-navbar)
+   Barra superior unificada para todas as páginas do ecossistema.
+   Aderente às diretrizes WCAG 2.2 AA / AAA e e-MAG 3.1.
+   ========================================================================== */
+
+.bcb-ds-navbar {
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  border-bottom: 2px solid var(--bcb-brand-azulpetro, #2E4C59);
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  padding: 0.6rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.bcb-ds-navbar .container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Marca / Logo */
+.bcb-ds-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none !important;
+  gap: 0.6rem;
+  color: #FFFFFF !important;
+  transition: opacity 0.2s ease;
+}
+
+.bcb-ds-brand:hover {
+  opacity: 0.95;
+  text-decoration: none !important;
+}
+
+.bcb-ds-logo {
+  height: 32px;
+  width: auto;
+}
+
+.bcb-ds-brand-text {
+  font-family: var(--bcb-font-cormorant, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+}
+
+.bcb-ds-version-badge {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  font-family: var(--bcb-font-ubuntu, 'Ubuntu', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--bcb-radius-pill, 9999px);
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Links de Navegação */
+.bcb-ds-nav {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bcb-ds-nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--bcb-radius-4, 4px);
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Estado :hover — Fundo escurecido azulpetro com texto branco (Contraste > 8:1) */
+.bcb-ds-nav-link:hover {
+  background-color: var(--bcb-brand-azulpetro, #2E4C59) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.3);
+  text-decoration: none !important;
+}
+
+/* Estado :focus-visible (WCAG 2.2 AA) */
+.bcb-ds-nav-link:focus-visible,
+.bcb-ds-brand:focus-visible,
+.bcb-ds-theme-btn:focus-visible {
+  outline: 3px solid var(--bcb-brand-amarellato-biscoito, #F8D48D) !important;
+  outline-offset: 2px !important;
+}
+
+/* Página Ativa (aria-current="page" ou .active) */
+.bcb-ds-nav-link.active,
+.bcb-ds-nav-link[aria-current="page"] {
+  background-color: var(--bcb-brand-azulcinti, #077391) !important;
+  color: #FFFFFF !important;
+  font-weight: 700;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 -3px 0 var(--bcb-brand-amarellato-biscoito, #F8D48D);
+}
+
+/* Seletor de Temas */
+.bcb-ds-theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--bcb-radius-4, 4px);
+  padding: 3px;
+  gap: 2px;
+}
+
+.bcb-ds-theme-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 4px 9px;
+  font-size: 0.82rem;
+  border-radius: var(--bcb-radius-4, 4px);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.bcb-ds-theme-btn:hover {
+  background-color: var(--bcb-brand-azulpetro, #2E4C59);
+  color: #FFFFFF;
+}
+
+.bcb-ds-theme-btn.active,
+.bcb-ds-theme-btn[aria-pressed="true"] {
+  background-color: var(--bcb-brand-azulcinti, #077391);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================
+   Modo Escuro (Dark Mode)
+   ========================================== */
+:root[data-theme="dark"] .bcb-ds-navbar {
+  background-color: #0B0D0E;
+  border-bottom: 2px solid var(--bcb-brand-azul-blue, #0A9FD4);
+}
+
+:root[data-theme="dark"] .bcb-ds-nav-link:hover {
+  background-color: #1A1F24 !important;
+  border-color: var(--bcb-brand-azul-blue, #0A9FD4);
+}
+
+:root[data-theme="dark"] .bcb-ds-nav-link.active,
+:root[data-theme="dark"] .bcb-ds-nav-link[aria-current="page"] {
+  background-color: #1A1F24 !important;
+  color: var(--bcb-brand-azul-blue, #0A9FD4) !important;
+  border-color: var(--bcb-brand-azul-blue, #0A9FD4);
+  box-shadow: inset 0 -3px 0 var(--bcb-brand-azul-blue, #0A9FD4);
+}
+
+:root[data-theme="dark"] .bcb-ds-theme-switcher {
+  background-color: #1A1F24;
+  border-color: #2A3038;
+}
+
+:root[data-theme="dark"] .bcb-ds-theme-btn.active,
+:root[data-theme="dark"] .bcb-ds-theme-btn[aria-pressed="true"] {
+  background-color: var(--bcb-brand-azul-blue, #0A9FD4);
+  color: #000000;
+  font-weight: 700;
+}
+
+/* ==========================================
+   Modo Alto Contraste (High Contrast AAA)
+   ========================================== */
+:root[data-contrast="high"] .bcb-ds-navbar {
+  background-color: #000000 !important;
+  border-bottom: 2px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-ds-nav-link {
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  margin-right: 2px;
+}
+
+:root[data-contrast="high"] .bcb-ds-nav-link:hover {
+  background-color: #222222 !important;
+  color: #FFFF00 !important;
+  border-color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-ds-nav-link.active,
+:root[data-contrast="high"] .bcb-ds-nav-link[aria-current="page"] {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+  border: 2px solid #FFFF00 !important;
+  box-shadow: none !important;
+  outline: 2px solid #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-ds-theme-switcher {
+  border: 2px solid #FFFFFF !important;
+  background-color: #000000 !important;
+}
+
+:root[data-contrast="high"] .bcb-ds-theme-btn {
+  border: 1px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-ds-theme-btn:hover {
+  background-color: #222222 !important;
+  color: #FFFF00 !important;
+  border-color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-ds-theme-btn.active,
+:root[data-contrast="high"] .bcb-ds-theme-btn[aria-pressed="true"] {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border: 2px solid #FFFF00 !important;
+}

@@ -214,37 +214,36 @@
         <li><a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span></a></li>
     </ul>
 
-    <!-- Cabeçalho Oficial Sticky -->
-    <header class="header-bcb">
-        <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
-            <h1>
-                <span class="material-icons" aria-hidden="true">history</span>
-                Changelog BCB
-                <span class="badge-version">v2.0.0</span>
-            </h1>
-            <div class="d-flex align-items-center" style="gap: 0.75rem;">
-                <a href="../index.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Voltar ao Hub Central de Documentação" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">home</span>
-                    <span class="d-none d-sm-inline">Hub Início</span>
-                </a>
-                <a href="components.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar catálogo de componentes" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">widgets</span>
-                    <span class="d-none d-sm-inline">Componentes</span>
-                </a>
-                <a href="tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar página de design tokens" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
-                    <span class="d-none d-sm-inline">Tokens</span>
-                </a>
-                <a href="templates.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar galeria de templates de página" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
-                    <span class="d-none d-sm-inline">Templates</span>
-                </a>
-                <a href="automacao-ia.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar guia de automação com IA" style="border-color: rgba(255,255,255,0.3); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">smart_toy</span>
-                    <span class="d-none d-sm-inline">Guia IA</span>
-                </a>
-                <button id="theme-toggle" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Alternar tema claro/escuro" style="border-color: rgba(255,255,255,0.3); color: white; background: transparent;">
-                    <span class="material-icons" style="font-size: 1.2rem;" aria-hidden="true">brightness_medium</span>
+    <!-- Header da Documentação (.bcb-ds-navbar) -->
+    <header class="bcb-ds-navbar" role="banner">
+        <div class="container-fluid px-4">
+            <a href="../index.html" class="bcb-ds-brand" aria-label="Página inicial do BCB Design System">
+                <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Banco Central do Brasil" class="bcb-ds-logo" onerror="this.style.display='none'">
+                <span class="bcb-ds-brand-text">Design System</span>
+                <span class="bcb-ds-version-badge">v2.0.0</span>
+            </a>
+
+            <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação da Documentação">
+                <ul class="bcb-ds-nav">
+                    <li><a href="../index.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">home</span> Início</a></li>
+                    <li><a href="components.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">widgets</span> Componentes</a></li>
+                    <li><a href="tokens.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">palette</span> Tokens</a></li>
+                    <li><a href="templates.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">dashboard</span> Templates</a></li>
+                    <li><a href="automacao-ia.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
+                    <li><a href="changelog.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-icons md-18" aria-hidden="true">history</span> Changelog</a></li>
+                </ul>
+            </nav>
+
+            <!-- Seletor de Temas Funcional -->
+            <div class="bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
+                <button type="button" class="bcb-ds-theme-btn active" id="btnThemeLight" aria-pressed="true" title="Tema Claro Padrão">
+                    <span class="material-icons md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
+                </button>
+                <button type="button" class="bcb-ds-theme-btn" id="btnThemeDark" aria-pressed="false" title="Modo Escuro">
+                    <span class="material-icons md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
+                </button>
+                <button type="button" class="bcb-ds-theme-btn" id="btnThemeHighContrast" aria-pressed="false" title="Alto Contraste Acessível (e-MAG)">
+                    <span class="material-icons md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
                 </button>
             </div>
         </div>
@@ -271,6 +270,7 @@
         </aside>
 
         <main class="ds-main" id="conteudo-principal">
+            <h1 class="h2 font-weight-bold mb-3">Histórico de Versões e Changelog</h1>
 
             <!-- Banner Informativo -->
             <div class="callout callout-brand callout-left-bordered mb-4">
@@ -488,18 +488,6 @@
 
     <!-- Scripts de Interatividade -->
     <script>
-        // Alternador de Tema Claro/Escuro
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const rootElement = document.documentElement;
-        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        rootElement.setAttribute('data-theme', currentTheme);
-
-        themeToggleBtn.addEventListener('click', () => {
-            let newTheme = rootElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            rootElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-
         // Botão Voltar ao Topo
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {

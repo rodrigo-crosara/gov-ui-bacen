@@ -14,9 +14,23 @@ body {
   background-color: var(--bcb-color-white) !important; 
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-.text-dark { color: var(--bcb-gray-900) !important; transition: color 0.3s ease; }
-.text-muted { color: var(--bcb-gray-600) !important; transition: color 0.3s ease; }
-.border { border-color: var(--bcb-gray-200) !important; transition: border-color 0.3s ease; }
+/* Utilitários de Texto Vinculados Estritamente a Tokens */
+.text-body {
+  color: var(--bcb-color-body-text) !important;
+  transition: color 0.3s ease;
+}
+.text-dark {
+  color: var(--bcb-color-text, var(--bcb-gray-900)) !important;
+  transition: color 0.3s ease;
+}
+.text-muted {
+  color: var(--bcb-color-text-muted, var(--bcb-gray-600)) !important;
+  transition: color 0.3s ease;
+}
+.border {
+  border-color: var(--bcb-gray-200) !important;
+  transition: border-color 0.3s ease;
+}
 
 /* Foco Acessível Padrão (WCAG 2.1) */
 :focus-visible {

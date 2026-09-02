@@ -260,49 +260,37 @@
         <li><a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span></a></li>
     </ul>
 
-    <!-- Header Sticky Oficial -->
-    <header class="header-bcb" role="banner">
-        <div class="container-fluid px-4 d-flex align-items-center justify-content-between flex-wrap">
-            <div class="header-logo" style="font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; color: var(--bcb-color-white);">
-                <span class="material-icons" aria-hidden="true">account_balance</span>
-                BCB Design System
-                <span class="badge-version">v2.0.0</span>
-            </div>
+    <!-- Header Sticky da Documentação (.bcb-ds-navbar) -->
+    <header class="bcb-ds-navbar" role="banner">
+        <div class="container-fluid px-4">
+            <a href="index.html" class="bcb-ds-brand" aria-label="Página inicial do BCB Design System">
+                <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Banco Central do Brasil" class="bcb-ds-logo" onerror="this.style.display='none'">
+                <span class="bcb-ds-brand-text">Design System</span>
+                <span class="bcb-ds-version-badge">v2.0.0</span>
+            </a>
 
-            <div class="d-flex align-items-center flex-wrap my-1" style="gap: 0.75rem;">
-                <a href="pages/components.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar catálogo vivo de componentes" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">widgets</span>
-                    <span class="d-none d-sm-inline">Componentes</span>
-                </a>
-                <a href="pages/tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar página interativa de design tokens" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
-                    <span class="d-none d-sm-inline">Tokens</span>
-                </a>
-                <a href="pages/templates.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar galeria de templates de página" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
-                    <span class="d-none d-sm-inline">Templates</span>
-                </a>
-                <a href="pages/automacao-ia.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar guia de automação com IA" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">smart_toy</span>
-                    <span class="d-none d-sm-inline">Guia IA</span>
-                </a>
-                <a href="pages/changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar histórico de versões e changelog" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
-                    <span class="d-none d-sm-inline">Changelog</span>
-                </a>
+            <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação da Documentação">
+                <ul class="bcb-ds-nav">
+                    <li><a href="index.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-icons md-18" aria-hidden="true">home</span> Início</a></li>
+                    <li><a href="pages/components.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">widgets</span> Componentes</a></li>
+                    <li><a href="pages/tokens.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">palette</span> Tokens</a></li>
+                    <li><a href="pages/templates.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">dashboard</span> Templates</a></li>
+                    <li><a href="pages/automacao-ia.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
+                    <li><a href="pages/changelog.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">history</span> Changelog</a></li>
+                </ul>
+            </nav>
 
-                <!-- Seletor de Temas Funcional -->
-                <div class="theme-switcher-group" role="group" aria-label="Alternador de Tema Visual">
-                    <button type="button" class="theme-btn active" id="btnThemeLight" title="Tema Claro Padrão" aria-pressed="true">
-                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">light_mode</span> Padrão
-                    </button>
-                    <button type="button" class="theme-btn" id="btnThemeDark" title="Modo Escuro" aria-pressed="false">
-                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">dark_mode</span> Escuro
-                    </button>
-                    <button type="button" class="theme-btn" id="btnThemeHighContrast" title="Alto Contraste Acessível (e-MAG)" aria-pressed="false">
-                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">contrast</span> Alto Contraste
-                    </button>
-                </div>
+            <!-- Seletor de Temas Funcional -->
+            <div class="bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
+                <button type="button" class="bcb-ds-theme-btn active" id="btnThemeLight" aria-pressed="true" title="Tema Claro Padrão">
+                    <span class="material-icons md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
+                </button>
+                <button type="button" class="bcb-ds-theme-btn" id="btnThemeDark" aria-pressed="false" title="Modo Escuro">
+                    <span class="material-icons md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
+                </button>
+                <button type="button" class="bcb-ds-theme-btn" id="btnThemeHighContrast" aria-pressed="false" title="Alto Contraste Acessível (e-MAG)">
+                    <span class="material-icons md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
+                </button>
             </div>
         </div>
     </header>

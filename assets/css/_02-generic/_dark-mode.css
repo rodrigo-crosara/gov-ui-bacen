@@ -154,3 +154,34 @@
     --bg-gray-light: #1A1F24;
   }
 }
+
+/* ==========================================
+   Sobrescrita de Classes Utilitárias no Dark Mode
+   Garante inversão de cores e legibilidade (WCAG 2.2)
+   ========================================== */
+:root[data-theme="dark"] .text-body,
+[data-theme="dark"] .text-body {
+  color: var(--bcb-color-neutral-10, #f8f9fa) !important;
+}
+
+:root[data-theme="dark"] .text-muted,
+[data-theme="dark"] .text-muted {
+  color: var(--bcb-color-neutral-40, #c4cbd1) !important;
+}
+
+:root[data-theme="dark"] .text-dark,
+[data-theme="dark"] .text-dark {
+  color: var(--bcb-color-neutral-10, #f8f9fa) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .text-body {
+    color: var(--bcb-color-neutral-10, #f8f9fa) !important;
+  }
+  :root:not([data-theme="light"]) .text-muted {
+    color: var(--bcb-color-neutral-40, #c4cbd1) !important;
+  }
+  :root:not([data-theme="light"]) .text-dark {
+    color: var(--bcb-color-neutral-10, #f8f9fa) !important;
+  }
+}

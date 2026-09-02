@@ -1,0 +1,106 @@
+/* ============= BCB Design System — Tools / Grid =============
+ * Sistema de Grid 12 Colunas e Container Modular do Banco Central do Brasil.
+ * Totalmente compatível com o CMS do portal e layouts responsivos flexíveis.
+ * ========================================================================= */
+
+:root {
+  --bcb-spacing-lg: var(--bcb-space-6, 24px);
+  --bcb-spacing-2xl: var(--bcb-space-12, 48px);
+}
+
+/* ==========================================
+   1. CONTAINER INSTITUCIONAL (MAX 1440PX)
+   ========================================== */
+.bcb-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1200px) {
+  .bcb-container {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+}
+
+@media (min-width: 1520px) {
+  .bcb-container {
+    max-width: 1440px;
+  }
+}
+
+/* ==========================================
+   2. LINHA FLEXÍVEL (BCB ROW)
+   ========================================== */
+.bcb-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -12px;
+  margin-left: -12px;
+  box-sizing: border-box;
+}
+
+/* Variante com gap nativo para slots modulares */
+.bcb-row.bcb-row--gap {
+  margin-right: 0;
+  margin-left: 0;
+  gap: var(--bcb-spacing-lg, 24px);
+}
+
+/* ==========================================
+   3. COLUNAS PROPORCIONAIS (GUTTER DE 24PX)
+   ========================================== */
+[class*="bcb-col-"] {
+  position: relative;
+  width: 100%;
+  padding-right: 12px;
+  padding-left: 12px;
+  box-sizing: border-box;
+}
+
+/* Largura Total (100% - 12 colunas) */
+.bcb-col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* Arranjos em Médio Porte (Tablets e Telas Médias >= 768px) */
+@media (min-width: 768px) {
+  /* Padrão 50/50 (6 colunas) */
+  .bcb-col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  /* Padrão 33/33/33 (4 colunas) */
+  .bcb-col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+/* Arranjos em Grande Porte (Desktops >= 992px) */
+@media (min-width: 992px) {
+  /* Padrão 70/30 — Coluna Principal de Conteúdo (8 colunas = ~66.7%) */
+  .bcb-col-lg-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+
+  /* Padrão 70/30 — Coluna Lateral de Serviços/Downloads (4 colunas = ~33.3%) */
+  .bcb-col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+/* ==========================================
+   4. ESPAÇADOR MODULAR ENTRE SEÇÕES
+   ========================================== */
+.bcb-section {
+  margin-bottom: var(--bcb-spacing-2xl, 48px);
+}

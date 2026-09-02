@@ -1,5 +1,149 @@
-/* ============= BCB Design System — Organisms / Process List ============= */
+/* ============= BCB Design System — Organisms / Process List =============
+ * Lista de Processos / Passo a Passo Sequencial.
+ * Suporta lista ordenada <ol> e não ordenada <ul> com numeração unificada e
+ * linha vertical conectora perfeitamente alinhada aos círculos numerados.
+ * ===================================================================== */
 
-.process-list { list-style: none; padding-left: 0; counter-reset: bcb-counter; }
-.process-list > li { position: relative; margin-bottom: 1.5rem; padding-left: 2.5rem; }
-.process-list > li::before { counter-increment: bcb-counter; content: counter(bcb-counter); position: absolute; left: 0; top: 0; width: 1.8rem; height: 1.8rem; border-radius: 50%; background-color: var(--bcb-brand-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+.process-list,
+.bcb-process-list,
+ol.process-list,
+ol.bcb-process-list,
+ul.process-list,
+ul.bcb-process-list {
+  list-style: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  position: relative;
+  counter-reset: bcb-process-counter;
+}
+
+.process-list > li,
+.bcb-process-list > li,
+.process-list .process-item,
+.bcb-process-list .bcb-process-list__item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 3.5rem;
+  min-height: 2.5rem;
+  list-style: none !important;
+}
+
+.process-list > li:last-child,
+.bcb-process-list > li:last-child {
+  margin-bottom: 0;
+}
+
+/* Linha vertical conectora entre os círculos das etapas */
+.process-list > li:not(:last-child)::after,
+.bcb-process-list > li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 1.1rem;
+  top: 2.3rem;
+  bottom: -0.5rem;
+  width: 2px;
+  background-color: var(--bcb-gray-300, #c4cbd1);
+  z-index: 1;
+}
+
+/* Círculo com numeração automática via CSS counter */
+.process-list > li::before,
+.bcb-process-list > li::before {
+  counter-increment: bcb-process-counter;
+  content: counter(bcb-process-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 2;
+  box-shadow: 0 0 0 3px var(--bcb-color-white, #FFFFFF);
+  transition: background-color 0.2s ease;
+}
+
+/* Quando o item estiver ativo / em andamento */
+.process-list > li.active::before,
+.bcb-process-list > li.active::before {
+  background-color: var(--bcb-brand-azulcinti, #077391);
+  box-shadow: 0 0 0 4px var(--bcb-brand-amarellato, #F9DEAA);
+}
+
+/* Quando o item estiver concluído */
+.process-list > li.completed::before,
+.bcb-process-list > li.completed::before {
+  background-color: var(--bcb-brand-verde-susta, #067078);
+}
+
+/* Se o HTML contiver número explícito (.process-number ou .bcb-process-list__number),
+   desativamos a injeção via ::before para evitar a duplicidade de numeração */
+.process-list > li.has-custom-number::before,
+.process-list > li:has(.process-number)::before,
+.process-list > li:has(.bcb-process-list__number)::before,
+.bcb-process-list > li:has(.bcb-process-list__number)::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Estilização do número explícito (se fornecido no markup) */
+.process-list .process-number,
+.bcb-process-list .bcb-process-list__number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 2;
+  box-shadow: 0 0 0 3px var(--bcb-color-white, #FFFFFF);
+}
+
+/* Conteúdo da etapa */
+.process-list .process-content,
+.bcb-process-list .bcb-process-list__content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Suporte aos Modos Escuro e Alto Contraste */
+:root[data-theme="dark"] .process-list > li:not(:last-child)::after,
+:root[data-theme="dark"] .bcb-process-list > li:not(:last-child)::after {
+  background-color: var(--bcb-gray-700, #3E454B);
+}
+
+:root[data-theme="dark"] .process-list > li::before,
+:root[data-theme="dark"] .bcb-process-list > li::before,
+:root[data-theme="dark"] .process-list .process-number,
+:root[data-theme="dark"] .bcb-process-list .bcb-process-list__number {
+  background-color: var(--bcb-brand-azul-blue, #0A9FD4);
+  box-shadow: 0 0 0 3px var(--bcb-color-white, #121212);
+}
+
+:root[data-contrast="high"] .process-list > li:not(:last-child)::after,
+:root[data-contrast="high"] .bcb-process-list > li:not(:last-child)::after {
+  background-color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .process-list > li::before,
+:root[data-contrast="high"] .bcb-process-list > li::before,
+:root[data-contrast="high"] .process-list .process-number,
+:root[data-contrast="high"] .bcb-process-list .bcb-process-list__number {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+  border: 2px solid #FFFF00 !important;
+  box-shadow: 0 0 0 3px #000000 !important;
+}

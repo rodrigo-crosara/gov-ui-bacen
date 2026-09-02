@@ -265,4 +265,32 @@
     outline: 4px solid #FFFF00 !important;
     outline-offset: 2px;
   }
+
+  :root:not([data-contrast="normal"]) .text-body,
+  :root:not([data-contrast="normal"]) .text-dark {
+    color: #FFFFFF !important;
+  }
+
+  :root:not([data-contrast="normal"]) .text-muted {
+    color: #FFFF00 !important;
+  }
+}
+
+/* ==========================================
+   Sobrescrita de Classes Utilitárias no Alto Contraste
+   Garante contraste máximo AAA (WCAG 2.2 / e-MAG)
+   ========================================== */
+:root[data-contrast="high"] .text-body,
+[data-theme="high-contrast"] .text-body,
+[data-contrast="high"] .text-body,
+:root[data-contrast="high"] .text-dark,
+[data-theme="high-contrast"] .text-dark,
+[data-contrast="high"] .text-dark {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .text-muted,
+[data-theme="high-contrast"] .text-muted,
+[data-contrast="high"] .text-muted {
+  color: #FFFF00 !important;
 }

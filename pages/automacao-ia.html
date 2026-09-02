@@ -235,37 +235,37 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO STICKY DO DESIGN SYSTEM -->
-    <header class="ds-navbar">
-        <div class="container d-flex align-items-center justify-content-between flex-wrap">
-            <div class="d-flex align-items-center">
-                <a href="../index.html" class="d-flex align-items-center text-decoration-none mr-4">
-                    <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Logo Banco Central do Brasil" style="height: 34px; margin-right: 12px;" onerror="this.style.display='none'">
-                    <span style="font-family: var(--bcb-font-cormorant); font-size: 1.4rem; font-weight: 600; color: var(--bcb-brand-azul-blue); letter-spacing: 0.5px;">Design System</span>
-                </a>
-                <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação do Design System">
-                    <a href="../index.html" class="ds-nav-link">Início</a>
-                    <a href="components.html" class="ds-nav-link">Componentes</a>
-                    <a href="tokens.html" class="ds-nav-link">Design Tokens</a>
-                    <a href="templates.html" class="ds-nav-link">Templates</a>
-                    <a href="automacao-ia.html" class="ds-nav-link active" aria-current="page">Guia IA</a>
-                    <a href="changelog.html" class="ds-nav-link">Changelog</a>
-                </nav>
-            </div>
+    <!-- Header da Documentação (.bcb-ds-navbar) -->
+    <header class="bcb-ds-navbar" role="banner">
+        <div class="container-fluid px-4">
+            <a href="../index.html" class="bcb-ds-brand" aria-label="Página inicial do BCB Design System">
+                <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Banco Central do Brasil" class="bcb-ds-logo" onerror="this.style.display='none'">
+                <span class="bcb-ds-brand-text">Design System</span>
+                <span class="bcb-ds-version-badge">v2.0.0</span>
+            </a>
 
-            <!-- Controles de Acessibilidade & Temas -->
-            <div class="d-flex align-items-center" style="gap: 0.75rem;">
-                <div class="theme-selector-group" role="group" aria-label="Seletor de tema visual">
-                    <button type="button" class="theme-selector-btn active" id="btnThemeLight" aria-pressed="true">
-                        <span class="material-icons md-18" aria-hidden="true">light_mode</span> Claro
-                    </button>
-                    <button type="button" class="theme-selector-btn" id="btnThemeDark" aria-pressed="false">
-                        <span class="material-icons md-18" aria-hidden="true">dark_mode</span> Escuro
-                    </button>
-                    <button type="button" class="theme-selector-btn" id="btnThemeHighContrast" aria-pressed="false">
-                        <span class="material-icons md-18" aria-hidden="true">contrast</span> Contraste
-                    </button>
-                </div>
+            <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação da Documentação">
+                <ul class="bcb-ds-nav">
+                    <li><a href="../index.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">home</span> Início</a></li>
+                    <li><a href="components.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">widgets</span> Componentes</a></li>
+                    <li><a href="tokens.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">palette</span> Tokens</a></li>
+                    <li><a href="templates.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">dashboard</span> Templates</a></li>
+                    <li><a href="automacao-ia.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-icons md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
+                    <li><a href="changelog.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">history</span> Changelog</a></li>
+                </ul>
+            </nav>
+
+            <!-- Seletor de Temas Funcional -->
+            <div class="bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
+                <button type="button" class="bcb-ds-theme-btn active" id="btnThemeLight" aria-pressed="true" title="Tema Claro Padrão">
+                    <span class="material-icons md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
+                </button>
+                <button type="button" class="bcb-ds-theme-btn" id="btnThemeDark" aria-pressed="false" title="Modo Escuro">
+                    <span class="material-icons md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
+                </button>
+                <button type="button" class="bcb-ds-theme-btn" id="btnThemeHighContrast" aria-pressed="false" title="Alto Contraste Acessível (e-MAG)">
+                    <span class="material-icons md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
+                </button>
             </div>
         </div>
     </header>
@@ -518,10 +518,92 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 4: GERADOR DE PROMPTS PARA O DESIGNER (PROMPT BUILDER) -->
+        <!-- SEÇÃO 4: ARQUITETURA DE LINHAS E SLOTS MODULARES (CMS BCB) -->
+        <section class="bcb-section mb-5" aria-labelledby="sec-grid-slots-title">
+            <h2 id="sec-grid-slots-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                <span class="material-icons" aria-hidden="true">dashboard_customize</span> 4. Raciocínio em Linhas e Slots Modulares (CMS BCB)
+            </h2>
+            <p class="text-body mb-3">
+                Para permitir que o webdesigner copie e transplante blocos isolados diretamente para as áreas de conteúdo do CMS institucional do Banco Central, a IA não gera código monolítico. O texto bruto é segmentado em <strong>Linhas (<code>.bcb-row</code>)</strong> e <strong>Slots Modulares</strong> com comentários delimitadores semânticos:
+            </p>
+
+            <div class="row">
+                <!-- Slot 100% -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border shadow-sm">
+                        <div class="card-header bg-white font-weight-bold d-flex align-items-center justify-content-between" style="color: var(--bcb-brand-azul-blue);">
+                            <span><span class="material-icons md-18 align-middle" aria-hidden="true">view_headline</span> Slot 100% — .bcb-col-12</span>
+                            <span class="badge badge-primary">Largura Total</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted mb-2"><strong>Aplicação Heurística:</strong> Título H1 único, parágrafo lead, resoluções monocromáticas e Data Tables / Séries SGS densas.</p>
+                            <div class="p-2 rounded mb-2" style="background: var(--bcb-gray-100); font-family: monospace; font-size: 0.8rem;">
+                                &lt;!-- [SLOT CMS: 100% - Abertura e Lead] --&gt;<br>
+                                &lt;!-- [SLOT CMS: 100% - Tabela de Séries SGS] --&gt;
+                            </div>
+                            <p class="small mb-0 text-body">Garante legibilidade completa e impede quebras de tabela em visualizações mobile ou de dados econômicos complexos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 70/30 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border shadow-sm">
+                        <div class="card-header bg-white font-weight-bold d-flex align-items-center justify-content-between" style="color: var(--bcb-brand-azul-blue);">
+                            <span><span class="material-icons md-18 align-middle" aria-hidden="true">vertical_split</span> Slot 70/30 — .bcb-col-lg-8 + .bcb-col-lg-4</span>
+                            <span class="badge badge-info">Conteúdo + Ações</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted mb-2"><strong>Aplicação Heurística:</strong> Notícias analíticas, notas regulatórias ou comunicados oficiais que trazem arquivos para download ou canais de atendimento.</p>
+                            <div class="p-2 rounded mb-2" style="background: var(--bcb-gray-100); font-family: monospace; font-size: 0.8rem;">
+                                &lt;!-- [SLOT CMS: 70% Conteúdo | 30% Sidebar de Serviços] --&gt;
+                            </div>
+                            <p class="small mb-0 text-body">Separa o raciocínio explicativo do leitor das ações práticas imediatas (ex: baixar PDF, consultar Registrato, acessar FAQ).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 50/50 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border shadow-sm">
+                        <div class="card-header bg-white font-weight-bold d-flex align-items-center justify-content-between" style="color: var(--bcb-brand-azul-blue);">
+                            <span><span class="material-icons md-18 align-middle" aria-hidden="true">view_column</span> Slot 50/50 — .bcb-col-md-6</span>
+                            <span class="badge badge-success">Comparativo / Duplo</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted mb-2"><strong>Aplicação Heurística:</strong> Comparativos binários (ex: Regra Anterior vs. Regra Nova), 2 taxas monetárias ou blocos de perfis (Cidadão vs. Empresa).</p>
+                            <div class="p-2 rounded mb-2" style="background: var(--bcb-gray-100); font-family: monospace; font-size: 0.8rem;">
+                                &lt;!-- [SLOT CMS: 50/50 - Indicadores Chave] --&gt;<br>
+                                &lt;!-- [SLOT CMS: 50/50 - Comparativo de Regras] --&gt;
+                            </div>
+                            <p class="small mb-0 text-body">Equilíbrio visual em 2 colunas no desktop, empilhando naturalmente em smartphones abaixo de 768px.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 33/33/33 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border shadow-sm">
+                        <div class="card-header bg-white font-weight-bold d-flex align-items-center justify-content-between" style="color: var(--bcb-brand-azul-blue);">
+                            <span><span class="material-icons md-18 align-middle" aria-hidden="true">grid_view</span> Slot 33/33/33 — .bcb-col-md-4</span>
+                            <span class="badge badge-warning">Trio de Indicadores</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted mb-2"><strong>Aplicação Heurística:</strong> 3 indicadores macroeconômicos (Selic Meta, Efetiva, IPCA) ou 3 pilares de diretrizes de sustentabilidade e inovação.</p>
+                            <div class="p-2 rounded mb-2" style="background: var(--bcb-gray-100); font-family: monospace; font-size: 0.8rem;">
+                                &lt;!-- [SLOT CMS: 33/33/33 - Grade de Indicadores] --&gt;
+                            </div>
+                            <p class="small mb-0 text-body">Acomoda perfeitamente 3 cards <code>.bcb-indicator-card</code> com setas de tendência e metadados de vigência.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: GERADOR DE PROMPTS PARA O DESIGNER (PROMPT BUILDER) -->
         <section class="mb-5" aria-labelledby="sec-builder-title">
             <h2 id="sec-builder-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">tune</span> 4. Gerador de Prompts para o Webdesigner de Plantão
+                <span class="material-icons" aria-hidden="true">tune</span> 5. Gerador de Prompts para o Webdesigner de Plantão
             </h2>
             <p class="text-body mb-3">
                 Preencha os campos abaixo para montar e copiar instantaneamente um prompt estruturado pronto para colar no agente ou LLM:
@@ -568,10 +650,10 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 5: REGRAS MANDATÓRIAS DE GERAÇÃO -->
+        <!-- SEÇÃO 6: REGRAS MANDATÓRIAS DE GERAÇÃO -->
         <section class="mb-5" aria-labelledby="sec-regras-title">
             <h2 id="sec-regras-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">verified_user</span> 5. Regras Mandatórias de Diagramação e Grid
+                <span class="material-icons" aria-hidden="true">verified_user</span> 6. Regras Mandatórias de Diagramação e Grid
             </h2>
             <div class="rule-grid">
                 <!-- DO -->
@@ -581,6 +663,7 @@
                     </div>
                     <ul class="rule-list">
                         <li><strong>Conteúdo Puro no &lt;main&gt;:</strong> Iniciar imediatamente com <code>&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;</code>.</li>
+                        <li><strong>Linhas e Slots Modulares CMS:</strong> Diagramar com <code>.bcb-row</code> e classes proporcionais (<code>.bcb-col-12</code>, <code>.bcb-col-lg-8</code> / <code>.bcb-col-lg-4</code>, <code>.bcb-col-md-6</code>, <code>.bcb-col-md-4</code>) delimitadas por <code>&lt;!-- [SLOT CMS: ...] --&gt;</code>.</li>
                         <li><strong>H1 Único Rigoroso:</strong> Exatamente <strong>1 tag &lt;h1&gt;</strong> por página com a classe <code>.bcb-page-title</code>. Subseções utilizam estritamente <code>&lt;h2&gt;</code> e <code>&lt;h3&gt;</code>.</li>
                         <li><strong>Tokens do Manual de Marca:</strong> Utilizar exclusivamente variáveis CSS oficiais (<code>#025C75</code>, <code>#077391</code>, <code>#067078</code>, <code>#606062</code>, <code>#47373A</code>).</li>
                         <li><strong>Resiliência de Dados:</strong> Sempre incluir Skeleton Loading (<code>.table-skeleton</code>) e Empty State (<code>.bcb-empty-state</code>) em tabelas dinâmicas.</li>
@@ -604,10 +687,10 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 6: BIBLIOTECA DE PROMPTS CANÔNICOS -->
+        <!-- SEÇÃO 7: BIBLIOTECA DE PROMPTS CANÔNICOS -->
         <section class="mb-5" aria-labelledby="sec-prompts-title">
             <h2 id="sec-prompts-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">library_books</span> 6. Biblioteca de Prompts Canônicos
+                <span class="material-icons" aria-hidden="true">library_books</span> 7. Biblioteca de Prompts Canônicos
             </h2>
 
             <!-- PROMPT 1: INDICADORES ECONÔMICOS -->
@@ -632,10 +715,11 @@ Gere uma página HTML semântica completa para o Indicador Econômico baseada no
 DIRETRIZES MANDATÓRIAS:
 1. Inicie com &lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt; e 1 único &lt;h1 class="bcb-page-title"&gt;.
 2. É ESTRITAMENTE PROIBIDO gerar Header, Footer, Barra Gov.br ou Breadcrumbs.
-3. Extraia os números-chave em cards de indicador (.bcb-indicator-card) com tendência (.bcb-indicator-trend up/down).
-4. Organize a série histórica em tabela (.table .table-bordered) com &lt;caption&gt;, thead institucional e bloco de exportação (.bcb-data-export).
-5. Inclua estados de resiliência: Skeleton Loading (.table-skeleton) e Empty State (.bcb-empty-state).
-6. Utilize exclusivamente a tipografia oficial (Ubuntu e Cormorant Garamond) e os tokens de cor do BCB.
+3. Estruture em slots modulares delimitados (&lt;!-- [SLOT CMS: ...] --&gt;) com .bcb-row e .bcb-col-*.
+4. Extraia os números-chave em cards de indicador (.bcb-indicator-card) no arranjo 33/33/33 (.bcb-col-md-4) com tendência (.bcb-indicator-trend up/down).
+5. Organize a série histórica em tabela (.table .table-bordered) com &lt;caption&gt;, thead institucional e bloco de exportação (.bcb-data-export) em largura cheia (.bcb-col-12).
+6. Inclua estados de resiliência: Skeleton Loading (.table-skeleton) e Empty State (.bcb-empty-state).
+7. Utilize exclusivamente a tipografia oficial (Ubuntu e Cormorant Garamond) e os tokens de cor do BCB.
 
 DADOS BRUTOS DO INDICADOR:
 [Insira aqui os dados da reunião, meta e série histórica]</pre>
@@ -665,12 +749,13 @@ Gere uma página de Serviço ao Cidadão baseada no template "templates/template
 DIRETRIZES MANDATÓRIAS:
 1. Inicie com &lt;main id="conteudo-principal" class="bcb-container container py-4 my-4"&gt; com 1 único &lt;h1 class="bcb-page-title"&gt;.
 2. É ESTRITAMENTE PROIBIDO gerar Header, Footer, Barra Gov.br ou Breadcrumbs.
-3. Estrutura recomendada:
+3. Estruture em slots modulares delimitados (&lt;!-- [SLOT CMS: ...] --&gt;) com .bcb-row e .bcb-col-*.
+4. Estrutura recomendada:
    - Menu sticky lateral (.bd-sidebar / .bd-toc) para âncoras da página.
    - Stepper (.process-list) para o passo a passo com números de destaque.
    - Callout de alerta de segurança (.callout.callout-warning) com alto contraste contra golpes.
    - Acordeão de FAQ (.accordion.modelo-1) com suporte a WAI-ARIA.
-4. Utilize exclusivamente os tokens de cor do BCB e a folha "bcb-style.css".
+5. Utilize exclusivamente os tokens de cor do BCB e a folha "bcb-style.css".
 
 CONTEÚDO BRUTO DO SERVIÇO:
 [Cole aqui o passo a passo, requisitos de conta gov.br e dúvidas frequentes]</pre>
@@ -679,10 +764,10 @@ CONTEÚDO BRUTO DO SERVIÇO:
             </div>
         </section>
 
-        <!-- SEÇÃO 7: COMO RODAR LOCALMENTE COM A SKILL -->
+        <!-- SEÇÃO 8: COMO RODAR LOCALMENTE COM A SKILL -->
         <section class="mb-5" aria-labelledby="sec-local-title">
             <h2 id="sec-local-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-icons" aria-hidden="true">terminal</span> 7. Como Executar no Ambiente de Desenvolvimento
+                <span class="material-icons" aria-hidden="true">terminal</span> 8. Como Executar no Ambiente de Desenvolvimento
             </h2>
             <div class="card p-4 border-light shadow-sm">
                 <p class="text-body mb-2">

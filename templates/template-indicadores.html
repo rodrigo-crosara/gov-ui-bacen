@@ -25,19 +25,24 @@
 <body>
     <!-- Conteúdo Principal -->
     <main class="bcb-container container py-4 mb-5" id="conteudo-principal">
-        <div class="mb-4">
-            <h1 class="bcb-page-title">Taxa Selic e Indicadores Econômicos</h1>
-            <div class="bcb-page-meta">
-                <span class="tag-bcb primary">Política Monetária</span>
-                <span>Atualizado em: 12/03/2026 · Fonte: Banco Central do Brasil / Copom</span>
+        <!-- [SLOT CMS: 100% - Abertura e Metadados] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <h1 class="bcb-page-title">Taxa Selic e Indicadores Econômicos</h1>
+                    <div class="bcb-page-meta">
+                        <span class="tag-bcb primary">Política Monetária</span>
+                        <span>Atualizado em: 12/03/2026 · Fonte: Banco Central do Brasil / Copom</span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Grade de Cards de Indicadores -->
-        <section class="mb-5" aria-labelledby="sec-cards-title">
+        <!-- [SLOT CMS: 33/33/33 - Grade de Indicadores Econômicos] -->
+        <section class="bcb-section" aria-labelledby="sec-cards-title">
             <h2 class="sr-only" id="sec-cards-title">Indicadores em Destaque</h2>
-            <div class="row">
-                <div class="col-md-4 mb-3 mb-md-0">
+            <div class="bcb-row">
+                <div class="bcb-col-12 bcb-col-md-4 mb-3 mb-md-0">
                     <div class="bcb-indicator-card">
                         <div class="bcb-indicator-label">Meta Selic (Copom)</div>
                         <div class="bcb-indicator-value">
@@ -49,14 +54,14 @@
                         <div class="bcb-indicator-meta">Definida na 268ª Reunião · Vigência: 13/03/2026</div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3 mb-md-0">
+                <div class="bcb-col-12 bcb-col-md-4 mb-3 mb-md-0">
                     <div class="bcb-indicator-card accent-green">
                         <div class="bcb-indicator-label">Taxa Selic Efetiva Diária</div>
                         <div class="bcb-indicator-value">14,15% a.a.</div>
                         <div class="bcb-indicator-meta">Média ponderada das operações compromissadas</div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="bcb-col-12 bcb-col-md-4">
                     <div class="bcb-indicator-card accent-amber">
                         <div class="bcb-indicator-label">IPCA (Acumulado 12 Meses)</div>
                         <div class="bcb-indicator-value">
@@ -71,17 +76,23 @@
             </div>
         </section>
 
-        <!-- Comunicado Oficial -->
-        <div class="callout callout-brand callout-left-bordered mb-5">
-            <span class="material-icons callout-icon" aria-hidden="true">gavel</span>
-            <div class="callout-content">
-                <h2 class="callout-title h4">Decisão do Comitê de Política Monetária (Copom)</h2>
-                <p class="mb-0">Em sua 268ª reunião, o Copom decidiu por unanimidade elevar a meta para a Taxa Selic em 1,00 ponto percentual, para 14,25% a.a. O Comitê ressalta que o ambiente econômico requer postura cautelosa e foco na ancoragem das expectativas de inflação.</p>
+        <!-- [SLOT CMS: 100% - Comunicado Oficial Copom] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <div class="callout callout-brand callout-left-bordered mb-0">
+                        <span class="material-icons callout-icon" aria-hidden="true">gavel</span>
+                        <div class="callout-content">
+                            <h2 class="callout-title h4">Decisão do Comitê de Política Monetária (Copom)</h2>
+                            <p class="mb-0">Em sua 268ª reunião, o Copom decidiu por unanimidade elevar a meta para a Taxa Selic em 1,00 ponto percentual, para 14,25% a.a. O Comitê ressalta que o ambiente econômico requer postura cautelosa e foco na ancoragem das expectativas de inflação.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Painel de Filtros e Busca Facetada -->
-        <section class="mb-4" aria-labelledby="sec-filtros-title">
+        <!-- [SLOT CMS: 100% - Painel de Filtros e Busca Facetada] -->
+        <section class="bcb-section" aria-labelledby="sec-filtros-title">
             <h2 class="sr-only" id="sec-filtros-title">Filtros de Séries Temporais</h2>
             <div class="bcb-filter-panel">
                 <div class="bcb-filter-panel-header">
@@ -89,8 +100,8 @@
                         <span class="material-icons" aria-hidden="true">filter_alt</span> Filtrar Histórico da Taxa Selic
                     </h3>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 bcb-filter-group">
+                <div class="bcb-row">
+                    <div class="bcb-col-12 bcb-col-md-4 bcb-filter-group mb-3 mb-md-0">
                         <label class="bcb-filter-label" for="filterDateStart">Período de Análise</label>
                         <div class="bcb-date-range">
                             <input type="date" class="form-control" id="filterDateStart" value="2025-01-01" aria-label="Data inicial">
@@ -98,7 +109,7 @@
                             <input type="date" class="form-control" id="filterDateEnd" value="2026-03-12" aria-label="Data final">
                         </div>
                     </div>
-                    <div class="col-md-4 bcb-filter-group">
+                    <div class="bcb-col-12 bcb-col-md-4 bcb-filter-group mb-3 mb-md-0">
                         <label class="bcb-filter-label" for="selectMandato">Diretoria / Gestão</label>
                         <select class="custom-select" id="selectMandato">
                             <option value="todos" selected>Todos os mandatos</option>
@@ -106,7 +117,7 @@
                             <option value="anterior">Gestão Anterior (2021–2024)</option>
                         </select>
                     </div>
-                    <div class="col-md-4 bcb-filter-group">
+                    <div class="bcb-col-12 bcb-col-md-4 bcb-filter-group">
                         <span class="bcb-filter-label">Opções Adicionais</span>
                         <div class="custom-control custom-switch mt-2">
                             <input type="checkbox" class="custom-control-input" id="switchOrdinarias" checked>
@@ -135,90 +146,94 @@
             </div>
         </section>
 
-        <!-- Data Table Responsiva de Série Histórica -->
-        <section class="mb-5" aria-labelledby="sec-tabela-title">
-            <div class="bcb-data-table-container">
-                <div class="bcb-data-table-header">
-                    <div>
-                        <h2 class="bcb-data-table-title h5" id="sec-tabela-title">Histórico Recente de Decisões do Copom</h2>
+        <!-- [SLOT CMS: 100% - Série Histórica de Decisões Copom] -->
+        <section class="bcb-section" aria-labelledby="sec-tabela-title">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <div class="bcb-data-table-container">
+                        <div class="bcb-data-table-header">
+                            <div>
+                                <h2 class="bcb-data-table-title h5" id="sec-tabela-title">Histórico Recente de Decisões do Copom</h2>
+                            </div>
+                            <div class="bcb-data-table-actions">
+                                <button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center">
+                                    <span class="material-icons mr-1" aria-hidden="true">download</span> Exportar CSV
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="bcb-data-table">
+                                <caption>Série histórica de metas para a taxa Selic definidas nas reuniões do Copom.</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="sortable" aria-sort="descending">Reunião <span class="material-icons sort-icon" aria-hidden="true">arrow_upward</span></th>
+                                        <th scope="col" class="sortable">Data da Decisão <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
+                                        <th scope="col" class="sortable">Início de Vigência <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
+                                        <th scope="col" class="text-numeric sortable">Meta Selic (% a.a.) <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
+                                        <th scope="col" class="text-center">Variação (p.p.)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">268ª Reunião</th>
+                                        <td>12/03/2026</td>
+                                        <td>13/03/2026</td>
+                                        <td class="text-numeric"><strong>14,25%</strong></td>
+                                        <td class="text-center"><span class="bcb-trend-badge positive">+1,00</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">267ª Reunião</th>
+                                        <td>29/01/2026</td>
+                                        <td>30/01/2026</td>
+                                        <td class="text-numeric"><strong>13,25%</strong></td>
+                                        <td class="text-center"><span class="bcb-trend-badge neutral">0,00</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">266ª Reunião</th>
+                                        <td>11/12/2025</td>
+                                        <td>12/12/2025</td>
+                                        <td class="text-numeric"><strong>13,25%</strong></td>
+                                        <td class="text-center"><span class="bcb-trend-badge positive">+0,50</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">265ª Reunião</th>
+                                        <td>06/11/2025</td>
+                                        <td>07/11/2025</td>
+                                        <td class="text-numeric"><strong>12,75%</strong></td>
+                                        <td class="text-center"><span class="bcb-trend-badge positive">+0,50</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">264ª Reunião</th>
+                                        <td>18/09/2025</td>
+                                        <td>19/09/2025</td>
+                                        <td class="text-numeric"><strong>12,25%</strong></td>
+                                        <td class="text-center"><span class="bcb-trend-badge positive">+0,25</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="bcb-table-pagination">
+                            <span>Exibindo 5 de 268 reuniões cadastradas</span>
+                            <nav aria-label="Navegação da tabela">
+                                <ul class="pagination pagination-sm mb-0">
+                                    <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="bcb-data-table-actions">
-                        <button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center">
-                            <span class="material-icons mr-1" aria-hidden="true">download</span> Exportar CSV
-                        </button>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="bcb-data-table">
-                        <caption>Série histórica de metas para a taxa Selic definidas nas reuniões do Copom.</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col" class="sortable" aria-sort="descending">Reunião <span class="material-icons sort-icon" aria-hidden="true">arrow_upward</span></th>
-                                <th scope="col" class="sortable">Data da Decisão <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
-                                <th scope="col" class="sortable">Início de Vigência <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
-                                <th scope="col" class="text-numeric sortable">Meta Selic (% a.a.) <span class="material-icons sort-icon" aria-hidden="true">sort</span></th>
-                                <th scope="col" class="text-center">Variação (p.p.)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">268ª Reunião</th>
-                                <td>12/03/2026</td>
-                                <td>13/03/2026</td>
-                                <td class="text-numeric"><strong>14,25%</strong></td>
-                                <td class="text-center"><span class="bcb-trend-badge positive">+1,00</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">267ª Reunião</th>
-                                <td>29/01/2026</td>
-                                <td>30/01/2026</td>
-                                <td class="text-numeric"><strong>13,25%</strong></td>
-                                <td class="text-center"><span class="bcb-trend-badge neutral">0,00</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">266ª Reunião</th>
-                                <td>11/12/2025</td>
-                                <td>12/12/2025</td>
-                                <td class="text-numeric"><strong>13,25%</strong></td>
-                                <td class="text-center"><span class="bcb-trend-badge positive">+0,50</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">265ª Reunião</th>
-                                <td>06/11/2025</td>
-                                <td>07/11/2025</td>
-                                <td class="text-numeric"><strong>12,75%</strong></td>
-                                <td class="text-center"><span class="bcb-trend-badge positive">+0,50</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">264ª Reunião</th>
-                                <td>18/09/2025</td>
-                                <td>19/09/2025</td>
-                                <td class="text-numeric"><strong>12,25%</strong></td>
-                                <td class="text-center"><span class="bcb-trend-badge positive">+0,25</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="bcb-table-pagination">
-                    <span>Exibindo 5 de 268 reuniões cadastradas</span>
-                    <nav aria-label="Navegação da tabela">
-                        <ul class="pagination pagination-sm mb-0">
-                            <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </section>
 
-        <!-- Arquivos e Dados Abertos para Download -->
-        <section class="mb-5" aria-labelledby="sec-downloads-title">
+        <!-- [SLOT CMS: 50/50 - Downloads de Documentos e Séries] -->
+        <section class="bcb-section" aria-labelledby="sec-downloads-title">
             <h2 class="h4 font-weight-bold color-1 mb-3" id="sec-downloads-title">Arquivos e Séries para Download</h2>
-            <div class="row">
-                <div class="col-md-6 mb-3">
+            <div class="bcb-row">
+                <div class="bcb-col-12 bcb-col-md-6 mb-3">
                     <div class="documentos">
                         <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar série histórica completa da taxa Selic (CSV, 420 KB)">
                             <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">
@@ -231,7 +246,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="bcb-col-12 bcb-col-md-6 mb-3">
                     <div class="documentos">
                         <a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Ata da 268ª Reunião do Copom (PDF, 850 KB)">
                             <div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left">

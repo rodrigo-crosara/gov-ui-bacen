@@ -271,49 +271,37 @@
         <li><a href="#ds-sidebar-nav" class="bcb-skip-link" accesskey="2">Ir para a barra de componentes <span class="accesskey-badge">Alt + 2</span></a></li>
     </ul>
 
-    <!-- Header Sticky da Vitrine -->
-    <header class="header-bcb" role="banner">
-        <div class="container-fluid px-4 d-flex align-items-center justify-content-between flex-wrap">
-            <h1>
-                <span class="material-icons" aria-hidden="true">widgets</span>
-                BCB Design System — Vitrine de Componentes
-                <span class="badge-version">v2.0.0</span>
-            </h1>
+    <!-- Header da Documentação (.bcb-ds-navbar) -->
+    <header class="bcb-ds-navbar" role="banner">
+        <div class="container-fluid px-4">
+            <a href="../index.html" class="bcb-ds-brand" aria-label="Página inicial do BCB Design System">
+                <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Banco Central do Brasil" class="bcb-ds-logo" onerror="this.style.display='none'">
+                <span class="bcb-ds-brand-text">Design System</span>
+                <span class="bcb-ds-version-badge">v2.0.0</span>
+            </a>
 
-            <div class="d-flex align-items-center flex-wrap my-1" style="gap: 0.75rem;">
-                <a href="../index.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Voltar ao Hub Central de Documentação" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">home</span>
-                    <span class="d-none d-sm-inline">Hub Início</span>
-                </a>
-                <a href="tokens.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Design Tokens" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
-                    <span class="d-none d-sm-inline">Tokens</span>
-                </a>
-                <a href="templates.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Galeria de Templates" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
-                    <span class="d-none d-sm-inline">Templates</span>
-                </a>
-                <a href="automacao-ia.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Guia de Automação com IA" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">smart_toy</span>
-                    <span class="d-none d-sm-inline">Guia IA</span>
-                </a>
-                <a href="changelog.html" class="btn btn-sm btn-outline-light d-flex align-items-center" aria-label="Visualizar Changelog" style="border-color: rgba(255,255,255,0.4); color: white; gap: 0.25rem;">
-                    <span class="material-icons" style="font-size: 1.1rem;" aria-hidden="true">history</span>
-                    <span class="d-none d-sm-inline">Changelog</span>
-                </a>
+            <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação da Documentação">
+                <ul class="bcb-ds-nav">
+                    <li><a href="../index.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">home</span> Início</a></li>
+                    <li><a href="components.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-icons md-18" aria-hidden="true">widgets</span> Componentes</a></li>
+                    <li><a href="tokens.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">palette</span> Tokens</a></li>
+                    <li><a href="templates.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">dashboard</span> Templates</a></li>
+                    <li><a href="automacao-ia.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
+                    <li><a href="changelog.html" class="bcb-ds-nav-link"><span class="material-icons md-18" aria-hidden="true">history</span> Changelog</a></li>
+                </ul>
+            </nav>
 
-                <!-- Seletor de 3 Temas Funcional -->
-                <div class="theme-switcher-group" role="group" aria-label="Alternador de Tema Visual">
-                    <button type="button" class="theme-btn active" id="btnThemeLight" title="Tema Claro Padrão" aria-pressed="true">
-                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">light_mode</span> Padrão
-                    </button>
-                    <button type="button" class="theme-btn" id="btnThemeDark" title="Modo Escuro" aria-pressed="false">
-                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">dark_mode</span> Escuro
-                    </button>
-                    <button type="button" class="theme-btn" id="btnThemeHighContrast" title="Alto Contraste Acessível (e-MAG)" aria-pressed="false">
-                        <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">contrast</span> Alto Contraste
-                    </button>
-                </div>
+            <!-- Seletor de 3 Temas Funcional -->
+            <div class="bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
+                <button type="button" class="bcb-ds-theme-btn active" id="btnThemeLight" title="Tema Claro Padrão" aria-pressed="true">
+                    <span class="material-icons md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
+                </button>
+                <button type="button" class="bcb-ds-theme-btn" id="btnThemeDark" title="Modo Escuro" aria-pressed="false">
+                    <span class="material-icons md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
+                </button>
+                <button type="button" class="bcb-ds-theme-btn" id="btnThemeHighContrast" title="Alto Contraste Acessível (e-MAG)" aria-pressed="false">
+                    <span class="material-icons md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
+                </button>
             </div>
         </div>
     </header>
@@ -328,35 +316,32 @@
                     <span class="material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_back</span> Hub de Documentação
                 </a>
             </div>
+            
+            <div class="ds-sidebar-title">1. Átomos (Fundação)</div>
+            <a class="nav-link" href="#atomo-grid">1.0 Grid e Diagramação (12 Colunas)</a>
+            <a class="nav-link" href="#atomo-botoes">1.1 Botões e Variantes</a>
+            <a class="nav-link" href="#atomo-links">1.2 Hiperlinks Acessíveis</a>
+            <a class="nav-link" href="#atomo-icones">1.3 Ícones Material Symbols</a>
+            <a class="nav-link" href="#atomo-tags">1.4 Tags & Badges de Status</a>
+            <a class="nav-link" href="#atomo-inputs">1.5 Controles de Formulário</a>
+            <a class="nav-link" href="#atomo-tabelas">1.6 Tabelas Nativas Simples</a>
+            <a class="nav-link" href="#atomo-skeleton">1.7 Skeleton Loading (Feedback)</a>
 
-            <div class="ds-sidebar-search">
-                <input type="text" class="form-control form-control-sm" id="sidebarSearchInput" placeholder="Filtrar componentes..." aria-label="Filtrar componentes na barra lateral">
-            </div>
-
-            <div class="ds-sidebar-title">1. Átomos (Base)</div>
-            <a class="nav-link active" href="#atomo-botoes">1.1 Botões e Variantes</a>
-            <a class="nav-link" href="#atomo-formularios">1.2 Controles de Formulário</a>
-            <a class="nav-link" href="#atomo-tags-badges">1.3 Tags e Badges</a>
-            <a class="nav-link" href="#atomo-icones-tipografia">1.4 Ícones & Tipografia</a>
-            <a class="nav-link" href="#atomo-tabelas">1.5 Tabelas Nativas</a>
-            <a class="nav-link" href="#atomo-skeleton">1.6 Skeleton Loading</a>
-
-            <div class="ds-sidebar-title">2. Moléculas (Compostos)</div>
-            <a class="nav-link" href="#molecula-callouts">2.1 Callouts Estruturados</a>
-            <a class="nav-link" href="#molecula-tipbox">2.2 Tip Box Educativa</a>
-            <a class="nav-link" href="#molecula-documentos">2.3 Download de Documentos</a>
-            <a class="nav-link" href="#molecula-indicadores">2.4 Card de Indicador Econômico</a>
-            <a class="nav-link" href="#molecula-listalinks">2.5 Card Link / Lista Links</a>
-            <a class="nav-link" href="#molecula-stepper">2.6 Stepper (Passo a Passo)</a>
+            <div class="ds-sidebar-title">2. Moléculas (Padrões)</div>
+            <a class="nav-link" href="#molecula-cards-indicadores">2.1 Cards de Indicadores</a>
+            <a class="nav-link" href="#molecula-callouts">2.2 Callouts de Contexto</a>
+            <a class="nav-link" href="#molecula-tip-box">2.3 Tip-Box Destacada</a>
+            <a class="nav-link" href="#molecula-documentos">2.4 Download de Documentos</a>
+            <a class="nav-link" href="#molecula-stepper">2.5 Stepper de Fases</a>
+            <a class="nav-link" href="#molecula-acordeon">2.6 Acordeom Expansível</a>
             <a class="nav-link" href="#molecula-datatable">2.7 Data Table Responsiva</a>
-            <a class="nav-link" href="#molecula-filtros">2.8 Filtros e Busca Facetada</a>
-            <a class="nav-link" href="#molecula-search-overlay">2.9 Busca Avançada Local (Search)</a>
-            <a class="nav-link" href="#molecula-toasts-alertas">2.10 Toasts e Alertas</a>
-            <a class="nav-link" href="#molecula-data-export">2.11 Exportação de Dados Abertos</a>
-            <a class="nav-link" href="#molecula-empty-state">2.12 Empty State</a>
+            <a class="nav-link" href="#molecula-busca-facetada">2.8 Busca com Filtros Facetados</a>
+            <a class="nav-link" href="#molecula-toasts">2.9 Toasts e Notificações</a>
+            <a class="nav-link" href="#molecula-empty-state">2.10 Empty State</a>
+            <a class="nav-link" href="#molecula-botoes-exportacao">2.11 Botões de Exportação</a>
 
-            <div class="ds-sidebar-title">3. Organismos (Estruturas)</div>
-            <a class="nav-link" href="#organismo-accordion">3.1 Accordion (Sanfona)</a>
+            <div class="ds-sidebar-title">3. Organismos (Compostos)</div>
+            <a class="nav-link" href="#organismo-cards-link">3.1 Cards de Navegação (Listalinks)</a>
             <a class="nav-link" href="#organismo-abas">3.2 Navegação em Abas</a>
             <a class="nav-link" href="#organismo-timelines">3.3 Timelines (Vertical & Horizontal)</a>
             <a class="nav-link" href="#organismo-hero-banner">3.4 Hero Banner</a>
@@ -374,13 +359,133 @@
         <main class="ds-main" id="conteudo-principal">
 
             <div class="mb-4">
-                <h2 class="h3 font-weight-bold" style="color: var(--bcb-brand-blue);">Catálogo Vivo de Componentes</h2>
+                <h1 class="h2 font-weight-bold" style="color: var(--bcb-brand-blue);">Catálogo Vivo de Componentes</h1>
                 <p class="text-muted">Explore todos os blocos de construção oficiais do portal do Banco Central do Brasil. Copie os snippets HTML canônicos e teste a responsividade e a alternância de temas em tempo real.</p>
             </div>
 
             <!-- ========================================================= -->
             <!-- 1. ÁTOMOS (BASE) -->
             <!-- ========================================================= -->
+
+            <!-- 1.0 Grid e Diagramação (12 Colunas) -->
+            <section id="atomo-grid" class="ds-component-card">
+                <div class="ds-component-header">
+                    <h3><span class="material-icons" aria-hidden="true">grid_view</span> 1.0 Grid 12 Colunas & Container 1440px</h3>
+                    <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Layout CMS BCB</span>
+                </div>
+                <div class="ds-component-preview">
+                    <p class="text-body small mb-3">
+                        O sistema de grid do BCB calibra a leitura com container de até <strong>1440px</strong> (paddings dinâmicos de 15px mobile e 25px desktop) e 4 arranjos modulares de colunas com gutter de <strong>24px</strong>, perfeitamente compatíveis com as regiões do CMS do portal.
+                    </p>
+
+                    <!-- Demonstração Visual das Colunas -->
+                    <div class="demo-grid-wrapper mb-4 p-3 rounded" style="background-color: var(--bcb-gray-100); border: 1px dashed var(--bcb-gray-300);">
+                        
+                        <!-- Linha 100% -->
+                        <div class="mb-3">
+                            <span class="badge badge-secondary mb-1">Linha 100% — .bcb-col-12 (Abertura, Lead, Séries SGS)</span>
+                            <div class="bcb-row">
+                                <div class="bcb-col-12">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-azul-blue); color: #fff; font-weight: 600;">
+                                        100% Largura Total (.bcb-col-12)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Linha 70/30 -->
+                        <div class="mb-3">
+                            <span class="badge badge-secondary mb-1">Linha 70/30 — .bcb-col-lg-8 + .bcb-col-lg-4 (Conteúdo Analítico + Sidebar de Ações)</span>
+                            <div class="bcb-row">
+                                <div class="bcb-col-12 bcb-col-lg-8 mb-2 mb-lg-0">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-azulcinti); color: #fff; font-weight: 600;">
+                                        70% Conteúdo Analítico (.bcb-col-lg-8)
+                                    </div>
+                                </div>
+                                <div class="bcb-col-12 bcb-col-lg-4">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-azulpetro); color: #fff; font-weight: 600;">
+                                        30% Sidebar (.bcb-col-lg-4)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Linha 50/50 -->
+                        <div class="mb-3">
+                            <span class="badge badge-secondary mb-1">Linha 50/50 — .bcb-col-md-6 (Comparativos Binários e Indicadores Duplos)</span>
+                            <div class="bcb-row">
+                                <div class="bcb-col-12 bcb-col-md-6 mb-2 mb-md-0">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-verde-susta); color: #fff; font-weight: 600;">
+                                        50% (.bcb-col-md-6)
+                                    </div>
+                                </div>
+                                <div class="bcb-col-12 bcb-col-md-6">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-verde-susta); color: #fff; font-weight: 600;">
+                                        50% (.bcb-col-md-6)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Linha 33/33/33 -->
+                        <div>
+                            <span class="badge badge-secondary mb-1">Linha 33/33/33 — .bcb-col-md-4 (Grade de 3 Indicadores Econômicos)</span>
+                            <div class="bcb-row">
+                                <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-cinza-80); color: #fff; font-weight: 600;">
+                                        33.3% (.bcb-col-md-4)
+                                    </div>
+                                </div>
+                                <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-cinza-80); color: #fff; font-weight: 600;">
+                                        33.3% (.bcb-col-md-4)
+                                    </div>
+                                </div>
+                                <div class="bcb-col-12 bcb-col-md-4">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-cinza-80); color: #fff; font-weight: 600;">
+                                        33.3% (.bcb-col-md-4)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <button class="btn-copy-code" data-code="code-grid"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <pre><code id="code-grid">&lt;!-- Container Institucional (Max 1440px) --&gt;
+&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;
+
+  &lt;!-- [SLOT CMS: 100% - Abertura e Lead] --&gt;
+  &lt;section class="bcb-section"&gt;
+    &lt;div class="bcb-row"&gt;
+      &lt;div class="bcb-col-12"&gt;
+        &lt;h1 class="bcb-page-title"&gt;Título da Página&lt;/h1&gt;
+        &lt;p class="lead"&gt;Parágrafo lead introdutório...&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- [SLOT CMS: 70% Conteúdo | 30% Sidebar] --&gt;
+  &lt;section class="bcb-section"&gt;
+    &lt;div class="bcb-row"&gt;
+      &lt;div class="bcb-col-12 bcb-col-lg-8"&gt;...Conteúdo Principal...&lt;/div&gt;
+      &lt;div class="bcb-col-12 bcb-col-lg-4"&gt;...Sidebar de Ações...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- [SLOT CMS: 33/33/33 - Grade de Indicadores] --&gt;
+  &lt;section class="bcb-section"&gt;
+    &lt;div class="bcb-row"&gt;
+      &lt;div class="bcb-col-12 bcb-col-md-4"&gt;...Item 1...&lt;/div&gt;
+      &lt;div class="bcb-col-12 bcb-col-md-4"&gt;...Item 2...&lt;/div&gt;
+      &lt;div class="bcb-col-12 bcb-col-md-4"&gt;...Item 3...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+&lt;/main&gt;</code></pre>
+                </div>
+            </section>
 
             <!-- 1.1 Botões -->
             <section id="atomo-botoes" class="ds-component-card">
@@ -1627,34 +1732,29 @@
                     <span class="badge-a11y"><span class="material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Numeração em Grade</span>
                 </div>
                 <div class="ds-component-preview">
-                    <ul class="process-list">
-                        <li class="process-item">
-                            <div class="process-number">1</div>
-                            <div class="process-content">
-                                <h4 class="h6 font-weight-bold mb-1 text-primary">Acesse o Sistema Registrato</h4>
-                                <p class="mb-0 text-muted small">Utilize sua conta gov.br de nível Prata ou Ouro para autenticação de dois fatores.</p>
-                            </div>
+                    <ol class="process-list">
+                        <li>
+                            <h4 class="h6 font-weight-bold mb-1 text-primary">Acesse o Sistema Registrato</h4>
+                            <p class="mb-0 text-muted small">Utilize sua conta gov.br de nível Prata ou Ouro para autenticação de dois fatores.</p>
                         </li>
-                        <li class="process-item">
-                            <div class="process-number">2</div>
-                            <div class="process-content">
-                                <h4 class="h6 font-weight-bold mb-1 text-primary">Escolha o Relatório Desejado</h4>
-                                <p class="mb-0 text-muted small">Selecione entre Chaves Pix, Empréstimos (SCR), Contas Bancárias ou Cheques sem Fundo.</p>
-                            </div>
+                        <li>
+                            <h4 class="h6 font-weight-bold mb-1 text-primary">Escolha o Relatório Desejado</h4>
+                            <p class="mb-0 text-muted small">Selecione entre Chaves Pix, Empréstimos (SCR), Contas Bancárias ou Cheques sem Fundo.</p>
                         </li>
-                    </ul>
+                    </ol>
                 </div>
                 <div class="ds-component-code">
                     <button class="btn-copy-code" data-code="code-process-list"><span class="material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
-                    <pre><code id="code-process-list">&lt;ul class="process-list"&gt;
-  &lt;li class="process-item"&gt;
-    &lt;div class="process-number"&gt;1&lt;/div&gt;
-    &lt;div class="process-content"&gt;
-      &lt;h4 class="h6 font-weight-bold"&gt;Título do Passo&lt;/h4&gt;
-      &lt;p&gt;Instruções para o usuário.&lt;/p&gt;
-    &lt;/div&gt;
+                    <pre><code id="code-process-list">&lt;ol class="process-list"&gt;
+  &lt;li&gt;
+    &lt;h4 class="h6 font-weight-bold"&gt;Título do Passo 1&lt;/h4&gt;
+    &lt;p&gt;Instruções para o usuário.&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+  &lt;li&gt;
+    &lt;h4 class="h6 font-weight-bold"&gt;Título do Passo 2&lt;/h4&gt;
+    &lt;p&gt;Instruções para o usuário.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
                 </div>
             </section>
 
