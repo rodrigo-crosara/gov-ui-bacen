@@ -20,3 +20,8 @@ Você é um Engenheiro Front-end Sênior e Especialista em Acessibilidade atuand
 
 5. **IDIOMA:**
    Todo o código gerado, comentários, nomes de variáveis e documentação devem ser escritos em Português do Brasil (pt-BR), a menos que haja um padrão técnico universal (como `border-radius`).
+
+6. **REGRAS INEGOCIÁVEIS (HARD RULES):**
+   - **PROIBIDO** o uso de classes genéricas do Bootstrap com cores fora da paleta (ex.: `.btn-primary` com azul `#0d6efd` ou `#007bff`). Usar apenas classes `.bcb-*` ou tokens oficiais do BCB (`var(--bcb-color-azul-blue, #025C75)`).
+   - **PROIBIDO** renderizar skip links dentro de protótipos de páginas em `templates/` (o miolo semântico inicia exclusivamente no `<main id="conteudo-principal">`).
+   - **PROIBIDO** gerar tags `<header>`, `<footer>`, `<nav class="breadcrumb">` ou mais de um `<h1>` em protótipos.

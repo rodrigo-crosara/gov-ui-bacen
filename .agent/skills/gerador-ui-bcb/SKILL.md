@@ -223,7 +223,7 @@ Toda página HTML gerada pelo motor DEVE adotar a seguinte estrutura modular:
 
 ## 6. CHECKLIST DE QUALIDADE ANTES DE CONCLUIR
 
-- [ ] A página inicia rigorosamente em `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">`?
+- [ ] A página inicia rigorosamente em `<main id="conteudo-principal" class="bcb-container">`?
 - [ ] O layout utiliza o container de 1440px e classes de grid `.bcb-row` e `.bcb-col-*`?
 - [ ] Os blocos possuem comentários delimitadores semânticos de slot CMS (ex: `<!-- [SLOT CMS: ...] -->`)?
 - [ ] As seções verticais estão espaçadas com a classe `.bcb-section`?
@@ -234,3 +234,11 @@ Toda página HTML gerada pelo motor DEVE adotar a seguinte estrutura modular:
 - [ ] Nenhuma cor foi hardcoded fora dos tokens (`var(--bcb-*)`)?
 - [ ] Tabelas possuem `<caption>` descritivo e `<th scope="col">`?
 - [ ] Ícones contêm `aria-hidden="true"` e servem como reforço semântico?
+
+---
+
+## 7. REGRAS INEGOCIÁVEIS (HARD RULES)
+
+1. **PROIBIDO o uso de classes genéricas do Bootstrap com cores fora da paleta** (ex.: `.btn-primary` com azul `#0d6efd` ou `#007bff`). Usar apenas classes `.bcb-*` ou tokens oficiais do BCB (`var(--bcb-color-azul-blue, #025C75)`).
+2. **PROIBIDO renderizar skip links dentro de protótipos de páginas em `templates/`** (o miolo semântico inicia exclusivamente no `<main id="conteudo-principal">`).
+3. **PROIBIDO gerar tags `<header>`, `<footer>`, `<nav class="breadcrumb">` ou mais de um `<h1>` em protótipos**.

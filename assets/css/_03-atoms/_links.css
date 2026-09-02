@@ -1,4 +1,30 @@
 /* ============= BCB Design System — Atoms / Links =============
- * Módulo reservado para futura extração.
- * Os estilos atuais estão no bcb-style.css monolítico.
+ * Links institucionais aderentes às cores e regras de contraste WCAG/e-MAG.
  * ================================================================== */
+
+a {
+  color: var(--bcb-color-azul-blue, #025C75);
+  text-decoration: underline;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+a:hover {
+  color: var(--bcb-color-azulcinti, #077391);
+  text-decoration: underline;
+}
+
+a:active,
+a:focus {
+  color: var(--bcb-color-azulpetro, #2E4C59);
+}
+
+.text-link {
+  color: var(--bcb-color-azul-blue, #025C75);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover {
+  color: var(--bcb-color-azulcinti, #077391);
+  text-decoration: underline;
+}

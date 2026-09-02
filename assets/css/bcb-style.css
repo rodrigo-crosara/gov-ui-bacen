@@ -1,5 +1,8 @@
 @import "_01-tools/_grid.css";
 @import "_04-molecules/_navbar.css";
+@import "_03-atoms/_skip-links.css";
+@import "_03-atoms/_links.css";
+@import "_03-atoms/_buttons.css";
 
 /* ============= BCB Design System — Módulos Atômicos =============
  * Estrutura ITCSS + Atomic Design
@@ -85,7 +88,9 @@
   --bcb-brand-vinho: #47373A;
   --bcb-brand-marsala: #736063;
   --bcb-brand-amarellato: #F8D48D;
+  --bcb-color-azul-blue: #025C75;
   --bcb-color-azulcinti: #077391;
+  --bcb-color-azulpetro: #2E4C59;
   --bcb-color-verde-castell: #088694;
 
   /* ==========================================
@@ -769,20 +774,23 @@ p { font-size: var(--bcb-font-100); }
 /* ==========================================
    BOTÕES BCB
    ========================================== */
+.bcb-btn--primary,
 .btn-primary {
-  background-color: var(--bcb-btn-primary-bg) !important;
-  border-color: var(--bcb-btn-primary-bg) !important;
-  color: var(--bcb-color-white) !important;
+  background-color: var(--bcb-color-azul-blue, #025C75) !important;
+  border-color: var(--bcb-color-azul-blue, #025C75) !important;
+  color: #ffffff !important;
   transition: all 0.2s ease;
 }
+.bcb-btn--primary:hover,
 .btn-primary:hover {
-  background-color: var(--bcb-btn-primary-hover) !important;
-  border-color: var(--bcb-btn-primary-hover) !important;
-  color: var(--bcb-color-white) !important;
+  background-color: var(--bcb-color-azulcinti, #077391) !important;
+  border-color: var(--bcb-color-azulcinti, #077391) !important;
+  color: #ffffff !important;
 }
+.bcb-btn--primary:active, .bcb-btn--primary:focus,
 .btn-primary:active, .btn-primary:focus {
-  background-color: var(--bcb-btn-primary-active) !important;
-  border-color: var(--bcb-btn-primary-active) !important;
+  background-color: var(--bcb-color-azulpetro, #2E4C59) !important;
+  border-color: var(--bcb-color-azulpetro, #2E4C59) !important;
 }
 .btn-primary:disabled {
   background-color: var(--bcb-gray-400) !important;
@@ -1537,8 +1545,8 @@ ul.bcb-process-list {
 
 .bcb-skip-links { position: absolute; top: 0; left: 0; width: 100%; z-index: 1050; pointer-events: none; list-style: none; margin: 0; padding: 0; }
 .bcb-skip-links li { margin: 0; padding: 0; }
-.bcb-skip-link { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); background-color: var(--bcb-brand-blue); color: var(--bcb-color-white) !important; padding: 0.75rem 1.5rem; font-weight: 700; font-size: 0.9rem; border-radius: 0 0 var(--bcb-radius-4) var(--bcb-radius-4); box-shadow: var(--bcb-shadow-600); text-decoration: none; z-index: 1060; transition: top 0.2s ease-in-out; pointer-events: auto; outline: none; white-space: nowrap; }
-.bcb-skip-link:focus, .bcb-skip-link:focus-visible { top: 0; outline: 3px solid var(--bcb-brand-amarellato); outline-offset: 2px; text-decoration: underline; color: var(--bcb-color-white) !important; }
+.bcb-skip-link { position: absolute !important; top: -9999px !important; left: 1rem !important; z-index: 9999 !important; padding: var(--bcb-spacing-sm, 8px) var(--bcb-spacing-md, 16px) !important; background-color: var(--bcb-color-azul-blue, #025C75) !important; color: #ffffff !important; text-decoration: none !important; font-weight: 700 !important; border-radius: var(--bcb-radius-sm, 4px) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important; }
+.bcb-skip-link:focus, .bcb-skip-link:focus-visible { top: 1rem !important; }
 .bcb-skip-link .accesskey-badge { display: inline-block; background: rgba(255, 255, 255, 0.25); padding: 1px 6px; border-radius: var(--bcb-radius-4); font-size: 0.75rem; margin-left: 6px; font-family: monospace; }
 
 /* ==========================================

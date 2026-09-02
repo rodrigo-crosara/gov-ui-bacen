@@ -274,38 +274,28 @@
     </ul>
 
     <!-- Header da Documentação (.bcb-ds-header) -->
-    <header class="bcb-ds-header" role="banner">
-        <div class="bcb-container bcb-ds-header__inner">
-            <a href="../index.html" class="bcb-ds-brand" aria-label="Página inicial do BCB Design System">
-                <img src="https://www.bcb.gov.br/content/identidadevisual/images/logo_bcb.png" alt="Banco Central do Brasil" class="bcb-ds-logo" onerror="this.style.display='none'">
-                <span class="bcb-ds-brand-text">Design System</span>
-                <span class="bcb-ds-version-badge">v2.0.0</span>
-            </a>
-
-            <nav class="d-none d-lg-flex align-items-center" aria-label="Navegação da Documentação">
-                <ul class="bcb-ds-nav">
-                    <li><a href="../index.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">home</span> Início</a></li>
-                    <li><a href="components.html" class="bcb-ds-nav-link active" aria-current="page"><span class="material-symbols-outlined md-18" aria-hidden="true">widgets</span> Componentes</a></li>
-                    <li><a href="tokens.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">palette</span> Tokens</a></li>
-                    <li><a href="templates.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">dashboard</span> Templates</a></li>
-                    <li><a href="automacao-ia.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">smart_toy</span> Guia IA</a></li>
-                    <li><a href="changelog.html" class="bcb-ds-nav-link"><span class="material-symbols-outlined md-18" aria-hidden="true">history</span> Changelog</a></li>
-                </ul>
-            </nav>
-
-            <!-- Seletor de 3 Temas em Pílula (.bcb-theme-toggle) -->
-            <div class="bcb-theme-toggle bcb-ds-theme-switcher" role="group" aria-label="Seletor de tema visual">
-                <button type="button" class="bcb-ds-theme-btn active" id="btnThemeLight" title="Tema Claro Padrão" aria-pressed="true">
-                    <span class="material-symbols-outlined md-18" aria-hidden="true">light_mode</span> <span class="d-none d-sm-inline">Padrão</span>
-                </button>
-                <button type="button" class="bcb-ds-theme-btn" id="btnThemeDark" title="Modo Escuro" aria-pressed="false">
-                    <span class="material-symbols-outlined md-18" aria-hidden="true">dark_mode</span> <span class="d-none d-sm-inline">Escuro</span>
-                </button>
-                <button type="button" class="bcb-ds-theme-btn" id="btnThemeHighContrast" title="Alto Contraste Acessível (e-MAG)" aria-pressed="false">
-                    <span class="material-symbols-outlined md-18" aria-hidden="true">contrast</span> <span class="d-none d-sm-inline">Contraste</span>
-                </button>
-            </div>
+    <header class="bcb-ds-header">
+      <div class="bcb-container bcb-ds-header__inner">
+        <div class="bcb-ds-header__brand">
+          <a href="../index.html" class="bcb-ds-header__title">Design System <span>BCB</span></a>
         </div>
+        <nav class="bcb-ds-header__nav" aria-label="Navegação da documentação">
+          <ul class="bcb-ds-header__links">
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="components.html" class="active" aria-current="page">Componentes</a></li>
+            <li><a href="tokens.html">Tokens</a></li>
+            <li><a href="templates.html">Casos de Uso</a></li>
+            <li><a href="automacao-ia.html">Guia IA</a></li>
+          </ul>
+        </nav>
+        <div class="bcb-ds-header__actions">
+          <div class="bcb-theme-toggle" role="group" aria-label="Alternar tema">
+            <button type="button" class="bcb-theme-btn" data-theme-switcher="default">Padrão</button>
+            <button type="button" class="bcb-theme-btn" data-theme-switcher="dark">Escuro</button>
+            <button type="button" class="bcb-theme-btn" data-theme-switcher="high-contrast">Contraste</button>
+          </div>
+        </div>
+      </div>
     </header>
 
     <!-- Layout da Documentação -->

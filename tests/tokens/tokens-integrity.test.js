@@ -198,6 +198,53 @@ if (usosVar > 0) {
 }
 
 // ============================================
+// TESTE 4: Proibição estrita de Azul Bootstrap (#0d6efd / #007bff)
+// ============================================
+console.log('\n📋 Teste 4: Proibição estrita de Azul Bootstrap (#0d6efd / #007bff / #0b5ed7 / #0a58ca)');
+
+function encontrarArquivosCSS(diretorio) {
+  const arquivos = [];
+  const itens = fs.readdirSync(diretorio, { withFileTypes: true });
+  for (const item of itens) {
+    const caminhoCompleto = path.join(diretorio, item.name);
+    if (item.name === 'node_modules' || item.name === '.git') continue;
+    if (item.isDirectory()) {
+      arquivos.push(...encontrarArquivosCSS(caminhoCompleto));
+    } else if (item.name.endsWith('.css')) {
+      arquivos.push(caminhoCompleto);
+    }
+  }
+  return arquivos;
+}
+
+const pastaCSS = path.join(RAIZ_PROJETO, 'assets', 'css');
+const todosCSS = encontrarArquivosCSS(pastaCSS);
+const coresProibidas = ['#0d6efd', '#007bff', '#0b5ed7', '#0a58ca'];
+const ocorrenciasProibidas = [];
+
+todosCSS.forEach(arquivoCSS => {
+  const rel = path.relative(RAIZ_PROJETO, arquivoCSS).replace(/\\/g, '/');
+  const conteudo = fs.readFileSync(arquivoCSS, 'utf8');
+  coresProibidas.forEach(cor => {
+    const regex = new RegExp(cor, 'gi');
+    if (regex.test(conteudo)) {
+      ocorrenciasProibidas.push({ arquivo: rel, cor });
+    }
+  });
+});
+
+if (ocorrenciasProibidas.length === 0) {
+  console.log(`   ✅ Nenhuma ocorrência de azul Bootstrap encontrada em ${todosCSS.length} arquivo(s) CSS`);
+  sucessos++;
+} else {
+  console.log(`   ❌ Encontrada(s) ${ocorrenciasProibidas.length} ocorrência(s) de azul Bootstrap:`);
+  ocorrenciasProibidas.forEach(o => {
+    console.log(`      → [${o.arquivo}] contém cor proibida ${o.cor}`);
+  });
+  falhas += ocorrenciasProibidas.length;
+}
+
+// ============================================
 // RESULTADO
 // ============================================
 console.log('\n' + '='.repeat(55));
