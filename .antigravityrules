@@ -25,16 +25,35 @@ Sua missão é manter e evoluir o ecossistema gov-ui-bacen com máxima fidelidad
   * `max-width: 1440px;` em `@media (min-width: 1520px)`
 - A diagramação interna usa o grid modular de 12 colunas (`.bcb-row` e `.bcb-col-*`).
 
-## 4. SEPARAÇÃO ESTRUTURAL (DOCUMENTAÇÃO vs. PROTÓTIPOS DE CONTEÚDO)
+## 4. SEPARAÇÃO ESTRUTURAL E CONTRATO DE SAÍDA DA IA (DOCUMENTAÇÃO vs. PROTÓTIPOS)
 - Páginas da Documentação (`index.html` e `pages/*.html`):
   * Devem conter o cabeçalho `.bcb-ds-header` com navegação e o alternador de temas (Padrão, Escuro, Contraste).
   * O `.bcb-skip-link` deve ter `position: absolute; top: -9999px;` no estado padrão (invisível até receber Tab).
-- Protótipos e Miolo de Interfaces (Novas Telas e Casos Reais):
-  * O agente projeta interfaces com liberdade diagramacional a partir da semântica dos dados recebidos do webdesigner, sem acoplamento a modelos estáticos legados.
-  * Devem conter EXCLUSIVAMENTE `<main id="conteudo-principal" class="bcb-container">` iniciando com exatamente um `<h1>`.
-  * NUNCA gere `<header>`, `<footer>`, barras federais externas, breadcrumbs, skip links ou menus globais (elementos providos pelo CMS institucional).
+- Protótipos e Miolo de Interfaces (Novas Telas e Casos Reais em `prototipos/*.html`):
+  * O agente projeta interfaces com foco EXCLUSIVO no miolo semântico da página, concebendo a diagramação a partir dos dados do briefing.
+  * O código gerado deve conter ESTRITAMENTE o container `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` iniciando com exatamente um `<h1>` com a classe `.bcb-page-title`.
+  * **PROIBIÇÃO ABSOLUTA DE CASCA GLOBAL E DOCUMENTO EXTERNO:** É terminantemente proibido gerar tags `<html>`, `<head>`, `<body>`, `<!DOCTYPE>`, `<header>`, `<footer>`, `<nav aria-label="breadcrumb">` (ou classes `.breadcrumb`), `#barra-brasil`, skip links ou estilos inline (`style="..."`). A casca institucional é simulada exclusivamente no frame de visualização (`prototipos/_harness.html`) e fornecida em produção pelo CMS institucional.
+  * Encerrar o `<main>` sempre com o botão padronizado de retorno ao topo (`.bcb-back-to-top-wrapper`) apontando para `#conteudo-principal`.
 
 ## 5. TIPOGRAFIA E ÍCONES
 - Fontes oficiais: Rawline ou Inter/Roboto.
-- Ícones: Material Symbols Outlined (`<span class="material-symbols-outlined">nome_do_icone</span>`).
-- Sempre garanta que o `<head>` importe a folha do Material Symbols e o `bcb-style.css`.
+- Ícones: Material Symbols Outlined (`<span class="material-symbols-outlined material-icons" aria-hidden="true">nome_do_icone</span>`).
+- Ícones que acompanham texto devem conter sempre `aria-hidden="true"`. Botões com ícones isolados exigem `aria-label` descritivo.
+
+## 6. PIPELINE DE INGESTÃO E NORMALIZAÇÃO DE DEMANDAS (MULTIFORMATO)
+Sempre que o agente receber insumos brutos das áreas técnicas do BCB, deve seguir rigorosamente o pipeline de 4 fases de normalização:
+1. **Recepção e Extração Multiformato:**
+   - Textos brutos de e-mails institucionais (`.eml`, mensagens de diretores, despachos): extrair assunto, remetente, orientações e notas oficiais.
+   - Minutas de resoluções e notas técnicas (transcrições de PDF/DOCX): isolar corpo do ato normativo, justificativas econômicas e atos revogados/alterados.
+   - Planilhas e séries numéricas (CSV/TSV): identificar indicadores, metas, variações percentuais e datas de vigência.
+   - Marcação HTML legada: expurgar tabelas usadas para layout (`<table bgcolor="...">`), tags obsoletas (`<font>`, `<center>`), quebras excessivas (`<br>`) e cores inline.
+2. **Higienização e Normalização Estrutural:**
+   - Preservar integralmente a precisão técnica das informações jurídicas, financeiras e regulatórias.
+   - Eliminar qualquer estilo inline ou cor hexadecimal arbitrária, convertendo-os para tokens do BCB Design System.
+3. **Classificação Heurística do Padrão de UX Canônico:**
+   - Comunicados do Copom, minutas normativas, circulares e pronunciamentos: *Comunicação Normativa (Layout 70/30 com downloads)*.
+   - Séries SGS, históricos de taxas, cotações e tabelas numéricas: *Painel Analítico & Séries Temporais (SGS)*.
+   - Orientações operacionais, MED Pix, autorizações e serviços ao cidadão: *Serviço ao Cidadão (Stepper .process-list)*.
+   - Páginas antigas desestruturadas: *Refatoração Semântica em Grid 12 Colunas*.
+4. **Projeção Direta em Grid & Componentes Oficiais:**
+   - Estruturar diretamente o `<main id="conteudo-principal">` em seções `.bcb-section` (ritmo vertical de 48px), linhas `.bcb-row` e colunas proporcionais `.bcb-col-*`, aplicando Material Icons canônicos e comentários de slots CMS (`<!-- [SLOT CMS: ...] -->`).

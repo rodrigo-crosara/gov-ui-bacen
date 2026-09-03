@@ -1,45 +1,44 @@
-# BCB UI – Components Library (Enterprise v2.0)
+# BCB UI – Components Library (Enterprise v3.0)
 
-> **Status**: v2.0 (Auditoria Enterprise & Automação por IA — Mar/2026).
-> Este documento é a especificação canônica de todos os componentes de interface do Banco Central do Brasil.
-> Toda IA ou desenvolvedor deve seguir rigorosamente as assinaturas HTML, variantes válidas e diretrizes de **"O que fazer (Do)"** e **"O que não fazer (Don't)"**.
+> **Status**: v3.0 (Auditoria Enterprise, Atomic Design & Automação por IA — Mar/2026).
+> Este documento é a especificação canônica do **vocabulário atômico de interface** do Banco Central do Brasil.
+> Toda IA e desenvolvedor deve seguir rigorosamente os contratos semânticos de classes Bootstrap 4.6, Material Icons e tokens CSS do BCB.
+
+> [!IMPORTANT]
+> **Escopo Estrito de Prototipagem (Miolo vs. Casca):**
+> Componentes de casca global (`<header>`, `<footer>`, `<nav aria-label="breadcrumb">`) são exclusivos do CMS institucional e simulados no visualizador técnico (`prototipos/_harness.html`).
+> Nos arquivos de protótipos (`prototipos/*.html`), a saída é restrita **exclusivamente aos componentes do miolo interno (`<main id="conteudo-principal">`)**, sendo terminantemente proibido o uso de `<html>`, `<head>`, `<body>`, `<header>`, `<footer>`, breadcrumbs ou estilos inline.
 
 ---
 
-## Sumário de Componentes
+## Sumário Atômico de Componentes
 
-1. [Botões (Buttons)](#1-botões-buttons)
-2. [Links e Âncoras](#2-links-e-âncoras)
-3. [Iconografia (Material Icons)](#3-iconografia-material-icons)
-4. [Breadcrumbs Acessíveis](#4-breadcrumbs-acessíveis-bcb-breadcrumb-nav)
-5. [Menu de Âncoras / Sidebar TOC](#5-menu-de-âncoras--sidebar-toc)
-6. [Callouts e Alertas Estruturados](#6-callouts-e-alertas-estruturados)
-7. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa)
-8. [Citações e Testemunhos (Blockquotes)](#8-citações-e-testemunhos-blockquotes)
-9. [Tags e Badges](#9-tags-e-badges)
-10. [Process List (Passo a Passo)](#10-process-list-passo-a-passo)
-11. [Stepper (Indicador de Etapas)](#11-stepper-indicador-de-etapas)
-12. [Controles de Formulário e Validação](#12-controles-de-formulário-e-validação)
-13. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada)
-14. [Data Table Responsiva (Séries e Taxas)](#14-data-table-responsiva-séries-e-taxas)
-15. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis)
-16. [Alertas e Toast Notifications](#16-alertas-e-toast-notifications)
-17. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs)
-18. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis)
-19. [Cards de Links Rápidos (Listalinks)](#19-cards-de-links-rápidos-listalinks)
-20. [Cards de Indicadores Econômicos](#20-cards-de-indicadores-econômicos)
-21. [Download de Documentos](#21-download-de-documentos)
-22. [Hero Banner Institucional](#22-hero-banner-institucional)
-23. [Timeline Educativa (Storytelling)](#23-timeline-educativa-storytelling)
-24. [Timeline Horizontal (Fases de Projeto)](#24-timeline-horizontal-fases-de-projeto)
-25. [Carrossel de Vídeos](#25-carrossel-de-vídeos)
-26. [Bloco de Transição Narrativa](#26-bloco-de-transição-narrativa)
-27. [Botão Voltar ao Topo](#27-botão-voltar-ao-topo)
-28. [Paginação e Tooltips de Glossário](#28-paginação-e-tooltips-de-glossário)
-29. [Bloco de Métricas / KPI Card Financeiro](#30-bloco-de-métricas--kpi-card-financeiro-bcb-kpi-card)
-30. [Barra de Utilidades da Página](#31-barra-de-utilidades-da-página-bcb-page-toolbar)
-31. [Citação Institucional e Destaque Normativo](#32-citação-institucional-e-destaque-normativo-bcb-quote)
-32. [Alertas Inline de Validação](#33-alertas-inline-de-validação-bcb-alert)
+### Nível 1: Átomos Semânticos
+1. [Botões (Buttons)](#1-botões-buttons) — `.btn`, `.btn-primary`, `.btn-secondary`, `.btn-outline-primary`
+2. [Links e Âncoras](#2-links-e-âncoras) — `.text-link`
+3. [Iconografia Material Icons](#3-iconografia-material-icons) — `.material-symbols-outlined.material-icons`
+4. [Tags e Badges](#9-tags-e-badges) — `.badge`, `.tag-bcb`
+5. [Controles de Formulário e Validação](#12-controles-de-formulário-e-validação) — `.form-control`, `.custom-select`
+6. [Botão Voltar ao Topo](#27-botão-voltar-ao-topo) — `.bcb-back-to-top-wrapper`, `.bcb-btn-back-to-top`
+
+### Nível 2: Moléculas Funcionais
+7. [Bloco de Métricas / KPI Card Financeiro](#30-bloco-de-métricas--kpi-card-financeiro-bcb-kpi-card) — `.bcb-kpi-card`, `.bcb-indicator-card`
+8. [Callouts e Alertas Estruturados](#6-callouts-e-alertas-estruturados) — `.callout.callout-warning|brand|danger`
+9. [Alertas Inline de Validação](#33-alertas-inline-de-validação-bcb-alert) — `.bcb-alert`
+10. [Citações e Destaques Normativos](#8-citações-e-testemunhos-blockquotes) — `.bcb-citacao`, `.bcb-quote` com `<cite>`
+11. [Download de Documentos](#21-download-de-documentos) — `.documentos .documento`
+12. [Barra de Utilidades da Página](#31-barra-de-utilidades-da-página-bcb-page-toolbar) — `.bcb-page-toolbar`
+13. [Cards de Links Rápidos (Listalinks)](#19-cards-de-links-rápidos-listalinks) — `.listalinks`
+14. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa) — `.tip-box`
+15. [Breadcrumbs Acessíveis (Casca/Harness Apenas)](#4-breadcrumbs-acessíveis-bcb-breadcrumb-nav) — `.bcb-breadcrumb-nav` *(Proibido em protótipos)*
+
+### Nível 3: Organismos e Padrões Compostos
+16. [Data Table Responsiva com Exportação](#14-data-table-responsiva-séries-e-taxas) — `.table-responsive`, `.bcb-data-export`
+17. [Process List / Stepper Sequencial](#10-process-list-passo-a-passo) — `<ol class="process-list">`
+18. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis) — `.accordion.modelo-1`
+19. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada) — `.bcb-filter-panel`
+20. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs) — `.nav-tabs`
+21. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis) — `.modal`
 
 ---
 
@@ -141,11 +140,13 @@ Utilize a biblioteca **Google Material Icons** (Filled ou Outlined).
 
 ---
 
-## 4. Breadcrumbs Acessíveis (.bcb-breadcrumb-nav)
+## 4. Breadcrumbs Acessíveis (.bcb-breadcrumb-nav) — Casca Institucional / Harness Only
 
-Trilha de navegação estrutural hierárquica oficial, permitindo ao cidadão compreender sua localização na árvore do portal e retornar aos níveis superiores.
+> ⚠️ **COMPONENTE DE CASCA FIXA (TOTALMENTE PROIBIDO NO MIOLO DE PROTÓTIPOS):**
+> A trilha de navegação (breadcrumb) é mantida de forma fixa e centralizada pelo CMS do Banco Central e simulada dinamicamente no visualizador técnico (`prototipos/_harness.html`).
+> **NUNCA GERE BREADCRUMBS** nos arquivos de protótipos (`prototipos/*.html`). Esta seção documenta a assinatura semântica exclusiva para o harness técnico e para os templates centrais do portal.
 
-### Assinatura HTML Canônica
+### Assinatura HTML Canônica (Casca Institucional)
 ```html
 <nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav">
   <ol class="breadcrumb bcb-breadcrumb">
@@ -160,7 +161,7 @@ Trilha de navegação estrutural hierárquica oficial, permitindo ao cidadão co
 
 | O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
 |---|---|
-| Sempre use `<nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav">`. | NUNCA omita `aria-label` na tag `<nav>` de navegação. |
+| Sempre use `<nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav">` na casca do portal. | NUNCA inclua breadcrumbs no miolo `<main>` de arquivos em `prototipos/*.html`. |
 | Use `<li class="breadcrumb-item active" aria-current="page">` no último item. | NUNCA coloque link no item ativo/página atual. |
 | Utilize o separador visual automático via CSS (`chevron_right`). | NUNCA digite caracteres manuais como `>` ou `/` no HTML. |
 
@@ -240,7 +241,7 @@ Destaca falas de autoridades, diretoria ou trechos de legislação.
 ```html
 <blockquote class="bcb-citacao">
   <p class="mb-0">"A estabilidade de preços é o alicerce fundamental para o crescimento sustentável do país."</p>
-  <footer class="blockquote-footer">Presidente do Banco Central do Brasil</footer>
+  <cite class="blockquote-footer">Presidente do Banco Central do Brasil</cite>
 </blockquote>
 ```
 
@@ -932,13 +933,13 @@ Barra institucional com ações rápidas de produtividade (imprimir, copiar link
     <span>Última modificação em: <strong>12/03/2026 às 18:30</strong></span>
   </div>
   <div class="bcb-page-toolbar__actions">
-    <button type="button" class="bcb-page-toolbar__btn" onclick="window.print();" aria-label="Imprimir página">
+    <button type="button" class="bcb-page-toolbar__btn" data-action="print" aria-label="Imprimir página">
       <span class="material-symbols-outlined material-icons" aria-hidden="true">print</span> Imprimir
     </button>
-    <button type="button" class="bcb-page-toolbar__btn" onclick="navigator.clipboard.writeText(window.location.href);" aria-label="Copiar link da página">
+    <button type="button" class="bcb-page-toolbar__btn" data-action="copy-link" aria-label="Copiar link da página">
       <span class="material-symbols-outlined material-icons" aria-hidden="true">link</span> Copiar Link
     </button>
-    <button type="button" class="bcb-page-toolbar__btn" aria-label="Compartilhar página">
+    <button type="button" class="bcb-page-toolbar__btn" data-action="share" aria-label="Compartilhar página">
       <span class="material-symbols-outlined material-icons" aria-hidden="true">share</span> Compartilhar
     </button>
   </div>
@@ -947,7 +948,7 @@ Barra institucional com ações rápidas de produtividade (imprimir, copiar link
 
 | O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
 |---|---|
-| Garanta área de toque mínima de 44x44px nos botões utilitários. | NUNCA omita o `aria-label` descritivo na tag de toolbar ou nos botões de ação. |
+| Garanta área de toque mínima de 44x44px nos botões utilitários. | NUNCA use manipuladores inline (`onclick=`). Delegue eventos a seletores semânticos (`data-action`). |
 | O componente é automaticamente oculto em mídias de impressão (`@media print`). | NUNCA posicione a barra de utilidades cobrindo textos do conteúdo principal. |
 
 ---
@@ -961,20 +962,20 @@ Bloco editorial para atas do Copom, pronunciamentos de dirigentes ou destaques d
 <!-- Citação Institucional -->
 <blockquote class="bcb-quote">
   <p class="bcb-quote-text">"A firmeza na condução da política monetária é âncora primordial da estabilidade."</p>
-  <footer class="bcb-quote-footer">
+  <cite class="bcb-quote-footer">
     <span class="bcb-quote-author">Diretoria Colegiada do Banco Central do Brasil</span>
     <span class="bcb-quote-role">Ata da 268ª Reunião Ordinária do Copom</span>
-    <cite class="bcb-quote-cite">Brasília, Março de 2026</cite>
-  </footer>
+    <span class="bcb-quote-cite">Brasília, Março de 2026</span>
+  </cite>
 </blockquote>
 
 <!-- Destaque Normativo -->
 <div class="bcb-quote bcb-quote--normative">
   <p class="bcb-quote-text"><strong>Art. 3º</strong> As instituições autorizadas deverão manter canal dedicado...</p>
-  <footer class="bcb-quote-footer">
+  <cite class="bcb-quote-footer">
     <span class="bcb-quote-author">Resolução BCB nº 103/2026</span>
     <span class="bcb-quote-role">Departamento de Regulação do Sistema Financeiro (DENOR)</span>
-  </footer>
+  </cite>
 </div>
 ```
 

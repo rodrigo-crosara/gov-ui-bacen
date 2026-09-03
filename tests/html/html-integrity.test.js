@@ -116,9 +116,12 @@ for (const arquivo of arquivosHTML) {
     if (conteudo.match(/<header[\s>]/gi)) {
       problemas.push('Tag <header> presente em protótipo de conteúdo — protótipos devem focar no miolo semântico');
     }
-    const footersNaoCitacao = conteudo.match(/<footer(?![^>]*blockquote-footer)[^>]*>/gi) || [];
-    if (footersNaoCitacao.length > 0) {
-      problemas.push('Tag <footer> de rodapé presente em protótipo de conteúdo — protótipos devem focar no miolo semântico');
+    const tagsFooter = conteudo.match(/<footer[\s>]/gi) || [];
+    if (tagsFooter.length > 0) {
+      problemas.push('Tag <footer> de rodapé presente em protótipo de conteúdo — protótipos devem focar no miolo semântico e utilizar <cite class="blockquote-footer"> para citações');
+    }
+    if (conteudo.includes('breadcrumb') || conteudo.match(/<nav[^>]*aria-label=["'][^"']*(?:trilha|breadcrumb)/gi)) {
+      problemas.push('Breadcrumb presente em protótipo de conteúdo — trilhas de navegação são providas pelo portal');
     }
   }
 

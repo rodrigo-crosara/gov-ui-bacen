@@ -221,16 +221,16 @@ for (const arquivo of arquivosHTML) {
     if (conteudo.match(/<header[\s>]/gi)) {
       problemas.push('Tag <header> detectada em protótipo — a prototipagem foca exclusivamente no miolo semântico da página.');
     }
-    const footersNaoCitacao = conteudo.match(/<footer(?![^>]*blockquote-footer)[^>]*>/gi) || [];
-    if (footersNaoCitacao.length > 0) {
-      problemas.push('Tag <footer> detectada em protótipo — rodapés globais são providos pelo portal.');
+    const tagsFooter = conteudo.match(/<footer[\s>]/gi) || [];
+    if (tagsFooter.length > 0) {
+      problemas.push(`${tagsFooter.length} tag(s) <footer> detectada(s) em protótipo — rodapés globais são providos pelo portal e citações devem utilizar <cite class="blockquote-footer">.`);
     }
     if (conteudo.match(/<nav[^>]*class=["'][^"']*govbr[^"']*["']/gi)) {
       problemas.push('Elemento <nav class="govbr..."> detectado em protótipo.');
     }
 
     // 3.2.1 Proibição estrita de Breadcrumbs em protótipos (elemento de casca fixa provido pelo CMS)
-    if (conteudo.includes('breadcrumb') || conteudo.match(/<nav[^>]*aria-label=["'][^"']*trilha/gi)) {
+    if (conteudo.includes('breadcrumb') || conteudo.match(/<nav[^>]*aria-label=["'][^"']*(?:trilha|breadcrumb)/gi)) {
       problemas.push('Breadcrumb detectado em protótipo — a trilha de navegação é fixa e fornecida pelo portal institucional (simulada dinamicamente no _harness.html).');
     }
 

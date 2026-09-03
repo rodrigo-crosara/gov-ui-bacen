@@ -24,11 +24,23 @@ O agente atua perfeitamente integrado à esteira de design e publicação do Ban
 +------------------------------------+       +------------------------------------+       +------------------------------------+
 ```
 
-### Etapa 1: Recebimento da Demanda Bruta
-As áreas técnicas e de negócio do BCB (Copom, Pix, Regulação, Cidadania Financeira, DEINF, DSTAT, etc.) encaminham comunicados, minutas de resoluções, tabelas ou memorandos em formatos brutos heterogêneos (documentos Word, arquivos PDF, e-mails exportados `.eml`, páginas HTML legadas desestruturadas ou planilhas CSV).
+### Etapa 1: Recebimento e Ingestão Multiformato da Demanda Bruta
+As áreas técnicas e de negócio do BCB (Copom, Pix, Regulação, Cidadania Financeira, DEINF, DSTAT, etc.) encaminham comunicados, minutas de resoluções, tabelas ou memorandos em formatos brutos heterogêneos:
+- **Minutas Regulatórias e Atos Oficiais (PDF / DOCX transcritos):** Textos densos de circulares, resoluções conjuntas, votos e notas técnicas contendo preâmbulo, artigos, parágrafos, justificativas e assinaturas.
+- **E-mails e Mensagens de Diretoria (`.eml` / Outlook / Despachos):** Mensagens enviadas com comunicados à imprensa, orientações urgentes, canais de atendimento e dados de contato.
+- **Planilhas e Séries Numéricas (CSV / TSV / Tabelas):** Metas de juros, séries históricas de indicadores macroeconômicos (SGS), taxas vigentes e períodos de vigência.
+- **Marcação HTML Legada ou Desestruturada:** Páginas antigas construídas com tabelas para layout (`<table bgcolor="...">`), tags obsoletas (`<font>`, `<center>`), múltiplos `<br>` e estilos inline arbitrários.
 
-### Etapa 2: Estruturação e Qualificação pelo Webdesigner
-O webdesigner de plantão recebe o material bruto e utiliza o utilitário CLI oficial de automação para normalizar o conteúdo e gerar o scaffold padronizado em `.docs-ia/exemplos-demandas/<numero>-<slug>.md`:
+### Etapa 2: Estruturação, Sanitização e Normalização pelo Pipeline
+O webdesigner ou o utilitário CLI oficial processa os insumos brutos através de 4 fases sistemáticas de normalização:
+1. **Fase 1 — Extração:** Isolar metadados essenciais (diretoria solicitante, objetivo de comunicação, público-alvo, atos regulatórios e anexos em KB/MB).
+2. **Fase 2 — Sanitização:** Expurgar formatações legadas (tabelas de layout, tags `<font>`, estilos inline `style="..."`, cores hexadecimais literais), preservando 100% da integridade jurídica e numérica do conteúdo.
+3. **Fase 3 — Classificação Heurística de Padrão BCB:** Mapear a demanda para o padrão canônico correspondente:
+   - Comunicados normativos / decisões: *Comunicação Normativa (Layout 70/30 com downloads)*.
+   - Séries temporais e taxas: *Painel Analítico & Séries Temporais (SGS)*.
+   - Serviços e procedimentos: *Serviço ao Cidadão (Stepper .process-list)*.
+   - Páginas antigas refatoradas: *Refatoração Semântica de Conteúdo Legado*.
+4. **Fase 4 — Scaffold Automatizado:** Gerar o arquivo padronizado em `.docs-ia/exemplos-demandas/<numero>-<slug>.md`:
 ```bash
 # Ingestão a partir de arquivo externo (HTML legado, EML, JSON, TXT):
 npm run demanda:criar -- --arquivo ./minuta-diretoria.eml --slug seguranca-pix
@@ -36,11 +48,12 @@ npm run demanda:criar -- --arquivo ./minuta-diretoria.eml --slug seguranca-pix
 # Ou criação interativa com definição de parâmetros:
 npm run demanda:criar -- --slug meu-servico --titulo "Título da Demanda" --padrao "Comunicação Normativa (Layout 70/30 com downloads)"
 ```
-O webdesigner valida o objetivo de comunicação, revisa os atos regulatórios vinculados e aciona o agente de IA repassando o briefing qualificado.
+O webdesigner valida o briefing qualificado e aciona o agente de IA.
 
 ### Etapa 3: Geração Algorítmica/Heurística pelo Agente de IA
 O agente de IA ingere a demanda qualificada e concebe o protótipo final em `prototipos/<slug>.html`:
-- **Semântica Estrita:** Foco no miolo `<main id="conteudo-principal">` com 1 único `<h1>`.
+- **Semântica Estrita:** Foco no miolo `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` com 1 único `<h1>`.
+- **Banimento Absoluto de Casca e Tags Globais:** Zero `<html>`, `<head>`, `<body>`, `<header>`, `<footer>`, breadcrumbs ou estilos inline.
 - **Grid Oficial Bootstrap:** Estruturação modular em `.container`/`.bcb-container`, `.row`/`.bcb-row` e colunas responsivas proporcionais (`.col-12`, `.col-lg-8`, `.col-lg-4`, `.col-md-6`, etc.).
 - **Iconografia Canônica:** Uso exclusivo da biblioteca Material Icons (`.material-symbols-outlined.material-icons`).
 - **Resiliência Cromática e Acessibilidade:** Conformidade WCAG 2.1 AA e 3 temas (Padrão, Dark Mode e Alto Contraste).
@@ -148,13 +161,15 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
 1. **Restrição Mandante de Saída ao Nó `<main class="bcb-container">`:**
    - O agente entrega **estritamente o nó do container de conteúdo principal**:
      `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` (ou fragmento `<section class="bcb-section">` caso seja solicitado apenas o recorte de um slot).
-   - **BANIMENTO EXPRESSO DE ELEMENTOS GLOBAIS FIXOS:**
+   - **BANIMENTO EXPRESSO DE ELEMENTOS GLOBAIS E CASCA INSTITUCIONAL:**
+     - ❌ **TOTALMENTE BANIDO:** Tags estruturais de documento completo (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`). O agente NUNCA deve gerar cabeçalho técnico HTML ou casca externa.
      - ❌ **TOTALMENTE BANIDO:** Tag `<header>` e barras de navegação globais.
-     - ❌ **TOTALMENTE BANIDO:** Tag `<footer>` institucional e rodapés de portal.
+     - ❌ **TOTALMENTE BANIDO:** Tag `<footer>` institucional, rodapés de portal ou tag `<footer>` em citações (utilize `<cite class="blockquote-footer">`).
      - ❌ **TOTALMENTE BANIDO:** Barra Brasil (`#barra-brasil`, `.bcb-govbr-bar`).
      - ❌ **TOTALMENTE BANIDO:** Breadcrumbs (`<nav aria-label="breadcrumb">`, `.breadcrumb`).
      - ❌ **TOTALMENTE BANIDO:** Menus laterais globais de portal ou skip links redundantes.
-   - **Justificativa Técnica:** Elementos de casca fixa são providos de forma centralizada pelo CMS institucional do portal BCB. O papel do agente é conceber exclusivamente a diagramação interna e semântica do conteúdo.
+     - ❌ **TOTALMENTE BANIDO:** Estilos inline (`style="..."`).
+   - **Justificativa Técnica:** Elementos de casca fixa (header, breadcrumb e footer) são providos de forma centralizada pelo CMS institucional do portal BCB e simulados dinamicamente no visualizador técnico (`prototipos/_harness.html`). O papel exclusivo do agente é conceber a diagramação semântica e funcional do miolo interno.
 
 2. **Diretriz Obrigatória de Saída de Arquivos (`prototipos/<slug>.html`):**
    - Todo novo protótipo gerado pelo agente DEVE ser salvo obrigatoriamente no caminho canônico:
@@ -163,7 +178,7 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
    - **Indexação Mandatória:** Ao gerar um novo protótipo, o agente DEVE:
      1. Cadastrar a nova tela no seletor `<select id="selectPrototipo">` de `prototipos/_harness.html`.
      2. Adicionar o card representativo com resumo e badges na vitrine oficial em `pages/prototipos.html`.
-   - **Formato do Arquivo:** O arquivo salvo em `prototipos/` deve conter o boilerplate canônico completo da Seção 5 (para inspeção autônoma e testes de acessibilidade), encapsulando rigorosamente o miolo `<main id="conteudo-principal" class="bcb-container">` sem qualquer elemento de casca externa.
+   - **Formato do Arquivo:** O arquivo salvo em `prototipos/` deve conter estritamente a estrutura central de conteúdo da Seção 5, encapsulando rigorosamente o miolo `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` sem qualquer elemento de casca externa ou tags globais.
 
 3. **Hierarquia Tipográfica Estrita (e-MAG 3.1):**
    - Exatamente **1 tag `<h1>`** com a classe `.bcb-page-title`.
@@ -208,74 +223,49 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
 
 ## 5. BOILERPLATE CANÔNICO PARA PROTOTIPAGEM (`prototipos/`)
 
-Ao gerar um novo protótipo de alta fidelidade para versionar em `prototipos/[nome-da-demanda].html`, forneça a estrutura completa e validada (inspecionável via `prototipos/_harness.html`):
+Ao conceber um novo protótipo ou versionar em `prototipos/[nome-da-demanda].html`, forneça estritamente a estrutura central de conteúdo sem tags de documento completo (`<html>/<head>/<body>`), sem casca externa (sem header, sem footer, sem breadcrumb) e sem estilos inline:
 
 ```html
-<!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Título Oficial da Página] — Banco Central do Brasil</title>
-    <meta name="description" content="[Resumo conciso de uma frase sobre o conteúdo ou ato normativo]">
-
-    <!-- Bootstrap 4.6 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-          crossorigin="anonymous">
-
-    <!-- Tipografia Institucional (Rawline, Inter, Ubuntu, Cormorant Garamond) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Material Symbols Outlined & Material Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-
-    <!-- BCB Design System CSS -->
-    <link rel="stylesheet" href="../assets/css/bcb-style.css">
-</head>
-<body>
-
-    <!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único — Sem Header, Footer ou Breadcrumbs) -->
-    <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
-        
-        <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
-        <section class="bcb-section">
-            <div class="bcb-row">
-                <div class="bcb-col-12">
-                    <h1 class="bcb-page-title">[Título Oficial da Página]</h1>
-                    <div class="bcb-page-meta">
-                        <span class="tag-bcb primary">[Categoria do Conteúdo]</span>
-                        <span>Publicado em: [DD/MM/AAAA] &bull; Banco Central do Brasil</span>
-                    </div>
-                    <p class="lead mt-3 text-body">
-                        [Parágrafo lead contextualizando o objetivo do ato, serviço ou painel econômico]
-                    </p>
+<!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único — Restrito Estritamente ao <main>) -->
+<main id="conteudo-principal" class="bcb-container container py-4 mb-5">
+    
+    <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
+    <section class="bcb-section">
+        <div class="bcb-row">
+            <div class="bcb-col-12">
+                <h1 class="bcb-page-title">[Título Oficial da Página]</h1>
+                <div class="bcb-page-meta">
+                    <span class="tag-bcb primary">[Categoria do Conteúdo]</span>
+                    <span>Publicado em: [DD/MM/AAAA] &bull; Banco Central do Brasil</span>
                 </div>
+                <p class="lead mt-3 text-body">
+                    [Parágrafo lead contextualizando o objetivo do ato, serviço ou painel econômico]
+                </p>
             </div>
-        </section>
-
-        <!-- [SLOT CMS: 100% | 70/30 | 50/50 | 33/33/33 - Projeção Semântica dos Dados] -->
-
-        <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
-        <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
-            <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">
-                <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle;" aria-hidden="true">arrow_upward</span>
-                <span>Voltar ao topo</span>
-            </a>
         </div>
+    </section>
 
-    </main>
+    <!-- [SLOT CMS: 100% | 70/30 | 50/50 | 33/33/33 - Projeção Semântica dos Dados] -->
+    <section class="bcb-section">
+        <div class="bcb-row">
+            <div class="bcb-col-12 bcb-col-lg-8 mb-4 mb-lg-0">
+                <!-- Coluna Principal (70%) -->
+            </div>
+            <div class="bcb-col-12 bcb-col-lg-4">
+                <!-- Coluna Lateral (30%) -->
+            </div>
+        </div>
+    </section>
 
-    <!-- Scripts Bootstrap e Micro-scripts Vanilla BCB -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bcb-ui.js"></script>
-</body>
-</html>
+    <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
+    <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
+        <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">
+            <span class="material-symbols-outlined material-icons md-16 align-middle" aria-hidden="true">arrow_upward</span>
+            <span>Voltar ao topo</span>
+        </a>
+    </div>
+
+</main>
 ```
 
 ---
@@ -318,10 +308,12 @@ Antes de entregar qualquer novo protótipo ou salvar em `prototipos/`, valide ob
 - [ ] Todos os fundos utilizam `var(--bcb-color-white)` ou `var(--bcb-color-surface)`?
 - [ ] O layout foi inspecionado sob `data-theme="dark"` e `data-contrast="high"` via `prototipos/_harness.html`?
 
-### 7. Navegação Padronizada (Retorno ao Topo e Ausência de Breadcrumbs)
-- [ ] O protótipo está **isento de `<header>`, `<footer>` e breadcrumbs** (`<nav aria-label="Trilha de navegação">`, `.breadcrumb`)?
+### 7. Navegação Padronizada (Retorno ao Topo e Ausência de Casca/Tags Globais)
+- [ ] O protótipo está **isento de tags globais (`<!DOCTYPE>`, `<html>`, `<head>`, `<body>`)**?
+- [ ] O protótipo está **isento de `<header>`, `<footer>`, `#barra-brasil` e breadcrumbs** (`<nav aria-label="Trilha de navegação">`, `.breadcrumb`)?
+- [ ] O protótipo está **isento de estilos inline (`style="..."`)**?
 - [ ] O botão "Voltar ao topo" (`.bcb-back-to-top-wrapper`) está posicionado no encerramento do `<main>` apontando para `#conteudo-principal`?
-- [ ] Nenhum elemento de layout ou tag de conteúdo foi colocado fora do container `<main id="conteudo-principal">`?
+- [ ] Todo o conteúdo reside estritamente DENTRO do container `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">`?
 
 ### 8. Persistência e Indexação Mandatória
 - [ ] O protótipo foi salvo no caminho canônico `prototipos/<slug-da-demanda>.html`?

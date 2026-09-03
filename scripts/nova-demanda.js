@@ -303,10 +303,68 @@ ${atosTexto}
 ---
 
 ### INSTRUÇÃO AO AGENTE
-> "Atue como Especialista em UI/UX do BCB. Diagramar exclusivamente a malha de conteúdo interno desta demanda adotando as diretrizes oficiais de .antigravityrules e da skill gerador-ui-bcb. Salvar o protótipo canônico em prototipos/${slug}.html contendo H1 único, grid 12 colunas Bootstrap e botão de retorno ao topo, isento de cascas externas (sem header, sem footer, sem breadcrumbs) e sem scripts inline."
+> "Atue como Especialista em UI/UX do BCB. Diagramar exclusivamente a malha de conteúdo interno desta demanda adotando as diretrizes oficiais de .antigravityrules e da skill gerador-ui-bcb. Salvar o protótipo canônico em prototipos/${slug}.html contendo ESTRITAMENTE o container <main id=\"conteudo-principal\" class=\"bcb-container container py-4 mb-5\"> com H1 único (.bcb-page-title), seções em .bcb-section, grid 12 colunas Bootstrap (.bcb-row e .bcb-col-*) e botão de retorno ao topo. É TERMINANTEMENTE PROIBIDO gerar tags globais (<html>, <head>, <body>, <!DOCTYPE>), casca externa (sem <header>, sem <footer>, sem breadcrumbs) ou estilos inline (style=\"...\")."
 `;
 
 fs.writeFileSync(caminhoArquivoDestino, template, 'utf8');
+
+// Opcional: Gerar esqueleto inicial do protótipo em prototipos/<slug>.html se solicitado (--html / --scaffold-html)
+const deveGerarHtml = getArg('--html') || getArg('--scaffold-html') || getArg('--prototipo');
+const caminhoPrototipoHtml = path.join(RAIZ_PROJETO, 'prototipos', `${slug}.html`);
+
+if (deveGerarHtml && !fs.existsSync(caminhoPrototipoHtml)) {
+  const htmlCentralScaffold = `<!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único — Restrito Estritamente ao <main>) -->
+<main id="conteudo-principal" class="bcb-container container py-4 mb-5">
+    
+    <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
+    <section class="bcb-section">
+        <div class="bcb-row">
+            <div class="bcb-col-12">
+                <h1 class="bcb-page-title">${titulo}</h1>
+                <div class="bcb-page-meta">
+                    <span class="tag-bcb primary">Institucional</span>
+                    <span>Publicado em: ${new Date().toLocaleDateString('pt-BR')} &bull; ${origem}</span>
+                </div>
+                <p class="lead mt-3 text-body">
+                    [Contextualização executiva do objetivo deste ato normativo, indicador ou serviço público]
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- [SLOT CMS: 70% Conteúdo Principal | 30% Sidebar de Apoio] -->
+    <section class="bcb-section">
+        <div class="bcb-row">
+            <div class="bcb-col-12 bcb-col-lg-8 mb-4 mb-lg-0">
+                <h2 class="h4 font-weight-bold mb-3 text-bcb-brand">Diretrizes Oficiais</h2>
+                <p class="text-body">
+                    [Detalhamento técnico da matéria regulatória ou serviço ao cidadão]
+                </p>
+            </div>
+            <div class="bcb-col-12 bcb-col-lg-4">
+                <div class="card p-3 border mb-4 bg-bcb-surface">
+                    <h2 class="h5 font-weight-bold mb-3 text-bcb-brand">Atos Vinculados</h2>
+                    <div class="documentos">
+                        <!-- Componentes .documento -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
+    <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
+        <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">
+            <span class="material-symbols-outlined material-icons md-16 align-middle" aria-hidden="true">arrow_upward</span>
+            <span>Voltar ao topo</span>
+        </a>
+    </div>
+
+</main>
+`;
+  fs.writeFileSync(caminhoPrototipoHtml, htmlCentralScaffold, 'utf8');
+  console.log(`🧩 Esqueleto central HTML gerado: prototipos/${slug}.html`);
+}
 
 console.log('\n=======================================================');
 console.log('✨ BCB Design System — Nova Demanda Criada com Sucesso');

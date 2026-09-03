@@ -1,86 +1,96 @@
-# BCB UI – Diretrizes de Layout, Grid e Padrões de UX
+# BCB UI – Diretrizes de Layout, Grid e Padrões de UX (v5.0)
 
-> **Status**: v4.0.0 (Diretrizes Oficiais de Grid 12 Colunas, Tipografia, Material Icons e Padrões Composicionais de UX).
+> **Status**: v5.0 (Diretrizes Canônicas de Grid 12 Colunas, Tipografia, Material Icons e Contratos Modulares de UX).
 > Este documento é a **fonte da verdade para arquitetura de informação e diagramação** no Banco Central do Brasil.
-> A IA e os webdesigners devem utilizar estes princípios para projetar interfaces dinâmicas, responsivas e acessíveis a partir da semântica dos dados, sem dependência de templates rígidos.
+> A IA e os webdesigners devem utilizar estes contratos semânticos para projetar interfaces dinâmicas, responsivas e acessíveis a partir da semântica dos dados, sem dependência de templates rígidos.
 
 > [!IMPORTANT]
 > **Definição de Escopo de Prototipagem (Casca Fixa vs. Miolo Central):**
-> No portal institucional do BCB, cabeçalho (`<header>`), rodapé (`<footer>`) e breadcrumbs (`<nav aria-label="breadcrumb">`) são componentes fixos, globais e imutáveis mantidos centralizadamente pelo CMS.
-> **É TERMINANTEMENTE PROIBIDO** gerar header, footer ou breadcrumbs nos arquivos de protótipo (`prototipos/*.html`).
-> A prototipagem restringe-se **exclusivamente à malha interna de conteúdo** (`<main id="conteudo-principal" class="bcb-container">` ou `main.bcb-content-body`), iniciando no `<h1>` institucional e encerrando no botão de retorno ao topo. A casca institucional é simulada exclusivamente no harness técnico (`prototipos/_harness.html`).
+> No portal institucional do BCB, cabeçalho (`<header>`), rodapé (`<footer>`) e breadcrumbs (`<nav aria-label="breadcrumb">`) são componentes fixos, globais e imutáveis mantidos centralizadamente pelo CMS institucional e simulados dinamicamente no visualizador técnico (`prototipos/_harness.html`).
+> **É TERMINANTEMENTE PROIBIDO** gerar `<html>`, `<head>`, `<body>`, `<!DOCTYPE>`, `<header>`, `<footer>`, breadcrumbs ou estilos inline (`style="..."`) nos arquivos de protótipo (`prototipos/*.html`).
+> A prototipagem restringe-se **exclusivamente à malha interna de conteúdo** (`<main id="conteudo-principal" class="bcb-container container py-4 mb-5">`), iniciando no `<h1>` institucional e encerrando no botão padronizado de retorno ao topo.
 
 ---
 
 ## 1. Sistema de Grid 12 Colunas & Container Institucional
 
-Toda interface do portal interno do BCB é projetada sobre um grid flexível de 12 colunas com **gutter padrão de 24px** e container de largura máxima calibrada em **1440px**.
+Toda interface do portal interno do BCB é projetada sobre um grid modular flexível de 12 colunas com **gutter padrão de 24px** e container de largura máxima calibrada em **1440px**.
 
-### 1.1 Átomos do Grid
+### 1.1 Átomos Estruturais do Grid
 
-| Classe | Finalidade | Comportamento Responsivo |
-|---|---|---|
-| `.bcb-container` | Container institucional centralizado | Mobile: padding 15px; Desktop (≥1200px): padding 25px; Ultra-wide (≥1520px): `max-width: 1440px` com `margin: 0 auto;`. |
-| `.bcb-row` | Linha flexível com compensação de gutter | `display: flex; flex-wrap: wrap; margin: 0 -12px;`. |
-| `.bcb-row--gap` | Linha com espaçamento nativo via gap | `display: flex; flex-wrap: wrap; gap: var(--bcb-spacing-lg, 24px);`. |
-| `.bcb-col-12` | Largura total (100% / 12 colunas) | Ocupa 100% da largura em todas as resoluções. |
-| `.bcb-col-lg-8` | Coluna analítica/editorial (70% / 8 colunas) | Ocupa 8 colunas em desktops (≥992px); 100% em telas menores. |
-| `.bcb-col-lg-4` | Coluna lateral / sidebar (30% / 4 colunas) | Ocupa 4 colunas em desktops (≥992px); 100% em telas menores. |
-| `.bcb-col-md-6` | Coluna proporcional 50/50 (6 colunas) | Ocupa 6 colunas em tablets/desktops (≥768px); 100% em mobile. |
-| `.bcb-col-md-4` | Coluna proporcional 33/33/33 (4 colunas) | Ocupa 4 colunas em tablets/desktops (≥768px); 100% em mobile. |
-| `.bcb-section` | Espaçador modular vertical entre blocos | `margin-bottom: var(--bcb-spacing-2xl, 48px);`. |
+| Contrato de Classe | Tag Semântica Recomendada | Finalidade no Layout | Comportamento Responsivo |
+|---|---|---|---|
+| `.bcb-container` / `.container` | `<main>` ou `<div>` | Container institucional centralizado | Mobile (<768px): padding 15px; Desktop (≥1200px): padding 25px; Ultra-wide (≥1520px): `max-width: 1440px; margin: 0 auto;`. |
+| `.bcb-row` / `.row` | `<div>` | Linha flexível com compensação de gutter | `display: flex; flex-wrap: wrap; margin: 0 -12px;`. |
+| `.bcb-col-12` / `.col-12` | `<div>` | Largura total (100% / 12 colunas) | Ocupa 100% da largura disponível em todas as resoluções. |
+| `.bcb-col-lg-8` / `.col-lg-8` | `<div>` | Coluna analítica/editorial (70% / 8 colunas) | Ocupa 8 colunas em desktops (≥992px); 100% em mobile e tablets. |
+| `.bcb-col-lg-4` / `.col-lg-4` | `<div>` | Coluna lateral / sidebar (30% / 4 colunas) | Ocupa 4 colunas em desktops (≥992px); 100% em mobile e tablets. |
+| `.bcb-col-md-6` / `.col-md-6` | `<div>` | Coluna proporcional 50/50 (6 colunas) | Ocupa 6 colunas em tablets/desktops (≥768px); 100% em mobile. |
+| `.bcb-col-md-4` / `.col-md-4` | `<div>` | Coluna proporcional 33/33/33 (4 colunas) | Ocupa 4 colunas em tablets/desktops (≥768px); 100% em mobile. |
+| `.bcb-section` | `<section>` | Espaçador modular vertical entre blocos | `margin-bottom: var(--bcb-spacing-2xl, 48px);`. |
 
 ---
 
 ## 2. Tipografia Institucional & Hierarquia de Informação
 
-A tipografia oficial do BCB prioriza legibilidade em alta densidade de dados, respeitando o Manual de Marca e as diretrizes e-MAG 3.1:
+A tipografia oficial do BCB prioriza clareza, alta legibilidade e conformidade rigorosa com o e-MAG 3.1 e WCAG 1.3.1:
 
-### 2.1 Famílias Tipográficas
-- **Texto Corrido e UI:** `Rawline`, `Inter`, `-apple-system`, `BlinkMacSystemFont`, `'Segoe UI'`, `Roboto`, `sans-serif`.
-- **Títulos e Destaques:** `Rawline`, `Inter` ou `Ubuntu` (fontes homologadas no Manual).
-- **Entrelinha e Cores:** `line-height: 1.5; color: var(--bcb-color-text, #212529);`.
+### 2.1 Contratos Tipográficos
+- **Texto Corrido e UI:** Família `Inter`, `Rawline`, `-apple-system`, `BlinkMacSystemFont`, `'Segoe UI'`, `Roboto`, `sans-serif`.
+- **Títulos e Destaques:** Família `Inter`, `Ubuntu` ou `Rawline` com peso semântico adequado (`font-weight: 700`).
+- **Valores Financeiros de Destaque:** Tipografia `Cormorant Garamond` ou `Inter` com classe `.bcb-kpi-value` ou `.bcb-indicator-value`.
+- **Cores Oficiais:** `var(--bcb-color-text)` ou `.text-body` para corpo; `var(--bcb-color-neutral-40)` ou `.text-muted` para metadados; `var(--bcb-brand-azul-blue)` ou `.text-bcb-brand` para títulos.
 
 ### 2.2 Hierarquia Semântica Estrita (WCAG 1.3.1 / e-MAG 3.1)
-- **H1 Único por Página:** Toda página interna possui **exatamente 1 tag `<h1>`** com a classe `.bcb-page-title`. O H1 nunca pode ser omitido nem duplicado.
-- **Seções Principais (`<h2>`):** Dividem os grandes blocos temáticos (ex: "Série Histórica", "Etapas de Solicitação", "Atos Vinculados").
-- **Subseções (`<h3>`):** Utilizadas para títulos de cards, etapas de steppers, itens de acordeão e subtópicos.
-- **Parágrafos Lead:** Parágrafo de abertura com classe `.lead` destacando a síntese executiva do ato ou serviço.
-- **Citações Oficiais:** Utilize `.bcb-citacao` para declarações do Presidente ou Diretores do BCB.
+- **H1 Único por Página:** Exatamente **1 tag `<h1>`** por protótipo com a classe `.bcb-page-title`. Proibido omitir, duplicar ou inserir elementos antes do H1.
+- **Seções Principais (`<h2>`):** Identificam os grandes blocos temáticos (ex.: "Posicionamento da Autoridade Monetária", "Série Histórica", "Como Solicitar").
+- **Subseções (`<h3>`):** Utilizadas para títulos de cards, etapas de steppers, itens de acordeão e subtópicos. NUNCA pule níveis (ex.: de `<h1>` direto para `<h3>`).
+- **Parágrafos Lead:** Parágrafo de abertura com a classe `.lead` destacando a síntese executiva do ato ou serviço.
 
 ---
 
-## 3. Material Symbols como Reforço Semântico
+## 3. Contratos de Iconografia (Material Icons)
 
-Ícones não são meros enfeites; atuam como ancoragem cognitiva rápida para o cidadão e para os servidores:
-
-- **Sintaxe Padrão:** `<span class="material-symbols-outlined" aria-hidden="true">nome_do_icone</span>`.
-- **Acessibilidade Mandatória:** Sempre inclua `aria-hidden="true"` quando o ícone acompanhar texto explicativo. Se o ícone for interativo e isolado, declare `aria-label` descritivo.
-- **Mapeamento Semântico de Ícones Homologados:**
-  - *Indicadores e Economia:* `analytics`, `trending_up`, `trending_down`, `account_balance`, `payments`, `currency_exchange`.
-  - *Avisos e Segurança:* `warning`, `gpp_bad`, `security`, `shield`, `verified`, `lock`.
-  - *Fluxos e Processos:* `check_circle`, `touch_app`, `step`, `assignment`, `schedule`, `send`.
-  - *Documentos e Dados:* `description`, `picture_as_pdf`, `table_view`, `download`, `data_object`, `tune`.
+- **Biblioteca Homologada:** Google Material Symbols Outlined (`.material-symbols-outlined.material-icons`).
+- **Acessibilidade Decorativa:** Sempre inclua `aria-hidden="true"` quando o ícone acompanhar texto explicativo:
+  ```html
+  <span class="material-symbols-outlined material-icons md-16 mr-1" aria-hidden="true">arrow_upward</span>
+  ```
+- **Acessibilidade Interativa (Ícone Isolado):** Botões apenas com ícone exigem obrigatoriamente `aria-label` descritivo na tag de ação:
+  ```html
+  <button type="button" class="btn btn-outline-secondary btn-icon" aria-label="Imprimir relatório">
+    <span class="material-symbols-outlined material-icons" aria-hidden="true">print</span>
+  </button>
+  ```
+- **Escala Canônica de Tamanhos:**
+  - `.md-16`: 16px (micro-ações, inline com texto, badges)
+  - `.md-18`: 18px (acordeões, botões compactos)
+  - `.md-20`: 20px (títulos de cards, callouts compactos)
+  - `.md-24`: 24px (tamanho padrão de ação)
+  - `.md-36`: 36px (empty states, destaques)
 
 ---
 
 ## 4. Matriz Modular de Slots para o CMS BCB
 
-Para viabilizar que webdesigners e editores de conteúdo recortem blocos diretamente para as regiões do CMS do portal, o agente e a equipe devem delimitar cada bloco com **comentários semânticos canônicos**:
+Para permitir o recorte direto de blocos para o CMS do portal, delimite cada bloco com **comentários semânticos canônicos de slots**:
 
 ```html
 <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
 <section class="bcb-section">
   <div class="bcb-row">
     <div class="bcb-col-12">
-      <h1 class="bcb-page-title">Título Oficial</h1>
-      <div class="bcb-page-meta">...</div>
-      <p class="lead mt-3 text-body">Lead descritivo...</p>
+      <h1 class="bcb-page-title">Título Oficial da Página</h1>
+      <div class="bcb-page-meta">
+        <span class="tag-bcb primary">Categoria</span>
+        <span>Publicado em: DD/MM/AAAA &bull; Banco Central do Brasil</span>
+      </div>
+      <p class="lead mt-3 text-body">Lead descritivo contextualizando o objetivo do ato ou serviço...</p>
     </div>
   </div>
 </section>
 
-<!-- [SLOT CMS: 33/33/33 - Grade de Indicadores Econômicos] -->
+<!-- [SLOT CMS: 33/33/33 - Grade de Indicadores em Destaque] -->
 <section class="bcb-section">
   <div class="bcb-row">
     <div class="bcb-col-12 bcb-col-md-4 mb-3 mb-md-0">...Card 1...</div>
@@ -110,60 +120,58 @@ Para viabilizar que webdesigners e editores de conteúdo recortem blocos diretam
 
 ## 5. Padrões Canônicos de Composição e UX (Semântica de Conteúdo)
 
-Em vez de copiar templates rígidos, a interface deve ser projetada conforme o **padrão de UX mais adequado aos dados brutos**:
-
-### Padrão A: Painéis Analíticos e Séries Temporais
-- **Indicação:** Dados de reuniões do Copom, taxa Selic, IPCA, câmbio PTAX, reservas internacionais ou estatísticas monetárias.
+### Padrão A: Painéis Analíticos e Séries Temporais (SGS)
+- **Indicação:** Copom, taxa Selic, IPCA, câmbio PTAX, reservas internacionais ou estatísticas monetárias.
 - **Composição Típica:**
   1. *Slot 100%:* Abertura com `<h1>`, metadados de vigência e lead contextual.
-  2. *Slot 33/33/33 ou 50/50:* Destaque de métricas em `.bcb-indicator-card` com variação percentual (`.bcb-indicator-trend up|down`).
-  3. *Slot 100%:* Painel de filtros (`.bcb-filter-panel`) por data ou tipo de taxa.
-  4. *Slot 100%:* Tabela de dados densa com `<caption>`, alinhamento numérico à direita e botões de exportação (`.bcb-data-export`).
+  2. *Slot 33/33/33 ou 50/50:* Destaque de métricas em `.bcb-indicator-card` com variação percentual (`.bcb-indicator-trend up|down|neutral`).
+  3. *Slot 100%:* Painel de filtros facetados por período ou status.
+  4. *Slot 100%:* Tabela densa com `<caption>`, alinhamento numérico à direita e barra de exportação (`.bcb-data-export`).
 
 ### Padrão B: Comunicação Normativa e Atos Regulatórios
-- **Indicação:** Notas à imprensa, decisões de diretoria, circulares normativas, minutas do Pix e resoluções.
+- **Indicação:** Notas à imprensa, decisões da Diretoria Colegiada, circulares normativas, minutas e resoluções.
 - **Composição Típica:**
-  1. *Slot 100%:* Abertura com `<h1>`, badges temáticas (`.tag-bcb.primary`) e data do ato.
+  1. *Slot 100%:* Abertura com `<h1>`, tags temáticas (`.tag-bcb.primary`) e data de publicação.
   2. *Slot 70/30:*
-     - *Coluna 70% (`.bcb-col-lg-8`):* Texto jornalístico com hierarquia de subtítulos `<h2>`, citação diretorial (`.bcb-citacao`) e callout regulatório (`.callout.callout-warning`).
-     - *Coluna 30% (`.bcb-col-lg-4`):* Bloco lateral com resoluções oficiais vinculadas (`.documentos .documento`) contendo formato e tamanho do arquivo.
+     - *Coluna 70% (`.bcb-col-lg-8`):* Texto jornalístico com subtítulos `<h2>`, citação diretorial (`.bcb-citacao` com `<cite class="blockquote-footer">`) e callout regulatório (`.callout.callout-warning`).
+     - *Coluna 30% (`.bcb-col-lg-4`):* Bloco lateral com resoluções oficiais vinculadas (`.documentos .documento`) contendo formato e tamanho do arquivo em KB/MB.
 
 ### Padrão C: Serviços ao Cidadão e Guias Passo a Passo
 - **Indicação:** Registrato, Valores a Receber, Mecanismo Especial de Devolução do Pix (MED), peticionamento e ouvidoria.
 - **Composição Típica:**
-  1. *Slot 100%:* Abertura institucional com `<h1>`, selo de serviço digital e orientações gerais.
-  2. *Slot 100%:* Stepper cronológico (`<ol class="process-list">`) com etapas claras de acesso.
+  1. *Slot 100%:* Abertura institucional com `<h1>`, tag de serviço público e orientações gerais.
+  2. *Slot 100%:* Alerta crítico de segurança elevado contra fraudes (`.callout.callout-warning.callout-elevated`).
   3. *Slot 70/30:*
-     - *Coluna 70%:* Tabela explicativa de requisitos ou documentos necessários.
-     - *Coluna 30%:* Box elevado de alerta antifraude (`.callout.callout-warning.callout-elevated`) e orientações sobre contas Gov.br (Prata/Ouro).
-  4. *Slot 100%:* Seção de dúvidas frequentes com acordeão oficial acessível (`.accordion.modelo-1`).
+     - *Coluna 70%:* Stepper cronológico (`<ol class="process-list">`) e acordeão de dúvidas (`.accordion.modelo-1`).
+     - *Coluna 30%:* Card de prazos-chave e callout de canais oficiais (Central 145).
 
-### Padrão D: Conteúdo Educativo e Leitura Aprofundada
-- **Indicação:** Cartilhas de cidadania financeira, guias de aposentadoria, medidas preventivas e educação financeira escolar.
+### Padrão D: Refatoração Semântica de Conteúdo Legado
+- **Indicação:** Modernização de páginas antigas estruturadas com tabelas de layout, tags `<font>` ou estilos inline.
 - **Composição Típica:**
-  1. *Slot 100% (Largura Controlada):* Container centralizado (`.bcb-row.justify-content-center` com `.bcb-col-12.bcb-col-lg-10`) para evitar fadiga visual.
-  2. *Slot 50/50:* Destaques práticos, reflexões e caixas comparativas (`.bcb-col-md-6`).
-  3. *Slot 100%:* Dicas práticas destacadas com `.tip-box` e links para download de materiais de apoio.
+  1. *Slot 100%:* Normalização do título no `<h1>` padronizado com classe `.bcb-page-title`.
+  2. *Slot 70/30:* Conversão das tabelas em colunas proporcionais de grid 12 (`.bcb-col-lg-8` para conteúdo e `.bcb-col-lg-4` para atos vinculados).
+  3. *Componentes Semânticos:* Substituição de caixas coloridas obsoletas por `.callout` acessível e cards institucionais `.bg-bcb-surface`.
 
 ---
 
-## 6. Padrões de Estados de Interface (UI States)
+## 6. Padrões de Estados de Interface (UI States — Zero Inline Styles)
 
 ### 6.1 Estado Vazio (Empty State)
-Quando uma busca ou filtro de série temporal não retornar registros:
+Quando uma consulta ou filtro não retornar registros:
 
 ```html
 <div class="bcb-empty-state bcb-empty-state-bordered" role="region" aria-label="Resultado da consulta">
   <div class="bcb-empty-state-icon">
-    <span class="material-symbols-outlined" aria-hidden="true">search_off</span>
+    <span class="material-symbols-outlined material-icons md-36" aria-hidden="true">search_off</span>
   </div>
   <h3 class="bcb-empty-state-title">Nenhum registro encontrado</h3>
   <p class="bcb-empty-state-desc">
-    Não foram encontrados dados para o período selecionado. Tente ajustar os parâmetros de busca.
+    Não foram encontrados dados para os critérios selecionados. Tente ajustar os filtros de busca.
   </p>
   <div class="bcb-empty-state-actions">
-    <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-      <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">filter_alt_off</span> Limpar Filtros
+    <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1" data-action="reset-filters">
+      <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">filter_alt_off</span>
+      <span>Limpar Filtros</span>
     </button>
   </div>
 </div>
@@ -172,14 +180,14 @@ Quando uma busca ou filtro de série temporal não retornar registros:
 ---
 
 ### 6.2 Estado de Carregamento (Skeleton Screen)
-Durante a requisição de séries temporais ou APIs de dados abertos:
+Durante o consumo assíncrono de séries temporais ou APIs de dados:
 
 ```html
-<div class="row" aria-busy="true" aria-label="Carregando indicadores...">
-  <div class="col-md-6">
-    <div class="bcb-skeleton-indicator">
+<div class="bcb-row" aria-busy="true" aria-label="Carregando indicadores econômicos...">
+  <div class="bcb-col-12 bcb-col-md-6">
+    <div class="bcb-skeleton-indicator p-3 border rounded bg-bcb-surface">
       <div class="bcb-skeleton bcb-skeleton-text w-50 mb-2"></div>
-      <div class="bcb-skeleton" style="height: 2.25rem; width: 40%; margin-bottom: 0.5rem;"></div>
+      <div class="bcb-skeleton bcb-skeleton-value w-25 mb-2"></div>
       <div class="bcb-skeleton bcb-skeleton-text w-75 mb-0"></div>
     </div>
   </div>
@@ -189,16 +197,17 @@ Durante a requisição de séries temporais ou APIs de dados abertos:
 ---
 
 ### 6.3 Estado de Erro ou Indisponibilidade (Error State)
-Em caso de falha de conexão ou timeout em consultas de séries históricas:
+Em caso de indisponibilidade de serviço ou falha de requisição:
 
 ```html
 <div class="callout callout-danger callout-left-bordered my-4" role="alert">
-  <span class="material-symbols-outlined callout-icon" aria-hidden="true">error_outline</span>
+  <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">error_outline</span>
   <div class="callout-content">
     <h3 class="callout-title h5">Não foi possível carregar os dados</h3>
-    <p class="mb-3">O serviço de dados do Banco Central está temporariamente indisponível. Por favor, tente novamente em instantes.</p>
-    <button type="button" class="btn btn-danger btn-sm d-inline-flex align-items-center" onclick="window.location.reload();">
-      <span class="material-symbols-outlined mr-1" aria-hidden="true">refresh</span> Tentar Novamente
+    <p class="mb-3 text-body">O serviço de dados do Banco Central está temporariamente indisponível. Por favor, tente novamente em instantes.</p>
+    <button type="button" class="btn btn-danger btn-sm d-inline-flex align-items-center gap-1" data-action="retry">
+      <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">refresh</span>
+      <span>Tentar Novamente</span>
     </button>
   </div>
 </div>
