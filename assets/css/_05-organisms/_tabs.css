@@ -53,7 +53,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.85rem 1.35rem;
   font-size: 0.95rem;
   font-weight: 500;
   white-space: nowrap;
@@ -68,7 +68,7 @@
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   line-height: 1.4;
-  min-height: 44px;
+  min-height: 48px;
   box-sizing: border-box;
   outline: none;
 }
@@ -116,7 +116,7 @@
   border: 1px solid var(--bcb-color-border, var(--bcb-gray-300));
   border-top: none;
   background-color: var(--bcb-color-surface, var(--bcb-color-white));
-  padding: 1.5rem;
+  padding: 1.5rem 1.75rem;
   border-radius: 0 0 var(--bcb-radius-4, 4px) var(--bcb-radius-4, 4px);
   position: relative;
   z-index: 1;

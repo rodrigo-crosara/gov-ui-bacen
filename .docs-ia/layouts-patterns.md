@@ -1,8 +1,14 @@
 # BCB UI – Diretrizes de Layout, Grid e Padrões de UX
 
-> **Status**: v3.0.0 (Diretrizes Oficiais de Grid 12 Colunas, Tipografia, Material Icons e Padrões Composicionais de UX).
+> **Status**: v4.0.0 (Diretrizes Oficiais de Grid 12 Colunas, Tipografia, Material Icons e Padrões Composicionais de UX).
 > Este documento é a **fonte da verdade para arquitetura de informação e diagramação** no Banco Central do Brasil.
 > A IA e os webdesigners devem utilizar estes princípios para projetar interfaces dinâmicas, responsivas e acessíveis a partir da semântica dos dados, sem dependência de templates rígidos.
+
+> [!IMPORTANT]
+> **Definição de Escopo de Prototipagem (Casca Fixa vs. Miolo Central):**
+> No portal institucional do BCB, cabeçalho (`<header>`), rodapé (`<footer>`) e breadcrumbs (`<nav aria-label="breadcrumb">`) são componentes fixos, globais e imutáveis mantidos centralizadamente pelo CMS.
+> **É TERMINANTEMENTE PROIBIDO** gerar header, footer ou breadcrumbs nos arquivos de protótipo (`prototipos/*.html`).
+> A prototipagem restringe-se **exclusivamente à malha interna de conteúdo** (`<main id="conteudo-principal" class="bcb-container">` ou `main.bcb-content-body`), iniciando no `<h1>` institucional e encerrando no botão de retorno ao topo. A casca institucional é simulada exclusivamente no harness técnico (`prototipos/_harness.html`).
 
 ---
 

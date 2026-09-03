@@ -105,7 +105,7 @@ Ao receber o insumo cru do webdesigner, analise a natureza das informações e c
 | **Ações rápidas de página e carimbo de atualização temporal** | Barra utilitária institucional para impressão e compartilhamento | **Barra de Utilidades** (`.bcb-page-toolbar`) | Carimbo de data/hora de última modificação, botões com área de toque mínima de 44x44px (`Imprimir`, `Copiar Link`, `Compartilhar`). |
 | **Regras densas, esclarecimentos de dúvidas, termos técnicos ou FAQ** | Seções expansíveis/colapsáveis para otimizar o fluxo de leitura | **Accordion Acessível** (`.accordion.modelo-1`) | Acordeão acessível compatível com WAI-ARIA (`aria-expanded`, `data-toggle="collapse"`). |
 | **Minutas oficiais, resoluções, anexos regulatórios ou manuais em PDF** | Cartões de download de documentos com metadados obrigatórios | **Download de Documento** (`.documentos`) | Bloco `.documento` com ícone de formato (PDF, ZIP, CSV), título oficial do ato, peso em KB/MB e botão de baixar. |
-| **Trilha hierárquica em páginas de nível profundo de navegação** | Trilha de navegação canônica acessível | **Breadcrumbs Acessíveis** (`.bcb-breadcrumb-nav`) | `<nav aria-label="Trilha de navegação">` com `<ol class="breadcrumb bcb-breadcrumb">`, ícone de início, separador semântico `chevron_right` e `aria-current="page"` no ativo. |
+| **Trilha hierárquica e navegação institucional global** | Elemento de casca fixa do portal (provido pelo CMS institucional) | **Casca Fixa do Portal** (Fora do escopo do protótipo) | **NÃO GERAR**: Breadcrumbs, header e footer são imutáveis e fixos no portal do BCB, simulados exclusivamente no harness (`_harness.html`). |
 
 ---
 
@@ -199,10 +199,10 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
      - **Fundos de Callouts:** `var(--bg-brand-light)`, `var(--bg-verde-light)`, `var(--bg-amarellato-light)`, `var(--bg-vinho-light)`.
    - **Garantia de Contraste WCAG 2.2:** O layout do miolo deve ser calibrado para preservar contraste mínimo de 4.5:1 em texto regular e 7:1 em elementos de destaque sob `data-theme="dark"` e `data-contrast="high"`.
 
-8. **Navegação Padronizada Mandatória (Breadcrumb e Botão Voltar ao Topo):**
-   - **Trilha de Navegação (Breadcrumb Semântico):** Todo protótipo DEVE iniciar no topo de `<main id="conteudo-principal">` com a trilha de navegação acessível `<nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav mb-3">`, contendo `<ol class="breadcrumb bg-transparent p-0 mb-0 font-size-sm">` e o item ativo final com `aria-current="page"`.
+8. **Navegação Padronizada Mandatória (Retorno ao Topo e Zero Breadcrumbs):**
+   - **Proibição Absoluta de Breadcrumbs:** Protótipos NÃO DEVEM conter tags `<nav aria-label="breadcrumb">` ou `.breadcrumb`. A trilha de navegação é fixa e fornecida pelo portal institucional (simulada dinamicamente no `prototipos/_harness.html`).
    - **Botão Voltar ao Topo:** Todo protótipo DEVE encerrar no rodapé de `<main id="conteudo-principal">` (antes do fechamento `</main>`) com o bloco de retorno rápido `<div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">` contendo o botão âncora `href="#conteudo-principal"` e ícone `arrow_upward`.
-   - **Restrição de Escopo:** Ambos os elementos residem obrigatoriamente DENTRO do container `<main>`, preservando a regra de zero nós estruturais soltos no `<body>`.
+   - **Restrição de Escopo:** O miolo central reside estritamente DENTRO do container `<main>`, preservando a regra de zero nós estruturais soltos no `<body>`.
 
 ---
 
@@ -239,17 +239,8 @@ Ao gerar um novo protótipo de alta fidelidade para versionar em `prototipos/[no
 </head>
 <body>
 
-    <!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único) -->
+    <!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único — Sem Header, Footer ou Breadcrumbs) -->
     <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
-
-        <!-- [NAVEGAÇÃO: Trilha de Navegação / Breadcrumb Semântico Acessível (WCAG 2.4.4 / e-MAG)] -->
-        <nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav mb-3">
-            <ol class="breadcrumb bg-transparent p-0 mb-0 font-size-sm">
-                <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
-                <li class="breadcrumb-item"><a href="../pages/prototipos.html">Protótipos</a></li>
-                <li class="breadcrumb-item active" aria-current="page">[Título Curto da Demanda]</li>
-            </ol>
-        </nav>
         
         <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
         <section class="bcb-section">
@@ -327,9 +318,8 @@ Antes de entregar qualquer novo protótipo ou salvar em `prototipos/`, valide ob
 - [ ] Todos os fundos utilizam `var(--bcb-color-white)` ou `var(--bcb-color-surface)`?
 - [ ] O layout foi inspecionado sob `data-theme="dark"` e `data-contrast="high"` via `prototipos/_harness.html`?
 
-### 7. Navegação Padronizada (Breadcrumb e Retorno ao Topo)
-- [ ] A trilha de navegação semântica (`<nav aria-label="Trilha de navegação">`) está posicionada no início do `<main>` com `<ol class="breadcrumb">`?
-- [ ] O último item ativo do breadcrumb possui `aria-current="page"` para acessibilidade?
+### 7. Navegação Padronizada (Retorno ao Topo e Ausência de Breadcrumbs)
+- [ ] O protótipo está **isento de `<header>`, `<footer>` e breadcrumbs** (`<nav aria-label="Trilha de navegação">`, `.breadcrumb`)?
 - [ ] O botão "Voltar ao topo" (`.bcb-back-to-top-wrapper`) está posicionado no encerramento do `<main>` apontando para `#conteudo-principal`?
 - [ ] Nenhum elemento de layout ou tag de conteúdo foi colocado fora do container `<main id="conteudo-principal">`?
 

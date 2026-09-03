@@ -33,15 +33,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.15rem 1.25rem;
-  font-weight: 500;
+  padding: 1.15rem 1.5rem;
+  min-height: 48px;
+  font-weight: 600;
   color: var(--bcb-brand-blue);
   text-decoration: none;
   text-align: left;
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .accordion.modelo-1 .card-header .btn:hover,
@@ -78,8 +79,93 @@
 .bcb-accordion-content {
   border: 1px solid var(--bcb-gray-200);
   border-top: none;
-  padding: 1.25rem 1.5rem;
+  padding: 1.35rem 1.5rem;
   background-color: var(--bcb-color-white);
   color: var(--bcb-color-body-text);
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+/* =========================================================================
+   Modo Escuro (Dark Mode) — Acordeão
+   ========================================================================= */
+:root[data-theme="dark"] .accordion.modelo-1 .card,
+:root[data-theme="dark"] .bcb-accordion .card {
+  background-color: var(--bcb-color-surface, #121212);
+  border: 1px solid var(--bcb-gray-300, #3E454B);
+}
+
+:root[data-theme="dark"] .accordion.modelo-1 .card-header,
+:root[data-theme="dark"] .bcb-accordion .card-header {
+  background-color: var(--bcb-gray-100, #1A1F24);
+}
+
+:root[data-theme="dark"] .accordion.modelo-1 .card-header:hover,
+:root[data-theme="dark"] .bcb-accordion .card-header:hover {
+  background-color: var(--bcb-gray-200, #2A3038);
+}
+
+:root[data-theme="dark"] .accordion.modelo-1 .card-header .btn,
+:root[data-theme="dark"] .bcb-accordion .card-header .btn,
+:root[data-theme="dark"] .bcb-accordion-trigger {
+  color: var(--bcb-brand-azul-blue, #4DC8FF);
+}
+
+:root[data-theme="dark"] .accordion.modelo-1 .card-header .btn:hover,
+:root[data-theme="dark"] .bcb-accordion .card-header .btn:hover,
+:root[data-theme="dark"] .bcb-accordion-trigger:hover {
+  color: #FFFFFF;
+}
+
+:root[data-theme="dark"] .accordion.modelo-1 .card-header .btn .material-icons,
+:root[data-theme="dark"] .bcb-accordion-trigger .accordion-chevron {
+  color: var(--bcb-brand-azul-blue, #4DC8FF);
+}
+
+:root[data-theme="dark"] .accordion.modelo-1 .card-body,
+:root[data-theme="dark"] .bcb-accordion .card-body,
+:root[data-theme="dark"] .bcb-accordion-content {
+  background-color: var(--bcb-color-surface, #121212);
+  border-color: var(--bcb-gray-300, #3E454B);
+  color: var(--bcb-gray-800, #E6EDF3);
+}
+
+/* =========================================================================
+   Modo Alto Contraste (High Contrast AAA) — Acordeão
+   ========================================================================= */
+:root[data-contrast="high"] .accordion.modelo-1 .card,
+:root[data-contrast="high"] .bcb-accordion .card {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .accordion.modelo-1 .card-header,
+:root[data-contrast="high"] .bcb-accordion .card-header {
+  background-color: #000000 !important;
+  border-bottom: 2px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .accordion.modelo-1 .card-header .btn,
+:root[data-contrast="high"] .bcb-accordion .card-header .btn,
+:root[data-contrast="high"] .bcb-accordion-trigger {
+  color: #FFFF00 !important;
+  font-weight: 700;
+}
+
+:root[data-contrast="high"] .accordion.modelo-1 .card-header .btn .material-icons,
+:root[data-contrast="high"] .bcb-accordion-trigger .accordion-chevron {
+  color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .accordion.modelo-1 .card-header .btn:focus-visible,
+:root[data-contrast="high"] .bcb-accordion .card-header .btn:focus-visible,
+:root[data-contrast="high"] .bcb-accordion-trigger:focus-visible {
+  outline: 3px solid #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .accordion.modelo-1 .card-body,
+:root[data-contrast="high"] .bcb-accordion .card-body,
+:root[data-contrast="high"] .bcb-accordion-content {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
 }

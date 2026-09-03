@@ -29,14 +29,6 @@
     <!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único) -->
     <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
 
-        <!-- [NAVEGAÇÃO: Trilha de Navegação / Breadcrumb Semântico Acessível (WCAG 2.4.4 / e-MAG)] -->
-        <nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav mb-3">
-            <ol class="breadcrumb bg-transparent p-0 mb-0 font-size-sm">
-                <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
-                <li class="breadcrumb-item"><a href="../pages/prototipos.html">Protótipos</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Série SGS 432: Taxas do Copom</li>
-            </ol>
-        </nav>
 
         <!-- [SLOT CMS: 100% - Abertura e Metadados do Sistema SGS] -->
         <section class="bcb-section">
@@ -169,9 +161,9 @@
                         <span>Deslize horizontalmente para visualizar todas as colunas da tabela</span>
                     </div>
 
-                    <!-- Tabela de Dados Acessível com Rolagem Horizontal -->
-                    <div class="table-responsive" tabindex="0" role="region" aria-label="Tabela histórica de decisões do Copom com rolagem horizontal">
-                        <table class="table table-bordered table-striped mb-0">
+                    <!-- Tabela de Dados Acessível com Rolagem e Cabeçalho Fixo -->
+                    <div class="table-responsive table-sticky-header" tabindex="0" role="region" aria-label="Tabela histórica de decisões do Copom com rolagem e cabeçalho fixo">
+                        <table class="table table-bordered table-striped table-cards-mobile mb-0">
                             <caption>Série SGS 432 contendo histórico das taxas fixadas pelo Copom, datas de início e fim da reunião, variação e status da ata.</caption>
                             <thead class="thead-primary">
                                 <tr>

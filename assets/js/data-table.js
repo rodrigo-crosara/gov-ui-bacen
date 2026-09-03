@@ -98,6 +98,36 @@
     });
   }
 
+  function initResponsiveCards() {
+    const tables = document.querySelectorAll('.bcb-data-table, table.table');
+    tables.forEach(table => {
+      const thead = table.querySelector('thead');
+      const tbody = table.querySelector('tbody');
+      if (!thead || !tbody) return;
+
+      const ths = Array.from(thead.querySelectorAll('th'));
+      if (ths.length === 0) return;
+
+      const headers = ths.map(th => {
+        const clone = th.cloneNode(true);
+        const icon = clone.querySelector('.sort-icon, .material-symbols-outlined, .material-icons');
+        if (icon) icon.remove();
+        return clone.innerText.trim();
+      });
+
+      const rows = tbody.querySelectorAll('tr');
+      rows.forEach(row => {
+        if (row.classList.contains('bcb-table-empty-row')) return;
+        const cells = Array.from(row.children);
+        cells.forEach((cell, idx) => {
+          if (!cell.hasAttribute('data-label') && headers[idx]) {
+            cell.setAttribute('data-label', headers[idx]);
+          }
+        });
+      });
+    });
+  }
+
   const BcbDataTable = {
     init() {
       const sortableHeaders = document.querySelectorAll('.bcb-data-table th.sortable, table.table th.sortable');
@@ -132,6 +162,11 @@
       });
 
       initScrollIndicators();
+      initResponsiveCards();
+    },
+    update() {
+      initScrollIndicators();
+      initResponsiveCards();
     }
   };
 

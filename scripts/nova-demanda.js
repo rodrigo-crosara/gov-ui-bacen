@@ -303,7 +303,7 @@ ${atosTexto}
 ---
 
 ### INSTRUÇÃO AO AGENTE
-> "Atue como Especialista em UI/UX do BCB. Diagramar o miolo desta demanda adotando as diretrizes oficiais de .antigravityrules e da skill gerador-ui-bcb. Salvar o protótipo canônico em prototipos/${slug}.html contendo H1 único, grid 12 colunas Bootstrap, breadcrumb semântico e botão de retorno ao topo, isento de cascas externas e sem scripts inline."
+> "Atue como Especialista em UI/UX do BCB. Diagramar exclusivamente a malha de conteúdo interno desta demanda adotando as diretrizes oficiais de .antigravityrules e da skill gerador-ui-bcb. Salvar o protótipo canônico em prototipos/${slug}.html contendo H1 único, grid 12 colunas Bootstrap e botão de retorno ao topo, isento de cascas externas (sem header, sem footer, sem breadcrumbs) e sem scripts inline."
 `;
 
 fs.writeFileSync(caminhoArquivoDestino, template, 'utf8');

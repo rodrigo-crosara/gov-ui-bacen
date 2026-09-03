@@ -81,21 +81,27 @@
 
 .bcb-kpi-value {
   font-family: var(--bcb-font-cormorant, "Cormorant Garamond", Georgia, serif);
-  font-size: 2.25rem;
+  font-size: clamp(1.5rem, 2.2vw, 2.25rem);
   font-weight: 700;
   color: var(--bcb-gray-900, #14171A);
-  line-height: 1.1;
+  line-height: 1.15;
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: var(--bcb-space-1, 0.25rem);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
 }
 
 .bcb-kpi-unit {
   font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
   font-weight: 500;
   color: var(--bcb-gray-600, #7E8A95);
+  white-space: nowrap;
 }
 
 /* Rodapé com Indicador de Tendência e Data-Base */

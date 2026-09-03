@@ -11,11 +11,10 @@ Este diretório armazena exclusivamente as **telas e protótipos de alta fidelid
    ```html
    <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
    ```
-2. **Ausência Total de Cascas Globais Externas:**
-   Nenhum arquivo neste diretório deve conter `<header>`, `<footer>`, `#barra-brasil` ou menus globais externos. Esses elementos são providos de forma centralizada pelo CMS do portal institucional.
-3. **Navegação Padronizada Acessível:**
-   - **Breadcrumb Semântico:** Inserido no topo do `<main>` via `<nav aria-label="Trilha de navegação">` com `<ol class="breadcrumb">` e `aria-current="page"`.
-   - **Retorno ao Topo:** Inserido na base do `<main>` via `.bcb-back-to-top-wrapper` com link âncora `#conteudo-principal` e ícone `arrow_upward`.
+2. **Ausência Total de Cascas Globais Externas e Breadcrumbs:**
+   Nenhum arquivo neste diretório deve conter `<header>`, `<footer>`, `#barra-brasil` ou breadcrumbs. Esses elementos são componentes fixos e imutáveis fornecidos de forma centralizada pelo CMS do portal institucional.
+3. **Navegação de Retorno ao Topo Acessível:**
+   Inserido na base do `<main>` via `.bcb-back-to-top-wrapper` com link âncora `#conteudo-principal` e ícone `arrow_upward`. A trilha de navegação (breadcrumb) e a casca são simuladas exclusivamente no visualizador técnico (`_harness.html`).
 4. **Grid 12 Colunas Oficial do BCB:**
    A diagramação modular utiliza `.bcb-row` e colunas proporcionais (`.bcb-col-12`, `.bcb-col-lg-8`, `.bcb-col-lg-4`, `.bcb-col-md-6`, `.bcb-col-md-4`) com comentários delimitadores de slots CMS (`<!-- [SLOT CMS: ...] -->`).
 5. **Resiliência Cromática nos 3 Temas:**

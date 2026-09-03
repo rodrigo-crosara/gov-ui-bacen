@@ -5,7 +5,7 @@
 
 .bcb-alert {
   padding: var(--bcb-space-4, 1rem) var(--bcb-space-5, 1.25rem);
-  margin-bottom: var(--bcb-space-4, 1rem);
+  margin: var(--bcb-spacing-lg, 1.5rem) 0;
   border-radius: var(--bcb-radius-4, 4px);
   border: 1px solid var(--bcb-gray-300, #CCD4DC);
   border-left-width: 5px;
@@ -22,6 +22,10 @@
   font-size: 1.5rem !important;
   line-height: 1;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
   margin-top: 2px;
 }
 
@@ -30,12 +34,15 @@
   min-width: 0;
 }
 
-.bcb-alert .alert-title {
-  font-size: 1rem;
+.bcb-alert .alert-title,
+.bcb-alert .alert-content > h2,
+.bcb-alert .alert-content > h3,
+.bcb-alert .alert-content > h4 {
+  font-size: 1.05rem;
   font-weight: 700;
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.35rem 0;
   color: var(--bcb-gray-900, #14171A);
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .bcb-alert .alert-message {

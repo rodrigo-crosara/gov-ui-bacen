@@ -229,14 +229,9 @@ for (const arquivo of arquivosHTML) {
       problemas.push('Elemento <nav class="govbr..."> detectado em protótipo.');
     }
 
-    // 3.2.1 Validação de conformidade semântica de Breadcrumbs padronizados (WCAG 2.4.4 / e-MAG)
-    if (conteudo.includes('breadcrumb')) {
-      if (!conteudo.includes('aria-label="Trilha de navegação"') && !conteudo.includes("aria-label='Trilha de navegação'") && !conteudo.includes('aria-label="Breadcrumb"')) {
-        alertas.push('Breadcrumb deve conter aria-label descritivo (ex.: aria-label="Trilha de navegação").');
-      }
-      if (!conteudo.includes('aria-current="page"')) {
-        alertas.push('Último item ativo do breadcrumb deve conter aria-current="page" para acessibilidade.');
-      }
+    // 3.2.1 Proibição estrita de Breadcrumbs em protótipos (elemento de casca fixa provido pelo CMS)
+    if (conteudo.includes('breadcrumb') || conteudo.match(/<nav[^>]*aria-label=["'][^"']*trilha/gi)) {
+      problemas.push('Breadcrumb detectado em protótipo — a trilha de navegação é fixa e fornecida pelo portal institucional (simulada dinamicamente no _harness.html).');
     }
 
     // 3.3 Proibição de tags customizadas órfãs/obsoletas

@@ -446,8 +446,8 @@
                 <ol class="text-body mb-0 pl-3">
                     <li class="mb-2"><strong>Crie a demanda:</strong> Execute <code>npm run demanda:criar -- --slug meu-servico --titulo "Título"</code> para gerar o scaffold em <code>.docs-ia/exemplos-demandas/</code>.</li>
                     <li class="mb-2"><strong>Instrua o agente:</strong> Forneça o markdown preenchido ao agente indicando a intenção e o padrão de UX desejado (ex.: <em>"Gere o protótipo para esta resolução adotando o layout 70/30 com downloads"</em>).</li>
-                    <li class="mb-2"><strong>Diagramação do miolo semântico:</strong> A IA projeta a interface em <code>prototipos/meu-servico.html</code> no container <code>&lt;main id="conteudo-principal"&gt;</code> com H1 único, grid modular de 12 colunas, breadcrumb semântico e botão voltar ao topo.</li>
-                    <li class="mb-2"><strong>Homologue no Harness Split-Screen:</strong> Abra <code>prototipos/_harness.html?src=meu-servico.html&amp;doc=...</code> para inspecionar lado a lado o briefing da demanda e a interface nos 3 viewports e 3 temas.</li>
+                    <li class="mb-2"><strong>Diagramação do miolo semântico:</strong> A IA projeta a interface em <code>prototipos/meu-servico.html</code> no container <code>&lt;main id="conteudo-principal"&gt;</code> com H1 único, grid modular de 12 colunas e botão voltar ao topo (isento de header, footer e breadcrumbs).</li>
+                    <li class="mb-2"><strong>Homologue no Harness Split-Screen:</strong> Abra <code>prototipos/_harness.html?src=meu-servico.html&amp;doc=...</code> para inspecionar lado a lado o briefing da demanda e a interface com casca institucional simulada nos 3 viewports e 3 temas.</li>
                     <li class="mb-0"><strong>Valide a qualidade:</strong> Execute <code>npm run test:prototypes</code> para certificar conformidade WCAG 2.1 AA, linter estrito de miolo e ausência de scripts inline.</li>
                 </ol>
             </div>

@@ -388,15 +388,27 @@
                     <label for="sidebarSearchInput" class="sr-only">Buscar componentes</label>
                     <input type="text" class="form-control form-control-sm" id="sidebarSearchInput" placeholder="Buscar componentes..." aria-label="Buscar componentes no catálogo">
                 </div>
-                <div class="btn-group btn-group-sm w-100" role="group" aria-label="Filtrar por categoria" id="categoryFilterGroup">
-                    <button type="button" class="btn btn-outline-secondary active py-1 px-1" data-cat="all" style="font-size: 0.72rem;">Todos</button>
-                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="atomos" style="font-size: 0.72rem;">Átomos</button>
-                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="moleculas" style="font-size: 0.72rem;">Moléculas</button>
-                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="organismos" style="font-size: 0.72rem;">Org.</button>
-                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="utilitarios" style="font-size: 0.72rem;">Util.</button>
+                <div class="btn-group btn-group-sm w-100 flex-wrap" role="group" aria-label="Filtrar por categoria" id="categoryFilterGroup">
+                    <button type="button" class="btn btn-outline-secondary active py-1 px-1" data-cat="all" style="font-size: 0.70rem;">Todos</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="dados" style="font-size: 0.70rem;">Dados</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="alertas" style="font-size: 0.70rem;">Alertas</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="navegacao" style="font-size: 0.70rem;">Naveg.</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="midias" style="font-size: 0.70rem;">Mídias</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="atomos" style="font-size: 0.70rem;">Átomos</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="moleculas" style="font-size: 0.70rem;">Moléc.</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="organismos" style="font-size: 0.70rem;">Org.</button>
                 </div>
             </div>
             
+            <div class="ds-sidebar-title text-uppercase font-weight-bold" style="color: var(--bcb-brand-azul-blue); border-bottom: 1px solid var(--bcb-gray-200); padding-bottom: 4px; margin-bottom: 6px;">
+                🏛️ Blocos por Finalidade
+            </div>
+            <a class="nav-link font-weight-bold" href="#painel-finalidades" style="color: var(--bcb-brand-azul-blue);">&bull; Painel de Finalidades</a>
+            <a class="nav-link" href="#molecula-datatable">&bull; 1. Tabelas e Dados</a>
+            <a class="nav-link" href="#molecula-alert">&bull; 2. Informativos e Alertas</a>
+            <a class="nav-link" href="#organismo-abas">&bull; 3. Navegação Interna</a>
+            <a class="nav-link" href="#molecula-documentos">&bull; 4. Mídias e Downloads</a>
+
             <div class="ds-sidebar-title" data-category="atomos">1. Átomos (Fundação)</div>
             <a class="nav-link" href="#atomo-grid" data-category="atomos">1.0 Grid e Diagramação (12 Colunas)</a>
             <a class="nav-link" href="#atomo-botoes" data-category="atomos">1.1 Botões e Variantes</a>
@@ -454,6 +466,97 @@
             <div class="mb-4">
                 <h1 class="h2 font-weight-bold text-bcb-brand">Catálogo Vivo de Componentes</h1>
                 <p class="text-muted">Explore todos os blocos de construção oficiais do portal do Banco Central do Brasil. Copie os snippets HTML canônicos e teste a responsividade e a alternância de temas em tempo real.</p>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- PAINEL EXECUTIVO: BLOCOS CENTRAIS DE CONTEÚDO POR FINALIDADE -->
+            <!-- ========================================================= -->
+            <div id="painel-finalidades" class="card p-3 p-md-4 mb-5 border shadow-sm" style="background: var(--bcb-gray-50); border-radius: var(--bcb-radius-8);">
+                <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                    <div>
+                        <h2 class="h5 font-weight-bold mb-1 text-bcb-brand d-flex align-items-center gap-2">
+                            <span class="material-symbols-outlined material-icons" style="color: var(--bcb-brand-azul-blue);" aria-hidden="true">dashboard_customize</span>
+                            Blocos Centrais de Conteúdo por Finalidade
+                        </h2>
+                        <p class="small text-muted mb-0">Classificação orientada à missão de geração e modernização do miolo de páginas institucionais.</p>
+                    </div>
+                    <span class="tag-bcb primary">Diretriz Oficial BCB UI</span>
+                </div>
+
+                <div class="row">
+                    <!-- 1. Tabelas e Dados -->
+                    <div class="col-12 col-md-6 col-xl-3 mb-3 mb-xl-0">
+                        <div class="card h-100 border p-3" style="background: var(--bcb-color-white);">
+                            <div class="d-flex align-items-center gap-2 mb-2 font-weight-bold text-bcb-brand">
+                                <span class="material-symbols-outlined material-icons" style="color: var(--bcb-brand-blue);" aria-hidden="true">table_chart</span>
+                                <span>1. Tabelas e Dados</span>
+                            </div>
+                            <p class="small text-muted mb-3">Painéis analíticos, séries temporais SGS e métricas financeiras responsivas.</p>
+                            <ul class="list-unstyled small mb-0 d-flex flex-column gap-1">
+                                <li><a href="#molecula-datatable" class="text-decoration-none text-bcb-brand font-weight-bold">&bull; Data Table Responsiva &amp; Sticky</a></li>
+                                <li><a href="#molecula-kpi-card" class="text-decoration-none text-body">&bull; KPI Card Financeiro</a></li>
+                                <li><a href="#molecula-cards-indicadores" class="text-decoration-none text-body">&bull; Cards de Indicadores de Taxas</a></li>
+                                <li><a href="#atomo-grid" class="text-decoration-none text-body">&bull; Grid 12 Colunas &amp; Slots CMS</a></li>
+                                <li><a href="#molecula-botoes-exportacao" class="text-decoration-none text-body">&bull; Barra de Exportação (CSV/JSON)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 2. Informativos e Alertas -->
+                    <div class="col-12 col-md-6 col-xl-3 mb-3 mb-xl-0">
+                        <div class="card h-100 border p-3" style="background: var(--bcb-color-white);">
+                            <div class="d-flex align-items-center gap-2 mb-2 font-weight-bold text-bcb-brand">
+                                <span class="material-symbols-outlined material-icons" style="color: var(--bcb-brand-amarellato, #c99320);" aria-hidden="true">campaign</span>
+                                <span>2. Informativos e Alertas</span>
+                            </div>
+                            <p class="small text-muted mb-3">Avisos regulatórios, segurança antifraude e destaques contextuais.</p>
+                            <ul class="list-unstyled small mb-0 d-flex flex-column gap-1">
+                                <li><a href="#molecula-alert" class="text-decoration-none text-bcb-brand font-weight-bold">&bull; Alertas Inline de Validação</a></li>
+                                <li><a href="#molecula-callouts" class="text-decoration-none text-body">&bull; Callouts de Contexto e Avisos</a></li>
+                                <li><a href="#molecula-tip-box" class="text-decoration-none text-body">&bull; Tip-Box Destacada</a></li>
+                                <li><a href="#molecula-quote" class="text-decoration-none text-body">&bull; Citação &amp; Destaque Normativo</a></li>
+                                <li><a href="#atomo-tags" class="text-decoration-none text-body">&bull; Tags &amp; Badges de Situação</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 3. Navegação Interna de Seções -->
+                    <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-0">
+                        <div class="card h-100 border p-3" style="background: var(--bcb-color-white);">
+                            <div class="d-flex align-items-center gap-2 mb-2 font-weight-bold text-bcb-brand">
+                                <span class="material-symbols-outlined material-icons" style="color: var(--bcb-brand-verde-susta, #067078);" aria-hidden="true">menu_open</span>
+                                <span>3. Navegação Interna</span>
+                            </div>
+                            <p class="small text-muted mb-3">Estruturação de fluxos, etapas de processos, sanfonas e utilidades.</p>
+                            <ul class="list-unstyled small mb-0 d-flex flex-column gap-1">
+                                <li><a href="#organismo-abas" class="text-decoration-none text-bcb-brand font-weight-bold">&bull; Navegação em Abas (Tabs)</a></li>
+                                <li><a href="#molecula-acordeon" class="text-decoration-none text-body">&bull; Acordeom Expansível (FAQ)</a></li>
+                                <li><a href="#molecula-stepper" class="text-decoration-none text-body">&bull; Stepper Sequencial de Fases</a></li>
+                                <li><a href="#organismo-process-list" class="text-decoration-none text-body">&bull; Process List Passo a Passo</a></li>
+                                <li><a href="#utilitario-backtotop" class="text-decoration-none text-body">&bull; Botão Voltar ao Topo</a></li>
+                                <li><a href="#molecula-page-toolbar" class="text-decoration-none text-body">&bull; Barra de Utilidades da Página</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 4. Mídias e Downloads -->
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <div class="card h-100 border p-3" style="background: var(--bcb-color-white);">
+                            <div class="d-flex align-items-center gap-2 mb-2 font-weight-bold text-bcb-brand">
+                                <span class="material-symbols-outlined material-icons" style="color: var(--bcb-brand-azul-blue);" aria-hidden="true">download</span>
+                                <span>4. Mídias e Downloads</span>
+                            </div>
+                            <p class="small text-muted mb-3">Distribuição de resoluções em PDF, atos normativos e vídeos.</p>
+                            <ul class="list-unstyled small mb-0 d-flex flex-column gap-1">
+                                <li><a href="#molecula-documentos" class="text-decoration-none text-bcb-brand font-weight-bold">&bull; Download de Documentos (PDF)</a></li>
+                                <li><a href="#organismo-videos" class="text-decoration-none text-body">&bull; Container de Vídeos Responsivo</a></li>
+                                <li><a href="#organismo-cards-link" class="text-decoration-none text-body">&bull; Cards de Navegação (Listalinks)</a></li>
+                                <li><a href="#organismo-noticias" class="text-decoration-none text-body">&bull; Lista &amp; Cards de Notícias</a></li>
+                                <li><a href="#organismo-hero-banner" class="text-decoration-none text-body">&bull; Hero Banner Institucional</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- ========================================================= -->
@@ -2894,11 +2997,31 @@
             const activeCategoryBtn = categoryFilterGroup ? categoryFilterGroup.querySelector('button.active') : null;
             const category = activeCategoryBtn ? activeCategoryBtn.getAttribute('data-cat') : 'all';
 
+            // Mapeamento de finalidades de blocos centrais de conteúdo
+            const purposeMap = {
+                'dados': ['atomo-grid', 'atomo-tabelas', 'molecula-datatable', 'molecula-cards-indicadores', 'molecula-kpi-card', 'molecula-botoes-exportacao'],
+                'alertas': ['molecula-alert', 'molecula-callouts', 'molecula-tip-box', 'molecula-quote', 'atomo-tags', 'molecula-toasts', 'molecula-empty-state'],
+                'navegacao': ['organismo-abas', 'molecula-acordeon', 'molecula-stepper', 'organismo-process-list', 'organismo-timelines', 'utilitario-backtotop', 'molecula-page-toolbar', 'molecula-breadcrumbs'],
+                'midias': ['molecula-documentos', 'organismo-videos', 'organismo-cards-link', 'organismo-noticias', 'organismo-hero-banner']
+            };
+
+            const isPurposeFilter = Boolean(purposeMap[category]);
+
             // Filtrar links da sidebar
             document.querySelectorAll('.ds-sidebar .nav-link').forEach(link => {
                 const linkCat = link.getAttribute('data-category') || '';
+                const linkHref = (link.getAttribute('href') || '').replace('#', '');
                 const linkText = link.textContent.toLowerCase();
-                const matchesCat = (category === 'all' || linkCat === category);
+                
+                let matchesCat = false;
+                if (category === 'all') {
+                    matchesCat = true;
+                } else if (isPurposeFilter) {
+                    matchesCat = purposeMap[category].includes(linkHref);
+                } else {
+                    matchesCat = (linkCat === category);
+                }
+
                 const matchesText = (!term || linkText.includes(term));
                 link.style.display = (matchesCat && matchesText) ? 'flex' : 'none';
             });
@@ -2906,15 +3029,29 @@
             // Filtrar títulos de categoria na sidebar
             document.querySelectorAll('.ds-sidebar .ds-sidebar-title[data-category]').forEach(title => {
                 const titleCat = title.getAttribute('data-category') || '';
-                title.style.display = (category === 'all' || titleCat === category) ? '' : 'none';
+                if (isPurposeFilter) {
+                    title.style.display = 'none';
+                } else {
+                    title.style.display = (category === 'all' || titleCat === category) ? '' : 'none';
+                }
             });
 
             // Filtrar cards na área principal
             document.querySelectorAll('.ds-component-card').forEach(card => {
                 const cardCat = card.getAttribute('data-category') || '';
+                const cardId = card.getAttribute('id') || '';
                 const titleEl = card.querySelector('.ds-component-header h3');
                 const cardTitle = titleEl ? titleEl.textContent.toLowerCase() : '';
-                const matchesCat = (category === 'all' || cardCat === card);
+
+                let matchesCat = false;
+                if (category === 'all') {
+                    matchesCat = true;
+                } else if (isPurposeFilter) {
+                    matchesCat = purposeMap[category].includes(cardId);
+                } else {
+                    matchesCat = (cardCat === category);
+                }
+
                 const matchesText = (!term || cardTitle.includes(term));
                 card.style.display = (matchesCat && matchesText) ? '' : 'none';
             });

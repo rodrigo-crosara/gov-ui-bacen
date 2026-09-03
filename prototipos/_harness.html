@@ -343,6 +343,241 @@
             outline: 3px solid #088694 !important;
             outline-offset: 2px !important;
         }
+
+        /* =================================================================
+           Casca Institucional Simulada do Portal BCB (Header, Breadcrumbs e Footer)
+           ================================================================= */
+        .simulated-portal-shell {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background: #ffffff;
+            color: #212529;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .simulated-barra-brasil {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 4px 16px;
+            font-size: 0.75rem;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .simulated-barra-brasil a {
+            color: #4a5568;
+            text-decoration: none;
+        }
+        .simulated-barra-brasil a:hover {
+            color: var(--bcb-brand-azul-blue, #025C75);
+            text-decoration: underline;
+        }
+        .simulated-gov-badge {
+            font-weight: 700;
+            color: #1a202c;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .simulated-header-bcb {
+            background-color: var(--bcb-brand-azul-blue, #025C75);
+            color: #ffffff;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .simulated-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .simulated-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .simulated-brand:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .simulated-brand-logo {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .simulated-brand-text {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        .simulated-brand-sub {
+            font-size: 0.7rem;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+        .simulated-header-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8rem;
+        }
+        .simulated-nav-link {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.15s;
+        }
+        .simulated-nav-link:hover {
+            color: #ffffff;
+            background: rgba(255,255,255,0.15);
+            text-decoration: none;
+        }
+
+        .simulated-breadcrumbs-bar {
+            background-color: var(--bcb-gray-50, #f8f9fa);
+            border-bottom: 1px solid var(--bcb-gray-200, #e9ecef);
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
+        .simulated-breadcrumbs-bar .breadcrumb {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-size: 0.8rem;
+        }
+        .simulated-breadcrumbs-bar .breadcrumb-item a {
+            color: var(--bcb-brand-azul-blue, #025C75);
+            text-decoration: none;
+        }
+        .simulated-breadcrumbs-bar .breadcrumb-item a:hover {
+            text-decoration: underline;
+        }
+        .simulated-breadcrumbs-bar .breadcrumb-item.active {
+            color: #6c757d;
+        }
+
+        .simulated-content-stage {
+            width: 100%;
+            background: #ffffff;
+            min-height: 520px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .simulated-footer-bcb {
+            background-color: var(--bcb-brand-azulpetro, #2E4C59);
+            color: #ffffff;
+            padding: 24px 16px 14px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            margin-top: auto;
+        }
+        .simulated-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .simulated-footer-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--bcb-brand-amarellato, #F8D48D);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .simulated-footer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .simulated-footer-list li {
+            margin-bottom: 4px;
+        }
+        .simulated-footer-list a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+        }
+        .simulated-footer-list a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .simulated-footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 10px;
+            text-align: center;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Temas na Casca Simulada */
+        #deviceContainer[data-theme="dark"] .simulated-portal-shell,
+        #deviceContainer[data-theme="dark"] .simulated-content-stage {
+            background: #121212;
+            color: #e6edf3;
+        }
+        #deviceContainer[data-theme="dark"] .simulated-barra-brasil {
+            background-color: #0d1117;
+            border-bottom-color: #30363d;
+            color: #8b949e;
+        }
+        #deviceContainer[data-theme="dark"] .simulated-gov-badge {
+            color: #f0f6fc;
+        }
+        #deviceContainer[data-theme="dark"] .simulated-header-bcb {
+            background-color: #16242c;
+            border-bottom: 1px solid #30363d;
+        }
+        #deviceContainer[data-theme="dark"] .simulated-breadcrumbs-bar {
+            background-color: #161b22;
+            border-bottom-color: #30363d;
+        }
+        #deviceContainer[data-theme="dark"] .simulated-breadcrumbs-bar .breadcrumb-item a {
+            color: #58a6ff;
+        }
+        #deviceContainer[data-theme="dark"] .simulated-breadcrumbs-bar .breadcrumb-item.active {
+            color: #8b949e;
+        }
+        #deviceContainer[data-theme="dark"] .simulated-footer-bcb {
+            background-color: #0d1117;
+            border-top: 1px solid #30363d;
+        }
+
+        #deviceContainer[data-contrast="high"] .simulated-portal-shell,
+        #deviceContainer[data-contrast="high"] .simulated-content-stage {
+            background: #000000 !important;
+            color: #ffffff !important;
+        }
+        #deviceContainer[data-contrast="high"] .simulated-barra-brasil,
+        #deviceContainer[data-contrast="high"] .simulated-header-bcb,
+        #deviceContainer[data-contrast="high"] .simulated-breadcrumbs-bar,
+        #deviceContainer[data-contrast="high"] .simulated-footer-bcb {
+            background: #000000 !important;
+            color: #ffffff !important;
+            border-color: #ffffff !important;
+        }
+        #deviceContainer[data-contrast="high"] a {
+            color: #ffff00 !important;
+        }
     </style>
 </head>
 <body>
@@ -437,10 +672,90 @@
             </div>
         </aside>
 
-        <!-- Palco do Dispositivo (Iframe do Protótipo) -->
+        <!-- Palco do Dispositivo (Iframe do Protótipo com Casca Institucional Simulada) -->
         <div class="bcb-harness-stage">
-            <div id="deviceContainer" class="bcb-harness-device viewport-desktop">
-                <iframe id="previewFrame" class="bcb-harness-frame" src="copom-decisao-taxa-selic.html" title="Quadro de Visualização do Protótipo"></iframe>
+            <div id="deviceContainer" class="bcb-harness-device viewport-desktop" data-theme="light" data-contrast="normal">
+                
+                <!-- 1. CASCA FIXA SIMULADA: Barra Brasil Gov.br -->
+                <div class="simulated-barra-brasil" role="region" aria-label="Barra de Governo Federal Simulada">
+                    <span class="simulated-gov-badge">
+                        <span class="material-symbols-outlined material-icons md-16" style="color: #0080A4;" aria-hidden="true">flag</span>
+                        <span>BRASIL</span>
+                    </span>
+                    <div class="d-none d-sm-flex align-items-center gap-3">
+                        <a href="#">Órgãos do Governo</a>
+                        <a href="#">Acesso à Informação</a>
+                        <a href="#">Legislação</a>
+                        <a href="#">Acessibilidade</a>
+                    </div>
+                </div>
+
+                <!-- 2. CASCA FIXA SIMULADA: Header Institucional do Banco Central do Brasil -->
+                <header class="simulated-header-bcb" role="banner" aria-label="Cabeçalho Institucional do Banco Central Simulado">
+                    <div class="simulated-header-inner">
+                        <div class="simulated-brand">
+                            <div class="simulated-brand-logo" aria-hidden="true">BC</div>
+                            <div>
+                                <span class="simulated-brand-text">BANCO CENTRAL DO BRASIL</span>
+                                <span class="simulated-brand-sub">Portal Oficial Institucional</span>
+                            </div>
+                        </div>
+                        <nav class="simulated-header-nav d-none d-md-flex" aria-label="Navegação Institucional Simulada">
+                            <a href="#" class="simulated-nav-link">Institucional</a>
+                            <a href="#" class="simulated-nav-link">Política Monetária</a>
+                            <a href="#" class="simulated-nav-link">Estabilidade Financeira</a>
+                            <a href="#" class="simulated-nav-link">Estatísticas</a>
+                            <a href="#" class="simulated-nav-link">Cidadania Financeira</a>
+                        </nav>
+                    </div>
+                </header>
+
+                <!-- 3. CASCA FIXA SIMULADA: Trilha de Navegação (Breadcrumb) Institucional -->
+                <div class="simulated-breadcrumbs-bar" role="navigation" aria-label="Trilha de navegação institucional fixa">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="#"><span class="material-symbols-outlined material-icons md-16" style="vertical-align: text-bottom;" aria-hidden="true">home</span> Início</a></li>
+                        <li class="breadcrumb-item"><a href="#" id="simulatedBreadcrumbArea">Política Monetária</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" id="simulatedBreadcrumbTitle">Decisão do Copom e Taxa Selic</li>
+                    </ol>
+                </div>
+
+                <!-- 4. MIOLO DO PROTÓTIPO EM TESTE (Carregamento Dinâmico sem Header/Footer/Breadcrumb) -->
+                <div class="simulated-content-stage">
+                    <iframe id="previewFrame" class="bcb-harness-frame" src="copom-decisao-taxa-selic.html" title="Quadro de Visualização do Protótipo"></iframe>
+                </div>
+
+                <!-- 5. CASCA FIXA SIMULADA: Footer Institucional do Banco Central do Brasil -->
+                <footer class="simulated-footer-bcb" role="contentinfo" aria-label="Rodapé Institucional do Banco Central Simulado">
+                    <div class="simulated-footer-grid">
+                        <div>
+                            <div class="simulated-footer-title">Banco Central do Brasil</div>
+                            <p class="mb-2 text-white-50 small">Autarquia federal vinculada ao Ministério da Fazenda.</p>
+                            <p class="mb-0 text-white-50 small">SBS Quadra 3 Bloco B — Edifício-Sede<br>Brasília — DF &bull; CEP: 70074-900</p>
+                        </div>
+                        <div>
+                            <div class="simulated-footer-title">Canais de Atendimento</div>
+                            <ul class="simulated-footer-list">
+                                <li><a href="#">Fale Conosco</a></li>
+                                <li><a href="#">Ouvidoria BCB: 145</a></li>
+                                <li><a href="#">e-SIC (Acesso à Informação)</a></li>
+                                <li><a href="#">Registrato</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="simulated-footer-title">Transparência e Regulação</div>
+                            <ul class="simulated-footer-list">
+                                <li><a href="#">Atos Normativos e Resoluções</a></li>
+                                <li><a href="#">Estatísticas e Séries SGS</a></li>
+                                <li><a href="#">Políticas de Privacidade e Cookies</a></li>
+                                <li><a href="#">Termos de Uso e Padrões Web</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="simulated-footer-bottom">
+                        <span>&copy; Banco Central do Brasil — Todos os direitos reservados. (Casca Institucional Fixa do Portal)</span>
+                    </div>
+                </footer>
+
             </div>
         </div>
     </main>
@@ -555,11 +870,54 @@
                 `;
             }
 
+            function syncSimulatedBreadcrumbs(slug) {
+                const bTitle = document.getElementById('simulatedBreadcrumbTitle');
+                const bArea = document.getElementById('simulatedBreadcrumbArea');
+                if (!bTitle || !bArea) return;
+
+                const areas = {
+                    'copom-decisao-taxa-selic.html': { area: 'Política Monetária', title: 'Decisão do Copom e Taxa Selic' },
+                    'sgs-series-taxa-selic.html': { area: 'Estatísticas Monetárias', title: 'Série SGS 432: Histórico de Taxas' },
+                    'mecanismo-especial-devolucao-med.html': { area: 'Cidadania Financeira', title: 'Mecanismo Especial de Devolução (MED)' },
+                    'regras-cheque-especial.html': { area: 'Regulação Bancária', title: 'Novas Regras de Cheque Especial' }
+                };
+
+                const info = areas[slug];
+                if (info) {
+                    bArea.textContent = info.area;
+                    bTitle.textContent = info.title;
+                } else {
+                    try {
+                        const doc = frame.contentDocument || frame.contentWindow.document;
+                        if (doc) {
+                            const h1 = doc.querySelector('h1');
+                            bTitle.textContent = h1 ? h1.textContent.trim() : slug.replace('.html', '');
+                            bArea.textContent = 'Serviços e Informações';
+                        }
+                    } catch (e) {
+                        bTitle.textContent = slug.replace('.html', '');
+                    }
+                }
+            }
+
             function applyThemeToFrame(theme) {
                 currentTheme = theme;
                 themeButtons.forEach(btn => {
                     btn.classList.toggle('active', btn.getAttribute('data-theme-target') === theme);
                 });
+
+                if (deviceContainer) {
+                    if (theme === 'dark') {
+                        deviceContainer.setAttribute('data-theme', 'dark');
+                        deviceContainer.setAttribute('data-contrast', 'normal');
+                    } else if (theme === 'high-contrast') {
+                        deviceContainer.setAttribute('data-theme', 'high-contrast');
+                        deviceContainer.setAttribute('data-contrast', 'high');
+                    } else {
+                        deviceContainer.setAttribute('data-theme', 'light');
+                        deviceContainer.setAttribute('data-contrast', 'normal');
+                    }
+                }
 
                 try {
                     const doc = frame.contentDocument || frame.contentWindow.document;
@@ -605,10 +963,20 @@
                 frame.src = val;
                 const slug = val.split('/').pop();
                 renderBriefing(slug);
+                syncSimulatedBreadcrumbs(slug);
             });
 
             frame.addEventListener('load', () => {
                 applyThemeToFrame(currentTheme);
+                const slug = (frame.src || '').split('/').pop();
+                if (slug) syncSimulatedBreadcrumbs(slug);
+                try {
+                    const doc = frame.contentDocument || frame.contentWindow.document;
+                    if (doc && doc.body) {
+                        const h = Math.max(doc.body.scrollHeight, 600);
+                        frame.style.height = h + 'px';
+                    }
+                } catch(e) {}
             });
 
             themeButtons.forEach(btn => {
@@ -715,8 +1083,10 @@
                 });
             }
 
-            // Inicialização do briefing
-            renderBriefing(prototipoInicial.split('/').pop());
+            // Inicialização do briefing e casca simulada
+            const slugInicial = prototipoInicial.split('/').pop();
+            renderBriefing(slugInicial);
+            syncSimulatedBreadcrumbs(slugInicial);
         })();
     </script>
 </body>

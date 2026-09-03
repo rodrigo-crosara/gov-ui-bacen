@@ -184,7 +184,7 @@ Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos des
 
 ## ♿ Conformidade e Acessibilidade
 - **WCAG 2.1 AA & e-MAG 3.1:** Validado sem erros de contraste ou estrutura.
-- **Navegação:** Inclui breadcrumb semântico com \`aria-current="page"\` e botão de retorno ao topo.
+- **Navegação:** Foco exclusivo no miolo com botão de retorno ao topo (breadcrumbs e casca institucional fornecidos pelo portal).
 - **Alvos de Toque:** Dimensão mínima de 44x44px em resoluções mobile.
 `;
 fs.writeFileSync(path.join(pastaExportacao, 'README.md'), readmeEngenharia, 'utf8');

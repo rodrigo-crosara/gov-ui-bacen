@@ -27,6 +27,52 @@
 .timeline-h-date { font-weight: 700; color: var(--bcb-brand-blue); font-size: 1rem; margin-bottom: 0.25rem; }
 .timeline-h-text { font-size: 0.85rem; color: var(--bcb-gray-700); line-height: 1.3; padding: 0 0.5rem; }
 
-@media (max-width: 768px) {
-    .timeline-horizontal { justify-content: flex-start; }
+@media (max-width: 767.98px) {
+    .timeline-container::before {
+        left: 32px;
+    }
+    .step-header {
+        padding: 1rem;
+    }
+    .step-icon {
+        font-size: 1.75rem;
+        padding: 8px;
+        margin-right: 1rem;
+    }
+    .step-title {
+        font-size: 1.15rem;
+    }
+    .step-content {
+        padding: 1rem;
+        padding-top: 5rem;
+    }
+    .img-placeholder {
+        height: 200px;
+    }
+    .timeline-horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 1.5rem;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    .timeline-horizontal::before {
+        top: 16px;
+        bottom: 16px;
+        left: 23px;
+        width: 3px;
+        height: calc(100% - 32px);
+    }
+    .timeline-h-step {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 1rem;
+        min-width: 0;
+        width: 100%;
+    }
+    .timeline-h-circle {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
 }

@@ -79,7 +79,7 @@ a.bcb-indicator-card:focus-visible,
 }
 
 .bcb-indicator-value {
-  font-size: 1.85rem;
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
   font-weight: 700;
   color: var(--bcb-brand-blue);
   margin-bottom: 0.35rem;
@@ -88,6 +88,10 @@ a.bcb-indicator-card:focus-visible,
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.5rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
 }
 
 .bcb-indicator-value.value-positive {

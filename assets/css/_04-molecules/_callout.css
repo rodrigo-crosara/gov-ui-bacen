@@ -23,7 +23,7 @@
 
 .callout {
     padding: var(--bcb-space-5, 1.25rem);
-    margin: var(--bcb-space-5, 1.25rem) 0;
+    margin: var(--bcb-spacing-lg, 1.5rem) 0;
     border-radius: var(--bcb-radius-4, 4px);
     display: flex;
     align-items: flex-start;
@@ -42,11 +42,18 @@
     min-width: 0;
 }
 
-.callout-title {
+.callout-title,
+.callout h2.callout-title,
+.callout h3.callout-title,
+.callout h4.callout-title,
+.callout .callout-content > h2,
+.callout .callout-content > h3,
+.callout .callout-content > h4 {
     margin-top: 0;
     margin-bottom: var(--bcb-space-2, 0.5rem);
     font-size: 1.125rem;
     font-weight: 700;
+    line-height: 1.35;
 }
 
 .callout p {
@@ -59,10 +66,14 @@
 }
 
 .callout-icon {
-    font-size: 2rem;
+    font-size: 2rem !important;
     line-height: 1;
     flex-shrink: 0;
-    padding-top: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    margin-top: 2px;
 }
 
 /* 15.1 Variações Estruturais */
