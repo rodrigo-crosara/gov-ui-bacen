@@ -141,6 +141,43 @@ for (const arquivo of arquivosHTML) {
     }
   }
 
+  // TESTE 14: Validação da estrutura de navegação e componentes em components.html
+  if (nomeRelativo === 'pages/components.html') {
+    if (!conteudo.includes('class="ds-sidebar"') && !conteudo.includes("class='ds-sidebar'")) {
+      problemas.push('components.html deve conter a sidebar de navegação (.ds-sidebar)');
+    }
+    if (!conteudo.includes('id="ds-sidebar-nav"')) {
+      problemas.push('components.html deve identificar a barra de navegação com id="ds-sidebar-nav"');
+    }
+    if (!conteudo.includes('id="sidebarSearchInput"')) {
+      problemas.push('components.html deve conter o campo de busca (#sidebarSearchInput)');
+    }
+    if (!conteudo.includes('id="categoryFilterGroup"')) {
+      problemas.push('components.html deve conter os botões de filtro por categoria (#categoryFilterGroup)');
+    }
+    if (!conteudo.includes('id="btnToggleSidebar"')) {
+      problemas.push('components.html deve conter botão responsivo mobile (#btnToggleSidebar)');
+    }
+    const novasSecoes = [
+      'molecula-breadcrumbs',
+      'molecula-kpi-card',
+      'molecula-page-toolbar',
+      'molecula-quote',
+      'molecula-alert'
+    ];
+    novasSecoes.forEach(secId => {
+      if (!conteudo.includes(`id="${secId}"`)) {
+        problemas.push(`components.html deve conter a nova seção (#${secId})`);
+      }
+    });
+    if (!conteudo.includes('btn-copy-css')) {
+      problemas.push('components.html deve conter botões de cópia de classes CSS (.btn-copy-css)');
+    }
+    if (!conteudo.includes('ds-state-pills')) {
+      problemas.push('components.html deve conter seletores de visualização de estados (.ds-state-pills)');
+    }
+  }
+
   // Reportar resultados
   if (problemas.length === 0 && alertas.length === 0) {
     console.log(`✅ ${nomeRelativo}`);

@@ -12,19 +12,36 @@
   width: 100%;
 }
 
-/* Lista / Barra de Abas (Linha de base contínua) */
+/* Lista / Barra de Abas (Linha de base contínua com suporte a rolagem horizontal suave) */
 .bcb-tabs__nav,
 .bcb-navegacaoabas .nav-tabs,
 .bcb-navegacaoabas [role="tablist"] {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 1px 0;
   border-bottom: 1px solid var(--bcb-color-border, var(--bcb-gray-300));
   position: relative;
   z-index: 2;
   gap: 4px;
+}
+
+.bcb-tabs__nav::-webkit-scrollbar,
+.bcb-navegacaoabas .nav-tabs::-webkit-scrollbar,
+.bcb-navegacaoabas [role="tablist"]::-webkit-scrollbar {
+  height: 4px;
+}
+
+.bcb-tabs__nav::-webkit-scrollbar-thumb,
+.bcb-navegacaoabas .nav-tabs::-webkit-scrollbar-thumb,
+.bcb-navegacaoabas [role="tablist"]::-webkit-scrollbar-thumb {
+  background-color: var(--bcb-gray-300);
+  border-radius: var(--bcb-radius-pill, 9999px);
 }
 
 /* Item de Aba Individual */
@@ -39,6 +56,8 @@
   padding: 0.75rem 1.25rem;
   font-size: 0.95rem;
   font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
   color: var(--bcb-gray-700);
   background-color: var(--bcb-gray-100);
   border: 1px solid var(--bcb-gray-300);

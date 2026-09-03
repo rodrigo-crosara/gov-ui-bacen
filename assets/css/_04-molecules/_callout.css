@@ -22,24 +22,36 @@
 }
 
 .callout {
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: 7px;
+    padding: var(--bcb-space-5, 1.25rem);
+    margin: var(--bcb-space-5, 1.25rem) 0;
+    border-radius: var(--bcb-radius-4, 4px);
     display: flex;
     align-items: flex-start;
-    gap: 1.25rem;
+    gap: var(--bcb-space-4, 1rem);
     transition: all 0.2s ease;
+}
+
+.callout a:focus-visible,
+.callout button:focus-visible {
+    outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+    outline-offset: 2px !important;
 }
 
 .callout-content {
     flex-grow: 1;
+    min-width: 0;
 }
 
 .callout-title {
     margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.15rem;
+    margin-bottom: var(--bcb-space-2, 0.5rem);
+    font-size: 1.125rem;
     font-weight: 700;
+}
+
+.callout p {
+    line-height: 1.6;
+    margin-bottom: var(--bcb-space-2, 0.5rem);
 }
 
 .callout p:last-child {

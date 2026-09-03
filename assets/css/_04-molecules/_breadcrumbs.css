@@ -1,0 +1,89 @@
+/* ============= BCB Design System — Molecules / Breadcrumbs =============
+ * Trilha de navegação estrutural e semântica com separadores visuais.
+ * Totalmente compatível com WAI-ARIA (aria-label="Trilha de navegação" e aria-current="page").
+ * ====================================================================== */
+
+.bcb-breadcrumb-nav {
+  margin-bottom: var(--bcb-space-4, 1rem);
+  width: 100%;
+}
+
+.bcb-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: var(--bcb-space-2, 0.5rem) 0;
+  margin: 0;
+  list-style: none;
+  background-color: transparent;
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.bcb-breadcrumb .breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  color: var(--bcb-gray-600);
+}
+
+.bcb-breadcrumb .breadcrumb-item + .breadcrumb-item {
+  padding-left: var(--bcb-space-2, 0.5rem);
+}
+
+.bcb-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: "chevron_right";
+  font-family: "Material Symbols Outlined", "Material Icons", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.125rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  padding-right: var(--bcb-space-2, 0.5rem);
+  color: var(--bcb-gray-400);
+  vertical-align: middle;
+}
+
+.bcb-breadcrumb .breadcrumb-item a {
+  color: var(--bcb-brand-blue);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bcb-space-1, 0.25rem);
+  padding: 4px 6px;
+  border-radius: var(--bcb-radius-4, 4px);
+  min-height: 36px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.bcb-breadcrumb .breadcrumb-item a:hover {
+  color: var(--bcb-brand-blue-dark, #024355);
+  background-color: var(--bcb-gray-100, #F3F5F7);
+  text-decoration: underline;
+}
+
+.bcb-breadcrumb .breadcrumb-item a:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px !important;
+  text-decoration: none;
+}
+
+.bcb-breadcrumb .breadcrumb-item.active {
+  color: var(--bcb-gray-800, #22272B);
+  font-weight: 600;
+  padding: 4px 6px;
+}
+
+.bcb-breadcrumb-icon {
+  font-size: 1.125rem !important;
+  line-height: 1;
+  color: inherit;
+}

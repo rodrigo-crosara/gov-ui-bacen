@@ -1,0 +1,149 @@
+/* ============= BCB Design System — Molecules / KPI Card Financeiro =============
+ * Card de métrica executiva para taxas, indicadores econômicos e dados de mercado.
+ * Suporta rótulo de contexto, valor destacado, data-base e variação direcional.
+ * ============================================================================== */
+
+.bcb-kpi-card {
+  background-color: var(--bcb-color-white, #FFFFFF);
+  border-radius: var(--bcb-radius-8, 8px);
+  padding: var(--bcb-space-5, 1.5rem);
+  box-shadow: var(--bcb-shadow-100);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-left: 5px solid var(--bcb-brand-blue, #025C75);
+  height: 100%;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bcb-kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--bcb-shadow-300);
+}
+
+/* Variantes de Borda de Acento */
+.bcb-kpi-card.kpi-brand,
+.bcb-kpi-card.kpi-blue {
+  border-left-color: var(--bcb-brand-blue, #025C75);
+}
+
+.bcb-kpi-card.kpi-success,
+.bcb-kpi-card.kpi-green {
+  border-left-color: var(--bcb-brand-verde-susta, #067078);
+}
+
+.bcb-kpi-card.kpi-danger,
+.bcb-kpi-card.kpi-red {
+  border-left-color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+
+.bcb-kpi-card.kpi-warning,
+.bcb-kpi-card.kpi-amber {
+  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+}
+
+/* Cabeçalho do KPI */
+.bcb-kpi-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--bcb-space-2, 0.5rem);
+  margin-bottom: var(--bcb-space-2, 0.5rem);
+}
+
+.bcb-kpi-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--bcb-gray-600, #7E8A95);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.bcb-kpi-icon {
+  color: var(--bcb-brand-blue, #025C75);
+  font-size: 1.5rem !important;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Valor Principal */
+.bcb-kpi-body {
+  margin: var(--bcb-space-2, 0.5rem) 0 var(--bcb-space-3, 0.75rem) 0;
+}
+
+.bcb-kpi-value {
+  font-family: var(--bcb-font-cormorant, "Cormorant Garamond", Georgia, serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--bcb-gray-900, #14171A);
+  line-height: 1.1;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--bcb-space-1, 0.25rem);
+}
+
+.bcb-kpi-unit {
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--bcb-gray-600, #7E8A95);
+}
+
+/* Rodapé com Indicador de Tendência e Data-Base */
+.bcb-kpi-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bcb-space-2, 0.5rem);
+  padding-top: var(--bcb-space-2, 0.5rem);
+  border-top: 1px solid var(--bcb-gray-100, #F3F5F7);
+  font-size: 0.8125rem;
+}
+
+.bcb-kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--bcb-radius-pill, 9999px);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+
+.bcb-kpi-trend .material-symbols-outlined,
+.bcb-kpi-trend .material-icons {
+  font-size: 1rem !important;
+  line-height: 1;
+}
+
+.bcb-kpi-trend.positive {
+  background-color: var(--bcb-feedback-success-bg, #E8F5E9);
+  color: var(--bcb-brand-verde-susta, #067078);
+}
+
+.bcb-kpi-trend.negative {
+  background-color: var(--bcb-feedback-danger-bg, #FFEBEE);
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+
+.bcb-kpi-trend.neutral {
+  background-color: var(--bcb-gray-100, #F3F5F7);
+  color: var(--bcb-gray-700, #495057);
+}
+
+.bcb-kpi-date {
+  color: var(--bcb-gray-500, #9AA6B2);
+  font-size: 0.75rem;
+  margin: 0;
+}

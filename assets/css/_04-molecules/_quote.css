@@ -1,0 +1,88 @@
+/* ============= BCB Design System — Molecules / Quote & Destaque Normativo =============
+ * Citações institucionais de membros da diretoria e destaques normativos (Atas Copom/Comef).
+ * Utiliza tipografia nobre Cormorant Garamond integrada ao grid e paleta do BCB.
+ * ====================================================================================== */
+
+.bcb-quote {
+  position: relative;
+  margin: var(--bcb-space-5, 1.5rem) 0;
+  padding: var(--bcb-space-5, 1.5rem) var(--bcb-space-5, 1.5rem) var(--bcb-space-5, 1.5rem) var(--bcb-space-6, 2rem);
+  background-color: var(--bcb-gray-50, #F8F9FB);
+  border-left: 5px solid var(--bcb-brand-blue, #025C75);
+  border-radius: 0 var(--bcb-radius-8, 8px) var(--bcb-radius-8, 8px) 0;
+  border-top: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-right: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-bottom: 1px solid var(--bcb-gray-200, #E6EAEF);
+}
+
+.bcb-quote::before {
+  content: "format_quote";
+  font-family: "Material Symbols Outlined", "Material Icons", sans-serif;
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 2rem;
+  color: var(--bcb-brand-blue, #025C75);
+  opacity: 0.25;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.bcb-quote-text {
+  font-family: var(--bcb-font-cormorant, "Cormorant Garamond", Georgia, serif);
+  font-size: 1.35rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--bcb-gray-900, #14171A);
+  margin: 0 0 var(--bcb-space-3, 0.75rem) 0;
+}
+
+.bcb-quote-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--bcb-gray-200, #E6EAEF);
+  padding-top: var(--bcb-space-2, 0.5rem);
+}
+
+.bcb-quote-author {
+  font-weight: 700;
+  color: var(--bcb-brand-blue, #025C75);
+}
+
+.bcb-quote-role {
+  color: var(--bcb-gray-600, #7E8A95);
+  font-size: 0.8125rem;
+}
+
+.bcb-quote-cite {
+  color: var(--bcb-gray-500, #9AA6B2);
+  font-size: 0.75rem;
+  font-style: normal;
+  margin-top: 2px;
+}
+
+/* Variante: Destaque Normativo / Regulatório */
+.bcb-quote--normative {
+  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+  background-color: var(--bg-amarellato-light, #fefbfa);
+}
+
+.bcb-quote--normative::before {
+  content: "gavel";
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+  opacity: 0.2;
+}
+
+.bcb-quote--normative .bcb-quote-text {
+  font-style: normal;
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+  font-size: 1.05rem;
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+
+.bcb-quote--normative .bcb-quote-author {
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+}

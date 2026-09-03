@@ -96,27 +96,42 @@
   line-height: 1.2;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .bcb-stepper {
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-left: 0.25rem;
   }
+
   .bcb-stepper::before {
-    top: 0;
-    bottom: 0;
-    left: 18px;
+    top: 18px;
+    bottom: 18px;
+    left: calc(0.25rem + 18px);
     width: 2px;
-    height: 100%;
+    height: calc(100% - 36px);
   }
+
   .bcb-stepper-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     text-align: left;
     gap: 0.75rem;
     padding: 0;
+    width: 100%;
   }
+
   .bcb-stepper-circle {
     margin: 0;
     flex-shrink: 0;
+  }
+
+  .bcb-stepper-title {
+    font-size: 0.875rem;
+    padding-top: 6px;
+  }
+
+  .bcb-stepper-desc {
+    margin-top: 1px;
   }
 }

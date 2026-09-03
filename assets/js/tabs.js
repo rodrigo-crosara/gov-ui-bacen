@@ -30,6 +30,11 @@
     tabElement.setAttribute('aria-selected', 'true');
     tabElement.removeAttribute('tabindex');
 
+    // Rolagem horizontal suave para manter a aba ativa visível no campo de visão
+    if (tabElement.scrollIntoView) {
+      tabElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+
     // Desativar painéis irmãos
     if (targetPanel) {
       const tabContent = targetPanel.closest('.tab-content');

@@ -215,6 +215,26 @@
   background-color: #000000 !important;
 }
 
+:root[data-contrast="high"] .bcb-kpi-card,
+:root[data-theme="high-contrast"] .bcb-kpi-card,
+:root[data-contrast="high"] .bcb-quote,
+:root[data-theme="high-contrast"] .bcb-quote,
+:root[data-contrast="high"] .bcb-alert,
+:root[data-theme="high-contrast"] .bcb-alert,
+:root[data-contrast="high"] .bcb-page-toolbar,
+:root[data-theme="high-contrast"] .bcb-page-toolbar {
+  border: 2px solid #FFFFFF !important;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-page-toolbar__btn,
+:root[data-theme="high-contrast"] .bcb-page-toolbar__btn {
+  border: 2px solid #FFFFFF !important;
+  color: #FFFF00 !important;
+  background-color: #000000 !important;
+}
+
 :root[data-contrast="high"] :focus-visible,
 :root[data-theme="high-contrast"] :focus-visible,
 [data-contrast="high"] :focus-visible,

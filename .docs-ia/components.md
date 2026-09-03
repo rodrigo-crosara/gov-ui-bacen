@@ -11,7 +11,7 @@
 1. [Botões (Buttons)](#1-botões-buttons)
 2. [Links e Âncoras](#2-links-e-âncoras)
 3. [Iconografia (Material Icons)](#3-iconografia-material-icons)
-4. [Componente Excluído — Breadcrumb](#4-componente-excluído--breadcrumb)
+4. [Breadcrumbs Acessíveis](#4-breadcrumbs-acessíveis-bcb-breadcrumb-nav)
 5. [Menu de Âncoras / Sidebar TOC](#5-menu-de-âncoras--sidebar-toc)
 6. [Callouts e Alertas Estruturados](#6-callouts-e-alertas-estruturados)
 7. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa)
@@ -36,6 +36,10 @@
 26. [Bloco de Transição Narrativa](#26-bloco-de-transição-narrativa)
 27. [Botão Voltar ao Topo](#27-botão-voltar-ao-topo)
 28. [Paginação e Tooltips de Glossário](#28-paginação-e-tooltips-de-glossário)
+29. [Bloco de Métricas / KPI Card Financeiro](#30-bloco-de-métricas--kpi-card-financeiro-bcb-kpi-card)
+30. [Barra de Utilidades da Página](#31-barra-de-utilidades-da-página-bcb-page-toolbar)
+31. [Citação Institucional e Destaque Normativo](#32-citação-institucional-e-destaque-normativo-bcb-quote)
+32. [Alertas Inline de Validação](#33-alertas-inline-de-validação-bcb-alert)
 
 ---
 
@@ -137,11 +141,28 @@ Utilize a biblioteca **Google Material Icons** (Filled ou Outlined).
 
 ---
 
-## 4. Componente Excluído — Breadcrumb
+## 4. Breadcrumbs Acessíveis (.bcb-breadcrumb-nav)
 
-> 🚫 **PROIBIÇÃO RIGOROSA**: O componente Breadcrumb (`.breadcrumb-bcb`) foi **definitivamente descontinuado e extirpado** do Design System de conteúdo.
-> No portal do Banco Central do Brasil, a trilha de navegação (breadcrumb) é gerada automaticamente pelo invólucro do portal (CMS/portal envelope), fora da tag `<main id="conteudo-principal">`.
-> **Nenhum template ou página de conteúdo deve conter elementos de breadcrumb.** O conteúdo do `<main>` deve iniciar diretamente no `<h1>`.
+Trilha de navegação estrutural hierárquica oficial, permitindo ao cidadão compreender sua localização na árvore do portal e retornar aos níveis superiores.
+
+### Assinatura HTML Canônica
+```html
+<nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav">
+  <ol class="breadcrumb bcb-breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/"><span class="material-symbols-outlined material-icons bcb-breadcrumb-icon" aria-hidden="true">home</span> Início</a>
+    </li>
+    <li class="breadcrumb-item"><a href="/estabilidade-financeira">Estabilidade Financeira</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Taxa Selic e Copom</li>
+  </ol>
+</nav>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Sempre use `<nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav">`. | NUNCA omita `aria-label` na tag `<nav>` de navegação. |
+| Use `<li class="breadcrumb-item active" aria-current="page">` no último item. | NUNCA coloque link no item ativo/página atual. |
+| Utilize o separador visual automático via CSS (`chevron_right`). | NUNCA digite caracteres manuais como `>` ou `/` no HTML. |
 
 ---
 
@@ -868,3 +889,124 @@ O Copom definiu a meta para a
   $(function () { $('[data-toggle="tooltip"]').tooltip(); });
 </script>
 ```
+
+---
+
+## 30. Bloco de Métricas / KPI Card Financeiro (.bcb-kpi-card)
+
+Exibição executiva de indicadores macroeconômicos, taxas de juros, índices de inflação e câmbio com badge de tendência direcional e data de referência.
+
+### Assinatura HTML Canônica
+```html
+<div class="bcb-kpi-card kpi-brand">
+  <div class="bcb-kpi-header">
+    <span class="bcb-kpi-label">Taxa Selic Over</span>
+    <span class="material-symbols-outlined material-icons bcb-kpi-icon" aria-hidden="true">account_balance</span>
+  </div>
+  <div class="bcb-kpi-body">
+    <h4 class="bcb-kpi-value">14,25<span class="bcb-kpi-unit">% a.a.</span></h4>
+  </div>
+  <div class="bcb-kpi-footer">
+    <span class="bcb-kpi-trend positive"><span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_upward</span> +1,00 p.p.</span>
+    <span class="bcb-kpi-date">12/03/2026</span>
+  </div>
+</div>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Use as variantes de borda semântica: `kpi-brand`, `kpi-success`, `kpi-warning`, `kpi-danger`. | NUNCA sobreponha estilos inline de cor nos valores. |
+| Forneça sempre a data de referência no `.bcb-kpi-date` para transparência temporal. | NUNCA exiba indicadores sem unidade de medida explícita (`.bcb-kpi-unit`). |
+
+---
+
+## 31. Barra de Utilidades da Página (.bcb-page-toolbar)
+
+Barra institucional com ações rápidas de produtividade (imprimir, copiar link, compartilhar) e carimbo de data da última modificação.
+
+### Assinatura HTML Canônica
+```html
+<div class="bcb-page-toolbar" role="toolbar" aria-label="Utilidades da página">
+  <div class="bcb-page-toolbar__meta">
+    <span class="material-symbols-outlined material-icons" aria-hidden="true">schedule</span>
+    <span>Última modificação em: <strong>12/03/2026 às 18:30</strong></span>
+  </div>
+  <div class="bcb-page-toolbar__actions">
+    <button type="button" class="bcb-page-toolbar__btn" onclick="window.print();" aria-label="Imprimir página">
+      <span class="material-symbols-outlined material-icons" aria-hidden="true">print</span> Imprimir
+    </button>
+    <button type="button" class="bcb-page-toolbar__btn" onclick="navigator.clipboard.writeText(window.location.href);" aria-label="Copiar link da página">
+      <span class="material-symbols-outlined material-icons" aria-hidden="true">link</span> Copiar Link
+    </button>
+    <button type="button" class="bcb-page-toolbar__btn" aria-label="Compartilhar página">
+      <span class="material-symbols-outlined material-icons" aria-hidden="true">share</span> Compartilhar
+    </button>
+  </div>
+</div>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Garanta área de toque mínima de 44x44px nos botões utilitários. | NUNCA omita o `aria-label` descritivo na tag de toolbar ou nos botões de ação. |
+| O componente é automaticamente oculto em mídias de impressão (`@media print`). | NUNCA posicione a barra de utilidades cobrindo textos do conteúdo principal. |
+
+---
+
+## 32. Citação Institucional e Destaque Normativo (.bcb-quote)
+
+Bloco editorial para atas do Copom, pronunciamentos de dirigentes ou destaques de artigos de resoluções e circulares normativas do BCB.
+
+### Assinatura HTML Canônica
+```html
+<!-- Citação Institucional -->
+<blockquote class="bcb-quote">
+  <p class="bcb-quote-text">"A firmeza na condução da política monetária é âncora primordial da estabilidade."</p>
+  <footer class="bcb-quote-footer">
+    <span class="bcb-quote-author">Diretoria Colegiada do Banco Central do Brasil</span>
+    <span class="bcb-quote-role">Ata da 268ª Reunião Ordinária do Copom</span>
+    <cite class="bcb-quote-cite">Brasília, Março de 2026</cite>
+  </footer>
+</blockquote>
+
+<!-- Destaque Normativo -->
+<div class="bcb-quote bcb-quote--normative">
+  <p class="bcb-quote-text"><strong>Art. 3º</strong> As instituições autorizadas deverão manter canal dedicado...</p>
+  <footer class="bcb-quote-footer">
+    <span class="bcb-quote-author">Resolução BCB nº 103/2026</span>
+    <span class="bcb-quote-role">Departamento de Regulação do Sistema Financeiro (DENOR)</span>
+  </footer>
+</div>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Use `<blockquote>` semântico para pronunciamentos e discursos com citação. | NUNCA use `<blockquote>` vazio ou sem identificação do autor/órgão emissor. |
+| Use `.bcb-quote--normative` com borda institucional para artigos de lei e resoluções. | NUNCA misture diferentes fontes serifadas fora do padrão Cormorant Garamond. |
+
+---
+
+## 33. Alertas Inline de Validação (.bcb-alert)
+
+Alertas contextuais com retorno operacional imediato, checklist de pendências e botão acessível de dispensa.
+
+### Assinatura HTML Canônica
+```html
+<div class="bcb-alert alert-danger" role="alert">
+  <span class="material-symbols-outlined material-icons alert-icon" aria-hidden="true">error</span>
+  <div class="alert-content">
+    <h4 class="alert-title">Pendências no formulário de adesão</h4>
+    <p class="alert-message">Por favor, corrija os seguintes campos antes de submeter a proposta:</p>
+    <ul class="alert-list">
+      <li>O CNPJ informado não consta na base autorizada de participantes.</li>
+    </ul>
+  </div>
+  <button type="button" class="alert-close" aria-label="Fechar alerta">
+    <span class="material-symbols-outlined material-icons" aria-hidden="true">close</span>
+  </button>
+</div>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Utilize `role="alert"` para erros críticos e `role="status"` para avisos ou sucessos. | NUNCA use cores sem contraste adequado contra o fundo da caixa. |
+| Inclua sempre `aria-label="Fechar alerta"` no botão `.alert-close`. | NUNCA exiba mensagens de erro sem orientações claras de resolução. |

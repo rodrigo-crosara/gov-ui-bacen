@@ -333,6 +333,80 @@
   color: var(--bcb-color-neutral-10, #f8f9fa) !important;
 }
 
+/* Regras de Modo Escuro para Novos Componentes */
+:root[data-theme="dark"] .bcb-kpi-card,
+[data-theme="dark"] .bcb-kpi-card {
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+  color: #FFFFFF !important;
+}
+
+:root[data-theme="dark"] .bcb-kpi-value,
+[data-theme="dark"] .bcb-kpi-value {
+  color: #FFFFFF !important;
+}
+
+:root[data-theme="dark"] .bcb-kpi-footer,
+[data-theme="dark"] .bcb-kpi-footer {
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-quote,
+[data-theme="dark"] .bcb-quote {
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-quote-text,
+[data-theme="dark"] .bcb-quote-text {
+  color: #FFFFFF !important;
+}
+
+:root[data-theme="dark"] .bcb-quote-footer,
+[data-theme="dark"] .bcb-quote-footer {
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-alert,
+[data-theme="dark"] .bcb-alert {
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-alert .alert-title,
+[data-theme="dark"] .bcb-alert .alert-title {
+  color: #FFFFFF !important;
+}
+
+:root[data-theme="dark"] .bcb-alert .alert-message,
+:root[data-theme="dark"] .bcb-alert .alert-list,
+[data-theme="dark"] .bcb-alert .alert-message,
+[data-theme="dark"] .bcb-alert .alert-list {
+  color: var(--bcb-color-neutral-40, #c4cbd1) !important;
+}
+
+:root[data-theme="dark"] .bcb-page-toolbar,
+[data-theme="dark"] .bcb-page-toolbar {
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-page-toolbar__btn,
+[data-theme="dark"] .bcb-page-toolbar__btn {
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+  color: var(--bcb-link-color, #5BB8E8) !important;
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+}
+
+:root[data-theme="dark"] .bcb-breadcrumb .breadcrumb-item.active,
+[data-theme="dark"] .bcb-breadcrumb .breadcrumb-item.active {
+  color: #FFFFFF !important;
+}
+
+:root[data-theme="dark"] .bcb-breadcrumb .breadcrumb-item a,
+[data-theme="dark"] .bcb-breadcrumb .breadcrumb-item a {
+  color: var(--bcb-link-color, #5BB8E8) !important;
+}
+
 /* Anel de Foco de Alta Visibilidade no Dark Mode (WCAG 2.4.7 / 2.4.11) */
 :root[data-theme="dark"] a:focus-visible,
 :root[data-theme="dark"] button:focus-visible,

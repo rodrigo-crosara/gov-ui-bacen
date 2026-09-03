@@ -1,0 +1,92 @@
+/* ============= BCB Design System — Molecules / Page Toolbar =============
+ * Barra de utilidades da página institucional com metadados e ações rápidas.
+ * Permite imprimir, compartilhar, copiar link e consultar data de última revisão.
+ * ========================================================================= */
+
+.bcb-page-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bcb-space-3, 0.75rem);
+  padding: var(--bcb-space-2, 0.5rem) 0 var(--bcb-space-3, 0.75rem) 0;
+  margin-bottom: var(--bcb-space-4, 1rem);
+  border-bottom: 1px solid var(--bcb-gray-200, #E6EAEF);
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+}
+
+.bcb-page-toolbar__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bcb-space-1, 0.25rem);
+  font-size: 0.8125rem;
+  color: var(--bcb-gray-600, #7E8A95);
+  line-height: 1.4;
+}
+
+.bcb-page-toolbar__meta .material-symbols-outlined,
+.bcb-page-toolbar__meta .material-icons {
+  font-size: 1.125rem !important;
+  color: var(--bcb-gray-500, #9AA6B2);
+}
+
+.bcb-page-toolbar__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bcb-space-2, 0.5rem);
+  flex-wrap: wrap;
+}
+
+.bcb-page-toolbar__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bcb-space-1, 0.25rem);
+  min-height: 44px;
+  min-width: 44px;
+  padding: var(--bcb-space-2, 0.5rem) var(--bcb-space-3, 0.75rem);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--bcb-brand-blue, #025C75);
+  background-color: transparent;
+  border: 1px solid var(--bcb-gray-300, #CCD4DC);
+  border-radius: var(--bcb-radius-4, 4px);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.bcb-page-toolbar__btn:hover {
+  background-color: var(--bcb-gray-100, #F3F5F7);
+  color: var(--bcb-brand-blue-dark, #024355);
+  border-color: var(--bcb-brand-blue, #025C75);
+  text-decoration: none;
+}
+
+.bcb-page-toolbar__btn:active {
+  background-color: var(--bcb-gray-200, #E6EAEF);
+  transform: translateY(1px);
+}
+
+.bcb-page-toolbar__btn:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px !important;
+}
+
+.bcb-page-toolbar__btn--icon-only {
+  padding: var(--bcb-space-2, 0.5rem);
+  border-radius: var(--bcb-radius-4, 4px);
+}
+
+.bcb-page-toolbar__btn .material-symbols-outlined,
+.bcb-page-toolbar__btn .material-icons {
+  font-size: 1.125rem !important;
+  line-height: 1;
+}
+
+@media print {
+  .bcb-page-toolbar {
+    display: none !important;
+  }
+}

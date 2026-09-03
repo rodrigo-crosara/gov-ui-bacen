@@ -1,0 +1,131 @@
+/* ============= BCB Design System — Molecules / Alertas Inline =============
+ * Alertas de contexto, validação de formulários e avisos de sistema em linha.
+ * Totalmente acessíveis com role="alert" / role="status" e suporte a leitores de tela.
+ * ========================================================================= */
+
+.bcb-alert {
+  padding: var(--bcb-space-4, 1rem) var(--bcb-space-5, 1.25rem);
+  margin-bottom: var(--bcb-space-4, 1rem);
+  border-radius: var(--bcb-radius-4, 4px);
+  border: 1px solid var(--bcb-gray-300, #CCD4DC);
+  border-left-width: 5px;
+  background-color: var(--bcb-gray-50, #F8F9FB);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--bcb-space-3, 0.75rem);
+  position: relative;
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+  line-height: 1.5;
+}
+
+.bcb-alert .alert-icon {
+  font-size: 1.5rem !important;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.bcb-alert .alert-content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.bcb-alert .alert-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: var(--bcb-gray-900, #14171A);
+  line-height: 1.3;
+}
+
+.bcb-alert .alert-message {
+  font-size: 0.875rem;
+  color: var(--bcb-gray-800, #22272B);
+  margin: 0;
+}
+
+/* Lista de Validação de Formulários e Pendências */
+.bcb-alert .alert-list {
+  margin: var(--bcb-space-2, 0.5rem) 0 0 0;
+  padding-left: var(--bcb-space-4, 1.25rem);
+  font-size: 0.875rem;
+  color: var(--bcb-gray-800, #22272B);
+}
+
+.bcb-alert .alert-list li {
+  margin-bottom: 2px;
+}
+
+/* Botão Fechar */
+.bcb-alert .alert-close {
+  background: none;
+  border: none;
+  padding: 4px;
+  margin: -4px -4px 0 0;
+  color: var(--bcb-gray-500, #9AA6B2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--bcb-radius-4, 4px);
+  line-height: 1;
+  min-height: 36px;
+  min-width: 36px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.bcb-alert .alert-close:hover {
+  color: var(--bcb-gray-900, #14171A);
+  background-color: var(--bcb-gray-200, #E6EAEF);
+}
+
+.bcb-alert .alert-close:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px !important;
+}
+
+/* Variantes Semânticas */
+.bcb-alert.alert-success {
+  border-left-color: var(--bcb-feedback-success, #067078);
+  background-color: var(--bcb-feedback-success-bg, #E8F5E9);
+  border-color: rgba(6, 112, 120, 0.2);
+  border-left-color: var(--bcb-feedback-success, #067078);
+}
+.bcb-alert.alert-success .alert-icon,
+.bcb-alert.alert-success .alert-title {
+  color: var(--bcb-feedback-success, #067078);
+}
+
+.bcb-alert.alert-warning {
+  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+  background-color: var(--bg-amarellato-light, #fefbfa);
+  border-color: rgba(222, 190, 127, 0.35);
+  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+}
+.bcb-alert.alert-warning .alert-icon,
+.bcb-alert.alert-warning .alert-title {
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+
+.bcb-alert.alert-danger {
+  border-left-color: var(--bcb-brand-vinho-autentico, #47373A);
+  background-color: var(--bcb-feedback-danger-bg, #FFEBEE);
+  border-color: rgba(71, 55, 58, 0.2);
+  border-left-color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+.bcb-alert.alert-danger .alert-icon,
+.bcb-alert.alert-danger .alert-title {
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+
+.bcb-alert.alert-info {
+  border-left-color: var(--bcb-brand-blue, #025C75);
+  background-color: var(--bg-brand-light, #f0f7f9);
+  border-color: rgba(2, 92, 117, 0.2);
+  border-left-color: var(--bcb-brand-blue, #025C75);
+}
+.bcb-alert.alert-info .alert-icon,
+.bcb-alert.alert-info .alert-title {
+  color: var(--bcb-brand-blue, #025C75);
+}

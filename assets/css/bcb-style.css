@@ -23,9 +23,12 @@
 
 /* Molecules */
 @import "_04-molecules/_navbar.css";
+@import "_04-molecules/_breadcrumbs.css";
+@import "_04-molecules/_alert.css";
 @import "_04-molecules/_callout.css";
 @import "_04-molecules/_tip-box.css";
 @import "_04-molecules/_card-indicator.css";
+@import "_04-molecules/_kpi-card.css";
 @import "_04-molecules/_card-link.css";
 @import "_04-molecules/_document-download.css";
 @import "_04-molecules/_stepper.css";
@@ -33,6 +36,8 @@
 @import "_04-molecules/_data-export.css";
 @import "_04-molecules/_faceted-search.css";
 @import "_04-molecules/_empty-state.css";
+@import "_04-molecules/_page-toolbar.css";
+@import "_04-molecules/_quote.css";
 @import "_04-molecules/_toast.css";
 
 /* Organisms */

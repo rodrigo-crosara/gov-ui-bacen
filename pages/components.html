@@ -203,7 +203,7 @@
             position: relative;
             background-color: #1a202c;
             border-top: 1px solid var(--bcb-gray-200);
-            padding: 1rem 1.5rem;
+            padding: 1.25rem 1.5rem;
         }
 
         .ds-component-code pre {
@@ -213,12 +213,21 @@
             font-family: 'Courier New', Courier, monospace;
             max-height: 260px;
             overflow-y: auto;
+            padding-top: 1.5rem;
         }
 
-        .btn-copy-code {
+        .ds-code-actions {
             position: absolute;
             top: 0.75rem;
             right: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            z-index: 5;
+        }
+
+        .btn-copy-code,
+        .btn-copy-css {
             background: rgba(255, 255, 255, 0.15);
             color: #fff;
             border: none;
@@ -229,11 +238,67 @@
             align-items: center;
             gap: 0.25rem;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.1s;
         }
 
-        .btn-copy-code:hover {
+        .btn-copy-code:hover,
+        .btn-copy-css:hover {
             background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-copy-code:focus-visible,
+        .btn-copy-css:focus-visible {
+            outline: 2px solid var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+            outline-offset: 1px;
+        }
+
+        /* Seletor de Estados Variantes no Header do Card */
+        .ds-state-pills {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: var(--bcb-gray-100);
+            padding: 2px 4px;
+            border-radius: var(--bcb-radius-pill);
+            border: 1px solid var(--bcb-gray-300);
+        }
+
+        .ds-state-btn {
+            border: none;
+            background: transparent;
+            color: var(--bcb-gray-700);
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 0.15rem 0.5rem;
+            border-radius: var(--bcb-radius-pill);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .ds-state-btn:hover {
+            color: var(--bcb-brand-blue);
+            background: var(--bcb-gray-200);
+        }
+
+        .ds-state-btn.active {
+            background: var(--bcb-brand-blue);
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        /* Classes de Simulação Visual de Estados na Vitrine */
+        .simulated-focus {
+            outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+            outline-offset: 2px !important;
+        }
+        .simulated-error {
+            border-color: var(--bcb-color-danger, #dc3545) !important;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25) !important;
+        }
+        .simulated-disabled {
+            opacity: 0.65 !important;
+            pointer-events: none !important;
+            cursor: not-allowed !important;
         }
 
         .badge-a11y {
@@ -262,6 +327,10 @@
                 position: static;
                 border-right: none;
                 border-bottom: 1px solid var(--bcb-gray-200);
+                display: none;
+            }
+            .ds-sidebar.show {
+                display: block;
             }
             .ds-main {
                 padding: 1.5rem 1rem;
@@ -305,54 +374,82 @@
     <!-- Layout da Documentação -->
     <div class="ds-wrapper">
 
-        <!-- Sidebar Sticky -->
+        <!-- Sidebar Sticky com Busca e Filtros de Categoria -->
         <nav class="ds-sidebar" id="ds-sidebar-nav" aria-label="Navegação do catálogo de componentes">
             <div class="ds-sidebar-title mb-2">
                 <a href="../index.html" class="d-flex align-items-center text-decoration-none text-bcb-brand font-weight-bold gap-1">
                     <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">arrow_back</span> Hub de Documentação
                 </a>
             </div>
+
+            <!-- Busca Dinâmica e Filtros Rápidos -->
+            <div class="px-2 mb-3">
+                <div class="form-group mb-2">
+                    <label for="sidebarSearchInput" class="sr-only">Buscar componentes</label>
+                    <input type="text" class="form-control form-control-sm" id="sidebarSearchInput" placeholder="Buscar componentes..." aria-label="Buscar componentes no catálogo">
+                </div>
+                <div class="btn-group btn-group-sm w-100" role="group" aria-label="Filtrar por categoria" id="categoryFilterGroup">
+                    <button type="button" class="btn btn-outline-secondary active py-1 px-1" data-cat="all" style="font-size: 0.72rem;">Todos</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="atomos" style="font-size: 0.72rem;">Átomos</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="moleculas" style="font-size: 0.72rem;">Moléculas</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="organismos" style="font-size: 0.72rem;">Org.</button>
+                    <button type="button" class="btn btn-outline-secondary py-1 px-1" data-cat="utilitarios" style="font-size: 0.72rem;">Util.</button>
+                </div>
+            </div>
             
-            <div class="ds-sidebar-title">1. Átomos (Fundação)</div>
-            <a class="nav-link" href="#atomo-grid">1.0 Grid e Diagramação (12 Colunas)</a>
-            <a class="nav-link" href="#atomo-botoes">1.1 Botões e Variantes</a>
-            <a class="nav-link" href="#atomo-links">1.2 Hiperlinks Acessíveis</a>
-            <a class="nav-link" href="#atomo-icones">1.3 Ícones Material Symbols</a>
-            <a class="nav-link" href="#atomo-tags">1.4 Tags & Badges de Status</a>
-            <a class="nav-link" href="#atomo-inputs">1.5 Controles de Formulário</a>
-            <a class="nav-link" href="#atomo-tabelas">1.6 Tabelas Nativas Simples</a>
-            <a class="nav-link" href="#atomo-skeleton">1.7 Skeleton Loading (Feedback)</a>
+            <div class="ds-sidebar-title" data-category="atomos">1. Átomos (Fundação)</div>
+            <a class="nav-link" href="#atomo-grid" data-category="atomos">1.0 Grid e Diagramação (12 Colunas)</a>
+            <a class="nav-link" href="#atomo-botoes" data-category="atomos">1.1 Botões e Variantes</a>
+            <a class="nav-link" href="#atomo-links" data-category="atomos">1.2 Hiperlinks Acessíveis</a>
+            <a class="nav-link" href="#atomo-icones" data-category="atomos">1.3 Ícones Material Symbols</a>
+            <a class="nav-link" href="#atomo-tags" data-category="atomos">1.4 Tags & Badges de Status</a>
+            <a class="nav-link" href="#atomo-inputs" data-category="atomos">1.5 Controles de Formulário</a>
+            <a class="nav-link" href="#atomo-tabelas" data-category="atomos">1.6 Tabelas Nativas Simples</a>
+            <a class="nav-link" href="#atomo-skeleton" data-category="atomos">1.7 Skeleton Loading (Feedback)</a>
 
-            <div class="ds-sidebar-title">2. Moléculas (Padrões)</div>
-            <a class="nav-link" href="#molecula-cards-indicadores">2.1 Cards de Indicadores</a>
-            <a class="nav-link" href="#molecula-callouts">2.2 Callouts de Contexto</a>
-            <a class="nav-link" href="#molecula-tip-box">2.3 Tip-Box Destacada</a>
-            <a class="nav-link" href="#molecula-documentos">2.4 Download de Documentos</a>
-            <a class="nav-link" href="#molecula-stepper">2.5 Stepper de Fases</a>
-            <a class="nav-link" href="#molecula-acordeon">2.6 Acordeom Expansível</a>
-            <a class="nav-link" href="#molecula-datatable">2.7 Data Table Responsiva</a>
-            <a class="nav-link" href="#molecula-busca-facetada">2.8 Busca com Filtros Facetados</a>
-            <a class="nav-link" href="#molecula-toasts">2.9 Toasts e Notificações</a>
-            <a class="nav-link" href="#molecula-empty-state">2.10 Empty State</a>
-            <a class="nav-link" href="#molecula-botoes-exportacao">2.11 Botões de Exportação</a>
+            <div class="ds-sidebar-title" data-category="moleculas">2. Moléculas (Padrões)</div>
+            <a class="nav-link" href="#molecula-cards-indicadores" data-category="moleculas">2.1 Cards de Indicadores</a>
+            <a class="nav-link" href="#molecula-callouts" data-category="moleculas">2.2 Callouts de Contexto</a>
+            <a class="nav-link" href="#molecula-tip-box" data-category="moleculas">2.3 Tip-Box Destacada</a>
+            <a class="nav-link" href="#molecula-documentos" data-category="moleculas">2.4 Download de Documentos</a>
+            <a class="nav-link" href="#molecula-stepper" data-category="moleculas">2.5 Stepper de Fases</a>
+            <a class="nav-link" href="#molecula-acordeon" data-category="moleculas">2.6 Acordeom Expansível</a>
+            <a class="nav-link" href="#molecula-datatable" data-category="moleculas">2.7 Data Table Responsiva</a>
+            <a class="nav-link" href="#molecula-busca-facetada" data-category="moleculas">2.8 Busca com Filtros Facetados</a>
+            <a class="nav-link" href="#molecula-toasts" data-category="moleculas">2.9 Toasts e Notificações</a>
+            <a class="nav-link" href="#molecula-empty-state" data-category="moleculas">2.10 Empty State</a>
+            <a class="nav-link" href="#molecula-botoes-exportacao" data-category="moleculas">2.11 Botões de Exportação</a>
+            <a class="nav-link" href="#molecula-breadcrumbs" data-category="moleculas">2.13 Breadcrumbs Acessíveis</a>
+            <a class="nav-link" href="#molecula-kpi-card" data-category="moleculas">2.14 KPI Card Financeiro</a>
+            <a class="nav-link" href="#molecula-page-toolbar" data-category="moleculas">2.15 Barra de Utilidades da Página</a>
+            <a class="nav-link" href="#molecula-quote" data-category="moleculas">2.16 Citação e Destaque Normativo</a>
+            <a class="nav-link" href="#molecula-alert" data-category="moleculas">2.17 Alertas Inline de Validação</a>
 
-            <div class="ds-sidebar-title">3. Organismos (Compostos)</div>
-            <a class="nav-link" href="#organismo-cards-link">3.1 Cards de Navegação (Listalinks)</a>
-            <a class="nav-link" href="#organismo-abas">3.2 Navegação em Abas</a>
-            <a class="nav-link" href="#organismo-timelines">3.3 Timelines (Vertical & Horizontal)</a>
-            <a class="nav-link" href="#organismo-hero-banner">3.4 Hero Banner</a>
-            <a class="nav-link" href="#organismo-noticias">3.5 Lista de Notícias</a>
-            <a class="nav-link" href="#organismo-process-list">3.6 Process List</a>
-            <a class="nav-link" href="#organismo-modal">3.7 Modal / Dialog Acessível</a>
-            <a class="nav-link" href="#organismo-videos">3.8 Container de Vídeos</a>
+            <div class="ds-sidebar-title" data-category="organismos">3. Organismos (Compostos)</div>
+            <a class="nav-link" href="#organismo-cards-link" data-category="organismos">3.1 Cards de Navegação (Listalinks)</a>
+            <a class="nav-link" href="#organismo-abas" data-category="organismos">3.2 Navegação em Abas</a>
+            <a class="nav-link" href="#organismo-timelines" data-category="organismos">3.3 Timelines (Vertical & Horizontal)</a>
+            <a class="nav-link" href="#organismo-hero-banner" data-category="organismos">3.4 Hero Banner</a>
+            <a class="nav-link" href="#organismo-noticias" data-category="organismos">3.5 Lista de Notícias</a>
+            <a class="nav-link" href="#organismo-process-list" data-category="organismos">3.6 Process List</a>
+            <a class="nav-link" href="#organismo-modal" data-category="organismos">3.7 Modal / Dialog Acessível</a>
+            <a class="nav-link" href="#organismo-videos" data-category="organismos">3.8 Container de Vídeos</a>
 
-            <div class="ds-sidebar-title">4. Utilitários (Helpers)</div>
-            <a class="nav-link" href="#utilitario-backtotop">4.1 Botão Voltar ao Topo</a>
-            <a class="nav-link" href="#utilitario-transicoes">4.2 Transição e Setas</a>
+            <div class="ds-sidebar-title" data-category="utilitarios">4. Utilitários (Helpers)</div>
+            <a class="nav-link" href="#utilitario-backtotop" data-category="utilitarios">4.1 Botão Voltar ao Topo</a>
+            <a class="nav-link" href="#utilitario-transicoes" data-category="utilitarios">4.2 Transição e Setas</a>
         </nav>
 
         <!-- Conteúdo Principal da Vitrine -->
         <main class="ds-main" id="conteudo-principal">
+
+            <!-- Botão de Alternância da Sidebar em Telas Menores -->
+            <div class="d-lg-none mb-3">
+                <button type="button" id="btnToggleSidebar" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center gap-1" aria-expanded="false" aria-controls="ds-sidebar-nav">
+                    <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">menu</span>
+                    <span>Navegação de Componentes</span>
+                </button>
+            </div>
 
             <div class="mb-4">
                 <h1 class="h2 font-weight-bold text-bcb-brand">Catálogo Vivo de Componentes</h1>
@@ -368,10 +465,17 @@
             </div>
 
             <!-- 1.0 Grid e Diagramação (12 Colunas) -->
-            <section id="atomo-grid" class="ds-component-card">
+            <section id="atomo-grid" class="ds-component-card" data-category="atomos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">grid_view</span> 1.0 Grid 12 Colunas & Container 1440px</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Layout CMS BCB</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-body small mb-3">
@@ -452,7 +556,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-grid"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-grid" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="small demo-grid-wrapper rounded badge badge-secondary bcb-row bcb-col-12 bcb-col-lg-8" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-grid">&lt;!-- Container Institucional (Max 1440px) --&gt;
 &lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;
 
@@ -488,10 +595,17 @@
             </section>
 
             <!-- 1.1 Botões -->
-            <section id="atomo-botoes" class="ds-component-card">
+            <section id="atomo-botoes" class="ds-component-card" data-category="atomos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">smart_button</span> 1.1 Botões e Variantes</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Foco Acessível 3px</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Linha 1: Estados Interativos -->
@@ -533,7 +647,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-botoes"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-botoes" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="small flex-wrap align-items-center gap-2 btn btn-primary btn-danger btn-secondary" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-botoes">&lt;!-- Estados Interativos --&gt;
 &lt;button type="button" class="btn btn-primary"&gt;Padrão (Default)&lt;/button&gt;
 &lt;button type="button" class="btn btn-primary" disabled aria-disabled="true"&gt;Desabilitado&lt;/button&gt;
@@ -554,10 +671,17 @@
             </section>
 
             <!-- 1.2 Controles de Formulário -->
-            <section id="atomo-formularios" class="ds-component-card">
+            <section id="atomo-formularios" class="ds-component-card" data-category="atomos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">edit_note</span> 1.2 Controles de Formulário (Form Controls)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> WCAG 2.2 AA</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -627,7 +751,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-formularios"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-formularios" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="form-group form-control form-text custom-select is-valid valid-feedback is-invalid invalid-feedback" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-formularios">&lt;!-- Input Inválido com Acessibilidade --&gt;
 &lt;div class="form-group"&gt;
   &lt;label for="cpfInput"&gt;CPF do Titular&lt;/label&gt;
@@ -650,10 +777,17 @@
             </section>
 
             <!-- 1.4 Tags e Badges -->
-            <section id="atomo-tags-badges" class="ds-component-card">
+            <section id="atomo-tags-badges" class="ds-component-card" data-category="atomos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">label</span> 1.4 Tags e Badges</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Metadados e Status</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Linha 1: Estados e Variantes de Tags -->
@@ -684,7 +818,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-tags-badges"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-tags-badges" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="small flex-wrap align-items-center gap-2 tag-bcb primary tag-bcb--success material-symbols-outlined" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-tags-badges">&lt;!-- Tags Semânticas --&gt;
 &lt;span class="tag-bcb"&gt;Padrão / Neutra&lt;/span&gt;
 &lt;span class="tag-bcb primary"&gt;Primária&lt;/span&gt;
@@ -702,10 +839,17 @@
             </section>
 
             <!-- 1.5 Ícones & Tipografia -->
-            <section id="atomo-icones-tipografia" class="ds-component-card">
+            <section id="atomo-icones-tipografia" class="ds-component-card" data-category="atomos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_size</span> 1.5 Material Icons e Tipografia</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Ubuntu / Cormorant</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row align-items-center mb-4">
@@ -720,7 +864,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-icones-tipografia"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-icones-tipografia" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="align-items-center material-symbols-outlined material-icons md-18 md-24 md-36 md-48 h1" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-icones-tipografia">&lt;!-- Escala de Ícones --&gt;
 &lt;span class="material-symbols-outlined material-icons md-24" aria-hidden="true"&gt;account_balance&lt;/span&gt;
 &lt;span class="material-symbols-outlined material-icons md-36" aria-hidden="true"&gt;table_view&lt;/span&gt;
@@ -732,10 +879,17 @@
             </section>
 
             <!-- 1.6 Tabelas Nativas Simples -->
-            <section id="atomo-tabelas" class="ds-component-card">
+            <section id="atomo-tabelas" class="ds-component-card" data-category="atomos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">table_chart</span> 1.6 Tabelas Nativas Simples</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Caption & Scope</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="table-responsive">
@@ -767,7 +921,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-tabelas"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-tabelas" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="table-responsive table table-hover table-striped sr-only thead-primary" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-tabelas">&lt;table class="table table-hover table-striped"&gt;
   &lt;caption class="sr-only"&gt;Descrição da tabela para leitores de tela.&lt;/caption&gt;
   &lt;thead class="thead-primary"&gt;
@@ -789,10 +946,17 @@
             </section>
 
             <!-- 1.6 Skeleton Loading -->
-            <section id="atomo-skeleton" class="ds-component-card">
+            <section id="atomo-skeleton" class="ds-component-card" data-category="atomos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">hourglass_empty</span> 1.6 Skeleton Loading (.bcb-skeleton)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-busy="true" &bull; WCAG 2.2</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Animações de shimmer para suavizar estados assíncronos de carregamento em cards, tabelas e parágrafos sem quebrar o layout.</p>
@@ -845,7 +1009,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-skeleton"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-skeleton" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="small border rounded bg-white bcb-skeleton bcb-skeleton-title bcb-skeleton-text w-75" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-skeleton">&lt;!-- Skeleton de Texto e Parágrafo com Acessibilidade --&gt;
 &lt;div aria-busy="true" aria-label="Carregando dados..."&gt;
   &lt;div class="bcb-skeleton bcb-skeleton-title"&gt;&lt;/div&gt;
@@ -870,10 +1037,17 @@
             </div>
 
             <!-- 2.1 Callouts Estruturados -->
-            <section id="molecula-callouts" class="ds-component-card">
+            <section id="molecula-callouts" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">chat_bubble_outline</span> 2.1 Callouts Estruturados</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> 5 Variantes Semânticas</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Brand -->
@@ -910,7 +1084,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-callouts"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-callouts" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="callout callout-brand callout-left-bordered material-symbols-outlined material-icons callout-icon callout-content callout-title" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-callouts">&lt;div class="callout callout-brand callout-left-bordered"&gt;
   &lt;span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true"&gt;info&lt;/span&gt;
   &lt;div class="callout-content"&gt;
@@ -922,10 +1099,17 @@
             </section>
 
             <!-- 2.3 Tip Box -->
-            <section id="molecula-tipbox" class="ds-component-card">
+            <section id="molecula-tipbox" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">lightbulb</span> 2.3 Tip Box Educativa</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Dicas de Educação Financeira</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="tip-box">
@@ -937,7 +1121,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-tipbox"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-tipbox" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="tip-box align-items-center material-symbols-outlined material-icons mr-2 h6" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-tipbox">&lt;div class="tip-box"&gt;
   &lt;div class="d-flex align-items-center mb-2"&gt;
     &lt;span class="material-symbols-outlined material-icons mr-2 text-primary" aria-hidden="true"&gt;tips_and_updates&lt;/span&gt;
@@ -949,10 +1136,17 @@
             </section>
 
             <!-- 2.4 Download de Documentos -->
-            <section id="molecula-documentos" class="ds-component-card">
+            <section id="molecula-documentos" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">cloud_download</span> 2.4 Download de Documentos (.documentos)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Metadados e Formato</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -985,7 +1179,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-documentos"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-documentos" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="documentos documento hvr-shadow color-1 icone bg-color-1 align-items-center justify-content-center" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-documentos">&lt;div class="documentos"&gt;
   &lt;a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Ata do Copom (PDF, 850 KB)"&gt;
     &lt;div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"&gt;
@@ -1001,10 +1198,17 @@
             </section>
 
             <!-- 2.5 Card de Indicador Econômico -->
-            <section id="molecula-indicadores" class="ds-component-card">
+            <section id="molecula-indicadores" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span> 2.5 Card de Indicador Econômico (.bcb-indicator-card)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Séries Temporais & Mercado</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -1059,7 +1263,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-indicadores"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-indicadores" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-indicator-card indicator-brand bcb-indicator-label bcb-indicator-value bcb-indicator-trend positive material-symbols-outlined material-icons" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-indicadores">&lt;!-- Indicador Positivo (Mercado/Alta Favorável) --&gt;
 &lt;div class="bcb-indicator-card indicator-positive"&gt;
   &lt;div class="bcb-indicator-label"&gt;Reservas Internacionais&lt;/div&gt;
@@ -1087,10 +1294,17 @@
             </section>
 
             <!-- 2.6 Card Link / Lista Links -->
-            <section id="molecula-listalinks" class="ds-component-card">
+            <section id="molecula-listalinks" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">link</span> 2.6 Card Link / Lista de Links (.listalinks-light)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Modelos 1 e 5</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Modelo 1 (Horizontal) -->
@@ -1145,7 +1359,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-listalinks"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-listalinks" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="h6 bcb-listalinks buffer rounded hvr-shadow icone bg-color-1 align-items-center" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-listalinks">&lt;!-- Card Link Modelo 1 --&gt;
 &lt;div class="bcb-listalinks"&gt;
   &lt;div class="buffer"&gt;
@@ -1163,10 +1380,17 @@
             </section>
 
             <!-- 2.7 Stepper -->
-            <section id="molecula-stepper" class="ds-component-card">
+            <section id="molecula-stepper" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">linear_scale</span> 2.7 Stepper (Passo a Passo Multi-etapas)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Jornada do Cidadão</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="d-flex justify-content-between align-items-center position-relative my-3" style="max-width: 600px; margin: 0 auto;">
@@ -1189,7 +1413,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-stepper"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-stepper" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="justify-content-between align-items-center position-relative my-3 material-symbols-outlined material-icons mt-1" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-stepper">&lt;!-- Stepper Semântico em 3 Fases --&gt;
 &lt;nav aria-label="Progresso da solicitação"&gt;
   &lt;ol class="bcb-stepper list-unstyled d-flex justify-content-between"&gt;
@@ -1202,10 +1429,17 @@
             </section>
 
             <!-- 2.8 Data Table Responsiva -->
-            <section id="molecula-datatable" class="ds-component-card">
+            <section id="molecula-datatable" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_list</span> 2.8 Data Table Responsiva</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Ordenação Client-Side</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-data-table-container">
@@ -1319,7 +1553,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-datatable"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-datatable" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-data-table-container bcb-data-table-header bcb-data-table-title h5 bcb-data-table-actions btn btn-outline-primary btn-sm" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-datatable">&lt;!-- Tabela com Ordenação e Scroll Responsivo --&gt;
 &lt;div class="bcb-data-table-container"&gt;
   &lt;div class="table-responsive"&gt;
@@ -1357,10 +1594,17 @@
             </section>
 
             <!-- 2.9 Filtros e Busca Facetada -->
-            <section id="molecula-filtros" class="ds-component-card">
+            <section id="molecula-filtros" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">filter_alt</span> 2.9 Filtros e Busca Facetada (.bcb-filter-panel)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Chips Removíveis</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-filter-panel">
@@ -1416,7 +1660,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-filtros"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-filtros" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-filter-panel bcb-filter-panel-header bcb-filter-panel-title h5 material-symbols-outlined material-icons bcb-filter-group bcb-filter-label" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-filtros">&lt;div class="bcb-filter-panel"&gt;
   &lt;div class="bcb-date-range"&gt;
     &lt;input type="date" class="form-control" aria-label="Data inicial"&gt;
@@ -1434,10 +1681,17 @@
             </section>
 
             <!-- 2.10 Busca Avançada Local de Conteúdo -->
-            <section id="molecula-search-overlay" class="ds-component-card">
+            <section id="molecula-search-overlay" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">search</span> 2.10 Busca Avançada Local de Conteúdo (.bcb-search-overlay)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> role="search" &bull; In-page</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Módulo de pesquisa local in-page com chips de sugestões para filtragem em tabelas densas, normas e FAQs temáticos, operando dentro do miolo de conteúdo sem conflitar com a busca global do portal.</p>
@@ -1456,7 +1710,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-search-overlay"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-search-overlay" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="small bcb-search-overlay search-input-wrapper material-symbols-outlined material-icons search-icon form-control form-control-lg" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-search-overlay">&lt;div class="bcb-search-overlay" role="search"&gt;
   &lt;div class="search-input-wrapper"&gt;
     &lt;span class="material-symbols-outlined material-icons search-icon" aria-hidden="true"&gt;search&lt;/span&gt;
@@ -1468,10 +1725,17 @@
             </section>
 
             <!-- 2.11 Toasts e Alertas -->
-            <section id="molecula-toasts-alertas" class="ds-component-card">
+            <section id="molecula-toasts-alertas" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">notifications_active</span> 2.11 Toasts e Alertas</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-live="polite"</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Alerta Inline -->
@@ -1499,7 +1763,10 @@
                     <div id="toastStack" class="bcb-toast-container" aria-live="polite"></div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-toasts-alertas"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-toasts-alertas" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-alert alert-info align-items-center material-symbols-outlined material-icons mr-2 flex-wrap gap-2" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-toasts-alertas">&lt;!-- Disparo via API JavaScript Vanilla --&gt;
 &lt;script&gt;
   window.BcbToast.show({
@@ -1513,10 +1780,17 @@
             </section>
 
             <!-- 2.12 Exportação de Dados Abertos -->
-            <section id="molecula-data-export" class="ds-component-card">
+            <section id="molecula-data-export" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">file_download</span> 2.12 Exportação de Dados Abertos (.bcb-data-export)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Dados Abertos & SGS</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-data-export">
@@ -1543,7 +1817,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-data-export"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-data-export" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-data-export bcb-data-export-info bcb-data-export-icon material-symbols-outlined material-icons bcb-data-export-title bcb-data-export-subtitle bcb-data-export-actions" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-data-export">&lt;div class="bcb-data-export"&gt;
   &lt;div class="bcb-data-export-info"&gt;
     &lt;div class="bcb-data-export-icon"&gt;
@@ -1570,10 +1847,17 @@
             </section>
 
             <!-- 2.13 Empty State -->
-            <section id="molecula-empty-state" class="ds-component-card">
+            <section id="molecula-empty-state" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">inbox</span> 2.13 Empty State / Estado Vazio (.bcb-empty-state)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> WCAG 2.2 AA &bull; Resiliência</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Utilizado quando uma consulta, filtro facetado ou busca de dados abertos não retorna registros, oferecendo orientação e ações corretivas claras.</p>
@@ -1612,7 +1896,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-empty-state"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-empty-state" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="small bcb-empty-state bcb-empty-state-bordered bcb-empty-state-icon material-symbols-outlined material-icons bcb-empty-state-title bcb-empty-state-desc" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-empty-state">&lt;div class="bcb-empty-state bcb-empty-state-bordered" role="region" aria-label="Resultado da consulta"&gt;
   &lt;div class="bcb-empty-state-icon"&gt;
     &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;search_off&lt;/span&gt;
@@ -1626,19 +1913,348 @@
                 </div>
             </section>
 
+            <!-- 2.13 Breadcrumbs Acessíveis -->
+            <section id="molecula-breadcrumbs" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">linear_scale</span> 2.13 Breadcrumbs Acessíveis (.bcb-breadcrumb-nav)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-label &bull; aria-current="page"</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
+                </div>
+                <div class="ds-component-preview">
+                    <nav aria-label="Trilha de navegação de exemplo" class="bcb-breadcrumb-nav">
+                        <ol class="breadcrumb bcb-breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><span class="material-symbols-outlined material-icons bcb-breadcrumb-icon" aria-hidden="true">home</span> Início</a></li>
+                            <li class="breadcrumb-item"><a href="#">Estabilidade Financeira</a></li>
+                            <li class="breadcrumb-item"><a href="#">Política Monetária</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Taxa Selic e Copom</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-breadcrumbs" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-breadcrumb-nav bcb-breadcrumb breadcrumb-item active bcb-breadcrumb-icon" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-breadcrumbs">&lt;nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav"&gt;
+  &lt;ol class="breadcrumb bcb-breadcrumb"&gt;
+    &lt;li class="breadcrumb-item"&gt;
+      &lt;a href="/"&gt;&lt;span class="material-symbols-outlined material-icons bcb-breadcrumb-icon" aria-hidden="true"&gt;home&lt;/span&gt; Início&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="breadcrumb-item"&gt;&lt;a href="/estabilidade-financeira"&gt;Estabilidade Financeira&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="breadcrumb-item active" aria-current="page"&gt;Taxa Selic e Copom&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- 2.14 Bloco de Métricas / KPI Card Financeiro -->
+            <section id="molecula-kpi-card" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">query_stats</span> 2.14 Bloco de Métricas / KPI Card (.bcb-kpi-card)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Variantes de Mercado</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
+                </div>
+                <div class="ds-component-preview">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+                            <div class="bcb-kpi-card kpi-brand">
+                                <div class="bcb-kpi-header">
+                                    <span class="bcb-kpi-label">Taxa Selic Over</span>
+                                    <span class="material-symbols-outlined material-icons bcb-kpi-icon" aria-hidden="true">account_balance</span>
+                                </div>
+                                <div class="bcb-kpi-body">
+                                    <h4 class="bcb-kpi-value">14,25<span class="bcb-kpi-unit">% a.a.</span></h4>
+                                </div>
+                                <div class="bcb-kpi-footer">
+                                    <span class="bcb-kpi-trend positive"><span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_upward</span> +1,00 p.p.</span>
+                                    <span class="bcb-kpi-date">12/03/2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+                            <div class="bcb-kpi-card kpi-success">
+                                <div class="bcb-kpi-header">
+                                    <span class="bcb-kpi-label">IPCA Acumulado 12m</span>
+                                    <span class="material-symbols-outlined material-icons bcb-kpi-icon" aria-hidden="true">trending_up</span>
+                                </div>
+                                <div class="bcb-kpi-body">
+                                    <h4 class="bcb-kpi-value">4,12<span class="bcb-kpi-unit">%</span></h4>
+                                </div>
+                                <div class="bcb-kpi-footer">
+                                    <span class="bcb-kpi-trend negative"><span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_downward</span> -0,18 p.p.</span>
+                                    <span class="bcb-kpi-date">Fev/2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3 mb-3 mb-md-0">
+                            <div class="bcb-kpi-card kpi-warning">
+                                <div class="bcb-kpi-header">
+                                    <span class="bcb-kpi-label">Dólar Comercial (PTAX)</span>
+                                    <span class="material-symbols-outlined material-icons bcb-kpi-icon" aria-hidden="true">attach_money</span>
+                                </div>
+                                <div class="bcb-kpi-body">
+                                    <h4 class="bcb-kpi-value">5,752<span class="bcb-kpi-unit">R$</span></h4>
+                                </div>
+                                <div class="bcb-kpi-footer">
+                                    <span class="bcb-kpi-trend neutral"><span class="material-symbols-outlined material-icons" aria-hidden="true">trending_flat</span> 0,00%</span>
+                                    <span class="bcb-kpi-date">12/03/2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="bcb-kpi-card kpi-danger">
+                                <div class="bcb-kpi-header">
+                                    <span class="bcb-kpi-label">Meta de Inflação</span>
+                                    <span class="material-symbols-outlined material-icons bcb-kpi-icon" aria-hidden="true">track_changes</span>
+                                </div>
+                                <div class="bcb-kpi-body">
+                                    <h4 class="bcb-kpi-value">3,00<span class="bcb-kpi-unit">%</span></h4>
+                                </div>
+                                <div class="bcb-kpi-footer">
+                                    <span class="bcb-kpi-trend neutral">Centro da Meta</span>
+                                    <span class="bcb-kpi-date">Ano 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-kpi-card" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-kpi-card kpi-brand kpi-success kpi-warning kpi-danger bcb-kpi-header bcb-kpi-label bcb-kpi-icon bcb-kpi-body bcb-kpi-value bcb-kpi-unit bcb-kpi-footer bcb-kpi-trend positive negative neutral bcb-kpi-date" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-kpi-card">&lt;div class="bcb-kpi-card kpi-brand"&gt;
+  &lt;div class="bcb-kpi-header"&gt;
+    &lt;span class="bcb-kpi-label"&gt;Taxa Selic Over&lt;/span&gt;
+    &lt;span class="material-symbols-outlined material-icons bcb-kpi-icon" aria-hidden="true"&gt;account_balance&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-kpi-body"&gt;
+    &lt;h4 class="bcb-kpi-value"&gt;14,25&lt;span class="bcb-kpi-unit"&gt;% a.a.&lt;/span&gt;&lt;/h4&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-kpi-footer"&gt;
+    &lt;span class="bcb-kpi-trend positive"&gt;&lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;arrow_upward&lt;/span&gt; +1,00 p.p.&lt;/span&gt;
+    &lt;span class="bcb-kpi-date"&gt;12/03/2026&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- 2.15 Barra de Utilidades da Página -->
+            <section id="molecula-page-toolbar" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">more_horiz</span> 2.15 Barra de Utilidades da Página (.bcb-page-toolbar)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> 44px Touch Target</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
+                </div>
+                <div class="ds-component-preview">
+                    <div class="bcb-page-toolbar" role="toolbar" aria-label="Ações e utilidades da página">
+                        <div class="bcb-page-toolbar__meta">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">schedule</span>
+                            <span>Última modificação em: <strong>12/03/2026 às 18:30</strong></span>
+                        </div>
+                        <div class="bcb-page-toolbar__actions">
+                            <button type="button" class="bcb-page-toolbar__btn" onclick="window.print();" aria-label="Imprimir esta página">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">print</span> Imprimir
+                            </button>
+                            <button type="button" class="bcb-page-toolbar__btn" onclick="if(window.BcbToast) window.BcbToast.show({title:'Link Copiado', message:'O link da página foi copiado para a área de transferência.', type:'success'});" aria-label="Copiar link da página">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">link</span> Copiar Link
+                            </button>
+                            <button type="button" class="bcb-page-toolbar__btn" aria-label="Compartilhar página">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">share</span> Compartilhar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-page-toolbar" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-page-toolbar bcb-page-toolbar__meta bcb-page-toolbar__actions bcb-page-toolbar__btn" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-page-toolbar">&lt;div class="bcb-page-toolbar" role="toolbar" aria-label="Utilidades da página"&gt;
+  &lt;div class="bcb-page-toolbar__meta"&gt;
+    &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;schedule&lt;/span&gt;
+    &lt;span&gt;Última modificação: &lt;strong&gt;12/03/2026 às 18:30&lt;/strong&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-page-toolbar__actions"&gt;
+    &lt;button type="button" class="bcb-page-toolbar__btn" onclick="window.print();"&gt;
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;print&lt;/span&gt; Imprimir
+    &lt;/button&gt;
+    &lt;button type="button" class="bcb-page-toolbar__btn"&gt;
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;link&lt;/span&gt; Copiar Link
+    &lt;/button&gt;
+    &lt;button type="button" class="bcb-page-toolbar__btn"&gt;
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;share&lt;/span&gt; Compartilhar
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- 2.16 Citação Institucional e Destaque Normativo -->
+            <section id="molecula-quote" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_quote</span> 2.16 Citação Institucional e Destaque Normativo (.bcb-quote)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Cormorant Garamond</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
+                </div>
+                <div class="ds-component-preview">
+                    <!-- Citação da Diretoria -->
+                    <blockquote class="bcb-quote">
+                        <p class="bcb-quote-text">"A firmeza na condução da política monetária e o compromisso com a convergência da inflação para a meta são as âncoras primordiais da estabilidade macroeconômica e da soberania da moeda nacional."</p>
+                        <footer class="bcb-quote-footer">
+                            <span class="bcb-quote-author">Diretoria Colegiada do Banco Central do Brasil</span>
+                            <span class="bcb-quote-role">Ata da 268ª Reunião Ordinária do Copom</span>
+                            <cite class="bcb-quote-cite">Brasília, DF &bull; Publicado em 12 de março de 2026</cite>
+                        </footer>
+                    </blockquote>
+
+                    <!-- Destaque Normativo -->
+                    <div class="bcb-quote bcb-quote--normative">
+                        <p class="bcb-quote-text"><strong>Art. 3º</strong> As instituições autorizadas a funcionar pelo Banco Central do Brasil deverão manter canal dedicado e ininterrupto para devolução cautelar de recursos no âmbito do Pix (Mecanismo Especial de Devolução - MED).</p>
+                        <footer class="bcb-quote-footer">
+                            <span class="bcb-quote-author">Resolução BCB nº 103/2026</span>
+                            <span class="bcb-quote-role">Departamento de Regulação do Sistema Financeiro (DENOR)</span>
+                        </footer>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-quote" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-quote bcb-quote--normative bcb-quote-text bcb-quote-footer bcb-quote-author bcb-quote-role bcb-quote-cite" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-quote">&lt;!-- Citação Institucional (Copom / Pronunciamento) --&gt;
+&lt;blockquote class="bcb-quote"&gt;
+  &lt;p class="bcb-quote-text"&gt;"O compromisso com a estabilidade de preços é fundamental..."&lt;/p&gt;
+  &lt;footer class="bcb-quote-footer"&gt;
+    &lt;span class="bcb-quote-author"&gt;Presidente do Banco Central do Brasil&lt;/span&gt;
+    &lt;span class="bcb-quote-role"&gt;Pronunciamento Oficial à Imprensa&lt;/span&gt;
+    &lt;cite class="bcb-quote-cite"&gt;Brasília, Março de 2026&lt;/cite&gt;
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- Destaque Normativo / Resoluções --&gt;
+&lt;div class="bcb-quote bcb-quote--normative"&gt;
+  &lt;p class="bcb-quote-text"&gt;Art. 1º É vedada a cobrança de tarifa sob cheque especial...&lt;/p&gt;
+  &lt;footer class="bcb-quote-footer"&gt;
+    &lt;span class="bcb-quote-author"&gt;Resolução BCB nº 103/2026&lt;/span&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- 2.17 Alertas Inline de Validação -->
+            <section id="molecula-alert" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">feedback</span> 2.17 Alertas Inline de Validação (.bcb-alert)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> role="alert" &bull; WCAG 2.2</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
+                </div>
+                <div class="ds-component-preview">
+                    <!-- Alerta de Sucesso -->
+                    <div class="bcb-alert alert-success" role="status">
+                        <span class="material-symbols-outlined material-icons alert-icon" aria-hidden="true">check_circle</span>
+                        <div class="alert-content">
+                            <h4 class="alert-title">Demanda cadastrada com sucesso!</h4>
+                            <p class="alert-message">O protocolo <strong>2026-BCB-998811</strong> foi gerado e encaminhado para o departamento responsável.</p>
+                        </div>
+                        <button type="button" class="alert-close" aria-label="Fechar alerta"><span class="material-symbols-outlined material-icons" aria-hidden="true">close</span></button>
+                    </div>
+
+                    <!-- Alerta de Erro com Lista de Validação -->
+                    <div class="bcb-alert alert-danger" role="alert">
+                        <span class="material-symbols-outlined material-icons alert-icon" aria-hidden="true">error</span>
+                        <div class="alert-content">
+                            <h4 class="alert-title">Pendências no formulário de adesão</h4>
+                            <p class="alert-message">Por favor, corrija os seguintes campos antes de submeter a proposta:</p>
+                            <ul class="alert-list">
+                                <li>O CNPJ informado não consta na base autorizada de participantes do Pix.</li>
+                                <li>O certificado digital ICP-Brasil selecionado está expirado desde 01/03/2026.</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="alert-close" aria-label="Fechar alerta"><span class="material-symbols-outlined material-icons" aria-hidden="true">close</span></button>
+                    </div>
+
+                    <!-- Alerta de Aviso -->
+                    <div class="bcb-alert alert-warning" role="status">
+                        <span class="material-symbols-outlined material-icons alert-icon" aria-hidden="true">warning</span>
+                        <div class="alert-content">
+                            <h4 class="alert-title">Janela de manutenção programada</h4>
+                            <p class="alert-message">Os serviços de consulta ao SGS poderão apresentar instabilidade momentânea entre 02h e 04h do próximo domingo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-alert" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-alert alert-success alert-warning alert-danger alert-info alert-icon alert-content alert-title alert-message alert-list alert-close" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-alert">&lt;!-- Alerta de Erro com Validação --&gt;
+&lt;div class="bcb-alert alert-danger" role="alert"&gt;
+  &lt;span class="material-symbols-outlined material-icons alert-icon" aria-hidden="true"&gt;error&lt;/span&gt;
+  &lt;div class="alert-content"&gt;
+    &lt;h4 class="alert-title"&gt;Erro na validação do formulário&lt;/h4&gt;
+    &lt;p class="alert-message"&gt;Corrija os itens abaixo:&lt;/p&gt;
+    &lt;ul class="alert-list"&gt;
+      &lt;li&gt;Campo CNPJ inválido ou incompleto.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;button type="button" class="alert-close" aria-label="Fechar alerta"&gt;
+    &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;close&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
             <!-- ========================================================= -->
             <!-- 3. ORGANISMOS (COMPOSTOS) -->
             <!-- ========================================================= -->
-            <div class="ds-section-header mt-5 mb-4 pb-2 border-bottom" id="secao-organismos">
+            <div class="ds-section-header mt-5 mb-4 pb-2 border-bottom" id="secao-organismos" data-category="organismos">
                 <h2 class="h3 font-weight-bold text-bcb-brand mb-1">3. Organismos (Compostos)</h2>
                 <p class="text-muted small mb-0">Módulos complexos e autônomos de interface com comportamento interativo acessível.</p>
             </div>
 
             <!-- 3.1 Accordion (Sanfona) -->
-            <section id="organismo-accordion" class="ds-component-card">
+            <section id="organismo-accordion" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_day</span> 3.1 Accordion (Sanfona) (.accordion.modelo-1)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-expanded sincronizado</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="accordion modelo-1" id="accordionDemo">
@@ -1677,7 +2293,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-accordion"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-accordion" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="accordion modelo-1 card card-header btn btn-link btn-block justify-content-between" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-accordion">&lt;div class="accordion modelo-1" id="faqAccordion"&gt;
   &lt;div class="card"&gt;
     &lt;div class="card-header" id="heading1"&gt;
@@ -1697,10 +2316,17 @@
             </section>
 
             <!-- 3.4 Navegação em Abas -->
-            <section id="organismo-abas" class="ds-component-card">
+            <section id="organismo-abas" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">tab</span> 3.4 Navegação em Abas (.bcb-navegacaoabas)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Chanfro Angular</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-navegacaoabas">
@@ -1728,7 +2354,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-abas"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-abas" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-navegacaoabas line nav nav-tabs nav-item nav-link active texto" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-abas">&lt;div class="bcb-navegacaoabas"&gt;
   &lt;span class="line"&gt;&lt;/span&gt;
   &lt;ul class="nav nav-tabs" role="tablist"&gt;
@@ -1744,10 +2373,17 @@
             </section>
 
             <!-- 3.5 Timelines -->
-            <section id="organismo-timelines" class="ds-component-card">
+            <section id="organismo-timelines" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">timeline</span> 3.5 Timelines (Vertical Educativa e Horizontal)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Cronograma & Jornada</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Timeline Educativa Vertical -->
@@ -1770,7 +2406,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-timelines"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-timelines" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="h6 timeline-vertical step-card rounded align-items-center badge badge-primary mr-2" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-timelines">&lt;!-- Card de Etapa da Timeline Vertical --&gt;
 &lt;div class="step-card p-3 rounded" style="border-left: 4px solid var(--bcb-brand-blue); background: var(--bcb-gray-50);"&gt;
   &lt;div class="d-flex align-items-center mb-1"&gt;
@@ -1783,10 +2422,17 @@
             </section>
 
             <!-- 3.6 Hero Banner -->
-            <section id="organismo-hero-banner" class="ds-component-card">
+            <section id="organismo-hero-banner" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">panorama</span> 3.6 Hero Banner (.bcb-hero-banner)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Destaque Principal</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview p-0">
                     <div class="p-5" style="background: linear-gradient(135deg, var(--bcb-brand-blue) 0%, var(--bcb-brand-blue-dark) 100%); color: white; border-radius: var(--bcb-radius-4);">
@@ -1797,7 +2443,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-hero-banner"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-hero-banner" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="organismo-hero-banner" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-hero-banner">&lt;div class="p-5" style="background: linear-gradient(135deg, var(--bcb-brand-blue) 0%, var(--bcb-brand-blue-dark) 100%); color: white;"&gt;
   &lt;h1 class="font-cormorant"&gt;Título do Hero Banner&lt;/h1&gt;
   &lt;p class="lead"&gt;Descrição de alto impacto institucional.&lt;/p&gt;
@@ -1807,10 +2456,17 @@
             </section>
 
             <!-- 3.7 Lista de Notícias -->
-            <section id="organismo-noticias" class="ds-component-card">
+            <section id="organismo-noticias" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">newspaper</span> 3.7 Lista de Notícias (News List)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Editorial</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="list-group list-group-flush">
@@ -1825,7 +2481,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-noticias"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-noticias" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="list-group list-group-flush list-group-item px-0 py-3 bg-transparent w-100 justify-content-between" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-noticias">&lt;div class="list-group-item px-0 py-3"&gt;
   &lt;div class="d-flex justify-content-between mb-1"&gt;
     &lt;span class="tag-bcb primary"&gt;Categoria&lt;/span&gt;
@@ -1838,10 +2497,17 @@
             </section>
 
             <!-- 3.8 Process List -->
-            <section id="organismo-process-list" class="ds-component-card">
+            <section id="organismo-process-list" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_list_numbered</span> 3.8 Process List (Passo a Passo Sequencial)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Numeração em Grade</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <ol class="process-list">
@@ -1856,7 +2522,10 @@
                     </ol>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-process-list"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-process-list" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="process-list h6 small" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-process-list">&lt;ol class="process-list"&gt;
   &lt;li&gt;
     &lt;h4 class="h6 font-weight-bold"&gt;Título do Passo 1&lt;/h4&gt;
@@ -1871,10 +2540,17 @@
             </section>
 
             <!-- 3.9 Modal / Dialog Acessível -->
-            <section id="organismo-modal" class="ds-component-card">
+            <section id="organismo-modal" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">picture_in_picture</span> 3.9 Modal / Dialog Acessível (.bcb-modal)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Focus-Trap & ESC</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <button type="button" class="btn btn-primary" id="btnAbrirModal">
@@ -1901,7 +2577,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-modal"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-modal" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="btn btn-primary material-symbols-outlined material-icons bcb-modal-backdrop bcb-modal-dialog bcb-modal-header bcb-modal-title" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-modal">&lt;!-- Disparo via API Vanilla --&gt;
 &lt;button type="button" class="btn btn-primary" onclick="window.BcbModal.open('modalId')"&gt;Abrir Modal&lt;/button&gt;
 
@@ -1921,10 +2600,17 @@
             </section>
 
             <!-- 3.10 Container de Vídeos -->
-            <section id="organismo-videos" class="ds-component-card">
+            <section id="organismo-videos" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">play_circle</span> 3.10 Container de Vídeos (.videos-destaque)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Aspect Ratio 16:9</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row videos-destaque">
@@ -1936,7 +2622,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-videos"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-videos" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="videos-destaque embed-responsive embed-responsive-16by9 rounded shadow-sm embed-responsive-item" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-videos">&lt;div class="embed-responsive embed-responsive-16by9 rounded"&gt;
   &lt;iframe class="embed-responsive-item" src="https://www.youtube.com/embed/VIDEO_ID" title="Título descritivo do vídeo" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;</code></pre>
@@ -1952,10 +2641,17 @@
             </div>
 
             <!-- 4.1 Botão Voltar ao Topo -->
-            <section id="utilitario-backtotop" class="ds-component-card">
+            <section id="utilitario-backtotop" class="ds-component-card" data-category="utilitarios">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_upward</span> 4.1 Botão Voltar ao Topo (.bcb-back-to-top)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Scroll Suave</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-2">Botão fixo que surge no canto inferior direito da tela após rolagem superior a 300px.</p>
@@ -1964,7 +2660,10 @@
                     </button>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-backtotop"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-backtotop" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="small btn btn-primary material-symbols-outlined material-icons mr-1" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-backtotop">&lt;button type="button" class="bcb-back-to-top" id="btnBackToTop" aria-label="Voltar ao topo da página"&gt;
   &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;keyboard_arrow_up&lt;/span&gt;
 &lt;/button&gt;</code></pre>
@@ -1972,10 +2671,17 @@
             </section>
 
             <!-- 4.2 Transição e Setas -->
-            <section id="utilitario-transicoes" class="ds-component-card">
+            <section id="utilitario-transicoes" class="ds-component-card" data-category="utilitarios">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">swap_vert</span> 4.2 Bloco de Transição e Setas (.transition-block)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Separador Animado</span>
+                
+                    <div class="ds-state-pills" role="group" aria-label="Visualização de estados">
+                        <button type="button" class="ds-state-btn active" data-state="padrao">Padrão</button>
+                        <button type="button" class="ds-state-btn" data-state="foco">Foco</button>
+                        <button type="button" class="ds-state-btn" data-state="erro">Erro</button>
+                        <button type="button" class="ds-state-btn" data-state="desabilitado">Desabilitado</button>
+                    </div>
                 </div>
                 <div class="ds-component-preview">
                     <div class="transition-block text-center py-4">
@@ -1984,7 +2690,10 @@
                     </div>
                 </div>
                 <div class="ds-component-code">
-                    <button class="btn-copy-code" data-code="code-transicoes"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-transicoes" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="transition-block py-4 material-symbols-outlined material-icons animated-arrow small mt-2" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
                     <pre><code id="code-transicoes">&lt;div class="transition-block text-center"&gt;
   &lt;span class="material-symbols-outlined material-icons animated-arrow" aria-hidden="true"&gt;keyboard_double_arrow_down&lt;/span&gt;
 &lt;/div&gt;</code></pre>
@@ -2048,6 +2757,49 @@
                     });
                 }
             });
+        });
+
+        // Copiar Classes CSS
+        document.querySelectorAll('.btn-copy-css').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const classes = btn.getAttribute('data-classes');
+                if (classes) {
+                    navigator.clipboard.writeText(classes).then(() => {
+                        const originalHTML = btn.innerHTML;
+                        btn.innerHTML = '<span class="material-symbols-outlined material-icons md-18" aria-hidden="true">check</span> Copiado!';
+                        btn.style.background = 'var(--bcb-brand-azul-blue, #025C75)';
+                        btn.style.color = '#ffffff';
+                        setTimeout(() => {
+                            btn.innerHTML = originalHTML;
+                            btn.style.background = '';
+                            btn.style.color = '';
+                        }, 2000);
+
+                        if (window.BcbToast) {
+                            window.BcbToast.show({
+                                title: 'Classes CSS Copiadas!',
+                                message: `As classes [${classes.substring(0, 45)}...] foram copiadas.`,
+                                type: 'info',
+                                duration: 3000
+                            });
+                        }
+                    });
+                }
+            });
+        });
+
+        // Fechamento de Alertas Inline (.bcb-alert)
+        document.addEventListener('click', (e) => {
+            const closeBtn = e.target.closest('.alert-close');
+            if (closeBtn) {
+                const alertEl = closeBtn.closest('.bcb-alert');
+                if (alertEl) {
+                    alertEl.style.opacity = '0';
+                    alertEl.style.transform = 'translateY(-6px)';
+                    alertEl.style.transition = 'all 0.2s ease';
+                    setTimeout(() => alertEl.remove(), 200);
+                }
+            }
         });
 
         // ==========================================
@@ -2132,17 +2884,64 @@
         }
 
         // ==========================================
-        // 4. FILTRO DE BUSCA NA SIDEBAR
+        // 4. FILTRO DE BUSCA NA SIDEBAR & CATEGORIAS
         // ==========================================
         const searchInput = document.getElementById('sidebarSearchInput');
+        const categoryFilterGroup = document.getElementById('categoryFilterGroup');
+
+        function aplicarFiltros() {
+            const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const activeCategoryBtn = categoryFilterGroup ? categoryFilterGroup.querySelector('button.active') : null;
+            const category = activeCategoryBtn ? activeCategoryBtn.getAttribute('data-cat') : 'all';
+
+            // Filtrar links da sidebar
+            document.querySelectorAll('.ds-sidebar .nav-link').forEach(link => {
+                const linkCat = link.getAttribute('data-category') || '';
+                const linkText = link.textContent.toLowerCase();
+                const matchesCat = (category === 'all' || linkCat === category);
+                const matchesText = (!term || linkText.includes(term));
+                link.style.display = (matchesCat && matchesText) ? 'flex' : 'none';
+            });
+
+            // Filtrar títulos de categoria na sidebar
+            document.querySelectorAll('.ds-sidebar .ds-sidebar-title[data-category]').forEach(title => {
+                const titleCat = title.getAttribute('data-category') || '';
+                title.style.display = (category === 'all' || titleCat === category) ? '' : 'none';
+            });
+
+            // Filtrar cards na área principal
+            document.querySelectorAll('.ds-component-card').forEach(card => {
+                const cardCat = card.getAttribute('data-category') || '';
+                const titleEl = card.querySelector('.ds-component-header h3');
+                const cardTitle = titleEl ? titleEl.textContent.toLowerCase() : '';
+                const matchesCat = (category === 'all' || cardCat === card);
+                const matchesText = (!term || cardTitle.includes(term));
+                card.style.display = (matchesCat && matchesText) ? '' : 'none';
+            });
+        }
+
         if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
-                const navLinks = document.querySelectorAll('.ds-sidebar .nav-link');
-                navLinks.forEach(link => {
-                    const text = link.textContent.toLowerCase();
-                    link.style.display = text.includes(term) ? 'flex' : 'none';
+            searchInput.addEventListener('input', aplicarFiltros);
+        }
+
+        if (categoryFilterGroup) {
+            categoryFilterGroup.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryFilterGroup.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    aplicarFiltros();
                 });
+            });
+        }
+
+        // Alternância da Sidebar Mobile
+        const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+        const sidebarNav = document.getElementById('ds-sidebar-nav');
+        if (btnToggleSidebar && sidebarNav) {
+            btnToggleSidebar.addEventListener('click', () => {
+                const isExpanded = btnToggleSidebar.getAttribute('aria-expanded') === 'true';
+                btnToggleSidebar.setAttribute('aria-expanded', !isExpanded);
+                sidebarNav.classList.toggle('show');
             });
         }
 
@@ -2162,7 +2961,7 @@
         });
 
         // ==========================================
-        // 6. OBSERVER PARA SIDEBAR ATIVO
+        // 6. OBSERVER PARA SIDEBAR ATIVO (SCROLLSPY)
         // ==========================================
         const sections = document.querySelectorAll('.ds-main section[id]');
         const sidebarLinks = document.querySelectorAll('.ds-sidebar .nav-link');
@@ -2182,6 +2981,55 @@
         }, { rootMargin: '-20% 0px -70% 0px' });
 
         sections.forEach(sec => observer.observe(sec));
+
+        // ==========================================
+        // 7. SELETOR DE ESTADOS (PADRÃO / FOCO / ERRO / DESABILITADO)
+        // ==========================================
+        document.addEventListener('click', (e) => {
+            const stateBtn = e.target.closest('.ds-state-btn');
+            if (!stateBtn) return;
+
+            const pillsContainer = stateBtn.closest('.ds-state-pills');
+            if (!pillsContainer) return;
+
+            pillsContainer.querySelectorAll('.ds-state-btn').forEach(b => b.classList.remove('active'));
+            stateBtn.classList.add('active');
+
+            const state = stateBtn.getAttribute('data-state');
+            const card = stateBtn.closest('.ds-component-card');
+            if (!card) return;
+
+            const preview = card.querySelector('.ds-component-preview');
+            if (!preview) return;
+
+            // Limpar estados simulados anteriores
+            preview.querySelectorAll('.simulated-focus, .simulated-error, .simulated-disabled').forEach(el => {
+                el.classList.remove('simulated-focus', 'simulated-error', 'simulated-disabled');
+                if (el.hasAttribute('data-prev-disabled')) {
+                    el.disabled = false;
+                    el.removeAttribute('data-prev-disabled');
+                }
+            });
+
+            // Elementos interativos alvo no preview
+            const targets = preview.querySelectorAll('button, input, select, textarea, a.btn, a.bcb-btn, .form-control, .custom-select, [tabindex="0"]');
+
+            if (state === 'foco') {
+                targets.forEach(el => el.classList.add('simulated-focus'));
+            } else if (state === 'erro') {
+                targets.forEach(el => el.classList.add('simulated-error'));
+            } else if (state === 'desabilitado') {
+                targets.forEach(el => {
+                    el.classList.add('simulated-disabled');
+                    el.setAttribute('data-prev-disabled', 'true');
+                    el.disabled = true;
+                });
+            } else {
+                targets.forEach(el => {
+                    el.disabled = false;
+                });
+            }
+        });
     </script>
 </body>
 </html>
