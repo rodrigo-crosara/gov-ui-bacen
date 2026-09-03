@@ -5,6 +5,21 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.2.0] — 2026-09-03
+
+### Adicionado
+- **Desacoplamento Completo da Casca Fixa em Protótipos:** Todos os arquivos sob o diretório `prototipos/` foram convertidos em fragmentos puros de conteúdo semântico (`<main id="conteudo-principal">... </main>`), banindo rigorosamente tags de documento (`<!DOCTYPE>`, `<html>`, `<head>`, `<body>`), tags `<script>` e cascas globais (`#barra-brasil`, `<header>`, `<footer>`, `<nav aria-label="breadcrumb">`).
+- **Casca Estática de Homologação Resiliente (`prototipos/_harness.html`):** Visualizador técnico atualizado para injetar automaticamente a casca simulada institucional (Barra Brasil, Header BCB, Breadcrumb dinâmico extraído do H1/tag do fragmento e Footer BCB), bem como folhas de estilo (Bootstrap 4.6, Fontes BCB, Material Symbols e `bcb-style.css`) e scripts (`bcb-ui.js`) para visualização de fragmentos isolados.
+- **Novas Regras de Linting de Fragmentos (`tests/prototipos/prototipos-lint.test.js`):** Validação estrita que exige que o protótipo inicie diretamente no container `<main id="conteudo-principal">` e finalize em `</main>`, com proibição explícita de `<!DOCTYPE>`, `<html>`, `<head>`, `<body>` e `<script>`.
+- **Auditoria de Acessibilidade Flexibilizada (`tests/a11y/a11y-runner.js`):** Testes de `lang="pt-BR"`, `<meta name="viewport">` e breadcrumbs ajustados para validar apenas documentos completos, liberando fragmentos puros de falsos positivos.
+- **Scripts de Validação e Homologação Rápida:** Adicionados comandos `npm run validar:rapido` e `npm run harness:preview` para verificação unificada de tokens, HTML e protótipos.
+
+### Modificado
+- **Regras do Agente (`.antigravityrules` e `.agent/skills/gerador-ui-bcb/SKILL.md`):** Seções 4 e 6 atualizadas para instruir o agente a gerar unicamente o fragmento de conteúdo interno `<main id="conteudo-principal">`, proibindo cascas e scripts inline.
+- **Scripts de Automação (`scripts/nova-demanda.js` e `scripts/exportar-prototipo.js`):** `nova-demanda.js` atualizado para instruir e gerar scaffold exclusivo de `<main>`. `exportar-prototipo.js` modificado para exportar exclusivamente o corpo de conteúdo (`corpo-conteudo.html` e `miolo.html`), suprimindo a geração de `pagina-completa.html`.
+- **Refatoração dos 4 Protótipos Canônicos:** `copom-decisao-taxa-selic.html`, `mecanismo-especial-devolucao-med.html`, `regras-cheque-especial.html` e `sgs-series-taxa-selic.html` agora contêm exclusivamente a malha de `<main id="conteudo-principal">`.
+- **Documentação de Arquitetura e IA:** Atualizados `pages/prototipos.html`, `pages/automacao-ia.html`, `.docs-ia/components.md`, `.docs-ia/layouts-patterns.md` e modelos em `.docs-ia/exemplos-demandas/`, destacando o catálogo prioritário de blocos centrais e suprimindo guias de casca global.
+
 ## [2.1.0] — 2026-09-03
 
 ### Adicionado

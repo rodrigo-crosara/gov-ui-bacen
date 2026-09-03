@@ -254,9 +254,68 @@
             </div>
             <p class="lead mt-3 text-body">
                 Vitrine oficial de telas de alta fidelidade projetadas autonomamente pelo <strong>motor de IA do BCB</strong> a partir de demandas reais.
-                Cada interface foca rigorosamente na semântica do miolo (<code>&lt;main id="conteudo-principal"&gt;</code>), com grid 12 colunas modular,
-                acessibilidade técnica (e-MAG 3.1 / WCAG 2.2 AA) e suporte integral aos modos claro, escuro e alto contraste.
+                Cada interface foca rigorosamente no <strong>fragmento de conteúdo central</strong> (<code>&lt;main id="conteudo-principal"&gt;... &lt;/main&gt;</code>),
+                desacoplado de cascas externas, com grid modular de 12 colunas, acessibilidade técnica (e-MAG 3.1 / WCAG 2.2 AA) e suporte integral aos 3 temas oficiais.
             </p>
+        </div>
+
+        <!-- ============ ARQUITETURA DE PROTOTIPAGEM: FRAGMENTO, HARNESS E FLUXO OPERACIONAL ============ -->
+        <div class="row mb-5">
+            <!-- Coluna 1: O Conceito de Fragmento de Conteúdo -->
+            <div class="col-12 col-lg-4 mb-3 mb-lg-0">
+                <div class="card h-100 p-4 border shadow-sm" style="background-color: var(--bcb-color-surface); border-top: 4px solid var(--bcb-brand-azul-blue) !important;">
+                    <div class="d-flex align-items-center mb-2" style="gap: 0.5rem; color: var(--bcb-brand-azul-blue);">
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">code_blocks</span>
+                        <h2 class="h5 mb-0 font-weight-bold">1. Fragmento de Conteúdo</h2>
+                    </div>
+                    <p class="text-body small mb-2">
+                        Todo protótipo modela <strong>exclusivamente o corpo interno da página</strong>, iniciando diretamente em <code>&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;</code> e encerrando em <code>&lt;/main&gt;</code>.
+                    </p>
+                    <ul class="text-body small pl-3 mb-0">
+                        <li><strong>Sem tags de documento:</strong> Proibido <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code> ou <code>&lt;!DOCTYPE&gt;</code>.</li>
+                        <li><strong>Sem casca fixa externa:</strong> Header, Footer, Barra Brasil e Breadcrumbs são providos pelo CMS institucional.</li>
+                        <li><strong>Zero scripts no arquivo:</strong> Toda lógica é delegada de forma limpa a <code>assets/js/bcb-ui.js</code>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Coluna 2: Funcionamento do _harness.html -->
+            <div class="col-12 col-lg-4 mb-3 mb-lg-0">
+                <div class="card h-100 p-4 border shadow-sm" style="background-color: var(--bcb-color-surface); border-top: 4px solid var(--bcb-brand-verde-susta) !important;">
+                    <div class="d-flex align-items-center mb-2" style="gap: 0.5rem; color: var(--bcb-brand-verde-susta);">
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">splitscreen</span>
+                        <h2 class="h5 mb-0 font-weight-bold">2. Visualizador (_harness.html)</h2>
+                    </div>
+                    <p class="text-body small mb-2">
+                        O visualizador técnico atua como <strong>casca estática de homologação</strong>, injetando as dependências de design em tempo de execução sem sujar o código do fragmento:
+                    </p>
+                    <ul class="text-body small pl-3 mb-0">
+                        <li><strong>Casca Simulada Dinâmica:</strong> Injeta Barra Brasil, Header BCB, Breadcrumb e Footer com metadados extraídos do H1 do protótipo.</li>
+                        <li><strong>Split-Screen Integrado:</strong> Exibe o briefing em Markdown lado a lado com a interface renderizada.</li>
+                        <li><strong>Simulador Multidispositivo:</strong> Alternância de viewports (Mobile 375px, Tablet 768px, Desktop 1200px, Full 1440px) e 3 temas.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Coluna 3: Fluxo Operacional do Designer com o Agente -->
+            <div class="col-12 col-lg-4">
+                <div class="card h-100 p-4 border shadow-sm" style="background-color: var(--bcb-color-surface); border-top: 4px solid var(--bcb-brand-azulcinti) !important;">
+                    <div class="d-flex align-items-center mb-2" style="gap: 0.5rem; color: var(--bcb-brand-azulcinti);">
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">alt_route</span>
+                        <h2 class="h5 mb-0 font-weight-bold">3. Fluxo com o Agente</h2>
+                    </div>
+                    <p class="text-body small mb-2">
+                        Ciclo ágil de 5 etapas para conceber e homologar interfaces no Banco Central:
+                    </p>
+                    <ol class="text-body small pl-3 mb-0">
+                        <li><strong>Intake da Demanda:</strong> Crie o briefing via <code>npm run demanda:criar</code>.</li>
+                        <li><strong>Diagramação IA:</strong> O agente gera o fragmento semântico em <code>prototipos/&lt;slug&gt;.html</code>.</li>
+                        <li><strong>Homologação no Harness:</strong> Inspecione no visualizador split-screen.</li>
+                        <li><strong>Auditoria Técnica:</strong> Valide via <code>npm run test:prototypes</code>.</li>
+                        <li><strong>Exportação CMS:</strong> Exporte o miolo limpo via <code>npm run prototipo:exportar</code>.</li>
+                    </ol>
+                </div>
+            </div>
         </div>
 
         <!-- Callout de Acesso Rápido ao Harness de Visualização -->

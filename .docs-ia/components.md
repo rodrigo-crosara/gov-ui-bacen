@@ -57,6 +57,10 @@ Ao transformar demandas em interfaces do Banco Central, priorize a combinação 
 18. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada) — `.bcb-filter-panel`
 19. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs) — `.nav-tabs`
 20. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis) — `.modal`
+21. [Indicadores Financeiros Avançados](#34-indicadores-financeiros-avançados-bcb-indicator-card--advanced) — `.bcb-indicator-card--advanced`
+22. [Tabelas Comparativas com Filtros Locais](#35-tabelas-comparativas-com-filtros-locais-bcb-table-comparison) — `.bcb-table-comparison`
+23. [Bloco de Metadados Normativos](#36-bloco-de-metadados-normativos-bcb-norm-metadata) — `.bcb-norm-metadata`
+24. [Fluxogramas Textuais e Passo a Passo com Decisão](#37-fluxogramas-textuais-e-passo-a-passo-com-decisão-bcb-decision-flow) — `.bcb-decision-flow`
 
 ---
 
@@ -1029,3 +1033,214 @@ Alertas contextuais com retorno operacional imediato, checklist de pendências e
 |---|---|
 | Utilize `role="alert"` para erros críticos e `role="status"` para avisos ou sucessos. | NUNCA use cores sem contraste adequado contra o fundo da caixa. |
 | Inclua sempre `aria-label="Fechar alerta"` no botão `.alert-close`. | NUNCA exiba mensagens de erro sem orientações claras de resolução. |
+
+---
+
+## 34. Indicadores Financeiros Avançados (.bcb-indicator-card--advanced)
+
+Painel molecular para apresentação de metas de política monetária e variáveis financeiras com bandas de tolerância superior/inferior, variação temporal e status de mercado.
+
+### Assinatura HTML Canônica
+```html
+<div class="card bcb-indicator-card bcb-indicator-card--advanced border shadow-sm p-3 bg-bcb-surface">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <span class="text-uppercase font-weight-bold small text-muted">Meta para a Inflação (IPCA)</span>
+    <span class="badge badge-success">Dentro da Meta</span>
+  </div>
+  <div class="d-flex align-items-baseline mb-2">
+    <span class="bcb-indicator-value h2 font-weight-bold mb-0 text-bcb-brand">3,00%</span>
+    <span class="ml-2 small text-muted">ao ano (Centro)</span>
+  </div>
+  <!-- Barra Visual de Intervalo de Tolerância -->
+  <div class="bcb-tolerance-band mb-2" aria-label="Banda de tolerância de 1,50% a 4,50%">
+    <div class="d-flex justify-content-between small text-muted mb-1">
+      <span>Piso: 1,50%</span>
+      <span class="font-weight-bold text-dark">Atual: 3,75%</span>
+      <span>Teto: 4,50%</span>
+    </div>
+    <div class="progress" style="height: 6px;">
+      <div class="progress-bar bg-info" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+    <span>Acumulado 12 meses: <strong class="text-body">+3,75%</strong></span>
+    <span class="bcb-indicator-trend down text-success font-weight-bold">
+      <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">trending_down</span> -0,12 p.p.
+    </span>
+  </div>
+</div>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Use `aria-label` descritivo na barra de tolerância para leitores de tela. | NUNCA oculte o piso e o teto da meta em comunicados do Copom. |
+| Use `.badge-success` ou `.badge-warning` para indicar enquadramento regulatório. | NUNCA utilize estilos inline fora de tokens ou classes utilitárias. |
+
+---
+
+## 35. Tabelas Comparativas com Filtros Locais (.bcb-table-comparison)
+
+Tabela densa para comparação de taxas, tarifas e condições operacionais de agentes do sistema financeiro com painel de filtros rápidos integrado no topo.
+
+### Assinatura HTML Canônica
+```html
+<div class="bcb-table-comparison-wrapper border rounded p-3 bg-bcb-surface">
+  <!-- Barra de Filtros Locais -->
+  <div class="bcb-table-toolbar d-flex flex-wrap justify-content-between align-items-center mb-3 pb-3 border-bottom" style="gap: 0.75rem;">
+    <div class="d-flex flex-wrap align-items-center" style="gap: 0.5rem;">
+      <label for="filtroSegmento" class="small font-weight-bold mb-0 text-muted">Segmento:</label>
+      <select id="filtroSegmento" class="custom-select custom-select-sm" data-action="filter-table">
+        <option value="todos">Todos os Bancos</option>
+        <option value="comercial">Bancos Comerciais</option>
+        <option value="cooperativa">Cooperativas de Crédito</option>
+      </select>
+    </div>
+    <div class="bcb-data-export btn-group btn-group-sm" role="group" aria-label="Exportar tabela comparativa">
+      <button type="button" class="btn btn-outline-secondary" data-action="export-csv">CSV</button>
+      <button type="button" class="btn btn-outline-secondary" data-action="export-json">JSON</button>
+    </div>
+  </div>
+
+  <!-- Tabela Acessível -->
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered table-sm mb-0">
+      <caption class="sr-only">Comparativo de Taxas Médias Praticadas pelas Instituições Financeiras</caption>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Instituição Financeira</th>
+          <th scope="col">Modalidade</th>
+          <th scope="col" class="text-right">Taxa Mínima (% a.m.)</th>
+          <th scope="col" class="text-right">Taxa Média (% a.a.)</th>
+          <th scope="col" class="text-center">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="font-weight-normal">Banco do Brasil S.A.</th>
+          <td>Crédito Pessoal</td>
+          <td class="text-right">1,45%</td>
+          <td class="text-right">18,90%</td>
+          <td class="text-center"><span class="badge badge-success">Vigente</span></td>
+        </tr>
+        <tr>
+          <th scope="row" class="font-weight-normal">Caixa Econômica Federal</th>
+          <td>Crédito Pessoal</td>
+          <td class="text-right">1,39%</td>
+          <td class="text-right">17,80%</td>
+          <td class="text-center"><span class="badge badge-success">Vigente</span></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="bg-light font-weight-bold">
+          <th scope="row" colspan="2">Média Geral do Sistema Financeiro</th>
+          <td class="text-right">1,42%</td>
+          <td class="text-right">18,35%</td>
+          <td class="text-center">&bull;</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Sempre use `scope="col"` no `<thead>` e `scope="row"` na primeira célula do `<tbody>`. | NUNCA omita o alinhamento à direita (`.text-right`) para colunas de percentuais e valores monetários. |
+| Inclua sempre `<caption>` acessível para leitores de tela. | NUNCA faça filtros locais com scripts inline; delegue a `assets/js/bcb-ui.js`. |
+
+---
+
+## 36. Bloco de Metadados Normativos (.bcb-norm-metadata)
+
+Card institucional posicionado logo abaixo do título em páginas de atos normativos, resoluções e instruções regulatórias para identificação jurídica inequívoca.
+
+### Assinatura HTML Canônica
+```html
+<div class="card bcb-norm-metadata border mb-4 bg-bcb-surface">
+  <div class="card-body p-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2" style="gap: 0.5rem;">
+      <div class="d-flex align-items-center" style="gap: 0.5rem;">
+        <span class="tag-bcb primary">Resolução BCB</span>
+        <span class="font-weight-bold text-bcb-brand">Nº 489, de 12 de Março de 2026</span>
+      </div>
+      <span class="badge badge-success">Vigente</span>
+    </div>
+    <div class="row small text-muted">
+      <div class="col-12 col-md-4 mb-1 mb-md-0">
+        <span class="d-block font-weight-bold text-dark">Autoridade Expedidora:</span>
+        <span>Diretoria Colegiada do Banco Central</span>
+      </div>
+      <div class="col-12 col-md-4 mb-1 mb-md-0">
+        <span class="d-block font-weight-bold text-dark">Data de Publicação no DOU:</span>
+        <span>13/03/2026 &bull; Seção 1, Página 42</span>
+      </div>
+      <div class="col-12 col-md-4">
+        <span class="d-block font-weight-bold text-dark">Atos Alterados / Revogados:</span>
+        <span>Altera Resolução nº 320/2024; Revoga Circular nº 3.900/2020.</span>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Destaque a data e a seção do Diário Oficial da União (DOU) para validade jurídica. | NUNCA invente números de ato normativo sem conferência com a área demandante. |
+| Use tags semânticas `.tag-bcb` para classificar a espécie normativa. | NUNCA posicione o bloco de metadados antes do `<h1>` principal. |
+
+---
+
+## 37. Fluxogramas Textuais e Passo a Passo com Decisão (.bcb-decision-flow)
+
+Roteiro sequencial de tomada de decisão que substitui imagens inacessíveis de fluxograma por nós semânticos de decisão (*Se Sim*, *Se Não*), prazos e encaminhamentos oficiais.
+
+### Assinatura HTML Canônica
+```html
+<div class="bcb-decision-flow-wrapper my-4">
+  <h3 class="h5 font-weight-bold mb-3 text-bcb-brand">Fluxograma Operacional de Contestação</h3>
+  <ol class="bcb-decision-flow list-unstyled pl-0">
+    <!-- Nó 1: Ação Inicial -->
+    <li class="card border mb-3 p-3 bg-bcb-surface shadow-sm">
+      <div class="d-flex align-items-start" style="gap: 0.75rem;">
+        <span class="badge badge-primary rounded-circle p-2" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;">1</span>
+        <div class="flex-grow-1">
+          <h4 class="h6 font-weight-bold mb-1 text-dark">Identificação da Transação Suspeita</h4>
+          <p class="small text-body mb-2">A vítima detecta movimentação não autorizada ou induzida por golpe no extrato da conta.</p>
+          <div class="p-2 bg-light rounded border-left small border-warning">
+            <strong>Prazo Máximo:</strong> Até 80 dias da realização do Pix para acionar a instituição bancária.
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <!-- Nó 2: Bifurcação de Decisão -->
+    <li class="card border mb-3 p-3 bg-bcb-surface shadow-sm">
+      <div class="d-flex align-items-start" style="gap: 0.75rem;">
+        <span class="badge badge-primary rounded-circle p-2" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;">2</span>
+        <div class="flex-grow-1">
+          <h4 class="h6 font-weight-bold mb-2 text-dark">Abertura de Notificação de Infração (MED)</h4>
+          <div class="row">
+            <div class="col-12 col-md-6 mb-2 mb-md-0">
+              <div class="p-2 border rounded bg-light">
+                <span class="badge badge-success mb-1">Se Fraude Comprovada</span>
+                <p class="small text-body mb-0">O banco recebedor bloqueia os recursos cautelarmente por até 72h e realiza o estorno em 96h.</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="p-2 border rounded bg-light">
+                <span class="badge badge-secondary mb-1">Se Desacordo Comercial</span>
+                <p class="small text-body mb-0">O MED não se aplica. O consumidor deve recorrer ao Procon ou Juizado Especial Cível.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
+```
+
+| O que fazer (Do) ✅ | O que não fazer (Don't) ❌ |
+|---|---|
+| Use `<ol>` ou listas estruturadas com badges numerados para ordem lógica de leitura. | NUNCA utilize imagens bitmap (PNG/JPG) com fluxogramas gráficos sem equivalente textual acessível. |
+| Deixe os ramos alternativos (sucesso vs. recusa) explicitamente visíveis e contrabalanceados. | NUNCA omita os prazos máximos regulamentares associados a cada etapa. |

@@ -152,6 +152,21 @@ Para permitir o recorte direto de blocos para o CMS do portal, delimite cada blo
   2. *Slot 70/30:* Conversão das tabelas em colunas proporcionais de grid 12 (`.bcb-col-lg-8` para conteúdo e `.bcb-col-lg-4` para atos vinculados).
   3. *Componentes Semânticos:* Substituição de caixas coloridas obsoletas por `.callout` acessível e cards institucionais `.bg-bcb-surface`.
 
+### Padrão E: Painéis Comparativos e Tarifários do Sistema Financeiro
+- **Indicação:** Comparativo de taxas de juros, rankings de tarifas bancárias, limites de crédito e condições operacionais de cooperativas/bancos.
+- **Composição Típica:**
+  1. *Slot 100%:* Abertura com `<h1>`, lead explicativo e data de apuração da amostra.
+  2. *Slot 33/33/33:* Destaque de métricas médias e medianas do mercado com `.bcb-indicator-card--advanced`.
+  3. *Slot 100%:* Tabela comparativa `.bcb-table-comparison` com barra de filtros locais integrados por segmento e botões de exportação CSV/JSON.
+
+### Padrão F: Roteiros Decisórios e Fluxos Operacionais de Atendimento
+- **Indicação:** Resolução de conflitos financeiros, fluxos de contestação de fraude, habilitação de operadores e peticionamento administrativo.
+- **Composição Típica:**
+  1. *Slot 100%:* Abertura institucional com `<h1>` e alerta regulatório preliminar em `.callout.callout-warning`.
+  2. *Slot 70/30:*
+     - *Coluna 70% (`.bcb-col-lg-8`):* Fluxograma textual acessível (`.bcb-decision-flow`) com bifurcações claras (*Se Fraude* vs. *Se Desacordo*) e prazos legais destacados.
+     - *Coluna 30% (`.bcb-col-lg-4`):* Card de canais de atendimento oficiais (Ouvidoria BCB 145, e-SIC) e orientações de segurança.
+
 ---
 
 ## 6. Padrões de Estados de Interface (UI States — Zero Inline Styles)

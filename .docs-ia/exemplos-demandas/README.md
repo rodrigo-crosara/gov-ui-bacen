@@ -23,6 +23,7 @@ O fluxo de trabalho estabelecido é:
 | [`02-dados-sgs-indicadores.md`](./02-dados-sgs-indicadores.md) | Séries do Sistema Gerenciador de Séries Temporais (SGS), metas de inflação e taxas | **Painel Analítico de Indicadores** | Cards de indicadores (33/33/33 ou 50/50), filtros e Data Table com exportação CSV/JSON |
 | [`03-servico-passo-a-passo.md`](./03-servico-passo-a-passo.md) | Serviços ao cidadão (Registrato, Valores a Receber, MED, canais de atendimento) | **Guia de Serviço com Stepper** | Process List ordenada, callouts elevados de segurança (antifraude) e acordeão de dúvidas |
 | [`04-conteudo-html-legado.md`](./04-conteudo-html-legado.md) | Conversão de tabelas de layout e HTML antigo de e-mails ou CMS legado | **Refatoração Semântica em Grid 12** | Substituição de tabelas de apresentação por `.bcb-row` e `.bcb-col-*` nativas |
+| [`05-entrada-nao-estruturada-dou.md`](./05-entrada-nao-estruturada-dou.md) | Textos brutos de e-mails, despachos e cópias do Diário Oficial da União (DOU) | **Comunicação Regulatória / Metadados** | Bloco de metadados normativos, indicadores avançados com bandas e downloads |
 
 ---
 

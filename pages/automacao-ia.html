@@ -348,13 +348,13 @@
                             <h3 class="h6 mb-0 font-weight-bold">Agente de IA</h3>
                         </div>
                         <p class="text-body small mb-2">
-                            O agente consome a skill <code>gerador-ui-bcb</code> e projeta o miolo semântico:
+                            O agente consome a skill <code>gerador-ui-bcb</code> e projeta exclusivamente o fragmento de conteúdo:
                         </p>
                         <ul class="text-body small mb-0 pl-3">
-                            <li>Container <code>&lt;main&gt;</code> e H1 único</li>
-                            <li>Grid 12 colunas oficial</li>
-                            <li>Breadcrumb e Voltar ao topo</li>
-                            <li>Zero scripts inline</li>
+                            <li>Fragmento <code>&lt;main&gt;</code> e H1 único</li>
+                            <li>Grid 12 colunas modular oficial</li>
+                            <li>Sem cascas (header, footer, breadcrumb)</li>
+                            <li>Zero tags <code>&lt;script&gt;</code> ou inline styles</li>
                         </ul>
                     </div>
                 </div>
@@ -367,7 +367,7 @@
                             <h3 class="h6 mb-0 font-weight-bold">Protótipo Salvo</h3>
                         </div>
                         <p class="text-body small mb-2">
-                            O arquivo HTML canônico é versionado no repositório:
+                            O arquivo HTML canônico de fragmento é versionado em:
                         </p>
                         <code class="small d-block p-1 bg-light rounded text-success mb-2">prototipos/&lt;slug&gt;.html</code>
                         <p class="text-body small mb-0">
@@ -384,10 +384,28 @@
                             <h3 class="h6 mb-0 font-weight-bold">Harness &amp; Split-View</h3>
                         </div>
                         <p class="text-body small mb-2">
-                            Homologação visual lado a lado (Briefing vs. Interface viva):
+                            Homologação visual com casca estática simulada e briefing lado a lado:
                         </p>
                         <code class="small d-block p-1 bg-light rounded text-info mb-2">_harness.html?src=...&amp;doc=...</code>
-                        <span class="small text-muted d-block">&bull; Validação de 3 temas, viewports e cópia do miolo.</span>
+                        <span class="small text-muted d-block">&bull; Injeta Barra Brasil, Header, Breadcrumbs dinâmicos, Footer, viewports e 3 temas.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Callout: O Contrato de Fragmento de Conteúdo para o CMS -->
+            <div class="card p-4 border mt-3" style="background-color: var(--bcb-color-surface); border-left: 4px solid var(--bcb-brand-verde-susta) !important;">
+                <div class="d-flex align-items-start" style="gap: 1rem;">
+                    <span class="material-symbols-outlined material-icons text-success" style="font-size: 1.75rem;" aria-hidden="true">integration_instructions</span>
+                    <div>
+                        <h3 class="h5 font-weight-bold mb-1" style="color: var(--bcb-brand-verde-susta);">
+                            Contrato Técnico de Fragmento de Conteúdo (Desacoplamento de Casca)
+                        </h3>
+                        <p class="text-body small mb-2">
+                            Para garantir máxima interoperabilidade com o CMS do portal institucional e frameworks corporativos do BCB, <strong>os protótipos nunca contêm tags de documento completo</strong> (<code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;!DOCTYPE&gt;</code>), cascas externas (<code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, breadcrumbs) ou scripts.
+                        </p>
+                        <p class="text-body small mb-0">
+                            Todo o markup entregue pelo agente inicia diretamente no elemento semântico <code>&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;</code> e encerra em <code>&lt;/main&gt;</code>. Ao exportar a tela via <code>npm run prototipo:exportar &lt;slug&gt;</code>, o arquivo <code>corpo-conteudo.html</code> pode ser inserido diretamente no slot central do CMS sem necessidade de limpeza prévia.
+                        </p>
                     </div>
                 </div>
             </div>

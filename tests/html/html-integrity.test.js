@@ -42,9 +42,11 @@ for (const arquivo of arquivosHTML) {
   const problemas = [];
   const alertas = [];
 
-  const ehDocumentoCompleto = conteudo.includes('<html') || conteudo.toLowerCase().includes('<!doctype');
+  const ehHarness = path.basename(arquivo).startsWith('_');
+  const ehPrototipo = nomeRelativo.startsWith('prototipos/') && !ehHarness;
+  const ehDocumentoCompleto = !ehPrototipo && (conteudo.includes('<html') || conteudo.toLowerCase().includes('<!doctype'));
 
-  // TESTE 1: lang="pt-BR" presente (em documentos completos)
+  // TESTE 1: lang="pt-BR" presente (em documentos completos de documentação e portal)
   if (ehDocumentoCompleto && !conteudo.includes('lang="pt-BR"') && !conteudo.includes("lang='pt-BR'")) {
     problemas.push('Atributo lang="pt-BR" ausente no <html>');
   }
@@ -108,10 +110,10 @@ for (const arquivo of arquivosHTML) {
     problemas.push(`${linksBlankSemRel.length} link(s) com target="_blank" sem rel="noopener noreferrer"`);
   }
 
-  // TESTE 12: Proibição de casca do portal (Header, Footer, Barra Gov) nos protótipos de conteúdo
-  if (nomeRelativo.startsWith('prototipos/') && !path.basename(arquivo).startsWith('_')) {
+  // TESTE 12: Proibição de casca do portal (Header, Footer, Barra Gov) e tags estruturais nos protótipos de conteúdo
+  if (ehPrototipo) {
     if (conteudo.includes('id="barra-brasil"') || conteudo.includes("id='barra-brasil'")) {
-      problemas.push('Barra Brasil (#barra-brasil) presente em protótipo de conteúdo');
+      problemas.push('Barra Brasil (#barra-brasil) presente em protótipo de conteúdo — cascas externas são providas pelo portal');
     }
     if (conteudo.match(/<header[\s>]/gi)) {
       problemas.push('Tag <header> presente em protótipo de conteúdo — protótipos devem focar no miolo semântico');
@@ -122,6 +124,22 @@ for (const arquivo of arquivosHTML) {
     }
     if (conteudo.includes('breadcrumb') || conteudo.match(/<nav[^>]*aria-label=["'][^"']*(?:trilha|breadcrumb)/gi)) {
       problemas.push('Breadcrumb presente em protótipo de conteúdo — trilhas de navegação são providas pelo portal');
+    }
+    if (conteudo.toLowerCase().includes('<!doctype')) {
+      problemas.push('Tag <!DOCTYPE> detectada em protótipo — protótipos devem conter exclusivamente o fragmento <main id="conteudo-principal">.');
+    }
+    if (conteudo.match(/<html[\s>]/i)) {
+      problemas.push('Tag <html> detectada em protótipo — protótipos não devem conter tags estruturais globais.');
+    }
+    if (conteudo.match(/<head[\s>]/i)) {
+      problemas.push('Tag <head> detectada em protótipo — protótipos não devem conter <head>; estilos são injetados pelo harness/CMS.');
+    }
+    if (conteudo.match(/<body[\s>]/i)) {
+      problemas.push('Tag <body> detectada em protótipo — protótipos devem conter exclusivamente o elemento <main id="conteudo-principal">.');
+    }
+    const tagsScript = conteudo.match(/<script[\s>]/gi) || [];
+    if (tagsScript.length > 0) {
+      problemas.push(`${tagsScript.length} tag(s) <script> detectada(s) em protótipo — scripts são providos centralizadamente pela casca.`);
     }
   }
 
