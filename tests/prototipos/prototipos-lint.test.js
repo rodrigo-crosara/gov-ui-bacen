@@ -140,6 +140,19 @@ for (const arquivo of arquivosHTML) {
       problemas.push(`${tagsOrfas.length} tag(s) obsoleta(s) detectada(s). Utilize componentes HTML5 nativos do BCB Design System.`);
     }
 
+    // 3.4 Proibição estrita de scripts inline e manipuladores de evento inline (pasta prototipos/)
+    const ehPrototipoOficial = nomeRelativo.startsWith('prototipos/') && !ehHarness;
+    if (ehPrototipoOficial) {
+      const tagsScriptInline = conteudo.match(/<script(?![^>]*src=)[^>]*>([\s\S]*?)<\/script>/gi) || [];
+      if (tagsScriptInline.length > 0) {
+        problemas.push(`${tagsScriptInline.length} bloco(s) de <script> inline detectado(s). A reatividade deve ser delegada exclusivamente a assets/js/bcb-ui.js.`);
+      }
+      const handlersInline = conteudo.match(/\son[a-z]+=["'][^"']*["']/gi) || [];
+      if (handlersInline.length > 0) {
+        problemas.push(`${handlersInline.length} manipulador(es) inline de evento detectado(s) (${handlersInline.join(', ')}). Utilize seletores de dados como data-action e delegue a assets/js/bcb-ui.js.`);
+      }
+    }
+
     // 3.4 Modularidade de Grid Flexível 12 Colunas
     if (!conteudo.includes('bcb-row') && !conteudo.includes('row')) {
       problemas.push('Protótipo não utiliza a estrutura de linhas do grid modular (.bcb-row).');

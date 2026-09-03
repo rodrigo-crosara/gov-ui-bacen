@@ -298,8 +298,20 @@
             });
           });
         }
+      // 7. Ações de Impressão e Exportação Não-Intrusivas ([data-action="print"], .bcb-btn-print)
+      try {
+        if (!document._bcbPrintBound) {
+          document._bcbPrintBound = true;
+          document.addEventListener('click', (e) => {
+            const printBtn = e.target.closest('[data-action="print"], .bcb-btn-print');
+            if (printBtn) {
+              e.preventDefault();
+              window.print();
+            }
+          });
+        }
       } catch (e) {
-        console.warn('BCB UI: Verificação defensiva de copiar código', e);
+        console.warn('BCB UI: Verificação defensiva de print listener', e);
       }
     }
   };

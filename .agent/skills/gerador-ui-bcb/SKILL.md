@@ -222,15 +222,45 @@ Ao gerar um novo protótipo de alta fidelidade para versionar em `prototipos/[no
 
 ---
 
-## 6. CHECKLIST DE CONFORMIDADE ANTES DA ENTREGA
+## 6. CHECKLIST OBRIGATÓRIO DE DIAGRAMAÇÃO & RITMO VISUAL
 
-Antes de entregar o protótipo ao webdesigner, confira:
-- [ ] O código inicia no `<main id="conteudo-principal" class="bcb-container">` com exatamente um `<h1>`?
-- [ ] Não há `<header>`, `<footer>`, `#barra-brasil`, breadcrumbs ou menus globais externos?
-- [ ] O grid utiliza o container de 1440px e as classes `.bcb-row` e `.bcb-col-*`?
-- [ ] Cada bloco lógico possui comentário semântico delimitador de slot CMS (`<!-- [SLOT CMS: ...] -->`)?
-- [ ] Os espaçamentos entre seções utilizam a classe `.bcb-section` (48px)?
-- [ ] A semântica do conteúdo determinou os componentes corretos (cards para métricas, stepper para processos, callouts para avisos)?
-- [ ] Todas as cores utilizam exclusivamente tokens do Manual de Marca (`var(--bcb-*)`), sem azul padrão do Bootstrap?
-- [ ] Tabelas possuem `<caption>` descritivo e `<th scope="col">`?
-- [ ] Ícones contêm `aria-hidden="true"` e servem como reforço cognitivo à leitura?
+Antes de entregar qualquer novo protótipo ou salvar em `prototipos/`, valide obrigatoriamente cada item:
+
+### 1. Ritmo Vertical e Espaçamento entre Seções
+- [ ] O miolo semântico inicia diretamente no `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">`?
+- [ ] Cada bloco lógico principal está envelopado por `<section class="bcb-section">` (garantindo o ritmo vertical de 48px / `var(--bcb-spacing-2xl)`)?
+- [ ] As colunas e cards utilizam o gutter padrão de 24px proporcionado por `.bcb-row` e `.bcb-col-*`?
+- [ ] Cada seção possui seu comentário delimitador de slot CMS (`<!-- [SLOT CMS: ...] -->`)?
+
+### 2. Uso Estrito da Escala de Tokens de Padding e Margin
+- [ ] Não há nenhum valor arbitrário de espaçamento em estilos inline (ex.: `margin: 17px;` ou `padding: 13px;`)?
+- [ ] Os espaçamentos internos de cards seguem estritamente a escala oficial:
+  - `sm` (8px / `.p-2`): Badges, tooltips e chips.
+  - `md` (16px / `.p-3`): Cards compactos, filtros e caixas de diálogo.
+  - `lg` (24px / `.p-4`): Painéis analíticos destacados e seções de callout.
+  - `2xl` (48px / `.bcb-section`): Espaçamento vertical entre blocos semânticos.
+
+### 3. Hierarquia Rigorosa de Cabeçalhos (e-MAG 3.1 / WCAG 1.3.1)
+- [ ] Há rigorosamente **exatamente uma tag `<h1>`** por página com a classe `.bcb-page-title`?
+- [ ] Todos os títulos de blocos e seções principais utilizam `<h2>` com cor institucional (`var(--bcb-brand-azul-blue)` ou `var(--bcb-gray-900)`)?
+- [ ] Os títulos de cards, módulos de processo e perguntas do acordeão utilizam `<h3>` sem pular níveis hierárquicos?
+
+### 4. Tratamento de Estados de Interface (UI States & Resiliência)
+- [ ] **Skeleton Screen / Loading:** Para tabelas densas ou dashboards com consumo assíncrono de API, foram previstas classes de skeleton (`.table-skeleton`, `.skeleton-item`)?
+- [ ] **Empty State:** Em listagens e tabelas filtráveis, foi estruturado bloco de estado vazio (`.bcb-empty-state`) com ícone, mensagem orientadora e ação de reset?
+- [ ] **Callouts de Feedback:** Avisos regulatórios ou alertas utilizam `.callout.callout-warning` ou `.callout.callout-elevated` com alto contraste?
+
+### 5. Reatividade Não-Intrusiva (Zero Scripts Inline)
+- [ ] O protótipo está **isento de tags `<script>` inline** com lógica de JavaScript?
+- [ ] O protótipo está **isento de manipuladores inline** de eventos (`onclick=`, `onchange=`, `onsubmit=`)?
+- [ ] Ações interativas (ex.: impressão via `data-action="print"`, cópia de código, alternância de acordeão) são delegadas ao `assets/js/bcb-ui.js`?
+
+### 6. Contraste e Tokens Semânticos nos 3 Temas
+- [ ] Não há cores hexadecimais literais (`#fff`, `#000`, `#212529`, `#f8f9fa`) no miolo da tela?
+- [ ] Todos os fundos utilizam `var(--bcb-color-white)` ou `var(--bcb-color-surface)`?
+- [ ] O layout foi inspecionado sob `data-theme="dark"` e `data-contrast="high"` via `prototipos/_harness.html`?
+
+### 7. Persistência e Indexação Mandatória
+- [ ] O protótipo foi salvo no caminho canônico `prototipos/<slug-da-demanda>.html`?
+- [ ] A nova tela foi adicionada ao `<select id="selectPrototipo">` de `prototipos/_harness.html`?
+- [ ] O card oficial com metadados e chips de componentes foi indexado na vitrine em `pages/prototipos.html`?

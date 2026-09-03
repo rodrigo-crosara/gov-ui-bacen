@@ -5,6 +5,26 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.1.0] — 2026-09-03
+
+### Adicionado
+- **Diretório Oficial de Protótipos (`prototipos/`):** Instituição do repositório canônico para versionamento de telas modulares diagramadas pelo motor de IA a partir de demandas reais de negócio.
+- **Quatro Protótipos Homologados em Produção:**
+  - `prototipos/copom-decisao-taxa-selic.html`: Comunicado oficial da 268ª Reunião do Copom com grade 33/33/33, citação diretorial, atos regulatórios e série histórica SGS 432.
+  - `prototipos/sgs-series-taxa-selic.html`: Painel analítico de séries temporais com busca facetada, tabela densa acessível, exportação de dados abertos (CSV/JSON) e endpoint REST Swagger.
+  - `prototipos/mecanismo-especial-devolucao-med.html`: Guia de serviço ao cidadão com stepper sequencial (`.process-list`), callout elevado de alerta contra golpes, FAQ em acordeão acessível e quadro de prazos.
+  - `prototipos/regras-cheque-especial.html`: Refatoração semântica de HTML legado em arranjo 70/30 com callout de isenção tarifária até R$ 500 e sidebar de downloads normativos (`.documentos`).
+- **Harness Técnico de Homologação Visual (`prototipos/_harness.html`):** Visualizador técnico sem cascas de portal, equipado com seletores de viewport (Desktop 1440px, Tablet 768px, Mobile 375px) e alternador dinâmico de 3 temas (Padrão, Escuro e Alto Contraste).
+- **Scripts Dedicados no `package.json`:** Comandos ágeis `npm run lint:prototypes`, `npm run test:a11y:prototypes` e `npm run test:prototypes`.
+- **Auditoria de Acessibilidade Estendida (`tests/a11y/a11y-runner.js`):** Matriz oficial que audita e valida os 4 protótipos de produção contra WCAG 2.1 AA.
+- **Reatividade Não-Intrusiva em `assets/js/bcb-ui.js`:** Suporte automático a `[data-action="print"]` eliminando manipuladores de eventos inline nos protótipos.
+
+### Modificado
+- **Virada Conceitual de Templates para Protótipos:** Substituição formal de `pages/templates.html` por `pages/prototipos.html`, reposicionando a página como "Catálogo de Protótipos & Telas".
+- **Unificação da Navegação do Portal:** Atualizados os links e rótulos da barra de navegação superior em `index.html` e em todas as páginas de `pages/`, referenciando o novo catálogo de protótipos.
+- **Reorganização da Suíte de Testes:** Migração de `tests/templates/` para `tests/prototipos/prototipos-lint.test.js` com regra estrita de ausência de scripts ou eventos inline em protótipos.
+- **Aprimoramento da Skill de IA (`gerador-ui-bcb/SKILL.md`):** Adicionada diretriz obrigatória de persistência em `prototipos/<slug>.html` e checklist mandatório de diagramação (ritmo vertical de 48px, escala de tokens de padding/margin, hierarquia de cabeçalhos e estados de feedback).
+
 ## [2.0.0] — 2026-09-02
 
 ### Adicionado
