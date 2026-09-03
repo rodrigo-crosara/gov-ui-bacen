@@ -32,7 +32,7 @@ Sua missão é manter e evoluir o ecossistema gov-ui-bacen com máxima fidelidad
 - Protótipos e Miolo de Interfaces (Novas Telas e Casos Reais):
   * O agente projeta interfaces com liberdade diagramacional a partir da semântica dos dados recebidos do webdesigner, sem acoplamento a modelos estáticos legados.
   * Devem conter EXCLUSIVAMENTE `<main id="conteudo-principal" class="bcb-container">` iniciando com exatamente um `<h1>`.
-  * NUNCA gere `<header>`, `<footer>`, barra gov, breadcrumbs, skip links ou menus globais externos (elementos providos pelo CMS institucional).
+  * NUNCA gere `<header>`, `<footer>`, barras federais externas, breadcrumbs, skip links ou menus globais (elementos providos pelo CMS institucional).
 
 ## 5. TIPOGRAFIA E ÍCONES
 - Fontes oficiais: Rawline ou Inter/Roboto.

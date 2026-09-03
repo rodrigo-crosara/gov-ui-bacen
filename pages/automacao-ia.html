@@ -686,7 +686,7 @@
                         <span class="material-symbols-outlined material-icons" aria-hidden="true">cancel</span> O QUE NÃO FAZER (Proibido)
                     </div>
                     <ul class="rule-list">
-                        <li><strong>Proibição de Casca Externa:</strong> NUNCA gerar <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>#barra-brasil</code> ou <code>.bcb-govbr-bar</code>.</li>
+                        <li><strong>Proibição de Casca Externa:</strong> NUNCA gerar cabeçalhos globais (<code>&lt;header&gt;</code>), rodapés globais (<code>&lt;footer&gt;</code>) ou barras externas de navegação.</li>
                         <li><strong>Proibição Definitiva de Breadcrumbs:</strong> NUNCA gerar <code>&lt;nav aria-label="breadcrumb"&gt;</code> ou <code>.breadcrumb-bcb</code>.</li>
                         <li><strong>Cores Hexadecimais Arbitrárias:</strong> NUNCA aplicar cores aleatórias que violem o contraste mínimo de 4.5:1 ou 7:1.</li>
                         <li><strong>Links Genéricos Proibidos:</strong> NUNCA criar links "clique aqui" ou "saiba mais" (violação do critério WCAG 2.4.4).</li>
@@ -723,7 +723,7 @@ Gere uma página HTML semântica completa para o Indicador Econômico aplicando 
 
 DIRETRIZES MANDATÓRIAS:
 1. Inicie com &lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt; e 1 único &lt;h1 class="bcb-page-title"&gt;.
-2. É ESTRITAMENTE PROIBIDO gerar Header, Footer, Barra Gov.br ou Breadcrumbs.
+2. É ESTRITAMENTE PROIBIDO gerar cascas externas (Header, Footer, barras federais ou Breadcrumbs).
 3. Estruture em slots modulares delimitados (&lt;!-- [SLOT CMS: ...] --&gt;) com .bcb-row e .bcb-col-*.
 4. Extraia os números-chave em cards de indicador (.bcb-indicator-card) no arranjo 33/33/33 (.bcb-col-md-4) com tendência (.bcb-indicator-trend up/down).
 5. Organize a série histórica em tabela (.table .table-bordered) com &lt;caption&gt;, thead institucional e bloco de exportação (.bcb-data-export) em largura cheia (.bcb-col-12).
@@ -757,7 +757,7 @@ Gere uma página de Serviço ao Cidadão aplicando o padrão de UX com Stepper e
 
 DIRETRIZES MANDATÓRIAS:
 1. Inicie com &lt;main id="conteudo-principal" class="bcb-container container py-4 my-4"&gt; com 1 único &lt;h1 class="bcb-page-title"&gt;.
-2. É ESTRITAMENTE PROIBIDO gerar Header, Footer, Barra Gov.br ou Breadcrumbs.
+2. É ESTRITAMENTE PROIBIDO gerar cascas externas (Header, Footer, barras federais ou Breadcrumbs).
 3. Estruture em slots modulares delimitados (&lt;!-- [SLOT CMS: ...] --&gt;) com .bcb-row e .bcb-col-*.
 4. Estrutura recomendada:
    - Menu sticky lateral (.bd-sidebar / .bd-toc) para âncoras da página.
@@ -938,7 +938,7 @@ ${especificacaoLayout}
 
 DIRETRIZES TÉCNICAS MANDATÓRIAS DO DESIGN SYSTEM:
 1. Inicie diretamente em <main id="conteudo-principal" class="bcb-container container py-4 my-4"> com exatamente 1 tag <` + `h1 class="bcb-page-title">${titulo}</` + `h1>.
-2. É ESTRITAMENTE PROIBIDO incluir <header>, <footer>, Barra Brasil gov.br ou Breadcrumbs (providos pela casca do portal).
+2. É ESTRITAMENTE PROIBIDO incluir casca externa (<header>, <footer>, barras externas ou Breadcrumbs), providos pelo portal.
 3. Utilize exclusivamente o Grid oficial do BCB (.bcb-container, .bcb-row, .bcb-col-*, .bcb-section) com gutter de 24px e seções verticais com margem de 48px.
 4. Aplique a paleta de cores e tipografia estritamente via tokens oficiais (--bcb-brand-*, --bcb-color-*, font-family Ubuntu/Cormorant).
 5. Assegure contraste e-MAG / WCAG AAA tanto no tema claro quanto escuro e alto contraste.

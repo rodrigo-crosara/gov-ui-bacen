@@ -247,35 +247,88 @@
     <!-- CONTEÚDO PRINCIPAL -->
     <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
         <div class="mb-4">
-            <h1 class="bcb-page-title">Galeria de Casos Diagramados por IA</h1>
+            <h1 class="bcb-page-title">Catálogo de Protótipos &amp; Telas</h1>
             <div class="bcb-page-meta">
-                <span class="tag-bcb primary">Showcase de Prototipagem com IA</span>
-                <span>Demonstrações Reais do Motor Heurístico &bull; Banco Central do Brasil &bull; v4.0</span>
+                <span class="tag-bcb primary">Ambiente de Prototipagem</span>
+                <span>Projetos Modulares Diagramados por IA &bull; Banco Central do Brasil</span>
             </div>
             <p class="lead mt-3 text-body">
-                Vitrine oficial de casos reais gerados pelo <strong>Motor Heurístico de IA do Banco Central do Brasil</strong>.
-                Cada exemplo abaixo demonstra como briefings brutos, minutas regulatórias, e-mails técnicos e dados estatísticos
-                são convertidos automaticamente em interfaces ricas, semânticas e 100% acessíveis (e-MAG 3.1 / WCAG 2.2 AA e AAA),
-                iniciando rigorosamente no <code>&lt;h1&gt;</code> único da página e sem cascas externas.
+                Vitrine oficial de telas de alta fidelidade projetadas autonomamente pelo <strong>motor de IA do BCB</strong> a partir de demandas reais.
+                Cada interface foca rigorosamente na semântica do miolo (<code>&lt;main id="conteudo-principal"&gt;</code>), com grid 12 colunas modular,
+                acessibilidade técnica (e-MAG 3.1 / WCAG 2.2 AA) e suporte integral aos modos claro, escuro e alto contraste.
             </p>
         </div>
 
-        <!-- Callout de Governança para Desenvolvedores e Agentes de IA -->
-        <div class="callout callout-brand callout-left-bordered mb-5">
-            <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">auto_awesome</span>
-            <div class="callout-content">
-                <h2 class="h5 font-weight-bold" style="color: var(--bcb-brand-azul-blue); margin-top: 0;">Vitrine Viva de Prototipagem Acelerada</h2>
-                <p class="mb-0">
-                    Estes 6 protótipos cobrem as principais famílias de demandas recebidas pela equipe de webdesign do Banco Central.
-                    Esta galeria reúne <strong>provas de conceito históricas e casos exploratórios</strong> desenvolvidos durante a validação do BCB Design System.
-                    Para novas páginas, o agente projeta a interface com liberdade composicional orientada pela semântica dos dados recebidos, sem acoplamento a modelos estáticos.
-                </p>
+        <!-- Callout de Acesso Rápido ao Harness de Visualização -->
+        <div class="card p-4 border mb-5" style="background-color: var(--bcb-color-surface); border-left: 4px solid var(--bcb-brand-azul-blue) !important;">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                <div class="pr-md-3 mb-3 mb-md-0">
+                    <h2 class="h5 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
+                        <span class="material-symbols-outlined" style="vertical-align: middle; font-size: 1.25rem;" aria-hidden="true">preview</span>
+                        Visualizador Técnico de Protótipos (Harness)
+                    </h2>
+                    <p class="text-body small mb-0">
+                        Inspecione qualquer tela produzida pelo agente em uma casca técnica mínima com alternador dinâmico de 3 temas (Padrão, Escuro e Alto Contraste), sem elementos externos de portal.
+                    </p>
+                </div>
+                <a href="../prototipos/_harness.html" class="btn btn-primary btn-sm text-nowrap d-inline-flex align-items-center" style="gap: 0.35rem;">
+                    <span>Abrir Visualizador Técnico</span>
+                    <span class="material-symbols-outlined" style="font-size: 1.1rem;" aria-hidden="true">open_in_new</span>
+                </a>
             </div>
         </div>
 
-        <!-- ============ GRID DE TEMPLATES ============ -->
+        <!-- ============ SEÇÃO 1: PROTÓTIPOS ATIVOS (DIRETÓRIO PROTOTIPOS/) ============ -->
+        <section id="prototipos-ativos" class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 font-weight-bold mb-0" style="color: var(--bcb-gray-900);">Protótipos Oficiais em Produção</h2>
+                <span class="badge badge-success">Diretório: <code>prototipos/</code></span>
+            </div>
+
+            <div class="row">
+                <!-- Protótipo 1: Decisão do Copom -->
+                <div class="col-12 mb-4">
+                    <div class="card border p-4 shadow-sm" style="background-color: var(--bcb-color-surface);">
+                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                            <div>
+                                <span class="tag-bcb primary mb-2">Política Monetária &bull; SGS</span>
+                                <h3 class="h5 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
+                                    Taxa Selic: Decisão da 268ª Reunião do Copom e Série SGS 432
+                                </h3>
+                                <span class="small text-muted">Arquivo: <code>prototipos/copom-decisao-taxa-selic.html</code></span>
+                            </div>
+                            <div class="d-flex align-items-center mt-3 mt-md-0" style="gap: 0.5rem;">
+                                <a href="../prototipos/copom-decisao-taxa-selic.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                    <span>Abrir Protótipo</span>
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="text-body small mb-3">
+                            Interface modular combinando abertura institucional em 100%, grade de 3 indicadores-chave de topo (33/33/33),
+                            seção analítica em layout 70/30 com citação diretorial e atos regulatórios vinculados para download, finalizando com
+                            tabela densa acessível da série histórica e barra de utilitários de exportação de dados abertos em CSV e JSON.
+                        </p>
+                        <div class="template-components">
+                            <span class="template-chip">Grade 33/33/33</span>
+                            <span class="template-chip">Layout 70/30</span>
+                            <span class="template-chip">Cards de Indicadores</span>
+                            <span class="template-chip">Citação em Bloco</span>
+                            <span class="template-chip">Downloads (.documentos)</span>
+                            <span class="template-chip">Data Table Acessível</span>
+                            <span class="template-chip">Exportação CSV/JSON</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SEÇÃO 2: ARQUIVO HISTÓRICO DE POCS ============ -->
         <section id="galeria-templates" class="mb-5">
-            <h2 class="h4 font-weight-bold mb-4" style="color: var(--bcb-gray-900);">Galeria de Provas de Conceito (POCs Históricas)</h2>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 font-weight-bold mb-0" style="color: var(--bcb-gray-900);">Arquivo Histórico de Provas de Conceito (POCs)</h2>
+                <span class="badge badge-secondary">Diretório: <code>templates/testes-poc/</code></span>
+            </div>
 
             <div class="row">
                 <!-- 1. Template Indicadores Econômicos -->

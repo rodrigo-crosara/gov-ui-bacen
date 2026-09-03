@@ -19,6 +19,8 @@ let avisos = 0;
 console.log('\n🧹 BCB Design System — Linter de Protótipos, Modularidade e Acessibilidade');
 console.log('='.repeat(75));
 
+const apenasPrototipos = process.argv.includes('--prototypes') || process.argv.includes('-p');
+
 // Descobrir todos os arquivos HTML do projeto
 function encontrarHTML(diretorio) {
   const arquivos = [];
@@ -35,15 +37,24 @@ function encontrarHTML(diretorio) {
   return arquivos;
 }
 
-const arquivosHTML = encontrarHTML(RAIZ_PROJETO);
-console.log(`Auditando conformidade modular de ${arquivosHTML.length} arquivo(s) HTML...\n`);
+let arquivosHTML = encontrarHTML(RAIZ_PROJETO);
+if (apenasPrototipos) {
+  arquivosHTML = arquivosHTML.filter(a => {
+    const nomeRelativo = path.relative(RAIZ_PROJETO, a).replace(/\\/g, '/');
+    return nomeRelativo.startsWith('prototipos/');
+  });
+  console.log(`[Modo Protótipos] Auditando exclusivamente a pasta prototipos/ (${arquivosHTML.length} arquivo(s))...\n`);
+} else {
+  console.log(`Auditando conformidade modular de ${arquivosHTML.length} arquivo(s) HTML...\n`);
+}
 
 for (const arquivo of arquivosHTML) {
   const nomeRelativo = path.relative(RAIZ_PROJETO, arquivo).replace(/\\/g, '/');
   const conteudo = fs.readFileSync(arquivo, 'utf8');
   const problemas = [];
   const alertas = [];
-  const ehPrototipo = nomeRelativo.startsWith('templates/');
+  const ehHarness = path.basename(arquivo).startsWith('_');
+  const ehPrototipo = !ehHarness && (nomeRelativo.startsWith('templates/') || nomeRelativo.startsWith('prototipos/'));
 
   // 1. INTEGRIDADE DE ESTILOS E TOKENS OFICIAIS
   if (!conteudo.includes('bcb-style.css')) {

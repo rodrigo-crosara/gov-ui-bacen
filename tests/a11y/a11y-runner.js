@@ -32,14 +32,22 @@ function descobrirPaginasHTML(diretorio) {
   return paginas.sort();
 }
 
-const PAGINAS = descobrirPaginasHTML(RAIZ_PROJETO);
+let PAGINAS = descobrirPaginasHTML(RAIZ_PROJETO);
+const apenasPrototipos = process.argv.includes('--prototypes') || process.argv.includes('-p');
+if (apenasPrototipos) {
+  PAGINAS = PAGINAS.filter(p => p.startsWith('/prototipos/'));
+}
 
 let falhas = 0;
 let sucessos = 0;
 
 console.log('\n🔍 BCB Design System — Auditoria Dinâmica de Acessibilidade (WCAG 2.2 / 2.1 AA)');
 console.log('='.repeat(70));
-console.log(`Descobertas ${PAGINAS.length} página(s) HTML para auditoria:\n`);
+if (apenasPrototipos) {
+  console.log(`[Modo Protótipos] Descobertas ${PAGINAS.length} página(s) em prototipos/ para auditoria:\n`);
+} else {
+  console.log(`Descobertas ${PAGINAS.length} página(s) HTML para auditoria:\n`);
+}
 
 function auditoriaEstaticaAcessibilidade(caminhoArquivo) {
   const conteudo = fs.readFileSync(caminhoArquivo, 'utf8');

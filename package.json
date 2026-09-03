@@ -10,10 +10,13 @@
     "lint:css": "npx stylelint \"assets/css/**/*.css\"",
     "lint:html": "npx htmlhint \"**/*.html\" --ignore \"node_modules/**\"",
     "lint:templates": "node tests/templates/templates-lint.test.js",
+    "lint:prototypes": "node tests/templates/templates-lint.test.js --prototypes",
     "test:templates": "node tests/templates/templates-lint.test.js",
     "test:a11y": "node tests/a11y/a11y-runner.js",
+    "test:a11y:prototypes": "node tests/a11y/a11y-runner.js --prototypes",
     "test:tokens": "node tests/tokens/tokens-integrity.test.js",
     "test:html": "node tests/html/html-integrity.test.js",
+    "test:prototypes": "npm run lint:prototypes && npm run test:a11y:prototypes",
     "test": "npm run check:tokens-sync && npm run test:tokens && npm run test:html && npm run test:templates && npm run test:a11y",
     "validate": "npm run check:tokens-sync && npm run lint:css && npm run lint:html && npm run test"
   },

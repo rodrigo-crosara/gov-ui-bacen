@@ -139,11 +139,21 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
    - Tabelas de dados devem conter `<caption>` claro e descritivo.
    - Textos de links devem descrever a ação/destino (proibido "clique aqui", "saiba mais", "leia mais").
 
+7. **Validação Obrigatória de Tokens Semânticos nos 3 Temas (Dark Mode e Alto Contraste):**
+   - É **TERMINANTEMENTE PROIBIDO** utilizar cores hexadecimais literais (`#fff`, `#000`, `#212529`, `#f8f9fa`, `#333`) em estilos inline ou componentes.
+   - Use SEMPRE as variáveis semânticas do Design System:
+     - **Superfícies de Cards/Painéis:** `background-color: var(--bcb-color-white);` ou `var(--bcb-color-surface);` (inverte automaticamente para `#121212` no Dark Mode e `#000000` com borda branca 2px no Alto Contraste).
+     - **Texto Principal:** `color: var(--bcb-color-text);` ou classe oficial `.text-body`.
+     - **Texto Secundário / Metadados:** `color: var(--bcb-color-neutral-40);` ou classe oficial `.text-muted`.
+     - **Bordas e Linhas:** `border-color: var(--bcb-color-border);` ou `var(--bcb-gray-200);`.
+     - **Fundos de Callouts:** `var(--bg-brand-light)`, `var(--bg-verde-light)`, `var(--bg-amarellato-light)`, `var(--bg-vinho-light)`.
+   - **Garantia de Contraste WCAG 2.2:** O layout do miolo deve ser calibrado para preservar contraste mínimo de 4.5:1 em texto regular e 7:1 em elementos de destaque sob `data-theme="dark"` e `data-contrast="high"`.
+
 ---
 
-## 5. BOILERPLATE CANÔNICO PARA PROTOTIPAGEM
+## 5. BOILERPLATE CANÔNICO PARA PROTOTIPAGEM (`prototipos/`)
 
-Ao gerar um novo protótipo de alta fidelidade para o webdesigner, forneça a estrutura completa e validada:
+Ao gerar um novo protótipo de alta fidelidade para versionar em `prototipos/[nome-da-demanda].html`, forneça a estrutura completa e validada (inspecionável via `prototipos/_harness.html`):
 
 ```html
 <!DOCTYPE html>
