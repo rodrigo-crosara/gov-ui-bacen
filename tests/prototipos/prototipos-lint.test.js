@@ -129,9 +129,15 @@ for (const arquivo of arquivosHTML) {
     if (conteudo.match(/<nav[^>]*class=["'][^"']*govbr[^"']*["']/gi)) {
       problemas.push('Elemento <nav class="govbr..."> detectado em protótipo.');
     }
-    if (conteudo.match(/<nav[^>]*aria-label=["'][^"']*(?:breadcrumb|trilha)[^"']*["']/gi) ||
-        conteudo.match(/class=["'][^"']*(?:bcb-breadcrumb|breadcrumb-bcb|breadcrumb)[^"']*["']/gi)) {
-      problemas.push('Breadcrumb detectado em protótipo — trilhas de navegação são providas pela casca do CMS.');
+
+    // 3.2.1 Validação de conformidade semântica de Breadcrumbs padronizados (WCAG 2.4.4 / e-MAG)
+    if (conteudo.includes('breadcrumb')) {
+      if (!conteudo.includes('aria-label="Trilha de navegação"') && !conteudo.includes("aria-label='Trilha de navegação'") && !conteudo.includes('aria-label="Breadcrumb"')) {
+        alertas.push('Breadcrumb deve conter aria-label descritivo (ex.: aria-label="Trilha de navegação").');
+      }
+      if (!conteudo.includes('aria-current="page"')) {
+        alertas.push('Último item ativo do breadcrumb deve conter aria-current="page" para acessibilidade.');
+      }
     }
 
     // 3.3 Proibição de tags customizadas órfãs/obsoletas
@@ -150,6 +156,33 @@ for (const arquivo of arquivosHTML) {
       const handlersInline = conteudo.match(/\son[a-z]+=["'][^"']*["']/gi) || [];
       if (handlersInline.length > 0) {
         problemas.push(`${handlersInline.length} manipulador(es) inline de evento detectado(s) (${handlersInline.join(', ')}). Utilize seletores de dados como data-action e delegue a assets/js/bcb-ui.js.`);
+      }
+
+      // 3.5 Restrição estrita de conteúdo ao container <main id="conteudo-principal" class="bcb-container">
+      const matchBody = conteudo.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      if (matchBody) {
+        const corpoBody = matchBody[1];
+        const partes = corpoBody.split(/<main[\s\S]*?<\/main>/i);
+        if (partes.length === 2) {
+          const antesDoMain = partes[0].trim();
+          const depoisDoMain = partes[1].trim();
+
+          // Antes do main só é permitido whitespace e comentários HTML
+          const tagsAntes = antesDoMain.replace(/<!--[\s\S]*?-->/g, '').trim();
+          if (tagsAntes.length > 0 && tagsAntes.includes('<')) {
+            problemas.push(`Nó HTML não autorizado detectado antes do <main>: "${tagsAntes.substring(0, 80)}...". Todo o conteúdo deve residir estritamente dentro de <main id="conteudo-principal">.`);
+          }
+
+          // Depois do main só é permitido whitespace, comentários, <script src="..."> e <noscript>
+          const tagsDepois = depoisDoMain
+            .replace(/<!--[\s\S]*?-->/g, '')
+            .replace(/<script[^>]*src=[^>]*><\/script>/gi, '')
+            .replace(/<noscript>[\s\S]*?<\/noscript>/gi, '')
+            .trim();
+          if (tagsDepois.length > 0 && tagsDepois.includes('<')) {
+            problemas.push(`Nó HTML não autorizado detectado após o </main>: "${tagsDepois.substring(0, 80)}...". Nenhum nó estrutural pode ser irmão do container <main>.`);
+          }
+        }
       }
     }
 

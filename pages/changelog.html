@@ -228,7 +228,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-0-0">v2.0.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-1-0">v2.1.0 (Atual)</a>
+                <a class="nav-link" href="#v2-0-0">v2.0.0</a>
                 <a class="nav-link" href="#v1-1-0">v1.1.0</a>
                 <a class="nav-link" href="#v1-0-0">v1.0.0</a>
                 <a class="nav-link" href="#convencoes">Convenções e Padrões</a>
@@ -249,13 +250,52 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.1.0 ============ -->
+            <section id="v2-1-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.1.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Motor de Prototipagem IA</span>
+                        </div>
+                        <div class="version-date">03 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-adicionado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">add_circle</span>
+                                Adicionado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Diretório Oficial de Protótipos (<code>prototipos/</code>):</strong> Instituição do ambiente oficial para versionamento de telas modulares diagramadas por IA para demandas reais.</li>
+                                <li><strong>4 Protótipos de Produção Homologados:</strong> Decisão do Copom, Série SGS 432 com Dados Abertos, Serviço MED do Pix com Stepper, e Regulação de Cheque Especial (70/30).</li>
+                                <li><strong>Harness de Visualização Técnica (<code>prototipos/_harness.html</code>):</strong> Visualizador responsivo com seletores de viewport (Desktop, Tablet, Mobile), 3 temas e painel retrátil de briefing split-screen.</li>
+                                <li><strong>Navegação Padronizada:</strong> Inclusão de breadcrumbs semânticos e botão "Voltar ao topo" nos 4 protótipos.</li>
+                                <li><strong>Esteira de CI Integrada:</strong> Execução obrigatória de <code>npm run lint:prototypes</code> e <code>npm run test:a11y:prototypes</code> no GitHub Actions.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-modificado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">published_with_changes</span>
+                                Modificado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Virada Conceitual de Templates para Protótipos:</strong> Transição oficial de <code>templates.html</code> para <code>pages/prototipos.html</code> e unificação de todos os links da documentação.</li>
+                                <li><strong>Reatividade Não-Intrusiva:</strong> Centralização das ações de impressão via <code>[data-action="print"]</code> em <code>assets/js/bcb-ui.js</code>, banindo scripts inline nos protótipos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.0.0 ============ -->
             <section id="v2-0-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.0.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Manual de Marca Oficial</span>
                         </div>
                         <div class="version-date">

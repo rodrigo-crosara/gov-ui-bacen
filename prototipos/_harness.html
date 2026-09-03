@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizador Técnico de Protótipos — BCB Design System</title>
-    <meta name="description" content="Casca técnica mínima sem elementos fixos de portal para testes visuais, responsividade e auditoria de contraste de protótipos de miolo do BCB.">
+    <meta name="description" content="Casca técnica mínima sem elementos fixos de portal para testes visuais, split-screen de demandas, responsividade e auditoria de contraste de protótipos do BCB.">
 
     <!-- Bootstrap 4.6 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="../assets/css/bcb-style.css">
 
     <style>
-        /* Toolbar técnica de controle — exclusiva para homologação visual */
         body {
             margin: 0;
             padding: 0;
@@ -36,6 +35,7 @@
             min-height: 100vh;
         }
 
+        /* Toolbar técnica de controle */
         .bcb-harness-bar {
             background-color: #1a2228;
             color: #ffffff;
@@ -79,7 +79,7 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .bcb-harness-group {
@@ -104,7 +104,7 @@
             padding: 4px 8px;
             font-size: 0.8rem;
             outline: none;
-            max-width: 280px;
+            max-width: 270px;
         }
 
         .bcb-harness-btn-group {
@@ -138,7 +138,109 @@
             font-weight: 600;
         }
 
-        /* Palco de renderização do protótipo (responsivo centralizado) */
+        /* Container Split-Screen (Gaveta de Demanda + Palco de Renderização) */
+        .bcb-harness-layout {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Gaveta Retrátil de Briefing da Demanda */
+        .bcb-harness-drawer {
+            width: 0;
+            opacity: 0;
+            visibility: hidden;
+            background-color: #141b22;
+            color: #c9d1d9;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            transition: width 0.3s ease, opacity 0.2s ease, visibility 0.3s ease;
+            overflow-y: auto;
+            height: calc(100vh - 50px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bcb-harness-layout.drawer-open .bcb-harness-drawer {
+            width: 440px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .bcb-drawer-header {
+            background: #1f2933;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .bcb-drawer-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+        }
+
+        .bcb-drawer-body {
+            padding: 16px;
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        .bcb-briefing-meta {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--bcb-brand-azul-blue, #025C75);
+            padding: 10px 12px;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 14px;
+        }
+
+        .bcb-briefing-meta dt {
+            color: #8b949e;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bcb-briefing-meta dd {
+            color: #f0f6fc;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .bcb-briefing-meta dd:last-child {
+            margin-bottom: 0;
+        }
+
+        .bcb-briefing-raw {
+            background: #0d1117;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 12px;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.78rem;
+            color: #79c0ff;
+            white-space: pre-wrap;
+            margin-bottom: 14px;
+        }
+
+        .bcb-briefing-instruction {
+            background: rgba(2, 92, 117, 0.15);
+            border: 1px solid rgba(2, 92, 117, 0.4);
+            border-radius: 6px;
+            padding: 12px;
+            color: #e6edf3;
+            font-style: italic;
+        }
+
+        /* Palco de renderização do protótipo */
         .bcb-harness-stage {
             flex: 1;
             display: flex;
@@ -146,12 +248,15 @@
             align-items: flex-start;
             padding: 16px;
             background-color: #0f1418;
+            overflow-y: auto;
+            height: calc(100vh - 50px);
             transition: all 0.3s ease;
         }
 
         .bcb-harness-device {
             width: 100%;
-            height: calc(100vh - 80px);
+            height: 100%;
+            min-height: calc(100vh - 80px);
             background: #ffffff;
             transition: width 0.3s ease, max-width 0.3s ease, box-shadow 0.3s ease;
             position: relative;
@@ -215,6 +320,12 @@
         </a>
 
         <div class="bcb-harness-controls">
+            <!-- Botão de Briefing Retrátil (Split-Screen) -->
+            <button type="button" id="btnToggleBriefing" class="bcb-harness-btn" title="Exibir/Ocultar Briefing da Demanda Original (.docs-ia/)">
+                <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">description</span>
+                <span>Briefing da Demanda</span>
+            </button>
+
             <!-- Seletor de Protótipos -->
             <div class="bcb-harness-group">
                 <label for="selectPrototipo" class="bcb-harness-label">Tela:</label>
@@ -270,11 +381,31 @@
         </div>
     </header>
 
-    <!-- PALCO CENTRALIZADO DO PROTÓTIPO COM DISPOSITIVO CONTROLÁVEL -->
-    <main id="conteudo-principal" class="bcb-harness-stage">
+    <!-- PALCO CENTRALIZADO COM SPLIT-SCREEN (GAVETA DE BRIEFING + DISPOSITIVO) -->
+    <main id="conteudo-principal" class="bcb-harness-layout">
         <h1 class="sr-only">Visualizador Técnico de Protótipos — Banco Central do Brasil</h1>
-        <div id="deviceContainer" class="bcb-harness-device viewport-desktop">
-            <iframe id="previewFrame" class="bcb-harness-frame" src="copom-decisao-taxa-selic.html" title="Quadro de Visualização do Protótipo"></iframe>
+
+        <!-- Gaveta Retrátil de Briefing da Demanda -->
+        <aside id="briefingDrawer" class="bcb-harness-drawer" aria-label="Painel de Briefing da Demanda">
+            <div class="bcb-drawer-header">
+                <h2 class="bcb-drawer-title">
+                    <span class="material-symbols-outlined" style="font-size: 1.1rem; color: #4dc8ff;" aria-hidden="true">assignment</span>
+                    <span id="briefingTitle">Briefing da Demanda</span>
+                </h2>
+                <button type="button" id="btnCloseDrawer" class="bcb-harness-btn" title="Fechar Painel de Briefing">
+                    <span class="material-symbols-outlined" style="font-size: 1.1rem;" aria-hidden="true">close</span>
+                </button>
+            </div>
+            <div id="briefingContent" class="bcb-drawer-body">
+                <!-- Conteúdo renderizado dinamicamente via JS -->
+            </div>
+        </aside>
+
+        <!-- Palco do Dispositivo (Iframe do Protótipo) -->
+        <div class="bcb-harness-stage">
+            <div id="deviceContainer" class="bcb-harness-device viewport-desktop">
+                <iframe id="previewFrame" class="bcb-harness-frame" src="copom-decisao-taxa-selic.html" title="Quadro de Visualização do Protótipo"></iframe>
+            </div>
         </div>
     </main>
 
@@ -285,7 +416,104 @@
             const selectPrototipo = document.getElementById('selectPrototipo');
             const themeButtons = document.querySelectorAll('[data-theme-target]');
             const viewportButtons = document.querySelectorAll('[data-viewport]');
+            const harnessLayout = document.querySelector('.bcb-harness-layout');
+            const btnToggleBriefing = document.getElementById('btnToggleBriefing');
+            const btnCloseDrawer = document.getElementById('btnCloseDrawer');
+            const briefingTitle = document.getElementById('briefingTitle');
+            const briefingContent = document.getElementById('briefingContent');
+
             let currentTheme = 'default';
+
+            // Dicionário canônico dos briefings de demandas (.docs-ia/exemplos-demandas/)
+            const DEMANDAS = {
+                'copom-decisao-taxa-selic.html': {
+                    arquivo: '.docs-ia/exemplos-demandas/01-comunicado-normativo.md',
+                    titulo: 'Modelo 1: Comunicado Normativo & Copom',
+                    origem: 'Assessoria de Imprensa (ASIMP) / Secretaria do Copom',
+                    objetivo: 'Noticiar a decisão da 268ª Reunião do Copom (elevação da Selic para 14,25% a.a.) e disponibilizar notas oficiais.',
+                    publico: 'Jornalistas, analistas de mercado e sociedade.',
+                    padraoUX: 'Comunicação Normativa (Layout 70/30 com citação e downloads)',
+                    textoBruto: 'O Comitê de Política Monetária (Copom) do Banco Central do Brasil decidiu, por unanimidade, elevar a taxa Selic em 1,00 ponto percentual, para 14,25% ao ano, na sua 268ª reunião concluída em 12 de março de 2026.\n\nA decisão reflete o cenário de pressões inflacionárias no horizonte relevante de política monetária...\n\nDeclaração: "A convergência da inflação para a meta estabelecida pelo CMN é o compromisso inegociável da autoridade monetária..."',
+                    instrucao: 'Diagramar o miolo desta nota normativa adotando o layout modular 70/30 (.bcb-col-lg-8 para o corpo editorial com lead e citação oficial diretorial, e .bcb-col-lg-4 para a coluna lateral com os downloads dos atos e resoluções em .documentos).'
+                },
+                'sgs-series-taxa-selic.html': {
+                    arquivo: '.docs-ia/exemplos-demandas/02-dados-sgs-indicadores.md',
+                    titulo: 'Modelo 2: Séries Temporais SGS & Dados Abertos',
+                    origem: 'Departamento de Estatísticas do Banco Central (DSTAT)',
+                    objetivo: 'Publicar a série histórica das últimas reuniões do Copom com visualização imediata das taxas vigentes e exportação de dados abertos.',
+                    publico: 'Pesquisadores, economistas e instituições autorizadas.',
+                    padraoUX: 'Painel Analítico de Indicadores & Tabela Densa SGS',
+                    textoBruto: 'Reuniao;Data_Inicio;Data_Fim;Meta_Taxa_aa;Variacao_pp;Ata_Publicada\n268ª;11/03/2026;12/03/2026;14.25;+1.00;Pendente\n267ª;28/01/2026;29/01/2026;13.25;0.00;Sim\n266ª;10/12/2025;11/12/2025;13.25;-0.25;Sim\n265ª;05/11/2025;06/11/2025;13.50;-0.50;Sim',
+                    instrucao: 'Diagramar o miolo do painel destacando os 3 números-chave no topo em cards (.bcb-indicator-card) no arranjo 33/33/33 (.bcb-col-md-4). Estruturar a série histórica em Data Table acessível com <caption>, thead institucional, alinhamento numérico à direita e bloco de exportação (.bcb-data-export) para CSV e JSON em largura total (.bcb-col-12).'
+                },
+                'mecanismo-especial-devolucao-med.html': {
+                    arquivo: '.docs-ia/exemplos-demandas/03-servico-passo-a-passo.md',
+                    titulo: 'Modelo 3: Serviço ao Cidadão & Guia com Stepper',
+                    origem: 'Departamento de Atendimento Institucional (DEATI) / Gerência do Pix',
+                    objetivo: 'Explicar como contestar fraudes via MED do Pix, ressaltando que o BCB não cobra taxas nem pede senhas.',
+                    publico: 'Pessoas físicas, correntistas bancários e usuários do Pix.',
+                    padraoUX: 'Guia de Serviço com Stepper Sequencial, Alertas Críticos e FAQ',
+                    textoBruto: 'Serviço: Mecanismo Especial de Devolução (MED) do Pix\n\nEtapas obrigatórias:\n1. Registro imediato da infração no seu banco (até 80 dias).\n2. Notificação e bloqueio cautelar (até 72 horas).\n3. Conclusão da análise pericial e estorno (até 96 horas).\n\nAviso Crítico: O BCB NUNCA entra em contato pedindo senhas ou cobrando taxas!',
+                    instrucao: 'Diagramar o miolo do serviço com abertura institucional em 100%, stepper sequencial (.process-list) numerado com as 3 etapas de solicitação, callout de alerta de segurança elevado (.callout.callout-warning.callout-elevated) com alto contraste destacando o aviso contra golpes, e seção final de dúvidas com acordeão acessível (.accordion.modelo-1).'
+                },
+                'regras-cheque-especial.html': {
+                    arquivo: '.docs-ia/exemplos-demandas/04-conteudo-html-legado.md',
+                    titulo: 'Modelo 4: Refatoração de HTML Legado',
+                    origem: 'Departamento de Comunicação Interna e Externa',
+                    objetivo: 'Modernizar e converter código HTML antigo com tabelas de layout para a arquitetura semântica do BCB Design System.',
+                    publico: 'Correntistas, consumidores de crédito e microempresas.',
+                    padraoUX: 'Refatoração Semântica em Grid 12 Colunas (.bcb-row e .bcb-col-*)',
+                    textoBruto: 'Código antigo com <table bgcolor="#f5f5f5"> e <font face="Arial">\n\nRegra Chave: O banco não pode cobrar tarifa de disponibilização para limites de cheque especial até R$ 500,00. Uso de mais de 15% por mais de 30 dias exige proposta ativa de parcelamento.',
+                    instrucao: 'Converter este HTML legado em um miolo semântico moderno e acessível: substituir as tabelas de layout pelo Grid de 12 colunas do BCB em arranjo 70/30 (.bcb-col-12.bcb-col-lg-8 e .bcb-col-12.bcb-col-lg-4), converter a fonte e cores antigas para a tipografia oficial e variáveis CSS do Manual de Marca, transformar o aviso inline em um .callout.callout-warning acessível, e estruturar os links da barra lateral como cards canônicos de download (.documentos .documento).'
+                }
+            };
+
+            function renderBriefing(slug) {
+                const demanda = DEMANDAS[slug];
+                if (!demanda) {
+                    briefingTitle.textContent = 'Prova de Conceito Exploratória';
+                    briefingContent.innerHTML = `
+                        <div class="bcb-briefing-meta">
+                            <dl class="mb-0">
+                                <dt>Tipo de Tela</dt>
+                                <dd>Template / POC Histórica Preservada</dd>
+                                <dt>Localização</dt>
+                                <dd><code>templates/testes-poc/</code></dd>
+                            </dl>
+                        </div>
+                        <p class="text-muted small">Esta prova de conceito serviu como exploração preliminar de layout e encontra-se arquivada para fins de referência histórica.</p>
+                    `;
+                    return;
+                }
+
+                briefingTitle.textContent = demanda.titulo;
+                briefingContent.innerHTML = `
+                    <div class="mb-3">
+                        <span class="badge badge-info" style="font-size: 0.72rem;">Arquivo: ${demanda.arquivo}</span>
+                    </div>
+
+                    <div class="bcb-briefing-meta">
+                        <dl class="mb-0">
+                            <dt>Origem / Solicitante</dt>
+                            <dd>${demanda.origem}</dd>
+                            <dt>Objetivo da Comunicação</dt>
+                            <dd>${demanda.objetivo}</dd>
+                            <dt>Público-Alvo</dt>
+                            <dd>${demanda.publico}</dd>
+                            <dt>Padrão de UX Recomendado</dt>
+                            <dd>${demanda.padraoUX}</dd>
+                        </dl>
+                    </div>
+
+                    <h3 class="h6 font-weight-bold text-white mb-2">Insumo Bruto da Área de Negócio:</h3>
+                    <pre class="bcb-briefing-raw">${demanda.textoBruto}</pre>
+
+                    <h3 class="h6 font-weight-bold text-white mb-2">Instrução ao Especialista / Agente:</h3>
+                    <div class="bcb-briefing-instruction">
+                        "${demanda.instrucao}"
+                    </div>
+                `;
+            }
 
             function applyThemeToFrame(theme) {
                 currentTheme = theme;
@@ -319,8 +547,16 @@
                 deviceContainer.className = `bcb-harness-device viewport-${viewport}`;
             }
 
+            function toggleDrawer() {
+                const isOpen = harnessLayout.classList.toggle('drawer-open');
+                btnToggleBriefing.classList.toggle('active', isOpen);
+            }
+
             selectPrototipo.addEventListener('change', (e) => {
-                frame.src = e.target.value;
+                const val = e.target.value;
+                frame.src = val;
+                const slug = val.split('/').pop();
+                renderBriefing(slug);
             });
 
             frame.addEventListener('load', () => {
@@ -338,6 +574,12 @@
                     setViewport(btn.getAttribute('data-viewport'));
                 });
             });
+
+            btnToggleBriefing.addEventListener('click', toggleDrawer);
+            btnCloseDrawer.addEventListener('click', toggleDrawer);
+
+            // Inicialização inicial
+            renderBriefing('copom-decisao-taxa-selic.html');
         })();
     </script>
 </body>
