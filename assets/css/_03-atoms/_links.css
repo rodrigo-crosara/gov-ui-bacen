@@ -1,10 +1,10 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    BCB DESIGN SYSTEM — ATOMS / LINKS (.bcb-link, a)
    ========================================================================== */
 
 .bcb-link,
 a {
-  color: var(--bcb-color-azul-blue, #025C75);
+  color: var(--bcb-link-color, #025C75);
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 500;
@@ -13,20 +13,42 @@ a {
 
 .bcb-link:hover,
 a:hover {
-  color: var(--bcb-color-azulcinti, #077391);
+  color: var(--bcb-link-hover, #077391);
+}
+
+.bcb-link:active,
+a:active {
+  color: var(--bcb-brand-azulpetro, #2E4C59);
 }
 
 .bcb-link:focus-visible,
 a:focus-visible {
-  outline: 2px solid var(--bcb-color-verde-castell, #088694);
-  outline-offset: 2px;
-  border-radius: var(--bcb-radius-xs, 2px);
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px !important;
+  border-radius: var(--bcb-radius-4, 4px);
+}
+
+.bcb-link:disabled,
+.bcb-link[aria-disabled="true"],
+.bcb-link.disabled,
+a:disabled,
+a[aria-disabled="true"],
+a.disabled {
+  color: var(--bcb-gray-400, #B7C0CB) !important;
+  text-decoration: none !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
 }
 
 .bcb-link--external::after {
   content: "open_in_new";
-  font-family: "Material Symbols Outlined";
-  font-size: 0.9em;
+  font-family: "Material Symbols Outlined", "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 0.95em;
+  line-height: 1;
+  display: inline-block;
   margin-left: 4px;
   vertical-align: middle;
+  text-decoration: none;
 }

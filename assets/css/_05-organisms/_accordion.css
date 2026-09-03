@@ -51,6 +51,14 @@
   text-decoration: none;
 }
 
+.accordion.modelo-1 .card-header .btn:focus-visible,
+.bcb-accordion .card-header .btn:focus-visible,
+.bcb-accordion-trigger:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: -2px !important;
+  border-radius: var(--bcb-radius-4);
+}
+
 .accordion.modelo-1 .card-header .btn .material-icons,
 .bcb-accordion-trigger .accordion-chevron {
   font-size: 1.5rem;

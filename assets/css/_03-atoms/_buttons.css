@@ -1,155 +1,217 @@
 /* ==========================================================================
-   BCB DESIGN SYSTEM — ATOMS / BUTTONS (.bcb-btn)
+   BCB DESIGN SYSTEM — ATOMS / BUTTONS (.bcb-btn, .btn)
    ========================================================================== */
 
-.bcb-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--bcb-spacing-sm, 8px);
-  padding: 10px 20px;
-  font-family: var(--bcb-font-sans, inherit);
-  font-size: var(--bcb-font-size-sm, 14px);
-  font-weight: 600;
-  line-height: 1.2;
-  text-decoration: none;
-  border-radius: var(--bcb-radius-md, 6px);
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all var(--bcb-transition-fast, 0.15s ease-in-out);
-  box-sizing: border-box;
-}
-
-.bcb-btn:focus-visible {
-  outline: 3px solid var(--bcb-color-verde-castell, #088694);
-  outline-offset: 2px;
-}
-
-/* Primário (Azul Blue Oficial BCB) */
-.bcb-btn--primary {
-  background-color: var(--bcb-color-azul-blue, #025C75);
-  border-color: var(--bcb-color-azul-blue, #025C75);
-  color: #ffffff;
-}
-.bcb-btn--primary:hover {
-  background-color: var(--bcb-color-azulcinti, #077391);
-  border-color: var(--bcb-color-azulcinti, #077391);
-  color: #ffffff;
-}
-.bcb-btn--primary:active {
-  background-color: var(--bcb-color-azulpetro, #2E4C59);
-  border-color: var(--bcb-color-azulpetro, #2E4C59);
-}
-
-/* Secundário (Outline / Borda Azulpetro) */
-.bcb-btn--secondary {
-  background-color: transparent;
-  border-color: var(--bcb-color-azul-blue, #025C75);
-  color: var(--bcb-color-azul-blue, #025C75);
-}
-.bcb-btn--secondary:hover {
-  background-color: rgba(2, 92, 117, 0.08);
-  color: var(--bcb-color-azulcinti, #077391);
-}
-
-/* Terciário / Ghost */
-.bcb-btn--tertiary {
-  background-color: transparent;
-  border-color: transparent;
-  color: var(--bcb-color-azul-blue, #025C75);
-}
-.bcb-btn--tertiary:hover {
-  background-color: rgba(2, 92, 117, 0.06);
-  color: var(--bcb-color-azulcinti, #077391);
-}
-
-/* Perigo / Alerta (Vinho Autêntico) */
-.bcb-btn--danger {
-  background-color: var(--bcb-color-vinho-autentico, #47373A);
-  border-color: var(--bcb-color-vinho-autentico, #47373A);
-  color: #ffffff;
-}
-.bcb-btn--danger:hover {
-  background-color: #35282a;
-}
-
-/* Tamanhos */
-.bcb-btn--sm {
-  padding: 6px 12px;
-  font-size: var(--bcb-font-size-xs, 12px);
-}
-.bcb-btn--lg {
-  padding: 14px 28px;
-  font-size: var(--bcb-font-size-md, 16px);
-}
-
-/* Desabilitado */
-.bcb-btn:disabled,
-.bcb-btn--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* Compatibilidade retroativa com classes legadas (.btn, .btn-primary) */
+.bcb-btn,
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--bcb-spacing-sm, 8px);
-  padding: 10px 20px;
+  gap: var(--bcb-space-2, 0.5rem);
+  padding: 0.625rem 1.25rem;
   font-family: var(--bcb-font-ubuntu, sans-serif);
-  font-size: var(--bcb-font-size-sm, 14px);
+  font-size: var(--bcb-font-75, 0.875rem);
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
-  border-radius: var(--bcb-radius-md, 6px);
+  border-radius: var(--bcb-radius-4, 4px);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   box-sizing: border-box;
+  vertical-align: middle;
 }
 
+.bcb-btn .material-symbols-outlined,
+.bcb-btn .material-icons,
+.btn .material-symbols-outlined,
+.btn .material-icons {
+  font-size: 1.15rem !important;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Foco Acessível Padrão (WCAG 2.4.7 / 2.4.11) */
+.bcb-btn:focus-visible,
 .btn:focus-visible {
-  outline: 3px solid var(--bcb-color-verde-castell, #088694);
-  outline-offset: 2px;
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px !important;
 }
 
+/* ==========================================================================
+   1. BOTÃO PRIMÁRIO (Azul Blue Oficial BCB)
+   ========================================================================== */
+.bcb-btn--primary,
 .btn-primary {
-  background-color: var(--bcb-color-azul-blue, #025C75) !important;
-  border-color: var(--bcb-color-azul-blue, #025C75) !important;
-  color: #ffffff !important;
-}
-.btn-primary:hover {
-  background-color: var(--bcb-color-azulcinti, #077391) !important;
-  border-color: var(--bcb-color-azulcinti, #077391) !important;
-  color: #ffffff !important;
-}
-.btn-primary:active,
-.btn-primary:focus {
-  background-color: var(--bcb-color-azulpetro, #2E4C59) !important;
-  border-color: var(--bcb-color-azulpetro, #2E4C59) !important;
+  background-color: var(--bcb-btn-primary-bg, #025C75) !important;
+  border-color: var(--bcb-btn-primary-bg, #025C75) !important;
+  color: var(--bcb-color-white, #ffffff) !important;
 }
 
+.bcb-btn--primary:hover,
+.btn-primary:hover {
+  background-color: var(--bcb-btn-primary-hover, #077391) !important;
+  border-color: var(--bcb-btn-primary-hover, #077391) !important;
+  color: var(--bcb-color-white, #ffffff) !important;
+}
+
+.bcb-btn--primary:active,
+.btn-primary:active,
+.btn-primary:focus:not(:focus-visible) {
+  background-color: var(--bcb-btn-primary-active, #2E4C59) !important;
+  border-color: var(--bcb-btn-primary-active, #2E4C59) !important;
+  color: var(--bcb-color-white, #ffffff) !important;
+}
+
+/* ==========================================================================
+   2. BOTÃO SECUNDÁRIO / OUTLINE (Borda Azul Blue, Fundo Transparente)
+   ========================================================================== */
+.bcb-btn--secondary,
 .btn-secondary,
 .btn-outline-primary {
   background-color: transparent !important;
-  border-color: var(--bcb-color-azul-blue, #025C75) !important;
-  color: var(--bcb-color-azul-blue, #025C75) !important;
+  border-color: var(--bcb-btn-primary-bg, #025C75) !important;
+  color: var(--bcb-btn-primary-bg, #025C75) !important;
 }
+
+.bcb-btn--secondary:hover,
 .btn-secondary:hover,
 .btn-outline-primary:hover {
   background-color: rgba(2, 92, 117, 0.08) !important;
-  color: var(--bcb-color-azulcinti, #077391) !important;
+  border-color: var(--bcb-btn-primary-hover, #077391) !important;
+  color: var(--bcb-btn-primary-hover, #077391) !important;
 }
 
-.btn-danger {
-  background-color: var(--bcb-color-vinho-autentico, #47373A) !important;
-  border-color: var(--bcb-color-vinho-autentico, #47373A) !important;
-  color: #ffffff !important;
+.bcb-btn--secondary:active,
+.btn-secondary:active,
+.btn-outline-primary:active {
+  background-color: rgba(2, 92, 117, 0.16) !important;
+  border-color: var(--bcb-btn-primary-active, #2E4C59) !important;
+  color: var(--bcb-btn-primary-active, #2E4C59) !important;
 }
+
+/* ==========================================================================
+   3. BOTÃO TERCIÁRIO / GHOST
+   ========================================================================== */
+.bcb-btn--tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--bcb-btn-primary-bg, #025C75);
+}
+
+.bcb-btn--tertiary:hover {
+  background-color: rgba(2, 92, 117, 0.06);
+  color: var(--bcb-btn-primary-hover, #077391);
+}
+
+.bcb-btn--tertiary:active {
+  background-color: rgba(2, 92, 117, 0.12);
+  color: var(--bcb-btn-primary-active, #2E4C59);
+}
+
+/* ==========================================================================
+   4. BOTÃO DE PERIGO / ALERTA (Vinho Autêntico)
+   ========================================================================== */
+.bcb-btn--danger,
+.btn-danger {
+  background-color: var(--bcb-brand-vinho-autentico, #47373A) !important;
+  border-color: var(--bcb-brand-vinho-autentico, #47373A) !important;
+  color: var(--bcb-color-white, #ffffff) !important;
+}
+
+.bcb-btn--danger:hover,
 .btn-danger:hover {
+  background-color: var(--bcb-brand-marsala, #736063) !important;
+  border-color: var(--bcb-brand-marsala, #736063) !important;
+  color: var(--bcb-color-white, #ffffff) !important;
+}
+
+.bcb-btn--danger:active,
+.btn-danger:active {
   background-color: #35282a !important;
+  border-color: #35282a !important;
+  color: var(--bcb-color-white, #ffffff) !important;
+}
+
+/* ==========================================================================
+   5. BOTÃO LINK
+   ========================================================================== */
+.btn-link {
+  background: none !important;
+  border: none !important;
+  color: var(--bcb-link-color, #025C75) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+}
+
+.btn-link:hover {
+  color: var(--bcb-link-hover, #077391) !important;
+  text-decoration: underline !important;
+}
+
+.btn-link:active {
+  color: var(--bcb-brand-azulpetro, #2E4C59) !important;
+}
+
+/* ==========================================================================
+   6. ESTADOS DESABILITADOS (Strict Disabled Tokens)
+   ========================================================================== */
+.bcb-btn:disabled,
+.bcb-btn--disabled,
+.bcb-btn[aria-disabled="true"],
+.btn:disabled,
+.btn.disabled,
+.btn[aria-disabled="true"] {
+  background-color: var(--bcb-gray-300, #D0D7DF) !important;
+  border-color: var(--bcb-gray-300, #D0D7DF) !important;
+  color: var(--bcb-gray-600, #7E8A95) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  opacity: 0.65 !important;
+  box-shadow: none !important;
+}
+
+.bcb-btn--secondary:disabled,
+.btn-secondary:disabled,
+.btn-secondary.disabled,
+.btn-outline-primary:disabled,
+.btn-outline-primary.disabled {
+  background-color: transparent !important;
+  border-color: var(--bcb-gray-300, #D0D7DF) !important;
+  color: var(--bcb-gray-500, #9AA6B2) !important;
+}
+
+.btn-link:disabled,
+.btn-link.disabled {
+  background: transparent !important;
+  border: none !important;
+  color: var(--bcb-gray-400, #B7C0CB) !important;
+  text-decoration: none !important;
+}
+
+/* ==========================================================================
+   7. TAMANHOS ESPECIAIS
+   ========================================================================== */
+.bcb-btn--sm,
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: var(--bcb-font-50, 0.75rem);
+  gap: var(--bcb-space-1, 0.25rem);
+}
+
+.bcb-btn--lg,
+.btn-lg {
+  padding: 0.875rem 1.75rem;
+  font-size: var(--bcb-font-100, 1rem);
+  gap: var(--bcb-space-3, 0.75rem);
+}
+
+.btn-icon {
+  padding: 0.625rem;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 /* Acessibilidade Mobile — Alvos de Toque Mínimos de 44x44px (WCAG 2.5.5 / 2.5.8) */

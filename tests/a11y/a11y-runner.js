@@ -152,9 +152,59 @@ function auditoriaEstaticaAcessibilidade(caminhoArquivo, caminhoRelativo) {
     const botoesCustomizados = conteudo.match(/<(?:div|span|a)[^>]*role=["']button["'][^>]*>/gi) || [];
     botoesCustomizados.forEach(btn => {
       if (!btn.includes('tabindex=') && !btn.includes('href=')) {
-        problemas.push(`Elemento com role="button" sem tabindex="0" detectado — impede ativação por teclado (WCAG 2.1.1).`);
+        problemas.push('Elemento com role="button" sem tabindex="0" detectado — impede ativação por teclado (WCAG 2.1.1).');
       }
     });
+
+    // 12. Ordem de Foco e Proibição Estrita de Tabindex Positivo (WCAG 2.4.3 Focus Order)
+    const tabindexPositivos = conteudo.match(/tabindex=["'][1-9]\d*["']/gi) || [];
+    if (tabindexPositivos.length > 0) {
+      problemas.push(`${tabindexPositivos.length} elemento(s) com tabindex positivo detectado(s). O uso de tabindex positivo quebra a ordem natural de foco do DOM.`);
+    }
+
+    // 13. Acessibilidade de Teclado em Tabelas com Rolagem Horizontal (WCAG 2.1.1 Keyboard)
+    const tabelasResponsivas = conteudo.match(/<div[^>]*class=["'][^"']*table-responsive[^"']*["'][^>]*>/gi) || [];
+    tabelasResponsivas.forEach(div => {
+      if (!div.includes('tabindex="0"') && !div.includes("tabindex='0'")) {
+        problemas.push('Container de rolagem horizontal .table-responsive sem tabindex="0" — impede que usuários de teclado consigam rolar a tabela (WCAG 2.1.1).');
+      }
+      if (!div.includes('role="region"') && !div.includes("role='region'")) {
+        problemas.push('Container .table-responsive deve possuir role="region" para anunciar marco acessível de rolagem.');
+      }
+      if (!div.includes('aria-label=') && !div.includes('aria-labelledby=')) {
+        problemas.push('Container .table-responsive deve possuir aria-label descritivo ou aria-labelledby identificando o conteúdo da tabela.');
+      }
+    });
+
+    // 14. Navegação por Teclado: Trilha de Navegação (Breadcrumb) Acessível
+    if (conteudo.includes('breadcrumb')) {
+      const matchNavBreadcrumb = conteudo.match(/<nav[^>]*aria-label=["']([^"']+)["'][^>]*>[\s\S]*?<ol[^>]*class=["'][^"']*breadcrumb/i);
+      if (!matchNavBreadcrumb) {
+        problemas.push('Trilha de navegação deve estar envolvida em <nav aria-label="..."> com <ol class="breadcrumb"> para navegação semântica.');
+      }
+      if (!conteudo.includes('aria-current="page"')) {
+        problemas.push('O último item do breadcrumb deve conter aria-current="page" para indicar a página corrente na árvore de acessibilidade.');
+      }
+    }
+
+    // 15. Navegação por Teclado: Botão de Retorno ao Topo
+    if (!conteudo.includes('bcb-back-to-top') && !conteudo.includes('href="#conteudo-principal"')) {
+      problemas.push('Protótipo deve conter botão ou link de retorno ao topo apontando para #conteudo-principal.');
+    }
+
+    // 16. Validação de Contraste e Cores do Design System (WCAG 1.4.3 / 1.4.11)
+    const coresHexInline = conteudo.match(/style=["'][^"']*(?:color|background)[^"']*#[0-9a-fA-F]{3,8}[^"']*["']/gi) || [];
+    if (coresHexInline.length > 0) {
+      problemas.push(`${coresHexInline.length} cor(es) literal(is) inline detectada(s). Utilize exclusivamente variáveis semânticas do Design System para garantir contraste em Light, Dark e Alto Contraste.`);
+    }
+
+    // 17. Validação de Contraste de Texto Branco fora de Fundo Escuro
+    const textosBrancosSemFundo = (conteudo.match(/class=["'][^"']*\btext-white\b[^"']*["']/gi) || []).filter(tag => {
+      return !tag.includes('bg-') && !tag.includes('thead-') && !tag.includes('badge-') && !tag.includes('btn-');
+    });
+    if (textosBrancosSemFundo.length > 0) {
+      problemas.push(`${textosBrancosSemFundo.length} ocorrência(s) de classe text-white sem classe de fundo escuro correspondente no elemento.`);
+    }
   }
 
   return problemas;

@@ -122,6 +122,25 @@ for (const arquivo of arquivosHTML) {
     }
   }
 
+  // TESTE 13: Validação da estrutura de navegação de tokens.html
+  if (nomeRelativo === 'pages/tokens.html') {
+    if (!conteudo.includes('class="ds-sidebar"') && !conteudo.includes("class='ds-sidebar'")) {
+      problemas.push('tokens.html deve conter a sidebar de navegação (.ds-sidebar)');
+    }
+    if (!conteudo.includes('id="ds-sidebar-nav"')) {
+      problemas.push('tokens.html deve identificar a barra de navegação com id="ds-sidebar-nav"');
+    }
+    if (!conteudo.includes('id="z-index"')) {
+      problemas.push('tokens.html deve conter a seção dedicada de Z-Index (#z-index)');
+    }
+    if (!conteudo.includes('id="sombras"') || !conteudo.includes('id="bordas"')) {
+      problemas.push('tokens.html deve conter as seções separadas de Sombras (#sombras) e Bordas (#bordas)');
+    }
+    if (!conteudo.includes('id="btnToggleSidebar"')) {
+      problemas.push('tokens.html deve conter botão responsivo mobile (#btnToggleSidebar)');
+    }
+  }
+
   // Reportar resultados
   if (problemas.length === 0 && alertas.length === 0) {
     console.log(`✅ ${nomeRelativo}`);

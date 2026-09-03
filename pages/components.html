@@ -362,6 +362,10 @@
             <!-- ========================================================= -->
             <!-- 1. ÁTOMOS (BASE) -->
             <!-- ========================================================= -->
+            <div class="ds-section-header mt-4 mb-4 pb-2 border-bottom" id="secao-atomos">
+                <h2 class="h3 font-weight-bold text-bcb-brand mb-1">1. Átomos (Fundação)</h2>
+                <p class="text-muted small mb-0">Elementos primitivos e blocos fundamentais de interface do Banco Central do Brasil.</p>
+            </div>
 
             <!-- 1.0 Grid e Diagramação (12 Colunas) -->
             <section id="atomo-grid" class="ds-component-card">
@@ -490,32 +494,62 @@
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Foco Acessível 3px</span>
                 </div>
                 <div class="ds-component-preview">
-                    <div class="d-flex flex-wrap align-items-center gap-2">
-                        <button type="button" class="btn btn-primary">Botão Primário</button>
-                        <button type="button" class="btn btn-secondary">Botão Secundário</button>
-                        <button type="button" class="btn btn-outline-primary">Terciário / Outline</button>
-                        <button type="button" class="btn btn-danger">Perigo / Danger</button>
-                        <button type="button" class="btn btn-primary">
-                            <span class="material-symbols-outlined material-icons" aria-hidden="true">download</span> Com Ícone
-                        </button>
-                        <button type="button" class="btn btn-primary btn-icon" aria-label="Pesquisar">
-                            <span class="material-symbols-outlined material-icons" aria-hidden="true">search</span>
-                        </button>
-                        <button type="button" class="btn btn-primary" disabled>Desabilitado</button>
-                        <button type="button" class="btn btn-link">Botão Link</button>
+                    <!-- Linha 1: Estados Interativos -->
+                    <div class="mb-3">
+                        <div class="text-muted small font-weight-bold text-uppercase mb-2">Estados Interativos (Default, Hover/Focus, Desabilitado, Erro/Crítico)</div>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <button type="button" class="btn btn-primary">Padrão (Default)</button>
+                            <button type="button" class="btn btn-primary" style="background-color: var(--bcb-btn-primary-hover) !important; border-color: var(--bcb-btn-primary-hover) !important;">Hover / Focus Simulado</button>
+                            <button type="button" class="btn btn-primary" disabled aria-disabled="true">Desabilitado (Disabled)</button>
+                            <button type="button" class="btn btn-danger">Erro / Ação Crítica</button>
+                        </div>
+                    </div>
+
+                    <!-- Linha 2: Variantes de Estilo -->
+                    <div class="mb-3">
+                        <div class="text-muted small font-weight-bold text-uppercase mb-2">Variantes Semânticas e Ícones</div>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <button type="button" class="btn btn-primary">Primário</button>
+                            <button type="button" class="btn btn-secondary">Secundário</button>
+                            <button type="button" class="btn btn-outline-primary">Terciário / Outline</button>
+                            <button type="button" class="btn btn-primary">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">download</span> Com Ícone
+                            </button>
+                            <button type="button" class="btn btn-primary btn-icon" aria-label="Pesquisar registros">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">search</span>
+                            </button>
+                            <button type="button" class="btn btn-link">Botão Link</button>
+                        </div>
+                    </div>
+
+                    <!-- Linha 3: Escala de Tamanhos -->
+                    <div>
+                        <div class="text-muted small font-weight-bold text-uppercase mb-2">Escala de Tamanhos</div>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <button type="button" class="btn btn-primary btn-sm">Pequeno (.btn-sm)</button>
+                            <button type="button" class="btn btn-primary">Padrão (44px)</button>
+                            <button type="button" class="btn btn-primary btn-lg">Grande (.btn-lg)</button>
+                        </div>
                     </div>
                 </div>
                 <div class="ds-component-code">
                     <button class="btn-copy-code" data-code="code-botoes"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
-                    <pre><code id="code-botoes">&lt;button type="button" class="btn btn-primary"&gt;Botão Primário&lt;/button&gt;
-&lt;button type="button" class="btn btn-secondary"&gt;Botão Secundário&lt;/button&gt;
+                    <pre><code id="code-botoes">&lt;!-- Estados Interativos --&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Padrão (Default)&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary" disabled aria-disabled="true"&gt;Desabilitado&lt;/button&gt;
+&lt;button type="button" class="btn btn-danger"&gt;Ação Crítica / Erro&lt;/button&gt;
+
+&lt;!-- Variantes Semânticas --&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Secundário&lt;/button&gt;
 &lt;button type="button" class="btn btn-outline-primary"&gt;Terciário / Outline&lt;/button&gt;
-&lt;button type="button" class="btn btn-danger"&gt;Perigo / Danger&lt;/button&gt;
 &lt;button type="button" class="btn btn-primary"&gt;
-  &lt;span class="material-icons" aria-hidden="true"&gt;download&lt;/span&gt; Com Ícone
+  &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;download&lt;/span&gt; Com Ícone
 &lt;/button&gt;
-&lt;button type="button" class="btn btn-primary" disabled&gt;Desabilitado&lt;/button&gt;
-&lt;button type="button" class="btn btn-link"&gt;Botão Link&lt;/button&gt;</code></pre>
+&lt;button type="button" class="btn btn-link"&gt;Botão Link&lt;/button&gt;
+
+&lt;!-- Tamanhos --&gt;
+&lt;button type="button" class="btn btn-primary btn-sm"&gt;Pequeno&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary btn-lg"&gt;Grande&lt;/button&gt;</code></pre>
                 </div>
             </section>
 
@@ -619,28 +653,51 @@
             <section id="atomo-tags-badges" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">label</span> 1.4 Tags e Badges</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Metadados</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Metadados e Status</span>
                 </div>
                 <div class="ds-component-preview">
-                    <div class="d-flex flex-wrap align-items-center gap-2">
-                        <span class="tag-bcb primary">Política Monetária</span>
-                        <span class="tag-bcb neutral">Dados Abertos</span>
-                        <span class="tag-bcb outline">Regulamentação</span>
-                        <span class="bcb-trend-badge positive">+1,00%</span>
-                        <span class="bcb-trend-badge negative">-0,50%</span>
-                        <span class="bcb-trend-badge neutral">0,00%</span>
-                        <span class="badge badge-success px-2 py-1">Ativo</span>
-                        <span class="badge badge-warning px-2 py-1">Pendente</span>
-                        <span class="badge badge-danger px-2 py-1">Revogado</span>
+                    <!-- Linha 1: Estados e Variantes de Tags -->
+                    <div class="mb-3">
+                        <div class="text-muted small font-weight-bold text-uppercase mb-2">Variantes Semânticas de Tags</div>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="tag-bcb">Padrão / Neutra</span>
+                            <span class="tag-bcb primary">Primária</span>
+                            <span class="tag-bcb tag-bcb--success"><span class="material-symbols-outlined material-icons" aria-hidden="true">check</span> Concluído</span>
+                            <span class="tag-bcb tag-bcb--warning"><span class="material-symbols-outlined material-icons" aria-hidden="true">schedule</span> Em Análise</span>
+                            <span class="tag-bcb tag-bcb--danger"><span class="material-symbols-outlined material-icons" aria-hidden="true">error</span> Rejeitado</span>
+                            <span class="tag-bcb tag-bcb--pill primary">Pílula Arredondada</span>
+                            <span class="tag-bcb disabled" aria-disabled="true">Desabilitada</span>
+                        </div>
+                    </div>
+
+                    <!-- Linha 2: Badges Numéricas de Variação de Mercado -->
+                    <div>
+                        <div class="text-muted small font-weight-bold text-uppercase mb-2">Badges Financeiras de Variação de Mercado</div>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="bcb-trend-badge positive">+1,00%</span>
+                            <span class="bcb-trend-badge negative">-0,50%</span>
+                            <span class="bcb-trend-badge neutral">0,00%</span>
+                            <span class="badge badge-success px-2 py-1">Ativo</span>
+                            <span class="badge badge-warning px-2 py-1">Pendente</span>
+                            <span class="badge badge-danger px-2 py-1">Revogado</span>
+                        </div>
                     </div>
                 </div>
                 <div class="ds-component-code">
                     <button class="btn-copy-code" data-code="code-tags-badges"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
-                    <pre><code id="code-tags-badges">&lt;span class="tag-bcb primary"&gt;Política Monetária&lt;/span&gt;
-&lt;span class="tag-bcb neutral"&gt;Dados Abertos&lt;/span&gt;
-&lt;span class="tag-bcb outline"&gt;Regulamentação&lt;/span&gt;
+                    <pre><code id="code-tags-badges">&lt;!-- Tags Semânticas --&gt;
+&lt;span class="tag-bcb"&gt;Padrão / Neutra&lt;/span&gt;
+&lt;span class="tag-bcb primary"&gt;Primária&lt;/span&gt;
+&lt;span class="tag-bcb tag-bcb--success"&gt;&lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;check&lt;/span&gt; Concluído&lt;/span&gt;
+&lt;span class="tag-bcb tag-bcb--warning"&gt;&lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;schedule&lt;/span&gt; Em Análise&lt;/span&gt;
+&lt;span class="tag-bcb tag-bcb--danger"&gt;&lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;error&lt;/span&gt; Rejeitado&lt;/span&gt;
+&lt;span class="tag-bcb tag-bcb--pill primary"&gt;Pílula Arredondada&lt;/span&gt;
+&lt;span class="tag-bcb disabled" aria-disabled="true"&gt;Desabilitada&lt;/span&gt;
+
+&lt;!-- Badges Numéricas de Mercado --&gt;
 &lt;span class="bcb-trend-badge positive"&gt;+1,00%&lt;/span&gt;
-&lt;span class="bcb-trend-badge negative"&gt;-0,50%&lt;/span&gt;</code></pre>
+&lt;span class="bcb-trend-badge negative"&gt;-0,50%&lt;/span&gt;
+&lt;span class="bcb-trend-badge neutral"&gt;0,00%&lt;/span&gt;</code></pre>
                 </div>
             </section>
 
@@ -665,8 +722,8 @@
                 <div class="ds-component-code">
                     <button class="btn-copy-code" data-code="code-icones-tipografia"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-icones-tipografia">&lt;!-- Escala de Ícones --&gt;
-&lt;span class="material-icons md-24" aria-hidden="true"&gt;account_balance&lt;/span&gt;
-&lt;span class="material-icons md-36" aria-hidden="true"&gt;table_view&lt;/span&gt;
+&lt;span class="material-symbols-outlined material-icons md-24" aria-hidden="true"&gt;account_balance&lt;/span&gt;
+&lt;span class="material-symbols-outlined material-icons md-36" aria-hidden="true"&gt;table_view&lt;/span&gt;
 
 &lt;!-- Classes Tipográficas --&gt;
 &lt;h1 class="font-cormorant"&gt;Título Editorial&lt;/h1&gt;
@@ -805,8 +862,12 @@
             </section>
 
             <!-- ========================================================= -->
-            <!-- 2. MOLÉCULAS (COMPOSTOS) -->
+            <!-- 2. MOLÉCULAS (PADRÕES) -->
             <!-- ========================================================= -->
+            <div class="ds-section-header mt-5 mb-4 pb-2 border-bottom" id="secao-moleculas">
+                <h2 class="h3 font-weight-bold text-bcb-brand mb-1">2. Moléculas (Padrões)</h2>
+                <p class="text-muted small mb-0">Combinações estruturadas de átomos para composição de padrões funcionais.</p>
+            </div>
 
             <!-- 2.1 Callouts Estruturados -->
             <section id="molecula-callouts" class="ds-component-card">
@@ -851,7 +912,7 @@
                 <div class="ds-component-code">
                     <button class="btn-copy-code" data-code="code-callouts"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-callouts">&lt;div class="callout callout-brand callout-left-bordered"&gt;
-  &lt;span class="material-icons callout-icon" aria-hidden="true"&gt;info&lt;/span&gt;
+  &lt;span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true"&gt;info&lt;/span&gt;
   &lt;div class="callout-content"&gt;
     &lt;h4 class="callout-title"&gt;Título do Destaque&lt;/h4&gt;
     &lt;p&gt;Texto informativo explicativo.&lt;/p&gt;
@@ -879,7 +940,7 @@
                     <button class="btn-copy-code" data-code="code-tipbox"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-tipbox">&lt;div class="tip-box"&gt;
   &lt;div class="d-flex align-items-center mb-2"&gt;
-    &lt;span class="material-icons mr-2 text-primary" aria-hidden="true"&gt;tips_and_updates&lt;/span&gt;
+    &lt;span class="material-symbols-outlined material-icons mr-2 text-primary" aria-hidden="true"&gt;tips_and_updates&lt;/span&gt;
     &lt;h4 class="h6 font-weight-bold mb-0 text-primary"&gt;Dica de Planejamento:&lt;/h4&gt;
   &lt;/div&gt;
   &lt;p class="mb-0"&gt;Texto explicativo da dica financeira.&lt;/p&gt;
@@ -928,7 +989,7 @@
                     <pre><code id="code-documentos">&lt;div class="documentos"&gt;
   &lt;a role="button" class="documento hvr-shadow d-flex text-decoration-none color-1" href="#" aria-label="Baixar Ata do Copom (PDF, 850 KB)"&gt;
     &lt;div class="icone text-white bg-color-1 d-flex align-items-center justify-content-center rounded-left"&gt;
-      &lt;span class="material-icons md-36" aria-hidden="true"&gt;picture_as_pdf&lt;/span&gt;
+      &lt;span class="material-symbols-outlined material-icons md-36" aria-hidden="true"&gt;picture_as_pdf&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="texto d-flex flex-column justify-content-center w-100 rounded-right pl-3"&gt;
       &lt;span class="documento-title"&gt;Ata da 268ª Reunião do Copom&lt;/span&gt;
@@ -1005,7 +1066,7 @@
   &lt;div class="bcb-indicator-value value-positive"&gt;
     US$ 355,8 bi
     &lt;span class="bcb-indicator-trend positive"&gt;
-      &lt;span class="material-icons" aria-hidden="true"&gt;arrow_upward&lt;/span&gt; +2,4%
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;arrow_upward&lt;/span&gt; +2,4%
     &lt;/span&gt;
   &lt;/div&gt;
   &lt;div class="bcb-indicator-meta"&gt;Posição de liquidez internacional&lt;/div&gt;
@@ -1017,7 +1078,7 @@
   &lt;div class="bcb-indicator-value value-negative"&gt;
     R$ 5,7420
     &lt;span class="bcb-indicator-trend negative"&gt;
-      &lt;span class="material-icons" aria-hidden="true"&gt;arrow_upward&lt;/span&gt; +0,85%
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;arrow_upward&lt;/span&gt; +0,85%
     &lt;/span&gt;
   &lt;/div&gt;
   &lt;div class="bcb-indicator-meta"&gt;Cotação de fechamento diário&lt;/div&gt;
@@ -1090,7 +1151,7 @@
   &lt;div class="buffer"&gt;
     &lt;a href="#" class="d-flex text-decoration-none rounded hvr-shadow"&gt;
       &lt;div class="icone bg-color-1 text-white d-flex align-items-center justify-content-center rounded-left"&gt;
-        &lt;span class="material-icons md-24" aria-hidden="true"&gt;security&lt;/span&gt;
+        &lt;span class="material-symbols-outlined material-icons md-24" aria-hidden="true"&gt;security&lt;/span&gt;
       &lt;/div&gt;
       &lt;div class="texto d-flex align-items-center font-color-1 font-weight-bold w-100 rounded-right"&gt;
         Registrato
@@ -1222,17 +1283,52 @@
                             </nav>
                         </div>
                     </div>
+
+                    <!-- Variante: Estado Vazio Integrado à Tabela -->
+                    <div class="mt-4">
+                        <div class="text-muted small font-weight-bold text-uppercase mb-2">Variante: Integração de Tabela com Estado Vazio (_empty-state.css)</div>
+                        <div class="bcb-data-table-container">
+                            <div class="table-responsive">
+                                <table class="bcb-data-table">
+                                    <caption>Demonstração de tabela sem registros encontrados.</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Reunião</th>
+                                            <th scope="col">Data</th>
+                                            <th scope="col" class="text-numeric">Meta Selic</th>
+                                            <th scope="col" class="text-center">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bcb-table-empty-row">
+                                            <td colspan="4">
+                                                <div class="bcb-empty-state">
+                                                    <div class="bcb-empty-state-icon">
+                                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">search_off</span>
+                                                    </div>
+                                                    <h4 class="bcb-empty-state-title">Nenhum dado encontrado para o período</h4>
+                                                    <p class="bcb-empty-state-desc">Ajuste o intervalo de datas ou limpe os filtros para visualizar a série.</p>
+                                                    <button type="button" class="btn btn-sm btn-primary">Redefinir Filtros</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="ds-component-code">
                     <button class="btn-copy-code" data-code="code-datatable"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
-                    <pre><code id="code-datatable">&lt;div class="bcb-data-table-container"&gt;
+                    <pre><code id="code-datatable">&lt;!-- Tabela com Ordenação e Scroll Responsivo --&gt;
+&lt;div class="bcb-data-table-container"&gt;
   &lt;div class="table-responsive"&gt;
     &lt;table class="bcb-data-table"&gt;
       &lt;thead&gt;
         &lt;tr&gt;
-          &lt;th scope="col" class="sortable" aria-sort="descending"&gt;Reunião &lt;span class="material-icons sort-icon"&gt;arrow_upward&lt;/span&gt;&lt;/th&gt;
-          &lt;th scope="col" class="sortable"&gt;Data &lt;span class="material-icons sort-icon"&gt;sort&lt;/span&gt;&lt;/th&gt;
-          &lt;th scope="col" class="text-numeric sortable"&gt;Meta Selic (% a.a.) &lt;span class="material-icons sort-icon"&gt;sort&lt;/span&gt;&lt;/th&gt;
+          &lt;th scope="col" class="sortable" aria-sort="descending"&gt;Reunião &lt;span class="material-symbols-outlined material-icons sort-icon" aria-hidden="true"&gt;arrow_upward&lt;/span&gt;&lt;/th&gt;
+          &lt;th scope="col" class="sortable"&gt;Data &lt;span class="material-symbols-outlined material-icons sort-icon" aria-hidden="true"&gt;sort&lt;/span&gt;&lt;/th&gt;
+          &lt;th scope="col" class="text-numeric sortable"&gt;Meta Selic (% a.a.) &lt;span class="material-symbols-outlined material-icons sort-icon" aria-hidden="true"&gt;sort&lt;/span&gt;&lt;/th&gt;
           &lt;th scope="col" class="text-center"&gt;Variação&lt;/th&gt;
         &lt;/tr&gt;
       &lt;/thead&gt;
@@ -1242,6 +1338,16 @@
           &lt;td&gt;12/03/2026&lt;/td&gt;
           &lt;td class="text-numeric"&gt;&lt;strong&gt;14,25%&lt;/strong&gt;&lt;/td&gt;
           &lt;td class="text-center"&gt;&lt;span class="bcb-trend-badge positive"&gt;+1,00 p.p.&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;!-- Linha de Estado Vazio (quando não houver dados) --&gt;
+        &lt;tr class="bcb-table-empty-row"&gt;
+          &lt;td colspan="4"&gt;
+            &lt;div class="bcb-empty-state"&gt;
+              &lt;div class="bcb-empty-state-icon"&gt;&lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;search_off&lt;/span&gt;&lt;/div&gt;
+              &lt;h4 class="bcb-empty-state-title"&gt;Nenhum dado encontrado&lt;/h4&gt;
+              &lt;p class="bcb-empty-state-desc"&gt;Tente ajustar os critérios da pesquisa.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
@@ -1320,7 +1426,7 @@
   &lt;div class="bcb-active-filters"&gt;
     &lt;span class="bcb-filter-chip"&gt;
       Filtro Ativo
-      &lt;button type="button" class="chip-remove-btn" aria-label="Remover"&gt;&lt;span class="material-icons"&gt;close&lt;/span&gt;&lt;/button&gt;
+      &lt;button type="button" class="chip-remove-btn" aria-label="Remover"&gt;&lt;span class="material-symbols-outlined material-icons"&gt;close&lt;/span&gt;&lt;/button&gt;
     &lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -1353,7 +1459,7 @@
                     <button class="btn-copy-code" data-code="code-search-overlay"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-search-overlay">&lt;div class="bcb-search-overlay" role="search"&gt;
   &lt;div class="search-input-wrapper"&gt;
-    &lt;span class="material-icons search-icon" aria-hidden="true"&gt;search&lt;/span&gt;
+    &lt;span class="material-symbols-outlined material-icons search-icon" aria-hidden="true"&gt;search&lt;/span&gt;
     &lt;input type="search" class="form-control" placeholder="Buscar no BCB..." aria-label="Buscar"&gt;
     &lt;button type="button" class="btn btn-primary"&gt;Buscar&lt;/button&gt;
   &lt;/div&gt;
@@ -1376,10 +1482,16 @@
 
                     <div class="d-flex flex-wrap align-items-center gap-2">
                         <button type="button" class="btn btn-primary" id="btnDispararToast">
-                            <span class="material-symbols-outlined material-icons" aria-hidden="true">notification_add</span> Disparar Toast de Sucesso
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Disparar Sucesso
+                        </button>
+                        <button type="button" class="btn btn-warning" id="btnDispararToastWarning">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">warning</span> Disparar Aviso
                         </button>
                         <button type="button" class="btn btn-danger" id="btnDispararToastError">
-                            <span class="material-symbols-outlined material-icons" aria-hidden="true">warning</span> Disparar Toast de Erro
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">error</span> Disparar Erro
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="btnDispararToastInfo">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">info</span> Disparar Informativo
                         </button>
                     </div>
 
@@ -1435,7 +1547,7 @@
                     <pre><code id="code-data-export">&lt;div class="bcb-data-export"&gt;
   &lt;div class="bcb-data-export-info"&gt;
     &lt;div class="bcb-data-export-icon"&gt;
-      &lt;span class="material-icons" aria-hidden="true"&gt;dataset&lt;/span&gt;
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;dataset&lt;/span&gt;
     &lt;/div&gt;
     &lt;div&gt;
       &lt;h4 class="bcb-data-export-title"&gt;Exportar Série Histórica&lt;/h4&gt;
@@ -1444,13 +1556,13 @@
   &lt;/div&gt;
   &lt;div class="bcb-data-export-actions"&gt;
     &lt;a href="dados.csv" class="bcb-btn-export export-csv" role="button"&gt;
-      &lt;span class="material-icons" aria-hidden="true"&gt;table_view&lt;/span&gt; &lt;span class="export-ext"&gt;CSV&lt;/span&gt;
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;table_view&lt;/span&gt; &lt;span class="export-ext"&gt;CSV&lt;/span&gt;
     &lt;/a&gt;
     &lt;a href="dados.json" class="bcb-btn-export export-json" role="button"&gt;
-      &lt;span class="material-icons" aria-hidden="true"&gt;data_object&lt;/span&gt; &lt;span class="export-ext"&gt;JSON&lt;/span&gt;
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;data_object&lt;/span&gt; &lt;span class="export-ext"&gt;JSON&lt;/span&gt;
     &lt;/a&gt;
     &lt;a href="/swagger" class="bcb-btn-export export-api" role="button"&gt;
-      &lt;span class="material-icons" aria-hidden="true"&gt;api&lt;/span&gt; &lt;span class="export-ext"&gt;API&lt;/span&gt; REST
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;api&lt;/span&gt; &lt;span class="export-ext"&gt;API&lt;/span&gt; REST
     &lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -1503,7 +1615,7 @@
                     <button class="btn-copy-code" data-code="code-empty-state"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-empty-state">&lt;div class="bcb-empty-state bcb-empty-state-bordered" role="region" aria-label="Resultado da consulta"&gt;
   &lt;div class="bcb-empty-state-icon"&gt;
-    &lt;span class="material-icons" aria-hidden="true"&gt;search_off&lt;/span&gt;
+    &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;search_off&lt;/span&gt;
   &lt;/div&gt;
   &lt;h4 class="bcb-empty-state-title"&gt;Nenhum registro encontrado&lt;/h4&gt;
   &lt;p class="bcb-empty-state-desc"&gt;Tente alterar os filtros da pesquisa para encontrar os dados desejados.&lt;/p&gt;
@@ -1515,8 +1627,12 @@
             </section>
 
             <!-- ========================================================= -->
-            <!-- 3. ORGANISMOS (ESTRUTURAS) -->
+            <!-- 3. ORGANISMOS (COMPOSTOS) -->
             <!-- ========================================================= -->
+            <div class="ds-section-header mt-5 mb-4 pb-2 border-bottom" id="secao-organismos">
+                <h2 class="h3 font-weight-bold text-bcb-brand mb-1">3. Organismos (Compostos)</h2>
+                <p class="text-muted small mb-0">Módulos complexos e autônomos de interface com comportamento interativo acessível.</p>
+            </div>
 
             <!-- 3.1 Accordion (Sanfona) -->
             <section id="organismo-accordion" class="ds-component-card">
@@ -1568,7 +1684,7 @@
       &lt;h4 class="mb-0"&gt;
         &lt;button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center font-color-1 font-weight-bold" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true"&gt;
           &lt;span&gt;Título da Pergunta Frequente&lt;/span&gt;
-          &lt;span class="material-icons chevron-icon" aria-hidden="true"&gt;expand_more&lt;/span&gt;
+          &lt;span class="material-symbols-outlined material-icons chevron-icon" aria-hidden="true"&gt;expand_more&lt;/span&gt;
         &lt;/button&gt;
       &lt;/h4&gt;
     &lt;/div&gt;
@@ -1793,7 +1909,7 @@
   &lt;div class="bcb-modal-dialog"&gt;
     &lt;div class="bcb-modal-header"&gt;
       &lt;h4 class="bcb-modal-title"&gt;Título do Modal&lt;/h4&gt;
-      &lt;button type="button" class="bcb-modal-close" aria-label="Fechar"&gt;&lt;span class="material-icons"&gt;close&lt;/span&gt;&lt;/button&gt;
+      &lt;button type="button" class="bcb-modal-close" aria-label="Fechar"&gt;&lt;span class="material-symbols-outlined material-icons"&gt;close&lt;/span&gt;&lt;/button&gt;
     &lt;/div&gt;
     &lt;div class="bcb-modal-body"&gt;Conteúdo do diálogo.&lt;/div&gt;
     &lt;div class="bcb-modal-footer"&gt;
@@ -1830,6 +1946,10 @@
             <!-- ========================================================= -->
             <!-- 4. UTILITÁRIOS (HELPERS) -->
             <!-- ========================================================= -->
+            <div class="ds-section-header mt-5 mb-4 pb-2 border-bottom" id="secao-utilitarios">
+                <h2 class="h3 font-weight-bold text-bcb-brand mb-1">4. Utilitários (Helpers)</h2>
+                <p class="text-muted small mb-0">Classes auxiliares e micro-componentes funcionais de apoio à usabilidade.</p>
+            </div>
 
             <!-- 4.1 Botão Voltar ao Topo -->
             <section id="utilitario-backtotop" class="ds-component-card">
@@ -1846,7 +1966,7 @@
                 <div class="ds-component-code">
                     <button class="btn-copy-code" data-code="code-backtotop"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-backtotop">&lt;button type="button" class="bcb-back-to-top" id="btnBackToTop" aria-label="Voltar ao topo da página"&gt;
-  &lt;span class="material-icons" aria-hidden="true"&gt;keyboard_arrow_up&lt;/span&gt;
+  &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;keyboard_arrow_up&lt;/span&gt;
 &lt;/button&gt;</code></pre>
                 </div>
             </section>
@@ -1866,7 +1986,7 @@
                 <div class="ds-component-code">
                     <button class="btn-copy-code" data-code="code-transicoes"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> Copiar</button>
                     <pre><code id="code-transicoes">&lt;div class="transition-block text-center"&gt;
-  &lt;span class="material-icons animated-arrow" aria-hidden="true"&gt;keyboard_double_arrow_down&lt;/span&gt;
+  &lt;span class="material-symbols-outlined material-icons animated-arrow" aria-hidden="true"&gt;keyboard_double_arrow_down&lt;/span&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </section>
@@ -1972,6 +2092,19 @@
             });
         }
 
+        const toastWarningBtn = document.getElementById('btnDispararToastWarning');
+        if (toastWarningBtn) {
+            toastWarningBtn.addEventListener('click', () => {
+                if (window.BcbToast) {
+                    window.BcbToast.show({
+                        title: 'Atenção Necessária',
+                        message: 'Esta série possui metodologia revisada em 2026.',
+                        type: 'warning'
+                    });
+                }
+            });
+        }
+
         const toastErrorBtn = document.getElementById('btnDispararToastError');
         if (toastErrorBtn) {
             toastErrorBtn.addEventListener('click', () => {
@@ -1980,6 +2113,19 @@
                         title: 'Aviso de Erro',
                         message: 'Não foi possível conectar ao servidor de dados.',
                         type: 'danger'
+                    });
+                }
+            });
+        }
+
+        const toastInfoBtn = document.getElementById('btnDispararToastInfo');
+        if (toastInfoBtn) {
+            toastInfoBtn.addEventListener('click', () => {
+                if (window.BcbToast) {
+                    window.BcbToast.show({
+                        title: 'Informativo BCB',
+                        message: 'Próxima reunião do Copom agendada para o próximo mês.',
+                        type: 'info'
                     });
                 }
             });

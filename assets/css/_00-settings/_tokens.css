@@ -160,4 +160,16 @@
      13. PORTAL PRIMARY
      ========================================== */
   --bcb-portal-primary: #22272B;
+
+  /* ==========================================
+     14. Z-INDEX (Escala de Camadas)
+     ========================================== */
+  --bcb-z-deep: -1;
+  --bcb-z-base: 1;
+  --bcb-z-elevated: 2;
+  --bcb-z-dropdown: 100;
+  --bcb-z-sticky: 999;
+  --bcb-z-overlay: 1050;
+  --bcb-z-toast: 1060;
+  --bcb-z-max: 99999;
 }

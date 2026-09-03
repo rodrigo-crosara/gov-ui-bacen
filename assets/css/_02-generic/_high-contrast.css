@@ -3,7 +3,9 @@
  * Ativada via prefers-contrast: more ou atributo data-contrast="high" no :root.
  * ========================================================================= */
 
-:root[data-contrast="high"] {
+:root[data-contrast="high"],
+:root[data-theme="high-contrast"],
+[data-theme="high-contrast"] {
   --bcb-color-white: #000000;
   --bcb-color-black: #FFFFFF;
   --bcb-color-body-text: #FFFFFF;
@@ -213,9 +215,12 @@
   background-color: #000000 !important;
 }
 
-:root[data-contrast="high"] :focus-visible {
+:root[data-contrast="high"] :focus-visible,
+:root[data-theme="high-contrast"] :focus-visible,
+[data-contrast="high"] :focus-visible,
+[data-theme="high-contrast"] :focus-visible {
   outline: 4px solid #FFFF00 !important;
-  outline-offset: 2px;
+  outline-offset: 2px !important;
 }
 
 @media (prefers-contrast: more) {

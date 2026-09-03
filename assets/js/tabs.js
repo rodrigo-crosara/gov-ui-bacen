@@ -105,15 +105,28 @@
       document.addEventListener('keydown', handleKeydown);
 
       // Garantir atributos ARIA iniciais se ausentes
-      document.querySelectorAll('.bcb-navegacaoabas, .nav-tabs').forEach(tabList => {
+      document.querySelectorAll('.bcb-navegacaoabas, .nav-tabs, [role="tablist"]').forEach((tabList, listIndex) => {
         if (!tabList.hasAttribute('role')) tabList.setAttribute('role', 'tablist');
         
-        const tabs = tabList.querySelectorAll('.nav-link');
-        tabs.forEach(tab => {
+        const tabs = Array.from(tabList.querySelectorAll('.nav-link, [role="tab"]'));
+        tabs.forEach((tab, tabIndex) => {
           if (!tab.hasAttribute('role')) tab.setAttribute('role', 'tab');
+          if (!tab.id) tab.id = `bcb-tab-${listIndex}-${tabIndex}`;
+
           const isActive = tab.classList.contains('active');
           tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-          if (!isActive) tab.setAttribute('tabindex', '-1');
+          tab.setAttribute('tabindex', isActive ? '0' : '-1');
+
+          const targetSelector = tab.getAttribute('href') || tab.getAttribute('data-target');
+          if (targetSelector && targetSelector.startsWith('#')) {
+            const panel = document.querySelector(targetSelector);
+            if (panel) {
+              tab.setAttribute('aria-controls', panel.id);
+              if (!panel.hasAttribute('role')) panel.setAttribute('role', 'tabpanel');
+              if (!panel.hasAttribute('tabindex')) panel.setAttribute('tabindex', '0');
+              panel.setAttribute('aria-labelledby', tab.id);
+            }
+          }
         });
       });
     }

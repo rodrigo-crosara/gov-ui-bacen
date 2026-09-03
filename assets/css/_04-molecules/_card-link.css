@@ -9,29 +9,95 @@
 /* ==========================================
    CARDS DE CONTEÚDO (LISTALINKS-LIGHT)
    ========================================== */
-.listalinks-light { display: block; }
-.listalinks-light .title { font-weight: 500; }
-.listalinks-light a { text-decoration: none; color: inherit; }
-.listalinks-light a:hover .title { text-decoration: underline; }
-.listalinks-light .icon-container { width: 85px; flex: none; }
-.listalinks-light .description { color: var(--bcb-gray-600); font-size: 0.9rem; line-height: 1.2; display: block; margin-top: 4px; }
+.listalinks-light {
+  display: block;
+  width: 100%;
+}
+
+.listalinks-light .title {
+  font-weight: 600;
+  color: var(--bcb-brand-blue);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.listalinks-light a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  min-width: 0;
+  border-radius: var(--bcb-radius-4, 4px);
+  outline: none;
+}
+
+.listalinks-light a:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px !important;
+}
+
+.listalinks-light a:hover .title {
+  text-decoration: underline;
+}
+
+.listalinks-light .icon-container {
+  width: 85px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listalinks-light .description {
+  color: var(--bcb-gray-600);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  display: block;
+  margin-top: 4px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
 
 /* Efeito de Sombra e Escala (Modelos 1 e 5) */
-.listalinks-light.modelo-1 a, .listalinks-light.modelo-5 a {
-    box-shadow: var(--bcb-shadow-100);
-    transition: all .2s ease-in-out;
-    background-color: var(--bcb-color-white);
+.listalinks-light.modelo-1 a,
+.listalinks-light.modelo-5 a {
+  box-shadow: var(--bcb-shadow-100);
+  transition: all 0.2s ease-in-out;
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-gray-200);
 }
-.listalinks-light.modelo-1 a:hover, .listalinks-light.modelo-5 a:hover {
-    box-shadow: var(--bcb-shadow-300);
-    transform: translateY(-2px);
+
+.listalinks-light.modelo-1 a:hover,
+.listalinks-light.modelo-5 a:hover {
+  box-shadow: var(--bcb-shadow-300);
+  transform: translateY(-2px);
+  border-color: var(--bcb-brand-azulcinti, #077391);
 }
-.listalinks-light.modelo-1 a:hover .title, .listalinks-light.modelo-5 a:hover .title {
-    text-decoration: none;
+
+.listalinks-light.modelo-1 a:hover .title,
+.listalinks-light.modelo-5 a:hover .title {
+  text-decoration: none;
 }
 
 /* Ajustes Específicos por Modelo */
-.listalinks-light.modelo-1 .icon-container { background-color: var(--bcb-gray-100); }
-.listalinks-light.modelo-2 .item-card { border-bottom: 1px solid var(--bcb-gray-200); padding: 1rem 0; }
-.listalinks-light.modelo-5 .icon-container { width: auto; margin-bottom: 1rem; }
-.listalinks-light.modelo-5 a { background-color: var(--bcb-gray-50); padding: 1.5rem; text-align: center; }
+.listalinks-light.modelo-1 .icon-container {
+  background-color: var(--bcb-gray-100);
+}
+
+.listalinks-light.modelo-2 .item-card {
+  border-bottom: 1px solid var(--bcb-gray-200);
+  padding: 1rem 0;
+}
+
+.listalinks-light.modelo-5 .icon-container {
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.listalinks-light.modelo-5 a {
+  background-color: var(--bcb-gray-50);
+  padding: 1.5rem;
+  text-align: center;
+  flex-direction: column;
+}

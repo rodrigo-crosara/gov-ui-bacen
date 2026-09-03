@@ -70,7 +70,7 @@
 .bcb-tab:focus-visible,
 .bcb-navegacaoabas .nav-link:focus-visible,
 .bcb-navegacaoabas [role="tab"]:focus-visible {
-  outline: 3px solid var(--bcb-brand-blue);
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
   outline-offset: 1px;
   z-index: 4;
 }

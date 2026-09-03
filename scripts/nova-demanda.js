@@ -71,61 +71,95 @@ function normalizarEntrada(caminhoArquivo, textoDireto) {
       ? caminhoArquivo
       : path.resolve(process.cwd(), caminhoArquivo);
 
-    if (fs.existsSync(caminhoResolvido)) {
-      const ext = path.extname(caminhoResolvido).toLowerCase();
-      const rawContent = fs.readFileSync(caminhoResolvido, 'utf8');
+    if (!fs.existsSync(caminhoResolvido)) {
+      console.error(`\n❌ Erro de Validação: Arquivo de demanda não encontrado: ${caminhoArquivo}`);
+      console.error('Certifique-se de que o caminho do arquivo está correto e acessível.\n');
+      process.exit(1);
+    }
 
-      if (ext === '.json') {
-        try {
-          const parsed = JSON.parse(rawContent);
-          conteudoBruto = parsed.conteudo || parsed.texto || parsed.descricao || JSON.stringify(parsed, null, 2);
-          tituloDetectado = parsed.titulo || parsed.title;
-          origemDetectada = parsed.origem || parsed.departamento;
-          padraoDetectado = parsed.padrao || parsed.padraoUX;
-          if (parsed.atos && Array.isArray(parsed.atos)) atosDetectados = parsed.atos;
-        } catch (e) {
-          conteudoBruto = rawContent;
-        }
-      } else if (ext === '.html' || ext === '.htm') {
-        // Extração de título de HTML legado
-        const matchTitle = rawContent.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || rawContent.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-        if (matchTitle) tituloDetectado = matchTitle[1].replace(/<[^>]+>/g, '').trim();
+    const ext = path.extname(caminhoResolvido).toLowerCase();
+    const rawContent = fs.readFileSync(caminhoResolvido, 'utf8');
 
-        // Limpeza de tags pesadas preservando conteúdo textual
-        conteudoBruto = rawContent
-          .replace(/<script[\s\S]*?<\/script>/gi, '')
-          .replace(/<style[\s\S]*?<\/style>/gi, '')
-          .replace(/<!--[\s\S]*?-->/g, '')
-          .replace(/<br\s*[\/]?>/gi, '\n')
-          .replace(/<\/p>/gi, '\n\n')
-          .replace(/<\/tr>/gi, '\n')
-          .replace(/<\/h[1-6]>/gi, '\n\n')
-          .replace(/<[^>]+>/g, '')
-          .replace(/&nbsp;/g, ' ')
-          .replace(/&amp;/g, '&')
-          .replace(/&lt;/g, '<')
-          .replace(/&gt;/g, '>')
-          .trim();
-      } else if (ext === '.eml') {
-        // Parsing de mensagem de e-mail institucional
-        const matchDe = rawContent.match(/(?:From|De):\s*(.*)/i);
-        const matchAssunto = rawContent.match(/(?:Subject|Assunto):\s*(.*)/i);
-        if (matchDe) origemDetectada = matchDe[1].trim();
-        if (matchAssunto) tituloDetectado = matchAssunto[1].trim();
+    if (!rawContent || rawContent.trim().length === 0) {
+      console.error(`\n❌ Erro de Validação: O arquivo de demanda está vazio: ${caminhoArquivo}\n`);
+      process.exit(1);
+    }
 
-        // Isolar corpo do e-mail após cabeçalhos duplos
-        const partes = rawContent.split(/\r?\n\r?\n/);
-        conteudoBruto = partes.slice(1).join('\n\n').trim();
-      } else {
-        // .txt, .md, .csv
-        conteudoBruto = rawContent.trim();
-        const linhas = conteudoBruto.split('\n');
-        if (linhas[0] && (linhas[0].startsWith('# ') || linhas[0].startsWith('Assunto:'))) {
-          tituloDetectado = linhas[0].replace(/^(?:#\s*|Assunto:\s*)/i, '').trim();
-        }
+    if (ext === '.json') {
+      let parsed;
+      try {
+        parsed = JSON.parse(rawContent);
+      } catch (e) {
+        console.error(`\n❌ Erro de Validação: Formato JSON inválido ou malformado em ${caminhoArquivo}: ${e.message}\n`);
+        process.exit(1);
       }
+
+      // Validação estrita do schema de entrada JSON acordado com o webdesigner
+      const errosSchema = [];
+      const textoEncontrado = parsed.conteudo || parsed.texto || parsed.descricao || parsed.conteudoBruto;
+      const tituloEncontrado = parsed.titulo || parsed.title;
+      const origemEncontrada = parsed.origem || parsed.departamento;
+
+      if (!textoEncontrado || typeof textoEncontrado !== 'string' || textoEncontrado.trim().length === 0) {
+        errosSchema.push("Campo obrigatório 'conteudo' (ou 'texto'/'descricao') ausente ou vazio.");
+      }
+      if (!tituloEncontrado || typeof tituloEncontrado !== 'string' || tituloEncontrado.trim().length === 0) {
+        errosSchema.push("Campo obrigatório 'titulo' (ou 'title') ausente ou vazio.");
+      }
+      if (!origemEncontrada || typeof origemEncontrada !== 'string' || origemEncontrada.trim().length === 0) {
+        errosSchema.push("Campo obrigatório 'origem' (ou 'departamento') ausente ou vazio.");
+      }
+
+      if (errosSchema.length > 0) {
+        console.error('\n❌ Erro de Schema da Demanda (JSON não atende ao contrato acordado com o Webdesigner):');
+        errosSchema.forEach(err => console.error(`   - ${err}`));
+        console.error('\nSchema esperado:');
+        console.error('   {\n     "titulo": "Título da Demanda",\n     "origem": "Departamento Solicitante",\n     "conteudo": "Texto bruto da demanda...",\n     "padrao": "Padrão de UX",\n     "atos": ["Resolução BCB nº ..."]\n   }\n');
+        process.exit(1);
+      }
+
+      conteudoBruto = textoEncontrado.trim();
+      tituloDetectado = tituloEncontrado.trim();
+      origemDetectada = origemEncontrada.trim();
+      padraoDetectado = parsed.padrao || parsed.padraoUX || null;
+      if (parsed.atos && Array.isArray(parsed.atos)) atosDetectados = parsed.atos;
+    } else if (ext === '.html' || ext === '.htm') {
+      // Extração de título de HTML legado
+      const matchTitle = rawContent.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || rawContent.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+      if (matchTitle) tituloDetectado = matchTitle[1].replace(/<[^>]+>/g, '').trim();
+
+      // Limpeza de tags pesadas preservando conteúdo textual
+      conteudoBruto = rawContent
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[\s\S]*?<\/style>/gi, '')
+        .replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/<br\s*[\/]?>/gi, '\n')
+        .replace(/<\/p>/gi, '\n\n')
+        .replace(/<\/tr>/gi, '\n')
+        .replace(/<\/h[1-6]>/gi, '\n\n')
+        .replace(/<[^>]+>/g, '')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .trim();
+    } else if (ext === '.eml') {
+      // Parsing de mensagem de e-mail institucional
+      const matchDe = rawContent.match(/(?:From|De):\s*(.*)/i);
+      const matchAssunto = rawContent.match(/(?:Subject|Assunto):\s*(.*)/i);
+      if (matchDe) origemDetectada = matchDe[1].trim();
+      if (matchAssunto) tituloDetectado = matchAssunto[1].trim();
+
+      // Isolar corpo do e-mail após cabeçalhos duplos
+      const partes = rawContent.split(/\r?\n\r?\n/);
+      conteudoBruto = partes.slice(1).join('\n\n').trim();
     } else {
-      console.warn(`⚠️  Arquivo não encontrado: ${caminhoArquivo}. Prosseguindo com scaffold padrão.`);
+      // .txt, .md, .csv
+      conteudoBruto = rawContent.trim();
+      const linhas = conteudoBruto.split('\n');
+      if (linhas[0] && (linhas[0].startsWith('# ') || linhas[0].startsWith('Assunto:'))) {
+        tituloDetectado = linhas[0].replace(/^(?:#\s*|Assunto:\s*)/i, '').trim();
+      }
     }
   } else if (textoDireto) {
     conteudoBruto = textoDireto.trim();
@@ -154,6 +188,18 @@ function normalizarEntrada(caminhoArquivo, textoDireto) {
   };
 }
 
+// 3. Padrões Homologados no BCB Design System
+const PADROES_HOMOLOGADOS = [
+  'Comunicação Normativa (Layout 70/30 com downloads)',
+  'Comunicação Normativa (Layout 70/30)',
+  'Painel Analítico & Séries Temporais (SGS)',
+  'Painel Analítico de Indicadores',
+  'Serviço ao Cidadão (Stepper .process-list)',
+  'Guia de Serviço com Stepper',
+  'Refatoração Semântica de Conteúdo Legado',
+  'Refatoração Semântica em Grid 12'
+];
+
 // Ler parâmetros CLI
 const caminhoArquivo = getArg('--arquivo', '-a') || getArg('--file', '-f') || getArg('--input', '-i');
 const textoDireto = getArg('--texto') || getArg('--raw');
@@ -173,6 +219,43 @@ slug = slug
   .replace(/[^a-z0-9-]/g, '-')
   .replace(/--+/g, '-')
   .replace(/^-|-$/g, '');
+
+// 4. Validação Rigorosa de Insumos da Demanda (Schema Validation)
+const errosValidacao = [];
+
+if (!slug || slug.length < 3 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+  errosValidacao.push(`Slug inválido: "${slug}". O slug deve estar em kebab-case alfanumérico (ex.: seguranca-pix).`);
+}
+
+if (!titulo || titulo.trim().length < 4 || titulo.startsWith('[') || titulo === 'Nova Demanda Institucional' && !textoDireto && !caminhoArquivo) {
+  errosValidacao.push(`Título inválido ou genérico: "${titulo}". Forneça um título descritivo oficial.`);
+}
+
+if (!origem || origem.trim().length < 3) {
+  errosValidacao.push(`Origem / Solicitante inválido: "${origem}". Especifique a área técnica solicitante.`);
+}
+
+if (!PADROES_HOMOLOGADOS.includes(padrao)) {
+  errosValidacao.push(`Padrão de UX não homologado: "${padrao}".\nPadrões homologados aceitos:\n` +
+    PADROES_HOMOLOGADOS.map(p => `     - ${p}`).join('\n'));
+}
+
+if (textoDireto !== null && textoDireto !== undefined && textoDireto.trim().length === 0) {
+  errosValidacao.push('O texto direto fornecido (--texto / --raw) está vazio.');
+}
+
+if (caminhoArquivo && (!entrada.conteudoBruto || entrada.conteudoBruto.trim().length === 0)) {
+  errosValidacao.push(`O arquivo "${caminhoArquivo}" não contém dados textuais válidos para processamento.`);
+}
+
+if (errosValidacao.length > 0) {
+  console.error('\n=======================================================');
+  console.error('❌ Rejeição de Demanda — Conteúdo Fora do Schema Acordado');
+  console.error('=======================================================');
+  errosValidacao.forEach(e => console.error(`   - ${e}`));
+  console.error('=======================================================\n');
+  process.exit(1);
+}
 
 const nomeArquivo = `${numero}-${slug}.md`;
 const caminhoArquivoDestino = path.join(DIR_DEMANDAS, nomeArquivo);

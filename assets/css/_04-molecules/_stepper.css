@@ -1,11 +1,122 @@
-/* ============= BCB Design System — Molecules / Stepper ============= */
+/* ============= BCB Design System — Molecules / Stepper =============
+ * Indicador de Etapas / Passo a Passo Oficial do BCB.
+ * Compatível com WCAG / e-MAG via ol, li e aria-current="step".
+ * =================================================================== */
 
-/* Stepper (Indicador de Etapas) */
-.bcb-stepper { display: flex; padding: 0; margin: 2rem 0; list-style: none; justify-content: space-between; position: relative; }
-.bcb-stepper::before { content: ''; position: absolute; top: 14px; left: 0; width: 100%; height: 2px; background: var(--bcb-gray-200); z-index: 1; }
-.bcb-stepper-item { position: relative; z-index: 2; text-align: center; flex: 1; }
-.bcb-stepper-circle { width: 30px; height: 30px; border-radius: 50%; background: var(--bcb-gray-200); color: var(--bcb-gray-700); line-height: 26px; margin: 0 auto 10px; font-weight: bold; border: 2px solid var(--bcb-color-white); }
-.bcb-stepper-item.active .bcb-stepper-circle { background: var(--bcb-brand-blue); color: var(--bcb-color-white); }
-.bcb-stepper-item.completed .bcb-stepper-circle { background: var(--bcb-brand-azulcinti); color: var(--bcb-color-white); }
-.bcb-stepper-title { font-size: 0.85rem; font-weight: 500; color: var(--bcb-gray-700); display: block; }
-.bcb-stepper-item.active .bcb-stepper-title { color: var(--bcb-brand-blue); font-weight: 700; }
+.bcb-stepper {
+  display: flex;
+  padding: 0;
+  margin: 2rem 0;
+  list-style: none;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.bcb-stepper::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: var(--bcb-gray-300);
+  z-index: 1;
+}
+
+.bcb-stepper-item {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex: 1;
+  padding: 0 0.5rem;
+}
+
+.bcb-stepper-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--bcb-radius-pill);
+  background: var(--bcb-gray-200);
+  color: var(--bcb-gray-700);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 3px solid var(--bcb-color-white);
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--bcb-shadow-100);
+}
+
+.bcb-stepper-circle .material-symbols-outlined,
+.bcb-stepper-circle .material-icons {
+  font-size: 1.15rem !important;
+  line-height: 1;
+}
+
+/* Etapa Concluída (Completed) */
+.bcb-stepper-item.completed .bcb-stepper-circle {
+  background: var(--bcb-color-verde-castell, #088694);
+  color: var(--bcb-color-white);
+}
+.bcb-stepper-item.completed .bcb-stepper-title {
+  color: var(--bcb-color-verde-castell, #088694);
+  font-weight: 600;
+}
+
+/* Etapa Ativa (Active / aria-current="step") */
+.bcb-stepper-item.active .bcb-stepper-circle,
+.bcb-stepper-item[aria-current="step"] .bcb-stepper-circle {
+  background: var(--bcb-brand-blue);
+  color: var(--bcb-color-white);
+  box-shadow: 0 0 0 4px rgba(2, 92, 117, 0.25);
+}
+
+.bcb-stepper-item.active .bcb-stepper-title,
+.bcb-stepper-item[aria-current="step"] .bcb-stepper-title {
+  color: var(--bcb-brand-blue);
+  font-weight: 700;
+}
+
+/* Textos da Etapa */
+.bcb-stepper-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--bcb-gray-700);
+  display: block;
+  line-height: 1.3;
+}
+
+.bcb-stepper-desc {
+  font-size: 0.75rem;
+  color: var(--bcb-gray-500);
+  display: block;
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+@media (max-width: 576px) {
+  .bcb-stepper {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .bcb-stepper::before {
+    top: 0;
+    bottom: 0;
+    left: 18px;
+    width: 2px;
+    height: 100%;
+  }
+  .bcb-stepper-item {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 0.75rem;
+    padding: 0;
+  }
+  .bcb-stepper-circle {
+    margin: 0;
+    flex-shrink: 0;
+  }
+}

@@ -11,9 +11,14 @@
   border: 1px solid var(--bcb-gray-200);
   border-top: 4px solid var(--bcb-brand-blue);
   height: 100%;
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -109,7 +114,9 @@
   background-color: var(--bcb-gray-100);
 }
 
+.bcb-indicator-trend .material-symbols-outlined,
 .bcb-indicator-trend .material-icons {
-  font-size: 1.1rem;
+  font-size: 1.1rem !important;
   line-height: 1;
+  vertical-align: middle;
 }

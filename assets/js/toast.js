@@ -28,6 +28,8 @@
     info: 'info'
   };
 
+  const MAX_VISIBLE_TOASTS = 5;
+
   const BcbToast = {
     show({
       title = 'Notificação',
@@ -37,6 +39,16 @@
       containerId = DEFAULT_CONTAINER_ID
     } = {}) {
       const container = getOrCreateContainer(containerId);
+
+      // Controle de empilhamento (Stacking): remover o mais antigo se exceder o limite
+      const currentToasts = container.querySelectorAll('.bcb-toast:not(.bcb-toast--leaving)');
+      if (currentToasts.length >= MAX_VISIBLE_TOASTS) {
+        const oldestToast = currentToasts[0];
+        if (oldestToast._removeToast) {
+          oldestToast._removeToast();
+        }
+      }
+
       const toast = document.createElement('div');
       toast.className = `bcb-toast toast-${type}`;
       toast.setAttribute('role', type === 'danger' ? 'alert' : 'status');
@@ -44,37 +56,61 @@
       const iconName = ICONS_BY_TYPE[type] || 'info';
 
       toast.innerHTML = `
-        <span class="material-icons bcb-toast-icon" aria-hidden="true">${iconName}</span>
+        <span class="material-symbols-outlined material-icons bcb-toast-icon" aria-hidden="true">${iconName}</span>
         <div class="bcb-toast-body">
           <h5 class="bcb-toast-title">${title}</h5>
           ${message ? `<p class="bcb-toast-message">${message}</p>` : ''}
         </div>
         <button type="button" class="bcb-toast-close" aria-label="Fechar notificação">
-          <span class="material-icons" aria-hidden="true">close</span>
+          <span class="material-symbols-outlined material-icons" aria-hidden="true">close</span>
         </button>
       `;
 
       container.appendChild(toast);
 
+      let dismissTimeout = null;
+      let remainingTime = duration;
+      let startTime = Date.now();
+
       function removeToast() {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(10px)';
-        toast.style.transition = 'all 0.25s ease';
+        if (toast.classList.contains('bcb-toast--leaving')) return;
+        toast.classList.add('bcb-toast--leaving');
+        clearTimeout(dismissTimeout);
         setTimeout(() => {
           if (toast.parentNode) {
             toast.parentNode.removeChild(toast);
           }
-        }, 250);
+        }, 300);
       }
+
+      toast._removeToast = removeToast;
+
+      function startTimer() {
+        if (duration > 0 && remainingTime > 0) {
+          startTime = Date.now();
+          dismissTimeout = setTimeout(removeToast, remainingTime);
+        }
+      }
+
+      function pauseTimer() {
+        clearTimeout(dismissTimeout);
+        const elapsed = Date.now() - startTime;
+        remainingTime = Math.max(0, remainingTime - elapsed);
+      }
+
+      // Pausar auto-dismiss quando o usuário passar o mouse por cima
+      toast.addEventListener('mouseenter', pauseTimer);
+      toast.addEventListener('mouseleave', startTimer);
 
       const closeBtn = toast.querySelector('.bcb-toast-close');
       if (closeBtn) {
-        closeBtn.addEventListener('click', removeToast);
+        closeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          removeToast();
+        });
       }
 
-      if (duration > 0) {
-        setTimeout(removeToast, duration);
-      }
+      startTimer();
 
       return toast;
     },

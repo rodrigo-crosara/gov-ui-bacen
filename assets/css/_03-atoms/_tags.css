@@ -1,6 +1,76 @@
-/* ============= BCB Design System — Atoms / Tags ============= */
+/* ============= BCB Design System — Atoms / Tags & Badges ============= */
 
-.tag-bcb { display: inline-block; padding: 0.25em 0.6em; font-size: 0.75em; font-weight: 700; background-color: var(--bcb-gray-200); color: var(--bcb-brand-blue); border-radius: var(--bcb-radius-4); text-transform: uppercase; transition: background-color 0.2s; }
-.tag-bcb:hover { background-color: var(--bcb-gray-300); }
-.tag-bcb.primary { background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
-.tag-bcb.primary:hover { background-color: var(--bcb-btn-primary-hover); }
+.tag-bcb,
+.badge-bcb {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bcb-space-1, 0.25rem);
+  padding: 0.25rem 0.625rem;
+  font-size: var(--bcb-font-50, 0.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  vertical-align: middle;
+  background-color: var(--bcb-gray-200);
+  color: var(--bcb-brand-blue);
+  border-radius: var(--bcb-radius-4, 4px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.tag-bcb .material-symbols-outlined,
+.tag-bcb .material-icons,
+.badge-bcb .material-symbols-outlined,
+.badge-bcb .material-icons {
+  font-size: 1rem !important;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.tag-bcb:hover {
+  background-color: var(--bcb-gray-300);
+}
+
+/* Variantes Semânticas */
+.tag-bcb.primary,
+.tag-bcb--primary {
+  background-color: var(--bcb-brand-blue);
+  color: var(--bcb-color-white);
+}
+.tag-bcb.primary:hover,
+.tag-bcb--primary:hover {
+  background-color: var(--bcb-btn-primary-hover);
+}
+
+.tag-bcb--success,
+.tag-bcb.success {
+  background-color: var(--bcb-color-verde-castell, #088694);
+  color: var(--bcb-color-white);
+}
+
+.tag-bcb--warning,
+.tag-bcb.warning {
+  background-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+  color: var(--bcb-gray-900);
+}
+
+.tag-bcb--danger,
+.tag-bcb.danger {
+  background-color: var(--bcb-brand-vinho-autentico, #47373A);
+  color: var(--bcb-color-white);
+}
+
+.tag-bcb--pill,
+.tag-bcb.pill {
+  border-radius: var(--bcb-radius-pill, 9999px);
+  padding: 0.25rem 0.75rem;
+}
+
+.tag-bcb:disabled,
+.tag-bcb[aria-disabled="true"],
+.tag-bcb.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}

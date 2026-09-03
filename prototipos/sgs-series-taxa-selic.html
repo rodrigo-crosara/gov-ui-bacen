@@ -101,30 +101,34 @@
 
         <!-- [SLOT CMS: 100% - Painel de Busca e Filtros Facetados] -->
         <section class="bcb-section">
-            <div class="card p-3 border mb-4 bg-bcb-surface">
-                <div class="bcb-row align-items-center">
-                    <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
-                        <label for="filtroAno" class="small font-weight-bold text-body mb-1">Filtrar por Ano:</label>
-                        <select id="filtroAno" class="form-control form-control-sm" aria-label="Filtrar dados da série por ano">
-                            <option value="todos">Todas as Reuniões Recentes</option>
-                            <option value="2026">2026 (Ano Corrente)</option>
-                            <option value="2025">2025</option>
-                            <option value="2024">2024</option>
-                        </select>
-                    </div>
-                    <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
-                        <label for="filtroStatus" class="small font-weight-bold text-body mb-1">Status da Ata:</label>
-                        <select id="filtroStatus" class="form-control form-control-sm" aria-label="Filtrar por status da ata">
-                            <option value="todos">Todos os Status</option>
-                            <option value="disponivel">Ata Publicada</option>
-                            <option value="pendente">Ata Pendente</option>
-                        </select>
-                    </div>
-                    <div class="bcb-col-12 bcb-col-md-4 d-flex align-items-end pt-md-4">
-                        <button type="button" class="btn btn-outline-primary btn-sm btn-block d-inline-flex align-items-center justify-content-center gap-1">
-                            <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">filter_alt</span>
-                            <span>Aplicar Filtros</span>
-                        </button>
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <div class="card p-3 border mb-4 bg-bcb-surface">
+                        <div class="bcb-row align-items-center">
+                            <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
+                                <label for="filtroAno" class="small font-weight-bold text-body mb-1">Filtrar por Ano:</label>
+                                <select id="filtroAno" class="form-control form-control-sm" aria-label="Filtrar dados da série por ano">
+                                    <option value="todos">Todas as Reuniões Recentes</option>
+                                    <option value="2026">2026 (Ano Corrente)</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                </select>
+                            </div>
+                            <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
+                                <label for="filtroStatus" class="small font-weight-bold text-body mb-1">Status da Ata:</label>
+                                <select id="filtroStatus" class="form-control form-control-sm" aria-label="Filtrar por status da ata">
+                                    <option value="todos">Todos os Status</option>
+                                    <option value="disponivel">Ata Publicada</option>
+                                    <option value="pendente">Ata Pendente</option>
+                                </select>
+                            </div>
+                            <div class="bcb-col-12 bcb-col-md-4 d-flex align-items-end pt-md-4">
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-block d-inline-flex align-items-center justify-content-center gap-1">
+                                    <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">filter_alt</span>
+                                    <span>Aplicar Filtros</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -167,7 +171,7 @@
 
                     <!-- Tabela de Dados Acessível com Rolagem Horizontal -->
                     <div class="table-responsive" tabindex="0" role="region" aria-label="Tabela histórica de decisões do Copom com rolagem horizontal">
-                        <table class="table table-bordered table-striped mb-0 table-min-w-620">
+                        <table class="table table-bordered table-striped mb-0">
                             <caption>Série SGS 432 contendo histórico das taxas fixadas pelo Copom, datas de início e fim da reunião, variação e status da ata.</caption>
                             <thead class="thead-primary">
                                 <tr>

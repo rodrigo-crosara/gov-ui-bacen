@@ -18,13 +18,13 @@
   width: 100%;
   background: linear-gradient(
     90deg,
-    var(--bcb-gray-200) 25%,
-    var(--bcb-gray-100) 37%,
-    var(--bcb-gray-200) 63%
+    var(--bcb-gray-200, #E6EAEF) 0%,
+    rgba(255, 255, 255, 0.85) 50%,
+    var(--bcb-gray-200, #E6EAEF) 100%
   );
-  background-size: 400% 100%;
-  animation: bcbShimmer 1.5s ease-in-out infinite;
-  border-radius: var(--bcb-radius-4);
+  background-size: 200% 100%;
+  animation: bcbShimmer 1.6s ease-in-out infinite;
+  border-radius: var(--bcb-radius-4, 4px);
   vertical-align: middle;
 }
 
@@ -86,22 +86,23 @@
 [data-theme="dark"] .bcb-skeleton {
   background: linear-gradient(
     90deg,
-    var(--bcb-gray-200) 25%,
-    var(--bcb-gray-300) 37%,
-    var(--bcb-gray-200) 63%
+    var(--bcb-gray-200, #2A3038) 0%,
+    rgba(183, 192, 203, 0.28) 50%,
+    var(--bcb-gray-200, #2A3038) 100%
   );
-  background-size: 400% 100%;
+  background-size: 200% 100%;
 }
 
 /* Alto Contraste (Desativa animação, mantém borda de alto relevo) */
 [data-contrast="high"] .bcb-skeleton {
-  animation: none;
+  animation: none !important;
   background: transparent !important;
-  border: 1px dashed var(--bcb-hc-border);
+  border: 1px dashed var(--bcb-hc-border) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bcb-skeleton {
-    animation: none;
+    animation: none !important;
+    background: var(--bcb-gray-200) !important;
   }
 }

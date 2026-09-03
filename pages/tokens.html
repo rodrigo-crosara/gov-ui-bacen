@@ -245,12 +245,79 @@
             border-radius: var(--bcb-radius-4);
         }
 
+        /* Layout da Documentação em Duas Colunas */
+        .ds-wrapper {
+            display: flex;
+            min-height: calc(100vh - 58px);
+        }
+
+        .ds-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            padding: 1.25rem 0.75rem;
+            border-right: 1px solid var(--bcb-gray-200);
+            position: sticky;
+            top: 58px;
+            height: calc(100vh - 58px);
+            overflow-y: auto;
+            background-color: var(--bcb-gray-50);
+            z-index: 100;
+        }
+
+        .ds-sidebar-search {
+            margin-bottom: 1rem;
+            padding: 0 0.5rem;
+        }
+
+        .ds-sidebar-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--bcb-gray-500);
+            padding: 0.25rem 0.75rem;
+            margin-top: 1.25rem;
+            margin-bottom: 0.25rem;
+            letter-spacing: 1.2px;
+            font-weight: 700;
+        }
+
+        .ds-sidebar .nav-link {
+            color: var(--bcb-color-body-text);
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--bcb-radius-4);
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ds-sidebar .nav-link:hover {
+            background-color: var(--bcb-gray-200);
+            color: var(--bcb-brand-blue);
+            padding-left: 1rem;
+        }
+
+        .ds-sidebar .nav-link.active {
+            background-color: rgba(2, 92, 117, 0.12);
+            color: var(--bcb-brand-blue);
+            font-weight: 700;
+            border-left: 3px solid var(--bcb-brand-blue);
+        }
+
+        .ds-main {
+            flex-grow: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1200px;
+            overflow-x: hidden;
+        }
+
         /* Seções e Divisores */
         .ds-main section {
             padding-bottom: 2.5rem;
             margin-bottom: 2.5rem;
             border-bottom: 1px solid var(--bcb-gray-200);
-            scroll-margin-top: 30px;
+            scroll-margin-top: 70px;
         }
         .ds-main section:last-child {
             border-bottom: none;
@@ -267,6 +334,26 @@
             margin-top: 1.5rem;
             margin-bottom: 1rem;
             font-weight: 500;
+        }
+
+        @media (max-width: 991px) {
+            .ds-wrapper {
+                flex-direction: column;
+            }
+            .ds-sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                border-right: none;
+                border-bottom: 1px solid var(--bcb-gray-200);
+                display: none;
+            }
+            .ds-sidebar.show {
+                display: block;
+            }
+            .ds-main {
+                padding: 1.5rem 1rem;
+            }
         }
 
         /* Toast de Cópia */
@@ -300,6 +387,7 @@
     <!-- Skip Links de Acessibilidade (e-MAG) -->
     <ul class="bcb-skip-links" aria-label="Atalhos de acessibilidade">
         <li><a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span></a></li>
+        <li><a href="#ds-sidebar-nav" class="bcb-skip-link" accesskey="2">Ir para a navegação de tokens <span class="accesskey-badge">Alt + 2</span></a></li>
     </ul>
 
     <!-- Header da Documentação (.bcb-ds-header) -->
@@ -327,23 +415,56 @@
       </div>
     </header>
 
-    <!-- Layout da Documentação com Sidebar -->
+    <!-- Layout da Documentação com Sidebar Sticky -->
     <div class="ds-wrapper">
-        <aside class="ds-sidebar">
-            <nav class="nav flex-column" aria-label="Navegação dos Design Tokens">
-                <div class="ds-sidebar-title">Navegação Rápida</div>
-                <div class="ds-sidebar-title">Categorias de Tokens</div>
-                <a class="nav-link active" href="#cores-brand">Cores Brand</a>
-                <a class="nav-link" href="#escala-cinzas">Escala de Cinzas</a>
-                <a class="nav-link" href="#interacao">Cores de Interação</a>
-                <a class="nav-link" href="#tipografia">Tipografia e Escala</a>
-                <a class="nav-link" href="#espacamentos">Espaçamentos</a>
-                <a class="nav-link" href="#bordas-sombras">Bordas e Sombras</a>
-                <a class="nav-link" href="#alto-contraste">Alto Contraste</a>
-            </nav>
-        </aside>
+        <!-- Sidebar Sticky -->
+        <nav class="ds-sidebar" id="ds-sidebar-nav" aria-label="Navegação dos Design Tokens">
+            <div class="ds-sidebar-title mb-2">
+                <a href="../index.html" class="d-flex align-items-center text-decoration-none text-bcb-brand font-weight-bold gap-1">
+                    <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">arrow_back</span> Hub de Documentação
+                </a>
+            </div>
+
+            <!-- Filtro de Categorias -->
+            <div class="ds-sidebar-search">
+                <div class="form-group mb-0">
+                    <label for="sidebarSearchInput" class="sr-only">Filtrar tokens</label>
+                    <input type="text" class="form-control form-control-sm" id="sidebarSearchInput" placeholder="Filtrar categorias..." aria-label="Filtrar categorias de tokens">
+                </div>
+            </div>
+
+            <div class="ds-sidebar-title">1. Cores Institucionais</div>
+            <a class="nav-link active" href="#cores-brand">1.1 Cores Brand</a>
+            <a class="nav-link" href="#escala-cinzas">1.2 Escala de Cinzas</a>
+            <a class="nav-link" href="#interacao">1.3 Cores de Interação</a>
+
+            <div class="ds-sidebar-title">2. Tipografia</div>
+            <a class="nav-link" href="#tipografia">2.1 Famílias e Escala Fluída</a>
+
+            <div class="ds-sidebar-title">3. Espaçamentos</div>
+            <a class="nav-link" href="#espacamentos">3.1 Grid de 4px (Base 16px)</a>
+
+            <div class="ds-sidebar-title">4. Sombras &amp; Elevação</div>
+            <a class="nav-link" href="#sombras">4.1 Sombras de Interface (Elevation)</a>
+
+            <div class="ds-sidebar-title">5. Bordas &amp; Raios</div>
+            <a class="nav-link" href="#bordas">5.1 Raios de Curvatura (Border Radius)</a>
+
+            <div class="ds-sidebar-title">6. Z-Index (Camadas)</div>
+            <a class="nav-link" href="#z-index">6.1 Profundidade e Camadas</a>
+
+            <div class="ds-sidebar-title">7. Acessibilidade</div>
+            <a class="nav-link" href="#alto-contraste">7.1 Modo Alto Contraste (AAA)</a>
+        </nav>
 
         <main class="ds-main" id="conteudo-principal">
+            <!-- Botão de Alternância da Sidebar em Telas Menores -->
+            <div class="d-lg-none mb-3">
+                <button type="button" id="btnToggleSidebar" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center gap-1" aria-expanded="false" aria-controls="ds-sidebar-nav">
+                    <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">menu</span>
+                    <span>Categorias de Tokens</span>
+                </button>
+            </div>
             <h1 class="h2 font-weight-bold mb-3">Design Tokens do Banco Central do Brasil</h1>
             
             <!-- Banner Informativo -->
@@ -928,12 +1049,41 @@
                 </div>
             </section>
 
-            <!-- ============ F) BORDAS E SOMBRAS ============ -->
-            <section id="bordas-sombras">
-                <h2>Bordas e Sombras (Elevation)</h2>
-                <p class="text-body mb-4">Definição dos raios de curvatura e elevação em camadas para dar profundidade e clareza visual aos componentes de interface.</p>
+            <!-- ============ F) SOMBRAS E ELEVAÇÃO ============ -->
+            <section id="sombras">
+                <h2>Sombras e Elevação (Box Shadow)</h2>
+                <p class="text-body mb-4">Níveis de elevação em camadas para dar profundidade, hierarquia e clareza visual aos componentes de interface.</p>
 
-                <h3 class="h5">Raios de Arredondamento (Border Radius)</h3>
+                <div class="row">
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-100);">
+                            <div class="font-weight-bold mb-1">Nível 100 (Sutil)</div>
+                            <code>--bcb-shadow-100</code>
+                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Cards estáticos, painéis padrão</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-300);">
+                            <div class="font-weight-bold mb-1">Nível 300 (Médio)</div>
+                            <code>--bcb-shadow-300</code>
+                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Hover de cartões, menus dropdown</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-600);">
+                            <div class="font-weight-bold mb-1">Nível 600 (Profundo)</div>
+                            <code>--bcb-shadow-600</code>
+                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Diálogos modais, botões flutuantes</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ G) BORDAS E RAIOS ============ -->
+            <section id="bordas">
+                <h2>Bordas e Raios de Curvatura (Border Radius)</h2>
+                <p class="text-body mb-4">Definição dos raios de curvatura atômicos para cantos de botões, cartões, modais e pílulas de status.</p>
+
                 <div class="row mb-4">
                     <div class="col-6 col-md-3 mb-3">
                         <div class="radius-card" style="border-radius: var(--bcb-radius-0);">
@@ -960,30 +1110,75 @@
                         <div class="text-center text-muted" style="font-size: 0.75rem;">Chips, badges, pílulas</div>
                     </div>
                 </div>
+            </section>
 
-                <h3 class="h5">Elevação e Sombras (Box Shadow)</h3>
-                <div class="row">
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-100);">
-                            <div class="font-weight-bold mb-1">Nível 100 (Sutil)</div>
-                            <code>--bcb-shadow-100</code>
-                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Cards estáticos, painéis padrão</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-300);">
-                            <div class="font-weight-bold mb-1">Nível 300 (Médio)</div>
-                            <code>--bcb-shadow-300</code>
-                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Hover de cartões, menus dropdown</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="elevation-card" style="box-shadow: var(--bcb-shadow-600);">
-                            <div class="font-weight-bold mb-1">Nível 600 (Profundo)</div>
-                            <code>--bcb-shadow-600</code>
-                            <div class="text-muted mt-2" style="font-size: 0.75rem;">Diálogos modais, botões flutuantes</div>
-                        </div>
-                    </div>
+            <!-- ============ H) Z-INDEX E CAMADAS ============ -->
+            <section id="z-index">
+                <h2>Z-Index (Escala de Camadas e Profundidade)</h2>
+                <p class="text-body mb-4">A hierarquia de sobreposição (z-index) define a ordem visual dos elementos na terceira dimensão (eixo Z), evitando conflitos entre menus, modais, cabeçalhos fixos e notificações flutuantes.</p>
+
+                <div class="table-responsive" tabindex="0" role="region" aria-label="Tabela de tokens de z-index do BCB Design System">
+                    <table class="table table-bordered table-striped">
+                        <caption>Escala oficial de profundidade e empilhamento de camadas (z-index).</caption>
+                        <thead class="thead-primary">
+                            <tr>
+                                <th scope="col" style="width: 25%;">Token CSS</th>
+                                <th scope="col" style="width: 15%;">Valor</th>
+                                <th scope="col" style="width: 25%;">Camada Semântica</th>
+                                <th scope="col" style="width: 35%;">Exemplos de Aplicação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--bcb-z-deep</code></td>
+                                <td><code>-1</code></td>
+                                <td><span class="badge badge-secondary">Subjacente</span></td>
+                                <td>Elementos de fundo decorativo, sombras e marcas d'água</td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-z-base</code></td>
+                                <td><code>1</code></td>
+                                <td><span class="badge badge-secondary">Base</span></td>
+                                <td>Conteúdo padrão, conectores de timeline, trilhas de stepper</td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-z-elevated</code></td>
+                                <td><code>2</code></td>
+                                <td><span class="badge badge-secondary">Elevado</span></td>
+                                <td>Badges sobrepostos, ícones ativos de etapas, cabeçalhos de cartão</td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-z-dropdown</code></td>
+                                <td><code>100</code></td>
+                                <td><span class="badge badge-primary">Dropdown / Sticky</span></td>
+                                <td>Menu lateral sticky (sidebar), menus suspensos, filtros facetados</td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-z-sticky</code></td>
+                                <td><code>999</code></td>
+                                <td><span class="badge badge-primary">Flutuante Fixo</span></td>
+                                <td>Botão Voltar ao Topo flutuante (.bcb-back-to-top)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-z-overlay</code></td>
+                                <td><code>1050</code></td>
+                                <td><span class="badge badge-warning">Overlay / Modal</span></td>
+                                <td>Barra de navegação principal fixa, backdrop escuro e janelas modais</td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-z-toast</code></td>
+                                <td><code>1060</code></td>
+                                <td><span class="badge badge-success">Notificação</span></td>
+                                <td>Pilha de notificações flutuantes (Toasts e Alertas de topo)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--bcb-z-max</code></td>
+                                <td><code>99999</code></td>
+                                <td><span class="badge badge-danger">Acessibilidade Máxima</span></td>
+                                <td>Skip links de salto de conteúdo focados via teclado (e-MAG / WCAG)</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
@@ -1079,7 +1274,57 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Sincronização do Sidebar Ativo no Scroll
+        // Filtro de Busca na Sidebar
+        const searchInput = document.getElementById('sidebarSearchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const navLinks = document.querySelectorAll('.ds-sidebar .nav-link');
+                navLinks.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    link.style.display = text.includes(term) ? 'flex' : 'none';
+                });
+            });
+        }
+
+        // Alternador de Sidebar Mobile
+        const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+        const sidebarNav = document.getElementById('ds-sidebar-nav');
+        if (btnToggleSidebar && sidebarNav) {
+            btnToggleSidebar.addEventListener('click', () => {
+                const isExpanded = sidebarNav.classList.toggle('show');
+                btnToggleSidebar.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+            });
+
+            // Fechar sidebar ao clicar em um link em telas menores
+            sidebarNav.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        sidebarNav.classList.remove('show');
+                        btnToggleSidebar.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        }
+
+        // Cópia de tokens das tabelas ao clicar em <code>
+        document.querySelectorAll('#z-index code, #alto-contraste code, .spacing-bar-label').forEach(codeEl => {
+            codeEl.style.cursor = 'pointer';
+            codeEl.title = 'Clique para copiar';
+            codeEl.addEventListener('click', () => {
+                const text = codeEl.textContent.trim();
+                navigator.clipboard.writeText(text).then(() => {
+                    toastMessage.textContent = `${text} copiado!`;
+                    toast.classList.add('show');
+                    clearTimeout(toastTimeout);
+                    toastTimeout = setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 2500);
+                });
+            });
+        });
+
+        // Sincronização do Sidebar Ativo no Scroll (Scrollspy)
         const sections = document.querySelectorAll('.ds-main section[id]');
         const navLinks = document.querySelectorAll('.ds-sidebar .nav-link');
         
@@ -1095,7 +1340,7 @@
                     });
                 }
             });
-        }, { rootMargin: '-20% 0px -70% 0px' });
+        }, { rootMargin: '-15% 0px -70% 0px' });
         
         sections.forEach(section => observer.observe(section));
     </script>

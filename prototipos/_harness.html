@@ -303,6 +303,12 @@
             height: 1px;
             padding: 0;
             margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         /* Componente Toast de Feedback */
         .bcb-harness-toast {
             position: fixed;
@@ -350,13 +356,7 @@
         </a>
 
         <div class="bcb-harness-controls">
-            <!-- Botão de Briefing Retrátil (Split-Screen) -->
-            <button type="button" id="btnToggleBriefing" class="bcb-harness-btn" title="Exibir/Ocultar Briefing da Demanda Original (.docs-ia/)">
-                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">description</span>
-                <span>Briefing da Demanda</span>
-            </button>
-
-            <!-- Seletor de Protótipos -->
+            <!-- Seletor de Protótipos (Primeiro controle de foco operacional) -->
             <div class="bcb-harness-group">
                 <label for="selectPrototipo" class="bcb-harness-label">Tela:</label>
                 <select id="selectPrototipo" class="bcb-harness-select" aria-label="Selecionar protótipo para visualização">
@@ -368,6 +368,12 @@
                     </optgroup>
                 </select>
             </div>
+
+            <!-- Botão de Briefing Retrátil (Split-Screen) com Contratos ARIA -->
+            <button type="button" id="btnToggleBriefing" class="bcb-harness-btn" aria-expanded="false" aria-controls="briefingDrawer" title="Exibir/Ocultar Briefing da Demanda Original (.docs-ia/)">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">description</span>
+                <span>Briefing da Demanda</span>
+            </button>
 
             <!-- Alternador de Viewport (Desktop / Tablet / Mobile) -->
             <div class="bcb-harness-group">
@@ -416,13 +422,13 @@
         <h1 class="sr-only">Visualizador Técnico de Protótipos — Banco Central do Brasil</h1>
 
         <!-- Gaveta Retrátil de Briefing da Demanda -->
-        <aside id="briefingDrawer" class="bcb-harness-drawer" aria-label="Painel de Briefing da Demanda">
+        <aside id="briefingDrawer" class="bcb-harness-drawer" aria-label="Painel de Briefing da Demanda" aria-hidden="true">
             <div class="bcb-drawer-header">
                 <h2 class="bcb-drawer-title">
                     <span class="material-symbols-outlined material-icons md-18 harness-icon-info" aria-hidden="true">assignment</span>
                     <span id="briefingTitle">Briefing da Demanda</span>
                 </h2>
-                <button type="button" id="btnCloseDrawer" class="bcb-harness-btn" title="Fechar Painel de Briefing">
+                <button type="button" id="btnCloseDrawer" class="bcb-harness-btn" aria-label="Fechar painel de briefing" title="Fechar Painel de Briefing">
                     <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">close</span>
                 </button>
             </div>
@@ -581,9 +587,17 @@
                 deviceContainer.className = `bcb-harness-device viewport-${viewport}`;
             }
 
-            function toggleDrawer() {
-                const isOpen = harnessLayout.classList.toggle('drawer-open');
+            function toggleDrawer(forceState) {
+                const isOpen = typeof forceState === 'boolean' ? forceState : !harnessLayout.classList.contains('drawer-open');
+                harnessLayout.classList.toggle('drawer-open', isOpen);
                 btnToggleBriefing.classList.toggle('active', isOpen);
+                btnToggleBriefing.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                briefingDrawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+                if (isOpen) {
+                    btnCloseDrawer.focus();
+                } else if (document.activeElement === btnCloseDrawer || briefingDrawer.contains(document.activeElement)) {
+                    btnToggleBriefing.focus();
+                }
             }
 
             selectPrototipo.addEventListener('change', (e) => {
@@ -609,8 +623,17 @@
                 });
             });
 
-            btnToggleBriefing.addEventListener('click', toggleDrawer);
-            btnCloseDrawer.addEventListener('click', toggleDrawer);
+            btnToggleBriefing.addEventListener('click', () => toggleDrawer());
+            btnCloseDrawer.addEventListener('click', () => toggleDrawer(false));
+
+            // Fechamento da gaveta de briefing via tecla Escape (WCAG 2.1)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' || e.key === 'Esc') {
+                    if (harnessLayout.classList.contains('drawer-open')) {
+                        toggleDrawer(false);
+                    }
+                }
+            });
 
             // Suporte a abertura direta parametrizada: _harness.html?src=...&doc=...
             const urlParams = new URLSearchParams(window.location.search);
@@ -631,8 +654,7 @@
 
             // Se paramDoc ou paramSrc foi informado, abre o split-screen de briefing automaticamente
             if (paramDoc || paramSrc) {
-                harnessLayout.classList.add('drawer-open');
-                btnToggleBriefing.classList.add('active');
+                toggleDrawer(true);
             }
 
             // Utilitário de Cópia do HTML do Miolo (<main>) com Toast

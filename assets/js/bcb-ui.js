@@ -246,13 +246,24 @@
           }
         }
 
-        // Inicializar tabindex e aria-selected
-        document.querySelectorAll('[role="tablist"], .nav-tabs').forEach(tabList => {
+        // Inicializar tabindex, aria-selected, aria-controls e role=tabpanel
+        document.querySelectorAll('[role="tablist"], .nav-tabs').forEach((tabList, listIdx) => {
           const tabs = tabList.querySelectorAll('[role="tab"], .nav-link');
-          tabs.forEach(t => {
+          tabs.forEach((t, tIdx) => {
+            if (!t.id) t.id = `bcb-ui-tab-${listIdx}-${tIdx}`;
             const isActive = t.classList.contains('active') || t.getAttribute('aria-selected') === 'true';
             t.setAttribute('tabindex', isActive ? '0' : '-1');
             t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            const targetSelector = t.getAttribute('href') || t.getAttribute('data-target');
+            if (targetSelector && targetSelector.startsWith('#')) {
+              const panel = document.querySelector(targetSelector);
+              if (panel) {
+                t.setAttribute('aria-controls', panel.id);
+                if (!panel.hasAttribute('role')) panel.setAttribute('role', 'tabpanel');
+                if (!panel.hasAttribute('tabindex')) panel.setAttribute('tabindex', '0');
+                panel.setAttribute('aria-labelledby', t.id);
+              }
+            }
           });
         });
 
@@ -298,7 +309,7 @@
         console.warn('BCB UI: Verificação defensiva de tabs', e);
       }
 
-      // 3. Accordions (W3C WAI-ARIA com Navegação por Setas Up/Down)
+      // 3. Accordions (W3C WAI-ARIA com Navegação por Setas Up/Down e ESC)
       try {
         function toggleAccordion(button) {
           const targetSelector = button.getAttribute('data-target') || button.getAttribute('href');
@@ -320,13 +331,27 @@
           }
         });
 
-        // Setas no accordion (ArrowDown, ArrowUp, Home, End)
+        // Teclado no accordion (ArrowDown, ArrowUp, Home, End e Escape)
         document.addEventListener('keydown', (event) => {
           const button = event.target.closest('.accordion [data-toggle="collapse"], .accordion .card-header button');
-          if (!button) return;
+          const accordion = button ? button.closest('.accordion') : event.target.closest('.accordion');
 
-          const accordion = button.closest('.accordion');
-          if (!accordion) return;
+          if (event.key === 'Escape' || event.key === 'Esc') {
+            if (accordion) {
+              const openPanels = accordion.querySelectorAll('.collapse.show');
+              openPanels.forEach(panel => {
+                const trigger = accordion.querySelector(`[data-target="#${panel.id}"], [href="#${panel.id}"]`);
+                if (trigger) {
+                  event.preventDefault();
+                  toggleAccordion(trigger);
+                  trigger.focus();
+                }
+              });
+            }
+            return;
+          }
+
+          if (!button || !accordion) return;
 
           const allButtons = Array.from(accordion.querySelectorAll('[data-toggle="collapse"], .card-header button'));
           const idx = allButtons.indexOf(button);
@@ -345,6 +370,26 @@
             event.preventDefault();
             allButtons[allButtons.length - 1].focus();
           }
+        });
+
+        // Inicializar atributos WAI-ARIA nos accordions
+        document.querySelectorAll('.accordion').forEach((acc, accIdx) => {
+          const btns = acc.querySelectorAll('[data-toggle="collapse"], .card-header button');
+          btns.forEach((b, bIdx) => {
+            if (!b.id) b.id = `bcb-ui-acc-btn-${accIdx}-${bIdx}`;
+            const targetSel = b.getAttribute('data-target') || b.getAttribute('href');
+            if (targetSel) {
+              const target = document.querySelector(targetSel);
+              if (target) {
+                b.setAttribute('aria-controls', target.id);
+                if (!target.hasAttribute('role')) target.setAttribute('role', 'region');
+                target.setAttribute('aria-labelledby', b.id);
+                const isShow = target.classList.contains('show');
+                b.setAttribute('aria-expanded', isShow ? 'true' : 'false');
+                b.classList.toggle('collapsed', !isShow);
+              }
+            }
+          });
         });
       } catch (e) {
         console.warn('BCB UI: Verificação defensiva de accordion', e);
@@ -459,6 +504,10 @@
             });
           });
         }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de cópia de código', e);
+      }
+
       // 7. Ações de Impressão e Exportação Não-Intrusivas ([data-action="print"], .bcb-btn-print)
       try {
         if (!document._bcbPrintBound) {

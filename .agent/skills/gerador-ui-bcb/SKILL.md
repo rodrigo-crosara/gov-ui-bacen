@@ -46,6 +46,27 @@ O agente de IA ingere a demanda qualificada e concebe o protótipo final em `pro
 - **Resiliência Cromática e Acessibilidade:** Conformidade WCAG 2.1 AA e 3 temas (Padrão, Dark Mode e Alto Contraste).
 - **Homologação Imediata:** Visualização split-screen no harness técnico: `prototipos/_harness.html?src=<slug>.html&doc=<demanda>.md`.
 
+### Checklist Mandatório de Validação de Insumo (Gatekeeper Pré-Geração de HTML)
+Antes de redigir qualquer linha de código ou salvar o arquivo em `prototipos/`, o agente DEVE validar o insumo contra o checklist de conformidade do schema acordado com o webdesigner:
+
+1. **Origem e Solicitante Identificados:**
+   - A demanda deve indicar a diretoria, departamento ou secretaria solicitante do BCB (ex.: *ASIMP*, *Copom*, *DEATI*, *DSTAT*, *DEINF*). Briefings anônimos ou sem origem devem ser suspensos.
+2. **Slug e Título Descritivos:**
+   - Slug rigorosamente em kebab-case alfanumérico (`^[a-z0-9]+(-[a-z0-9]+)*$`).
+   - Título formal institucional com pelo menos 4 caracteres, sem placeholders como `[Título...]` ou valores padrão genéricos.
+3. **Padrão de UX Canônico Reconhecido:**
+   - O briefing deve pertencer obrigatoriamente a um dos 4 padrões homologados pelo Design System:
+     - *Comunicação Normativa (Layout 70/30 com downloads)*
+     - *Painel Analítico & Séries Temporais (SGS)*
+     - *Serviço ao Cidadão (Stepper .process-list)*
+     - *Refatoração Semântica de Conteúdo Legado*
+4. **Insumo Textual Técnico Consistente:**
+   - O campo de texto bruto deve conter dados substanciais (comunicado redigido, série numérica CSV/tabular, etapas detalhadas do procedimento ou HTML legado desestruturado). Textos vazios ou contendo apenas espaços/placeholders devem ser rejeitados imediatamente.
+5. **Atos e Documentos Vinculados:**
+   - Presença de atos normativos ou resoluções vinculadas, especificando tipo de arquivo (PDF, ZIP, CSV) e tamanho aproximado (KB/MB) para renderização canônica no componente `.documentos`.
+
+Se qualquer critério acima falhar, o agente NÃO deve gerar o código HTML, mas sim responder informando quais campos do schema estão incompletos e orientar a revisão pelo comando `npm run demanda:criar`.
+
 ---
 
 ## 1. FONTES DA VERDADE DO ECOSSISTEMA

@@ -1,33 +1,250 @@
 /* ============= BCB Design System — Atoms / Form Controls ============= */
 
-.form-group label { font-weight: 500; color: var(--bcb-gray-900); margin-bottom: 0.5rem; display: block; }
-.form-control { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-color-body-text); background-color: var(--bcb-color-white); box-shadow: none; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.3s ease, color 0.3s ease; }
-.form-control:focus { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); outline: 0; }
-.form-control:disabled, .form-control[readonly] { background-color: var(--bcb-gray-100); opacity: 0.7; cursor: not-allowed; }
-.form-text.text-muted { font-size: 0.85rem; margin-top: 0.25rem; color: var(--bcb-gray-600) !important; }
+.form-group {
+  margin-bottom: var(--bcb-space-4, 1rem);
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--bcb-gray-900);
+  margin-bottom: var(--bcb-space-2, 0.5rem);
+  display: block;
+  font-size: var(--bcb-font-75, 0.875rem);
+  line-height: 1.4;
+}
+
+.form-control {
+  border: 1px solid var(--bcb-gray-400, #B7C0CB);
+  border-radius: var(--bcb-radius-4, 4px);
+  padding: 0.625rem 0.875rem;
+  min-height: 44px;
+  font-size: var(--bcb-font-100, 1rem);
+  line-height: 1.5;
+  color: var(--bcb-color-body-text);
+  background-color: var(--bcb-color-white);
+  box-shadow: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.2s ease, color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-control:hover {
+  border-color: var(--bcb-brand-azulcinti, #077391);
+}
+
+.form-control:focus,
+.form-control:focus-visible {
+  border-color: var(--bcb-brand-blue, #025C75);
+  box-shadow: 0 0 0 3px rgba(2, 92, 117, 0.25);
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: var(--bcb-gray-100, #F3F5F7);
+  border-color: var(--bcb-gray-300, #D0D7DF);
+  color: var(--bcb-gray-500, #9AA6B2);
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.form-text.text-muted {
+  font-size: var(--bcb-font-50, 0.75rem);
+  margin-top: var(--bcb-space-1, 0.25rem);
+  color: var(--bcb-gray-600, #7E8A95) !important;
+  line-height: 1.4;
+}
 
 /* Checkboxes e Radios Customizados */
-.custom-control-label::before { border: 2px solid var(--bcb-gray-500); background-color: var(--bcb-color-white); }
-.custom-control-input:checked ~ .custom-control-label::before { border-color: var(--bcb-brand-blue); background-color: var(--bcb-brand-blue); }
-.custom-checkbox .custom-control-label::before { border-radius: var(--bcb-radius-4); }
-.custom-radio .custom-control-label::before { border-radius: 50%; }
-.custom-control-input:focus ~ .custom-control-label::before { box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); }
+.custom-control {
+  min-height: 1.5rem;
+  padding-left: 1.75rem;
+  margin-bottom: var(--bcb-space-2, 0.5rem);
+}
+
+.custom-control-label {
+  font-size: var(--bcb-font-75, 0.875rem);
+  line-height: 1.5;
+  color: var(--bcb-gray-900);
+  cursor: pointer;
+}
+
+.custom-control-label::before {
+  border: 2px solid var(--bcb-gray-500);
+  background-color: var(--bcb-color-white);
+  border-radius: var(--bcb-radius-4);
+  top: 0.15rem;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: var(--bcb-brand-blue);
+  background-color: var(--bcb-brand-blue);
+}
+
+.custom-checkbox .custom-control-label::before {
+  border-radius: var(--bcb-radius-4);
+}
+
+.custom-radio .custom-control-label::before {
+  border-radius: var(--bcb-radius-pill);
+}
+
+.custom-control-input:focus ~ .custom-control-label::before,
+.custom-control-input:focus-visible ~ .custom-control-label::before {
+  box-shadow: 0 0 0 3px rgba(2, 92, 117, 0.25);
+  border-color: var(--bcb-brand-blue);
+}
+
+.custom-control-input:disabled ~ .custom-control-label {
+  color: var(--bcb-gray-500);
+  cursor: not-allowed;
+}
+
+.custom-control-input:disabled ~ .custom-control-label::before {
+  background-color: var(--bcb-gray-200);
+  border-color: var(--bcb-gray-300);
+}
 
 /* Select Customizado */
-.custom-select { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-color-body-text); background-color: var(--bcb-color-white); transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.3s ease, color 0.3s ease; }
-.custom-select:focus { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); outline: 0; }
-.custom-select:disabled { background-color: var(--bcb-gray-100); opacity: 0.7; cursor: not-allowed; }
+.custom-select {
+  border: 1px solid var(--bcb-gray-400, #B7C0CB);
+  border-radius: var(--bcb-radius-4, 4px);
+  padding: 0.625rem 2rem 0.625rem 0.875rem;
+  min-height: 44px;
+  font-size: var(--bcb-font-100, 1rem);
+  line-height: 1.5;
+  color: var(--bcb-color-body-text);
+  background-color: var(--bcb-color-white);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.custom-select:hover {
+  border-color: var(--bcb-brand-azulcinti, #077391);
+}
+
+.custom-select:focus,
+.custom-select:focus-visible {
+  border-color: var(--bcb-brand-blue);
+  box-shadow: 0 0 0 3px rgba(2, 92, 117, 0.25);
+  outline: 2px solid transparent;
+}
+
+.custom-select:disabled {
+  background-color: var(--bcb-gray-100);
+  border-color: var(--bcb-gray-300);
+  color: var(--bcb-gray-500);
+  opacity: 0.75;
+  cursor: not-allowed;
+}
 
 /* File Input */
-.custom-file-label { border: 1px solid var(--bcb-gray-500); border-radius: var(--bcb-radius-4); padding: 0.75rem; height: auto; font-size: 1rem; color: var(--bcb-color-body-text); background-color: var(--bcb-color-white); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; transition: background-color 0.3s ease, color 0.3s ease; }
-.custom-file-label::after { content: "Selecionar"; background-color: var(--bcb-brand-blue); color: var(--bcb-color-white); border-left: 1px solid var(--bcb-gray-500); padding: 0.75rem 1rem; height: 100%; display: flex; align-items: center; font-weight: 500; transition: background-color 0.2s; }
-.custom-file-input:focus ~ .custom-file-label { border-color: var(--bcb-brand-blue); box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25); }
+.custom-file {
+  min-height: 44px;
+}
 
-/* Estados de Validação */
-.form-control.is-valid { border-color: #28a745; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1rem; padding-right: 2.5rem; }
-.form-control.is-valid:focus { box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); }
-.valid-feedback { display: block; color: #28a745; font-size: 0.85rem; margin-top: 0.25rem; font-weight: 500; }
+.custom-file-label {
+  border: 1px solid var(--bcb-gray-400);
+  border-radius: var(--bcb-radius-4);
+  padding: 0.625rem 0.875rem;
+  min-height: 44px;
+  font-size: var(--bcb-font-100, 1rem);
+  line-height: 1.5;
+  color: var(--bcb-color-body-text);
+  background-color: var(--bcb-color-white);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
-.form-control.is-invalid { border-color: #dc3545; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1rem; padding-right: 2.5rem; }
-.form-control.is-invalid:focus { box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); }
-.invalid-feedback { display: block; color: #dc3545; font-size: 0.85rem; margin-top: 0.25rem; font-weight: 500; }
+.custom-file-label::after {
+  content: "Selecionar";
+  background-color: var(--bcb-brand-blue);
+  color: var(--bcb-color-white);
+  border-left: 1px solid var(--bcb-gray-400);
+  padding: 0.625rem 1.25rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.custom-file-input:focus ~ .custom-file-label,
+.custom-file-input:focus-visible ~ .custom-file-label {
+  border-color: var(--bcb-brand-blue);
+  box-shadow: 0 0 0 3px rgba(2, 92, 117, 0.25);
+}
+
+/* Alinhamento de Ícones em Grupos de Entrada (.input-group) */
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 0.875rem;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--bcb-gray-700);
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--bcb-gray-100);
+  border: 1px solid var(--bcb-gray-400);
+  border-radius: var(--bcb-radius-4);
+}
+
+.input-group-text .material-symbols-outlined,
+.input-group-text .material-icons {
+  font-size: 1.25rem !important;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Estados de Validação (Tokens Oficiais de Feedback) */
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  border-color: var(--bcb-feedback-success, #067078) !important;
+  padding-right: 2.5rem;
+}
+
+.form-control.is-valid:focus,
+.was-validated .form-control:valid:focus {
+  box-shadow: 0 0 0 3px rgba(6, 112, 120, 0.25) !important;
+}
+
+.valid-feedback {
+  display: block;
+  color: var(--bcb-feedback-success, #067078);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  border-color: var(--bcb-brand-vinho-autentico, #47373A) !important;
+  padding-right: 2.5rem;
+}
+
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(71, 55, 58, 0.25) !important;
+}
+
+.invalid-feedback {
+  display: block;
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+}

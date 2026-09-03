@@ -60,15 +60,66 @@
         }
       });
 
-      // Inicializar estados ARIA
-      document.querySelectorAll('.accordion [data-toggle="collapse"], .accordion .card-header button').forEach(button => {
-        const targetSelector = button.getAttribute('data-target') || button.getAttribute('href');
-        if (targetSelector) {
-          const target = document.querySelector(targetSelector);
-          const isShow = target && target.classList.contains('show');
-          button.setAttribute('aria-expanded', isShow ? 'true' : 'false');
-          button.classList.toggle('collapsed', !isShow);
+      // Navegação por teclado nos botões do acordeão
+      document.addEventListener('keydown', (event) => {
+        const button = event.target.closest('.accordion [data-toggle="collapse"], .accordion .card-header button');
+        const accordion = button ? button.closest('.accordion') : event.target.closest('.accordion');
+
+        if (event.key === 'Escape' || event.key === 'Esc') {
+          // Fechar sanfona ativa com Escape
+          if (accordion) {
+            const openPanels = accordion.querySelectorAll('.collapse.show');
+            openPanels.forEach(panel => {
+              const trigger = accordion.querySelector(`[data-target="#${panel.id}"], [href="#${panel.id}"]`);
+              if (trigger) {
+                event.preventDefault();
+                toggleAccordion(trigger);
+                trigger.focus();
+              }
+            });
+          }
+          return;
         }
+
+        if (!button || !accordion) return;
+
+        const allButtons = Array.from(accordion.querySelectorAll('[data-toggle="collapse"], .card-header button'));
+        const idx = allButtons.indexOf(button);
+        if (idx === -1) return;
+
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          allButtons[(idx + 1) % allButtons.length].focus();
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          allButtons[(idx - 1 + allButtons.length) % allButtons.length].focus();
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          allButtons[0].focus();
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          allButtons[allButtons.length - 1].focus();
+        }
+      });
+
+      // Inicializar estados e atributos WAI-ARIA
+      document.querySelectorAll('.accordion').forEach((accordion, accIdx) => {
+        const buttons = accordion.querySelectorAll('[data-toggle="collapse"], .card-header button');
+        buttons.forEach((button, btnIdx) => {
+          if (!button.id) button.id = `bcb-accordion-btn-${accIdx}-${btnIdx}`;
+          const targetSelector = button.getAttribute('data-target') || button.getAttribute('href');
+          if (targetSelector) {
+            const target = document.querySelector(targetSelector);
+            if (target) {
+              button.setAttribute('aria-controls', target.id);
+              if (!target.hasAttribute('role')) target.setAttribute('role', 'region');
+              target.setAttribute('aria-labelledby', button.id);
+              const isShow = target.classList.contains('show');
+              button.setAttribute('aria-expanded', isShow ? 'true' : 'false');
+              button.classList.toggle('collapsed', !isShow);
+            }
+          }
+        });
       });
     }
   };

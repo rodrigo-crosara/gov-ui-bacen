@@ -205,6 +205,61 @@
   border-color: var(--bcb-gray-300, #3E454B) !important;
 }
 
+:root[data-theme="dark"] .bcb-data-table-container,
+[data-theme="dark"] .bcb-data-table-container {
+  background-color: var(--bcb-color-white, #121212) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-data-table-header,
+[data-theme="dark"] .bcb-data-table-header,
+:root[data-theme="dark"] .bcb-table-pagination,
+[data-theme="dark"] .bcb-table-pagination {
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+  color: var(--bcb-gray-600, #9AA6B2) !important;
+}
+
+:root[data-theme="dark"] .bcb-data-table tbody td,
+:root[data-theme="dark"] .bcb-data-table tbody th,
+[data-theme="dark"] .bcb-data-table tbody td,
+[data-theme="dark"] .bcb-data-table tbody th {
+  background-color: var(--bcb-color-white, #121212) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+  color: var(--bcb-color-body-text, #D0D7DF) !important;
+}
+
+:root[data-theme="dark"] .bcb-data-table tbody tr:hover td,
+:root[data-theme="dark"] .bcb-data-table tbody tr:hover th,
+[data-theme="dark"] .bcb-data-table tbody tr:hover td,
+[data-theme="dark"] .bcb-data-table tbody tr:hover th {
+  background-color: var(--bcb-gray-200, #2A3038) !important;
+}
+
+:root[data-theme="dark"] .ds-sidebar,
+[data-theme="dark"] .ds-sidebar {
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .ds-sidebar .nav-link,
+[data-theme="dark"] .ds-sidebar .nav-link {
+  color: var(--bcb-gray-700, #B7C0CB) !important;
+}
+
+:root[data-theme="dark"] .ds-sidebar .nav-link:hover,
+[data-theme="dark"] .ds-sidebar .nav-link:hover {
+  background-color: var(--bcb-gray-200, #2A3038) !important;
+  color: var(--bcb-brand-azul-blue, #0A9FD4) !important;
+}
+
+:root[data-theme="dark"] .ds-sidebar .nav-link.active,
+[data-theme="dark"] .ds-sidebar .nav-link.active {
+  background-color: rgba(10, 159, 212, 0.15) !important;
+  color: var(--bcb-brand-azul-blue, #0A9FD4) !important;
+  border-left-color: var(--bcb-brand-azul-blue, #0A9FD4) !important;
+}
+
 :root[data-theme="dark"] .breadcrumb,
 [data-theme="dark"] .breadcrumb {
   background-color: var(--bcb-gray-100, #1A1F24) !important;
@@ -276,6 +331,27 @@
 :root[data-theme="dark"] .text-dark,
 [data-theme="dark"] .text-dark {
   color: var(--bcb-color-neutral-10, #f8f9fa) !important;
+}
+
+/* Anel de Foco de Alta Visibilidade no Dark Mode (WCAG 2.4.7 / 2.4.11) */
+:root[data-theme="dark"] a:focus-visible,
+:root[data-theme="dark"] button:focus-visible,
+:root[data-theme="dark"] input:focus-visible,
+:root[data-theme="dark"] select:focus-visible,
+:root[data-theme="dark"] textarea:focus-visible,
+:root[data-theme="dark"] [tabindex]:focus-visible,
+:root[data-theme="dark"] .btn:focus-visible,
+:root[data-theme="dark"] .bcb-btn:focus-visible,
+[data-theme="dark"] a:focus-visible,
+[data-theme="dark"] button:focus-visible,
+[data-theme="dark"] input:focus-visible,
+[data-theme="dark"] select:focus-visible,
+[data-theme="dark"] textarea:focus-visible,
+[data-theme="dark"] [tabindex]:focus-visible,
+[data-theme="dark"] .btn:focus-visible,
+[data-theme="dark"] .bcb-btn:focus-visible {
+  outline: 3px solid var(--bcb-brand-amarellato-biscoito, #F9DEAA) !important;
+  outline-offset: 2px !important;
 }
 
 @media (prefers-color-scheme: dark) {

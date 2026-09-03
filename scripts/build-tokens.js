@@ -236,6 +236,17 @@ lines.push('  /* ==========================================');
 lines.push('     13. PORTAL PRIMARY');
 lines.push('     ========================================== */');
 lines.push('  --bcb-portal-primary: #22272B;');
+lines.push('');
+
+// 14. Z-Index (Camadas de Interface)
+lines.push('  /* ==========================================');
+lines.push('     14. Z-INDEX (Escala de Camadas)');
+lines.push('     ========================================== */');
+if (tokens.zIndex) {
+  for (const [k, v] of Object.entries(tokens.zIndex)) {
+    lines.push(`  --bcb-z-${toKebab(k)}: ${resolveValue(v.$value)};`);
+  }
+}
 
 lines.push('}');
 lines.push('');

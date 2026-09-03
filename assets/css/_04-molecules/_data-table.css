@@ -82,6 +82,7 @@
   cursor: pointer;
   user-select: none;
   transition: background-color 0.2s, color 0.2s;
+  outline: none;
 }
 
 .bcb-data-table thead th.sortable:hover {
@@ -89,12 +90,17 @@
   color: var(--bcb-brand-blue);
 }
 
+.bcb-data-table thead th.sortable:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: -3px !important;
+}
+
 .bcb-data-table thead th .sort-icon {
   display: inline-flex;
   vertical-align: middle;
   margin-left: 4px;
-  font-size: 1rem;
-  opacity: 0.4;
+  font-size: 1.1rem;
+  opacity: 0.5;
   transition: opacity 0.2s, transform 0.2s;
 }
 
@@ -121,6 +127,48 @@
 .bcb-data-table tbody tr:hover td,
 .bcb-data-table tbody tr:hover th {
   background-color: rgba(2, 92, 117, 0.04);
+}
+
+/* Integração com Empty State (_empty-state.css) */
+.bcb-data-table tbody tr.bcb-table-empty-row td,
+.bcb-table-empty-row td {
+  padding: 2.5rem 1.5rem !important;
+  text-align: center !important;
+  background-color: var(--bcb-color-white) !important;
+}
+
+.bcb-table-empty-row .bcb-empty-state {
+  margin: 0 auto;
+  max-width: 480px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+/* Indicador Visual de Rolagem Horizontal Responsiva */
+.table-responsive {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive.has-scroll-indicator::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 28px;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 2;
+}
+
+.table-responsive.has-scroll-indicator.can-scroll-right::after {
+  opacity: 1;
 }
 
 /* Alinhamento Numérico e Formatação Financeira */

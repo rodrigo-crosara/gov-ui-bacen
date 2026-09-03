@@ -30,7 +30,7 @@
     const tbody = table.querySelector('tbody');
     if (!tbody) return;
 
-    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const rows = Array.from(tbody.querySelectorAll('tr')).filter(r => !r.classList.contains('bcb-table-empty-row'));
     if (rows.length <= 1) return;
 
     const allTh = Array.from(th.parentNode.children);
@@ -44,12 +44,12 @@
     allTh.forEach(header => {
       if (header !== th && header.classList.contains('sortable')) {
         header.setAttribute('aria-sort', 'none');
-        const icon = header.querySelector('.sort-icon, .material-icons');
+        const icon = header.querySelector('.sort-icon, .material-symbols-outlined, .material-icons');
         if (icon) icon.textContent = 'sort';
       }
     });
 
-    // Ordenar linhas
+    // Ordenar linhas de dados
     rows.sort((rowA, rowB) => {
       const cellA = rowA.children[columnIndex];
       const cellB = rowB.children[columnIndex];
@@ -68,12 +68,12 @@
         : strB.localeCompare(strA, 'pt-BR');
     });
 
-    // Reanexar linhas ordenadas
+    // Reanexar linhas ordenadas preservando possíveis linhas de rodapé
     rows.forEach(row => tbody.appendChild(row));
 
     // Atualizar cabeçalho atual
     th.setAttribute('aria-sort', nextSort);
-    const icon = th.querySelector('.sort-icon, .material-icons');
+    const icon = th.querySelector('.sort-icon, .material-symbols-outlined, .material-icons');
     if (icon) {
       icon.textContent = nextSort === 'ascending' ? 'arrow_upward' : 'arrow_downward';
     }
@@ -84,10 +84,34 @@
     }));
   }
 
+  function initScrollIndicators() {
+    const responsiveContainers = document.querySelectorAll('.table-responsive');
+    responsiveContainers.forEach(container => {
+      container.classList.add('has-scroll-indicator');
+      const checkScroll = () => {
+        const canScrollRight = container.scrollWidth > container.clientWidth && (container.scrollLeft + container.clientWidth < container.scrollWidth - 10);
+        container.classList.toggle('can-scroll-right', canScrollRight);
+      };
+      checkScroll();
+      container.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll, { passive: true });
+    });
+  }
+
   const BcbDataTable = {
     init() {
-      const tables = document.querySelectorAll('.bcb-data-table, table.table th.sortable, table th[aria-sort]');
-      if (tables.length === 0) return;
+      const sortableHeaders = document.querySelectorAll('.bcb-data-table th.sortable, table.table th.sortable');
+      sortableHeaders.forEach(th => {
+        if (!th.hasAttribute('tabindex')) {
+          th.setAttribute('tabindex', '0');
+        }
+        if (!th.hasAttribute('role')) {
+          th.setAttribute('role', 'button');
+        }
+        if (!th.hasAttribute('aria-label') && th.innerText) {
+          th.setAttribute('aria-label', `Ordenar por ${th.innerText.trim()}`);
+        }
+      });
 
       document.addEventListener('click', (event) => {
         const th = event.target.closest('.bcb-data-table th.sortable, table.table th.sortable');
@@ -96,6 +120,18 @@
           sortTableByColumn(th);
         }
       });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          const th = event.target.closest('.bcb-data-table th.sortable, table.table th.sortable');
+          if (th) {
+            event.preventDefault();
+            sortTableByColumn(th);
+          }
+        }
+      });
+
+      initScrollIndicators();
     }
   };
 
