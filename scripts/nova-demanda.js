@@ -303,7 +303,7 @@ ${atosTexto}
 ---
 
 ### INSTRUÇÃO AO AGENTE
-> "Atue como Especialista em UI/UX do BCB. Diagramar exclusivamente a malha de conteúdo interno desta demanda adotando as diretrizes oficiais de .antigravityrules e da skill gerador-ui-bcb. Salvar o protótipo canônico em prototipos/${slug}.html contendo ESTRITAMENTE o container <main id=\"conteudo-principal\" class=\"bcb-container container py-4 mb-5\"> com H1 único (.bcb-page-title), seções em .bcb-section, grid 12 colunas Bootstrap (.bcb-row e .bcb-col-*) e botão de retorno ao topo. É TERMINANTEMENTE PROIBIDO gerar tags globais (<html>, <head>, <body>, <!DOCTYPE>), casca externa (sem <header>, sem <footer>, sem breadcrumbs) ou estilos inline (style=\"...\")."
+> "Atue como Especialista em UI/UX do BCB. Diagramar exclusivamente a malha de conteúdo interno desta demanda adotando as diretrizes oficiais de .antigravityrules e da skill gerador-ui-bcb. Salvar o protótipo canônico em prototipos/${slug}.html contendo ESTRITAMENTE o container <main id=\"conteudo-principal\" class=\"bcb-container container py-4 mb-5\"> com H1 único (.bcb-page-title), seções em .bcb-section, grid 12 colunas Bootstrap (.bcb-row e .bcb-col-*) e botão de retorno ao topo. É TERMINANTEMENTE PROIBIDO gerar tags globais (<html>, <head>, <body>, <!DOCTYPE>), tags <script>, casca externa (sem <header>, sem <footer>, sem breadcrumbs) ou estilos inline (style=\"...\")."
 `;
 
 fs.writeFileSync(caminhoArquivoDestino, template, 'utf8');

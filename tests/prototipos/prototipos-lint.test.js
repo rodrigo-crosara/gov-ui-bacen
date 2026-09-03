@@ -140,7 +140,8 @@ for (const arquivo of arquivosHTML) {
   const ehPrototipo = !ehHarness && nomeRelativo.startsWith('prototipos/');
 
   // 1. INTEGRIDADE DE ESTILOS E TOKENS OFICIAIS
-  if (!conteudo.includes('bcb-style.css')) {
+  // Protótipos são fragmentos de conteúdo sem <head>; estilos são providos pela casca do harness
+  if (!ehPrototipo && !conteudo.includes('bcb-style.css')) {
     problemas.push('Folha de estilo oficial bcb-style.css não importada.');
   }
 
@@ -203,10 +204,29 @@ for (const arquivo of arquivosHTML) {
     problemas.push(`${totalImagens - totalImagensAlt} imagem(ns) sem atributo alt obrigatório.`);
   }
 
-  // 3. MODULARIDADE E RESTRIÇÃO AO MIOLO DA INTERFACE (PROTÓTIPOS)
+  // 3. MODULARIDADE E RESTRIÇÃO AO CORPO DE CONTEÚDO (PROTÓTIPOS)
   if (ehPrototipo) {
+    // 3.0 Proibição estrita de tags estruturais completas e scripts em fragmentos
+    if (conteudo.toLowerCase().includes('<!doctype')) {
+      problemas.push('Tag <!DOCTYPE> detectada — protótipos devem ser fragmentos semânticos de conteúdo.');
+    }
+    if (conteudo.match(/<html[\s>]/i)) {
+      problemas.push('Tag <html> detectada — protótipos devem ser fragmentos semânticos de conteúdo.');
+    }
+    if (conteudo.match(/<head[\s>]/i)) {
+      problemas.push('Tag <head> detectada — protótipos devem ser fragmentos semânticos de conteúdo.');
+    }
+    if (conteudo.match(/<body[\s>]/i)) {
+      problemas.push('Tag <body> detectada — protótipos devem ser fragmentos semânticos de conteúdo.');
+    }
+    const tagsScriptTotal = conteudo.match(/<script[\s>]/gi) || [];
+    if (tagsScriptTotal.length > 0) {
+      problemas.push(`${tagsScriptTotal.length} tag(s) <script> detectada(s) em protótipo — scripts são providos centralizadamente pela casca.`);
+    }
+
     // 3.1 Exatamente 1 elemento <main> identificado como conteúdo principal
-    const totalMain = (conteudo.match(/<main[\s>]/gi) || []).length;
+    const conteudoLimpo = conteudo.replace(/<!--[\s\S]*?-->/g, '').trim();
+    const totalMain = (conteudoLimpo.match(/<main[\s>]/gi) || []).length;
     if (totalMain !== 1) {
       problemas.push(`Quantidade inválida de tags <main> (${totalMain}) — protótipos devem conter exatamente 1 tag <main>.`);
     }
@@ -218,90 +238,61 @@ for (const arquivo of arquivosHTML) {
     if (conteudo.includes('id="barra-brasil"') || conteudo.includes("id='barra-brasil'")) {
       problemas.push('Barra Brasil (#barra-brasil) detectada — cascas externas são providas pelo portal.');
     }
-    if (conteudo.match(/<header[\s>]/gi)) {
+    if (conteudoLimpo.match(/<header[\s>]/gi)) {
       problemas.push('Tag <header> detectada em protótipo — a prototipagem foca exclusivamente no miolo semântico da página.');
     }
-    const tagsFooter = conteudo.match(/<footer[\s>]/gi) || [];
+    const tagsFooter = conteudoLimpo.match(/<footer[\s>]/gi) || [];
     if (tagsFooter.length > 0) {
       problemas.push(`${tagsFooter.length} tag(s) <footer> detectada(s) em protótipo — rodapés globais são providos pelo portal e citações devem utilizar <cite class="blockquote-footer">.`);
     }
-    if (conteudo.match(/<nav[^>]*class=["'][^"']*govbr[^"']*["']/gi)) {
+    if (conteudoLimpo.match(/<nav[^>]*class=["'][^"']*govbr[^"']*["']/gi)) {
       problemas.push('Elemento <nav class="govbr..."> detectado em protótipo.');
     }
 
     // 3.2.1 Proibição estrita de Breadcrumbs em protótipos (elemento de casca fixa provido pelo CMS)
-    if (conteudo.includes('breadcrumb') || conteudo.match(/<nav[^>]*aria-label=["'][^"']*(?:trilha|breadcrumb)/gi)) {
+    if (conteudoLimpo.includes('breadcrumb') || conteudoLimpo.match(/<nav[^>]*aria-label=["'][^"']*(?:trilha|breadcrumb)/gi)) {
       problemas.push('Breadcrumb detectado em protótipo — a trilha de navegação é fixa e fornecida pelo portal institucional (simulada dinamicamente no _harness.html).');
     }
 
     // 3.3 Proibição de tags customizadas órfãs/obsoletas
-    const tagsOrfas = conteudo.match(/<(?:bcb-accordion-page|bcb-callout|bcb-citacao|bcb-olho|listalinks)[\s>]/gi) || [];
+    const tagsOrfas = conteudoLimpo.match(/<(?:bcb-accordion-page|bcb-callout|bcb-citacao|bcb-olho|listalinks)[\s>]/gi) || [];
     if (tagsOrfas.length > 0) {
       problemas.push(`${tagsOrfas.length} tag(s) obsoleta(s) detectada(s). Utilize componentes HTML5 nativos do BCB Design System.`);
     }
 
-    // 3.4 Proibição estrita de scripts inline e manipuladores de evento inline (pasta prototipos/)
-    const ehPrototipoOficial = nomeRelativo.startsWith('prototipos/') && !ehHarness;
-    if (ehPrototipoOficial) {
-      const tagsScriptInline = conteudo.match(/<script(?![^>]*src=)[^>]*>([\s\S]*?)<\/script>/gi) || [];
-      if (tagsScriptInline.length > 0) {
-        problemas.push(`${tagsScriptInline.length} bloco(s) de <script> inline detectado(s). A reatividade deve ser delegada exclusivamente a assets/js/bcb-ui.js.`);
-      }
-      const handlersInline = conteudo.match(/\son[a-z]+=["'][^"']*["']/gi) || [];
-      if (handlersInline.length > 0) {
-        problemas.push(`${handlersInline.length} manipulador(es) inline de evento detectado(s) (${handlersInline.join(', ')}). Utilize seletores de dados como data-action e delegue a assets/js/bcb-ui.js.`);
-      }
+    // 3.4 Proibição estrita de manipuladores de evento inline
+    const handlersInline = conteudoLimpo.match(/\son[a-z]+=["'][^"']*["']/gi) || [];
+    if (handlersInline.length > 0) {
+      problemas.push(`${handlersInline.length} manipulador(es) inline de evento detectado(s) (${handlersInline.join(', ')}). Utilize seletores de dados como data-action e delegue a assets/js/bcb-ui.js.`);
+    }
 
     // 3.5 Restrição estrita de conteúdo ao container <main id="conteudo-principal" class="bcb-container">
-      const matchBody = conteudo.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-      if (matchBody) {
-        const corpoBody = matchBody[1];
-        const partes = corpoBody.split(/<main[\s\S]*?<\/main>/i);
-        if (partes.length === 2) {
-          const antesDoMain = partes[0].trim();
-          const depoisDoMain = partes[1].trim();
+    if (!conteudoLimpo.startsWith('<main') || !conteudoLimpo.endsWith('</main>')) {
+      problemas.push('O protótipo deve iniciar diretamente no elemento <main id="conteudo-principal"> e finalizar em </main> (permitidos apenas comentários HTML fora do container).');
+    }
 
-          // Antes do main só é permitido whitespace e comentários HTML
-          const tagsAntes = antesDoMain.replace(/<!--[\s\S]*?-->/g, '').trim();
-          if (tagsAntes.length > 0 && tagsAntes.includes('<')) {
-            problemas.push(`Nó HTML não autorizado detectado antes do <main>: "${tagsAntes.substring(0, 80)}...". Todo o conteúdo deve residir estritamente dentro de <main id="conteudo-principal">.`);
-          }
+    // 3.6 Proibição de estilos inline arbitrários em protótipos oficiais
+    const styleAttributes = conteudo.match(/style=["'][^"']*["']/gi) || [];
+    if (styleAttributes.length > 0) {
+      problemas.push(`${styleAttributes.length} ocorrência(s) de estilo inline (style="...") detectada(s). Utilize as classes oficiais do Design System (_helpers.css e tokens).`);
+    }
 
-          // Depois do main só é permitido whitespace, comentários, <script src="..."> e <noscript>
-          const tagsDepois = depoisDoMain
-            .replace(/<!--[\s\S]*?-->/g, '')
-            .replace(/<script[^>]*src=[^>]*><\/script>/gi, '')
-            .replace(/<noscript>[\s\S]*?<\/noscript>/gi, '')
-            .trim();
-          if (tagsDepois.length > 0 && tagsDepois.includes('<')) {
-            problemas.push(`Nó HTML não autorizado detectado após o </main>: "${tagsDepois.substring(0, 80)}...". Nenhum nó estrutural pode ser irmão do container <main>.`);
-          }
-        }
+    // 3.7 Validação da Hierarquia Tipográfica Sequencial (sem pular níveis)
+    const tagsHeading = conteudo.match(/<h([1-6])[\s>]/gi) || [];
+    const niveis = tagsHeading.map(h => parseInt(h.match(/<h([1-6])/i)[1], 10));
+    let nivelAnterior = 1;
+    for (let i = 0; i < niveis.length; i++) {
+      const nivelAtual = niveis[i];
+      if (i > 0 && nivelAtual > nivelAnterior + 1) {
+        problemas.push(`Salto inválido na hierarquia tipográfica: <h${nivelAnterior}> seguido por <h${nivelAtual}> (WCAG 1.3.1). Não pule níveis de cabeçalho.`);
       }
+      nivelAnterior = nivelAtual;
+    }
 
-      // 3.6 Proibição de estilos inline arbitrários em protótipos oficiais
-      const styleAttributes = conteudo.match(/style=["'][^"']*["']/gi) || [];
-      if (styleAttributes.length > 0) {
-        problemas.push(`${styleAttributes.length} ocorrência(s) de estilo inline (style="...") detectada(s). Utilize as classes oficiais do Design System (_helpers.css e tokens).`);
-      }
-
-      // 3.7 Validação da Hierarquia Tipográfica Sequencial (sem pular níveis)
-      const tagsHeading = conteudo.match(/<h([1-6])[\s>]/gi) || [];
-      const niveis = tagsHeading.map(h => parseInt(h.match(/<h([1-6])/i)[1], 10));
-      let nivelAnterior = 1;
-      for (let i = 0; i < niveis.length; i++) {
-        const nivelAtual = niveis[i];
-        if (i > 0 && nivelAtual > nivelAnterior + 1) {
-          problemas.push(`Salto inválido na hierarquia tipográfica: <h${nivelAnterior}> seguido por <h${nivelAtual}> (WCAG 1.3.1). Não pule níveis de cabeçalho.`);
-        }
-        nivelAnterior = nivelAtual;
-      }
-
-      // 3.8 Validação Estrita de Iconografia Material Icons
-      const iconesEstrangeiros = conteudo.match(/class=["'][^"']*(?:fa-|glyphicon-|feather-|lucide-)[^"']*["']/gi) || [];
-      if (iconesEstrangeiros.length > 0) {
-        problemas.push(`${iconesEstrangeiros.length} ícone(s) com biblioteca não homologada detectado(s). Padronize exclusivamente com Material Icons (.material-symbols-outlined.material-icons).`);
-      }
+    // 3.8 Validação Estrita de Iconografia Material Icons
+    const iconesEstrangeiros = conteudo.match(/class=["'][^"']*(?:fa-|glyphicon-|feather-|lucide-)[^"']*["']/gi) || [];
+    if (iconesEstrangeiros.length > 0) {
+      problemas.push(`${iconesEstrangeiros.length} ícone(s) com biblioteca não homologada detectado(s). Padronize exclusivamente com Material Icons (.material-symbols-outlined.material-icons).`);
     }
 
     // 3.9 Modularidade de Grid Flexível 12 Colunas Bootstrap Oficial

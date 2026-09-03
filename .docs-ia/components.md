@@ -5,13 +5,32 @@
 > Toda IA e desenvolvedor deve seguir rigorosamente os contratos semânticos de classes Bootstrap 4.6, Material Icons e tokens CSS do BCB.
 
 > [!IMPORTANT]
-> **Escopo Estrito de Prototipagem (Miolo vs. Casca):**
-> Componentes de casca global (`<header>`, `<footer>`, `<nav aria-label="breadcrumb">`) são exclusivos do CMS institucional e simulados no visualizador técnico (`prototipos/_harness.html`).
-> Nos arquivos de protótipos (`prototipos/*.html`), a saída é restrita **exclusivamente aos componentes do miolo interno (`<main id="conteudo-principal">`)**, sendo terminantemente proibido o uso de `<html>`, `<head>`, `<body>`, `<header>`, `<footer>`, breadcrumbs ou estilos inline.
+> **Escopo Estrito de Prototipagem (Fragmento de Conteúdo Central vs. Casca Global):**
+> Componentes de casca global (`#barra-brasil`, `<header>`, `<footer>`, `<nav aria-label="breadcrumb">`) e tags de documento (`<!DOCTYPE>`, `<html>`, `<head>`, `<body>`, `<script>`) são **suprimidos da prototipagem de páginas**. Esses elementos são mantidos de forma centralizada pelo CMS do portal do BCB e simulados dinamicamente no visualizador técnico (`prototipos/_harness.html`).
+> Nos arquivos de protótipos (`prototipos/*.html`), a geração é **exclusiva para os blocos semânticos do corpo central (`<main id="conteudo-principal">... </main>`)**.
 
 ---
 
-## Sumário Atômico de Componentes
+## 🏛️ Catálogo Prioritário de Blocos de Conteúdo Central
+
+Ao transformar demandas em interfaces do Banco Central, priorize a combinação dos seguintes blocos canônicos de conteúdo central:
+
+| Bloco de Conteúdo | Contratos de Classe / Markup | Finalidade Principal | Exemplos no BCB |
+|---|---|---|---|
+| **1. Indicadores & KPIs** | `.bcb-indicator-card`, `.bcb-kpi-card`, `.bcb-indicator-value`, `.bcb-indicator-trend` | Destaque numérico de metas econômicas, taxas, percentuais e variações temporais. | Meta da Taxa Selic, IPCA, PTAX, Reservas Internacionais. |
+| **2. Cards de Conteúdo** | `.card.bcb-card`, `.card-header`, `.card-body`, `.listalinks` | Agrupamento temático de serviços, temas correlatos, atalhos rápidos e resumos normativos. | Canais de Atendimento, Prazos MED, Acesso a Sistemas. |
+| **3. Tabelas de Dados** | `.table-responsive`, `.table.table-striped.table-hover`, `<caption>`, `.bcb-data-export` | Apresentação tabular densa com acessibilidade, alinhamento numérico à direita e toolbar de exportação. | Séries SGS (SGS 432), Histórico do Copom, Tarifas Bancárias. |
+| **4. Alertas de Validação** | `.bcb-alert.bcb-alert-success|warning|danger|info`, `.alert` | Mensagens inline de feedback imediato, avisos contextuais e validações operacionais. | Confirmação de envio de demanda, avisos de instabilidade temporária. |
+| **5. Callouts Estruturados** | `.callout.callout-warning|brand|danger`, `.callout-left-bordered` | Avisos de destaque normativo, segurança contra golpes, alertas de prazo e comunicados críticos. | Atenção a Golpes no Pix, Prazos para Contestação, Vigência de Circular. |
+| **6. Formulários & Controles** | `.form-group`, `.form-control`, `.custom-select`, `.form-check`, `.bcb-filter-panel` | Filtros facetados de busca, consultas parametrizadas, simulações e formulários de serviços. | Filtro de Séries Temporais, Consulta de Cheque Especial, Busca de Normas. |
+| **7. Seções Expansíveis** | `.accordion.modelo-1`, `.card-header`, `[data-toggle="collapse"]` | Perguntas frequentes (FAQ), detalhamentos técnicos opcionais e regulamentação minuciosa. | Dúvidas Frequentes do MED, Regras Operacionais Detalhadas. |
+| **8. Listas de Processo** | `<ol class="process-list">`, `.process-step`, `.step-number` | Roteiro cronológico passo a passo de como o cidadão ou entidade financeira deve proceder. | Como Solicitar a Devolução Pix, Passo a Passo do Registrato. |
+
+> 🚫 **GUIAS DE CASCA GLOBAL SUPRIMIDOS:** Barra de Governo (#barra-brasil), Cabeçalho Principal (<header>), Rodapé Institucional (<footer>) e Trilha de Navegação (breadcrumbs) **NÃO integram o catálogo de componentes a serem produzidos nas páginas de protótipos**.
+
+---
+
+## Sumário Atômico de Componentes do Conteúdo Central
 
 ### Nível 1: Átomos Semânticos
 1. [Botões (Buttons)](#1-botões-buttons) — `.btn`, `.btn-primary`, `.btn-secondary`, `.btn-outline-primary`
@@ -30,15 +49,14 @@
 12. [Barra de Utilidades da Página](#31-barra-de-utilidades-da-página-bcb-page-toolbar) — `.bcb-page-toolbar`
 13. [Cards de Links Rápidos (Listalinks)](#19-cards-de-links-rápidos-listalinks) — `.listalinks`
 14. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa) — `.tip-box`
-15. [Breadcrumbs Acessíveis (Casca/Harness Apenas)](#4-breadcrumbs-acessíveis-bcb-breadcrumb-nav) — `.bcb-breadcrumb-nav` *(Proibido em protótipos)*
 
 ### Nível 3: Organismos e Padrões Compostos
-16. [Data Table Responsiva com Exportação](#14-data-table-responsiva-séries-e-taxas) — `.table-responsive`, `.bcb-data-export`
-17. [Process List / Stepper Sequencial](#10-process-list-passo-a-passo) — `<ol class="process-list">`
-18. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis) — `.accordion.modelo-1`
-19. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada) — `.bcb-filter-panel`
-20. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs) — `.nav-tabs`
-21. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis) — `.modal`
+15. [Data Table Responsiva com Exportação](#14-data-table-responsiva-séries-e-taxas) — `.table-responsive`, `.bcb-data-export`
+16. [Process List / Stepper Sequencial](#10-process-list-passo-a-passo) — `<ol class="process-list">`
+17. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis) — `.accordion.modelo-1`
+18. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada) — `.bcb-filter-panel`
+19. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs) — `.nav-tabs`
+20. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis) — `.modal`
 
 ---
 

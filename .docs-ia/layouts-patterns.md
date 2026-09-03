@@ -5,10 +5,10 @@
 > A IA e os webdesigners devem utilizar estes contratos semânticos para projetar interfaces dinâmicas, responsivas e acessíveis a partir da semântica dos dados, sem dependência de templates rígidos.
 
 > [!IMPORTANT]
-> **Definição de Escopo de Prototipagem (Casca Fixa vs. Miolo Central):**
-> No portal institucional do BCB, cabeçalho (`<header>`), rodapé (`<footer>`) e breadcrumbs (`<nav aria-label="breadcrumb">`) são componentes fixos, globais e imutáveis mantidos centralizadamente pelo CMS institucional e simulados dinamicamente no visualizador técnico (`prototipos/_harness.html`).
-> **É TERMINANTEMENTE PROIBIDO** gerar `<html>`, `<head>`, `<body>`, `<!DOCTYPE>`, `<header>`, `<footer>`, breadcrumbs ou estilos inline (`style="..."`) nos arquivos de protótipo (`prototipos/*.html`).
-> A prototipagem restringe-se **exclusivamente à malha interna de conteúdo** (`<main id="conteudo-principal" class="bcb-container container py-4 mb-5">`), iniciando no `<h1>` institucional e encerrando no botão padronizado de retorno ao topo.
+> **Definição de Escopo de Prototipagem (Casca Global Suprimida vs. Corpo Central de Conteúdo):**
+> No portal institucional do BCB, barra de governo (`#barra-brasil`), cabeçalho (`<header>`), rodapé (`<footer>`) e breadcrumbs (`<nav aria-label="breadcrumb">`) são componentes fixos, globais e imutáveis mantidos centralizadamente pelo CMS institucional e simulados dinamicamente no visualizador técnico (`prototipos/_harness.html`).
+> **É TERMINANTEMENTE PROIBIDO** gerar `<html>`, `<head>`, `<body>`, `<!DOCTYPE>`, tags `<script>`, casca externa (`<header>`, `<footer>`, breadcrumbs) ou estilos inline (`style="..."`) nos arquivos de protótipo (`prototipos/*.html`).
+> A prototipagem restringe-se **exclusivamente à malha interna de conteúdo** (`<main id="conteudo-principal" class="bcb-container container py-4 mb-5">... </main>`), iniciando no `<h1>` institucional e encerrando no botão padronizado de retorno ao topo. Todas as diretrizes de casca global estão formalmente **suprimidas** das tarefas de prototipagem de página.
 
 ---
 

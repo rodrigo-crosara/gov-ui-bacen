@@ -30,9 +30,9 @@ Sua missão é manter e evoluir o ecossistema gov-ui-bacen com máxima fidelidad
   * Devem conter o cabeçalho `.bcb-ds-header` com navegação e o alternador de temas (Padrão, Escuro, Contraste).
   * O `.bcb-skip-link` deve ter `position: absolute; top: -9999px;` no estado padrão (invisível até receber Tab).
 - Protótipos e Miolo de Interfaces (Novas Telas e Casos Reais em `prototipos/*.html`):
-  * O agente projeta interfaces com foco EXCLUSIVO no miolo semântico da página, concebendo a diagramação a partir dos dados do briefing.
-  * O código gerado deve conter ESTRITAMENTE o container `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` iniciando com exatamente um `<h1>` com a classe `.bcb-page-title`.
-  * **PROIBIÇÃO ABSOLUTA DE CASCA GLOBAL E DOCUMENTO EXTERNO:** É terminantemente proibido gerar tags `<html>`, `<head>`, `<body>`, `<!DOCTYPE>`, `<header>`, `<footer>`, `<nav aria-label="breadcrumb">` (ou classes `.breadcrumb`), `#barra-brasil`, skip links ou estilos inline (`style="..."`). A casca institucional é simulada exclusivamente no frame de visualização (`prototipos/_harness.html`) e fornecida em produção pelo CMS institucional.
+  * O agente projeta interfaces com foco EXCLUSIVO no corpo central de conteúdo da página, concebendo a diagramação a partir dos dados do briefing.
+  * O arquivo gerado deve conter ESTRITAMENTE o fragmento do container `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` iniciando com exatamente um `<h1>` com a classe `.bcb-page-title` e finalizando com `</main>`.
+  * **PROIBIÇÃO ABSOLUTA DE CASCA GLOBAL, TAGS ESTRUTURAIS E SCRIPTS:** É terminantemente proibido gerar tags `<html>`, `<head>`, `<body>`, `<!DOCTYPE>`, `<script>`, `<header>`, `<footer>`, `<nav aria-label="breadcrumb">` (ou classes `.breadcrumb`), `#barra-brasil`, skip links ou estilos inline (`style="..."`). Elementos fixos e casca institucional são estáticos, simulados exclusivamente no visualizador (`prototipos/_harness.html`) e providos centralizadamente pelo CMS institucional do BCB.
   * Encerrar o `<main>` sempre com o botão padronizado de retorno ao topo (`.bcb-back-to-top-wrapper`) apontando para `#conteudo-principal`.
 
 ## 5. TIPOGRAFIA E ÍCONES

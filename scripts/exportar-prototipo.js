@@ -72,37 +72,28 @@ const htmlOriginal = fs.readFileSync(arquivoOrigem, 'utf8');
 
 // Extrair <main>
 const matchMain = htmlOriginal.match(/<main[\s\S]*?<\/main>/i);
-if (!matchMain) {
-  console.error('❌ Elemento <main> não encontrado no protótipo.');
+const mioloHtml = matchMain ? matchMain[0] : htmlOriginal.trim();
+
+if (!mioloHtml.includes('conteudo-principal')) {
+  console.error('❌ Elemento <main id="conteudo-principal"> não identificado no protótipo.');
   process.exit(1);
 }
-const mioloHtml = matchMain[0];
 
-// Extrair título
-const matchTitle = htmlOriginal.match(/<title>([\s\S]*?)<\/title>/i);
-const titulo = matchTitle ? matchTitle[1].trim() : `Protótipo ${slug}`;
-
-// Extrair H1
+// Extrair H1 e título a partir do corpo de conteúdo semântico
 const matchH1 = htmlOriginal.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-const h1Texto = matchH1 ? matchH1[1].replace(/<[^>]+>/g, '').trim() : titulo;
+const h1Texto = matchH1 ? matchH1[1].replace(/<[^>]+>/g, '').trim() : `Protótipo ${slug}`;
+const titulo = h1Texto;
 
 // Criar pasta de destino
 const pastaExportacao = path.join(DIR_DIST, slug);
 fs.mkdirSync(pastaExportacao, { recursive: true });
 
-// 1. Salvar miolo puro (HTML de integração)
+// 1. Salvar exclusivamente o corpo de conteúdo puro (HTML de integração para CMS)
+const caminhoCorpo = path.join(pastaExportacao, 'corpo-conteudo.html');
+fs.writeFileSync(caminhoCorpo, mioloHtml, 'utf8');
+
 const caminhoMiolo = path.join(pastaExportacao, 'miolo.html');
 fs.writeFileSync(caminhoMiolo, mioloHtml, 'utf8');
-
-// 2. Salvar página completa de visualização
-const caminhoCompleta = path.join(pastaExportacao, 'pagina-completa.html');
-// Ajustar caminhos relativos de CSS/JS para o pacote local
-const htmlAjustado = htmlOriginal
-  .replace(/href="\.\.\/assets\//g, 'href="./assets/')
-  .replace(/href="assets\//g, 'href="./assets/')
-  .replace(/src="\.\.\/assets\//g, 'src="./assets/')
-  .replace(/src="assets\//g, 'src="./assets/');
-fs.writeFileSync(caminhoCompleta, htmlAjustado, 'utf8');
 
 // 3. Copiar assets locais para entrega autocontida
 function copiarDiretorioRecursivo(origem, destino) {
@@ -138,9 +129,9 @@ const manifesto = {
     suporteTemas: ['Padrão (Claro)', 'Dark Mode (data-theme="dark")', 'Alto Contraste (data-contrast="high")']
   },
   arquivosEntregues: [
-    'miolo.html (Markup limpo do <main> para colar no CMS ou templates do backend)',
-    'pagina-completa.html (Visualização autônoma da tela no navegador)',
-    'manifest.json (Metadados de integração)',
+    'corpo-conteudo.html (Markup semântico estrito do <main> para inserção no CMS)',
+    'miolo.html (Alias do corpo de conteúdo para integração direta)',
+    'manifest.json (Metadados estruturais da exportação)',
     'README.md (Instruções técnicas para os desenvolvedores)',
     'assets/ (Folhas de estilo bcb-style.css e scripts bcb-ui.js)'
   ]
@@ -156,8 +147,7 @@ Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos des
 
 ## 📦 Conteúdo do Pacote
 
-- **\`miolo.html\`:** O markup semântico estrito do container \`<main id="conteudo-principal">\`. Este é o arquivo que deve ser injetado no layout principal do CMS ou framework (Drupal, Django, Spring MVC, React, Vue, Angular, etc.).
-- **\`pagina-completa.html\`:** Visualização do protótipo no navegador já com links locais para a pasta \`assets/\`.
+- **\`corpo-conteudo.html\` (ou \`miolo.html\`):** O markup semântico estrito do container \`<main id="conteudo-principal">\`. Este é o arquivo que deve ser injetado no layout principal do CMS ou framework (Drupal, Django, Spring MVC, React, Vue, Angular, etc.).
 - **\`assets/\`:** Folhas de estilo (\`assets/css/bcb-style.css\`) e comportamentos interativos (\`assets/js/bcb-ui.js\`).
 - **\`manifest.json\`:** Metadados estruturais da exportação.
 
@@ -165,11 +155,11 @@ Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos des
 
 ## 🛠️ Como Integrar no Backend / CMS
 
-1. **Injeção do Miolo:**
-   Copie o conteúdo de \`miolo.html\` para o slot de conteúdo da sua página:
+1. **Injeção do Corpo de Conteúdo:**
+   Copie o conteúdo de \`corpo-conteudo.html\` para o slot de conteúdo da sua página:
    \`\`\`html
    <!-- Slot Central do Template CMS -->
-   {{ miolo_html }}
+   {{ corpo_conteudo_html }}
    \`\`\`
 2. **Dependências de CSS (no <head>):**
    - Bootstrap 4.6 (CSS)
@@ -184,7 +174,7 @@ Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos des
 
 ## ♿ Conformidade e Acessibilidade
 - **WCAG 2.1 AA & e-MAG 3.1:** Validado sem erros de contraste ou estrutura.
-- **Navegação:** Foco exclusivo no miolo com botão de retorno ao topo (breadcrumbs e casca institucional fornecidos pelo portal).
+- **Navegação:** Foco exclusivo no corpo de conteúdo com botão de retorno ao topo (breadcrumbs, header e footer institucionais fornecidos pelo portal).
 - **Alvos de Toque:** Dimensão mínima de 44x44px em resoluções mobile.
 `;
 fs.writeFileSync(path.join(pastaExportacao, 'README.md'), readmeEngenharia, 'utf8');
@@ -192,10 +182,10 @@ fs.writeFileSync(path.join(pastaExportacao, 'README.md'), readmeEngenharia, 'utf
 console.log('\n=======================================================');
 console.log('📦 BCB Design System — Pacote de Exportação Gerado');
 console.log('=======================================================');
-console.log(`🎯 Protótipo:      ${slug}`);
-console.log(`📁 Diretório:      dist/exportacoes/${slug}/`);
-console.log(`📄 Miolo puro:     dist/exportacoes/${slug}/miolo.html`);
-console.log(`🌐 Preview local:  dist/exportacoes/${slug}/pagina-completa.html`);
-console.log(`📋 Manifesto:      dist/exportacoes/${slug}/manifest.json`);
-console.log(`📖 Documentação:   dist/exportacoes/${slug}/README.md`);
+console.log(`🎯 Protótipo:          ${slug}`);
+console.log(`📁 Diretório:          dist/exportacoes/${slug}/`);
+console.log(`📄 Corpo de conteúdo:  dist/exportacoes/${slug}/corpo-conteudo.html`);
+console.log(`📄 Miolo puro (alias): dist/exportacoes/${slug}/miolo.html`);
+console.log(`📋 Manifesto:          dist/exportacoes/${slug}/manifest.json`);
+console.log(`📖 Documentação:       dist/exportacoes/${slug}/README.md`);
 console.log('=======================================================\n');

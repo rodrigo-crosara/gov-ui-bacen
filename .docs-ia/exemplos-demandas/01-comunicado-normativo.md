@@ -39,4 +39,4 @@ do Comitê será publicada na próxima terça-feira, às 8h, no portal do Banco 
 ---
 
 ### INSTRUÇÃO AO AGENTE
-> "Atue como Especialista em UI/UX do BCB. Diagramar o miolo desta nota normativa adotando o layout modular 70/30 (.bcb-col-lg-8 para o corpo editorial com lead e citação oficial diretorial, e .bcb-col-lg-4 para a coluna lateral com os downloads dos atos e resoluções em .documentos)."
+> "Atue como Especialista em UI/UX do BCB. Diagramar exclusivamente o corpo central de conteúdo desta nota normativa, iniciando diretamente em <main id=\"conteudo-principal\" class=\"bcb-container container py-4 mb-5\"> com H1 único (.bcb-page-title) e encerrando em </main> com botão de retorno ao topo. Adotar o layout modular 70/30 (.bcb-col-lg-8 para o corpo editorial com lead e citação oficial diretorial, e .bcb-col-lg-4 para a coluna lateral com os downloads dos atos e resoluções em .documentos). É terminantemente proibido incluir tags de documento completo (<html>, <head>, <body>, <!DOCTYPE>), tags <script>, cascas externas (<header>, <footer>, breadcrumbs) ou estilos inline (style=\"...\")."

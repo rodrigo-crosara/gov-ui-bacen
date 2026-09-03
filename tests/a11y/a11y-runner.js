@@ -78,13 +78,15 @@ function auditoriaEstaticaAcessibilidade(caminhoArquivo, caminhoRelativo) {
   const ehHarness = path.basename(caminhoArquivo).startsWith('_');
   const ehPrototipo = caminhoRelativo.startsWith('/prototipos/') && !ehHarness;
 
-  // 1. Tag html deve ter lang="pt-BR" (WCAG 3.1.1)
-  if (!conteudo.match(/<html[^>]*lang=["']pt-BR["']/i)) {
+  const ehDocumentoCompleto = conteudo.includes('<html') || conteudo.toLowerCase().includes('<!doctype');
+
+  // 1. Tag html deve ter lang="pt-BR" (WCAG 3.1.1) - aplicado em documentos completos
+  if (ehDocumentoCompleto && !conteudo.match(/<html[^>]*lang=["']pt-BR["']/i)) {
     problemas.push('Elemento <html> deve possuir lang="pt-BR" (WCAG 3.1.1).');
   }
 
-  // 2. Head deve conter <meta name="viewport"> (WCAG 1.4.4 / 1.4.10)
-  if (!conteudo.includes('name="viewport"')) {
+  // 2. Head deve conter <meta name="viewport"> (WCAG 1.4.4 / 1.4.10) - aplicado em documentos completos
+  if (ehDocumentoCompleto && !conteudo.includes('name="viewport"')) {
     problemas.push('Meta viewport ausente para responsividade (WCAG 1.4.4 / 1.4.10).');
   }
 
@@ -176,8 +178,8 @@ function auditoriaEstaticaAcessibilidade(caminhoArquivo, caminhoRelativo) {
       }
     });
 
-    // 14. Navegação por Teclado: Trilha de Navegação (Breadcrumb) Acessível
-    if (conteudo.includes('breadcrumb')) {
+    // 14. Navegação por Teclado: Trilha de Navegação (Breadcrumb) Acessível (em documentos da documentação)
+    if (!ehPrototipo && conteudo.includes('breadcrumb')) {
       const matchNavBreadcrumb = conteudo.match(/<nav[^>]*aria-label=["']([^"']+)["'][^>]*>[\s\S]*?<ol[^>]*class=["'][^"']*breadcrumb/i);
       if (!matchNavBreadcrumb) {
         problemas.push('Trilha de navegação deve estar envolvida em <nav aria-label="..."> com <ol class="breadcrumb"> para navegação semântica.');

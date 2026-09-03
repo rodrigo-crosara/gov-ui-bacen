@@ -161,15 +161,16 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
 1. **Restrição Mandante de Saída ao Nó `<main class="bcb-container">`:**
    - O agente entrega **estritamente o nó do container de conteúdo principal**:
      `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` (ou fragmento `<section class="bcb-section">` caso seja solicitado apenas o recorte de um slot).
-   - **BANIMENTO EXPRESSO DE ELEMENTOS GLOBAIS E CASCA INSTITUCIONAL:**
+   - **BANIMENTO EXPRESSO DE ELEMENTOS GLOBAIS, CASCA INSTITUCIONAL E SCRIPTS:**
      - ❌ **TOTALMENTE BANIDO:** Tags estruturais de documento completo (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`). O agente NUNCA deve gerar cabeçalho técnico HTML ou casca externa.
+     - ❌ **TOTALMENTE BANIDO:** Tags de script (`<script src="...">` ou `<script>...</script>`). Toda reatividade é delegada a `assets/js/bcb-ui.js` e provida no visualizador `_harness.html`.
      - ❌ **TOTALMENTE BANIDO:** Tag `<header>` e barras de navegação globais.
      - ❌ **TOTALMENTE BANIDO:** Tag `<footer>` institucional, rodapés de portal ou tag `<footer>` em citações (utilize `<cite class="blockquote-footer">`).
      - ❌ **TOTALMENTE BANIDO:** Barra Brasil (`#barra-brasil`, `.bcb-govbr-bar`).
      - ❌ **TOTALMENTE BANIDO:** Breadcrumbs (`<nav aria-label="breadcrumb">`, `.breadcrumb`).
      - ❌ **TOTALMENTE BANIDO:** Menus laterais globais de portal ou skip links redundantes.
      - ❌ **TOTALMENTE BANIDO:** Estilos inline (`style="..."`).
-   - **Justificativa Técnica:** Elementos de casca fixa (header, breadcrumb e footer) são providos de forma centralizada pelo CMS institucional do portal BCB e simulados dinamicamente no visualizador técnico (`prototipos/_harness.html`). O papel exclusivo do agente é conceber a diagramação semântica e funcional do miolo interno.
+   - **Justificativa Técnica:** Elementos de casca fixa (header, breadcrumbs e footer) e scripts globais são estáticos, providos de forma centralizada pelo CMS institucional do portal BCB e embutidos estaticamente no visualizador técnico (`prototipos/_harness.html`). O papel exclusivo do agente é conceber o corpo central de conteúdo semântico (`<main>`).
 
 2. **Diretriz Obrigatória de Saída de Arquivos (`prototipos/<slug>.html`):**
    - Todo novo protótipo gerado pelo agente DEVE ser salvo obrigatoriamente no caminho canônico:
@@ -310,6 +311,7 @@ Antes de entregar qualquer novo protótipo ou salvar em `prototipos/`, valide ob
 
 ### 7. Navegação Padronizada (Retorno ao Topo e Ausência de Casca/Tags Globais)
 - [ ] O protótipo está **isento de tags globais (`<!DOCTYPE>`, `<html>`, `<head>`, `<body>`)**?
+- [ ] O protótipo está **isento de tags `<script>`** (scripts são providos centralmente pela casca)?
 - [ ] O protótipo está **isento de `<header>`, `<footer>`, `#barra-brasil` e breadcrumbs** (`<nav aria-label="Trilha de navegação">`, `.breadcrumb`)?
 - [ ] O protótipo está **isento de estilos inline (`style="..."`)**?
 - [ ] O botão "Voltar ao topo" (`.bcb-back-to-top-wrapper`) está posicionado no encerramento do `<main>` apontando para `#conteudo-principal`?

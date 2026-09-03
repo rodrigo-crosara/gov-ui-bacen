@@ -31,4 +31,4 @@ O fluxo de trabalho estabelecido é:
 1. **Escolha o modelo correspondente** à demanda recebida da área de negócio.
 2. **Preencha os campos estruturados** (Origem, Objetivo, Público-Alvo, Texto/Dados e Anexos).
 3. **Cole o briefing no chat do agente** ou alimente o Construtor de Prompts em `pages/automacao-ia.html`.
-4. **O agente conceberá o miolo semântico** no grid oficial de 12 colunas, 100% livre de cascas externas redundantes e pronto para o CMS do portal.
+4. **O agente conceberá exclusivamente o corpo central de conteúdo (`<main id="conteudo-principal">... </main>`)** no grid oficial de 12 colunas, 100% livre de tags de documento completo (`<!DOCTYPE>`, `<html>`, `<head>`, `<body>`), tags `<script>` ou cascas externas (`<header>`, `<footer>`, breadcrumbs) e pronto para inserção no CMS do portal.

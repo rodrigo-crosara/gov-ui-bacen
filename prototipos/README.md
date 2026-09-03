@@ -6,21 +6,23 @@ Este diretório armazena exclusivamente as **telas e protótipos de alta fidelid
 
 ## 🎯 Princípios Fundamentais de Prototipagem
 
-1. **Foco Estrito no Miolo Semântico:**
+1. **Foco Estrito no Fragmento de Conteúdo (<main>):**
    Todo protótipo modela exclusivamente o conteúdo interno da página, iniciando diretamente em:
    ```html
+   <!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único — Restrito Estritamente ao <main>) -->
    <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
    ```
-2. **Ausência Total de Cascas Globais Externas e Breadcrumbs:**
-   Nenhum arquivo neste diretório deve conter `<header>`, `<footer>`, `#barra-brasil` ou breadcrumbs. Esses elementos são componentes fixos e imutáveis fornecidos de forma centralizada pelo CMS do portal institucional.
+   e encerrando rigorosamente em `</main>`.
+2. **Ausência Total de Tags Globais, Scripts e Cascas Externas:**
+   Nenhum arquivo de protótipo deve conter `<!DOCTYPE>`, `<html>`, `<head>`, `<body>`, `<script>`, `<header>`, `<footer>`, `#barra-brasil` ou breadcrumbs. Esses elementos são componentes fixos providos de forma centralizada pelo CMS institucional do BCB e simulados estaticamente no visualizador técnico (`_harness.html`).
 3. **Navegação de Retorno ao Topo Acessível:**
-   Inserido na base do `<main>` via `.bcb-back-to-top-wrapper` com link âncora `#conteudo-principal` e ícone `arrow_upward`. A trilha de navegação (breadcrumb) e a casca são simuladas exclusivamente no visualizador técnico (`_harness.html`).
+   Inserido na base do `<main>` via `.bcb-back-to-top-wrapper` com link âncora `#conteudo-principal` e ícone `arrow_upward`. A trilha de navegação (breadcrumb) e a casca institucional são embutidas pelo visualizador técnico (`_harness.html`).
 4. **Grid 12 Colunas Oficial do BCB:**
    A diagramação modular utiliza `.bcb-row` e colunas proporcionais (`.bcb-col-12`, `.bcb-col-lg-8`, `.bcb-col-lg-4`, `.bcb-col-md-6`, `.bcb-col-md-4`) com comentários delimitadores de slots CMS (`<!-- [SLOT CMS: ...] -->`).
 5. **Resiliência Cromática nos 3 Temas:**
    Todos os elementos utilizam exclusivamente variáveis CSS semânticas (`var(--bcb-*)`), garantindo conformidade e contraste ótimo em Modo Claro, Modo Escuro (`data-theme="dark"`) e Alto Contraste (`data-contrast="high"`).
-6. **Zero Scripts Inline:**
-   Nenhuma lógica JavaScript ou manipulador de evento (`onclick=`, etc.) pode ser adicionada inline. A reatividade deve ser delegada exclusivamente a seletores semânticos (ex.: `data-action="print"`) consumidos por `assets/js/bcb-ui.js`.
+6. **Zero Scripts no Arquivo:**
+   Toda interatividade e reatividade é delegada a seletores de dados e consumida de forma centralizada por `assets/js/bcb-ui.js`, incluído pela casca do harness ou CMS.
 
 ---
 
