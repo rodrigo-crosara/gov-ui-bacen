@@ -303,9 +303,32 @@
             height: 1px;
             padding: 0;
             margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
+        /* Componente Toast de Feedback */
+        .bcb-harness-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: #1f2933;
+            color: #f0f6fc;
+            border: 1px solid rgba(74, 222, 128, 0.4);
+            border-left: 4px solid #4ade80;
+            border-radius: 6px;
+            padding: 12px 18px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .bcb-harness-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -378,6 +401,14 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Ação Rápida: Copiar HTML do Miolo -->
+            <div class="bcb-harness-group">
+                <button type="button" id="btnCopyMain" class="bcb-harness-btn" title="Copiar HTML do miolo (<main>) limpo para inclusão no CMS">
+                    <span class="material-symbols-outlined" style="font-size: 1rem; color: #4ade80;" aria-hidden="true">content_copy</span>
+                    <span>Copiar HTML do Miolo</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -408,6 +439,12 @@
             </div>
         </div>
     </main>
+
+    <!-- Componente Toast de Feedback (Acessível) -->
+    <div id="harnessToast" class="bcb-harness-toast" role="status" aria-live="polite" aria-atomic="true">
+        <span class="material-symbols-outlined" style="font-size: 1.25rem; color: #4ade80;" aria-hidden="true">check_circle</span>
+        <span id="toastMessage">HTML do miolo copiado com sucesso!</span>
+    </div>
 
     <script>
         (function() {
@@ -599,6 +636,64 @@
             if (paramDoc || paramSrc) {
                 harnessLayout.classList.add('drawer-open');
                 btnToggleBriefing.classList.add('active');
+            }
+
+            // Utilitário de Cópia do HTML do Miolo (<main>) com Toast
+            const btnCopyMain = document.getElementById('btnCopyMain');
+            const harnessToast = document.getElementById('harnessToast');
+            const toastMessage = document.getElementById('toastMessage');
+            let toastTimeout = null;
+
+            function showToast(msg, isSuccess = true) {
+                toastMessage.textContent = msg;
+                harnessToast.style.borderLeftColor = isSuccess ? '#4ade80' : '#f87171';
+                harnessToast.classList.add('show');
+                if (toastTimeout) clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    harnessToast.classList.remove('show');
+                }, 3000);
+            }
+
+            function fallbackCopy(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('HTML do miolo (<main>) copiado com sucesso! Pronto para colar no CMS.');
+                } catch (e) {
+                    showToast('Não foi possível copiar automaticamente.', false);
+                }
+                document.body.removeChild(textarea);
+            }
+
+            if (btnCopyMain) {
+                btnCopyMain.addEventListener('click', () => {
+                    try {
+                        const doc = frame.contentDocument || frame.contentWindow.document;
+                        if (!doc) throw new Error('Documento não disponível');
+                        const mainEl = doc.querySelector('main#conteudo-principal') || doc.querySelector('main');
+                        if (!mainEl) throw new Error('Elemento <main> não encontrado no protótipo');
+
+                        const htmlContent = mainEl.outerHTML;
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(htmlContent).then(() => {
+                                showToast('HTML do miolo (<main>) copiado com sucesso! Pronto para colar no CMS.');
+                            }).catch(() => {
+                                fallbackCopy(htmlContent);
+                            });
+                        } else {
+                            fallbackCopy(htmlContent);
+                        }
+                    } catch (err) {
+                        console.error('Erro ao copiar miolo:', err);
+                        showToast('Erro ao copiar HTML do miolo.', false);
+                    }
+                });
             }
 
             // Inicialização do briefing

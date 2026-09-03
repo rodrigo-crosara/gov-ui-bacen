@@ -216,8 +216,49 @@ for (const arquivo of arquivosHTML) {
   }
 }
 
+// 4. VERIFICAÇÃO DE INTEGRIDADE FÍSICA DA VITRINE (pages/prototipos.html -> prototipos/)
+const caminhoVitrine = path.join(RAIZ_PROJETO, 'pages', 'prototipos.html');
+if (fs.existsSync(caminhoVitrine)) {
+  console.log('\n🔎 Verificando integridade física dos protótipos listados na vitrine (pages/prototipos.html)...');
+  const conteudoVitrine = fs.readFileSync(caminhoVitrine, 'utf8');
+  
+  const linksPrototipos = new Set();
+  
+  // Padrão 1: href="../prototipos/nome.html"
+  const matchesHref = conteudoVitrine.match(/href=["'](?:\.\.\/)?prototipos\/([^"']+\.html)["']/gi) || [];
+  matchesHref.forEach(m => {
+    const nome = m.match(/prototipos\/([^"']+\.html)/i)[1];
+    if (!nome.startsWith('_')) linksPrototipos.add(nome);
+  });
+
+  // Padrão 2: src=nome.html no link do harness
+  const matchesSrc = conteudoVitrine.match(/src=([^&"'\s]+\.html)/gi) || [];
+  matchesSrc.forEach(m => {
+    const nome = m.match(/src=([^&"'\s]+\.html)/i)[1];
+    if (!nome.startsWith('_')) linksPrototipos.add(nome);
+  });
+
+  let vitrineFalhas = 0;
+  linksPrototipos.forEach(nomeArquivo => {
+    const caminhoFisico = path.join(RAIZ_PROJETO, 'prototipos', nomeArquivo);
+    if (!fs.existsSync(caminhoFisico)) {
+      console.error(`   ❌ ERRO: Protótipo listado na vitrine não encontrado em disco: prototipos/${nomeArquivo}`);
+      vitrineFalhas++;
+      falhas++;
+    } else {
+      console.log(`   ✅ Confirmado em disco: prototipos/${nomeArquivo}`);
+    }
+  });
+
+  if (vitrineFalhas === 0) {
+    console.log(`   ✨ Todos os ${linksPrototipos.size} protótipos listados na vitrine existem fisicamente em prototipos/.`);
+  }
+}
+
 console.log('\n' + '='.repeat(75));
 console.log(`Resultado do Lint: ${sucessos} aprovado(s), ${falhas} falha(s), ${avisos} aviso(s)`);
 console.log('='.repeat(75) + '\n');
 
-process.exit(falhas > 0 ? 1 : 0);
+if (falhas > 0) {
+  process.exit(1);
+}

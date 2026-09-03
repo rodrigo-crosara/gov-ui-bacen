@@ -19,6 +19,8 @@
     "test:html": "node tests/html/html-integrity.test.js",
     "test:prototypes": "npm run lint:prototypes && npm run test:a11y:prototypes",
     "test": "npm run check:tokens-sync && npm run test:tokens && npm run test:html && npm run test:prototipos && npm run test:prototypes && npm run test:a11y",
+    "demanda:criar": "node scripts/nova-demanda.js",
+    "demand:new": "node scripts/nova-demanda.js",
     "validate": "npm run check:tokens-sync && npm run lint:css && npm run lint:html && npm run test"
   },
   "keywords": ["design-system", "bcb", "banco-central", "gov-br", "acessibilidade", "wcag"],

@@ -4,42 +4,96 @@ Este diretório armazena exclusivamente as **telas e protótipos de alta fidelid
 
 ---
 
-## 🎯 Princípios de Prototipagem
+## 🎯 Princípios Fundamentais de Prototipagem
 
 1. **Foco Estrito no Miolo Semântico:**
-   Todo protótipo neste diretório modela o conteúdo interno da página delimitado por:
+   Todo protótipo modela exclusivamente o conteúdo interno da página, iniciando diretamente em:
    ```html
    <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
    ```
-2. **Ausência Total de Cascas do Portal:**
-   Nenhum arquivo neste diretório deve conter `<header>`, `<footer>`, barras federais externas, breadcrumbs ou menus globais externos. Esses elementos são providos de forma centralizada pelo CMS institucional.
-3. **Grid 12 Colunas Oficial do BCB:**
-   A diagramação é construída utilizando `.bcb-row` e colunas proporcionais (`.bcb-col-12`, `.bcb-col-lg-8`, `.bcb-col-lg-4`, `.bcb-col-md-6`, `.bcb-col-md-4`) com comentários de slots CMS delimitadores (`<!-- [SLOT CMS: ...] -->`).
-4. **Resiliência Cromática (3 Temas):**
-   Todos os componentes utilizam exclusivamente variáveis CSS semânticas (`var(--bcb-*)`), garantindo conformidade com Modo Claro, Modo Escuro (`data-theme="dark"`) e Alto Contraste (`data-contrast="high"`).
+2. **Ausência Total de Cascas Globais Externas:**
+   Nenhum arquivo neste diretório deve conter `<header>`, `<footer>`, `#barra-brasil` ou menus globais externos. Esses elementos são providos de forma centralizada pelo CMS do portal institucional.
+3. **Navegação Padronizada Acessível:**
+   - **Breadcrumb Semântico:** Inserido no topo do `<main>` via `<nav aria-label="Trilha de navegação">` com `<ol class="breadcrumb">` e `aria-current="page"`.
+   - **Retorno ao Topo:** Inserido na base do `<main>` via `.bcb-back-to-top-wrapper` com link âncora `#conteudo-principal` e ícone `arrow_upward`.
+4. **Grid 12 Colunas Oficial do BCB:**
+   A diagramação modular utiliza `.bcb-row` e colunas proporcionais (`.bcb-col-12`, `.bcb-col-lg-8`, `.bcb-col-lg-4`, `.bcb-col-md-6`, `.bcb-col-md-4`) com comentários delimitadores de slots CMS (`<!-- [SLOT CMS: ...] -->`).
+5. **Resiliência Cromática nos 3 Temas:**
+   Todos os elementos utilizam exclusivamente variáveis CSS semânticas (`var(--bcb-*)`), garantindo conformidade e contraste ótimo em Modo Claro, Modo Escuro (`data-theme="dark"`) e Alto Contraste (`data-contrast="high"`).
+6. **Zero Scripts Inline:**
+   Nenhuma lógica JavaScript ou manipulador de evento (`onclick=`, etc.) pode ser adicionada inline. A reatividade deve ser delegada exclusivamente a seletores semânticos (ex.: `data-action="print"`) consumidos por `assets/js/bcb-ui.js`.
 
 ---
 
-## 🖥️ Como Visualizar e Testar no Navegador
+## 🖥️ Visualizador Técnico (`_harness.html`) & Split-Screen de Demandas
 
-Para inspecionar um protótipo sem casca externa no navegador com suporte a alternância instantânea de temas, utilize o visualizador técnico:
+O [`_harness.html`](./_harness.html) é o ambiente técnico oficial para homologação de telas. Ele permite inspecionar qualquer miolo isolado sem cascas externas, oferecendo alternadores dinâmicos de viewports e temas.
 
-👉 [`_harness.html`](./_harness.html)
+### 1. Parâmetros de URL Suportados
 
-Ou abra diretamente qualquer protótipo HTML individual desta pasta (que já inclui o boilerplate mínimo com as dependências do BCB, Bootstrap e Material Symbols).
+Você pode abrir o harness diretamente parametrizado com a tela e o briefing desejados:
+
+```text
+prototipos/_harness.html?src=[arquivo-prototipo.html]&doc=[arquivo-demanda.md]
+```
+
+- **`src` (string):** Nome do arquivo do protótipo a carregar no iframe (ex.: `copom-decisao-taxa-selic.html`).
+- **`doc` (string):** Arquivo de briefing de demanda correspondente em `.docs-ia/exemplos-demandas/` (ex.: `01-comunicado-normativo.md`).
+
+> Ao informar `src` ou `doc`, o visualizador abre automaticamente em **modo split-screen**, exibindo a gaveta lateral retrátil com o briefing original da área de negócio ao lado da interface interativa.
+
+### 2. Controles de Inspeção Disponíveis no Harness
+- **Briefing da Demanda:** Painel lateral split-screen exibindo metadados, insumo textual bruto e a instrução canônica repassada ao agente.
+- **Alternador de Viewports:**
+  - **Desktop:** Largura fluida com limite de 1440px (`.viewport-desktop`).
+  - **Tablet:** 768px centralizado com moldura de dispositivo (`.viewport-tablet`).
+  - **Mobile:** 375px centralizado com moldura de smartphone (`.viewport-mobile`).
+- **Alternador de Temas:** Padrão (Claro), Escuro (`data-theme="dark"`) e Alto Contraste (`data-contrast="high"`).
+- **Copiar HTML do Miolo:** Botão rápido na barra superior que extrai e copia para a área de transferência o markup limpo do container `<main>`, pronto para inclusão no CMS.
 
 ---
 
-## 🧪 Testes Automatizados no Ciclo de Desenvolvimento
+## 🚀 Guia Operacional para o Webdesigner: Adicionando Novos Protótipos
 
-Para validar apenas os protótipos desta pasta:
+Para integrar uma nova demanda ao ecossistema:
+
+### Passo 1: Criar o Scaffold da Demanda
+Execute o comando CLI automatizado:
 ```bash
-# Validar modularidade de grid e regras de componentes
+npm run demanda:criar -- --slug meu-novo-servico --titulo "Consulta ao Crédito Rural" --demanda 05
+```
+Isso gerará o template estruturado em `.docs-ia/exemplos-demandas/05-meu-novo-servico.md`.
+
+### Passo 2: Preencher o Briefing com a Demanda da Área Técnica
+Cole o texto bruto, metadados, anexos e instruções de UX no markdown recém-criado.
+
+### Passo 3: Solicitar a Prototipagem ao Agente de IA
+Instrua o agente:
+> *"Atue como Especialista em UI/UX do BCB. Leia a demanda em `.docs-ia/exemplos-demandas/05-meu-novo-servico.md` e gere o protótipo correspondente em `prototipos/meu-novo-servico.html` seguindo rigorosamente a skill `gerador-ui-bcb`."*
+
+### Passo 4: Registrar a Nova Tela no Harness e na Vitrine
+1. Adicione a opção no `<select id="selectPrototipo">` e no dicionário `DEMANDAS` em `prototipos/_harness.html`.
+2. Adicione o card de exibição na vitrine `pages/prototipos.html` com os links para o harness parametrizado (`_harness.html?src=meu-novo-servico.html&doc=05-meu-novo-servico.md`) e para a tela isolada.
+
+### Passo 5: Validar a Suíte de Qualidade
+```bash
+# Validar linter de modularidade, restrição de miolo e vínculos
 npm run lint:prototypes
 
-# Validar acessibilidade estática e WCAG 2.2 AA
+# Validar matriz de acessibilidade WCAG 2.1 AA
 npm run test:a11y:prototypes
 
-# Executar a suíte completa de protótipos
+# Executar a suíte de validação integrada
 npm run test:prototypes
 ```
+
+---
+
+## 📁 Catálogo dos Protótipos Oficiais
+
+| Protótipo | Demanda Vinculada | Padrão de Layout | Status |
+|---|---|---|---|
+| [`copom-decisao-taxa-selic.html`](./copom-decisao-taxa-selic.html) | `01-comunicado-normativo.md` | Layout 70/30 com citação e downloads | ✅ Homologado |
+| [`sgs-series-taxa-selic.html`](./sgs-series-taxa-selic.html) | `02-dados-sgs-indicadores.md` | Painel Analítico & Tabela Densa SGS | ✅ Homologado |
+| [`mecanismo-especial-devolucao-med.html`](./mecanismo-especial-devolucao-med.html) | `03-servico-passo-a-passo.md` | Stepper `.process-list`, Alerta Elevado e FAQ | ✅ Homologado |
+| [`regras-cheque-especial.html`](./regras-cheque-especial.html) | `04-conteudo-html-legado.md` | Refatoração Semântica 70/30 de Legado | ✅ Homologado |

@@ -294,43 +294,100 @@
             </div>
         </div>
 
-        <!-- SEÇÃO 1: FLUXO DE 3 ETAPAS -->
+        <!-- SEÇÃO 1: FLUXO DE PRODUÇÃO HOMOLOGADO (5 ETAPAS INTEGRADAS) -->
         <section class="mb-5" aria-labelledby="sec-fluxo-title">
-            <h2 id="sec-fluxo-title" class="h3 mb-3 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                <span class="material-symbols-outlined material-icons" aria-hidden="true">alt_route</span> 1. Fluxo Ágil em 3 Passos
-            </h2>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 id="sec-fluxo-title" class="h3 mb-0 d-flex align-items-center" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                    <span class="material-symbols-outlined material-icons" aria-hidden="true">alt_route</span> 1. Fluxo Oficial de Produção: Demanda à Homologação
+                </h2>
+                <span class="badge badge-primary">Pipeline Ágil Homologada</span>
+            </div>
+            <p class="text-body mb-4">
+                A esteira de automação do Banco Central conecta a área de negócio demandante, o webdesigner de plantão e o agente de IA através de um fluxo contínuo e rastreável:
+            </p>
+
             <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100 p-3 border-light shadow-sm">
+                <!-- Etapa 1: Demanda Bruta -->
+                <div class="col-12 col-md-6 col-lg mb-3">
+                    <div class="card h-100 p-3 border shadow-sm" style="background-color: var(--bcb-color-surface);">
                         <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                            <span class="badge badge-primary px-2 py-1" style="font-size: 1rem;">1</span>
-                            <h3 class="h5 mb-0 font-weight-bold">Copie a Demanda Bruta</h3>
+                            <span class="badge badge-primary px-2 py-1" style="font-size: 0.9rem;">1</span>
+                            <h3 class="h6 mb-0 font-weight-bold">Demanda Bruta</h3>
                         </div>
+                        <p class="text-body small mb-2">
+                            A área de negócio envia o briefing cru (e-mail, minuta ou planilha SGS). O scaffold estruturado é criado via CLI:
+                        </p>
+                        <code class="small d-block p-1 bg-light rounded text-primary mb-2">npm run demanda:criar</code>
+                        <span class="small text-muted d-block">&bull; Salvo em <code>.docs-ia/exemplos-demandas/</code></span>
+                    </div>
+                </div>
+
+                <!-- Etapa 2: Triagem Webdesigner -->
+                <div class="col-12 col-md-6 col-lg mb-3">
+                    <div class="card h-100 p-3 border shadow-sm" style="background-color: var(--bcb-color-surface);">
+                        <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                            <span class="badge badge-primary px-2 py-1" style="font-size: 0.9rem;">2</span>
+                            <h3 class="h6 mb-0 font-weight-bold">Triagem do Designer</h3>
+                        </div>
+                        <p class="text-body small mb-2">
+                            O webdesigner identifica o objetivo da comunicação e indica o padrão de UX oficial:
+                        </p>
+                        <ul class="text-body small mb-0 pl-3">
+                            <li>Layout 70/30 (Normativos)</li>
+                            <li>Painel SGS (Estatísticas)</li>
+                            <li>Stepper Process (Serviços)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Etapa 3: Diagramação Agente IA -->
+                <div class="col-12 col-md-6 col-lg mb-3">
+                    <div class="card h-100 p-3 border shadow-sm" style="background-color: var(--bcb-color-surface);">
+                        <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                            <span class="badge badge-primary px-2 py-1" style="font-size: 0.9rem;">3</span>
+                            <h3 class="h6 mb-0 font-weight-bold">Agente de IA</h3>
+                        </div>
+                        <p class="text-body small mb-2">
+                            O agente consome a skill <code>gerador-ui-bcb</code> e projeta o miolo semântico:
+                        </p>
+                        <ul class="text-body small mb-0 pl-3">
+                            <li>Container <code>&lt;main&gt;</code> e H1 único</li>
+                            <li>Grid 12 colunas oficial</li>
+                            <li>Breadcrumb e Voltar ao topo</li>
+                            <li>Zero scripts inline</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Etapa 4: Protótipo de Produção -->
+                <div class="col-12 col-md-6 col-lg mb-3">
+                    <div class="card h-100 p-3 border shadow-sm" style="background-color: var(--bcb-color-surface);">
+                        <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
+                            <span class="badge badge-primary px-2 py-1" style="font-size: 0.9rem;">4</span>
+                            <h3 class="h6 mb-0 font-weight-bold">Protótipo Salvo</h3>
+                        </div>
+                        <p class="text-body small mb-2">
+                            O arquivo HTML canônico é versionado no repositório:
+                        </p>
+                        <code class="small d-block p-1 bg-light rounded text-success mb-2">prototipos/&lt;slug&gt;.html</code>
                         <p class="text-body small mb-0">
-                            Copie o texto cru recebido (e-mail, documento Word, PDF de portaria ou briefing de reunião) sem se preocupar com a formatação inicial.
+                            Indexado automaticamente no catálogo da vitrine <code>pages/prototipos.html</code>.
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100 p-3 border-light shadow-sm">
+
+                <!-- Etapa 5: Harness Split-Screen -->
+                <div class="col-12 col-md-6 col-lg mb-3">
+                    <div class="card h-100 p-3 border shadow-sm" style="background-color: var(--bcb-color-surface); border-left: 3px solid var(--bcb-brand-azul-blue) !important;">
                         <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                            <span class="badge badge-primary px-2 py-1" style="font-size: 1rem;">2</span>
-                            <h3 class="h5 mb-0 font-weight-bold">Instrua o Motor com Contexto</h3>
+                            <span class="badge badge-success px-2 py-1" style="font-size: 0.9rem;">5</span>
+                            <h3 class="h6 mb-0 font-weight-bold">Harness &amp; Split-View</h3>
                         </div>
-                        <p class="text-body small mb-0">
-                            Utilize um dos templates de prompt abaixo ou o Prompt Builder para passar o texto ao agente com as diretrizes do Design System.
+                        <p class="text-body small mb-2">
+                            Homologação visual lado a lado (Briefing vs. Interface viva):
                         </p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100 p-3 border-light shadow-sm">
-                        <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
-                            <span class="badge badge-primary px-2 py-1" style="font-size: 1rem;">3</span>
-                            <h3 class="h5 mb-0 font-weight-bold">Valide e Publique</h3>
-                        </div>
-                        <p class="text-body small mb-0">
-                            A IA devolverá a página pronta no miolo <code>&lt;main&gt;</code> com H1 único. Execute <code>npm test</code> para auditoria e envie para publicação.
-                        </p>
+                        <code class="small d-block p-1 bg-light rounded text-info mb-2">_harness.html?src=...&amp;doc=...</code>
+                        <span class="small text-muted d-block">&bull; Validação de 3 temas, viewports e cópia do miolo.</span>
                     </div>
                 </div>
             </div>
