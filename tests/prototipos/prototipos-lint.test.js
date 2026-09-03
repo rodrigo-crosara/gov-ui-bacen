@@ -4,7 +4,7 @@
  * Valida a conformidade arquitetural, modularidade de componentes e acessibilidade (e-MAG / WCAG)
  * em todos os protótipos de interface e páginas HTML geradas pelo ecossistema.
  *
- * Uso: node tests/templates/templates-lint.test.js
+ * Uso: node tests/prototipos/prototipos-lint.test.js
  */
 
 const fs = require('fs');

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-contrast="normal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Série SGS 432: Histórico das Taxas de Juros do Copom — Banco Central do Brasil</title>
+    <meta name="description" content="Série histórica oficial das taxas de juros fixadas pelo Comitê de Política Monetária (Copom), dados abertos e série temporal SGS 432 do Banco Central do Brasil.">
+
+    <!-- Bootstrap 4.6 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous">
+
+    <!-- Tipografia Institucional (Rawline, Inter, Ubuntu, Cormorant Garamond, Roboto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols Outlined & Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- BCB Design System CSS -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+</head>
+<body>
+
+    <!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único) -->
+    <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
+
+        <!-- [SLOT CMS: 100% - Abertura e Metadados do Sistema SGS] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <h1 class="bcb-page-title">Série SGS 432: Histórico das Taxas de Juros do Copom</h1>
+                    <div class="bcb-page-meta">
+                        <span class="tag-bcb primary">Estatísticas Monetárias</span>
+                        <span>Código da Série: 432 &bull; Periodicidade: Irregular &bull; Fonte: Banco Central do Brasil / DSTAT</span>
+                    </div>
+                    <p class="lead mt-3 text-body">
+                        Consulta interativa à série temporal histórica das decisões do Comitê de Política Monetária (Copom), 
+                        contendo as metas anuais de juros, variações em pontos percentuais e links de acesso direto às atas publicadas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 33/33/33 - Grade de Indicadores em Destaque] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <!-- Card 1: Meta Selic -->
+                <div class="bcb-col-12 bcb-col-md-4 mb-3 mb-md-0">
+                    <div class="bcb-indicator-card accent-blue">
+                        <div class="bcb-indicator-label">Meta Selic Vigente</div>
+                        <div class="bcb-indicator-value">
+                            14,25% <small class="text-body font-weight-normal font-size-sm">a.a.</small>
+                            <small class="bcb-indicator-trend up" title="Elevação de 1,00 p.p. na 268ª Reunião">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">arrow_upward</span> +1,00 p.p.
+                            </small>
+                        </div>
+                        <div class="bcb-indicator-meta">Definida na 268ª Reunião &bull; Vigência a partir de 13/03/2026</div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Selic Efetiva Média -->
+                <div class="bcb-col-12 bcb-col-md-4 mb-3 mb-md-0">
+                    <div class="bcb-indicator-card accent-green">
+                        <div class="bcb-indicator-label">Taxa Selic Efetiva Média</div>
+                        <div class="bcb-indicator-value">
+                            14,15% <small class="text-body font-weight-normal font-size-sm">a.a.</small>
+                            <small class="bcb-indicator-trend neutral" title="Média estável">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">remove</span> Estável
+                            </small>
+                        </div>
+                        <div class="bcb-indicator-meta">Média ponderada do mercado interbancário</div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Meta de Inflação CMN -->
+                <div class="bcb-col-12 bcb-col-md-4">
+                    <div class="bcb-indicator-card accent-amber">
+                        <div class="bcb-indicator-label">Meta de Inflação CMN</div>
+                        <div class="bcb-indicator-value">
+                            3,00% <small class="text-body font-weight-normal font-size-sm">a.a.</small>
+                        </div>
+                        <div class="bcb-indicator-meta">Centro da meta com intervalo de 1,50% a 4,50%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Painel de Busca e Filtros Facetados] -->
+        <section class="bcb-section">
+            <div class="card p-3 border mb-4" style="background-color: var(--bcb-color-surface);">
+                <div class="bcb-row align-items-center">
+                    <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
+                        <label for="filtroAno" class="small font-weight-bold text-body mb-1">Filtrar por Ano:</label>
+                        <select id="filtroAno" class="form-control form-control-sm" aria-label="Filtrar dados da série por ano">
+                            <option value="todos">Todas as Reuniões Recentes</option>
+                            <option value="2026">2026 (Ano Corrente)</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+                    <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
+                        <label for="filtroStatus" class="small font-weight-bold text-body mb-1">Status da Ata:</label>
+                        <select id="filtroStatus" class="form-control form-control-sm" aria-label="Filtrar por status da ata">
+                            <option value="todos">Todos os Status</option>
+                            <option value="disponivel">Ata Publicada</option>
+                            <option value="pendente">Ata Pendente</option>
+                        </select>
+                    </div>
+                    <div class="bcb-col-12 bcb-col-md-4 d-flex align-items-end pt-md-4">
+                        <button type="button" class="btn btn-outline-primary btn-sm btn-block d-inline-flex align-items-center justify-content-center" style="gap: 0.35rem;">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">filter_alt</span>
+                            <span>Aplicar Filtros</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Tabela Densa de Séries SGS com Exportação] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                        <div>
+                            <h2 class="h4 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
+                                Registros Históricos das Decisões do Copom
+                            </h2>
+                            <p class="text-muted small mb-0">Total de 6 registros exibidos nesta consulta</p>
+                        </div>
+
+                        <!-- Barra de Exportação de Dados Abertos -->
+                        <div class="bcb-data-export mt-2 mt-md-0" role="toolbar" aria-label="Opções de exportação de dados">
+                            <span class="bcb-data-export-label">Exportar dados:</span>
+                            <div class="bcb-data-export-buttons">
+                                <button type="button" class="bcb-btn-export" aria-label="Exportar registros da série histórica em CSV">
+                                    <span class="material-symbols-outlined bcb-btn-export-icon" aria-hidden="true">file_download</span> CSV
+                                </button>
+                                <button type="button" class="bcb-btn-export" aria-label="Exportar registros da série histórica em JSON">
+                                    <span class="material-symbols-outlined bcb-btn-export-icon" aria-hidden="true">data_object</span> JSON
+                                </button>
+                                <button type="button" class="bcb-btn-export" onclick="window.print()" aria-label="Imprimir tabela de registros">
+                                    <span class="material-symbols-outlined bcb-btn-export-icon" aria-hidden="true">print</span> Imprimir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Dados Acessível -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <caption>Série SGS 432 contendo histórico das taxas fixadas pelo Copom, datas de início e fim da reunião, variação e status da ata.</caption>
+                            <thead class="thead-primary">
+                                <tr>
+                                    <th scope="col" style="width: 15%;">Reunião</th>
+                                    <th scope="col" style="width: 25%;">Período da Reunião</th>
+                                    <th scope="col" class="text-right" style="width: 20%;">Meta Fixada (% a.a.)</th>
+                                    <th scope="col" class="text-center" style="width: 20%;">Variação (p.p.)</th>
+                                    <th scope="col" class="text-center" style="width: 20%;">Ata do Copom</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">268ª</th>
+                                    <td>11/03/2026 a 12/03/2026</td>
+                                    <td class="text-right font-weight-bold">14,25%</td>
+                                    <td class="text-center"><span class="badge badge-success">+1,00</span></td>
+                                    <td class="text-center"><span class="tag-bcb">Pendente (17/03)</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">267ª</th>
+                                    <td>28/01/2026 a 29/01/2026</td>
+                                    <td class="text-right font-weight-bold">13,25%</td>
+                                    <td class="text-center"><span class="badge badge-secondary">0,00</span></td>
+                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">266ª</th>
+                                    <td>10/12/2025 a 11/12/2025</td>
+                                    <td class="text-right font-weight-bold">13,25%</td>
+                                    <td class="text-center"><span class="badge badge-danger">-0,25</span></td>
+                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">265ª</th>
+                                    <td>05/11/2025 a 06/11/2025</td>
+                                    <td class="text-right font-weight-bold">13,50%</td>
+                                    <td class="text-center"><span class="badge badge-danger">-0,50</span></td>
+                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">264ª</th>
+                                    <td>16/09/2025 a 17/09/2025</td>
+                                    <td class="text-right font-weight-bold">14,00%</td>
+                                    <td class="text-center"><span class="badge badge-danger">-0,25</span></td>
+                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">263ª</th>
+                                    <td>29/07/2025 a 30/07/2025</td>
+                                    <td class="text-right font-weight-bold">14,25%</td>
+                                    <td class="text-center"><span class="badge badge-success">+0,25</span></td>
+                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Callout de Integração com API REST e Dados Abertos] -->
+        <section class="bcb-section">
+            <div class="callout callout-brand callout-left-bordered" role="region" aria-label="Integração técnica com a API do SGS">
+                <span class="material-symbols-outlined callout-icon" aria-hidden="true">api</span>
+                <div class="callout-content">
+                    <h2 class="callout-title h5">Acesso via API de Dados Abertos (SGS REST API)</h2>
+                    <p class="text-body small mb-2">
+                        Esta série temporal também pode ser consumida programaticamente em formato JSON através do endpoint público 
+                        do Banco Central do Brasil, sem necessidade de autenticação:
+                    </p>
+                    <code class="d-block p-2 rounded small" style="background-color: var(--bcb-color-surface); border: 1px solid var(--bcb-color-border); color: var(--bcb-brand-azul-blue);">
+                        GET https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json
+                    </code>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts Bootstrap e Micro-scripts Vanilla BCB -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bcb-ui.js"></script>
+</body>
+</html>

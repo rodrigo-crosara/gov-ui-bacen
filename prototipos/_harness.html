@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizador Técnico de Protótipos — BCB Design System</title>
-    <meta name="description" content="Casca técnica mínima sem elementos fixos de portal para testes visuais e de contraste de protótipos de miolo do BCB.">
+    <meta name="description" content="Casca técnica mínima sem elementos fixos de portal para testes visuais, responsividade e auditoria de contraste de protótipos de miolo do BCB.">
 
     <!-- Bootstrap 4.6 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -25,20 +25,33 @@
     <link rel="stylesheet" href="../assets/css/bcb-style.css">
 
     <style>
-        /* Toolbar técnica de controle — exclusiva para desenvolvimento e testes */
+        /* Toolbar técnica de controle — exclusiva para homologação visual */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0f1418;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
         .bcb-harness-bar {
             background-color: #1a2228;
             color: #ffffff;
             padding: 8px 16px;
             font-size: 0.85rem;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+
         .bcb-harness-title {
             font-weight: 600;
             display: flex;
@@ -47,19 +60,42 @@
             color: #ffffff;
             text-decoration: none;
         }
+        .bcb-harness-title:hover {
+            color: #4dc8ff;
+            text-decoration: none;
+        }
+
         .bcb-harness-badge {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             padding: 2px 8px;
             border-radius: 4px;
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: #c4cbd1;
         }
+
         .bcb-harness-controls {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
+
+        .bcb-harness-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bcb-harness-label {
+            font-size: 0.75rem;
+            color: #9aa6b2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0;
+        }
+
         .bcb-harness-select {
             background: #2a343d;
             color: #ffffff;
@@ -68,15 +104,18 @@
             padding: 4px 8px;
             font-size: 0.8rem;
             outline: none;
+            max-width: 280px;
         }
-        .bcb-harness-theme-group {
+
+        .bcb-harness-btn-group {
             display: flex;
             background: #2a343d;
             border-radius: 4px;
             padding: 2px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .bcb-harness-theme-btn {
+
+        .bcb-harness-btn {
             background: transparent;
             border: none;
             color: #c4cbd1;
@@ -85,61 +124,167 @@
             cursor: pointer;
             border-radius: 3px;
             transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
-        .bcb-harness-theme-btn.active {
+        .bcb-harness-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .bcb-harness-btn.active {
             background: var(--bcb-brand-azul-blue, #025C75);
             color: #ffffff;
             font-weight: 600;
         }
+
+        /* Palco de renderização do protótipo (responsivo centralizado) */
+        .bcb-harness-stage {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 16px;
+            background-color: #0f1418;
+            transition: all 0.3s ease;
+        }
+
+        .bcb-harness-device {
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: #ffffff;
+            transition: width 0.3s ease, max-width 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Modos de Viewport */
+        .bcb-harness-device.viewport-desktop {
+            width: 100%;
+            max-width: 1440px;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .bcb-harness-device.viewport-tablet {
+            width: 768px;
+            max-width: 100%;
+            border-radius: 12px;
+            border: 8px solid #2a343d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .bcb-harness-device.viewport-mobile {
+            width: 375px;
+            max-width: 100%;
+            border-radius: 24px;
+            border: 10px solid #2a343d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
         .bcb-harness-frame {
             width: 100%;
-            height: calc(100vh - 45px);
+            height: 100%;
             border: none;
             display: block;
+            background: transparent;
+            flex: 1;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
         }
     </style>
 </head>
 <body>
 
     <!-- BARRA TÉCNICA DE CONTROLE (Exclusiva do Harness / Ocultada em Produção) -->
-    <header class="bcb-harness-bar" role="banner" aria-label="Controles do Harness">
-        <a href="../pages/templates.html" class="bcb-harness-title">
-            <span class="material-symbols-outlined" style="font-size: 1.1rem;" aria-hidden="true">dashboard</span>
+    <header class="bcb-harness-bar" role="banner" aria-label="Controles de Homologação do Harness">
+        <a href="../pages/prototipos.html" class="bcb-harness-title">
+            <span class="material-symbols-outlined" style="font-size: 1.15rem;" aria-hidden="true">dashboard</span>
             <span>Harness de Visualização Técnica</span>
             <span class="bcb-harness-badge">Protótipos BCB</span>
         </a>
 
         <div class="bcb-harness-controls">
-            <label for="selectPrototipo" class="mb-0 text-muted small mr-1">Protótipo:</label>
-            <select id="selectPrototipo" class="bcb-harness-select" aria-label="Selecionar protótipo para visualização">
-                <option value="copom-decisao-taxa-selic.html">Copom: Decisão da Taxa Selic &amp; Série SGS</option>
-                <option value="../templates/testes-poc/template-indicadores.html">[POC] Indicadores Econômicos</option>
-                <option value="../templates/testes-poc/template-noticia.html">[POC] Notícia &amp; Comunicado</option>
-                <option value="../templates/testes-poc/template-servico.html">[POC] Serviço ao Cidadão &amp; FAQ</option>
-                <option value="../templates/testes-poc/drex.html">[POC] Drex / Produtos Estratégicos</option>
-                <option value="../templates/testes-poc/planejando-a-aposentadoria.html">[POC] Planejamento da Aposentadoria</option>
-                <option value="../templates/testes-poc/desastres-naturais.html">[POC] Orientações em Emergências</option>
-            </select>
+            <!-- Seletor de Protótipos -->
+            <div class="bcb-harness-group">
+                <label for="selectPrototipo" class="bcb-harness-label">Tela:</label>
+                <select id="selectPrototipo" class="bcb-harness-select" aria-label="Selecionar protótipo para visualização">
+                    <optgroup label="Protótipos Oficiais (Produção)">
+                        <option value="copom-decisao-taxa-selic.html">Copom: Taxa Selic &amp; Série SGS 432</option>
+                        <option value="sgs-series-taxa-selic.html">SGS: Painel Analítico &amp; Dados Abertos</option>
+                        <option value="mecanismo-especial-devolucao-med.html">Serviço: MED Pix com Stepper e Alerta</option>
+                        <option value="regras-cheque-especial.html">Regulação: Limite Cheque Especial (70/30)</option>
+                    </optgroup>
+                    <optgroup label="Arquivo de POCs Históricas">
+                        <option value="../templates/testes-poc/template-indicadores.html">[POC] Indicadores Econômicos</option>
+                        <option value="../templates/testes-poc/template-noticia.html">[POC] Notícia &amp; Comunicado</option>
+                        <option value="../templates/testes-poc/template-servico.html">[POC] Serviço ao Cidadão &amp; FAQ</option>
+                        <option value="../templates/testes-poc/drex.html">[POC] Drex / Produtos Estratégicos</option>
+                        <option value="../templates/testes-poc/planejando-a-aposentadoria.html">[POC] Planejamento da Aposentadoria</option>
+                        <option value="../templates/testes-poc/desastres-naturais.html">[POC] Orientações em Emergências</option>
+                    </optgroup>
+                </select>
+            </div>
 
-            <div class="bcb-harness-theme-group" role="group" aria-label="Alternador de tema do protótipo">
-                <button type="button" class="bcb-harness-theme-btn active" data-theme-target="default">Padrão</button>
-                <button type="button" class="bcb-harness-theme-btn" data-theme-target="dark">Escuro</button>
-                <button type="button" class="bcb-harness-theme-btn" data-theme-target="high-contrast">Contraste</button>
+            <!-- Alternador de Viewport (Desktop / Tablet / Mobile) -->
+            <div class="bcb-harness-group">
+                <span class="bcb-harness-label">Viewport:</span>
+                <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de viewport">
+                    <button type="button" class="bcb-harness-btn active" data-viewport="desktop" title="Desktop (100% / max-width 1440px)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">desktop_windows</span> Desktop
+                    </button>
+                    <button type="button" class="bcb-harness-btn" data-viewport="tablet" title="Tablet (768px)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">tablet_mac</span> Tablet (768px)
+                    </button>
+                    <button type="button" class="bcb-harness-btn" data-viewport="mobile" title="Mobile (375px)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">smartphone</span> Mobile (375px)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Alternador de Temas (Padrão / Escuro / Alto Contraste) -->
+            <div class="bcb-harness-group">
+                <span class="bcb-harness-label">Tema:</span>
+                <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de tema do protótipo">
+                    <button type="button" class="bcb-harness-btn active" data-theme-target="default" title="Modo Claro Institucional">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">light_mode</span> Padrão
+                    </button>
+                    <button type="button" class="bcb-harness-btn" data-theme-target="dark" title="Modo Escuro (Dark Mode)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">dark_mode</span> Escuro
+                    </button>
+                    <button type="button" class="bcb-harness-btn" data-theme-target="high-contrast" title="Alto Contraste WCAG AAA">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">contrast</span> Contraste
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- QUADRO DE VISUALIZAÇÃO DO MIOLO DO PROTÓTIPO -->
-    <main id="conteudo-principal">
+    <!-- PALCO CENTRALIZADO DO PROTÓTIPO COM DISPOSITIVO CONTROLÁVEL -->
+    <main id="conteudo-principal" class="bcb-harness-stage">
         <h1 class="sr-only">Visualizador Técnico de Protótipos — Banco Central do Brasil</h1>
-        <iframe id="previewFrame" class="bcb-harness-frame" src="copom-decisao-taxa-selic.html" title="Visualização do Protótipo"></iframe>
+        <div id="deviceContainer" class="bcb-harness-device viewport-desktop">
+            <iframe id="previewFrame" class="bcb-harness-frame" src="copom-decisao-taxa-selic.html" title="Quadro de Visualização do Protótipo"></iframe>
+        </div>
     </main>
 
     <script>
         (function() {
             const frame = document.getElementById('previewFrame');
+            const deviceContainer = document.getElementById('deviceContainer');
             const selectPrototipo = document.getElementById('selectPrototipo');
             const themeButtons = document.querySelectorAll('[data-theme-target]');
+            const viewportButtons = document.querySelectorAll('[data-viewport]');
             let currentTheme = 'default';
 
             function applyThemeToFrame(theme) {
@@ -163,8 +308,15 @@
                         }
                     }
                 } catch(e) {
-                    console.warn('Cross-origin or frame not ready:', e);
+                    console.warn('Frame context note:', e);
                 }
+            }
+
+            function setViewport(viewport) {
+                viewportButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-viewport') === viewport);
+                });
+                deviceContainer.className = `bcb-harness-device viewport-${viewport}`;
             }
 
             selectPrototipo.addEventListener('change', (e) => {
@@ -178,6 +330,12 @@
             themeButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     applyThemeToFrame(btn.getAttribute('data-theme-target'));
+                });
+            });
+
+            viewportButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setViewport(btn.getAttribute('data-viewport'));
                 });
             });
         })();

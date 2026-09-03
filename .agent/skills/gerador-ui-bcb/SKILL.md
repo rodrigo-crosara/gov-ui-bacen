@@ -111,9 +111,14 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
      - ❌ **TOTALMENTE BANIDO:** Menus laterais globais de portal ou skip links redundantes.
    - **Justificativa Técnica:** Elementos de casca fixa são providos de forma centralizada pelo CMS institucional do portal BCB. O papel do agente é conceber exclusivamente a diagramação interna e semântica do conteúdo.
 
-2. **Modos de Entrega:**
-   - **Modo Padrão (Entrega de Produção / CMS):** Retornar exclusivamente o bloco `<main id="conteudo-principal" class="bcb-container">...</main>`.
-   - **Modo Standalone (Página Completa para Teste Visual):** Se o usuário solicitar arquivo HTML completo para pré-visualização no navegador, o nó `<main>` estrito é encapsulado no boilerplate canônico da Seção 5, mantendo o banimento de cascas externas.
+2. **Diretriz Obrigatória de Saída de Arquivos (`prototipos/<slug>.html`):**
+   - Todo novo protótipo gerado pelo agente DEVE ser salvo obrigatoriamente no caminho canônico:
+     `prototipos/<slug-da-demanda>.html`
+     (utilizando nomes semânticos em kebab-case, ex.: `copom-decisao-taxa-selic.html`, `sgs-series-taxa-selic.html`, `mecanismo-especial-devolucao-med.html`, `regras-cheque-especial.html`).
+   - **Indexação Mandatória:** Ao gerar um novo protótipo, o agente DEVE:
+     1. Cadastrar a nova tela no seletor `<select id="selectPrototipo">` de `prototipos/_harness.html`.
+     2. Adicionar o card representativo com resumo e badges na vitrine oficial em `pages/prototipos.html`.
+   - **Formato do Arquivo:** O arquivo salvo em `prototipos/` deve conter o boilerplate canônico completo da Seção 5 (para inspeção autônoma e testes de acessibilidade), encapsulando rigorosamente o miolo `<main id="conteudo-principal" class="bcb-container">` sem qualquer elemento de casca externa.
 
 3. **Hierarquia Tipográfica Estrita (e-MAG 3.1):**
    - Exatamente **1 tag `<h1>`** com a classe `.bcb-page-title`.

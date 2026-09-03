@@ -40,7 +40,7 @@ jobs:
         run: npm run test:html
 
       - name: Linter de Protótipos, Modularidade de Grid 12 e Componentes (Sem amarras a cascas)
-        run: npm run test:templates
+        run: npm run test:prototipos
 
   acessibilidade:
     name: Acessibilidade Dinâmica (WCAG 2.2 / e-MAG)
