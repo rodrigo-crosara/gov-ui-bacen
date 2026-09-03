@@ -13,23 +13,38 @@ Sua missão é atuar como um motor inteligente de prototipagem de alta fidelidad
 
 ## 0. FLUXO OPERACIONAL OFICIAL (INTAKE, CLI & PROTOTIPAGEM)
 
-O agente atua perfeitamente integrado à esteira de design e publicação do Banco Central:
+O agente atua perfeitamente integrado à esteira de design e publicação do Banco Central através de 3 etapas canônicas:
 
 ```
 +------------------------------------+       +------------------------------------+       +------------------------------------+
-|     1. Demanda Técnica & CLI       |       |     2. Estruturação Designer       |       |     3. Prototipagem pela IA        |
-|  Área técnica envia insumo bruto.  | ----> |  Webdesigner preenche o briefing   | ----> |  Agente projeta o miolo semântico  |
-|  CLI gera scaffold em .docs-ia/:   |       |  em .docs-ia/exemplos-demandas/    |       |  em prototipos/<slug>.html e       |
-|  npm run demanda:criar             |       |  e aciona o agente de IA.          |       |  homologa via split-screen.        |
+| 1. Recebimento da Demanda Bruta    |       | 2. Estruturação pelo Webdesigner   |       | 3. Geração Algorítmica pelo Agente |
+| Textos, minutas, DOCs, PDFs,       | ----> | CLI normaliza insumos e gera       | ----> | Agente interpreta a semântica,     |
+| e-mails (.eml), HTML legado, etc.  |       | scaffold em .docs-ia/:             |       | projeta o miolo no grid Bootstrap  |
+| provenientes das áreas técnicas.   |       | npm run demanda:criar -- --arquivo |       | em prototipos/<slug>.html.         |
 +------------------------------------+       +------------------------------------+       +------------------------------------+
 ```
 
-1. **Ingestão da Demanda & CLI:** Áreas técnicas e de negócio do BCB (Copom, Pix, Regulação, Cidadania Financeira, etc.) enviam comunicados, minutas de normas, resoluções, memorandos ou relatórios brutos. O webdesigner inicializa a demanda pelo comando CLI oficial:
-   ```bash
-   npm run demanda:criar -- --slug meu-servico --titulo "Título da Demanda"
-   ```
-2. **Estruturação pelo Webdesigner:** O webdesigner edita o arquivo gerado em `.docs-ia/exemplos-demandas/<numero>-<slug>.md`, define o objetivo de comunicação, sintetiza os dados necessários e aciona o agente.
-3. **Prototipagem de Alta Fidelidade pelo Agente:** O agente projeta autonomamente o miolo em `prototipos/<slug>.html`, distribuindo os dados em slots modulares de grid (100%, 70/30, 50/50, 33/33/33), breadcrumb semântico, botão voltar ao topo e componentes canônicos do Design System, permitindo inspeção imediata no harness (`prototipos/_harness.html?src=<slug>.html&doc=<demanda>.md`).
+### Etapa 1: Recebimento da Demanda Bruta
+As áreas técnicas e de negócio do BCB (Copom, Pix, Regulação, Cidadania Financeira, DEINF, DSTAT, etc.) encaminham comunicados, minutas de resoluções, tabelas ou memorandos em formatos brutos heterogêneos (documentos Word, arquivos PDF, e-mails exportados `.eml`, páginas HTML legadas desestruturadas ou planilhas CSV).
+
+### Etapa 2: Estruturação e Qualificação pelo Webdesigner
+O webdesigner de plantão recebe o material bruto e utiliza o utilitário CLI oficial de automação para normalizar o conteúdo e gerar o scaffold padronizado em `.docs-ia/exemplos-demandas/<numero>-<slug>.md`:
+```bash
+# Ingestão a partir de arquivo externo (HTML legado, EML, JSON, TXT):
+npm run demanda:criar -- --arquivo ./minuta-diretoria.eml --slug seguranca-pix
+
+# Ou criação interativa com definição de parâmetros:
+npm run demanda:criar -- --slug meu-servico --titulo "Título da Demanda" --padrao "Comunicação Normativa (Layout 70/30 com downloads)"
+```
+O webdesigner valida o objetivo de comunicação, revisa os atos regulatórios vinculados e aciona o agente de IA repassando o briefing qualificado.
+
+### Etapa 3: Geração Algorítmica/Heurística pelo Agente de IA
+O agente de IA ingere a demanda qualificada e concebe o protótipo final em `prototipos/<slug>.html`:
+- **Semântica Estrita:** Foco no miolo `<main id="conteudo-principal">` com 1 único `<h1>`.
+- **Grid Oficial Bootstrap:** Estruturação modular em `.container`/`.bcb-container`, `.row`/`.bcb-row` e colunas responsivas proporcionais (`.col-12`, `.col-lg-8`, `.col-lg-4`, `.col-md-6`, etc.).
+- **Iconografia Canônica:** Uso exclusivo da biblioteca Material Icons (`.material-symbols-outlined.material-icons`).
+- **Resiliência Cromática e Acessibilidade:** Conformidade WCAG 2.1 AA e 3 temas (Padrão, Dark Mode e Alto Contraste).
+- **Homologação Imediata:** Visualização split-screen no harness técnico: `prototipos/_harness.html?src=<slug>.html&doc=<demanda>.md`.
 
 ---
 

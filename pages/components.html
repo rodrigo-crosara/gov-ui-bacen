@@ -247,6 +247,10 @@
             align-items: center;
             gap: 0.25rem;
         }
+        .badge-a11y .material-symbols-outlined,
+        .badge-a11y .material-icons {
+            font-size: 0.9rem !important;
+        }
 
         @media (max-width: 991px) {
             .ds-wrapper {
@@ -304,8 +308,8 @@
         <!-- Sidebar Sticky -->
         <nav class="ds-sidebar" id="ds-sidebar-nav" aria-label="Navegação do catálogo de componentes">
             <div class="ds-sidebar-title mb-2">
-                <a href="../index.html" class="d-flex align-items-center text-decoration-none" style="color: var(--bcb-brand-azul-blue); font-size: 0.85rem; font-weight: 700; gap: 0.25rem;">
-                    <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_back</span> Hub de Documentação
+                <a href="../index.html" class="d-flex align-items-center text-decoration-none text-bcb-brand font-weight-bold gap-1">
+                    <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">arrow_back</span> Hub de Documentação
                 </a>
             </div>
             
@@ -351,7 +355,7 @@
         <main class="ds-main" id="conteudo-principal">
 
             <div class="mb-4">
-                <h1 class="h2 font-weight-bold" style="color: var(--bcb-brand-blue);">Catálogo Vivo de Componentes</h1>
+                <h1 class="h2 font-weight-bold text-bcb-brand">Catálogo Vivo de Componentes</h1>
                 <p class="text-muted">Explore todos os blocos de construção oficiais do portal do Banco Central do Brasil. Copie os snippets HTML canônicos e teste a responsividade e a alternância de temas em tempo real.</p>
             </div>
 
@@ -363,7 +367,7 @@
             <section id="atomo-grid" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">grid_view</span> 1.0 Grid 12 Colunas & Container 1440px</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Layout CMS BCB</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Layout CMS BCB</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-body small mb-3">
@@ -483,10 +487,10 @@
             <section id="atomo-botoes" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">smart_button</span> 1.1 Botões e Variantes</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Foco Acessível 3px</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Foco Acessível 3px</span>
                 </div>
                 <div class="ds-component-preview">
-                    <div class="d-flex flex-wrap align-items-center" style="gap: 0.75rem;">
+                    <div class="d-flex flex-wrap align-items-center gap-2">
                         <button type="button" class="btn btn-primary">Botão Primário</button>
                         <button type="button" class="btn btn-secondary">Botão Secundário</button>
                         <button type="button" class="btn btn-outline-primary">Terciário / Outline</button>
@@ -519,7 +523,7 @@
             <section id="atomo-formularios" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">edit_note</span> 1.2 Controles de Formulário (Form Controls)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> WCAG 2.2 AA</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> WCAG 2.2 AA</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -615,10 +619,10 @@
             <section id="atomo-tags-badges" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">label</span> 1.4 Tags e Badges</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Metadados</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Metadados</span>
                 </div>
                 <div class="ds-component-preview">
-                    <div class="d-flex flex-wrap align-items-center" style="gap: 0.75rem;">
+                    <div class="d-flex flex-wrap align-items-center gap-2">
                         <span class="tag-bcb primary">Política Monetária</span>
                         <span class="tag-bcb neutral">Dados Abertos</span>
                         <span class="tag-bcb outline">Regulamentação</span>
@@ -644,7 +648,7 @@
             <section id="atomo-icones-tipografia" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_size</span> 1.5 Material Icons e Tipografia</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Ubuntu / Cormorant</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Ubuntu / Cormorant</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row align-items-center mb-4">
@@ -674,7 +678,7 @@
             <section id="atomo-tabelas" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">table_chart</span> 1.6 Tabelas Nativas Simples</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Caption & Scope</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Caption & Scope</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="table-responsive">
@@ -731,7 +735,7 @@
             <section id="atomo-skeleton" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">hourglass_empty</span> 1.6 Skeleton Loading (.bcb-skeleton)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-busy="true" &bull; WCAG 2.2</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-busy="true" &bull; WCAG 2.2</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Animações de shimmer para suavizar estados assíncronos de carregamento em cards, tabelas e parágrafos sem quebrar o layout.</p>
@@ -808,7 +812,7 @@
             <section id="molecula-callouts" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">chat_bubble_outline</span> 2.1 Callouts Estruturados</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> 5 Variantes Semânticas</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> 5 Variantes Semânticas</span>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Brand -->
@@ -860,7 +864,7 @@
             <section id="molecula-tipbox" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">lightbulb</span> 2.3 Tip Box Educativa</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Dicas de Educação Financeira</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Dicas de Educação Financeira</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="tip-box">
@@ -887,7 +891,7 @@
             <section id="molecula-documentos" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">cloud_download</span> 2.4 Download de Documentos (.documentos)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Metadados e Formato</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Metadados e Formato</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -939,7 +943,7 @@
             <section id="molecula-indicadores" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span> 2.5 Card de Indicador Econômico (.bcb-indicator-card)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Séries Temporais & Mercado</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Séries Temporais & Mercado</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row">
@@ -1025,7 +1029,7 @@
             <section id="molecula-listalinks" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">link</span> 2.6 Card Link / Lista de Links (.listalinks-light)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Modelos 1 e 5</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Modelos 1 e 5</span>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Modelo 1 (Horizontal) -->
@@ -1058,22 +1062,22 @@
                     <div class="row listalinks-light modelo-5">
                         <div class="col-md-4 mb-3">
                             <a href="#" class="d-block text-center text-decoration-none hvr-shadow p-4 rounded" style="border: 1px solid var(--bcb-gray-200); background: var(--bcb-color-white);">
-                                <span class="material-symbols-outlined material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">currency_exchange</span>
-                                <h4 class="h5 font-weight-bold" style="color: var(--bcb-brand-blue);">Drex</h4>
+                                <span class="material-symbols-outlined material-icons md-48 mb-2 text-bcb-brand" aria-hidden="true">currency_exchange</span>
+                                <h4 class="h5 font-weight-bold text-bcb-brand">Drex</h4>
                                 <p class="text-muted small mb-0">A plataforma do Real Digital em desenvolvimento pelo Banco Central.</p>
                             </a>
                         </div>
                         <div class="col-md-4 mb-3">
                             <a href="#" class="d-block text-center text-decoration-none hvr-shadow p-4 rounded" style="border: 1px solid var(--bcb-gray-200); background: var(--bcb-color-white);">
-                                <span class="material-symbols-outlined material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">qr_code_2</span>
-                                <h4 class="h5 font-weight-bold" style="color: var(--bcb-brand-blue);">Pix</h4>
+                                <span class="material-symbols-outlined material-icons md-48 mb-2 text-bcb-brand" aria-hidden="true">qr_code_2</span>
+                                <h4 class="h5 font-weight-bold text-bcb-brand">Pix</h4>
                                 <p class="text-muted small mb-0">O meio de pagamento instantâneo brasileiro gratuito e seguro.</p>
                             </a>
                         </div>
                         <div class="col-md-4 mb-3">
                             <a href="#" class="d-block text-center text-decoration-none hvr-shadow p-4 rounded" style="border: 1px solid var(--bcb-gray-200); background: var(--bcb-color-white);">
-                                <span class="material-symbols-outlined material-icons md-48 mb-2" style="color: var(--bcb-brand-blue);" aria-hidden="true">hub</span>
-                                <h4 class="h5 font-weight-bold" style="color: var(--bcb-brand-blue);">Open Finance</h4>
+                                <span class="material-symbols-outlined material-icons md-48 mb-2 text-bcb-brand" aria-hidden="true">hub</span>
+                                <h4 class="h5 font-weight-bold text-bcb-brand">Open Finance</h4>
                                 <p class="text-muted small mb-0">Compartilhamento padronizado de dados e serviços financeiros.</p>
                             </a>
                         </div>
@@ -1101,7 +1105,7 @@
             <section id="molecula-stepper" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">linear_scale</span> 2.7 Stepper (Passo a Passo Multi-etapas)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Jornada do Cidadão</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Jornada do Cidadão</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="d-flex justify-content-between align-items-center position-relative my-3" style="max-width: 600px; margin: 0 auto;">
@@ -1140,7 +1144,7 @@
             <section id="molecula-datatable" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_list</span> 2.8 Data Table Responsiva</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Ordenação Client-Side</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Ordenação Client-Side</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-data-table-container">
@@ -1205,7 +1209,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="p-3 bg-light border-top d-flex justify-content-between align-items-center flex-wrap" style="gap: 0.5rem;">
+                        <div class="p-3 bg-light border-top d-flex justify-content-between align-items-center flex-wrap gap-2">
                             <small class="text-muted">Exibindo 1 a 5 de 268 registros</small>
                             <nav aria-label="Paginação da série histórica">
                                 <ul class="pagination pagination-sm mb-0">
@@ -1250,7 +1254,7 @@
             <section id="molecula-filtros" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">filter_alt</span> 2.9 Filtros e Busca Facetada (.bcb-filter-panel)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Chips Removíveis</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Chips Removíveis</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-filter-panel">
@@ -1327,7 +1331,7 @@
             <section id="molecula-search-overlay" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">search</span> 2.10 Busca Avançada Local de Conteúdo (.bcb-search-overlay)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> role="search" &bull; In-page</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> role="search" &bull; In-page</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Módulo de pesquisa local in-page com chips de sugestões para filtragem em tabelas densas, normas e FAQs temáticos, operando dentro do miolo de conteúdo sem conflitar com a busca global do portal.</p>
@@ -1337,7 +1341,7 @@
                             <input type="search" class="form-control form-control-lg" placeholder="O que você está procurando no Banco Central?" aria-label="Campo de busca no portal">
                             <button type="button" class="btn btn-primary">Buscar</button>
                         </div>
-                        <div class="d-flex align-items-center flex-wrap" style="gap: 0.5rem;">
+                        <div class="d-flex align-items-center flex-wrap gap-2">
                             <span class="text-muted small mr-2">Buscas frequentes:</span>
                             <a href="#" class="btn btn-sm btn-outline-secondary py-0">Valores a Receber</a>
                             <a href="#" class="btn btn-sm btn-outline-secondary py-0">Taxa Selic</a>
@@ -1361,7 +1365,7 @@
             <section id="molecula-toasts-alertas" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">notifications_active</span> 2.11 Toasts e Alertas</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-live="polite"</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-live="polite"</span>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Alerta Inline -->
@@ -1370,7 +1374,7 @@
                         <div><strong>Aviso do Sistema:</strong> O módulo de exportação foi atualizado para suporte a JSON Schema v2.</div>
                     </div>
 
-                    <div class="d-flex flex-wrap align-items-center" style="gap: 0.75rem;">
+                    <div class="d-flex flex-wrap align-items-center gap-2">
                         <button type="button" class="btn btn-primary" id="btnDispararToast">
                             <span class="material-symbols-outlined material-icons" aria-hidden="true">notification_add</span> Disparar Toast de Sucesso
                         </button>
@@ -1400,7 +1404,7 @@
             <section id="molecula-data-export" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">file_download</span> 2.12 Exportação de Dados Abertos (.bcb-data-export)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Dados Abertos & SGS</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Dados Abertos & SGS</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-data-export">
@@ -1457,7 +1461,7 @@
             <section id="molecula-empty-state" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">inbox</span> 2.13 Empty State / Estado Vazio (.bcb-empty-state)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> WCAG 2.2 AA &bull; Resiliência</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> WCAG 2.2 AA &bull; Resiliência</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-3">Utilizado quando uma consulta, filtro facetado ou busca de dados abertos não retorna registros, oferecendo orientação e ações corretivas claras.</p>
@@ -1472,11 +1476,11 @@
                                 <h4 class="bcb-empty-state-title">Nenhum indicador ou documento encontrado</h4>
                                 <p class="bcb-empty-state-desc">Não localizamos séries temporais com os filtros aplicados. Tente ajustar o período selecionado ou utilizar palavras-chave mais genéricas.</p>
                                 <div class="bcb-empty-state-actions">
-                                    <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                        <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">filter_alt_off</span> Limpar Filtros
+                                    <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1">
+                                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">filter_alt_off</span> Limpar Filtros
                                     </button>
-                                    <button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                        <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">help_outline</span> Dúvidas Frequentes
+                                    <button type="button" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center gap-1">
+                                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">help_outline</span> Dúvidas Frequentes
                                     </button>
                                 </div>
                             </div>
@@ -1518,7 +1522,7 @@
             <section id="organismo-accordion" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_day</span> 3.1 Accordion (Sanfona) (.accordion.modelo-1)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> aria-expanded sincronizado</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-expanded sincronizado</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="accordion modelo-1" id="accordionDemo">
@@ -1580,7 +1584,7 @@
             <section id="organismo-abas" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">tab</span> 3.4 Navegação em Abas (.bcb-navegacaoabas)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Chanfro Angular</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Chanfro Angular</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="bcb-navegacaoabas">
@@ -1627,7 +1631,7 @@
             <section id="organismo-timelines" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">timeline</span> 3.5 Timelines (Vertical Educativa e Horizontal)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Cronograma & Jornada</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Cronograma & Jornada</span>
                 </div>
                 <div class="ds-component-preview">
                     <!-- Timeline Educativa Vertical -->
@@ -1666,7 +1670,7 @@
             <section id="organismo-hero-banner" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">panorama</span> 3.6 Hero Banner (.bcb-hero-banner)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Destaque Principal</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Destaque Principal</span>
                 </div>
                 <div class="ds-component-preview p-0">
                     <div class="p-5" style="background: linear-gradient(135deg, var(--bcb-brand-blue) 0%, var(--bcb-brand-blue-dark) 100%); color: white; border-radius: var(--bcb-radius-4);">
@@ -1690,7 +1694,7 @@
             <section id="organismo-noticias" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">newspaper</span> 3.7 Lista de Notícias (News List)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Editorial</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Editorial</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="list-group list-group-flush">
@@ -1699,7 +1703,7 @@
                                 <span class="tag-bcb primary">Copom</span>
                                 <small class="text-muted">12/03/2026 18:30</small>
                             </div>
-                            <h4 class="h5 mb-1"><a href="#" class="text-decoration-none font-weight-bold" style="color: var(--bcb-brand-blue);">Copom eleva a taxa Selic para 14,25% ao ano</a></h4>
+                            <h4 class="h5 mb-1"><a href="#" class="text-decoration-none font-weight-bold text-bcb-brand">Copom eleva a taxa Selic para 14,25% ao ano</a></h4>
                             <p class="mb-0 text-muted small">Em sua 268ª reunião, o Comitê de Política Monetária decidiu por unanimidade elevar os juros básicos em 1,00 ponto percentual.</p>
                         </div>
                     </div>
@@ -1721,7 +1725,7 @@
             <section id="organismo-process-list" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_list_numbered</span> 3.8 Process List (Passo a Passo Sequencial)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Numeração em Grade</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Numeração em Grade</span>
                 </div>
                 <div class="ds-component-preview">
                     <ol class="process-list">
@@ -1754,7 +1758,7 @@
             <section id="organismo-modal" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">picture_in_picture</span> 3.9 Modal / Dialog Acessível (.bcb-modal)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Focus-Trap & ESC</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Focus-Trap & ESC</span>
                 </div>
                 <div class="ds-component-preview">
                     <button type="button" class="btn btn-primary" id="btnAbrirModal">
@@ -1804,7 +1808,7 @@
             <section id="organismo-videos" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">play_circle</span> 3.10 Container de Vídeos (.videos-destaque)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Aspect Ratio 16:9</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Aspect Ratio 16:9</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="row videos-destaque">
@@ -1831,7 +1835,7 @@
             <section id="utilitario-backtotop" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_upward</span> 4.1 Botão Voltar ao Topo (.bcb-back-to-top)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Scroll Suave</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Scroll Suave</span>
                 </div>
                 <div class="ds-component-preview">
                     <p class="text-muted small mb-2">Botão fixo que surge no canto inferior direito da tela após rolagem superior a 300px.</p>
@@ -1851,7 +1855,7 @@
             <section id="utilitario-transicoes" class="ds-component-card">
                 <div class="ds-component-header">
                     <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">swap_vert</span> 4.2 Bloco de Transição e Setas (.transition-block)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" style="font-size: 0.9rem;" aria-hidden="true">check_circle</span> Separador Animado</span>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Separador Animado</span>
                 </div>
                 <div class="ds-component-preview">
                     <div class="transition-block text-center py-4">

@@ -65,7 +65,7 @@
                         <div class="bcb-indicator-value">
                             14,25% <small class="text-body font-weight-normal font-size-sm">a.a.</small>
                             <small class="bcb-indicator-trend up" title="Elevação de 1,00 p.p. na 268ª Reunião">
-                                <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">arrow_upward</span> +1,00 p.p.
+                                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">arrow_upward</span> +1,00 p.p.
                             </small>
                         </div>
                         <div class="bcb-indicator-meta">Definida na 268ª Reunião &bull; Vigência a partir de 13/03/2026</div>
@@ -79,7 +79,7 @@
                         <div class="bcb-indicator-value">
                             14,15% <small class="text-body font-weight-normal font-size-sm">a.a.</small>
                             <small class="bcb-indicator-trend neutral" title="Média estável">
-                                <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">remove</span> Estável
+                                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">remove</span> Estável
                             </small>
                         </div>
                         <div class="bcb-indicator-meta">Média ponderada do mercado interbancário</div>
@@ -101,7 +101,7 @@
 
         <!-- [SLOT CMS: 100% - Painel de Busca e Filtros Facetados] -->
         <section class="bcb-section">
-            <div class="card p-3 border mb-4" style="background-color: var(--bcb-color-surface);">
+            <div class="card p-3 border mb-4 bg-bcb-surface">
                 <div class="bcb-row align-items-center">
                     <div class="bcb-col-12 bcb-col-md-4 mb-2 mb-md-0">
                         <label for="filtroAno" class="small font-weight-bold text-body mb-1">Filtrar por Ano:</label>
@@ -121,8 +121,8 @@
                         </select>
                     </div>
                     <div class="bcb-col-12 bcb-col-md-4 d-flex align-items-end pt-md-4">
-                        <button type="button" class="btn btn-outline-primary btn-sm btn-block d-inline-flex align-items-center justify-content-center" style="gap: 0.35rem;">
-                            <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">filter_alt</span>
+                        <button type="button" class="btn btn-outline-primary btn-sm btn-block d-inline-flex align-items-center justify-content-center gap-1">
+                            <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">filter_alt</span>
                             <span>Aplicar Filtros</span>
                         </button>
                     </div>
@@ -136,7 +136,7 @@
                 <div class="bcb-col-12">
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
                         <div>
-                            <h2 class="h4 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
+                            <h2 class="h4 font-weight-bold mb-1 text-bcb-brand">
                                 Registros Históricos das Decisões do Copom
                             </h2>
                             <p class="text-muted small mb-0">Total de 6 registros exibidos nesta consulta</p>
@@ -147,35 +147,35 @@
                             <span class="bcb-data-export-label">Exportar dados:</span>
                             <div class="bcb-data-export-buttons">
                                 <button type="button" class="bcb-btn-export" aria-label="Exportar registros da série histórica em CSV">
-                                    <span class="material-symbols-outlined bcb-btn-export-icon" aria-hidden="true">file_download</span> CSV
+                                    <span class="material-symbols-outlined material-icons bcb-btn-export-icon" aria-hidden="true">file_download</span> CSV
                                 </button>
                                 <button type="button" class="bcb-btn-export" aria-label="Exportar registros da série histórica em JSON">
-                                    <span class="material-symbols-outlined bcb-btn-export-icon" aria-hidden="true">data_object</span> JSON
+                                    <span class="material-symbols-outlined material-icons bcb-btn-export-icon" aria-hidden="true">data_object</span> JSON
                                 </button>
                                 <button type="button" class="bcb-btn-export" data-action="print" aria-label="Imprimir tabela de registros">
-                                    <span class="material-symbols-outlined bcb-btn-export-icon" aria-hidden="true">print</span> Imprimir
+                                    <span class="material-symbols-outlined material-icons bcb-btn-export-icon" aria-hidden="true">print</span> Imprimir
                                 </button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Dica visual para dispositivos móveis (WCAG 2.1.1 / Usabilidade Mobile) -->
-                    <div class="d-flex align-items-center text-muted small mb-2 d-md-none" style="gap: 0.35rem;">
-                        <span class="material-symbols-outlined" style="font-size: 1rem; color: var(--bcb-brand-azul-blue);" aria-hidden="true">swipe</span>
+                    <div class="d-flex align-items-center text-muted small mb-2 d-md-none gap-1">
+                        <span class="material-symbols-outlined material-icons md-16 text-bcb-brand" aria-hidden="true">swipe</span>
                         <span>Deslize horizontalmente para visualizar todas as colunas da tabela</span>
                     </div>
 
                     <!-- Tabela de Dados Acessível com Rolagem Horizontal -->
                     <div class="table-responsive" tabindex="0" role="region" aria-label="Tabela histórica de decisões do Copom com rolagem horizontal">
-                        <table class="table table-bordered table-striped mb-0" style="min-width: 620px;">
+                        <table class="table table-bordered table-striped mb-0 table-min-w-620">
                             <caption>Série SGS 432 contendo histórico das taxas fixadas pelo Copom, datas de início e fim da reunião, variação e status da ata.</caption>
                             <thead class="thead-primary">
                                 <tr>
-                                    <th scope="col" style="width: 15%;">Reunião</th>
-                                    <th scope="col" style="width: 25%;">Período da Reunião</th>
-                                    <th scope="col" class="text-right" style="width: 20%;">Meta Fixada (% a.a.)</th>
-                                    <th scope="col" class="text-center" style="width: 20%;">Variação (p.p.)</th>
-                                    <th scope="col" class="text-center" style="width: 20%;">Ata do Copom</th>
+                                    <th scope="col" class="table-col-15">Reunião</th>
+                                    <th scope="col" class="table-col-25">Período da Reunião</th>
+                                    <th scope="col" class="text-right table-col-20">Meta Fixada (% a.a.)</th>
+                                    <th scope="col" class="text-center table-col-20">Variação (p.p.)</th>
+                                    <th scope="col" class="text-center table-col-20">Ata do Copom</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -231,14 +231,14 @@
         <!-- [SLOT CMS: 100% - Callout de Integração com API REST e Dados Abertos] -->
         <section class="bcb-section">
             <div class="callout callout-brand callout-left-bordered" role="region" aria-label="Integração técnica com a API do SGS">
-                <span class="material-symbols-outlined callout-icon" aria-hidden="true">api</span>
+                <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">api</span>
                 <div class="callout-content">
                     <h2 class="callout-title h5">Acesso via API de Dados Abertos (SGS REST API)</h2>
                     <p class="text-body small mb-2">
                         Esta série temporal também pode ser consumida programaticamente em formato JSON através do endpoint público 
                         do Banco Central do Brasil, sem necessidade de autenticação:
                     </p>
-                    <code class="d-block p-2 rounded small" style="background-color: var(--bcb-color-surface); border: 1px solid var(--bcb-color-border); color: var(--bcb-brand-azul-blue);">
+                    <code class="d-block p-2 rounded small bg-bcb-surface border-bcb text-bcb-brand">
                         GET https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json
                     </code>
                 </div>
@@ -248,7 +248,7 @@
         <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
         <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
             <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">
-                <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle;" aria-hidden="true">arrow_upward</span>
+                <span class="material-symbols-outlined material-icons md-16 align-middle" aria-hidden="true">arrow_upward</span>
                 <span>Voltar ao topo</span>
             </a>
         </div>

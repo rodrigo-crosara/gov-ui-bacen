@@ -147,6 +147,14 @@ function auditoriaEstaticaAcessibilidade(caminhoArquivo, caminhoRelativo) {
     if (alvosReduzidosInline.length > 0) {
       problemas.push(`${alvosReduzidosInline.length} elemento(s) com estilo inline reduzindo altura para menos de 44px (WCAG 2.5.5).`);
     }
+
+    // 11. Semântica de Teclado e Foco em Botões ARIA (WCAG 2.1.1 / 4.1.2)
+    const botoesCustomizados = conteudo.match(/<(?:div|span|a)[^>]*role=["']button["'][^>]*>/gi) || [];
+    botoesCustomizados.forEach(btn => {
+      if (!btn.includes('tabindex=') && !btn.includes('href=')) {
+        problemas.push(`Elemento com role="button" sem tabindex="0" detectado — impede ativação por teclado (WCAG 2.1.1).`);
+      }
+    });
   }
 
   return problemas;

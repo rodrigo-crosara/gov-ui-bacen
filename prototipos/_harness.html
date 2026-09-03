@@ -330,6 +330,13 @@
             transform: translateY(0);
             pointer-events: auto;
         }
+        .harness-icon-success { color: #4ade80 !important; }
+        .harness-icon-info { color: #4dc8ff !important; }
+        .harness-badge-file { font-size: 0.72rem; }
+        :focus-visible {
+            outline: 3px solid #088694 !important;
+            outline-offset: 2px !important;
+        }
     </style>
 </head>
 <body>
@@ -337,7 +344,7 @@
     <!-- BARRA TÉCNICA DE CONTROLE (Exclusiva do Harness / Ocultada em Produção) -->
     <header class="bcb-harness-bar" role="banner" aria-label="Controles de Homologação do Harness">
         <a href="../pages/prototipos.html" class="bcb-harness-title">
-            <span class="material-symbols-outlined" style="font-size: 1.15rem;" aria-hidden="true">dashboard</span>
+            <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">dashboard</span>
             <span>Harness de Visualização Técnica</span>
             <span class="bcb-harness-badge">Protótipos BCB</span>
         </a>
@@ -345,7 +352,7 @@
         <div class="bcb-harness-controls">
             <!-- Botão de Briefing Retrátil (Split-Screen) -->
             <button type="button" id="btnToggleBriefing" class="bcb-harness-btn" title="Exibir/Ocultar Briefing da Demanda Original (.docs-ia/)">
-                <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">description</span>
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">description</span>
                 <span>Briefing da Demanda</span>
             </button>
 
@@ -367,13 +374,13 @@
                 <span class="bcb-harness-label">Viewport:</span>
                 <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de viewport">
                     <button type="button" class="bcb-harness-btn active" data-viewport="desktop" title="Desktop (100% / max-width 1440px)">
-                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">desktop_windows</span> Desktop
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">desktop_windows</span> Desktop
                     </button>
                     <button type="button" class="bcb-harness-btn" data-viewport="tablet" title="Tablet (768px)">
-                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">tablet_mac</span> Tablet (768px)
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">tablet_mac</span> Tablet (768px)
                     </button>
                     <button type="button" class="bcb-harness-btn" data-viewport="mobile" title="Mobile (375px)">
-                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">smartphone</span> Mobile (375px)
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">smartphone</span> Mobile (375px)
                     </button>
                 </div>
             </div>
@@ -383,13 +390,13 @@
                 <span class="bcb-harness-label">Tema:</span>
                 <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de tema do protótipo">
                     <button type="button" class="bcb-harness-btn active" data-theme-target="default" title="Modo Claro Institucional">
-                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">light_mode</span> Padrão
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">light_mode</span> Padrão
                     </button>
                     <button type="button" class="bcb-harness-btn" data-theme-target="dark" title="Modo Escuro (Dark Mode)">
-                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">dark_mode</span> Escuro
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">dark_mode</span> Escuro
                     </button>
                     <button type="button" class="bcb-harness-btn" data-theme-target="high-contrast" title="Alto Contraste WCAG AAA">
-                        <span class="material-symbols-outlined" style="font-size: 1rem;" aria-hidden="true">contrast</span> Contraste
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">contrast</span> Contraste
                     </button>
                 </div>
             </div>
@@ -397,7 +404,7 @@
             <!-- Ação Rápida: Copiar HTML do Miolo -->
             <div class="bcb-harness-group">
                 <button type="button" id="btnCopyMain" class="bcb-harness-btn" title="Copiar HTML do miolo (<main>) limpo para inclusão no CMS">
-                    <span class="material-symbols-outlined" style="font-size: 1rem; color: #4ade80;" aria-hidden="true">content_copy</span>
+                    <span class="material-symbols-outlined material-icons md-16 harness-icon-success" aria-hidden="true">content_copy</span>
                     <span>Copiar HTML do Miolo</span>
                 </button>
             </div>
@@ -412,11 +419,11 @@
         <aside id="briefingDrawer" class="bcb-harness-drawer" aria-label="Painel de Briefing da Demanda">
             <div class="bcb-drawer-header">
                 <h2 class="bcb-drawer-title">
-                    <span class="material-symbols-outlined" style="font-size: 1.1rem; color: #4dc8ff;" aria-hidden="true">assignment</span>
+                    <span class="material-symbols-outlined material-icons md-18 harness-icon-info" aria-hidden="true">assignment</span>
                     <span id="briefingTitle">Briefing da Demanda</span>
                 </h2>
                 <button type="button" id="btnCloseDrawer" class="bcb-harness-btn" title="Fechar Painel de Briefing">
-                    <span class="material-symbols-outlined" style="font-size: 1.1rem;" aria-hidden="true">close</span>
+                    <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">close</span>
                 </button>
             </div>
             <div id="briefingContent" class="bcb-drawer-body">
@@ -434,7 +441,7 @@
 
     <!-- Componente Toast de Feedback (Acessível) -->
     <div id="harnessToast" class="bcb-harness-toast" role="status" aria-live="polite" aria-atomic="true">
-        <span class="material-symbols-outlined" style="font-size: 1.25rem; color: #4ade80;" aria-hidden="true">check_circle</span>
+        <span class="material-symbols-outlined material-icons md-20 harness-icon-success" aria-hidden="true">check_circle</span>
         <span id="toastMessage">HTML do miolo copiado com sucesso!</span>
     </div>
 
@@ -516,7 +523,7 @@
                 briefingTitle.textContent = demanda.titulo;
                 briefingContent.innerHTML = `
                     <div class="mb-3">
-                        <span class="badge badge-info" style="font-size: 0.72rem;">Arquivo: ${demanda.arquivo}</span>
+                        <span class="badge badge-info harness-badge-file">Arquivo: ${demanda.arquivo}</span>
                     </div>
 
                     <div class="bcb-briefing-meta">

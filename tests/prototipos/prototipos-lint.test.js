@@ -158,7 +158,7 @@ for (const arquivo of arquivosHTML) {
         problemas.push(`${handlersInline.length} manipulador(es) inline de evento detectado(s) (${handlersInline.join(', ')}). Utilize seletores de dados como data-action e delegue a assets/js/bcb-ui.js.`);
       }
 
-      // 3.5 Restrição estrita de conteúdo ao container <main id="conteudo-principal" class="bcb-container">
+    // 3.5 Restrição estrita de conteúdo ao container <main id="conteudo-principal" class="bcb-container">
       const matchBody = conteudo.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
       if (matchBody) {
         const corpoBody = matchBody[1];
@@ -184,15 +184,39 @@ for (const arquivo of arquivosHTML) {
           }
         }
       }
+
+      // 3.6 Proibição de estilos inline arbitrários em protótipos oficiais
+      const styleAttributes = conteudo.match(/style=["'][^"']*["']/gi) || [];
+      if (styleAttributes.length > 0) {
+        problemas.push(`${styleAttributes.length} ocorrência(s) de estilo inline (style="...") detectada(s). Utilize as classes oficiais do Design System (_helpers.css e tokens).`);
+      }
+
+      // 3.7 Validação da Hierarquia Tipográfica Sequencial (sem pular níveis)
+      const tagsHeading = conteudo.match(/<h([1-6])[\s>]/gi) || [];
+      const niveis = tagsHeading.map(h => parseInt(h.match(/<h([1-6])/i)[1], 10));
+      let nivelAnterior = 1;
+      for (let i = 0; i < niveis.length; i++) {
+        const nivelAtual = niveis[i];
+        if (i > 0 && nivelAtual > nivelAnterior + 1) {
+          problemas.push(`Salto inválido na hierarquia tipográfica: <h${nivelAnterior}> seguido por <h${nivelAtual}> (WCAG 1.3.1). Não pule níveis de cabeçalho.`);
+        }
+        nivelAnterior = nivelAtual;
+      }
+
+      // 3.8 Validação Estrita de Iconografia Material Icons
+      const iconesEstrangeiros = conteudo.match(/class=["'][^"']*(?:fa-|glyphicon-|feather-|lucide-)[^"']*["']/gi) || [];
+      if (iconesEstrangeiros.length > 0) {
+        problemas.push(`${iconesEstrangeiros.length} ícone(s) com biblioteca não homologada detectado(s). Padronize exclusivamente com Material Icons (.material-symbols-outlined.material-icons).`);
+      }
     }
 
-    // 3.4 Modularidade de Grid Flexível 12 Colunas
+    // 3.9 Modularidade de Grid Flexível 12 Colunas Bootstrap Oficial
     if (!conteudo.includes('bcb-row') && !conteudo.includes('row')) {
-      problemas.push('Protótipo não utiliza a estrutura de linhas do grid modular (.bcb-row).');
+      problemas.push('Protótipo não utiliza a estrutura de linhas do grid modular (.bcb-row / .row).');
     }
     const temColunas = conteudo.match(/(?:bcb-col-|col-(?:12|md-|lg-|sm-))/);
     if (!temColunas) {
-      problemas.push('Protótipo não utiliza colunas modulares proporcionais do grid (.bcb-col-*).');
+      problemas.push('Protótipo não utiliza colunas modulares proporcionais do grid (.bcb-col-* / .col-*).');
     }
   }
 

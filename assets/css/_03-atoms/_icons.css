@@ -19,16 +19,46 @@
 }
 
 /* Modificadores de escala de ícones */
+.material-symbols-outlined.md-14,
+.material-icons.md-14,
+.material-icons-outlined.md-14 {
+  font-size: 14px !important;
+}
+
+.material-symbols-outlined.md-16,
+.material-icons.md-16,
+.material-icons-outlined.md-16 {
+  font-size: 16px !important;
+}
+
 .material-symbols-outlined.md-18,
 .material-icons.md-18,
 .material-icons-outlined.md-18 {
   font-size: 18px !important;
 }
 
+.material-symbols-outlined.md-20,
+.material-icons.md-20,
+.material-icons-outlined.md-20 {
+  font-size: 20px !important;
+}
+
 .material-symbols-outlined.md-24,
 .material-icons.md-24,
 .material-icons-outlined.md-24 {
   font-size: 24px !important;
+}
+
+.material-symbols-outlined.md-28,
+.material-icons.md-28,
+.material-icons-outlined.md-28 {
+  font-size: 28px !important;
+}
+
+.material-symbols-outlined.md-32,
+.material-icons.md-32,
+.material-icons-outlined.md-32 {
+  font-size: 32px !important;
 }
 
 .material-symbols-outlined.md-36,

@@ -1,0 +1,119 @@
+/* ============= BCB Design System — Utilities / Helpers =============
+ * Classes auxiliares vinculadas estritamente aos Design Tokens Oficiais (tokens.json).
+ * Substitui o uso de estilos inline (style="...") garantindo consistência e temas.
+ * =================================================================== */
+
+/* Cores de Texto Semânticas */
+.text-bcb-brand,
+.text-bcb-blue {
+  color: var(--bcb-brand-azul-blue) !important;
+}
+
+.text-bcb-verde {
+  color: var(--bcb-brand-verde-castell) !important;
+}
+
+.text-bcb-body {
+  color: var(--bcb-color-body-text) !important;
+}
+
+.text-bcb-muted {
+  color: var(--bcb-color-neutral-60) !important;
+}
+
+/* Superfícies e Fundos */
+.bg-bcb-surface {
+  background-color: var(--bcb-color-surface) !important;
+}
+
+.bg-bcb-surface-subtle {
+  background-color: var(--bcb-color-surface-subtle) !important;
+}
+
+.bg-bcb-light {
+  background-color: var(--bcb-color-bg-light) !important;
+}
+
+/* Bordas Semânticas */
+.border-bcb {
+  border: 1px solid var(--bcb-color-border) !important;
+}
+
+.border-bcb-top {
+  border-top: 1px solid var(--bcb-color-border) !important;
+}
+
+.border-bcb-bottom {
+  border-bottom: 1px solid var(--bcb-color-border) !important;
+}
+
+/* Espaçamentos Flexbox (Gap) Mapeados a Tokens */
+.gap-1 {
+  gap: var(--bcb-spacing-xs, 0.25rem) !important;
+}
+
+.gap-2 {
+  gap: var(--bcb-spacing-sm, 0.5rem) !important;
+}
+
+.gap-3 {
+  gap: var(--bcb-spacing-md, 1rem) !important;
+}
+
+.gap-4 {
+  gap: var(--bcb-spacing-lg, 1.5rem) !important;
+}
+
+/* Larguras Proporcionais para Colunas de Tabelas */
+.table-col-15 {
+  width: 15% !important;
+}
+
+.table-col-20 {
+  width: 20% !important;
+}
+
+.table-col-25 {
+  width: 25% !important;
+}
+
+.table-col-30 {
+  width: 30% !important;
+}
+
+.table-col-40 {
+  width: 40% !important;
+}
+
+.table-col-50 {
+  width: 50% !important;
+}
+
+.table-min-w-620 {
+  min-width: 620px !important;
+}
+
+/* Anel de Foco Visível e Acessível (WCAG 2.4.7 Focus Visible) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible,
+.btn:focus-visible,
+.bcb-btn:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px !important;
+}
+
+:root[data-contrast="high"] a:focus-visible,
+:root[data-contrast="high"] button:focus-visible,
+:root[data-contrast="high"] input:focus-visible,
+:root[data-contrast="high"] select:focus-visible,
+:root[data-contrast="high"] textarea:focus-visible,
+:root[data-contrast="high"] [tabindex]:focus-visible,
+:root[data-contrast="high"] .btn:focus-visible,
+:root[data-contrast="high"] .bcb-btn:focus-visible {
+  outline: 3px solid #FFFF00 !important;
+  outline-offset: 3px !important;
+}

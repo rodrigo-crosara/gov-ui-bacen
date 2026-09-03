@@ -123,127 +123,288 @@
   const BcbUI = {
     version: '2.1.0',
     init() {
-      // 1. Modais
+      // 1. Modais Acessíveis (WCAG 2.1 AA — Focus Trap, Escape e Retorno de Foco)
       try {
-        const modals = document.querySelectorAll('.bcb-modal, [data-toggle="bcb-modal"], [data-bcb-modal-target]');
-        if (modals.length > 0) {
-          if (window.BcbModal && typeof window.BcbModal.init === 'function') {
-            window.BcbModal.init();
+        let lastFocusedElement = null;
+
+        function openModal(modal, trigger) {
+          lastFocusedElement = trigger || document.activeElement;
+          modal.classList.add('active');
+          modal.setAttribute('aria-hidden', 'false');
+          modal.setAttribute('aria-modal', 'true');
+          modal.setAttribute('role', 'dialog');
+          document.body.style.overflow = 'hidden';
+
+          // Focar no primeiro elemento focável ou no próprio modal
+          const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          if (focusable.length > 0) {
+            focusable[0].focus();
           } else {
-            // Fallback embutido caso modal.js não tenha sido importado separadamente
-            document.addEventListener('click', (event) => {
-              const trigger = event.target.closest('[data-toggle="bcb-modal"], [data-bcb-modal-target]');
-              if (trigger) {
-                event.preventDefault();
-                const targetId = trigger.getAttribute('data-target') || trigger.getAttribute('data-bcb-modal-target') || trigger.getAttribute('href');
-                if (targetId) {
-                  const modal = document.getElementById(targetId.replace('#', ''));
-                  if (modal) {
-                    modal.classList.add('active');
-                    modal.setAttribute('aria-hidden', 'false');
-                    modal.setAttribute('aria-modal', 'true');
-                    document.body.style.overflow = 'hidden';
-                  }
-                }
-              }
-              const closeTrigger = event.target.closest('.bcb-modal-close, [data-dismiss="bcb-modal"]');
-              if (closeTrigger) {
-                event.preventDefault();
-                const modal = closeTrigger.closest('.bcb-modal-backdrop, [role="dialog"]');
-                if (modal) {
-                  modal.classList.remove('active');
-                  modal.setAttribute('aria-hidden', 'true');
-                  document.body.style.overflow = '';
-                }
-              }
-              if (event.target.classList.contains('bcb-modal-backdrop') && event.target.classList.contains('active')) {
-                event.target.classList.remove('active');
-                event.target.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-              }
-            });
+            modal.setAttribute('tabindex', '-1');
+            modal.focus();
           }
         }
+
+        function closeModal(modal) {
+          modal.classList.remove('active');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+          }
+        }
+
+        // Delegação de cliques para abertura e fechamento
+        document.addEventListener('click', (event) => {
+          const trigger = event.target.closest('[data-toggle="bcb-modal"], [data-bcb-modal-target]');
+          if (trigger) {
+            event.preventDefault();
+            const targetId = trigger.getAttribute('data-target') || trigger.getAttribute('data-bcb-modal-target') || trigger.getAttribute('href');
+            if (targetId) {
+              const modal = document.getElementById(targetId.replace('#', ''));
+              if (modal) openModal(modal, trigger);
+            }
+          }
+
+          const closeTrigger = event.target.closest('.bcb-modal-close, [data-dismiss="bcb-modal"]');
+          if (closeTrigger) {
+            event.preventDefault();
+            const modal = closeTrigger.closest('.bcb-modal-backdrop, [role="dialog"]');
+            if (modal) closeModal(modal);
+          }
+
+          if (event.target.classList.contains('bcb-modal-backdrop') && event.target.classList.contains('active')) {
+            closeModal(event.target);
+          }
+        });
+
+        // Ouvinte de teclado: Escape e Focus Trap
+        document.addEventListener('keydown', (event) => {
+          const activeModal = document.querySelector('.bcb-modal-backdrop.active, [role="dialog"].active');
+          if (!activeModal) return;
+
+          if (event.key === 'Escape' || event.key === 'Esc') {
+            event.preventDefault();
+            closeModal(activeModal);
+            return;
+          }
+
+          if (event.key === 'Tab') {
+            const focusables = Array.from(activeModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+              .filter(el => !el.disabled && el.offsetParent !== null);
+            if (focusables.length === 0) return;
+
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+
+            if (event.shiftKey) {
+              if (document.activeElement === first || document.activeElement === activeModal) {
+                event.preventDefault();
+                last.focus();
+              }
+            } else {
+              if (document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+              }
+            }
+          }
+        });
       } catch (e) {
         console.warn('BCB UI: Verificação defensiva de modal', e);
       }
 
-      // 2. Navegação em Abas (Tabs)
+      // 2. Navegação em Abas (Tabs — Padrão W3C WAI-ARIA com Setas de Teclado)
       try {
-        const tabs = document.querySelectorAll('.bcb-navegacaoabas, .nav-tabs, [role="tablist"]');
-        if (tabs.length > 0) {
-          if (window.BcbTabs && typeof window.BcbTabs.init === 'function') {
-            window.BcbTabs.init();
-          } else {
-            document.addEventListener('click', (event) => {
-              const tab = event.target.closest('[role="tab"], .bcb-navegacaoabas .nav-link, .nav-tabs .nav-link[data-toggle="tab"]');
-              if (tab) {
-                event.preventDefault();
-                const tabList = tab.closest('[role="tablist"], .nav-tabs');
-                if (tabList) {
-                  tabList.querySelectorAll('[role="tab"], .nav-link').forEach(t => {
-                    t.classList.remove('active');
-                    t.setAttribute('aria-selected', 'false');
-                  });
-                  tab.classList.add('active');
-                  tab.setAttribute('aria-selected', 'true');
-                }
-                const targetSelector = tab.getAttribute('href') || tab.getAttribute('data-target');
-                if (targetSelector) {
-                  const panel = document.querySelector(targetSelector);
-                  if (panel) {
-                    const content = panel.closest('.tab-content');
-                    if (content) {
-                      content.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active', 'show'));
-                    }
-                    panel.classList.add('active', 'show');
-                  }
-                }
+        function switchTab(currentTab, targetTab) {
+          if (!targetTab) return;
+          const tabList = currentTab.closest('[role="tablist"], .nav-tabs');
+          if (!tabList) return;
+
+          const allTabs = Array.from(tabList.querySelectorAll('[role="tab"], .nav-link'));
+          allTabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+            t.setAttribute('tabindex', '-1');
+          });
+
+          targetTab.classList.add('active');
+          targetTab.setAttribute('aria-selected', 'true');
+          targetTab.setAttribute('tabindex', '0');
+          targetTab.focus();
+
+          const targetSelector = targetTab.getAttribute('href') || targetTab.getAttribute('data-target');
+          if (targetSelector) {
+            const panel = document.querySelector(targetSelector);
+            if (panel) {
+              const content = panel.closest('.tab-content');
+              if (content) {
+                content.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active', 'show'));
               }
-            });
+              panel.classList.add('active', 'show');
+            }
           }
         }
+
+        // Inicializar tabindex e aria-selected
+        document.querySelectorAll('[role="tablist"], .nav-tabs').forEach(tabList => {
+          const tabs = tabList.querySelectorAll('[role="tab"], .nav-link');
+          tabs.forEach(t => {
+            const isActive = t.classList.contains('active') || t.getAttribute('aria-selected') === 'true';
+            t.setAttribute('tabindex', isActive ? '0' : '-1');
+            t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+        });
+
+        // Clique em aba
+        document.addEventListener('click', (event) => {
+          const tab = event.target.closest('[role="tab"], .bcb-navegacaoabas .nav-link, .nav-tabs .nav-link[data-toggle="tab"]');
+          if (tab) {
+            event.preventDefault();
+            switchTab(tab, tab);
+          }
+        });
+
+        // Navegação por setas (Left / Right / Home / End)
+        document.addEventListener('keydown', (event) => {
+          const currentTab = event.target.closest('[role="tab"], .nav-tabs .nav-link');
+          if (!currentTab) return;
+
+          const tabList = currentTab.closest('[role="tablist"], .nav-tabs');
+          if (!tabList) return;
+
+          const tabs = Array.from(tabList.querySelectorAll('[role="tab"], .nav-link'));
+          const index = tabs.indexOf(currentTab);
+          if (index === -1) return;
+
+          let nextTab = null;
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+            event.preventDefault();
+            nextTab = tabs[(index + 1) % tabs.length];
+          } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            nextTab = tabs[(index - 1 + tabs.length) % tabs.length];
+          } else if (event.key === 'Home') {
+            event.preventDefault();
+            nextTab = tabs[0];
+          } else if (event.key === 'End') {
+            event.preventDefault();
+            nextTab = tabs[tabs.length - 1];
+          }
+
+          if (nextTab) switchTab(currentTab, nextTab);
+        });
       } catch (e) {
         console.warn('BCB UI: Verificação defensiva de tabs', e);
       }
 
-      // 3. Accordions
+      // 3. Accordions (W3C WAI-ARIA com Navegação por Setas Up/Down)
       try {
-        const accordions = document.querySelectorAll('.accordion, [data-toggle="collapse"]');
-        if (accordions.length > 0) {
-          if (window.BcbAccordion && typeof window.BcbAccordion.init === 'function') {
-            window.BcbAccordion.init();
-          } else {
-            document.addEventListener('click', (event) => {
-              const button = event.target.closest('.accordion [data-toggle="collapse"], .accordion .card-header button');
-              if (button) {
-                event.preventDefault();
-                const targetSelector = button.getAttribute('data-target') || button.getAttribute('href');
-                if (targetSelector) {
-                  const target = document.querySelector(targetSelector);
-                  if (target) {
-                    const isShown = target.classList.contains('show');
-                    button.setAttribute('aria-expanded', !isShown ? 'true' : 'false');
-                    button.classList.toggle('collapsed', isShown);
-                    target.classList.toggle('show', !isShown);
-                  }
-                }
-              }
-            });
-          }
+        function toggleAccordion(button) {
+          const targetSelector = button.getAttribute('data-target') || button.getAttribute('href');
+          if (!targetSelector) return;
+          const target = document.querySelector(targetSelector);
+          if (!target) return;
+
+          const isShown = target.classList.contains('show');
+          button.setAttribute('aria-expanded', !isShown ? 'true' : 'false');
+          button.classList.toggle('collapsed', isShown);
+          target.classList.toggle('show', !isShown);
         }
+
+        document.addEventListener('click', (event) => {
+          const button = event.target.closest('.accordion [data-toggle="collapse"], .accordion .card-header button');
+          if (button) {
+            event.preventDefault();
+            toggleAccordion(button);
+          }
+        });
+
+        // Setas no accordion (ArrowDown, ArrowUp, Home, End)
+        document.addEventListener('keydown', (event) => {
+          const button = event.target.closest('.accordion [data-toggle="collapse"], .accordion .card-header button');
+          if (!button) return;
+
+          const accordion = button.closest('.accordion');
+          if (!accordion) return;
+
+          const allButtons = Array.from(accordion.querySelectorAll('[data-toggle="collapse"], .card-header button'));
+          const idx = allButtons.indexOf(button);
+          if (idx === -1) return;
+
+          if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            allButtons[(idx + 1) % allButtons.length].focus();
+          } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            allButtons[(idx - 1 + allButtons.length) % allButtons.length].focus();
+          } else if (event.key === 'Home') {
+            event.preventDefault();
+            allButtons[0].focus();
+          } else if (event.key === 'End') {
+            event.preventDefault();
+            allButtons[allButtons.length - 1].focus();
+          }
+        });
       } catch (e) {
         console.warn('BCB UI: Verificação defensiva de accordion', e);
       }
 
-      // 4. Data Tables
+      // 4. Data Tables Acessíveis (Ordenação por Teclado e aria-sort)
       try {
-        const tables = document.querySelectorAll('.bcb-data-table, table.table th.sortable');
-        if (tables.length > 0) {
-          if (window.BcbDataTable && typeof window.BcbDataTable.init === 'function') {
-            window.BcbDataTable.init();
-          }
+        function setupDataTables() {
+          const sortableHeaders = document.querySelectorAll('.bcb-data-table th.sortable, table.table th.sortable, th[data-sort]');
+          sortableHeaders.forEach(th => {
+            if (!th.getAttribute('tabindex')) th.setAttribute('tabindex', '0');
+            if (!th.getAttribute('role')) th.setAttribute('role', 'columnheader');
+            if (!th.getAttribute('aria-sort')) th.setAttribute('aria-sort', 'none');
+
+            function performSort() {
+              const table = th.closest('table');
+              if (!table) return;
+              const tbody = table.querySelector('tbody');
+              if (!tbody) return;
+
+              const colIndex = Array.from(th.parentNode.children).indexOf(th);
+              const currentSort = th.getAttribute('aria-sort');
+              const newSort = currentSort === 'ascending' ? 'descending' : 'ascending';
+
+              // Resetar outros headers
+              th.parentNode.querySelectorAll('th').forEach(h => {
+                if (h !== th && h.hasAttribute('aria-sort')) h.setAttribute('aria-sort', 'none');
+              });
+              th.setAttribute('aria-sort', newSort);
+
+              const rows = Array.from(tbody.querySelectorAll('tr'));
+              rows.sort((rowA, rowB) => {
+                const cellA = rowA.children[colIndex] ? rowA.children[colIndex].innerText.trim() : '';
+                const cellB = rowB.children[colIndex] ? rowB.children[colIndex].innerText.trim() : '';
+                const numA = parseFloat(cellA.replace(/[^0-9,-]/g, '').replace(',', '.'));
+                const numB = parseFloat(cellB.replace(/[^0-9,-]/g, '').replace(',', '.'));
+
+                if (!isNaN(numA) && !isNaN(numB)) {
+                  return newSort === 'ascending' ? numA - numB : numB - numA;
+                }
+                return newSort === 'ascending' ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+              });
+
+              rows.forEach(r => tbody.appendChild(r));
+            }
+
+            if (!th._hasSortListener) {
+              th._hasSortListener = true;
+              th.addEventListener('click', performSort);
+              th.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  performSort();
+                }
+              });
+            }
+          });
         }
+
+        setupDataTables();
       } catch (e) {
         console.warn('BCB UI: Verificação defensiva de data-table', e);
       }

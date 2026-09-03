@@ -276,6 +276,29 @@
   }
 }
 
+:root[data-contrast="high"] body,
+[data-contrast="high"] body,
+[data-theme="high-contrast"] body {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .card,
+:root[data-contrast="high"] .modal-content,
+:root[data-contrast="high"] .breadcrumb,
+:root[data-contrast="high"] .table,
+:root[data-contrast="high"] .page-link,
+:root[data-contrast="high"] .nav-tabs .nav-link,
+[data-contrast="high"] .card,
+[data-contrast="high"] .modal-content,
+[data-contrast="high"] .breadcrumb,
+[data-contrast="high"] .table,
+[data-contrast="high"] .page-link,
+[data-contrast="high"] .nav-tabs .nav-link {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
 /* ==========================================
    Sobrescrita de Classes Utilitárias no Alto Contraste
    Garante contraste máximo AAA (WCAG 2.2 / e-MAG)
