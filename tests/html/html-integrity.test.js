@@ -42,20 +42,22 @@ for (const arquivo of arquivosHTML) {
   const problemas = [];
   const alertas = [];
 
-  // TESTE 1: lang="pt-BR" presente
-  if (!conteudo.includes('lang="pt-BR"') && !conteudo.includes("lang='pt-BR'")) {
+  const ehDocumentoCompleto = conteudo.includes('<html') || conteudo.toLowerCase().includes('<!doctype');
+
+  // TESTE 1: lang="pt-BR" presente (em documentos completos)
+  if (ehDocumentoCompleto && !conteudo.includes('lang="pt-BR"') && !conteudo.includes("lang='pt-BR'")) {
     problemas.push('Atributo lang="pt-BR" ausente no <html>');
   }
 
-  // TESTE 2: Meta charset
-  if (!conteudo.toLowerCase().includes('charset="utf-8"') && 
+  // TESTE 2: Meta charset (em documentos completos)
+  if (ehDocumentoCompleto && !conteudo.toLowerCase().includes('charset="utf-8"') && 
       !conteudo.toLowerCase().includes("charset='utf-8'") &&
       !conteudo.toLowerCase().includes('charset=utf-8')) {
     problemas.push('Meta charset UTF-8 ausente');
   }
 
-  // TESTE 3: Meta viewport
-  if (!conteudo.includes('viewport')) {
+  // TESTE 3: Meta viewport (em documentos completos)
+  if (ehDocumentoCompleto && !conteudo.includes('viewport')) {
     problemas.push('Meta viewport ausente (responsividade)');
   }
 
@@ -77,13 +79,13 @@ for (const arquivo of arquivosHTML) {
     problemas.push(`${linksProibidos.length} link(s) com texto genérico proibido ("clique aqui", "saiba mais")`);
   }
 
-  // TESTE 7: DOCTYPE
-  if (!conteudo.trim().toLowerCase().startsWith('<!doctype html>')) {
+  // TESTE 7: DOCTYPE (em documentos completos)
+  if (ehDocumentoCompleto && !conteudo.trim().toLowerCase().startsWith('<!doctype html>')) {
     alertas.push('DOCTYPE HTML5 ausente ou não é a primeira linha');
   }
 
-  // TESTE 8: Title tag
-  if (!conteudo.includes('<title>') && !conteudo.includes('<title ')) {
+  // TESTE 8: Title tag (em documentos completos)
+  if (ehDocumentoCompleto && !conteudo.includes('<title>') && !conteudo.includes('<title ')) {
     alertas.push('Tag <title> ausente');
   }
 

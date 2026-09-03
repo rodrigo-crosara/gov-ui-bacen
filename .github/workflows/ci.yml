@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint-e-testes:
-    name: Lint e Testes
+    name: Lint, Integridade e Conformidade Modular
     runs-on: ubuntu-latest
     
     steps:
@@ -33,17 +33,17 @@ jobs:
       - name: Lint HTML (HTMLHint)
         run: npm run lint:html
 
-      - name: Testes de integridade de tokens
+      - name: Testes de integridade de tokens (Paleta Oficial BCB e Variáveis)
         run: npm run test:tokens
 
-      - name: Testes de integridade HTML
+      - name: Testes de integridade semântica HTML e e-MAG 3.1 (Documentação e Miolos)
         run: npm run test:html
 
-      - name: Linter e Testes de Templates
+      - name: Linter de Protótipos, Modularidade de Grid 12 e Componentes (Sem amarras a cascas)
         run: npm run test:templates
 
   acessibilidade:
-    name: Acessibilidade (WCAG 2.2 / e-MAG)
+    name: Acessibilidade Dinâmica (WCAG 2.2 / e-MAG)
     runs-on: ubuntu-latest
     needs: lint-e-testes
     
@@ -66,5 +66,5 @@ jobs:
       - name: Aguardar servidor
         run: sleep 3
 
-      - name: Testes de acessibilidade (pa11y)
+      - name: Auditoria de acessibilidade (WCAG 2.2 AA / pa11y)
         run: npm run test:a11y

@@ -35,6 +35,7 @@ Para fundamentar qualquer protótipo, consulte estritamente os artefatos de base
 
 | Recurso | Finalidade | Caminho |
 |---|---|---|
+| **Modelos de Demanda (Intake)** | Exemplos estruturados de insumos para webdesigners | `.docs-ia/exemplos-demandas/` |
 | **Design Tokens Oficiais** | Paleta de cores, espaçamentos, tipografia, raios e sombras | `tokens.json` e `assets/css/_00-settings/_tokens.css` |
 | **Grid 12 Colunas & Container 1440px** | Átomos estruturais e classes de alinhamento modular | `assets/css/_01-tools/_grid.css` |
 | **Catálogo de Componentes** | Assinaturas HTML5 exatas de átomos, moléculas e organismos | `.docs-ia/components.md` |
@@ -43,7 +44,7 @@ Para fundamentar qualquer protótipo, consulte estritamente os artefatos de base
 
 > [!IMPORTANT]
 > **Desacoplamento de Templates:**
-> Protótipos anteriores (como `templates/*.html`) são meras ilustrações de casos históricos. **NUNCA force um novo conteúdo a obedecer à estrutura de um arquivo específico em `templates/`**. Projete cada interface sob medida, baseando-se na semântica dos dados recebidos.
+> Protótipos anteriores (como `templates/testes-poc/*.html`) são meras ilustrações de casos históricos. **NUNCA force um novo conteúdo a obedecer à estrutura de um arquivo em `templates/`**. Projete cada interface sob medida, baseando-se na semântica dos dados recebidos.
 
 ---
 
@@ -97,23 +98,31 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
 
 ---
 
-## 4. REGRAS MANDATÓRIAS DE ESCOPO E ACESSIBILIDADE
+## 4. CONTRATO MANDATÓRIO DE SAÍDA ESTRITA (OUTPUT CONTRACT)
 
-1. **Restrição Absoluta ao Miolo da Página (`<main>`):**
-   - Toda página gerada DEVE iniciar imediatamente no elemento:
-     `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">`
-   - É terminantemente **PROIBIDO** gerar elementos providos pela casca do CMS:
-     - ❌ NENHUM `<header>` global ou barra de navegação principal.
-     - ❌ NENHUM `<footer>` global de portal.
-     - ❌ NENHUMA Barra Gov.br (`#barra-brasil`, `.bcb-govbr-bar`).
-     - ❌ NENHUM Breadcrumb (`<nav aria-label="breadcrumb">`, `.breadcrumb`).
-     - ❌ NENHUM Skip Link interno (já provido pela casca do portal).
-2. **Hierarquia Tipográfica Estrita (e-MAG 3.1):**
+1. **Restrição Mandante de Saída ao Nó `<main class="bcb-container">`:**
+   - O agente entrega **estritamente o nó do container de conteúdo principal**:
+     `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` (ou fragmento `<section class="bcb-section">` caso seja solicitado apenas o recorte de um slot).
+   - **BANIMENTO EXPRESSO DE ELEMENTOS GLOBAIS FIXOS:**
+     - ❌ **TOTALMENTE BANIDO:** Tag `<header>` e barras de navegação globais.
+     - ❌ **TOTALMENTE BANIDO:** Tag `<footer>` institucional e rodapés de portal.
+     - ❌ **TOTALMENTE BANIDO:** Barra Brasil (`#barra-brasil`, `.bcb-govbr-bar`).
+     - ❌ **TOTALMENTE BANIDO:** Breadcrumbs (`<nav aria-label="breadcrumb">`, `.breadcrumb`).
+     - ❌ **TOTALMENTE BANIDO:** Menus laterais globais de portal ou skip links redundantes.
+   - **Justificativa Técnica:** Elementos de casca fixa são providos de forma centralizada pelo CMS institucional do portal BCB. O papel do agente é conceber exclusivamente a diagramação interna e semântica do conteúdo.
+
+2. **Modos de Entrega:**
+   - **Modo Padrão (Entrega de Produção / CMS):** Retornar exclusivamente o bloco `<main id="conteudo-principal" class="bcb-container">...</main>`.
+   - **Modo Standalone (Página Completa para Teste Visual):** Se o usuário solicitar arquivo HTML completo para pré-visualização no navegador, o nó `<main>` estrito é encapsulado no boilerplate canônico da Seção 5, mantendo o banimento de cascas externas.
+
+3. **Hierarquia Tipográfica Estrita (e-MAG 3.1):**
    - Exatamente **1 tag `<h1>`** com a classe `.bcb-page-title`.
    - Seções principais utilizam `<h2>` e subseções internas utilizam `<h3>`. NUNCA pule níveis hierárquicos.
-3. **Espaçamento entre Blocos com `.bcb-section`:**
+
+4. **Espaçamento entre Blocos com `.bcb-section`:**
    - Cada bloco de conteúdo deve ser envelopado por `<section class="bcb-section">` com espaçamento padrão de 48px (`margin-bottom: var(--bcb-spacing-2xl, 48px);`).
-4. **Cores e Identidade Visual (Manual de Marca do BCB):**
+
+5. **Cores e Identidade Visual (Manual de Marca do BCB):**
    - Use EXCLUSIVAMENTE variáveis CSS do Design System:
      - Primária / Ação: `var(--bcb-brand-azul-blue, #025C75)`
      - Hover / Destaque: `var(--bcb-brand-azulcinti, #077391)`
@@ -124,7 +133,8 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
      - Avisos e Foco: `var(--bcb-brand-amarellato-biscoito, #F8D48D)`
      - Alertas Regulatórios: `var(--bcb-brand-vinho-autentico, #47373A)`
    - É **TERMINANTEMENTE PROIBIDO** usar o azul padrão do Bootstrap (`#0d6efd`, `#007bff`).
-5. **Acessibilidade e Ícones:**
+
+6. **Acessibilidade e Ícones:**
    - Ícones Material Symbols devem conter `aria-hidden="true"` quando puramente decorativos.
    - Tabelas de dados devem conter `<caption>` claro e descritivo.
    - Textos de links devem descrever a ação/destino (proibido "clique aqui", "saiba mais", "leia mais").

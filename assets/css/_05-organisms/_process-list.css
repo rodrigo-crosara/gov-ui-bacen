@@ -134,14 +134,20 @@ ul.bcb-process-list {
 }
 
 :root[data-contrast="high"] .process-list > li:not(:last-child)::after,
-:root[data-contrast="high"] .bcb-process-list > li:not(:last-child)::after {
+:root[data-contrast="high"] .bcb-process-list > li:not(:last-child)::after,
+[data-theme="high-contrast"] .process-list > li:not(:last-child)::after,
+[data-theme="high-contrast"] .bcb-process-list > li:not(:last-child)::after {
   background-color: #FFFFFF !important;
 }
 
 :root[data-contrast="high"] .process-list > li::before,
 :root[data-contrast="high"] .bcb-process-list > li::before,
 :root[data-contrast="high"] .process-list .process-number,
-:root[data-contrast="high"] .bcb-process-list .bcb-process-list__number {
+:root[data-contrast="high"] .bcb-process-list .bcb-process-list__number,
+[data-theme="high-contrast"] .process-list > li::before,
+[data-theme="high-contrast"] .bcb-process-list > li::before,
+[data-theme="high-contrast"] .process-list .process-number,
+[data-theme="high-contrast"] .bcb-process-list .bcb-process-list__number {
   background-color: #000000 !important;
   color: #FFFF00 !important;
   border: 2px solid #FFFF00 !important;
