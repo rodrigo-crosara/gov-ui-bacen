@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
- * BCB Design System — Linter e Validador de Templates e Componentes
- * Valida conformidade estrutural, integridade de tokens e regras de acessibilidade
- * em todos os templates e páginas HTML geradas por IA.
+ * BCB Design System — Linter de Protótipos, Modularidade de Componentes e Acessibilidade
+ * Valida a conformidade arquitetural, modularidade de componentes e acessibilidade (e-MAG / WCAG)
+ * em todos os protótipos de interface e páginas HTML geradas pelo ecossistema.
+ *
  * Uso: node tests/templates/templates-lint.test.js
  */
 
@@ -15,10 +16,10 @@ let falhas = 0;
 let sucessos = 0;
 let avisos = 0;
 
-console.log('\n🧹 BCB Design System — Linter de Templates e Integridade de Componentes');
-console.log('='.repeat(70));
+console.log('\n🧹 BCB Design System — Linter de Protótipos, Modularidade e Acessibilidade');
+console.log('='.repeat(75));
 
-// Descobrir todos os arquivos HTML
+// Descobrir todos os arquivos HTML do projeto
 function encontrarHTML(diretorio) {
   const arquivos = [];
   const itens = fs.readdirSync(diretorio, { withFileTypes: true });
@@ -35,104 +36,110 @@ function encontrarHTML(diretorio) {
 }
 
 const arquivosHTML = encontrarHTML(RAIZ_PROJETO);
-console.log(`Auditando ${arquivosHTML.length} arquivo(s) HTML...\n`);
+console.log(`Auditando conformidade modular de ${arquivosHTML.length} arquivo(s) HTML...\n`);
 
 for (const arquivo of arquivosHTML) {
   const nomeRelativo = path.relative(RAIZ_PROJETO, arquivo).replace(/\\/g, '/');
   const conteudo = fs.readFileSync(arquivo, 'utf8');
   const problemas = [];
   const alertas = [];
+  const ehPrototipo = nomeRelativo.startsWith('templates/');
 
-  // REGRA 1: Proibir cores inline arbitrárias fora da documentação de paleta/amostras
-  if (nomeRelativo.startsWith('templates/')) {
+  // 1. INTEGRIDADE DE ESTILOS E TOKENS OFICIAIS
+  if (!conteudo.includes('bcb-style.css')) {
+    problemas.push('Folha de estilo oficial bcb-style.css não importada.');
+  }
+
+  // Proibir cores hexadecimais arbitrárias inline em protótipos
+  if (ehPrototipo) {
     const styleHexMatches = conteudo.match(/style=["'][^"']*#[0-9a-fA-F]{3,8}[^"']*["']/gi) || [];
     const hexNaoAutorizados = styleHexMatches.filter(s => !s.includes('#7F7F7F'));
     if (hexNaoAutorizados.length > 0) {
-      problemas.push(`${hexNaoAutorizados.length} estilo(s) inline com cor hexadecimal hardcoded nos templates.`);
+      problemas.push(`${hexNaoAutorizados.length} cor(es) hexadecimal(is) arbitrária(s) inline detectada(s). Utilize variáveis CSS do Design System.`);
     }
   }
 
-  // REGRA 2: Links genéricos proibidos (WCAG 2.4.4)
-  const linksProibidos = conteudo.match(/>\s*(clique aqui|saiba mais|leia mais|mais)\s*</gi) || [];
-  if (linksProibidos.length > 0) {
-    problemas.push(`${linksProibidos.length} link(s) com texto proibido ("clique aqui", "saiba mais", "leia mais").`);
-  }
-
-  // REGRA 3: Ícones Material Icons devem ter aria-hidden="true" se forem decorativos
-  const tagsIcone = conteudo.match(/<(?:span|i)[^>]*class=["'][^"']*material-icons[^"']*["'][^>]*>/gi) || [];
-  const iconesSemAria = tagsIcone.filter(tag => !tag.includes('aria-hidden="true"') && !tag.includes("aria-hidden='true'") && !tag.includes('aria-label='));
-  if (iconesSemAria.length > 0) {
-    alertas.push(`${iconesSemAria.length} ícone(s) Material Icons potencialmente sem aria-hidden="true".`);
-  }
-
-  // REGRA 4: Tabelas de dados devem conter <caption>
-  const totalTabelas = (conteudo.match(/<table[\s>]/gi) || []).length;
-  const totalCaptions = (conteudo.match(/<caption[\s>]/gi) || []).length;
-  if (totalTabelas > totalCaptions) {
-    alertas.push(`${totalTabelas - totalCaptions} tabela(s) sem elemento <caption>.`);
-  }
-
-  // REGRA 5: Exatamente um H1 por página (e-MAG 3.1)
+  // 2. ACESSIBILIDADE ESTRUTURAL E SEMÂNTICA (e-MAG 3.1 / WCAG 2.2 AA)
+  // 2.1 Rigorosamente 1 tag <h1> por página
   const totalH1 = (conteudo.match(/<h1[\s>]/gi) || []).length;
   if (totalH1 !== 1) {
     problemas.push(`Quantidade inválida de <h1> (${totalH1}) — e-Mag 3.1 exige rigorosamente 1 H1 por página.`);
   }
 
-  // REGRA 6: Presença do CSS oficial do BCB
-  if (!conteudo.includes('bcb-style.css')) {
-    problemas.push('Folha de estilo oficial bcb-style.css não importada.');
+  // 2.2 Proibição de textos de link genéricos (WCAG 2.4.4)
+  const linksProibidos = conteudo.match(/>\s*(clique aqui|saiba mais|leia mais|mais)\s*</gi) || [];
+  if (linksProibidos.length > 0) {
+    problemas.push(`${linksProibidos.length} link(s) com texto não descritivo proibido ("clique aqui", "saiba mais", "leia mais").`);
   }
 
-  // REGRA 7: Validação Semântica Estrita do Miolo de Conteúdo nos Templates
-  if (nomeRelativo.startsWith('templates/')) {
-    // 7.1 Deve possuir exatamente um <main>
+  // 2.3 Ícones decorativos com aria-hidden="true"
+  const tagsIcone = conteudo.match(/<(?:span|i)[^>]*class=["'][^"']*(?:material-icons|material-symbols)[^"']*["'][^>]*>/gi) || [];
+  const iconesSemAria = tagsIcone.filter(tag => !tag.includes('aria-hidden="true"') && !tag.includes("aria-hidden='true'") && !tag.includes('aria-label='));
+  if (iconesSemAria.length > 0) {
+    alertas.push(`${iconesSemAria.length} ícone(s) decorativo(s) potencialmente sem aria-hidden="true".`);
+  }
+
+  // 2.4 Tabelas de dados devem conter elemento <caption>
+  const totalTabelas = (conteudo.match(/<table[\s>]/gi) || []).length;
+  const totalCaptions = (conteudo.match(/<caption[\s>]/gi) || []).length;
+  if (totalTabelas > totalCaptions) {
+    alertas.push(`${totalTabelas - totalCaptions} tabela(s) sem elemento <caption> para leitores de tela.`);
+  }
+
+  // 2.5 Imagens devem possuir atributo alt
+  const totalImagens = (conteudo.match(/<img[\s>]/gi) || []).length;
+  const totalImagensAlt = (conteudo.match(/<img[^>]*alt=["'][^"']*["']/gi) || []).length;
+  if (totalImagens > totalImagensAlt) {
+    problemas.push(`${totalImagens - totalImagensAlt} imagem(ns) sem atributo alt obrigatório.`);
+  }
+
+  // 3. MODULARIDADE E RESTRIÇÃO AO MIOLO DA INTERFACE (PROTÓTIPOS)
+  if (ehPrototipo) {
+    // 3.1 Exatamente 1 elemento <main> identificado como conteúdo principal
     const totalMain = (conteudo.match(/<main[\s>]/gi) || []).length;
     if (totalMain !== 1) {
-      problemas.push(`Quantidade inválida de tags <main> (${totalMain}) — templates de conteúdo devem possuir exatamente 1 tag <main>.`);
+      problemas.push(`Quantidade inválida de tags <main> (${totalMain}) — protótipos devem conter exatamente 1 tag <main>.`);
     }
-
-    // 7.2 O <main> deve possuir id="conteudo-principal"
     if (!conteudo.includes('id="conteudo-principal"') && !conteudo.includes("id='conteudo-principal'")) {
       problemas.push('Elemento <main> deve obrigatoriamente possuir id="conteudo-principal" para acessibilidade.');
     }
 
-    // 7.3 Proibição de casca do portal
+    // 3.2 Proibição estrita de casca externa e elementos redundantes
     if (conteudo.includes('id="barra-brasil"') || conteudo.includes("id='barra-brasil'")) {
-      problemas.push('Barra Brasil (#barra-brasil) detectada em template de conteúdo.');
+      problemas.push('Barra Brasil (#barra-brasil) detectada — cascas externas são providas pelo portal.');
     }
     if (conteudo.match(/<header[\s>]/gi)) {
-      problemas.push('Tag <header> detectada em template de conteúdo — templates devem focar exclusivamente no miolo semântico.');
+      problemas.push('Tag <header> detectada em protótipo — a prototipagem foca exclusivamente no miolo semântico da página.');
     }
     const footersNaoCitacao = conteudo.match(/<footer(?![^>]*blockquote-footer)[^>]*>/gi) || [];
     if (footersNaoCitacao.length > 0) {
-      problemas.push('Tag <footer> detectada em template de conteúdo — templates devem focar exclusivamente no miolo semântico.');
+      problemas.push('Tag <footer> detectada em protótipo — rodapés globais são providos pelo portal.');
     }
     if (conteudo.match(/<nav[^>]*class=["'][^"']*govbr[^"']*["']/gi)) {
-      problemas.push('Elemento <nav class="govbr..."> detectado em template de conteúdo.');
+      problemas.push('Elemento <nav class="govbr..."> detectado em protótipo.');
     }
-
-    // 7.4 Proibição rigorosa de Breadcrumbs em templates (providos pelo portal)
     if (conteudo.match(/<nav[^>]*aria-label=["'][^"']*(?:breadcrumb|trilha)[^"']*["']/gi) ||
         conteudo.match(/class=["'][^"']*(?:bcb-breadcrumb|breadcrumb-bcb|breadcrumb)[^"']*["']/gi)) {
-      problemas.push('Breadcrumb detectado em template de conteúdo — a trilha de navegação é provida pela casca do portal.');
+      problemas.push('Breadcrumb detectado em protótipo — trilhas de navegação são providas pela casca do CMS.');
     }
 
-    // 7.5 Proibição de tags customizadas legadas ou órfãs
+    // 3.3 Proibição de tags customizadas órfãs/obsoletas
     const tagsOrfas = conteudo.match(/<(?:bcb-accordion-page|bcb-callout|bcb-citacao|bcb-olho|listalinks)[\s>]/gi) || [];
     if (tagsOrfas.length > 0) {
-      problemas.push(`${tagsOrfas.length} tag(s) customizada(s) órfã(s) detectada(s). Use apenas componentes em HTML5 nativo.`);
+      problemas.push(`${tagsOrfas.length} tag(s) obsoleta(s) detectada(s). Utilize componentes HTML5 nativos do BCB Design System.`);
     }
 
-    // 7.6 Validação Mandatória de Grid 12 Colunas Oficial (.bcb-row e .bcb-col-*)
-    if (!conteudo.includes('bcb-row')) {
-      problemas.push('Template não utiliza a classe oficial de linha do Grid 12 colunas (.bcb-row).');
+    // 3.4 Modularidade de Grid Flexível 12 Colunas
+    if (!conteudo.includes('bcb-row') && !conteudo.includes('row')) {
+      problemas.push('Protótipo não utiliza a estrutura de linhas do grid modular (.bcb-row).');
     }
-    if (!conteudo.match(/bcb-col-(?:12|md-6|md-4|lg-8|lg-4)/)) {
-      problemas.push('Template não utiliza colunas proporcionais do sistema oficial de grid (.bcb-col-*).');
+    const temColunas = conteudo.match(/(?:bcb-col-|col-(?:12|md-|lg-|sm-))/);
+    if (!temColunas) {
+      problemas.push('Protótipo não utiliza colunas modulares proporcionais do grid (.bcb-col-*).');
     }
   }
 
-  // Relatório do arquivo
+  // Consolidação de resultados por arquivo
   if (problemas.length === 0 && alertas.length === 0) {
     console.log(`✅ ${nomeRelativo}`);
     sucessos++;
@@ -152,8 +159,8 @@ for (const arquivo of arquivosHTML) {
   }
 }
 
-console.log('\n' + '='.repeat(70));
+console.log('\n' + '='.repeat(75));
 console.log(`Resultado do Lint: ${sucessos} aprovado(s), ${falhas} falha(s), ${avisos} aviso(s)`);
-console.log('='.repeat(70) + '\n');
+console.log('='.repeat(75) + '\n');
 
 process.exit(falhas > 0 ? 1 : 0);

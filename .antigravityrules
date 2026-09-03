@@ -25,13 +25,14 @@ Sua missão é manter e evoluir o ecossistema gov-ui-bacen com máxima fidelidad
   * `max-width: 1440px;` em `@media (min-width: 1520px)`
 - A diagramação interna usa o grid modular de 12 colunas (`.bcb-row` e `.bcb-col-*`).
 
-## 4. SEPARAÇÃO ESTRUTURAL (DOCUMENTAÇÃO vs. TEMPLATES)
+## 4. SEPARAÇÃO ESTRUTURAL (DOCUMENTAÇÃO vs. PROTÓTIPOS DE CONTEÚDO)
 - Páginas da Documentação (`index.html` e `pages/*.html`):
   * Devem conter o cabeçalho `.bcb-ds-header` com navegação e o alternador de temas (Padrão, Escuro, Contraste).
   * O `.bcb-skip-link` deve ter `position: absolute; top: -9999px;` no estado padrão (invisível até receber Tab).
-- Protótipos e Casos Reais (`templates/*.html`):
-  * Devem conter EXCLUSIVAMENTE `<main id="conteudo-principal" class="bcb-container">` iniciando com `<h1>`.
-  * NUNCA gere `<header>`, `<footer>`, barra gov, breadcrumbs ou skip links dentro de arquivos em `templates/`.
+- Protótipos e Miolo de Interfaces (Novas Telas e Casos Reais):
+  * O agente projeta interfaces com liberdade diagramacional a partir da semântica dos dados recebidos do webdesigner, sem acoplamento a modelos estáticos legados.
+  * Devem conter EXCLUSIVAMENTE `<main id="conteudo-principal" class="bcb-container">` iniciando com exatamente um `<h1>`.
+  * NUNCA gere `<header>`, `<footer>`, barra gov, breadcrumbs, skip links ou menus globais externos (elementos providos pelo CMS institucional).
 
 ## 5. TIPOGRAFIA E ÍCONES
 - Fontes oficiais: Rawline ou Inter/Roboto.
