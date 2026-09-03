@@ -27,7 +27,7 @@ function encontrarHTML(diretorio) {
   const itens = fs.readdirSync(diretorio, { withFileTypes: true });
   for (const item of itens) {
     const caminhoCompleto = path.join(diretorio, item.name);
-    if (['node_modules', '.git', '.docs-ia', '.agent'].includes(item.name)) continue;
+    if (['node_modules', '.git', '.docs-ia', '.agent', 'dist'].includes(item.name)) continue;
     if (item.isDirectory()) {
       arquivos.push(...encontrarHTML(caminhoCompleto));
     } else if (item.name.endsWith('.html')) {
@@ -54,7 +54,7 @@ for (const arquivo of arquivosHTML) {
   const problemas = [];
   const alertas = [];
   const ehHarness = path.basename(arquivo).startsWith('_');
-  const ehPrototipo = !ehHarness && (nomeRelativo.startsWith('templates/') || nomeRelativo.startsWith('prototipos/'));
+  const ehPrototipo = !ehHarness && nomeRelativo.startsWith('prototipos/');
 
   // 1. INTEGRIDADE DE ESTILOS E TOKENS OFICIAIS
   if (!conteudo.includes('bcb-style.css')) {
@@ -216,29 +216,34 @@ for (const arquivo of arquivosHTML) {
   }
 }
 
-// 4. VERIFICAÇÃO DE INTEGRIDADE FÍSICA DA VITRINE (pages/prototipos.html -> prototipos/)
+// 4. VERIFICAÇÃO DE INTEGRIDADE FÍSICA E BIDIRECIONAL DA VITRINE (pages/prototipos.html <-> prototipos/)
 const caminhoVitrine = path.join(RAIZ_PROJETO, 'pages', 'prototipos.html');
 if (fs.existsSync(caminhoVitrine)) {
-  console.log('\n🔎 Verificando integridade física dos protótipos listados na vitrine (pages/prototipos.html)...');
+  console.log('\n🔎 Verificando integridade física e bidirecional da vitrine (pages/prototipos.html)...');
   const conteudoVitrine = fs.readFileSync(caminhoVitrine, 'utf8');
   
   const linksPrototipos = new Set();
   
-  // Padrão 1: href="../prototipos/nome.html"
-  const matchesHref = conteudoVitrine.match(/href=["'](?:\.\.\/)?prototipos\/([^"']+\.html)["']/gi) || [];
-  matchesHref.forEach(m => {
-    const nome = m.match(/prototipos\/([^"']+\.html)/i)[1];
-    if (!nome.startsWith('_')) linksPrototipos.add(nome);
-  });
-
-  // Padrão 2: src=nome.html no link do harness
-  const matchesSrc = conteudoVitrine.match(/src=([^&"'\s]+\.html)/gi) || [];
-  matchesSrc.forEach(m => {
-    const nome = m.match(/src=([^&"'\s]+\.html)/i)[1];
-    if (!nome.startsWith('_')) linksPrototipos.add(nome);
+  // Inspecionar exclusivamente tags <a> reais na vitrine
+  const tagsA = conteudoVitrine.match(/<a\b[^>]*>/gi) || [];
+  tagsA.forEach(tag => {
+    // Caso 1: href="...prototipos/nome.html"
+    const matchHref = tag.match(/href=["'](?:\.\.\/)?prototipos\/([^"'\?#]+\.html)["']/i);
+    if (matchHref) {
+      const nome = matchHref[1];
+      if (!nome.startsWith('_')) linksPrototipos.add(nome);
+    }
+    // Caso 2: href="..._harness.html?src=nome.html..."
+    const matchSrc = tag.match(/[?&]src=([^&"'\s#]+\.html)/i);
+    if (matchSrc) {
+      const nome = matchSrc[1];
+      if (!nome.startsWith('_')) linksPrototipos.add(nome);
+    }
   });
 
   let vitrineFalhas = 0;
+
+  // 4.1 Validação Direta: Vitrine -> Disco
   linksPrototipos.forEach(nomeArquivo => {
     const caminhoFisico = path.join(RAIZ_PROJETO, 'prototipos', nomeArquivo);
     if (!fs.existsSync(caminhoFisico)) {
@@ -250,8 +255,25 @@ if (fs.existsSync(caminhoVitrine)) {
     }
   });
 
+  // 4.2 Validação Reversa: Disco -> Vitrine (Garantir zero protótipos órfãos em prototipos/)
+  const dirPrototipos = path.join(RAIZ_PROJETO, 'prototipos');
+  if (fs.existsSync(dirPrototipos)) {
+    const arquivosNoDisco = fs.readdirSync(dirPrototipos)
+      .filter(f => f.endsWith('.html') && !f.startsWith('_'));
+    
+    arquivosNoDisco.forEach(arquivoFisico => {
+      if (!linksPrototipos.has(arquivoFisico)) {
+        console.error(`   ❌ ERRO: Protótipo órfão detectado em prototipos/ não indexado na vitrine (pages/prototipos.html): ${arquivoFisico}`);
+        vitrineFalhas++;
+        falhas++;
+      } else {
+        console.log(`   ✅ Indexado na vitrine: ${arquivoFisico}`);
+      }
+    });
+  }
+
   if (vitrineFalhas === 0) {
-    console.log(`   ✨ Todos os ${linksPrototipos.size} protótipos listados na vitrine existem fisicamente em prototipos/.`);
+    console.log(`   ✨ Integridade bidirecional confirmada: Todos os ${linksPrototipos.size} protótipos em disco estão indexados na vitrine sem órfãos.`);
   }
 }
 

@@ -11,21 +11,25 @@ Sua missão é atuar como um motor inteligente de prototipagem de alta fidelidad
 
 ---
 
-## 0. FLUXO OPERACIONAL OFICIAL (INTAKE & PROTOTIPAGEM)
+## 0. FLUXO OPERACIONAL OFICIAL (INTAKE, CLI & PROTOTIPAGEM)
 
 O agente atua perfeitamente integrado à esteira de design e publicação do Banco Central:
 
 ```
-+---------------------------+       +-------------------------------+       +------------------------------------+
-|   1. Demanda Técnica      |       |   2. Estruturação Designer    |       |   3. Prototipagem pela IA          |
-|  Área técnica (Copom/Pix) | ----> |  Webdesigner qualifica dados, | ----> |  Agente analisa a semântica,       |
-|  envia minuta/comunicado  |       |  objetivo e insere no agente  |       |  projeta o miolo modular no grid   |
-+---------------------------+       +-------------------------------+       +------------------------------------+
++------------------------------------+       +------------------------------------+       +------------------------------------+
+|     1. Demanda Técnica & CLI       |       |     2. Estruturação Designer       |       |     3. Prototipagem pela IA        |
+|  Área técnica envia insumo bruto.  | ----> |  Webdesigner preenche o briefing   | ----> |  Agente projeta o miolo semântico  |
+|  CLI gera scaffold em .docs-ia/:   |       |  em .docs-ia/exemplos-demandas/    |       |  em prototipos/<slug>.html e       |
+|  npm run demanda:criar             |       |  e aciona o agente de IA.          |       |  homologa via split-screen.        |
++------------------------------------+       +------------------------------------+       +------------------------------------+
 ```
 
-1. **Ingestão da Demanda:** Áreas técnicas e de negócio do BCB (Copom, Pix, Regulação, Cidadania Financeira, etc.) enviam comunicados, minutas de normas, resoluções, memorandos ou relatórios brutos.
-2. **Estruturação pelo Webdesigner:** O webdesigner de plantão avalia a demanda, define o objetivo de comunicação, sintetiza os dados necessários e aciona o agente (via chat ou pelo Construtor de Prompts).
-3. **Prototipagem de Alta Fidelidade pelo Agente:** O agente **não copia templates estáticos descartáveis**. Em vez disso, realiza a análise semântica do conteúdo e concebe autonomamente a melhor arquitetura de informação e hierarquia visual, distribuindo os dados em slots modulares de grid (100%, 70/30, 50/50, 33/33/33) e componentes canônicos do Design System.
+1. **Ingestão da Demanda & CLI:** Áreas técnicas e de negócio do BCB (Copom, Pix, Regulação, Cidadania Financeira, etc.) enviam comunicados, minutas de normas, resoluções, memorandos ou relatórios brutos. O webdesigner inicializa a demanda pelo comando CLI oficial:
+   ```bash
+   npm run demanda:criar -- --slug meu-servico --titulo "Título da Demanda"
+   ```
+2. **Estruturação pelo Webdesigner:** O webdesigner edita o arquivo gerado em `.docs-ia/exemplos-demandas/<numero>-<slug>.md`, define o objetivo de comunicação, sintetiza os dados necessários e aciona o agente.
+3. **Prototipagem de Alta Fidelidade pelo Agente:** O agente projeta autonomamente o miolo em `prototipos/<slug>.html`, distribuindo os dados em slots modulares de grid (100%, 70/30, 50/50, 33/33/33), breadcrumb semântico, botão voltar ao topo e componentes canônicos do Design System, permitindo inspeção imediata no harness (`prototipos/_harness.html?src=<slug>.html&doc=<demanda>.md`).
 
 ---
 
@@ -35,16 +39,18 @@ Para fundamentar qualquer protótipo, consulte estritamente os artefatos de base
 
 | Recurso | Finalidade | Caminho |
 |---|---|---|
+| **CLI de Criação de Demandas** | Gerador do scaffold estruturado de briefings | `npm run demanda:criar` (`scripts/nova-demanda.js`) |
 | **Modelos de Demanda (Intake)** | Exemplos estruturados de insumos para webdesigners | `.docs-ia/exemplos-demandas/` |
 | **Design Tokens Oficiais** | Paleta de cores, espaçamentos, tipografia, raios e sombras | `tokens.json` e `assets/css/_00-settings/_tokens.css` |
 | **Grid 12 Colunas & Container 1440px** | Átomos estruturais e classes de alinhamento modular | `assets/css/_01-tools/_grid.css` |
 | **Catálogo de Componentes** | Assinaturas HTML5 exatas de átomos, moléculas e organismos | `.docs-ia/components.md` |
 | **Padrões de UX e Layout** | Diretrizes de hierarquia, tipografia e composição modular | `.docs-ia/layouts-patterns.md` |
 | **Base CSS Unificada** | Folha de estilos consolidada consumida por todos os protótipos | `assets/css/bcb-style.css` |
+| **Visualizador Técnico (Harness)** | Ambiente para homologação split-screen e troca de viewports | `prototipos/_harness.html` |
 
 > [!IMPORTANT]
-> **Desacoplamento de Templates:**
-> Protótipos anteriores (como `templates/testes-poc/*.html`) são meras ilustrações de casos históricos. **NUNCA force um novo conteúdo a obedecer à estrutura de um arquivo em `templates/`**. Projete cada interface sob medida, baseando-se na semântica dos dados recebidos.
+> **Prototipagem Modular Focada no Miolo:**
+> Todo novo protótipo deve ser salvo diretamente na pasta `prototipos/<slug>.html` e focado exclusivamente no container `<main id="conteudo-principal">`. **NUNCA crie cascas globais externas (Header, Footer, Barra Gov)** e nunca inclua scripts inline.
 
 ---
 

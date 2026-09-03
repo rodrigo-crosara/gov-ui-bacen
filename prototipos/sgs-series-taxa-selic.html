@@ -159,9 +159,15 @@
                         </div>
                     </div>
 
-                    <!-- Tabela de Dados Acessível -->
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                    <!-- Dica visual para dispositivos móveis (WCAG 2.1.1 / Usabilidade Mobile) -->
+                    <div class="d-flex align-items-center text-muted small mb-2 d-md-none" style="gap: 0.35rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1rem; color: var(--bcb-brand-azul-blue);" aria-hidden="true">swipe</span>
+                        <span>Deslize horizontalmente para visualizar todas as colunas da tabela</span>
+                    </div>
+
+                    <!-- Tabela de Dados Acessível com Rolagem Horizontal -->
+                    <div class="table-responsive" tabindex="0" role="region" aria-label="Tabela histórica de decisões do Copom com rolagem horizontal">
+                        <table class="table table-bordered table-striped mb-0" style="min-width: 620px;">
                             <caption>Série SGS 432 contendo histórico das taxas fixadas pelo Copom, datas de início e fim da reunião, variação e status da ata.</caption>
                             <thead class="thead-primary">
                                 <tr>
@@ -237,6 +243,8 @@
                     </code>
                 </div>
             </div>
+        </section>
+
         <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
         <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
             <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">

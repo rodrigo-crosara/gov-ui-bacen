@@ -23,7 +23,7 @@ function encontrarHTML(diretorio) {
   const itens = fs.readdirSync(diretorio, { withFileTypes: true });
   for (const item of itens) {
     const caminhoCompleto = path.join(diretorio, item.name);
-    if (item.name === 'node_modules' || item.name === '.git' || item.name === '.docs-ia') continue;
+    if (['node_modules', '.git', '.docs-ia', '.agent', 'dist'].includes(item.name)) continue;
     if (item.isDirectory()) {
       arquivos.push(...encontrarHTML(caminhoCompleto));
     } else if (item.name.endsWith('.html')) {
@@ -108,17 +108,17 @@ for (const arquivo of arquivosHTML) {
     problemas.push(`${linksBlankSemRel.length} link(s) com target="_blank" sem rel="noopener noreferrer"`);
   }
 
-  // TESTE 12: Proibição de casca do portal (Header, Footer, Barra Gov) nos templates e protótipos de conteúdo
-  if ((nomeRelativo.startsWith('templates/') || nomeRelativo.startsWith('prototipos/')) && !path.basename(arquivo).startsWith('_')) {
+  // TESTE 12: Proibição de casca do portal (Header, Footer, Barra Gov) nos protótipos de conteúdo
+  if (nomeRelativo.startsWith('prototipos/') && !path.basename(arquivo).startsWith('_')) {
     if (conteudo.includes('id="barra-brasil"') || conteudo.includes("id='barra-brasil'")) {
-      problemas.push('Barra Brasil (#barra-brasil) presente em template/protótipo de conteúdo');
+      problemas.push('Barra Brasil (#barra-brasil) presente em protótipo de conteúdo');
     }
     if (conteudo.match(/<header[\s>]/gi)) {
-      problemas.push('Tag <header> presente em template/protótipo de conteúdo — protótipos devem focar no miolo semântico');
+      problemas.push('Tag <header> presente em protótipo de conteúdo — protótipos devem focar no miolo semântico');
     }
     const footersNaoCitacao = conteudo.match(/<footer(?![^>]*blockquote-footer)[^>]*>/gi) || [];
     if (footersNaoCitacao.length > 0) {
-      problemas.push('Tag <footer> de rodapé presente em template/protótipo de conteúdo — protótipos devem focar no miolo semântico');
+      problemas.push('Tag <footer> de rodapé presente em protótipo de conteúdo — protótipos devem focar no miolo semântico');
     }
   }
 

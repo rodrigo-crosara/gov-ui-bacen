@@ -1,7 +1,16 @@
 /* ============= BCB Design System — Organisms / Pagination ============= */
 
-/* Paginação (Sobrescrita Bootstrap) */
-.pagination .page-link { color: var(--bcb-brand-blue); border-color: var(--bcb-gray-200); transition: all 0.2s; }
+/* Paginação (Sobrescrita Bootstrap com Alvos de Toque 44x44px — WCAG 2.5.5) */
+.pagination .page-link {
+  color: var(--bcb-brand-blue);
+  border-color: var(--bcb-gray-200);
+  transition: all 0.2s;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 .pagination .page-link:hover { background-color: rgba(2, 92, 117, 0.08); color: var(--bcb-brand-blue); }
 .pagination .page-item.active .page-link { background-color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
 .pagination .page-item.disabled .page-link { color: var(--bcb-gray-400); }

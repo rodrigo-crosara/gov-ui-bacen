@@ -29,7 +29,7 @@ function descobrirPaginasHTML(diretorio) {
 
   for (const item of itens) {
     const caminhoCompleto = path.join(diretorio, item.name);
-    if (['node_modules', '.git', '.docs-ia', '.agent'].includes(item.name)) continue;
+    if (['node_modules', '.git', '.docs-ia', '.agent', 'dist'].includes(item.name)) continue;
 
     if (item.isDirectory()) {
       paginas.push(...descobrirPaginasHTML(caminhoCompleto));
@@ -140,6 +140,12 @@ function auditoriaEstaticaAcessibilidade(caminhoArquivo, caminhoRelativo) {
     const handlersInline = conteudo.match(/\son[a-z]+=["'][^"']*["']/gi) || [];
     if (handlersInline.length > 0) {
       problemas.push(`${handlersInline.length} manipulador(es) inline detectado(s) (${handlersInline.join(', ')}).`);
+    }
+
+    // 10. Alvos de Toque Mobile Mínimos de 44x44px (WCAG 2.5.5 / 2.5.8 Target Size)
+    const alvosReduzidosInline = conteudo.match(/style=["'][^"']*(?:height:\s*(?:1[0-9]|2[0-9]|3[0-5])px|min-height:\s*(?:1[0-9]|2[0-9]|3[0-5])px)[^"']*["']/gi) || [];
+    if (alvosReduzidosInline.length > 0) {
+      problemas.push(`${alvosReduzidosInline.length} elemento(s) com estilo inline reduzindo altura para menos de 44px (WCAG 2.5.5).`);
     }
   }
 

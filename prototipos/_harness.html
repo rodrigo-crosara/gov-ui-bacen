@@ -359,14 +359,6 @@
                         <option value="mecanismo-especial-devolucao-med.html">Serviço: MED Pix com Stepper e Alerta</option>
                         <option value="regras-cheque-especial.html">Regulação: Limite Cheque Especial (70/30)</option>
                     </optgroup>
-                    <optgroup label="Arquivo de POCs Históricas">
-                        <option value="../templates/testes-poc/template-indicadores.html">[POC] Indicadores Econômicos</option>
-                        <option value="../templates/testes-poc/template-noticia.html">[POC] Notícia &amp; Comunicado</option>
-                        <option value="../templates/testes-poc/template-servico.html">[POC] Serviço ao Cidadão &amp; FAQ</option>
-                        <option value="../templates/testes-poc/drex.html">[POC] Drex / Produtos Estratégicos</option>
-                        <option value="../templates/testes-poc/planejando-a-aposentadoria.html">[POC] Planejamento da Aposentadoria</option>
-                        <option value="../templates/testes-poc/desastres-naturais.html">[POC] Orientações em Emergências</option>
-                    </optgroup>
                 </select>
             </div>
 
@@ -508,17 +500,15 @@
             function renderBriefing(slug) {
                 const demanda = DEMANDAS[slug];
                 if (!demanda) {
-                    briefingTitle.textContent = 'Prova de Conceito Exploratória';
+                    briefingTitle.textContent = 'Briefing da Demanda';
                     briefingContent.innerHTML = `
                         <div class="bcb-briefing-meta">
                             <dl class="mb-0">
-                                <dt>Tipo de Tela</dt>
-                                <dd>Template / POC Histórica Preservada</dd>
-                                <dt>Localização</dt>
-                                <dd><code>templates/testes-poc/</code></dd>
+                                <dt>Status do Briefing</dt>
+                                <dd>Demanda Externa / Personalizada</dd>
                             </dl>
                         </div>
-                        <p class="text-muted small">Esta prova de conceito serviu como exploração preliminar de layout e encontra-se arquivada para fins de referência histórica.</p>
+                        <p class="text-muted small">Este protótipo não possui um arquivo markdown associado em <code>.docs-ia/exemplos-demandas/</code>.</p>
                     `;
                     return;
                 }

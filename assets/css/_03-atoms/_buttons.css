@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    BCB DESIGN SYSTEM — ATOMS / BUTTONS (.bcb-btn)
    ========================================================================== */
 
@@ -150,4 +150,17 @@
 }
 .btn-danger:hover {
   background-color: #35282a !important;
+}
+
+/* Acessibilidade Mobile — Alvos de Toque Mínimos de 44x44px (WCAG 2.5.5 / 2.5.8) */
+@media (max-width: 768px) {
+  .bcb-btn,
+  .btn,
+  .bcb-btn--sm,
+  .btn-sm,
+  .bcb-btn--lg,
+  .btn-lg {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
