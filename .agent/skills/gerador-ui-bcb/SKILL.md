@@ -154,6 +154,11 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
      - **Fundos de Callouts:** `var(--bg-brand-light)`, `var(--bg-verde-light)`, `var(--bg-amarellato-light)`, `var(--bg-vinho-light)`.
    - **Garantia de Contraste WCAG 2.2:** O layout do miolo deve ser calibrado para preservar contraste mínimo de 4.5:1 em texto regular e 7:1 em elementos de destaque sob `data-theme="dark"` e `data-contrast="high"`.
 
+8. **Navegação Padronizada Mandatória (Breadcrumb e Botão Voltar ao Topo):**
+   - **Trilha de Navegação (Breadcrumb Semântico):** Todo protótipo DEVE iniciar no topo de `<main id="conteudo-principal">` com a trilha de navegação acessível `<nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav mb-3">`, contendo `<ol class="breadcrumb bg-transparent p-0 mb-0 font-size-sm">` e o item ativo final com `aria-current="page"`.
+   - **Botão Voltar ao Topo:** Todo protótipo DEVE encerrar no rodapé de `<main id="conteudo-principal">` (antes do fechamento `</main>`) com o bloco de retorno rápido `<div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">` contendo o botão âncora `href="#conteudo-principal"` e ícone `arrow_upward`.
+   - **Restrição de Escopo:** Ambos os elementos residem obrigatoriamente DENTRO do container `<main>`, preservando a regra de zero nós estruturais soltos no `<body>`.
+
 ---
 
 ## 5. BOILERPLATE CANÔNICO PARA PROTOTIPAGEM (`prototipos/`)
@@ -191,6 +196,15 @@ Ao gerar um novo protótipo de alta fidelidade para versionar em `prototipos/[no
 
     <!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único) -->
     <main id="conteudo-principal" class="bcb-container container py-4 mb-5">
+
+        <!-- [NAVEGAÇÃO: Trilha de Navegação / Breadcrumb Semântico Acessível (WCAG 2.4.4 / e-MAG)] -->
+        <nav aria-label="Trilha de navegação" class="bcb-breadcrumb-nav mb-3">
+            <ol class="breadcrumb bg-transparent p-0 mb-0 font-size-sm">
+                <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+                <li class="breadcrumb-item"><a href="../pages/prototipos.html">Protótipos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">[Título Curto da Demanda]</li>
+            </ol>
+        </nav>
         
         <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
         <section class="bcb-section">
@@ -209,6 +223,14 @@ Ao gerar um novo protótipo de alta fidelidade para versionar em `prototipos/[no
         </section>
 
         <!-- [SLOT CMS: 100% | 70/30 | 50/50 | 33/33/33 - Projeção Semântica dos Dados] -->
+
+        <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
+        <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
+            <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">
+                <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle;" aria-hidden="true">arrow_upward</span>
+                <span>Voltar ao topo</span>
+            </a>
+        </div>
 
     </main>
 
@@ -260,7 +282,13 @@ Antes de entregar qualquer novo protótipo ou salvar em `prototipos/`, valide ob
 - [ ] Todos os fundos utilizam `var(--bcb-color-white)` ou `var(--bcb-color-surface)`?
 - [ ] O layout foi inspecionado sob `data-theme="dark"` e `data-contrast="high"` via `prototipos/_harness.html`?
 
-### 7. Persistência e Indexação Mandatória
+### 7. Navegação Padronizada (Breadcrumb e Retorno ao Topo)
+- [ ] A trilha de navegação semântica (`<nav aria-label="Trilha de navegação">`) está posicionada no início do `<main>` com `<ol class="breadcrumb">`?
+- [ ] O último item ativo do breadcrumb possui `aria-current="page"` para acessibilidade?
+- [ ] O botão "Voltar ao topo" (`.bcb-back-to-top-wrapper`) está posicionado no encerramento do `<main>` apontando para `#conteudo-principal`?
+- [ ] Nenhum elemento de layout ou tag de conteúdo foi colocado fora do container `<main id="conteudo-principal">`?
+
+### 8. Persistência e Indexação Mandatória
 - [ ] O protótipo foi salvo no caminho canônico `prototipos/<slug-da-demanda>.html`?
-- [ ] A nova tela foi adicionada ao `<select id="selectPrototipo">` de `prototipos/_harness.html`?
-- [ ] O card oficial com metadados e chips de componentes foi indexado na vitrine em `pages/prototipos.html`?
+- [ ] A nova tela foi adicionada ao `<select id="selectPrototipo">` e ao dicionário `DEMANDAS` de `prototipos/_harness.html`?
+- [ ] O card oficial com link de split-view (`_harness.html?src=...&doc=...`) foi indexado na vitrine em `pages/prototipos.html`?

@@ -69,8 +69,8 @@ jobs:
       - name: Aguardar servidor
         run: sleep 3
 
-      - name: Auditoria de acessibilidade (WCAG 2.2 AA / pa11y)
+      - name: Auditoria de acessibilidade mandatória (WCAG 2.2 AA / pa11y cobrindo prototipos/ e portal)
         run: npm run test:a11y
 
-      - name: Auditoria de Acessibilidade Dedicada aos Protótipos (WCAG 2.1 AA)
+      - name: Auditoria de acessibilidade bloqueante dos protótipos oficiais (WCAG 2.1 AA)
         run: npm run test:a11y:prototypes

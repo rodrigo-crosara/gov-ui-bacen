@@ -578,8 +578,31 @@
             btnToggleBriefing.addEventListener('click', toggleDrawer);
             btnCloseDrawer.addEventListener('click', toggleDrawer);
 
-            // Inicialização inicial
-            renderBriefing('copom-decisao-taxa-selic.html');
+            // Suporte a abertura direta parametrizada: _harness.html?src=...&doc=...
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramSrc = urlParams.get('src');
+            const paramDoc = urlParams.get('doc');
+
+            let prototipoInicial = 'copom-decisao-taxa-selic.html';
+            if (paramSrc) {
+                prototipoInicial = paramSrc;
+                frame.src = paramSrc;
+                for (let i = 0; i < selectPrototipo.options.length; i++) {
+                    if (selectPrototipo.options[i].value === paramSrc || selectPrototipo.options[i].value.endsWith(paramSrc)) {
+                        selectPrototipo.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            // Se paramDoc ou paramSrc foi informado, abre o split-screen de briefing automaticamente
+            if (paramDoc || paramSrc) {
+                harnessLayout.classList.add('drawer-open');
+                btnToggleBriefing.classList.add('active');
+            }
+
+            // Inicialização do briefing
+            renderBriefing(prototipoInicial.split('/').pop());
         })();
     </script>
 </body>
