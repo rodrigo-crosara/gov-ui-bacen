@@ -1,21 +1,17 @@
-/* ==========================================================================
-   DESIGN SYSTEM BANCO CENTRAL DO BRASIL - ARQUITETURA ITCSS
-   ========================================================================== */
-
-/* 00 - Settings (Tokens Oficiais do Manual de Marca BCB) */
+/* Settings */
 @import "_00-settings/_tokens.css";
 @import "_00-settings/_typography.css";
 
-/* 01 - Tools (Mixins e Grid 12 Colunas) */
+/* Tools */
 @import "_01-tools/_mixins.css";
 @import "_01-tools/_grid.css";
 
-/* 02 - Generic (Reset, Temas e Contraste) */
+/* Generic */
 @import "_02-generic/_reset.css";
 @import "_02-generic/_dark-mode.css";
 @import "_02-generic/_high-contrast.css";
 
-/* 03 - Atoms */
+/* Atoms */
 @import "_03-atoms/_skip-links.css";
 @import "_03-atoms/_links.css";
 @import "_03-atoms/_buttons.css";
@@ -25,7 +21,7 @@
 @import "_03-atoms/_tables.css";
 @import "_03-atoms/_skeleton.css";
 
-/* 04 - Molecules */
+/* Molecules */
 @import "_04-molecules/_navbar.css";
 @import "_04-molecules/_callout.css";
 @import "_04-molecules/_tip-box.css";
@@ -39,7 +35,7 @@
 @import "_04-molecules/_empty-state.css";
 @import "_04-molecules/_toast.css";
 
-/* 05 - Organisms */
+/* Organisms */
 @import "_05-organisms/_accordion.css";
 @import "_05-organisms/_tabs.css";
 @import "_05-organisms/_modal.css";
@@ -50,6 +46,6 @@
 @import "_05-organisms/_process-list.css";
 @import "_05-organisms/_videos.css";
 
-/* 06 - Utilities */
+/* Utilities */
 @import "_06-utilities/_transitions.css";
 @import "_06-utilities/_back-to-top.css";

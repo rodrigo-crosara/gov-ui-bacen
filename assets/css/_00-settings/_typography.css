@@ -1,18 +1,24 @@
 /* ============= BCB Design System — Settings / Typography ============= */
 
-h1, .h1 { font-size: var(--bcb-font-700); font-family: var(--bcb-font-ubuntu); }
-h2, .h2 { font-size: var(--bcb-font-600); font-family: var(--bcb-font-ubuntu); }
-h3, .h3 { font-size: var(--bcb-font-500); font-family: var(--bcb-font-ubuntu); }
-h4, .h4 { font-size: var(--bcb-font-400); font-family: var(--bcb-font-ubuntu); }
-h5, .h5 { font-size: var(--bcb-font-300); font-family: var(--bcb-font-ubuntu); }
-h6, .h6 { font-size: var(--bcb-font-200); font-family: var(--bcb-font-ubuntu); }
-p { font-size: var(--bcb-font-100); }
+body {
+  font-family: 'Rawline', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--bcb-color-text, #212529);
+}
+
+h1, .h1 { font-size: var(--bcb-font-700, 2rem); font-family: inherit; font-weight: 700; }
+h2, .h2 { font-size: var(--bcb-font-600, 1.75rem); font-family: inherit; font-weight: 700; }
+h3, .h3 { font-size: var(--bcb-font-500, 1.5rem); font-family: inherit; font-weight: 600; }
+h4, .h4 { font-size: var(--bcb-font-400, 1.25rem); font-family: inherit; font-weight: 600; }
+h5, .h5 { font-size: var(--bcb-font-300, 1.1rem); font-family: inherit; font-weight: 500; }
+h6, .h6 { font-size: var(--bcb-font-200, 1rem); font-family: inherit; font-weight: 500; }
+p { font-size: var(--bcb-font-100, 1rem); }
 
 .light   { font-weight: 300; }
 .medium  { font-weight: 500; }
 .bold    { font-weight: 700; }
 .italic  { font-style: italic; }
 
-.text-body { color: var(--bcb-color-body-text); }
-.text-link { color: var(--bcb-link-color); text-decoration: none; transition: color 0.2s, outline 0.2s; }
-.text-link:hover { color: var(--bcb-link-hover); text-decoration: underline; }
+.text-body { color: var(--bcb-color-body-text, var(--bcb-color-text, #212529)); }
+.text-link { color: var(--bcb-link-color, var(--bcb-brand-azul-blue, #025C75)); text-decoration: none; transition: color 0.2s, outline 0.2s; }
+.text-link:hover { color: var(--bcb-link-hover, var(--bcb-brand-azulcinti, #077391)); text-decoration: underline; }

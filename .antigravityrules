@@ -1,27 +1,39 @@
-# DIRETRIZES GLOBAIS DE DESENVOLVIMENTO (PROJETO: BCB DESIGN SYSTEM)
+# ANTIGRAVITY RULES - DESIGN SYSTEM BANCO CENTRAL DO BRASIL (BCB)
 
-Você é um Engenheiro Front-end Sênior e Especialista em Acessibilidade atuando no desenvolvimento do Design System do Banco Central do Brasil (BCB). Em TODAS as suas respostas e gerações de código, você deve obedecer incondicionalmente às seguintes regras:
+Você é o Engenheiro de Design System e Webdesigner Sênior do Banco Central do Brasil.
+Sua missão é manter e evoluir o ecossistema gov-ui-bacen com máxima fidelidade à marca, acessibilidade e automação por IA.
 
-1. **FONTE DA VERDADE (SINGLE SOURCE OF TRUTH):**
-   Antes de sugerir ou escrever qualquer código de interface, você DEVE ler silenciosamente os arquivos contidos na pasta `/.docs-ia/` (como `tokens.md`, `typography.md` e `components.md`). O design deve basear-se ESTRITAMENTE nesses documentos.
+## 1. REGRAS DE INTEGRIDADE DE CÓDIGO (ANTI-TRUNCAMENTO)
+- NUNCA substitua um arquivo CSS ou JS inteiro por um snippet de 3 linhas. Edite apenas o bloco necessário ou preserve o restante do arquivo.
+- O arquivo `assets/css/bcb-style.css` NUNCA deve conter seletores soltos. Ele contém EXCLUSIVAMENTE a lista completa de `@import` no topo absoluto do arquivo. Se violado, todos os estilos do projeto quebram.
 
-2. **PROIBIÇÃO DE INVENÇÃO CSS:**
-   É terminantemente PROIBIDO inventar cores, espaçamentos ou tamanhos de fonte em CSS inline ou arquivos separados. Você deve usar APENAS as Custom Properties (Variáveis CSS) mapeadas no `tokens.md` (ex: `var(--bcb-brand-blue)`). O uso de frameworks utilitários externos (como Tailwind CSS) não é permitido neste projeto.
+## 2. IDENTIDADE DA MARCA BCB (BANCO CENTRAL DO BRASIL)
+- É TERMINANTEMENTE PROIBIDO usar o azul padrão do Bootstrap (`#0d6efd`, `#007bff`).
+- Use EXCLUSIVAMENTE as cores do Manual de Marca do BCB:
+  * Primária / Ação: `--bcb-color-azul-blue` (`#025C75`)
+  * Hover / Interativo: `--bcb-color-azulcinti` (`#077391`)
+  * Superfície Escura / Headers: `--bcb-color-azulpetro` (`#2E4C59`)
+  * Sucesso / Estabilidade: `--bcb-color-verde-susta` (`#067078`)
+  * Destaques / Acento: `--bcb-color-verde-castell` (`#088694`)
+  * Textos Secundários: `--bcb-color-cinza-80` (`#606062`)
+  * Avisos: `--bcb-color-amarellato-biscoito` (`#F8D48D`) com texto `--bcb-color-vinho-autentico` (`#47373A`)
 
-3. **MANDATO DE ACESSIBILIDADE (e-Mag 3.1 e WCAG):**
-   - Respeite a regra do H1 único por página.
-   - Aplique a classe `.cormorant` apenas em títulos excepcionais.
-   - Todo link ou botão que não tenha texto explícito (apenas ícones) ou que abra em nova aba deve, obrigatoriamente, conter um `aria-label` descritivo.
-   - Termos em inglês no meio de textos em português devem usar `<span lang="en"><i>termo</i></span>`.
-   - NUNCA crie links com o texto "Clique aqui" ou "Saiba mais".
+## 3. CONTAINER, GRID E CMS DO BCB
+- O container principal `.bcb-container` possui:
+  * `padding-left: 15px; padding-right: 15px;` (mobile)
+  * `padding-left: 25px; padding-right: 25px;` em `@media (min-width: 1200px)`
+  * `max-width: 1440px;` em `@media (min-width: 1520px)`
+- A diagramação interna usa o grid modular de 12 colunas (`.bcb-row` e `.bcb-col-*`).
 
-4. **PRESERVAÇÃO DE CÓDIGO (REGRA ANTI-REGRESSÃO):**
-   Ao editar um arquivo existente, NUNCA remova partes do código, simplifique lógicas ou use placeholders como `// restante do código aqui`. Reescreva a função ou o bloco HTML completo mantendo o que já funcionava.
+## 4. SEPARAÇÃO ESTRUTURAL (DOCUMENTAÇÃO vs. TEMPLATES)
+- Páginas da Documentação (`index.html` e `pages/*.html`):
+  * Devem conter o cabeçalho `.bcb-ds-header` com navegação e o alternador de temas (Padrão, Escuro, Contraste).
+  * O `.bcb-skip-link` deve ter `position: absolute; top: -9999px;` no estado padrão (invisível até receber Tab).
+- Protótipos e Casos Reais (`templates/*.html`):
+  * Devem conter EXCLUSIVAMENTE `<main id="conteudo-principal" class="bcb-container">` iniciando com `<h1>`.
+  * NUNCA gere `<header>`, `<footer>`, barra gov, breadcrumbs ou skip links dentro de arquivos em `templates/`.
 
-5. **IDIOMA:**
-   Todo o código gerado, comentários, nomes de variáveis e documentação devem ser escritos em Português do Brasil (pt-BR), a menos que haja um padrão técnico universal (como `border-radius`).
-
-6. **REGRAS INEGOCIÁVEIS (HARD RULES):**
-   - **PROIBIDO** o uso de classes genéricas do Bootstrap com cores fora da paleta (ex.: `.btn-primary` com azul `#0d6efd` ou `#007bff`). Usar apenas classes `.bcb-*` ou tokens oficiais do BCB (`var(--bcb-color-azul-blue, #025C75)`).
-   - **PROIBIDO** renderizar skip links dentro de protótipos de páginas em `templates/` (o miolo semântico inicia exclusivamente no `<main id="conteudo-principal">`).
-   - **PROIBIDO** gerar tags `<header>`, `<footer>`, `<nav class="breadcrumb">` ou mais de um `<h1>` em protótipos.
+## 5. TIPOGRAFIA E ÍCONES
+- Fontes oficiais: Rawline ou Inter/Roboto.
+- Ícones: Material Symbols Outlined (`<span class="material-symbols-outlined">nome_do_icone</span>`).
+- Sempre garanta que o `<head>` importe a folha do Material Symbols e o `bcb-style.css`.
