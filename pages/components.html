@@ -418,6 +418,7 @@
             <a class="nav-link" href="#atomo-inputs" data-category="atomos">1.5 Controles de Formulário</a>
             <a class="nav-link" href="#atomo-tabelas" data-category="atomos">1.6 Tabelas Nativas Simples</a>
             <a class="nav-link" href="#atomo-skeleton" data-category="atomos">1.7 Skeleton Loading (Feedback)</a>
+            <a class="nav-link" href="#atomo-tooltip" data-category="atomos">1.8 Tooltip Acessível</a>
 
             <div class="ds-sidebar-title" data-category="moleculas">2. Moléculas (Padrões)</div>
             <a class="nav-link" href="#molecula-cards-indicadores" data-category="moleculas">2.1 Cards de Indicadores</a>
@@ -438,6 +439,7 @@
             <a class="nav-link" href="#molecula-alert" data-category="moleculas">2.17 Alertas Inline de Validação</a>
             <a class="nav-link" href="#molecula-indicadores-avancados" data-category="moleculas">2.18 Indicadores Financeiros Avançados</a>
             <a class="nav-link" href="#molecula-metadados-normativos" data-category="moleculas">2.19 Bloco de Metadados Normativos</a>
+            <a class="nav-link" href="#molecula-cta" data-category="moleculas">2.20 Call to Action (CTA)</a>
 
             <div class="ds-sidebar-title" data-category="organismos">3. Organismos (Compostos)</div>
             <a class="nav-link" href="#organismo-cards-link" data-category="organismos">3.1 Cards de Navegação (Listalinks)</a>
@@ -449,6 +451,7 @@
             <a class="nav-link" href="#organismo-modal" data-category="organismos">3.7 Modal / Dialog Acessível</a>
             <a class="nav-link" href="#organismo-videos" data-category="organismos">3.8 Container de Vídeos</a>
             <a class="nav-link" href="#organismo-fluxograma-decisao" data-category="organismos">3.11 Fluxogramas Textuais com Decisão</a>
+            <a class="nav-link" href="#organismo-carrossel" data-category="organismos">3.12 Carrossel Manchete</a>
 
             <div class="ds-sidebar-title" data-category="utilitarios">4. Utilitários (Helpers)</div>
             <a class="nav-link" href="#utilitario-backtotop" data-category="utilitarios">4.1 Botão Voltar ao Topo</a>
@@ -1131,6 +1134,53 @@
   &lt;td&gt;&lt;div class="bcb-skeleton bcb-skeleton-text mb-0"&gt;&lt;/div&gt;&lt;/td&gt;
   &lt;td&gt;&lt;div class="bcb-skeleton bcb-skeleton-text mb-0 w-75"&gt;&lt;/div&gt;&lt;/td&gt;
 &lt;/tr&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- 1.8 Tooltip Acessível -->
+            <section id="atomo-tooltip" class="ds-component-card" data-category="atomos">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">info</span> 1.8 Tooltip Acessível (.bcb-tooltip)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> WCAG 1.4.13 & Esc Dismiss</span>
+                </div>
+                <div class="ds-component-preview">
+                    <p class="mb-4">
+                        O Banco Central utiliza o 
+                        <span class="bcb-tooltip-term" data-tooltip="Sistema de Pagamentos Instantâneos criado pelo BCB para transferências em tempo real 24/7." tabindex="0">Pix</span>
+                        e a taxa 
+                        <span class="bcb-tooltip-term" data-tooltip="Taxa média ajustada dos financiamentos diários apurados no Sistema Especial de Liquidação e de Custódia." tabindex="0">Selic</span>
+                        como instrumentos centrais da política monetária e inclusão financeira.
+                    </p>
+                    <div class="d-flex flex-wrap align-items-center gap-3">
+                        <span class="font-weight-bold mr-2">Posicionamentos manuais e botões auxiliares:</span>
+                        <button type="button" class="bcb-tooltip-btn mr-3" data-tooltip="Informações confidenciais sob sigilo bancário da Lei Complementar nº 105/2001." data-tooltip-pos="top" aria-label="Informações sobre Sigilo Bancário">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">help_outline</span>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm mr-3" data-tooltip="Download do relatório consolidado em formato PDF assinado digitalmente." data-tooltip-pos="right">
+                            Relatório Copom (Right)
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-tooltip="Parâmetros vigentes para apuração de risco operacional em instituições autorizadas." data-tooltip-pos="bottom">
+                            Resolução Normativa (Bottom)
+                        </button>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-tooltip" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-tooltip bcb-tooltip--top bcb-tooltip--bottom bcb-tooltip--left bcb-tooltip--right bcb-tooltip-term bcb-tooltip-btn" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-tooltip">&lt;!-- Tooltip Declarativo em Termo Técnico --&gt;
+&lt;span class="bcb-tooltip-term" data-tooltip="Sistema de Pagamentos Instantâneos criado pelo BCB." tabindex="0"&gt;Pix&lt;/span&gt;
+
+&lt;!-- Tooltip em Botão de Ajuda com Posição Explícita --&gt;
+&lt;button type="button" class="bcb-tooltip-btn" data-tooltip="Informações sob sigilo bancário." data-tooltip-pos="top" aria-label="Ajuda sobre Sigilo"&gt;
+  &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;help_outline&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Tooltip com Atributo em Botão de Ação --&gt;
+&lt;button type="button" class="btn btn-primary" data-tooltip="Exporta a série histórica em formato CSV." data-tooltip-pos="right"&gt;
+  Exportar Dados
+&lt;/button&gt;</code></pre>
                 </div>
             </section>
 
@@ -2482,6 +2532,76 @@
                 </div>
             </section>
 
+            <!-- 2.20 Call to Action (CTA) -->
+            <section id="molecula-cta" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">campaign</span> 2.20 Call to Action (CTA) (.bcb-cta)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Variantes Primária e Neutra</span>
+                </div>
+                <div class="ds-component-preview">
+                    <!-- CTA Primário Institucional -->
+                    <div class="bcb-cta bcb-cta--primary mb-4" role="region" aria-label="Ação Prioritária do Cidadão">
+                        <div class="bcb-cta__content">
+                            <span class="bcb-cta__tag">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">security</span> Canal Oficial de Segurança
+                            </span>
+                            <h4 class="bcb-cta__title">Foi vítima de fraude ou golpe financeiro via Pix?</h4>
+                            <p class="bcb-cta__description">
+                                Registre a contestação no seu banco imediatamente para acionar o Mecanismo Especial de Devolução (MED) e bloquear os valores suspeitos em até 30 minutos.
+                            </p>
+                            <div class="bcb-cta__meta">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">schedule</span> Atendimento ágil &bull; Resolução BCB nº 103/2021
+                            </div>
+                        </div>
+                        <div class="bcb-cta__action">
+                            <a href="#solicitar-med" class="btn btn-light bcb-btn-cta">
+                                Acionar Mecanismo MED <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- CTA Neutro Estruturado -->
+                    <div class="bcb-cta bcb-cta--neutral" role="region" aria-label="Consulta Registrato">
+                        <div class="bcb-cta__content">
+                            <span class="bcb-cta__tag">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">account_balance</span> Sistema Registrato
+                            </span>
+                            <h4 class="bcb-cta__title">Consulte seus empréstimos, contas e chaves Pix gratuitamente</h4>
+                            <p class="bcb-cta__description">
+                                Obtenha relatórios detalhados sobre seus relacionamentos bancários e débitos registrados no Sistema de Informações de Crédito (SCR).
+                            </p>
+                        </div>
+                        <div class="bcb-cta__action">
+                            <a href="#acessar-registrato" class="btn btn-primary bcb-btn-cta">
+                                Acessar o Registrato <span class="material-symbols-outlined material-icons" aria-hidden="true">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-cta" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-cta bcb-cta--primary bcb-cta--neutral bcb-cta--stacked bcb-cta__content bcb-cta__action bcb-btn-cta" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-cta">&lt;!-- CTA Primário Institucional --&gt;
+&lt;div class="bcb-cta bcb-cta--primary" role="region" aria-label="Ação Prioritária"&gt;
+  &lt;div class="bcb-cta__content"&gt;
+    &lt;span class="bcb-cta__tag"&gt;&lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;security&lt;/span&gt; Aviso Importante&lt;/span&gt;
+    &lt;h4 class="bcb-cta__title"&gt;Título Chave da Chamada de Ação&lt;/h4&gt;
+    &lt;p class="bcb-cta__description"&gt;Descrição clara e persuasiva guiando o cidadão para o próximo passo no portal.&lt;/p&gt;
+    &lt;div class="bcb-cta__meta"&gt;
+      &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;info&lt;/span&gt; Informação complementar
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-cta__action"&gt;
+    &lt;a href="#acao" class="btn btn-light bcb-btn-cta"&gt;
+      Texto de Ação &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;arrow_forward&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
             <!-- ========================================================= -->
             <!-- 3. ORGANISMOS (COMPOSTOS) -->
             <!-- ========================================================= -->
@@ -2946,6 +3066,141 @@
                 </div>
             </section>
 
+            <!-- 3.12 Carrossel Manchete -->
+            <section id="organismo-carrossel" class="ds-component-card" data-category="organismos">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_carousel</span> 3.12 Carrossel Manchete (.bcb-carousel)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> WAI-ARIA Carousel & Pause/Play</span>
+                </div>
+                <div class="ds-component-preview">
+                    <div class="bcb-carousel" id="demoCarouselManchete" data-autoplay="true" data-interval="6000" role="region" aria-roledescription="carrossel" aria-label="Destaques Institucionais do Banco Central">
+                        <div class="bcb-carousel__inner" aria-live="polite">
+                            <!-- Slide 1 -->
+                            <div class="bcb-carousel__slide is-active" role="group" aria-roledescription="slide" aria-label="1 de 3">
+                                <div class="bcb-carousel__media">
+                                    <div class="bcb-carousel__media-placeholder">
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">account_balance</span>
+                                    </div>
+                                </div>
+                                <div class="bcb-carousel__content">
+                                    <span class="bcb-carousel__tag">
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span> Política Monetária
+                                    </span>
+                                    <h4 class="bcb-carousel__title">Copom mantém taxa Selic e reforça compromisso com a convergência da inflação</h4>
+                                    <p class="bcb-carousel__lead">
+                                        O Comitê de Política Monetária avaliou o cenário internacional volátil e a resiliência da atividade econômica doméstica ao definir a meta da taxa Selic.
+                                    </p>
+                                    <div>
+                                        <a href="#comunicado-copom" class="btn btn-primary bcb-carousel__action">
+                                            Ler Ata do Copom <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="bcb-carousel__slide" role="group" aria-roledescription="slide" aria-label="2 de 3">
+                                <div class="bcb-carousel__media">
+                                    <div class="bcb-carousel__media-placeholder">
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">shield</span>
+                                    </div>
+                                </div>
+                                <div class="bcb-carousel__content">
+                                    <span class="bcb-carousel__tag">
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">security</span> Segurança do Sistema Pix
+                                    </span>
+                                    <h4 class="bcb-carousel__title">Novas regras do Mecanismo Especial de Devolução entram em vigor</h4>
+                                    <p class="bcb-carousel__lead">
+                                        Aprimoramentos tecnológicos e operacionais garantem maior agilidade no bloqueio cautelar e combate a contas laranjas em todo o Sistema Financeiro Nacional.
+                                    </p>
+                                    <div>
+                                        <a href="#regras-med" class="btn btn-primary bcb-carousel__action">
+                                            Conhecer as Mudanças <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="bcb-carousel__slide" role="group" aria-roledescription="slide" aria-label="3 de 3">
+                                <div class="bcb-carousel__media">
+                                    <div class="bcb-carousel__media-placeholder">
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">payments</span>
+                                    </div>
+                                </div>
+                                <div class="bcb-carousel__content">
+                                    <span class="bcb-carousel__tag">
+                                        <span class="material-symbols-outlined material-icons" aria-hidden="true">insights</span> Inovação Financeira
+                                    </span>
+                                    <h4 class="bcb-carousel__title">Piloto DREX conclui fase de testes de liquidação atômica e privacidade</h4>
+                                    <p class="bcb-carousel__lead">
+                                        A plataforma de moeda digital do Banco Central avança para a integração de novos casos de uso e contratos inteligentes entre consórcios autorizados.
+                                    </p>
+                                    <div>
+                                        <a href="#piloto-drex" class="btn btn-primary bcb-carousel__action">
+                                            Acessar Relatório Técnico <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Barra de Controles e Navegação -->
+                        <div class="bcb-carousel__controls">
+                            <div class="bcb-carousel__indicators" role="tablist" aria-label="Navegação entre slides">
+                                <button type="button" class="bcb-carousel__dot is-active" role="tab" aria-selected="true" aria-label="Ir para o slide 1" data-slide-index="0"></button>
+                                <button type="button" class="bcb-carousel__dot" role="tab" aria-selected="false" aria-label="Ir para o slide 2" data-slide-index="1"></button>
+                                <button type="button" class="bcb-carousel__dot" role="tab" aria-selected="false" aria-label="Ir para o slide 3" data-slide-index="2"></button>
+                            </div>
+
+                            <div class="bcb-carousel__nav-btns">
+                                <button type="button" class="bcb-carousel__btn bcb-carousel__btn--prev" aria-label="Slide anterior">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">chevron_left</span>
+                                </button>
+                                <button type="button" class="bcb-carousel__btn bcb-carousel__btn--playpause" aria-label="Pausar rotação automática">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">pause</span>
+                                </button>
+                                <button type="button" class="bcb-carousel__btn bcb-carousel__btn--next" aria-label="Próximo slide">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-carrossel" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-carousel bcb-carousel__slide bcb-carousel__content bcb-carousel__media bcb-carousel__controls bcb-carousel__indicators bcb-carousel__btn" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-carrossel">&lt;!-- Carrossel Manchete Acessível com Reproduzir/Pausar --&gt;
+&lt;div class="bcb-carousel" data-autoplay="true" data-interval="5000" role="region" aria-roledescription="carrossel" aria-label="Destaques Institucionais"&gt;
+  &lt;div class="bcb-carousel__inner" aria-live="polite"&gt;
+    &lt;div class="bcb-carousel__slide is-active" role="group" aria-roledescription="slide" aria-label="1 de 2"&gt;
+      &lt;div class="bcb-carousel__media"&gt;
+        &lt;img src="imagem.jpg" alt="Descrição da manchete" class="bcb-carousel__img"&gt;
+      &lt;/div&gt;
+      &lt;div class="bcb-carousel__content"&gt;
+        &lt;span class="bcb-carousel__tag"&gt;Categoria&lt;/span&gt;
+        &lt;h3 class="bcb-carousel__title"&gt;Manchete Principal de Alto Impacto&lt;/h3&gt;
+        &lt;p class="bcb-carousel__lead"&gt;Texto de apoio objetivo e explicativo.&lt;/p&gt;
+        &lt;a href="#link" class="btn btn-primary bcb-carousel__action"&gt;Saiba Mais&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-carousel__controls"&gt;
+    &lt;div class="bcb-carousel__indicators" role="tablist" aria-label="Slides"&gt;
+      &lt;button type="button" class="bcb-carousel__dot is-active" role="tab" aria-selected="true" aria-label="Slide 1"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-carousel__nav-btns"&gt;
+      &lt;button type="button" class="bcb-carousel__btn bcb-carousel__btn--prev" aria-label="Anterior"&gt;&lt;span class="material-symbols-outlined material-icons"&gt;chevron_left&lt;/span&gt;&lt;/button&gt;
+      &lt;button type="button" class="bcb-carousel__btn bcb-carousel__btn--playpause" aria-label="Pausar"&gt;&lt;span class="material-symbols-outlined material-icons"&gt;pause&lt;/span&gt;&lt;/button&gt;
+      &lt;button type="button" class="bcb-carousel__btn bcb-carousel__btn--next" aria-label="Próximo"&gt;&lt;span class="material-symbols-outlined material-icons"&gt;chevron_right&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
             <!-- ========================================================= -->
             <!-- 4. UTILITÁRIOS (HELPERS) -->
             <!-- ========================================================= -->
@@ -3030,6 +3285,8 @@
     <script src="../assets/js/tabs.js"></script>
     <script src="../assets/js/accordion.js"></script>
     <script src="../assets/js/data-table.js"></script>
+    <script src="../assets/js/carousel.js"></script>
+    <script src="../assets/js/tooltip.js"></script>
     <script src="../assets/js/bcb-ui.js"></script>
 
     <script>
@@ -3210,10 +3467,10 @@
 
             // Mapeamento de finalidades de blocos centrais de conteúdo
             const purposeMap = {
-                'dados': ['atomo-grid', 'atomo-tabelas', 'molecula-datatable', 'molecula-cards-indicadores', 'molecula-kpi-card', 'molecula-botoes-exportacao', 'molecula-indicadores-avancados', 'molecula-metadados-normativos'],
-                'alertas': ['molecula-alert', 'molecula-callouts', 'molecula-tip-box', 'molecula-quote', 'atomo-tags', 'molecula-toasts', 'molecula-empty-state', 'molecula-metadados-normativos'],
-                'navegacao': ['organismo-abas', 'molecula-acordeon', 'molecula-stepper', 'organismo-process-list', 'organismo-timelines', 'utilitario-backtotop', 'molecula-page-toolbar', 'molecula-breadcrumbs', 'organismo-fluxograma-decisao'],
-                'midias': ['molecula-documentos', 'organismo-videos', 'organismo-cards-link', 'organismo-noticias', 'organismo-hero-banner']
+                'dados': ['atomo-grid', 'atomo-tabelas', 'molecula-datatable', 'molecula-cards-indicadores', 'molecula-kpi-card', 'molecula-botoes-exportacao', 'molecula-indicadores-avancados', 'molecula-metadados-normativos', 'atomo-tooltip'],
+                'alertas': ['molecula-alert', 'molecula-callouts', 'molecula-tip-box', 'molecula-quote', 'atomo-tags', 'molecula-toasts', 'molecula-empty-state', 'molecula-metadados-normativos', 'molecula-cta'],
+                'navegacao': ['organismo-abas', 'molecula-acordeon', 'molecula-stepper', 'organismo-process-list', 'organismo-timelines', 'utilitario-backtotop', 'molecula-page-toolbar', 'molecula-breadcrumbs', 'organismo-fluxograma-decisao', 'molecula-cta', 'organismo-carrossel'],
+                'midias': ['molecula-documentos', 'organismo-videos', 'organismo-cards-link', 'organismo-noticias', 'organismo-hero-banner', 'organismo-carrossel']
             };
 
             const isPurposeFilter = Boolean(purposeMap[category]);

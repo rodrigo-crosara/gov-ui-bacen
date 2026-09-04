@@ -25,6 +25,9 @@ Ao transformar demandas em interfaces do Banco Central, priorize a combinação 
 | **6. Formulários & Controles** | `.form-group`, `.form-control`, `.custom-select`, `.form-check`, `.bcb-filter-panel` | Filtros facetados de busca, consultas parametrizadas, simulações e formulários de serviços. | Filtro de Séries Temporais, Consulta de Cheque Especial, Busca de Normas. |
 | **7. Seções Expansíveis** | `.accordion.modelo-1`, `.card-header`, `[data-toggle="collapse"]` | Perguntas frequentes (FAQ), detalhamentos técnicos opcionais e regulamentação minuciosa. | Dúvidas Frequentes do MED, Regras Operacionais Detalhadas. |
 | **8. Listas de Processo** | `<ol class="process-list">`, `.process-step`, `.step-number` | Roteiro cronológico passo a passo de como o cidadão ou entidade financeira deve proceder. | Como Solicitar a Devolução Pix, Passo a Passo do Registrato. |
+| **9. Call to Action (CTA)** | `.bcb-cta`, `.bcb-cta--primary`, `.bcb-cta--neutral`, `.bcb-btn-cta` | Destaque persuasivo de conversão ou ação prioritária para o cidadão/entidade. | Acionamento imediato do MED, Acesso ao Registrato. |
+| **10. Carrossel Manchete** | `.bcb-carousel`, `.bcb-carousel__slide`, `.bcb-carousel__controls` | Painel rotativo de manchetes e alertas institucionais com controle acessível de pausa. | Destaques de Segurança Pix, Decisões do Copom, Avisos Urgentes. |
+| **11. Tooltip Acessível** | `.bcb-tooltip`, `[data-tooltip]`, `.bcb-tooltip-term`, `.bcb-tooltip-btn` | Definição contextual sob demanda de termos financeiros técnicos e siglas. | Explicação de "Selic", "PSP", "Chave Pix", "MED". |
 
 > 🚫 **GUIAS DE CASCA GLOBAL SUPRIMIDOS:** Barra de Governo (#barra-brasil), Cabeçalho Principal (<header>), Rodapé Institucional (<footer>) e Trilha de Navegação (breadcrumbs) **NÃO integram o catálogo de componentes a serem produzidos nas páginas de protótipos**.
 
@@ -39,28 +42,31 @@ Ao transformar demandas em interfaces do Banco Central, priorize a combinação 
 4. [Tags e Badges](#9-tags-e-badges) — `.badge`, `.tag-bcb`
 5. [Controles de Formulário e Validação](#12-controles-de-formulário-e-validação) — `.form-control`, `.custom-select`
 6. [Botão Voltar ao Topo](#27-botão-voltar-ao-topo) — `.bcb-back-to-top-wrapper`, `.bcb-btn-back-to-top`
+7. [Tooltip Acessível](#38-tooltip-acessível-bcb-tooltip) — `.bcb-tooltip`, `[data-tooltip]`, `.bcb-tooltip-term`, `.bcb-tooltip-btn`
 
 ### Nível 2: Moléculas Funcionais
-7. [Bloco de Métricas / KPI Card Financeiro](#30-bloco-de-métricas--kpi-card-financeiro-bcb-kpi-card) — `.bcb-kpi-card`, `.bcb-indicator-card`
-8. [Callouts e Alertas Estruturados](#6-callouts-e-alertas-estruturados) — `.callout.callout-warning|brand|danger`
-9. [Alertas Inline de Validação](#33-alertas-inline-de-validação-bcb-alert) — `.bcb-alert`
-10. [Citações e Destaques Normativos](#8-citações-e-testemunhos-blockquotes) — `.bcb-citacao`, `.bcb-quote` com `<cite>`
-11. [Download de Documentos](#21-download-de-documentos) — `.documentos .documento`
-12. [Barra de Utilidades da Página](#31-barra-de-utilidades-da-página-bcb-page-toolbar) — `.bcb-page-toolbar`
-13. [Cards de Links Rápidos (Listalinks)](#19-cards-de-links-rápidos-listalinks) — `.listalinks`
-14. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa) — `.tip-box`
+8. [Bloco de Métricas / KPI Card Financeiro](#30-bloco-de-métricas--kpi-card-financeiro-bcb-kpi-card) — `.bcb-kpi-card`, `.bcb-indicator-card`
+9. [Callouts e Alertas Estruturados](#6-callouts-e-alertas-estruturados) — `.callout.callout-warning|brand|danger`
+10. [Alertas Inline de Validação](#33-alertas-inline-de-validação-bcb-alert) — `.bcb-alert`
+11. [Citações e Destaques Normativos](#8-citações-e-testemunhos-blockquotes) — `.bcb-citacao`, `.bcb-quote` com `<cite>`
+12. [Download de Documentos](#21-download-de-documentos) — `.documentos .documento`
+13. [Barra de Utilidades da Página](#31-barra-de-utilidades-da-página-bcb-page-toolbar) — `.bcb-page-toolbar`
+14. [Cards de Links Rápidos (Listalinks)](#19-cards-de-links-rápidos-listalinks) — `.listalinks`
+15. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa) — `.tip-box`
+16. [Call to Action (CTA)](#39-call-to-action-cta-bcb-cta) — `.bcb-cta`, `.bcb-cta--primary`, `.bcb-cta--neutral`, `.bcb-btn-cta`
 
 ### Nível 3: Organismos e Padrões Compostos
-15. [Data Table Responsiva com Exportação](#14-data-table-responsiva-séries-e-taxas) — `.table-responsive`, `.bcb-data-export`
-16. [Process List / Stepper Sequencial](#10-process-list-passo-a-passo) — `<ol class="process-list">`
-17. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis) — `.accordion.modelo-1`
-18. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada) — `.bcb-filter-panel`
-19. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs) — `.nav-tabs`
-20. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis) — `.modal`
-21. [Indicadores Financeiros Avançados](#34-indicadores-financeiros-avançados-bcb-indicator-card--advanced) — `.bcb-indicator-card--advanced`
-22. [Tabelas Comparativas com Filtros Locais](#35-tabelas-comparativas-com-filtros-locais-bcb-table-comparison) — `.bcb-table-comparison`
-23. [Bloco de Metadados Normativos](#36-bloco-de-metadados-normativos-bcb-norm-metadata) — `.bcb-norm-metadata`
-24. [Fluxogramas Textuais e Passo a Passo com Decisão](#37-fluxogramas-textuais-e-passo-a-passo-com-decisão-bcb-decision-flow) — `.bcb-decision-flow`
+17. [Data Table Responsiva com Exportação](#14-data-table-responsiva-séries-e-taxas) — `.table-responsive`, `.bcb-data-export`
+18. [Process List / Stepper Sequencial](#10-process-list-passo-a-passo) — `<ol class="process-list">`
+19. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis) — `.accordion.modelo-1`
+20. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada) — `.bcb-filter-panel`
+21. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs) — `.nav-tabs`
+22. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis) — `.modal`
+23. [Indicadores Financeiros Avançados](#34-indicadores-financeiros-avançados-bcb-indicator-card--advanced) — `.bcb-indicator-card--advanced`
+24. [Tabelas Comparativas com Filtros Locais](#35-tabelas-comparativas-com-filtros-locais-bcb-table-comparison) — `.bcb-table-comparison`
+25. [Bloco de Metadados Normativos](#36-bloco-de-metadados-normativos-bcb-norm-metadata) — `.bcb-norm-metadata`
+26. [Fluxogramas Textuais e Passo a Passo com Decisão](#37-fluxogramas-textuais-e-passo-a-passo-com-decisão-bcb-decision-flow) — `.bcb-decision-flow`
+27. [Carrossel Manchete Institucional](#40-carrossel-manchete-institucional-bcb-carousel) — `.bcb-carousel`
 
 ---
 
@@ -1244,3 +1250,148 @@ Roteiro sequencial de tomada de decisão que substitui imagens inacessíveis de 
 |---|---|
 | Use `<ol>` ou listas estruturadas com badges numerados para ordem lógica de leitura. | NUNCA utilize imagens bitmap (PNG/JPG) com fluxogramas gráficos sem equivalente textual acessível. |
 | Deixe os ramos alternativos (sucesso vs. recusa) explicitamente visíveis e contrabalanceados. | NUNCA omita os prazos máximos regulamentares associados a cada etapa. |
+
+---
+
+## 38. Tooltip Acessível (`.bcb-tooltip`)
+
+> **Nível Atômico**: Átomo Semântico  
+> **Finalidade**: Disponibilizar explicações breves, definições de termos técnicos ou siglas do Sistema Financeiro sob demanda via mouse (`hover`) e teclado (`focus`), em total conformidade com a WCAG 2.1 (Critério 1.4.13 - Content on Hover or Focus).
+
+### Contratos de Classe e Atributos
+
+| Classe / Atributo | Elemento | Finalidade |
+|---|---|---|
+| `data-tooltip="texto"` | Qualquer elemento interativo ou textual com `tabindex="0"` | Conteúdo textual da dica acessível injetado dinamicamente. |
+| `data-tooltip-pos="top\|bottom\|left\|right"` | Elemento disparador | Preferência de posicionamento geométrico relativo ao gatilho. |
+| `.bcb-tooltip-term` | `<span>` ou `<abbr>` | Termo técnico sublinhado com linha pontilhada institucional. |
+| `.bcb-tooltip-btn` | `<button type="button">` | Botão redondo de apoio/ajuda contextual (44x44px de área de toque). |
+| `role="tooltip"` | Injetado no balão dinâmico | Identificação semântica para leitores de tela com `aria-describedby`. |
+
+### Exemplo de Implementação Canônica
+
+```html
+<!-- Termo técnico em parágrafo -->
+<p>
+  A liquidação das operações no âmbito do 
+  <span class="bcb-tooltip-term" data-tooltip="Sistema de Pagamentos Instantâneos criado pelo BCB para transferências em tempo real 24/7." tabindex="0">Pix</span>
+  ocorre no 
+  <span class="bcb-tooltip-term" data-tooltip="Sistema de Pagamentos Instantâneos que liquida transações interbancárias no BCB." tabindex="0">SPI</span>.
+</p>
+
+<!-- Botão auxiliar de ajuda com ícone -->
+<button type="button" class="bcb-tooltip-btn" data-tooltip="Informações confidenciais sob sigilo bancário da Lei Complementar nº 105/2001." data-tooltip-pos="top" aria-label="Informações sobre Sigilo Bancário">
+  <span class="material-symbols-outlined material-icons" aria-hidden="true">help_outline</span>
+</button>
+```
+
+---
+
+## 39. Call to Action — CTA (`.bcb-cta`)
+
+> **Nível Atômico**: Molécula Funcional  
+> **Finalidade**: Destacar ações prioritárias, canais de segurança urgente ou chamadas de conversão do cidadão ou entidade financeira em páginas de serviços e normas.
+
+### Contratos de Classe
+
+| Classe | Finalidade |
+|---|---|
+| `.bcb-cta` | Container principal flexível e responsivo da chamada de ação. |
+| `.bcb-cta--primary` | Variante de destaque máximo com gradiente institucional azul BCB. |
+| `.bcb-cta--neutral` | Variante neutra elegante para formulários de consulta ou serviços rotineiros. |
+| `.bcb-cta--stacked` | Força disposição vertical em cards estreitos ou colunas laterais. |
+| `.bcb-cta__content` | Bloco textual agrupando tag, título, descrição e metadados. |
+| `.bcb-cta__tag` | Pílula semântica superior identificando a natureza da ação. |
+| `.bcb-cta__title` | Título persuasivo e conciso (`<h4>` ou `<h3>`). |
+| `.bcb-cta__description`| Texto explicativo das orientações práticas. |
+| `.bcb-cta__action` | Container do botão de ação com alinhamento responsivo. |
+| `.bcb-btn-cta` | Botão dimensionado com padding ampliado e micro-interação. |
+
+### Exemplo de Implementação Canônica
+
+```html
+<div class="bcb-cta bcb-cta--primary" role="region" aria-label="Ação Prioritária do Cidadão">
+  <div class="bcb-cta__content">
+    <span class="bcb-cta__tag">
+      <span class="material-symbols-outlined material-icons" aria-hidden="true">security</span> Canal Oficial de Segurança
+    </span>
+    <h3 class="bcb-cta__title">Foi vítima de fraude ou golpe financeiro via Pix?</h3>
+    <p class="bcb-cta__description">
+      Registre a contestação no seu banco imediatamente para acionar o Mecanismo Especial de Devolução (MED) e bloquear os valores suspeitos em até 30 minutos.
+    </p>
+    <div class="bcb-cta__meta">
+      <span class="material-symbols-outlined material-icons" aria-hidden="true">schedule</span> Atendimento ágil &bull; Resolução BCB nº 103/2021
+    </div>
+  </div>
+  <div class="bcb-cta__action">
+    <a href="#solicitar-med" class="btn btn-light bcb-btn-cta">
+      Acionar Mecanismo MED <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+    </a>
+  </div>
+</div>
+```
+
+---
+
+## 40. Carrossel Manchete Institucional (`.bcb-carousel`)
+
+> **Nível Atômico**: Organismo Composto  
+> **Finalidade**: Exibição rotativa acessível de manchetes centrais, decisões do Copom, alertas de segurança e destaques de relatórios, aderente às diretrizes WAI-ARIA Carousel e WCAG 2.2.2 (Pause, Stop, Hide).
+
+### Contratos de Classe e Acessibilidade
+
+| Classe / Atributo | Finalidade |
+|---|---|
+| `.bcb-carousel` | Elemento raiz com `role="region"`, `aria-roledescription="carrossel"` e `aria-label`. |
+| `data-autoplay="true\|false"` | Ativa rotação automática temporizada (desativada automaticamente quando `prefers-reduced-motion`). |
+| `data-interval="5000"` | Intervalo de exibição de cada slide em milissegundos. |
+| `.bcb-carousel__inner` | Container com `aria-live="polite"` contendo a lista de slides. |
+| `.bcb-carousel__slide` | Slide individual com `role="group"`, `aria-roledescription="slide"` e `aria-label="X de Y"`. |
+| `.bcb-carousel__media` | Área de imagem ou ícone ilustrativo temático. |
+| `.bcb-carousel__content` | Bloco textual com tag, título, lead e botão de ação. |
+| `.bcb-carousel__controls` | Barra inferior de controle agrupando indicadores e botões. |
+| `.bcb-carousel__btn--playpause` | Botão essencial de acessibilidade para alternar reproduzir e pausar a rotação. |
+
+### Exemplo de Implementação Canônica
+
+```html
+<div class="bcb-carousel" data-autoplay="true" data-interval="6000" role="region" aria-roledescription="carrossel" aria-label="Destaques Institucionais do Banco Central">
+  <div class="bcb-carousel__inner" aria-live="polite">
+    <div class="bcb-carousel__slide is-active" role="group" aria-roledescription="slide" aria-label="1 de 2">
+      <div class="bcb-carousel__media">
+        <div class="bcb-carousel__media-placeholder">
+          <span class="material-symbols-outlined material-icons" aria-hidden="true">account_balance</span>
+        </div>
+      </div>
+      <div class="bcb-carousel__content">
+        <span class="bcb-carousel__tag">
+          <span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span> Política Monetária
+        </span>
+        <h3 class="bcb-carousel__title">Copom mantém taxa Selic e reforça convergência da inflação</h3>
+        <p class="bcb-carousel__lead">
+          O Comitê avaliou o cenário internacional e doméstico ao definir a meta para a taxa Selic.
+        </p>
+        <a href="#ata" class="btn btn-primary bcb-carousel__action">
+          Ler Ata do Copom <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="bcb-carousel__controls">
+    <div class="bcb-carousel__indicators" role="tablist" aria-label="Slides">
+      <button type="button" class="bcb-carousel__dot is-active" role="tab" aria-selected="true" aria-label="Slide 1" data-slide-index="0"></button>
+    </div>
+    <div class="bcb-carousel__nav-btns">
+      <button type="button" class="bcb-carousel__btn bcb-carousel__btn--prev" aria-label="Slide anterior">
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">chevron_left</span>
+      </button>
+      <button type="button" class="bcb-carousel__btn bcb-carousel__btn--playpause" aria-label="Pausar rotação automática">
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">pause</span>
+      </button>
+      <button type="button" class="bcb-carousel__btn bcb-carousel__btn--next" aria-label="Próximo slide">
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">chevron_right</span>
+      </button>
+    </div>
+  </div>
+</div>
+```

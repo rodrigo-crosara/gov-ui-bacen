@@ -1,0 +1,158 @@
+/* ============= BCB Design System — Atoms / Tooltip Acessível =============
+ * Balão contextual para esclarecimento de siglas, termos técnicos e regras.
+ * Totalmente compatível com WCAG 1.4.13 (Content on Hover or Focus).
+ * ========================================================================= */
+
+/* Gatilho em Termo de Texto Inline */
+.bcb-tooltip-term,
+[data-tooltip]:not(button):not(a):not(.btn) {
+  border-bottom: 1.5px dotted var(--bcb-brand-azul-blue, #025C75);
+  cursor: help;
+  text-decoration: none;
+}
+
+.bcb-tooltip-term:focus-visible,
+[data-tooltip]:focus-visible {
+  outline: 2px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Gatilho em Botão de Informação / Ajuda */
+.bcb-tooltip-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  padding: 0;
+  margin-left: 0.35rem;
+  border: none;
+  background: transparent;
+  color: var(--bcb-brand-azul-blue, #025C75);
+  border-radius: 50%;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: color 0.15s ease, transform 0.1s ease;
+}
+
+.bcb-tooltip-btn:hover {
+  color: var(--bcb-brand-azulcinti, #077391);
+}
+
+.bcb-tooltip-btn:focus-visible {
+  outline: 2px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px;
+}
+
+.bcb-tooltip-btn .material-symbols-outlined,
+.bcb-tooltip-btn .material-icons {
+  font-size: 1rem !important;
+  line-height: 1;
+}
+
+/* Balão Flutuante Renderizado */
+.bcb-tooltip {
+  position: absolute;
+  z-index: 1070;
+  background-color: var(--bcb-brand-azulpetro, #2E4C59);
+  color: #FFFFFF;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.4;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--bcb-radius-6, 6px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  max-width: 280px;
+  word-wrap: break-word;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.bcb-tooltip.is-visible,
+.bcb-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Seta Indicadora */
+.bcb-tooltip::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Posicionamento Top */
+.bcb-tooltip--top {
+  transform: translateY(4px);
+}
+.bcb-tooltip--top.is-visible {
+  transform: translateY(0);
+}
+.bcb-tooltip--top::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-color: var(--bcb-brand-azulpetro, #2E4C59) transparent transparent transparent;
+}
+
+/* Posicionamento Bottom */
+.bcb-tooltip--bottom {
+  transform: translateY(-4px);
+}
+.bcb-tooltip--bottom.is-visible {
+  transform: translateY(0);
+}
+.bcb-tooltip--bottom::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent var(--bcb-brand-azulpetro, #2E4C59) transparent;
+}
+
+/* Posicionamento Left */
+.bcb-tooltip--left {
+  transform: translateX(4px);
+}
+.bcb-tooltip--left.is-visible {
+  transform: translateX(0);
+}
+.bcb-tooltip--left::after {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent var(--bcb-brand-azulpetro, #2E4C59);
+}
+
+/* Posicionamento Right */
+.bcb-tooltip--right {
+  transform: translateX(-4px);
+}
+.bcb-tooltip--right.is-visible {
+  transform: translateX(0);
+}
+.bcb-tooltip--right::after {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-color: transparent var(--bcb-brand-azulpetro, #2E4C59) transparent transparent;
+}
+
+/* Respeito a Movimento Reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .bcb-tooltip {
+    transition: none !important;
+    transform: none !important;
+  }
+}

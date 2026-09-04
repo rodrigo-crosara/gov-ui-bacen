@@ -5,6 +5,20 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.4.0] — 2026-09-04
+
+### Adicionado
+- **Componente Call to Action — CTA (`.bcb-cta`):** Nova molécula em `assets/css/_04-molecules/_cta.css` para ações prioritárias do cidadão e conversões diretas, com suporte a variantes `.bcb-cta--primary` (gradiente institucional azul petróleo), `.bcb-cta--neutral` (borda lateral azul e fundo suave) e `.bcb-cta--stacked` (centralizado), suportando tags semânticas, título, texto explicativo, metadados e botão `.bcb-btn-cta`.
+- **Componente Carrossel Manchete (`.bcb-carousel`):** Novo organismo editorial em `assets/css/_05-organisms/_carousel.css` e `assets/js/carousel.js`, compatível com WAI-ARIA Carousel Pattern, WCAG 2.2.2 (Pause, Stop, Hide) e `prefers-reduced-motion`, com navegação por teclado (Setas, Home, End), botões acessíveis de navegação (área de toque 44x44px) e controle de alternância reproduzir/pausar.
+- **Componente Tooltip Acessível (`.bcb-tooltip`):** Novo átomo contextual em `assets/css/_03-atoms/_tooltip.css` e `assets/js/tooltip.js`, ativável declarativamente via `[data-tooltip]` e `[data-tooltip-pos]`, com cálculo dinâmico de viewport e detecção de colisões para inversão automática de borda, associação semântica `aria-describedby` e descarte com a tecla `Escape` (WCAG 1.4.13).
+- **Integração no Catálogo Vivo (`pages/components.html`):** Adicionadas seções demonstrativas 1.8 (Tooltip Acessível), 2.20 (Call to Action) e 3.12 (Carrossel Manchete) com snippets de código copiáveis e classes CSS.
+- **Documentação para IA e Webdesigners (`.docs-ia/` e `SKILL.md`):** Adicionadas diretrizes em `.docs-ia/components.md`, `.docs-ia/layouts-patterns.md` e regras heurísticas em `.agent/skills/gerador-ui-bcb/SKILL.md` para orientação de geração de protótipos com estes componentes.
+- **Aplicação no Protótipo Real (`prototipos/mecanismo-especial-devolucao-med.html`):** Incorporação de Carrossel Manchete com avisos operacionais, Tooltips em termos técnicos regulatórios e CTA primário antifraude.
+
+### Modificado
+- **Suporte Completo a Temas (`_dark-mode.css` e `_high-contrast.css`):** Adicionadas regras de alto contraste (bordas de 2px #FFFFFF, realces #FFFF00) e tema escuro calibrado para CTA, Carrossel e Tooltip.
+- **Orquestrador Central (`assets/js/bcb-ui.js` e `assets/css/bcb-style.css`):** Registrados imports CSS respeitando a Regra Estrita nº 1 e rotinas de inicialização resilientes com fallback nos micro-scripts.
+
 ## [2.3.0] — 2026-09-04
 
 ### Adicionado

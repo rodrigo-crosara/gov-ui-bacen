@@ -228,7 +228,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-3-0">v2.3.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-4-0">v2.4.0 (Atual)</a>
+                <a class="nav-link" href="#v2-3-0">v2.3.0</a>
                 <a class="nav-link" href="#v2-2-0">v2.2.0</a>
                 <a class="nav-link" href="#v2-1-0">v2.1.0</a>
                 <a class="nav-link" href="#v2-0-0">v2.0.0</a>
@@ -252,13 +253,53 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.4.0 ============ -->
+            <section id="v2-4-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.4.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Expansão Atômica: CTA, Carrossel &amp; Tooltip</span>
+                        </div>
+                        <div class="version-date">04 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-adicionado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">add_circle</span>
+                                Adicionado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Componente Call to Action — CTA (<code>.bcb-cta</code>):</strong> Nova molécula visual de alta conversão em <code>assets/css/_04-molecules/_cta.css</code> com variantes <code>.bcb-cta--primary</code> (gradiente azul institucional), <code>.bcb-cta--neutral</code> e <code>.bcb-cta--stacked</code>, comportando tags, título, descrição persuasiva, metadados e botão <code>.bcb-btn-cta</code>.</li>
+                                <li><strong>Componente Carrossel Manchete (<code>.bcb-carousel</code>):</strong> Novo organismo editorial em <code>assets/css/_05-organisms/_carousel.css</code> e <code>assets/js/carousel.js</code>, 100% compatível com o padrão WAI-ARIA Carousel, suporte a rotação automática pausável por botão acessível (WCAG 2.2.2), navegação por teclado (Setas, Home, End), indicadores de slides e detecção de <code>prefers-reduced-motion</code>.</li>
+                                <li><strong>Componente Tooltip Acessível (<code>.bcb-tooltip</code>):</strong> Novo átomo contextual em <code>assets/css/_03-atoms/_tooltip.css</code> e <code>assets/js/tooltip.js</code> para termos técnicos e siglas do SFN, ativável declarativamente via <code>[data-tooltip]</code> com reposicionamento dinâmico inteligente contra colisões no viewport e descarte com a tecla <code>Escape</code> (WCAG 1.4.13).</li>
+                                <li><strong>Vitrine Oficial de Componentes (<code>pages/components.html</code>):</strong> Novas seções interativas 1.8 (Tooltip Acessível), 2.20 (Call to Action) e 3.12 (Carrossel Manchete) com snippets de código copiáveis e atalhos na barra lateral.</li>
+                                <li><strong>Documentação de Arquitetura e IA (<code>.docs-ia/</code> e <code>SKILL.md</code>):</strong> Mapeamento do catálogo em <code>components.md</code>, inclusão de padrões em <code>layouts-patterns.md</code> e inclusão de heurísticas de escolha na skill <code>gerador-ui-bcb</code>.</li>
+                                <li><strong>Enriquecimento do Protótipo MED (<code>prototipos/mecanismo-especial-devolucao-med.html</code>):</strong> Incorporação de Carrossel Manchete no topo, Tooltips em termos normativos e CTA primário antifraude.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-modificado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">published_with_changes</span>
+                                Modificado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Temas Dark Mode &amp; Alto Contraste:</strong> Calibração completa em <code>_dark-mode.css</code> e <code>_high-contrast.css</code> para CTA, Carrossel e Tooltip (bordas de 2px #FFFFFF, realces amarelos #FFFF00 e foco acessível).</li>
+                                <li><strong>Orquestrador Central do Design System (<code>bcb-ui.js</code> e <code>bcb-style.css</code>):</strong> Registro estrito de imports CSS e inicialização não-intrusiva com resiliência nos micro-scripts.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.3.0 ============ -->
             <section id="v2-3-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.3.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Protótipos Autônomos &amp; Delimitação Central</span>
                         </div>
                         <div class="version-date">04 de Setembro de 2026</div>

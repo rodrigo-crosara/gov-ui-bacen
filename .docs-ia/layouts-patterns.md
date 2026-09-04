@@ -227,3 +227,23 @@ Em caso de indisponibilidade de serviço ou falha de requisição:
   </div>
 </div>
 ```
+
+---
+
+## 7. Padrões de Destaque Editorial, Ações Prioritárias e Apoio Contextual
+
+### 7.1 Carrossel Manchete Institucional no Topo Editorial
+- **Localização:** Posicionado logo abaixo do `<h1>` institucional e parágrafo `.lead`, servindo como manchete rotativa para até 3 a 5 tópicos de máxima relevância.
+- **Acessibilidade Obrigatória:** Sempre fornecer controles manuais de pausa/reprodução e respeitar a preferência do usuário `prefers-reduced-motion`.
+- **Composição:** Imagem ou ícone temático à esquerda (desktop), tag de assunto, título persuasivo em `<h4>` ou `<h3>`, parágrafo resumo e botão primário direcionador.
+
+### 7.2 Bloco de Chamada para Ação (Call to Action — CTA)
+- **Localização:** Final de jornadas de esclarecimento (ex.: após regras do MED ou explicação do Registrato) ou como destaque urgente no meio da página.
+- **Variantes Semânticas:**
+  - `.bcb-cta--primary`: Gradiente institucional azul profundo com botão em alto contraste para ações críticas de segurança ou serviços essenciais.
+  - `.bcb-cta--neutral`: Fundo neutro com borda suave para consultas secundárias e formulários rotineiros.
+
+### 7.3 Tooltips e Dicionário de Siglas Técnicas
+- **Aplicação Estrita:** Termos financeiros com siglas complexas (`Selic`, `SPI`, `MED`, `PSP`, `PTAX`, `IPCA`) devem ser envolvidos em `<span class="bcb-tooltip-term" data-tooltip="...">` com `tabindex="0"`.
+- **WCAG 1.4.13:** Dicas contextuais nunca devem ocultar conteúdo essencial permanentemente e devem fechar ao pressionar a tecla `Escape`.
+

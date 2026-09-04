@@ -1,0 +1,246 @@
+/* ============= BCB Design System — Organisms / Carrossel Manchete =============
+ * Organismo editorial para apresentação rotativa de notícias, comunicados e serviços.
+ * Totalmente compatível com WAI-ARIA Carousel Pattern, WCAG 2.2.2 e navegação por teclado.
+ * ============================================================================== */
+
+.bcb-carousel {
+  position: relative;
+  background-color: var(--bcb-color-surface, #FFFFFF);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-radius: var(--bcb-radius-12, 12px);
+  box-shadow: var(--bcb-shadow-100, 0 2px 4px rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  margin-bottom: var(--bcb-space-6, 2rem);
+  box-sizing: border-box;
+}
+
+/* Trilho e Slides */
+.bcb-carousel__stage,
+.bcb-carousel__inner {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.bcb-carousel__slide {
+  display: none;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  box-sizing: border-box;
+}
+
+.bcb-carousel__slide.is-active,
+.bcb-carousel__slide.active {
+  display: flex;
+  flex-direction: column-reverse;
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .bcb-carousel__slide.is-active,
+  .bcb-carousel__slide.active {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+/* Bloco de Conteúdo Textual (Manchete) */
+.bcb-carousel__content {
+  flex: 1 1 55%;
+  padding: var(--bcb-space-5, 1.5rem) var(--bcb-space-5, 1.5rem) 4.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .bcb-carousel__content {
+    padding: var(--bcb-space-6, 2.25rem) var(--bcb-space-6, 2.25rem) 4.5rem;
+  }
+}
+
+.bcb-carousel__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--bcb-radius-pill, 9999px);
+  margin-bottom: 0.75rem;
+  align-self: flex-start;
+}
+
+.bcb-carousel__title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--bcb-brand-azul-blue, #025C75);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.bcb-carousel__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bcb-carousel__title a:hover {
+  color: var(--bcb-brand-azulcinti, #077391);
+  text-decoration: underline;
+}
+
+.bcb-carousel__lead {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--bcb-color-body-text, #333333);
+  margin-bottom: 1.25rem;
+}
+
+.bcb-carousel__action {
+  margin-top: auto;
+}
+
+/* Mídia / Imagem de Apoio */
+.bcb-carousel__media {
+  flex: 1 1 45%;
+  background-color: var(--bcb-gray-100, #F3F5F7);
+  position: relative;
+  min-height: 200px;
+  max-height: 360px;
+  overflow: hidden;
+}
+
+.bcb-carousel__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bcb-carousel__media-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bcb-brand-azul-blue, #025C75);
+  font-size: 3.5rem;
+  background-color: var(--bcb-gray-100, #F3F5F7);
+}
+
+/* Barra de Controles Inferior Acessível */
+.bcb-carousel__controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.05), transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.bcb-carousel__controls > * {
+  pointer-events: auto;
+}
+
+/* Grupo de Indicadores de Slide */
+.bcb-carousel__indicators {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bcb-carousel__indicator,
+.bcb-carousel__dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 6px;
+  border: 2px solid var(--bcb-brand-azul-blue, #025C75);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 12px;
+  min-height: 12px;
+}
+
+.bcb-carousel__indicator.is-active,
+.bcb-carousel__indicator[aria-selected="true"],
+.bcb-carousel__dot.is-active,
+.bcb-carousel__dot[aria-selected="true"] {
+  width: 28px;
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+}
+
+.bcb-carousel__indicator:focus-visible,
+.bcb-carousel__dot:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px;
+}
+
+/* Botões de Ação dos Controles (Play/Pause, Anterior, Próximo) */
+.bcb-carousel__nav,
+.bcb-carousel__nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bcb-carousel__btn,
+.bcb-carousel__btn--prev,
+.bcb-carousel__btn--next,
+.bcb-carousel__btn--playpause {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--bcb-gray-300, #DEE2E6);
+  background-color: var(--bcb-color-white, #FFFFFF);
+  color: var(--bcb-brand-azul-blue, #025C75);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.15s ease;
+}
+
+.bcb-carousel__btn:hover,
+.bcb-carousel__btn--prev:hover,
+.bcb-carousel__btn--next:hover,
+.bcb-carousel__btn--playpause:hover {
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  border-color: var(--bcb-brand-azul-blue, #025C75);
+}
+
+.bcb-carousel__btn:focus-visible,
+.bcb-carousel__btn--prev:focus-visible,
+.bcb-carousel__btn--next:focus-visible,
+.bcb-carousel__btn--playpause:focus-visible {
+  outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
+  outline-offset: 2px;
+}
+
+/* Respeito a prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .bcb-carousel__slide {
+    transition: none !important;
+  }
+}

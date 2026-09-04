@@ -532,6 +532,180 @@
       } catch (e) {
         console.warn('BCB UI: Verificação defensiva de print listener', e);
       }
+
+      // 8. Carrossel Manchete Acessível (.bcb-carousel)
+      try {
+        if (window.BcbCarousel && typeof window.BcbCarousel.init === 'function') {
+          window.BcbCarousel.init();
+        } else {
+          const carousels = document.querySelectorAll('.bcb-carousel');
+          carousels.forEach((carousel) => {
+            if (carousel._bcbBound) return;
+            carousel._bcbBound = true;
+            const slides = Array.from(carousel.querySelectorAll('.bcb-carousel__slide'));
+            const indicators = Array.from(carousel.querySelectorAll('.bcb-carousel__indicator'));
+            const prevBtn = carousel.querySelector('.bcb-carousel__prev, [data-carousel="prev"]');
+            const nextBtn = carousel.querySelector('.bcb-carousel__next, [data-carousel="next"]');
+            const playPauseBtn = carousel.querySelector('.bcb-carousel__toggle-play, [data-carousel="toggle-play"]');
+            let current = 0;
+            let playing = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let timer = null;
+            const delay = parseInt(carousel.getAttribute('data-interval'), 10) || 6000;
+
+            function goTo(idx) {
+              if (idx < 0 || idx >= slides.length) return;
+              slides.forEach((s, i) => {
+                const isActive = i === idx;
+                s.classList.toggle('is-active', isActive);
+                s.classList.toggle('active', isActive);
+                s.setAttribute('aria-hidden', !isActive ? 'true' : 'false');
+              });
+              indicators.forEach((ind, i) => {
+                const isSelected = i === idx;
+                ind.classList.toggle('is-active', isSelected);
+                ind.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+                ind.setAttribute('tabindex', isSelected ? '0' : '-1');
+              });
+              current = idx;
+            }
+
+            function startTimer() {
+              if (timer) clearInterval(timer);
+              if (playing && slides.length > 1) {
+                timer = setInterval(() => {
+                  goTo((current + 1) % slides.length);
+                }, delay);
+              }
+            }
+
+            function stopTimer() {
+              if (timer) {
+                clearInterval(timer);
+                timer = null;
+              }
+            }
+
+            if (prevBtn) {
+              prevBtn.addEventListener('click', () => {
+                goTo((current - 1 + slides.length) % slides.length);
+              });
+            }
+
+            if (nextBtn) {
+              nextBtn.addEventListener('click', () => {
+                goTo((current + 1) % slides.length);
+              });
+            }
+
+            if (playPauseBtn) {
+              playPauseBtn.addEventListener('click', () => {
+                playing = !playing;
+                const icon = playPauseBtn.querySelector('.material-symbols-outlined, .material-icons');
+                if (icon) icon.textContent = playing ? 'pause' : 'play_arrow';
+                playPauseBtn.setAttribute('aria-label', playing ? 'Pausar carrossel' : 'Iniciar carrossel');
+                if (playing) startTimer(); else stopTimer();
+              });
+            }
+
+            indicators.forEach((ind, i) => {
+              ind.addEventListener('click', () => {
+                goTo(i);
+              });
+            });
+
+            carousel.addEventListener('mouseenter', stopTimer);
+            carousel.addEventListener('mouseleave', () => { if (playing) startTimer(); });
+            carousel.addEventListener('focusin', stopTimer);
+            carousel.addEventListener('focusout', (e) => {
+              if (!carousel.contains(e.relatedTarget) && playing) startTimer();
+            });
+
+            goTo(0);
+            if (playing) startTimer();
+          });
+        }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de carrossel', e);
+      }
+
+      // 9. Tooltip Acessível ([data-tooltip], .bcb-tooltip-trigger)
+      try {
+        if (window.BcbTooltip && typeof window.BcbTooltip.init === 'function') {
+          window.BcbTooltip.init();
+        } else {
+          let activeTip = null;
+          let activeTrig = null;
+
+          function hideTip() {
+            if (activeTip) {
+              activeTip.classList.remove('is-visible', 'show');
+              if (activeTrig) activeTrig.removeAttribute('aria-describedby');
+              const toRemove = activeTip;
+              setTimeout(() => { if (toRemove.parentNode) toRemove.parentNode.removeChild(toRemove); }, 150);
+              activeTip = null;
+              activeTrig = null;
+            }
+          }
+
+          function showTip(trigger) {
+            const text = trigger.getAttribute('data-tooltip') || trigger.getAttribute('title');
+            if (!text) return;
+            hideTip();
+
+            activeTrig = trigger;
+            const tip = document.createElement('div');
+            const tipId = `bcb-tooltip-auto-${Date.now()}`;
+            tip.id = tipId;
+            tip.className = 'bcb-tooltip';
+            tip.setAttribute('role', 'tooltip');
+            tip.textContent = text;
+            document.body.appendChild(tip);
+            trigger.setAttribute('aria-describedby', tipId);
+
+            const rect = trigger.getBoundingClientRect();
+            const tipRect = tip.getBoundingClientRect();
+            const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+            let top = rect.top + scrollY - tipRect.height - 8;
+            let left = rect.left + scrollX + (rect.width / 2) - (tipRect.width / 2);
+            let pos = 'top';
+
+            if (rect.top - tipRect.height - 8 < 0) {
+              pos = 'bottom';
+              top = rect.bottom + scrollY + 8;
+            }
+
+            if (left < 10) left = 10;
+            if (left + tipRect.width > window.innerWidth - 10) left = window.innerWidth - tipRect.width - 10;
+
+            tip.className = `bcb-tooltip bcb-tooltip--${pos}`;
+            tip.style.top = `${Math.round(top)}px`;
+            tip.style.left = `${Math.round(left)}px`;
+
+            requestAnimationFrame(() => tip.classList.add('is-visible', 'show'));
+            activeTip = tip;
+          }
+
+          document.querySelectorAll('[data-tooltip], .bcb-tooltip-trigger').forEach(trigger => {
+            if (trigger._bcbTipBound) return;
+            trigger._bcbTipBound = true;
+            if (trigger.tagName.toLowerCase() !== 'button' && trigger.tagName.toLowerCase() !== 'a' && !trigger.hasAttribute('tabindex')) {
+              trigger.setAttribute('tabindex', '0');
+            }
+            trigger.addEventListener('mouseenter', () => showTip(trigger));
+            trigger.addEventListener('mouseleave', hideTip);
+            trigger.addEventListener('focusin', () => showTip(trigger));
+            trigger.addEventListener('focusout', hideTip);
+          });
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && activeTip) hideTip();
+          });
+        }
+      } catch (e) {
+        console.warn('BCB UI: Verificação defensiva de tooltip', e);
+      }
     }
   };
 
