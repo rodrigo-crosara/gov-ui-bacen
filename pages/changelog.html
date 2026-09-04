@@ -229,7 +229,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-5-1">v2.5.1 (Atual)</a>
+                <a class="nav-link active" href="#v2-5-2">v2.5.2 (Atual)</a>
+                <a class="nav-link" href="#v2-5-1">v2.5.1</a>
                 <a class="nav-link" href="#v2-5-0">v2.5.0</a>
                 <a class="nav-link" href="#v2-4-0">v2.4.0</a>
                 <a class="nav-link" href="#v2-3-0">v2.3.0</a>
@@ -256,13 +257,52 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.5.2 ============ -->
+            <section id="v2-5-2" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.5.2]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Gaveta Retrátil de Demandas & Calibração de Tabelas</span>
+                        </div>
+                        <div class="version-date">04 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-adicionado">
+                            <div class="change-group-title" style="color: #2e7d32;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">add_circle</span>
+                                Adicionado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Gaveta Retrátil de Demandas no Harness (<code>prototipos/_harness.html</code>):</strong> Botão <code>#toggleDocBtn</code> ("Ver Demanda" com ícone <code>description</code>) na barra de ferramentas superior.</li>
+                                <li><strong>Drawer Lateral Offcanvas:</strong> Painel retrátil à direita (largura de ~420px com sombra, rolagem suave independente e atalho <code>Escape</code>) exibindo a demanda da IA (.md) sem disputar nem alterar o espaço do <code>&lt;iframe&gt;</code>.</li>
+                                <li><strong>Leitura Automática de Parâmetro da URL:</strong> Detecção de parâmetros <code>doc</code> e <code>src</code>/<code>file</code> com busca dinâmica de documentos em <code>.docs-ia/exemplos-demandas/</code>.</li>
+                                <li><strong>Resiliência para <code>file:///</code>:</strong> Tratamento defensivo de CORS com renderização estruturada de contingência e link direto para abertura do arquivo local.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-modificado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">published_with_changes</span>
+                                Modificado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Cabeçalho de Tabelas Analíticas (<code>assets/css/_03-atoms/_tables.css</code>):</strong> Aplicação estrita de <code>background-color: var(--bcb-color-primary, #2E4C59) !important</code> e <code>color: #ffffff !important</code> diretamente em <code>.table-digital thead th</code> (inclusive células com <code>rowspan</code> e <code>colspan</code>).</li>
+                                <li><strong>Calibração Dimensional de Colunas:</strong> Inclusão de <code>overflow-x: auto</code> em <code>.bcb-table-wrapper</code>, <code>min-width: 760px</code> na tabela, primeira coluna descritiva com 28% de largura e <code>min-width: 180px</code>, e colunas numéricas subsequentes com <code>min-width: 48px</code>, <code>white-space: nowrap</code> e alinhamento numérico à direita.</li>
+                                <li><strong>Limpeza na Vitrine Oficial (<code>pages/graficos.html</code>):</strong> Remoção de classes conflitantes do Bootstrap e uso direto de <code>&lt;table class="bcb-table table-digital"&gt;</code> e <code>table-strict</code> dentro de <code>.bcb-table-wrapper</code>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.5.1 ============ -->
             <section id="v2-5-1" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.5.1]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Simplificação do Visualizador Técnico (Harness)</span>
                         </div>
                         <div class="version-date">04 de Setembro de 2026</div>

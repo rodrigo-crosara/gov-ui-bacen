@@ -76,6 +76,8 @@
   margin-top: 10pt;
   margin-bottom: 10pt;
   width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .bcb-table-header-flex {
@@ -124,6 +126,7 @@
 /* Tabela Analítica Oficial */
 .bcb-table {
   width: 100%;
+  min-width: 760px;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
   background-color: var(--bcb-color-white, #FFFFFF);
@@ -139,12 +142,17 @@
   text-align: right;
   vertical-align: middle;
   border: none;
+  min-width: 48px;
+  white-space: nowrap;
 }
 
 .bcb-table tbody tr td:first-child,
 .bcb-table tbody tr th:first-child,
 .bcb-table thead tr th:first-child {
   text-align: left;
+  width: 28%;
+  min-width: 180px;
+  white-space: normal;
 }
 
 /* Separador Vertical Fino (0.5pt) */
@@ -176,11 +184,12 @@
 
 /* 4.1 Padrão Digital (Telas, Painéis e Dashboards) */
 .table-digital thead tr {
-  background-color: var(--bcb-table-header-bg, #2E4C59) !important;
+  background-color: var(--bcb-color-primary, #2E4C59) !important;
 }
 
 .table-digital thead th {
-  color: var(--bcb-table-header-text, #FFFFFF) !important;
+  background-color: var(--bcb-color-primary, #2E4C59) !important;
+  color: #ffffff !important;
   border: none !important;
   font-weight: 700;
   vertical-align: middle;

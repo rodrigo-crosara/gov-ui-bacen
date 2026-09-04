@@ -249,6 +249,176 @@
             flex: 1;
         }
 
+        /* Gaveta Lateral Retrátil de Demandas (Offcanvas à direita) */
+        .bcb-doc-drawer {
+            position: fixed;
+            top: 49px;
+            right: 0;
+            bottom: 0;
+            width: 420px;
+            max-width: 90vw;
+            background-color: #1a2228;
+            color: #ffffff;
+            box-shadow: -6px 0 24px rgba(0, 0, 0, 0.55);
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .bcb-doc-drawer.open {
+            transform: translateX(0);
+        }
+
+        .bcb-doc-drawer-header {
+            padding: 12px 16px;
+            background-color: #151c21;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .bcb-doc-drawer-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .bcb-doc-drawer-close {
+            background: transparent;
+            border: none;
+            color: #9aa6b2;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.15s, background 0.15s;
+        }
+
+        .bcb-doc-drawer-close:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .bcb-doc-drawer-toolbar {
+            padding: 8px 16px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            gap: 8px;
+        }
+
+        .bcb-doc-file-badge {
+            font-size: 0.75rem;
+            font-family: monospace;
+            background: rgba(2, 92, 117, 0.35);
+            border: 1px solid rgba(2, 92, 117, 0.6);
+            color: #7dd3fc;
+            padding: 2px 8px;
+            border-radius: 4px;
+            max-width: 250px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .bcb-doc-link {
+            font-size: 0.75rem;
+            color: #4dc8ff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .bcb-doc-link:hover {
+            color: #90ddff;
+            text-decoration: underline;
+        }
+
+        .bcb-doc-drawer-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #d0d7df;
+            word-break: break-word;
+        }
+
+        .bcb-doc-content pre {
+            background: #0f1418;
+            color: #e6edf3;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.78rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+        }
+
+        .bcb-doc-content h1,
+        .bcb-doc-content h2,
+        .bcb-doc-content h3 {
+            color: #ffffff;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .bcb-doc-content h1 { font-size: 1.15rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 4px; }
+        .bcb-doc-content h2 { font-size: 1.05rem; }
+        .bcb-doc-content h3 { font-size: 0.95rem; }
+
+        .bcb-doc-content ul, .bcb-doc-content ol {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .bcb-doc-content code {
+            background: rgba(255, 255, 255, 0.1);
+            color: #7dd3fc;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.8em;
+        }
+
+        .bcb-doc-content blockquote {
+            border-left: 3px solid var(--bcb-brand-azul-blue, #025C75);
+            padding-left: 10px;
+            margin: 10px 0;
+            color: #9aa6b2;
+            font-style: italic;
+        }
+
+        .bcb-doc-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            padding: 12px;
+            color: #fca5a5;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        .bcb-doc-loading {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #9aa6b2;
+            padding: 16px 0;
+            font-size: 0.82rem;
+        }
+
         .sr-only {
             position: absolute;
             width: 1px;
@@ -306,8 +476,13 @@
                 </div>
             </div>
 
-            <!-- Link para abrir arquivo diretamente em nova aba -->
+            <!-- Controles de Ação (Ver Demanda e Abrir Isolado) -->
             <div class="bcb-harness-group">
+                <button type="button" id="toggleDocBtn" class="bcb-harness-btn bcb-harness-btn--action" aria-expanded="false" aria-controls="docDrawer" title="Visualizar documento de demanda (.md)">
+                    <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">description</span>
+                    <span>Ver Demanda</span>
+                </button>
+
                 <a id="btnOpenNewTab" href="copom-decisao-taxa-selic.html" target="_blank" rel="noopener noreferrer" class="bcb-harness-btn bcb-harness-btn--action" title="Abrir protótipo diretamente em nova aba">
                     <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">open_in_new</span>
                     <span>Abrir em nova aba</span>
@@ -327,6 +502,36 @@
         </div>
     </main>
 
+    <!-- GAVETA RETRÁTIL DE DEMANDAS (DRAWER OFFCANVAS À DIREITA) -->
+    <aside id="docDrawer" class="bcb-doc-drawer" aria-label="Painel de Documento de Demanda" aria-hidden="true">
+        <div class="bcb-doc-drawer-header">
+            <div class="d-flex align-items-center" style="gap: 8px;">
+                <span class="material-symbols-outlined material-icons md-18 text-info" aria-hidden="true">description</span>
+                <h2 class="bcb-doc-drawer-title" id="docDrawerTitle">Documento de Demanda</h2>
+            </div>
+            <button type="button" id="closeDocBtn" class="bcb-doc-drawer-close" aria-label="Fechar gaveta de demanda">
+                <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">close</span>
+            </button>
+        </div>
+        <div class="bcb-doc-drawer-toolbar" id="docDrawerToolbar">
+            <span id="docFileName" class="bcb-doc-file-badge">Nenhum arquivo</span>
+            <a id="docExternalLink" href="#" target="_blank" rel="noopener noreferrer" class="bcb-doc-link" style="display: none;">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">open_in_new</span>
+                <span>Abrir .md puro</span>
+            </a>
+        </div>
+        <div class="bcb-doc-drawer-body" id="docDrawerBody">
+            <div id="docLoading" class="bcb-doc-loading" style="display: none;">
+                <div class="spinner-border spinner-border-sm text-info" role="status">
+                    <span class="sr-only">Carregando documento...</span>
+                </div>
+                <span>Carregando documento de demanda...</span>
+            </div>
+            <div id="docError" class="bcb-doc-error" style="display: none;"></div>
+            <div id="docContent" class="bcb-doc-content"></div>
+        </div>
+    </aside>
+
     <script>
         (function() {
             'use strict';
@@ -337,6 +542,182 @@
             const selectPrototipo = document.getElementById('selectPrototipo');
             const viewportButtons = document.querySelectorAll('[data-viewport]');
             const btnOpenNewTab = document.getElementById('btnOpenNewTab');
+
+            // Elementos da Gaveta de Demanda
+            const toggleDocBtn = document.getElementById('toggleDocBtn');
+            const closeDocBtn = document.getElementById('closeDocBtn');
+            const docDrawer = document.getElementById('docDrawer');
+            const docDrawerTitle = document.getElementById('docDrawerTitle');
+            const docFileName = document.getElementById('docFileName');
+            const docExternalLink = document.getElementById('docExternalLink');
+            const docLoading = document.getElementById('docLoading');
+            const docError = document.getElementById('docError');
+            const docContent = document.getElementById('docContent');
+
+            // Mapa canônico de protótipos para arquivos de demanda em .docs-ia/exemplos-demandas/
+            const PROTOTYPE_DOC_MAP = {
+                'copom-decisao-taxa-selic.html': '01-comunicado-normativo.md',
+                'sgs-series-taxa-selic.html': '02-dados-sgs-indicadores.md',
+                'mecanismo-especial-devolucao-med.html': '03-servico-passo-a-passo.md',
+                'regras-cheque-especial.html': '04-conteudo-html-legado.md',
+                'resolucao-bcb-dou.html': '05-entrada-nao-estruturada-dou.md'
+            };
+
+            // Dados de contingência para renderização offline ou via protocolo file:///
+            const DEMANDAS_FALLBACK = {
+                '01-comunicado-normativo.md': {
+                    titulo: 'Modelo 1: Comunicado Normativo & Decisão do Copom',
+                    origem: 'Assessoria de Imprensa (ASIMP) / Secretaria do Copom',
+                    objetivo: 'Noticiar a decisão da 268ª Reunião do Copom (elevação da Selic para 14,25% a.a.) e disponibilizar notas oficiais.',
+                    padraoUX: 'Comunicação Normativa (Layout 70/30 com citação diretorial e downloads)',
+                    textoBruto: 'O Comitê de Política Monetária (Copom) do Banco Central do Brasil decidiu, por unanimidade, elevar a taxa Selic em 1,00 ponto percentual, para 14,25% ao ano, na sua 268ª reunião concluída em 12 de março de 2026.\n\nA decisão reflete o cenário de pressões inflacionárias no horizonte relevante de política monetária...'
+                },
+                '02-dados-sgs-indicadores.md': {
+                    titulo: 'Modelo 2: Séries Temporais SGS & Dados Abertos',
+                    origem: 'Departamento de Estatísticas do Banco Central (DSTAT)',
+                    objetivo: 'Publicar a série histórica das últimas reuniões do Copom com visualização imediata das taxas vigentes e exportação de dados abertos.',
+                    padraoUX: 'Painel Analítico de Indicadores & Tabela Densa SGS',
+                    textoBruto: 'Reuniao;Data_Inicio;Data_Fim;Meta_Taxa_aa;Variacao_pp;Ata_Publicada\n268ª;11/03/2026;12/03/2026;14.25;+1.00;Pendente\n267ª;28/01/2026;29/01/2026;13.25;0.00;Sim\n266ª;10/12/2025;11/12/2025;13.25;-0.25;Sim\n265ª;05/11/2025;06/11/2025;13.50;-0.50;Sim'
+                },
+                '03-servico-passo-a-passo.md': {
+                    titulo: 'Modelo 3: Serviço ao Cidadão & Guia com Stepper',
+                    origem: 'Departamento de Atendimento Institucional (DEATI) / Gerência do Pix',
+                    objetivo: 'Explicar como contestar fraudes via MED do Pix, ressaltando que o BCB não cobra taxas nem pede senhas.',
+                    padraoUX: 'Guia de Serviço com Stepper Sequencial, Alertas Críticos e FAQ',
+                    textoBruto: 'Serviço: Mecanismo Especial de Devolução (MED) do Pix\n\nEtapas obrigatórias:\n1. Registro imediato da infração no seu banco (até 80 dias).\n2. Notificação e bloqueio cautelar (até 72 horas).\n3. Conclusão da análise pericial e estorno (até 96 horas).\n\nAviso Crítico: O BCB NUNCA entra em contato pedindo senhas ou cobrando taxas!'
+                },
+                '04-conteudo-html-legado.md': {
+                    titulo: 'Modelo 4: Refatoração de HTML Legado',
+                    origem: 'Departamento de Comunicação Interna e Externa',
+                    objetivo: 'Modernizar e converter código HTML antigo com tabelas de layout para a arquitetura semântica do BCB Design System.',
+                    padraoUX: 'Refatoração Semântica em Grid 12 Colunas (.bcb-row e .bcb-col-*)',
+                    textoBruto: 'Código antigo com &lt;table bgcolor="#f5f5f5"&gt; e &lt;font face="Arial"&gt;\n\nRegra Chave: O banco não pode cobrar tarifa de disponibilização para limites de cheque especial até R$ 500,00. Uso de mais de 15% por mais de 30 dias exige proposta ativa de parcelamento.'
+                },
+                '05-entrada-nao-estruturada-dou.md': {
+                    titulo: 'Modelo 5: Resolução BCB nº 492 (DOU / Comef)',
+                    origem: 'Comitê de Estabilidade Financeira (Comef) / Diário Oficial da União',
+                    objetivo: 'Converter publicação bruta do DOU com dados regulatórios e coeficientes de capital em página institucional.',
+                    padraoUX: 'Atos Normativos / Resoluções com Metadados Oficiais e Download',
+                    textoBruto: 'BANCO CENTRAL DO BRASIL\nRESOLUÇÃO BCB Nº 492, DE 2 DE SETEMBRO DE 2026\nFixa o valor do Adicional Contracíclico de Capital do Banco Central do Brasil para o Brasil (ACCPBrasil).\nA Diretoria Colegiada do Banco Central do Brasil, em sessão realizada em 2 de setembro de 2026...'
+                }
+            };
+
+            let currentDocName = '';
+
+            function toggleDocDrawer(forceState) {
+                const isOpen = typeof forceState === 'boolean' ? forceState : !docDrawer.classList.contains('open');
+                docDrawer.classList.toggle('open', isOpen);
+                docDrawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+                if (toggleDocBtn) {
+                    toggleDocBtn.classList.toggle('active', isOpen);
+                    toggleDocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                }
+            }
+
+            function renderSimpleMarkdown(md) {
+                if (!md) return '';
+                let html = md
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+
+                // Code blocks
+                html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+                // Inline code
+                html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+                // Headings (Mapeados para h2, h3 e h4 preservando a hierarquia da página)
+                html = html.replace(/^### (.*$)/gim, '<h4 class="bcb-doc-h4">$1</h4>');
+                html = html.replace(/^## (.*$)/gim, '<h3 class="bcb-doc-h3">$1</h3>');
+                html = html.replace(/^# (.*$)/gim, '<h2 class="bcb-doc-h2">$1</h2>');
+                // Bold & Italic
+                html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+                // Blockquote
+                html = html.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>');
+                // List items
+                html = html.replace(/^\s*[-*]\s+(.*$)/gim, '<li>$1</li>');
+                html = html.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+                html = html.replace(/<\/ul>\s*<ul>/g, '');
+
+                // Paragraphs
+                html = html.replace(/\n\n+/g, '</p><p>');
+                html = `<p>${html}</p>`;
+                html = html.replace(/<p>\s*<\/p>/g, '');
+                html = html.replace(/<p>(<h[2-4]>)/g, '$1');
+                html = html.replace(/(<\/h[2-4]>)<\/p>/g, '$1');
+                html = html.replace(/<p>(<pre>)/g, '$1');
+                html = html.replace(/(<\/pre>)<\/p>/g, '$1');
+                html = html.replace(/<p>(<ul>)/g, '$1');
+                html = html.replace(/(<\/ul>)<\/p>/g, '$1');
+                html = html.replace(/<p>(<blockquote>)/g, '$1');
+                html = html.replace(/(<\/blockquote>)<\/p>/g, '$1');
+
+                return html;
+            }
+
+            async function loadDoc(docName) {
+                if (!docName) return;
+                if (!docName.endsWith('.md')) {
+                    docName += '.md';
+                }
+                currentDocName = docName;
+                const docPath = `../.docs-ia/exemplos-demandas/${docName}`;
+
+                if (docFileName) docFileName.textContent = docName;
+                if (docExternalLink) {
+                    docExternalLink.href = docPath;
+                    docExternalLink.style.display = 'inline-flex';
+                }
+                if (docLoading) docLoading.style.display = 'flex';
+                if (docError) docError.style.display = 'none';
+                if (docContent) docContent.innerHTML = '';
+
+                try {
+                    const response = await fetch(docPath);
+                    if (!response.ok) {
+                        throw new Error(`Arquivo não encontrado (Status HTTP ${response.status})`);
+                    }
+                    const text = await response.text();
+                    if (docLoading) docLoading.style.display = 'none';
+                    if (docContent) docContent.innerHTML = renderSimpleMarkdown(text);
+                } catch (err) {
+                    if (docLoading) docLoading.style.display = 'none';
+                    const isFileProtocol = window.location.protocol === 'file:';
+
+                    let errorHtml = `
+                        <div class="alert alert-warning p-2 small mb-3" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fde68a;">
+                            <strong>${isFileProtocol ? 'Aviso de Visualização Local (file:///):' : 'Não foi possível carregar via HTTP:'}</strong><br>
+                            ${isFileProtocol 
+                                ? 'Navegadores bloqueiam requisições assíncronas a arquivos locais por segurança. Você pode abrir o markdown bruto pelo link abaixo ou utilizar um servidor local (<code>npm run serve</code>).' 
+                                : err.message}
+                        </div>
+                        <div class="text-center my-3">
+                            <a href="${docPath}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 6px;">
+                                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">open_in_new</span>
+                                <span>Abrir ${docName} no Navegador</span>
+                            </a>
+                        </div>
+                    `;
+                    if (docError) {
+                        docError.innerHTML = errorHtml;
+                        docError.style.display = 'block';
+                    }
+
+                    if (DEMANDAS_FALLBACK[docName] && docContent) {
+                        const fb = DEMANDAS_FALLBACK[docName];
+                        docContent.innerHTML = `
+                            <div class="card p-3 mb-3" style="background: #151c21; border: 1px solid rgba(255,255,255,0.1);">
+                                <h3 class="h6 text-white font-weight-bold mb-2">${fb.titulo}</h3>
+                                <div class="small text-muted mb-1"><strong>Origem:</strong> ${fb.origem}</div>
+                                <div class="small text-muted mb-1"><strong>Padrão UX:</strong> ${fb.padraoUX}</div>
+                                <div class="small text-muted mb-0"><strong>Objetivo:</strong> ${fb.objetivo}</div>
+                            </div>
+                            <h4 class="h6 text-white font-weight-bold mb-2">Insumo da Demanda:</h4>
+                            <pre><code>${fb.textoBruto}</code></pre>
+                        `;
+                    }
+                }
+            }
 
             function setViewport(viewport) {
                 viewportButtons.forEach(btn => {
@@ -358,6 +739,10 @@
                 if (frame) {
                     frame.src = slug;
                 }
+                const mappedDoc = PROTOTYPE_DOC_MAP[slug];
+                if (mappedDoc) {
+                    loadDoc(mappedDoc);
+                }
             }
 
             selectPrototipo.addEventListener('change', (e) => {
@@ -372,22 +757,53 @@
                 });
             });
 
-            // Suporte a abertura parametrizada: _harness.html?src=nome.html
+            if (toggleDocBtn) {
+                toggleDocBtn.addEventListener('click', () => {
+                    toggleDocDrawer();
+                });
+            }
+
+            if (closeDocBtn) {
+                closeDocBtn.addEventListener('click', () => {
+                    toggleDocDrawer(false);
+                });
+            }
+
+            // Fechamento da gaveta via tecla Escape (WCAG a11y)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' || e.key === 'Esc') {
+                    if (docDrawer && docDrawer.classList.contains('open')) {
+                        toggleDocDrawer(false);
+                    }
+                }
+            });
+
+            // Leitura automática dos parâmetros da URL: ?src=...&doc=... ou ?file=...&doc=...
             const urlParams = new URLSearchParams(window.location.search);
-            const paramSrc = urlParams.get('src');
+            const paramSrc = urlParams.get('src') || urlParams.get('file');
+            const paramDoc = urlParams.get('doc');
 
             let prototipoInicial = 'copom-decisao-taxa-selic.html';
             if (paramSrc) {
-                prototipoInicial = paramSrc;
+                const cleanSrc = paramSrc.toLowerCase().replace('.html', '');
                 for (let i = 0; i < selectPrototipo.options.length; i++) {
-                    if (selectPrototipo.options[i].value === paramSrc || selectPrototipo.options[i].value.endsWith(paramSrc)) {
+                    const optVal = selectPrototipo.options[i].value.toLowerCase();
+                    if (optVal === paramSrc.toLowerCase() || optVal.includes(cleanSrc)) {
                         selectPrototipo.selectedIndex = i;
+                        prototipoInicial = selectPrototipo.options[i].value;
                         break;
                     }
                 }
             }
 
-            loadPrototype(prototipoInicial.split('/').pop());
+            const slugInicial = prototipoInicial.split('/').pop();
+            loadPrototype(slugInicial);
+
+            // Carregamento específico do documento de demanda passado por parâmetro
+            if (paramDoc) {
+                loadDoc(paramDoc);
+                toggleDocDrawer(true);
+            }
         })();
     </script>
 </body>

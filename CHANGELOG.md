@@ -5,6 +5,21 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.5.2] — 2026-09-04
+
+### Adicionado
+- **Gaveta Retrátil de Demandas no Harness (`prototipos/_harness.html`):**
+  - Botão `#toggleDocBtn` com o texto "Ver Demanda" e ícone `description` na barra de ferramentas superior.
+  - Gaveta lateral retrátil offcanvas à direita (`#docDrawer`, largura de ~420px com sombra, scroll independente e atalho de teclado `Escape` para fechar) para exibir o conteúdo da demanda (.md), permitindo abrir e fechar sem disputar nem alterar a área do `<iframe>`.
+  - Leitura automática do parâmetro `doc` da URL (ex.: `?src=...&doc=01-comunicado-normativo.md` ou `?file=...&doc=...`) com abertura imediata e carregamento do respectivo arquivo de `.docs-ia/exemplos-demandas/`.
+  - Mecanismo resiliente de contingência para execuções sob o protocolo `file:///` ou falhas de rede, disponibilizando link alternativo de abertura direta no navegador e renderização instantânea dos dados estruturados de insumo da demanda.
+
+### Modificado
+- **Calibração Dimensional e Cabeçalho de Tabelas Analíticas (`assets/css/_03-atoms/_tables.css`):**
+  - Aplicação estrita de `background-color: var(--bcb-color-primary, #2E4C59) !important` e `color: #ffffff !important` diretamente em `.table-digital thead th`, assegurando que todas as células de cabeçalho (incluindo `rowspan` e `colspan`) recebam o fundo azul institucional e tipografia branca.
+  - Prevenção do achatamento de colunas numéricas: inclusão de `overflow-x: auto` e rolagem suave em `.bcb-table-wrapper`, definição de `min-width: 760px` em `.bcb-table`, largura de 28% com `min-width: 180px` na primeira coluna descritiva (`th:first-child`, `td:first-child`), e `min-width: 48px`, `white-space: nowrap` e alinhamento à direita nas colunas numéricas subsequentes.
+  - Vitrine oficial `pages/graficos.html` atualizada para utilizar `<table class="bcb-table table-digital">` envolvida diretamente por `.bcb-table-wrapper`, sem interferência de classes genéricas do Bootstrap.
+
 ## [2.5.1] — 2026-09-04
 
 ### Removido
