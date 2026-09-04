@@ -69,6 +69,18 @@
   --bg-vinho-light: #000000;
   --bg-gray-light: #000000;
 
+  /* Tabelas Analíticas e Gráficos no Alto Contraste */
+  --bcb-table-text: #FFFFFF;
+  --bcb-table-border: #FFFFFF;
+  --bcb-table-col-separator: #FFFFFF;
+  --bcb-table-header-bg: #000000;
+  --bcb-table-header-text: #FFFF00;
+  --bcb-table-zebra: #000000;
+  --bcb-table-highlight-bg: #000000;
+  --bcb-table-highlight-text: #FFFF00;
+  --bcb-table-num-negative: #FF5555;
+  --bcb-table-total-text: #FFFF00;
+
   --bcb-radius-0: 0;
   --bcb-radius-4: 0;
   --bcb-radius-8: 0;
@@ -79,6 +91,16 @@
   :root:not([data-contrast="normal"]) {
     --bcb-color-white: #000000;
     --bcb-color-black: #FFFFFF;
+    --bcb-table-text: #FFFFFF;
+    --bcb-table-border: #FFFFFF;
+    --bcb-table-col-separator: #FFFFFF;
+    --bcb-table-header-bg: #000000;
+    --bcb-table-header-text: #FFFF00;
+    --bcb-table-zebra: #000000;
+    --bcb-table-highlight-bg: #000000;
+    --bcb-table-highlight-text: #FFFF00;
+    --bcb-table-num-negative: #FF5555;
+    --bcb-table-total-text: #FFFF00;
     --bcb-color-body-text: #FFFFFF;
     --bcb-color-bg-light: #000000;
 
@@ -429,3 +451,91 @@
 [data-contrast="high"] .text-muted {
   color: #FFFF00 !important;
 }
+
+/* ==========================================
+   Tabelas Analíticas e Gráficos no Alto Contraste
+   Garante conformidade WCAG 2.2 AAA e e-MAG
+   ========================================== */
+:root[data-contrast="high"] .bcb-chart-container,
+[data-theme="high-contrast"] .bcb-chart-container,
+[data-contrast="high"] .bcb-chart-container {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-table,
+[data-theme="high-contrast"] .bcb-table,
+[data-contrast="high"] .bcb-table {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-table-title,
+:root[data-contrast="high"] .bcb-table-subtitle,
+:root[data-contrast="high"] .bcb-table-unit-box,
+:root[data-contrast="high"] .bcb-table-source,
+[data-theme="high-contrast"] .bcb-table-title,
+[data-theme="high-contrast"] .bcb-table-subtitle,
+[data-theme="high-contrast"] .bcb-table-unit-box,
+[data-theme="high-contrast"] .bcb-table-source {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .table-digital thead tr,
+[data-theme="high-contrast"] .table-digital thead tr,
+[data-contrast="high"] .table-digital thead tr {
+  background-color: #000000 !important;
+  border-bottom: 2px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .table-digital thead th,
+[data-theme="high-contrast"] .table-digital thead th,
+[data-contrast="high"] .table-digital thead th {
+  color: #FFFF00 !important;
+  background-color: #000000 !important;
+  border-bottom: 2px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .table-strict thead tr:last-child th,
+[data-theme="high-contrast"] .table-strict thead tr:last-child th,
+[data-contrast="high"] .table-strict thead tr:last-child th {
+  border-bottom: 2px dashed #FFFFFF !important;
+  color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .table-strict tbody,
+[data-theme="high-contrast"] .table-strict tbody,
+[data-contrast="high"] .table-strict tbody {
+  border-top: 2px solid #FFFFFF !important;
+  border-bottom: 2px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-row-highlight,
+:root[data-contrast="high"] .table-digital .bcb-row-highlight td,
+:root[data-contrast="high"] .table-digital .bcb-row-highlight th,
+[data-theme="high-contrast"] .bcb-row-highlight,
+[data-theme="high-contrast"] .table-digital .bcb-row-highlight td,
+[data-theme="high-contrast"] .table-digital .bcb-row-highlight th {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+  border-top: 1px solid #FFFF00 !important;
+  border-bottom: 1px solid #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-row-total,
+:root[data-contrast="high"] .table-strict .bcb-row-total td,
+:root[data-contrast="high"] .table-strict .bcb-row-total th,
+[data-theme="high-contrast"] .bcb-row-total,
+[data-theme="high-contrast"] .table-strict .bcb-row-total td,
+[data-theme="high-contrast"] .table-strict .bcb-row-total th {
+  color: #FFFF00 !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .num-negative,
+[data-theme="high-contrast"] .num-negative,
+[data-contrast="high"] .num-negative {
+  color: #FF5555 !important;
+  font-weight: 700 !important;
+}
+

@@ -239,6 +239,22 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
    - **Botão Voltar ao Topo:** Todo protótipo DEVE encerrar no rodapé de `<main id="conteudo-principal">` (antes do fechamento `</main>`) com o bloco de retorno rápido `<div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">` contendo o botão âncora `href="#conteudo-principal"` e ícone `arrow_upward`.
    - **Restrição de Escopo:** O miolo central reside estritamente DENTRO do container `<main>`, preservando a regra de zero nós estruturais soltos no `<body>`.
 
+9. **Padrão Normativo para Tabelas Analíticas e Gráficos Highcharts (Manual Corporativo do BCB):**
+   - **Tabelas Analíticas Oficiais:** Sempre que a demanda envolver matrizes de dados numéricos, séries temporais ou dados econômicos, utilize as classes corporativas:
+     - `.table-digital`: Para telas de portais, consultas web e dashboards. Cabeçalho `#2E4C59`, zebra em `rgba(46, 76, 89, 0.04)`.
+     - `.table-strict`: Para documentos formais, relatórios REF/RI e publicações técnicas. Fundo limpo, separador pontilhado no cabeçalho e fechamento sólido.
+     - **Regras Obrigatórias de Formatação:**
+       - Tipografia `Arial, sans-serif` com entrelinha de 12.75pt a 14pt.
+       - Alinhamento: primeira coluna textual à esquerda, números à direita.
+       - Números negativos obrigatoriamente com a classe `.num-negative` (`#B30000` em negrito).
+       - Linhas de destaque com `.bcb-row-highlight` e totais com `.bcb-row-total`.
+       - Separador vertical fino `.bcb-col-separator` na primeira coluna.
+   - **Gráficos Interativos Highcharts:**
+     - Paleta corporativa de 12 cores estrita e imutável (1ª `#2E4C59`, 2ª `#F2B557`, 3ª `#6BAEBF`, 4ª `#804C29`, 5ª `#87007C`, 6ª `#D46C6B`, etc.).
+     - Linhas de grade (gridlines) a 50% de opacidade de `#606060`.
+     - O contêiner do gráfico deve usar `.bcb-chart-container` com `role="region"` e `aria-label`.
+     - **Proibição de Scripts Inline em Protótipos:** Inclua os scripts externos (`highcharts.js` e `highcharts-theme-bcb.js` antes de `bcb-ui.js`) e utilize inicialização declarativa via `data-bcb-chart` gerenciada centralizadamente em `bcb-ui.js`.
+
 ---
 
 ## 5. BOILERPLATE CANÔNICO PARA PROTOTIPAGEM AUTÔNOMA (`prototipos/`)

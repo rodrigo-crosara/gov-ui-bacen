@@ -109,6 +109,37 @@
   --bg-gray-light: #F8F9FB;
 
   /* ==========================================
+     8.1 PALETA MESTRA DE GRÁFICOS (12 Cores Sequenciais BCB)
+     ========================================== */
+  --bcb-chart-series-01: #2E4C59;
+  --bcb-chart-series-02: #F2B557;
+  --bcb-chart-series-03: #6BAEBF;
+  --bcb-chart-series-04: #804C29;
+  --bcb-chart-series-05: #87007C;
+  --bcb-chart-series-06: #D46C6B;
+  --bcb-chart-series-07: #088492;
+  --bcb-chart-series-08: #D295BE;
+  --bcb-chart-series-09: #ECCAB1;
+  --bcb-chart-series-10: #AEAEAE;
+  --bcb-chart-series-11: #736063;
+  --bcb-chart-series-12: #C3A061;
+  --bcb-chart-gridline: rgba(96, 96, 96, 0.5);
+
+  /* ==========================================
+     8.2 CORES ESTRUTURAIS E FUNCIONAIS DE TABELAS
+     ========================================== */
+  --bcb-table-text: #606060;
+  --bcb-table-border: #606060;
+  --bcb-table-col-separator: #dcdcdc;
+  --bcb-table-header-bg: #2E4C59;
+  --bcb-table-header-text: #FFFFFF;
+  --bcb-table-zebra: rgba(46, 76, 89, 0.04);
+  --bcb-table-highlight-bg: rgba(242, 181, 87, 0.15);
+  --bcb-table-highlight-text: #4a3107;
+  --bcb-table-num-negative: #B30000;
+  --bcb-table-total-text: #2E4C59;
+
+  /* ==========================================
      9. TAMANHOS DE FONTE (Fluída com clamp)
      ========================================== */
   --bcb-font-50: 0.75rem;

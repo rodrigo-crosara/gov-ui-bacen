@@ -81,6 +81,7 @@
         }
 
         .hub-card.card-tokens .hub-card-icon { background-color: var(--bg-brand-light); color: var(--bcb-brand-azulcinti); }
+        .hub-card.card-charts .hub-card-icon { background-color: rgba(242, 181, 87, 0.2); color: #804C29; }
         .hub-card.card-templates .hub-card-icon { background-color: var(--bg-verde-light); color: var(--bcb-brand-verde-castell); }
         .hub-card.card-ai .hub-card-icon { background-color: var(--bg-verde-light); color: var(--bcb-brand-verde-susta); }
 
@@ -209,6 +210,7 @@
             <li><a href="index.html" class="active" aria-current="page">Início</a></li>
             <li><a href="pages/components.html">Componentes</a></li>
             <li><a href="pages/tokens.html">Tokens</a></li>
+            <li><a href="pages/graficos.html">Gráficos e Tabelas</a></li>
             <li><a href="pages/prototipos.html">Protótipos</a></li>
             <li><a href="pages/automacao-ia.html">Guia IA</a></li>
           </ul>
@@ -293,7 +295,7 @@
 
             <div class="row">
                 <!-- Card 1: Tokens -->
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
                     <div class="hub-card card-tokens">
                         <div>
                             <div class="hub-card-icon">
@@ -310,7 +312,7 @@
                 </div>
 
                 <!-- Card 2: Componentes -->
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
                     <div class="hub-card card-components">
                         <div>
                             <div class="hub-card-icon">
@@ -326,8 +328,25 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Casos Diagramados por IA -->
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <!-- Card 3: Gráficos e Tabelas Analíticas -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="hub-card card-charts">
+                        <div>
+                            <div class="hub-card-icon">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">bar_chart</span>
+                            </div>
+                            <h3 class="hub-card-title">Gráficos e Tabelas</h3>
+                            <p class="hub-card-description">Manual Corporativo do BCB: paleta mestra de 12 cores sequenciais, integração Highcharts oficial e tabelas analíticas (Padrão Digital e Estrito).</p>
+                        </div>
+                        <a href="pages/graficos.html" class="btn btn-outline-primary btn-sm btn-block d-flex align-items-center justify-content-center" style="gap: 0.25rem;">
+                            <span>Ver Gráficos & Tabelas</span>
+                            <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Casos Diagramados por IA -->
+                <div class="col-12 col-md-6 col-lg-6 mb-4">
                     <div class="hub-card card-templates">
                         <div>
                             <div class="hub-card-icon">
@@ -343,8 +362,8 @@
                     </div>
                 </div>
 
-                <!-- Card 4: Guia de IA -->
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <!-- Card 5: Guia de IA -->
+                <div class="col-12 col-md-6 col-lg-6 mb-4">
                     <div class="hub-card card-ai">
                         <div>
                             <div class="hub-card-icon">

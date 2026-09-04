@@ -181,6 +181,28 @@ if (tokens.color && tokens.color.tint) {
 }
 lines.push('');
 
+// 8.1. Paleta Mestra Oficial de Gráficos (12 Cores Sequenciais - Manual Corporativo BCB)
+lines.push('  /* ==========================================');
+lines.push('     8.1 PALETA MESTRA DE GRÁFICOS (12 Cores Sequenciais BCB)');
+lines.push('     ========================================== */');
+if (tokens.color && tokens.color.chart) {
+  for (const [k, v] of Object.entries(tokens.color.chart)) {
+    lines.push(`  --bcb-chart-${toKebab(k)}: ${resolveValue(v.$value)};`);
+  }
+}
+lines.push('');
+
+// 8.2. Cores Estruturais e Funcionais de Tabelas (Manual Corporativo BCB)
+lines.push('  /* ==========================================');
+lines.push('     8.2 CORES ESTRUTURAIS E FUNCIONAIS DE TABELAS');
+lines.push('     ========================================== */');
+if (tokens.color && tokens.color.table) {
+  for (const [k, v] of Object.entries(tokens.color.table)) {
+    lines.push(`  --bcb-table-${toKebab(k)}: ${resolveValue(v.$value)};`);
+  }
+}
+lines.push('');
+
 // 9. Tamanhos de Fonte
 lines.push('  /* ==========================================');
 lines.push('     9. TAMANHOS DE FONTE (Fluída com clamp)');

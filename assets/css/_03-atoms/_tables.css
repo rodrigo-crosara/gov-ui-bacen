@@ -1,7 +1,9 @@
-/* ============= BCB Design System — Atoms / Tables =============
- * Estilização básica de tabelas semânticas do BCB.
- * ============================================================== */
+/* ============= BCB Design System — Atoms / Tables & Charts =============
+ * Estilização de tabelas semânticas, tabelas analíticas oficiais e contêineres de gráficos.
+ * Conforme o Manual Corporativo de Padrão Visual para Tabelas e Gráficos do BC.
+ * ============================================================================== */
 
+/* 1. Contêineres e Utilidades Responsivas */
 .table-responsive {
   display: block;
   width: 100%;
@@ -10,6 +12,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* 2. Tabela Base Bootstrap / Genérica */
 .table {
   width: 100%;
   margin-bottom: 1rem;
@@ -62,4 +65,182 @@
 .table-sm td {
   padding: 0.3rem 0.5rem;
   font-size: 0.85rem;
+}
+
+/* ==============================================================================
+ * 3. PADRÃO CORPORATIVO OFICIAL DO BC PARA TABELAS ANALÍTICAS
+ * Conforme o Manual Corporativo de Padrão Visual para Tabelas e Gráficos do BCB.
+ * ============================================================================== */
+
+.bcb-table-wrapper {
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  width: 100%;
+}
+
+.bcb-table-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 4pt;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bcb-table-title-box {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.bcb-table-title {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  color: var(--bcb-table-text, #606060);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.bcb-table-subtitle {
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  font-size: 8pt;
+  color: var(--bcb-table-text, #606060);
+  line-height: 1.2;
+  margin-top: 2pt;
+  margin-bottom: 0;
+}
+
+.bcb-table-unit-box {
+  flex: 0 0 auto;
+  text-align: right;
+  font-family: Arial, sans-serif;
+  font-size: 8pt;
+  color: var(--bcb-table-text, #606060);
+  vertical-align: bottom;
+}
+
+/* Tabela Analítica Oficial */
+.bcb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: var(--bcb-color-white, #FFFFFF);
+  margin-bottom: 0;
+}
+
+.bcb-table th,
+.bcb-table td {
+  font-size: 8pt;
+  line-height: 12.75pt;
+  color: var(--bcb-table-text, #606060);
+  padding: 4pt 6pt;
+  text-align: right;
+  vertical-align: middle;
+  border: none;
+}
+
+.bcb-table tbody tr td:first-child,
+.bcb-table tbody tr th:first-child,
+.bcb-table thead tr th:first-child {
+  text-align: left;
+}
+
+/* Separador Vertical Fino (0.5pt) */
+.bcb-col-separator {
+  border-right: 0.5pt solid var(--bcb-table-col-separator, #dcdcdc) !important;
+}
+
+/* Números Negativos em Alto Contraste (WCAG) */
+.num-negative {
+  color: var(--bcb-table-num-negative, #B30000) !important;
+  font-weight: 700;
+}
+
+/* Rodapé de Fontes e Notas */
+.bcb-table-source {
+  font-family: Arial, sans-serif;
+  font-size: 7pt;
+  padding-top: 6pt !important;
+  padding-bottom: 2pt !important;
+  text-align: left !important;
+  border-top: 1px solid var(--bcb-table-border, #606060) !important;
+  line-height: 1.25;
+  color: var(--bcb-table-text, #606060);
+}
+
+/* ==============================================================================
+ * 4. MODELOS OFICIAIS DE TABELAS (DIGITAL vs STRICT)
+ * ============================================================================== */
+
+/* 4.1 Padrão Digital (Telas, Painéis e Dashboards) */
+.table-digital thead tr {
+  background-color: var(--bcb-table-header-bg, #2E4C59) !important;
+}
+
+.table-digital thead th {
+  color: var(--bcb-table-header-text, #FFFFFF) !important;
+  border: none !important;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.table-digital thead th.bcb-col-separator {
+  border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.table-digital tbody tr:nth-child(even) {
+  background-color: var(--bcb-table-zebra, rgba(46, 76, 89, 0.04)) !important;
+}
+
+/* Realce Suave de Totais ou Linhas Chave (Digital) */
+.table-digital .bcb-row-highlight td,
+.table-digital .bcb-row-highlight th,
+.bcb-row-highlight {
+  background-color: var(--bcb-table-highlight-bg, rgba(242, 181, 87, 0.15)) !important;
+  font-weight: 700;
+  color: var(--bcb-table-highlight-text, #4a3107) !important;
+}
+
+/* 4.2 Padrão Estrito / Documental (Relatórios Técnicos, REF e PDF) */
+.table-strict thead tr:last-child th {
+  border-bottom: 1px dotted var(--bcb-table-border, #606060) !important;
+}
+
+.table-strict tbody {
+  border-top: 1px solid var(--bcb-table-border, #606060) !important;
+  border-bottom: 1px solid var(--bcb-table-border, #606060) !important;
+}
+
+.table-strict tbody tr {
+  background-color: transparent !important;
+}
+
+/* Linha de Totalização na Variante Estrita */
+.table-strict .bcb-row-total th,
+.table-strict .bcb-row-total td,
+.bcb-row-total {
+  font-weight: 700;
+  color: var(--bcb-table-total-text, #2E4C59) !important;
+}
+
+/* ==============================================================================
+ * 5. CONTÊINERES DE GRÁFICOS HIGHCHARTS
+ * ============================================================================== */
+
+.bcb-chart-container {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  background-color: var(--bcb-color-surface, #FFFFFF);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-radius: var(--bcb-radius-8, 8px);
+  padding: var(--bcb-space-4, 1rem);
+  margin-bottom: var(--bcb-space-6, 1.5rem);
+  box-sizing: border-box;
+}
+
+.bcb-chart-container .highcharts-container {
+  font-family: Arial, sans-serif !important;
 }

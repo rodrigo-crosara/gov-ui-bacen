@@ -202,6 +202,7 @@
             <li><a href="../index.html">Início</a></li>
             <li><a href="components.html">Componentes</a></li>
             <li><a href="tokens.html">Tokens</a></li>
+            <li><a href="graficos.html">Gráficos e Tabelas</a></li>
             <li><a href="prototipos.html">Protótipos</a></li>
             <li><a href="automacao-ia.html">Guia IA</a></li>
           </ul>
@@ -228,7 +229,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-4-0">v2.4.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-5-0">v2.5.0 (Atual)</a>
+                <a class="nav-link" href="#v2-4-0">v2.4.0</a>
                 <a class="nav-link" href="#v2-3-0">v2.3.0</a>
                 <a class="nav-link" href="#v2-2-0">v2.2.0</a>
                 <a class="nav-link" href="#v2-1-0">v2.1.0</a>
@@ -253,13 +255,62 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.5.0 ============ -->
+            <section id="v2-5-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.5.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Manual Corporativo: Gráficos Highcharts &amp; Tabelas Analíticas</span>
+                        </div>
+                        <div class="version-date">04 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-adicionado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">add_circle</span>
+                                Adicionado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Manual Corporativo de Padrão Visual para Tabelas e Gráficos:</strong> Integração completa da norma geral do Banco Central do Brasil para representação analítica de dados numéricos e matrizes tabulares.</li>
+                                <li><strong>Design Tokens Oficiais (<code>tokens.json</code> &amp; <code>_tokens.css</code>):</strong> Novas famílias de tokens <code>color.chart</code> (paleta mestra de 12 cores sequenciais com 6 primárias e 6 secundárias, e linhas de grade neutras em 50% de opacidade de <code>#606060</code>) e <code>color.table</code> (estruturas funcionais para cabeçalhos, zebras, números negativos e destaques).</li>
+                                <li><strong>Modelos Canônicos de Tabelas Analíticas (<code>assets/css/_03-atoms/_tables.css</code>):</strong>
+                                    <ul>
+                                        <li><code>.table-digital</code>: Para telas, portais e dashboards. Cabeçalho contrastante <code>#2E4C59</code> com texto branco, zebra suave <code>rgba(46, 76, 89, 0.04)</code> e realce via <code>.bcb-row-highlight</code>.</li>
+                                        <li><code>.table-strict</code>: Para documentos analíticos formais, relatórios REF/RI e exportação em PDF. Fundo neutro limpo, separador pontilhado sob cabeçalho, fechamento superior e inferior sólido, separador vertical <code>.bcb-col-separator</code> (0.5pt) e linha de totalização <code>.bcb-row-total</code> em <code>#2E4C59</code>.</li>
+                                        <li><code>.num-negative</code>: Estilo obrigatório em vermelho de alto contraste (<code>#B30000</code> em negrito) para números negativos em conformidade com WCAG AAA.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Tema Oficial Highcharts (<code>assets/js/highcharts-theme-bcb.js</code>):</strong> Módulo UMD corporativo que registra automaticamente o tema institucional no Highcharts com a paleta sequencial de 12 cores, tipografia estrita Arial, eixos neutros e localização pt-BR.</li>
+                                <li><strong>Nova Página de Vitrine (<code>pages/graficos.html</code>):</strong> Showcase interativo com visualização da paleta mestra de 12 cores, 3 gráficos Highcharts interativos (colunas sequenciais, série temporal multissérie com taxas e câmbio, e colunas empilhadas) e demonstração prática das tabelas com o dataset oficial Resumo PMS.</li>
+                                <li><strong>Navegação Global e Hub:</strong> Novo item "Gráficos e Tabelas" no cabeçalho sticky de todas as páginas da documentação e card em destaque no hub institucional (<code>index.html</code>).</li>
+                                <li><strong>Protótipo Canônico Enriquecido (<code>prototipos/sgs-series-taxa-selic.html</code>):</strong> Inclusão de gráfico Highcharts de evolução histórica da Selic Meta e conversão da tabela para o padrão oficial <code>.table-digital</code>.</li>
+                                <li><strong>Inicialização Declarativa no Orquestrador (<code>assets/js/bcb-ui.js</code>):</strong> Módulo 10 com renderização automática e resiliente de gráficos Highcharts via atributo <code>[data-bcb-chart]</code> sem scripts inline.</li>
+                                <li><strong>Calibração em 3 Temas:</strong> Suporte nos modos Dark Mode (<code>_dark-mode.css</code>) e Alto Contraste (<code>_high-contrast.css</code>).</li>
+                                <li><strong>Documentação Técnica &amp; Heurísticas de IA:</strong> Especificações 41 e 42 em <code>.docs-ia/components.md</code> e Regra Normativa 9 em <code>.agent/skills/gerador-ui-bcb/SKILL.md</code>.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-modificado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">edit</span>
+                                Modificado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Compilador de Tokens (<code>scripts/build-tokens.js</code>):</strong> Atualizado com seções 8.1 e 8.2 para compilação dos tokens de gráficos e tabelas com paridade 100% verificada.</li>
+                                <li><strong>Versão do Framework:</strong> Incrementada para v2.5.0 no arquivo central <code>assets/js/bcb-ui.js</code>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.4.0 ============ -->
             <section id="v2-4-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.4.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
                             <span class="version-tag">Expansão Atômica: CTA, Carrossel &amp; Tooltip</span>
                         </div>
                         <div class="version-date">04 de Setembro de 2026</div>

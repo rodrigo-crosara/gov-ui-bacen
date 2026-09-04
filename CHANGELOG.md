@@ -5,6 +5,31 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.5.0] — 2026-09-04
+
+### Adicionado
+- **Integração do Manual Corporativo de Padrão Visual para Tabelas e Gráficos do BCB:**
+  - **Design Tokens Oficiais (`tokens.json` & `_tokens.css`):** Criação das famílias semânticas `color.chart` (paleta sequencial de 12 cores corporativas com 6 primárias e 6 secundárias, além da linha de grade neutra em 50% de opacidade) e `color.table` (variáveis estruturais para tipografia Arial, cabeçalhos `#2E4C59`, zebras suaves, realces `#F2B557`, números negativos `#B30000` e totalizações).
+  - **Estilização Canônica de Tabelas (`assets/css/_03-atoms/_tables.css`):** Implementação dos modelos corporativos oficiais:
+    - `.table-digital`: Para telas de portais, consultas web e dashboards. Cabeçalho contrastante `#2E4C59` com texto branco, zebra suave em `rgba(46, 76, 89, 0.04)` e destaque via `.bcb-row-highlight`.
+    - `.table-strict`: Para documentos analíticos formais, relatórios técnicos (REF, RI, Atas) e exportações PDF. Fundo limpo sem preenchimento, separador pontilhado (`1px dotted #606060`) sob o cabeçalho, fechamento superior e inferior sólido, separador vertical fino `.bcb-col-separator` (`0.5pt solid #dcdcdc`) e linha de totalização `.bcb-row-total` em `#2E4C59`.
+    - Componentes auxiliares: `.bcb-table-wrapper`, cabeçalho flexível `.bcb-table-header-flex` com título e unidade de medida, e rodapé de notas e fontes `.bcb-table-source`.
+  - **Tema Oficial Highcharts (`assets/js/highcharts-theme-bcb.js`):** Criação de pacote UMD autônomo com registro automático em `Highcharts.setOptions()`, aplicando a paleta sequencial imutável das 12 cores, tipografia estrita `Arial, sans-serif`, eixos neutros `#606060`, linhas de grade a 50% de opacidade e localização pt-BR completa (dias da semana, meses e formatação numérica decimal com vírgula e milhar com ponto).
+  - **Nova Vitrine Oficial (`pages/graficos.html`):** Página dedicada de documentação visual e técnica, apresentando:
+    - Catálogo das 12 Cores Sequenciais (swatches com HEX, RGB e hierarquia primária/secundária).
+    - 3 Gráficos Highcharts Interativos (Demonstração das 12 cores em colunas, Série Temporal Multissérie com Selic/IPCA/Câmbio e Composição em Colunas Empilhadas).
+    - Tabelas Analíticas Oficiais com o dataset normativo oficial do Manual (Resumo PMS Abril 2026).
+    - Diretrizes e boas práticas do Manual Corporativo do BCB e snippets copiáveis para integração.
+  - **Atualização da Navegação Global e Hub:** Adicionado o item de menu "Gráficos e Tabelas" no cabeçalho sticky de todas as páginas da documentação (`index.html`, `pages/components.html`, `pages/tokens.html`, `pages/prototipos.html`, `pages/automacao-ia.html`, `pages/changelog.html`) e novo card em destaque no hub institucional (`index.html`).
+  - **Enriquecimento do Protótipo Canônico (`prototipos/sgs-series-taxa-selic.html`):** Adição de representação gráfica interativa Highcharts da trajetória da Selic Meta e conversão da tabela para `.table.table-bordered.table-digital` com números negativos destacados via `.num-negative` (`#B30000`).
+  - **Inicialização Declarativa em Micro-scripts (`assets/js/bcb-ui.js`):** Adicionado módulo 10 com inicialização automática e defensiva de gráficos Highcharts via atributo `[data-bcb-chart]` ou ID canônico, eliminando qualquer necessidade de scripts inline em conformidade com as regras de protótipos autônomos.
+  - **Calibração de Temas (`_dark-mode.css` e `_high-contrast.css`):** Adicionadas regras específicas e tokens para tabelas analíticas e contêineres de gráficos no Dark Mode e no Alto Contraste (WCAG 2.2 AAA / e-MAG 3.1).
+  - **Documentação para IA e Webdesigners (`.docs-ia/components.md` e `SKILL.md`):** Especificações 41 e 42 incluídas no vocabulário de componentes, e nova Regra Normativa 9 cadastrada na skill oficial do gerador de UI do BCB.
+
+### Modificado
+- **Compilador de Tokens (`scripts/build-tokens.js`):** Seções 8.1 e 8.2 adicionadas para geração automatizada dos tokens de gráficos e tabelas analíticas, com verificação de paridade 100% aprovada.
+- **Versão do Orquestrador (`assets/js/bcb-ui.js`):** Bump de versão de `2.1.0` para `2.5.0`.
+
 ## [2.4.0] — 2026-09-04
 
 ### Adicionado

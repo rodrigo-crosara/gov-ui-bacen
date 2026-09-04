@@ -28,6 +28,8 @@ Ao transformar demandas em interfaces do Banco Central, priorize a combinação 
 | **9. Call to Action (CTA)** | `.bcb-cta`, `.bcb-cta--primary`, `.bcb-cta--neutral`, `.bcb-btn-cta` | Destaque persuasivo de conversão ou ação prioritária para o cidadão/entidade. | Acionamento imediato do MED, Acesso ao Registrato. |
 | **10. Carrossel Manchete** | `.bcb-carousel`, `.bcb-carousel__slide`, `.bcb-carousel__controls` | Painel rotativo de manchetes e alertas institucionais com controle acessível de pausa. | Destaques de Segurança Pix, Decisões do Copom, Avisos Urgentes. |
 | **11. Tooltip Acessível** | `.bcb-tooltip`, `[data-tooltip]`, `.bcb-tooltip-term`, `.bcb-tooltip-btn` | Definição contextual sob demanda de termos financeiros técnicos e siglas. | Explicação de "Selic", "PSP", "Chave Pix", "MED". |
+| **12. Tabelas Analíticas Oficiais** | `.table-digital`, `.table-strict`, `.bcb-table`, `.bcb-col-separator`, `.num-negative`, `.bcb-row-highlight`, `.bcb-row-total` | Matrizes numéricas e tabulares analíticas conforme Manual Corporativo do BCB. | Resumo PMS, Indicadores de Mercado, REF, Relatório de Inflação. |
+| **13. Gráficos Interativos Highcharts** | `.bcb-chart-container`, `highcharts-theme-bcb.js`, `[data-bcb-chart]` | Representação gráfica interativa com paleta oficial de 12 cores sequenciais do BCB. | Histórico da Selic SGS 432, Séries Temporais Copom, Composição de Crédito. |
 
 > 🚫 **GUIAS DE CASCA GLOBAL SUPRIMIDOS:** Barra de Governo (#barra-brasil), Cabeçalho Principal (<header>), Rodapé Institucional (<footer>) e Trilha de Navegação (breadcrumbs) **NÃO integram o catálogo de componentes a serem produzidos nas páginas de protótipos**.
 
@@ -54,19 +56,21 @@ Ao transformar demandas em interfaces do Banco Central, priorize a combinação 
 14. [Cards de Links Rápidos (Listalinks)](#19-cards-de-links-rápidos-listalinks) — `.listalinks`
 15. [Tip Box (Dica Educativa)](#7-tip-box-dica-educativa) — `.tip-box`
 16. [Call to Action (CTA)](#39-call-to-action-cta-bcb-cta) — `.bcb-cta`, `.bcb-cta--primary`, `.bcb-cta--neutral`, `.bcb-btn-cta`
+17. [Tabelas Analíticas Oficiais](#41-tabelas-analíticas-oficiais-table-digital-e-table-strict) — `.table-digital`, `.table-strict`, `.bcb-table`
 
 ### Nível 3: Organismos e Padrões Compostos
-17. [Data Table Responsiva com Exportação](#14-data-table-responsiva-séries-e-taxas) — `.table-responsive`, `.bcb-data-export`
-18. [Process List / Stepper Sequencial](#10-process-list-passo-a-passo) — `<ol class="process-list">`
-19. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis) — `.accordion.modelo-1`
-20. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada) — `.bcb-filter-panel`
-21. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs) — `.nav-tabs`
-22. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis) — `.modal`
-23. [Indicadores Financeiros Avançados](#34-indicadores-financeiros-avançados-bcb-indicator-card--advanced) — `.bcb-indicator-card--advanced`
-24. [Tabelas Comparativas com Filtros Locais](#35-tabelas-comparativas-com-filtros-locais-bcb-table-comparison) — `.bcb-table-comparison`
-25. [Bloco de Metadados Normativos](#36-bloco-de-metadados-normativos-bcb-norm-metadata) — `.bcb-norm-metadata`
-26. [Fluxogramas Textuais e Passo a Passo com Decisão](#37-fluxogramas-textuais-e-passo-a-passo-com-decisão-bcb-decision-flow) — `.bcb-decision-flow`
-27. [Carrossel Manchete Institucional](#40-carrossel-manchete-institucional-bcb-carousel) — `.bcb-carousel`
+18. [Data Table Responsiva com Exportação](#14-data-table-responsiva-séries-e-taxas) — `.table-responsive`, `.bcb-data-export`
+19. [Process List / Stepper Sequencial](#10-process-list-passo-a-passo) — `<ol class="process-list">`
+20. [Accordions (Sanfonas Expansíveis)](#18-accordions-sanfonas-expansíveis) — `.accordion.modelo-1`
+21. [Filtros e Busca Facetada](#13-filtros-e-busca-facetada) — `.bcb-filter-panel`
+22. [Navegação em Abas (Tabs)](#17-navegação-em-abas-tabs) — `.nav-tabs`
+23. [Modais e Diálogos Acessíveis](#15-modais-e-diálogos-acessíveis) — `.modal`
+24. [Indicadores Financeiros Avançados](#34-indicadores-financeiros-avançados-bcb-indicator-card--advanced) — `.bcb-indicator-card--advanced`
+25. [Tabelas Comparativas com Filtros Locais](#35-tabelas-comparativas-com-filtros-locais-bcb-table-comparison) — `.bcb-table-comparison`
+26. [Bloco de Metadados Normativos](#36-bloco-de-metadados-normativos-bcb-norm-metadata) — `.bcb-norm-metadata`
+27. [Fluxogramas Textuais e Passo a Passo com Decisão](#37-fluxogramas-textuais-e-passo-a-passo-com-decisão-bcb-decision-flow) — `.bcb-decision-flow`
+28. [Carrossel Manchete Institucional](#40-carrossel-manchete-institucional-bcb-carousel) — `.bcb-carousel`
+29. [Gráficos Interativos Highcharts](#42-gráficos-interativos-highcharts-bcb-chart-container) — `.bcb-chart-container`, `highcharts-theme-bcb.js`
 
 ---
 
@@ -1395,3 +1399,66 @@ Roteiro sequencial de tomada de decisão que substitui imagens inacessíveis de 
   </div>
 </div>
 ```
+
+---
+
+## 41. Tabelas Analíticas Oficiais (`.table-digital` e `.table-strict`)
+
+> **Nível Atômico**: Molécula / Organismo  
+> **Finalidade**: Matrizes tabulares numéricas segundo as normas do **Manual Corporativo de Padrão Visual para Tabelas e Gráficos do Banco Central do Brasil**.
+
+### Modelos Oficiais Normativos
+
+1. **Padrão Digital (`.table-digital`)**:
+   - Destinado a páginas web, painéis, consultas operacionais e dashboards.
+   - Cabeçalho com fundo corporativo `#2E4C59` e texto em `#FFFFFF`.
+   - Efeito zebra suave nas linhas pares: `rgba(46, 76, 89, 0.04)`.
+   - Realce de linhas prioritárias com `.bcb-row-highlight` (`rgba(242, 181, 87, 0.15)` e texto `#4a3107`).
+   - Valores negativos destacados com `.num-negative` (`#B30000`, negrito WCAG AAA).
+
+2. **Padrão Estrito / Documental (`.table-strict`)**:
+   - Destinado a relatórios técnicos, Relatório de Estabilidade Financeira (REF), Relatório de Inflação e PDFs.
+   - Fundo neutro sem preenchimento, separador pontilhado (`1px dotted #606060`) sob o cabeçalho.
+   - Linhas sólidas de abertura e fechamento superior/inferior.
+   - Linha de totalização `.bcb-row-total` na cor `#2E4C59` em negrito.
+   - Separadores verticais finos `.bcb-col-separator` (`0.5pt solid #dcdcdc`).
+
+### Regras Tipográficas e Espaciais Obrigatórias
+- Tipografia: `Arial, sans-serif` estrita (título 9pt negrito, subtítulo 8pt itálico, dados 8pt).
+- Entrelinha (`line-height`): 12.75pt a 14pt.
+- Alinhamento: primeira coluna textual à esquerda, colunas de dados e números à direita.
+- Cabeçalho flexível: `.bcb-table-header-flex` com título e unidade de medida.
+- Rodapé de fontes: `.bcb-table-source` com borda superior fina de 1px.
+
+---
+
+## 42. Gráficos Interativos Highcharts (`.bcb-chart-container`)
+
+> **Nível Atômico**: Organismo Composto  
+> **Finalidade**: Renderização gráfica padronizada alimentada pelo tema institucional `highcharts-theme-bcb.js`, aderente às normas do Manual Corporativo do BC.
+
+### Paleta Mestra de 12 Cores Sequenciais
+
+A sequência de cores é estrita e imutável. As séries numéricas adotam as cores na ordem exata:
+
+| Série | Cor HEX | RGB | Classificação |
+|---|---|---|---|
+| **Série 01** | `#2E4C59` | RGB(46, 76, 89) | Primária (Série principal) |
+| **Série 02** | `#F2B557` | RGB(242, 181, 87) | Primária |
+| **Série 03** | `#6BAEBF` | RGB(107, 174, 191) | Primária |
+| **Série 04** | `#804C29` | RGB(128, 76, 41) | Primária |
+| **Série 05** | `#87007C` | RGB(135, 0, 124) | Primária |
+| **Série 06** | `#D46C6B` | RGB(212, 108, 107) | Primária |
+| **Série 07** | `#088492` | RGB(8, 132, 146) | Secundária |
+| **Série 08** | `#D295BE` | RGB(210, 149, 190) | Secundária |
+| **Série 09** | `#ECCAB1` | RGB(236, 202, 177) | Secundária |
+| **Série 10** | `#AEAEAE` | RGB(174, 174, 174) | Secundária |
+| **Série 11** | `#736063` | RGB(115, 96, 99) | Secundária |
+| **Série 12** | `#C3A061` | RGB(195, 160, 97) | Secundária |
+
+### Diretrizes Estruturais dos Gráficos
+- **Linhas de Grade (Gridlines)**: `#606060` com 50% de opacidade (`rgba(96, 96, 96, 0.5)`).
+- **Tipografia**: `Arial, sans-serif` em todos os títulos, legendas, tooltips e eixos.
+- **Localização pt-BR**: Formatação de milhares com ponto (`.`), decimais com vírgula (`,`) e meses em português.
+- **Acessibilidade e-MAG**: O contêiner `.bcb-chart-container` deve possuir `role="region"` e `aria-label`.
+- **Declaração Automática**: Pode ser instanciado via script modular ou declarativamente via `[data-bcb-chart]` no script `bcb-ui.js`.

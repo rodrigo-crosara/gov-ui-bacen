@@ -126,6 +126,15 @@
             </div>
         </section>
 
+        <!-- [SLOT CMS: 100% - Representação Gráfica Oficial Highcharts] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <div id="chartSelicSgs" class="bcb-chart-container mb-4" data-bcb-chart="selic-history" role="region" aria-label="Gráfico de evolução histórica da taxa Selic definida pelo Copom"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- [SLOT CMS: 100% - Tabela Densa de Séries SGS com Exportação] -->
         <section class="bcb-section">
             <div class="bcb-row">
@@ -161,64 +170,73 @@
                         <span>Deslize horizontalmente para visualizar todas as colunas da tabela</span>
                     </div>
 
-                    <!-- Tabela de Dados Acessível com Rolagem e Cabeçalho Fixo -->
-                    <div class="table-responsive table-sticky-header" tabindex="0" role="region" aria-label="Tabela histórica de decisões do Copom com rolagem e cabeçalho fixo">
-                        <table class="table table-bordered table-striped table-cards-mobile mb-0">
-                            <caption>Série SGS 432 contendo histórico das taxas fixadas pelo Copom, datas de início e fim da reunião, variação e status da ata.</caption>
-                            <thead class="thead-primary">
-                                <tr>
-                                    <th scope="col" class="table-col-15">Reunião</th>
-                                    <th scope="col" class="table-col-25">Período da Reunião</th>
-                                    <th scope="col" class="text-right table-col-20">Meta Fixada (% a.a.)</th>
-                                    <th scope="col" class="text-center table-col-20">Variação (p.p.)</th>
-                                    <th scope="col" class="text-center table-col-20">Ata do Copom</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row" class="font-weight-bold">268ª</th>
-                                    <td>11/03/2026 a 12/03/2026</td>
-                                    <td class="text-right font-weight-bold">14,25%</td>
-                                    <td class="text-center"><span class="badge badge-success">+1,00</span></td>
-                                    <td class="text-center"><span class="tag-bcb">Pendente (17/03)</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="font-weight-bold">267ª</th>
-                                    <td>28/01/2026 a 29/01/2026</td>
-                                    <td class="text-right font-weight-bold">13,25%</td>
-                                    <td class="text-center"><span class="badge badge-secondary">0,00</span></td>
-                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="font-weight-bold">266ª</th>
-                                    <td>10/12/2025 a 11/12/2025</td>
-                                    <td class="text-right font-weight-bold">13,25%</td>
-                                    <td class="text-center"><span class="badge badge-danger">-0,25</span></td>
-                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="font-weight-bold">265ª</th>
-                                    <td>05/11/2025 a 06/11/2025</td>
-                                    <td class="text-right font-weight-bold">13,50%</td>
-                                    <td class="text-center"><span class="badge badge-danger">-0,50</span></td>
-                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="font-weight-bold">264ª</th>
-                                    <td>16/09/2025 a 17/09/2025</td>
-                                    <td class="text-right font-weight-bold">14,00%</td>
-                                    <td class="text-center"><span class="badge badge-danger">-0,25</span></td>
-                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="font-weight-bold">263ª</th>
-                                    <td>29/07/2025 a 30/07/2025</td>
-                                    <td class="text-right font-weight-bold">14,25%</td>
-                                    <td class="text-center"><span class="badge badge-success">+0,25</span></td>
-                                    <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Tabela de Dados Acessível no Padrão Digital Corporativo do BCB -->
+                    <div class="bcb-table-wrapper">
+                        <div class="table-responsive table-sticky-header" tabindex="0" role="region" aria-label="Tabela histórica de decisões do Copom com rolagem e cabeçalho fixo">
+                            <table class="bcb-table table table-bordered table-digital mb-0">
+                                <caption>Série SGS 432 contendo histórico das taxas fixadas pelo Copom, datas de início e fim da reunião, variação e status da ata.</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="bcb-col-separator">Reunião</th>
+                                        <th scope="col">Período da Reunião</th>
+                                        <th scope="col" class="text-right">Meta Fixada (% a.a.)</th>
+                                        <th scope="col" class="text-center">Variação (p.p.)</th>
+                                        <th scope="col" class="text-center">Ata do Copom</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bcb-row-highlight">
+                                        <th scope="row" class="font-weight-bold bcb-col-separator">268ª</th>
+                                        <td>11/03/2026 a 12/03/2026</td>
+                                        <td class="text-right font-weight-bold">14,25%</td>
+                                        <td class="text-center"><span class="font-weight-bold text-success">+1,00</span></td>
+                                        <td class="text-center"><span class="tag-bcb">Pendente (17/03)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold bcb-col-separator">267ª</th>
+                                        <td>28/01/2026 a 29/01/2026</td>
+                                        <td class="text-right font-weight-bold">13,25%</td>
+                                        <td class="text-center">0,00</td>
+                                        <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold bcb-col-separator">266ª</th>
+                                        <td>10/12/2025 a 11/12/2025</td>
+                                        <td class="text-right font-weight-bold">13,25%</td>
+                                        <td class="text-center"><span class="num-negative">-0,25</span></td>
+                                        <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold bcb-col-separator">265ª</th>
+                                        <td>05/11/2025 a 06/11/2025</td>
+                                        <td class="text-right font-weight-bold">13,50%</td>
+                                        <td class="text-center"><span class="num-negative">-0,50</span></td>
+                                        <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold bcb-col-separator">264ª</th>
+                                        <td>16/09/2025 a 17/09/2025</td>
+                                        <td class="text-right font-weight-bold">14,00%</td>
+                                        <td class="text-center"><span class="num-negative">-0,25</span></td>
+                                        <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold bcb-col-separator">263ª</th>
+                                        <td>29/07/2025 a 30/07/2025</td>
+                                        <td class="text-right font-weight-bold">14,25%</td>
+                                        <td class="text-center"><span class="font-weight-bold text-success">+0,25</span></td>
+                                        <td class="text-center"><span class="tag-bcb primary">Disponível</span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5" class="bcb-table-source">
+                                            Fonte: Banco Central do Brasil / DSTAT — Sistema Gerenciador de Séries Temporais (SGS Série 432).
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -255,9 +273,11 @@
 
     </main>
 
-    <!-- Scripts Bootstrap e BCB Design System -->
+    <!-- Scripts Bootstrap, Highcharts e BCB Design System -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="../assets/js/highcharts-theme-bcb.js"></script>
     <script src="../assets/js/bcb-ui.js"></script>
 </body>
 </html>

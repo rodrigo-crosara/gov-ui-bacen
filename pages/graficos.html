@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-contrast="normal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos e Tabelas Analíticas — BCB Design System</title>
+    <meta name="description" content="Manual Corporativo de Padrão Visual para Tabelas e Gráficos do Banco Central do Brasil. Integração oficial com Highcharts e matrizes tabulares analíticas.">
+
+    <!-- Fontes Institucionais (Rawline, Inter, Ubuntu, Cormorant Garamond, Roboto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Roboto:wght@300;400;500;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 4.6 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous">
+
+    <!-- Material Symbols Outlined & Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- BCB Design System CSS -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+
+    <style>
+        /* Estilos específicos da página de documentação de Gráficos e Tabelas */
+        body {
+            background-color: var(--bcb-color-bg-light);
+            color: var(--bcb-color-body-text);
+            font-family: var(--bcb-font-ubuntu);
+            margin: 0;
+            padding: 0;
+        }
+
+        .ds-wrapper {
+            display: flex;
+            min-height: calc(100vh - 58px);
+        }
+
+        .ds-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            padding: 1.25rem 0.75rem;
+            border-right: 1px solid var(--bcb-gray-200);
+            position: sticky;
+            top: 58px;
+            height: calc(100vh - 58px);
+            overflow-y: auto;
+            background-color: var(--bcb-gray-50);
+            z-index: 100;
+        }
+
+        .ds-sidebar-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--bcb-gray-500);
+            font-weight: 700;
+            padding: 0.75rem 0.75rem 0.25rem;
+        }
+
+        .ds-sidebar .nav-link {
+            font-size: 0.875rem;
+            color: var(--bcb-gray-700);
+            padding: 0.4rem 0.75rem;
+            border-radius: var(--bcb-radius-4);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.15s ease;
+        }
+
+        .ds-sidebar .nav-link:hover {
+            background-color: var(--bcb-gray-200);
+            color: var(--bcb-brand-blue);
+        }
+
+        .ds-sidebar .nav-link.active {
+            background-color: var(--bcb-brand-blue);
+            color: var(--bcb-color-white);
+            font-weight: 600;
+        }
+
+        .ds-main {
+            flex-grow: 1;
+            min-width: 0;
+            padding: 2rem 2.5rem;
+            max-width: 1200px;
+        }
+
+        /* Swatch de cores para o catálogo de 12 séries */
+        .color-swatch-card {
+            border: 1px solid var(--bcb-gray-200);
+            border-radius: var(--bcb-radius-8);
+            background: var(--bcb-color-surface, #FFFFFF);
+            padding: 0.85rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%;
+        }
+
+        .color-swatch-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--bcb-shadow-200);
+        }
+
+        .color-swatch-preview {
+            width: 100%;
+            height: 52px;
+            border-radius: var(--bcb-radius-4);
+            margin-bottom: 0.65rem;
+            border: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-swatch-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.45rem;
+            border-radius: var(--bcb-radius-pill);
+            text-transform: uppercase;
+        }
+
+        .badge-primary-series {
+            background: rgba(46, 76, 89, 0.12);
+            color: #2E4C59;
+            border: 1px solid rgba(46, 76, 89, 0.25);
+        }
+
+        .badge-secondary-series {
+            background: rgba(8, 132, 146, 0.12);
+            color: #088492;
+            border: 1px solid rgba(8, 132, 146, 0.25);
+        }
+
+        .color-swatch-hex {
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--bcb-color-body-text);
+        }
+
+        .color-swatch-rgb {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--bcb-gray-600);
+        }
+
+        .color-swatch-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--bcb-gray-800);
+        }
+
+        .code-snippet-box {
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            border-radius: var(--bcb-radius-8);
+            padding: 1.25rem 1.5rem;
+            position: relative;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .code-snippet-box pre {
+            margin: 0;
+            color: inherit;
+            font-family: inherit;
+        }
+
+        .btn-copy-code {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: var(--bcb-radius-4);
+            padding: 0.25rem 0.6rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-copy-code:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .guideline-card {
+            border-left: 4px solid var(--bcb-brand-blue);
+            background: var(--bcb-gray-50);
+            border-radius: 0 var(--bcb-radius-8) var(--bcb-radius-8) 0;
+            padding: 1rem 1.25rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .ds-sidebar {
+                display: none;
+                position: fixed;
+                top: 58px;
+                left: 0;
+                width: 280px;
+                height: calc(100vh - 58px);
+                box-shadow: var(--bcb-shadow-300);
+            }
+            .ds-sidebar.show {
+                display: block;
+            }
+            .ds-main {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skip Links de Acessibilidade (e-MAG) -->
+    <ul class="bcb-skip-links" aria-label="Atalhos de acessibilidade">
+        <li><a href="#conteudo-principal" class="bcb-skip-link" accesskey="1">Ir para o conteúdo principal <span class="accesskey-badge">Alt + 1</span></a></li>
+        <li><a href="#ds-sidebar-nav" class="bcb-skip-link" accesskey="2">Ir para a navegação do manual <span class="accesskey-badge">Alt + 2</span></a></li>
+    </ul>
+
+    <!-- Header da Documentação (.bcb-ds-header) -->
+    <header class="bcb-ds-header">
+      <div class="bcb-container bcb-ds-header__inner">
+        <div class="bcb-ds-header__brand">
+          <a href="../index.html" class="bcb-ds-header__title">Design System <span>BCB</span></a>
+        </div>
+        <nav class="bcb-ds-header__nav" aria-label="Navegação da documentação">
+          <ul class="bcb-ds-header__links">
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="components.html">Componentes</a></li>
+            <li><a href="tokens.html">Tokens</a></li>
+            <li><a href="graficos.html" class="active" aria-current="page">Gráficos e Tabelas</a></li>
+            <li><a href="prototipos.html" data-page="pages/prototipos.html">Protótipos</a></li>
+            <li><a href="automacao-ia.html">Guia IA</a></li>
+          </ul>
+        </nav>
+        <div class="bcb-ds-header__actions">
+          <div class="bcb-theme-toggle" role="group" aria-label="Alternar tema">
+            <button type="button" class="bcb-theme-btn" data-theme-switcher="default">Padrão</button>
+            <button type="button" class="bcb-theme-btn" data-theme-switcher="dark">Escuro</button>
+            <button type="button" class="bcb-theme-btn" data-theme-switcher="high-contrast">Contraste</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Layout da Documentação com Sidebar Sticky -->
+    <div class="ds-wrapper">
+        <!-- Sidebar Sticky -->
+        <nav class="ds-sidebar" id="ds-sidebar-nav" aria-label="Navegação do Manual de Gráficos e Tabelas">
+            <div class="ds-sidebar-title mb-2">
+                <a href="../index.html" class="d-flex align-items-center text-decoration-none text-bcb-brand font-weight-bold gap-1">
+                    <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">arrow_back</span> Hub de Documentação
+                </a>
+            </div>
+
+            <div class="ds-sidebar-title">1. Paleta Mestra</div>
+            <a class="nav-link" href="#paleta-mestra">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">palette</span> 12 Cores Oficiais
+            </a>
+            <a class="nav-link" href="#regras-sequencia">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">format_list_numbered</span> Regras de Aplicação
+            </a>
+
+            <div class="ds-sidebar-title">2. Gráficos Highcharts</div>
+            <a class="nav-link" href="#grafico-12-cores">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">bar_chart</span> 12 Cores Sequenciais
+            </a>
+            <a class="nav-link" href="#grafico-serie-temporal">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">show_chart</span> Série Temporal Multissérie
+            </a>
+            <a class="nav-link" href="#grafico-composicao">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">stacked_bar_chart</span> Colunas Empilhadas
+            </a>
+
+            <div class="ds-sidebar-title">3. Tabelas Analíticas</div>
+            <a class="nav-link" href="#tabela-digital">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">table_chart</span> Padrão Digital (Telas)
+            </a>
+            <a class="nav-link" href="#tabela-estrita">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">border_all</span> Padrão Estrito (REF / Relatórios)
+            </a>
+
+            <div class="ds-sidebar-title">4. Diretrizes & Normas</div>
+            <a class="nav-link" href="#diretrizes-corporativas">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">policy</span> Manual Corporativo
+            </a>
+            <a class="nav-link" href="#snippets-integracao">
+                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">code</span> Código e Integração
+            </a>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="ds-main" id="conteudo-principal">
+
+            <!-- Botão de Alternância da Sidebar em Telas Menores -->
+            <div class="d-lg-none mb-3">
+                <button type="button" id="btnToggleSidebar" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center gap-1" aria-expanded="false" aria-controls="ds-sidebar-nav">
+                    <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">menu</span>
+                    <span>Navegação do Manual</span>
+                </button>
+            </div>
+
+            <!-- Cabeçalho da Página -->
+            <div class="mb-4">
+                <div class="d-flex align-items-center flex-wrap gap-2 mb-2">
+                    <span class="badge badge-primary px-2 py-1 font-weight-bold" style="background-color: var(--bcb-brand-blue);">Manual Corporativo BCB</span>
+                    <span class="badge badge-light border px-2 py-1 text-muted">Aprovado Diretoria Colegiada</span>
+                    <span class="badge badge-success px-2 py-1 font-weight-bold">Highcharts Oficial</span>
+                </div>
+                <h1 class="h2 font-weight-bold text-bcb-brand">Gráficos e Tabelas Analíticas</h1>
+                <p class="text-muted">
+                    Especificação técnica e componentes interativos alinhados ao <strong>Manual Corporativo de Padrão Visual para Tabelas e Gráficos do Banco Central do Brasil</strong>. 
+                    Padronização obrigatória para publicações analíticas (REF, Relatório de Inflação, Atas do Copom, SGS) e sistemas de informação digital do BCB.
+                </p>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- 1. PALETA MESTRA DE 12 CORES SEQUENCIAIS                  -->
+            <!-- ========================================================= -->
+            <section id="paleta-mestra" class="mb-5 pt-3">
+                <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+                    <h2 class="h4 font-weight-bold text-bcb-brand mb-0">1. Paleta Mestra Corporativa (12 Séries)</h2>
+                    <span class="small text-muted font-weight-bold">tokens.color.chart</span>
+                </div>
+
+                <p class="text-muted">
+                    A representação gráfica no BCB obedece rigorosamente a uma sequência hierárquica imutável de 12 cores. 
+                    As cores <strong>1 a 6 são a paleta primária</strong>, e as cores <strong>7 a 12 são a paleta secundária</strong>, 
+                    acionadas unicamente quando o gráfico demandar mais de 6 séries simultâneas.
+                </p>
+
+                <!-- Grade de 12 Swatches -->
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3 mb-4">
+                    <!-- Série 01 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #2E4C59;">
+                                <span class="color-swatch-badge text-white" style="background: rgba(0,0,0,0.35);">1ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-primary-series mb-1 d-inline-block">Primária</span>
+                            <div class="color-swatch-hex">#2E4C59</div>
+                            <div class="color-swatch-rgb">RGB(46, 76, 89)</div>
+                            <div class="color-swatch-name">Série 01</div>
+                        </div>
+                    </div>
+                    <!-- Série 02 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #F2B557;">
+                                <span class="color-swatch-badge text-dark" style="background: rgba(255,255,255,0.45);">2ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-primary-series mb-1 d-inline-block">Primária</span>
+                            <div class="color-swatch-hex">#F2B557</div>
+                            <div class="color-swatch-rgb">RGB(242, 181, 87)</div>
+                            <div class="color-swatch-name">Série 02</div>
+                        </div>
+                    </div>
+                    <!-- Série 03 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #6BAEBF;">
+                                <span class="color-swatch-badge text-dark" style="background: rgba(255,255,255,0.45);">3ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-primary-series mb-1 d-inline-block">Primária</span>
+                            <div class="color-swatch-hex">#6BAEBF</div>
+                            <div class="color-swatch-rgb">RGB(107, 174, 191)</div>
+                            <div class="color-swatch-name">Série 03</div>
+                        </div>
+                    </div>
+                    <!-- Série 04 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #804C29;">
+                                <span class="color-swatch-badge text-white" style="background: rgba(0,0,0,0.35);">4ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-primary-series mb-1 d-inline-block">Primária</span>
+                            <div class="color-swatch-hex">#804C29</div>
+                            <div class="color-swatch-rgb">RGB(128, 76, 41)</div>
+                            <div class="color-swatch-name">Série 04</div>
+                        </div>
+                    </div>
+                    <!-- Série 05 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #87007C;">
+                                <span class="color-swatch-badge text-white" style="background: rgba(0,0,0,0.35);">5ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-primary-series mb-1 d-inline-block">Primária</span>
+                            <div class="color-swatch-hex">#87007C</div>
+                            <div class="color-swatch-rgb">RGB(135, 0, 124)</div>
+                            <div class="color-swatch-name">Série 05</div>
+                        </div>
+                    </div>
+                    <!-- Série 06 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #D46C6B;">
+                                <span class="color-swatch-badge text-white" style="background: rgba(0,0,0,0.35);">6ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-primary-series mb-1 d-inline-block">Primária</span>
+                            <div class="color-swatch-hex">#D46C6B</div>
+                            <div class="color-swatch-rgb">RGB(212, 108, 107)</div>
+                            <div class="color-swatch-name">Série 06</div>
+                        </div>
+                    </div>
+                    <!-- Série 07 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #088492;">
+                                <span class="color-swatch-badge text-white" style="background: rgba(0,0,0,0.35);">7ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-secondary-series mb-1 d-inline-block">Secundária</span>
+                            <div class="color-swatch-hex">#088492</div>
+                            <div class="color-swatch-rgb">RGB(8, 132, 146)</div>
+                            <div class="color-swatch-name">Série 07</div>
+                        </div>
+                    </div>
+                    <!-- Série 08 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #D295BE;">
+                                <span class="color-swatch-badge text-dark" style="background: rgba(255,255,255,0.45);">8ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-secondary-series mb-1 d-inline-block">Secundária</span>
+                            <div class="color-swatch-hex">#D295BE</div>
+                            <div class="color-swatch-rgb">RGB(210, 149, 190)</div>
+                            <div class="color-swatch-name">Série 08</div>
+                        </div>
+                    </div>
+                    <!-- Série 09 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #ECCAB1;">
+                                <span class="color-swatch-badge text-dark" style="background: rgba(0,0,0,0.45);">9ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-secondary-series mb-1 d-inline-block">Secundária</span>
+                            <div class="color-swatch-hex">#ECCAB1</div>
+                            <div class="color-swatch-rgb">RGB(236, 202, 177)</div>
+                            <div class="color-swatch-name">Série 09</div>
+                        </div>
+                    </div>
+                    <!-- Série 10 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #AEAEAE;">
+                                <span class="color-swatch-badge text-dark" style="background: rgba(255,255,255,0.45);">10ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-secondary-series mb-1 d-inline-block">Secundária</span>
+                            <div class="color-swatch-hex">#AEAEAE</div>
+                            <div class="color-swatch-rgb">RGB(174, 174, 174)</div>
+                            <div class="color-swatch-name">Série 10</div>
+                        </div>
+                    </div>
+                    <!-- Série 11 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #736063;">
+                                <span class="color-swatch-badge text-white" style="background: rgba(0,0,0,0.35);">11ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-secondary-series mb-1 d-inline-block">Secundária</span>
+                            <div class="color-swatch-hex">#736063</div>
+                            <div class="color-swatch-rgb">RGB(115, 96, 99)</div>
+                            <div class="color-swatch-name">Série 11</div>
+                        </div>
+                    </div>
+                    <!-- Série 12 -->
+                    <div class="col mb-3">
+                        <div class="color-swatch-card">
+                            <div class="color-swatch-preview" style="background-color: #C3A061;">
+                                <span class="color-swatch-badge text-dark" style="background: rgba(255,255,255,0.45);">12ª</span>
+                            </div>
+                            <span class="color-swatch-badge badge-secondary-series mb-1 d-inline-block">Secundária</span>
+                            <div class="color-swatch-hex">#C3A061</div>
+                            <div class="color-swatch-rgb">RGB(195, 160, 97)</div>
+                            <div class="color-swatch-name">Série 12</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diretrizes da Paleta -->
+                <div id="regras-sequencia" class="guideline-card mb-4">
+                    <h3 class="h6 font-weight-bold text-bcb-brand mb-2">
+                        <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">check_circle</span> Regras Normativas do Manual Corporativo:
+                    </h3>
+                    <ul class="mb-0 small pl-3 text-muted">
+                        <li><strong>Ordem Sequencial Fixa:</strong> A 1ª série de qualquer gráfico é invariavelmente <code>#2E4C59</code>. A 2ª série é sempre <code>#F2B557</code>, e assim sucessivamente. É expressamente proibido sortear cores ou inverter a ordem.</li>
+                        <li><strong>Linhas de Grade Neutras (Gridlines):</strong> Cor <code>#606060</code> com 50% de opacidade (<code>rgba(96, 96, 96, 0.5)</code>), garantindo discrição sem poluir a leitura dos dados.</li>
+                        <li><strong>Eixos e Rótulos:</strong> Cor estrutural padrão <code>#606060</code>. Tipografia obrigatória <code>Arial, sans-serif</code>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 2. GRÁFICOS HIGHCHARTS INTERATIVOS                         -->
+            <!-- ========================================================= -->
+            <section id="graficos-highcharts" class="mb-5 pt-3">
+                <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+                    <h2 class="h4 font-weight-bold text-bcb-brand mb-0">2. Gráficos Interativos Highcharts</h2>
+                    <span class="badge badge-info text-white font-weight-bold" style="background-color: var(--bcb-brand-azulcinti);">highcharts-theme-bcb.js</span>
+                </div>
+
+                <p class="text-muted">
+                    Demonstração dos componentes gráficos alimentados pelo tema corporativo <code>Highcharts.themeBCB</code>.
+                    Todas as configurações de paleta, eixos, linhas de grade, tipografia Arial e localização em língua portuguesa (pt-BR) são injetadas automaticamente.
+                </p>
+
+                <!-- Gráfico 1: 12 Cores Sequenciais -->
+                <div id="grafico-12-cores" class="mb-5">
+                    <h3 class="h5 font-weight-bold text-bcb-brand mb-2">2.1 Demonstração das 12 Cores Sequenciais do BCB</h3>
+                    <p class="text-muted small">Visualização de gráfico em colunas empregando exatamente a sequência oficial de 1 a 12 do Manual Corporativo.</p>
+                    <div id="chart12Cores" class="bcb-chart-container" role="region" aria-label="Gráfico em colunas com as 12 cores sequenciais do Banco Central"></div>
+                </div>
+
+                <!-- Gráfico 2: Série Temporal Multissérie -->
+                <div id="grafico-serie-temporal" class="mb-5">
+                    <h3 class="h5 font-weight-bold text-bcb-brand mb-2">2.2 Série Temporal Multissérie (Selic vs. IPCA vs. Câmbio)</h3>
+                    <p class="text-muted small">Exemplo de série contínua com as 3 primeiras cores da paleta primária (Séries 01, 02 e 03), marcadores geométricos distintos e tooltips monetários/percentuais.</p>
+                    <div id="chartSerieTemporal" class="bcb-chart-container" role="region" aria-label="Gráfico de evolução histórica comparando Meta Selic, IPCA 12 meses e Taxa de Câmbio PTAX"></div>
+                </div>
+
+                <!-- Gráfico 3: Colunas Empilhadas -->
+                <div id="grafico-composicao" class="mb-4">
+                    <h3 class="h5 font-weight-bold text-bcb-brand mb-2">2.3 Composição em Colunas Empilhadas</h3>
+                    <p class="text-muted small">Demonstração de decomposição volumétrica com empilhamento proporcional utilizando as 4 primeiras cores primárias.</p>
+                    <div id="chartComposicao" class="bcb-chart-container" role="region" aria-label="Gráfico de colunas empilhadas demonstrando a composição de crédito por segmento"></div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 3. TABELAS ANALÍTICAS OFICIAIS (DIGITAL & ESTRITA)         -->
+            <!-- ========================================================= -->
+            <section id="tabelas-analiticas" class="mb-5 pt-3">
+                <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+                    <h2 class="h4 font-weight-bold text-bcb-brand mb-0">3. Modelos Oficiais de Tabelas Analíticas</h2>
+                    <span class="small text-muted font-weight-bold">_tables.css</span>
+                </div>
+
+                <p class="text-muted">
+                    O BCB adota duas modalidades de tabelas analíticas com regras estritas de tipografia (Arial), alinhamento (primeira coluna à esquerda, números à direita), 
+                    altura de linha de 12.75pt a 14pt e realce de números negativos em vermelho de alto contraste (<code>#B30000</code>).
+                </p>
+
+                <!-- PADRÃO A: VARIANTE DIGITAL -->
+                <div id="tabela-digital" class="mb-5">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h3 class="h5 font-weight-bold text-bcb-brand mb-0">3.1 Padrão Digital (Telas, Painéis e Dashboards)</h3>
+                        <span class="badge badge-primary" style="background-color: var(--bcb-table-header-bg);">.table-digital</span>
+                    </div>
+                    <p class="text-muted small">
+                        Recomendado para páginas web, consultas operacionais e portais. 
+                        Apresenta cabeçalho contrastante na cor corporativa <code>#2E4C59</code>, efeito zebra suave (<code>rgba(46, 76, 89, 0.04)</code>) e destaque com <code>.bcb-row-highlight</code>.
+                    </p>
+
+                    <div class="bcb-table-wrapper">
+                        <div class="bcb-table-header-flex">
+                            <div class="bcb-table-title-box">
+                                <h4 class="bcb-table-title">Tabela 2.1 — Principais Taxas e Indicadores do Mercado Financeiro</h4>
+                                <p class="bcb-table-subtitle">Posição de fechamento diário e acumulado anual</p>
+                            </div>
+                            <div class="bcb-table-unit-box">Valores em % a.a.</div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="bcb-table table table-bordered table-digital">
+                                <caption class="sr-only">Tabela 2.1 — Principais Taxas e Indicadores do Mercado Financeiro com variações e fechamentos</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="bcb-col-separator">Indicador / Série</th>
+                                        <th scope="col">Taxa Vigente</th>
+                                        <th scope="col">Variação Diária</th>
+                                        <th scope="col">No Mês</th>
+                                        <th scope="col">No Ano</th>
+                                        <th scope="col">Em 12 Meses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bcb-row-highlight">
+                                        <th scope="row" class="bcb-col-separator">Taxa Selic Meta (Copom)</th>
+                                        <td>13,25</td>
+                                        <td>0,00</td>
+                                        <td>0,00</td>
+                                        <td>+1,00</td>
+                                        <td>+2,75</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bcb-col-separator">Taxa Selic Over (Efetiva)</th>
+                                        <td>13,15</td>
+                                        <td><span class="num-negative">-0,02</span></td>
+                                        <td><span class="num-negative">-0,05</span></td>
+                                        <td>+0,95</td>
+                                        <td>+2,65</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bcb-col-separator">Taxa DI (Depósito Interfinanceiro)</th>
+                                        <td>13,14</td>
+                                        <td><span class="num-negative">-0,01</span></td>
+                                        <td><span class="num-negative">-0,04</span></td>
+                                        <td>+0,94</td>
+                                        <td>+2,64</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bcb-col-separator">Taxa Referencial (TR)</th>
+                                        <td>0,1852</td>
+                                        <td>+0,0012</td>
+                                        <td>+0,0420</td>
+                                        <td>+0,8540</td>
+                                        <td>+1,9420</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bcb-col-separator">Poupança Nova (Regra pós-2012)</th>
+                                        <td>0,6852</td>
+                                        <td>0,0000</td>
+                                        <td>+0,5420</td>
+                                        <td>+4,3210</td>
+                                        <td>+8,1240</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6" class="bcb-table-source">
+                                            Fonte: Banco Central do Brasil / Demab. Posição consolidada em 04 de setembro de 2026.
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PADRÃO B: VARIANTE ESTRITA (DATASET OFICIAL DO MANUAL: RESUMO PMS) -->
+                <div id="tabela-estrita" class="mb-4">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h3 class="h5 font-weight-bold text-bcb-brand mb-0">3.2 Padrão Estrito / Documental (Relatórios Técnicos e REF)</h3>
+                        <span class="badge badge-secondary" style="background-color: var(--bcb-table-border);">.table-strict</span>
+                    </div>
+                    <p class="text-muted small">
+                        Padrão normativo do Banco Central para documentos analíticos formais (REF, RI, Atas, PDFs). 
+                        Fundo limpo sem preenchimento, separador pontilhado (<code>1px dotted #606060</code>) sob o cabeçalho, 
+                        linhas de fechamento sólidas, separador vertical (<code>0.5pt solid #dcdcdc</code>) e linha de totalização <code>.bcb-row-total</code> na cor <code>#2E4C59</code>.
+                    </p>
+
+                    <div class="bcb-table-wrapper">
+                        <div class="bcb-table-header-flex">
+                            <div class="bcb-table-title-box">
+                                <h4 class="bcb-table-title">Tabela 1.1.1 - Resumo PMS</h4>
+                                <p class="bcb-table-subtitle">Variação percentual</p>
+                            </div>
+                            <div class="bcb-table-unit-box">%</div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="bcb-table table-strict">
+                                <caption class="sr-only">Tabela 1.1.1 - Resumo PMS: variação percentual do volume de serviços por atividade</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="bcb-col-separator">Atividade</th>
+                                        <th scope="col">abr 2025</th>
+                                        <th scope="col">dez 2025</th>
+                                        <th scope="col">jan 2026</th>
+                                        <th scope="col">fev 2026</th>
+                                        <th scope="col">mar 2026</th>
+                                        <th scope="col">abr 2026</th>
+                                        <th scope="col">No ano</th>
+                                        <th scope="col">Em 12 meses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bcb-row-highlight">
+                                        <th scope="row" class="bcb-col-separator">Serviços prestados às famílias</th>
+                                        <td>2,7</td>
+                                        <td>4,2</td>
+                                        <td><span class="num-negative">-0,4</span></td>
+                                        <td>1,8</td>
+                                        <td>2,1</td>
+                                        <td>3,5</td>
+                                        <td>7,2</td>
+                                        <td>5,8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bcb-col-separator">Serviços de informação e comunicação</th>
+                                        <td>5,1</td>
+                                        <td>6,0</td>
+                                        <td>1,2</td>
+                                        <td>0,9</td>
+                                        <td>1,5</td>
+                                        <td>2,8</td>
+                                        <td>6,5</td>
+                                        <td>6,2</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bcb-col-separator">Serviços profissionais, adm. e compl.</th>
+                                        <td>3,8</td>
+                                        <td>2,9</td>
+                                        <td>0,5</td>
+                                        <td><span class="num-negative">-0,2</span></td>
+                                        <td>1,1</td>
+                                        <td>1,9</td>
+                                        <td>3,3</td>
+                                        <td>4,1</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bcb-col-separator">Transportes, serv. auxiliares e correio</th>
+                                        <td>1,4</td>
+                                        <td>3,1</td>
+                                        <td><span class="num-negative">-1,1</span></td>
+                                        <td>0,4</td>
+                                        <td>0,8</td>
+                                        <td>1,2</td>
+                                        <td>1,3</td>
+                                        <td>2,7</td>
+                                    </tr>
+                                    <tr class="bcb-row-highlight">
+                                        <th scope="row" class="bcb-col-separator">Outros serviços</th>
+                                        <td><span class="num-negative">-0,8</span></td>
+                                        <td>1,5</td>
+                                        <td>0,2</td>
+                                        <td><span class="num-negative">-1,4</span></td>
+                                        <td>0,3</td>
+                                        <td>0,9</td>
+                                        <td>0,0</td>
+                                        <td>1,1</td>
+                                    </tr>
+                                    <tr class="bcb-row-total">
+                                        <th scope="row" class="bcb-col-separator">Volume de serviços</th>
+                                        <td>3,2</td>
+                                        <td>4,1</td>
+                                        <td>0,3</td>
+                                        <td>0,5</td>
+                                        <td>1,3</td>
+                                        <td>2,2</td>
+                                        <td>4,4</td>
+                                        <td>4,9</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="9" class="bcb-table-source">
+                                            Fonte: IBGE. Pesquisa Mensal de Serviços (PMS). Dados dessazonalizados e séries históricas oficiais.
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 4. DIRETRIZES E BOAS PRÁTICAS DO MANUAL BCB               -->
+            <!-- ========================================================= -->
+            <section id="diretrizes-corporativas" class="mb-5 pt-3">
+                <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+                    <h2 class="h4 font-weight-bold text-bcb-brand mb-0">4. Diretrizes e Boas Práticas Corporativas</h2>
+                    <span class="badge badge-warning text-dark font-weight-bold">Conformidade Obrigatória</span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 p-3 border">
+                            <h3 class="h6 font-weight-bold text-bcb-brand mb-2">
+                                <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">tune</span> Regras para Tabelas Analíticas
+                            </h3>
+                            <ul class="small mb-0 pl-3 text-muted">
+                                <li><strong>Alinhamento Rígido:</strong> Rótulos textuais e cabeçalhos de descrição sempre à <strong>esquerda</strong>. Valores numéricos, taxas e datas sempre à <strong>direita</strong>.</li>
+                                <li><strong>Separadores Verticais:</strong> Apenas na primeira coluna ou separação estrutural de blocos temporais (classe <code>.bcb-col-separator</code> de 0.5pt).</li>
+                                <li><strong>Linhas de Grade Internas:</strong> Não utilizar grades em xadrez completas no Padrão Estrito. O espaço em branco é o delimitador natural.</li>
+                                <li><strong>Números Negativos:</strong> Obrigatoriamente com a classe <code>.num-negative</code>, garantindo contraste WCAG AAA e visualização imediata de déficit/queda.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 p-3 border">
+                            <h3 class="h6 font-weight-bold text-bcb-brand mb-2">
+                                <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">auto_graph</span> Regras para Gráficos Highcharts
+                            </h3>
+                            <ul class="small mb-0 pl-3 text-muted">
+                                <li><strong>Sequência Cromática:</strong> Nunca altere a ordem das séries. Séries monofásicas utilizam exclusivamente a 1ª cor <code>#2E4C59</code>.</li>
+                                <li><strong>Legendas e Rótulos:</strong> Inseridos sempre com tipografia Arial, 8pt a 9pt, na cor neutra <code>#606060</code>.</li>
+                                <li><strong>Sem Gradientes Artificiais:</strong> O Manual do BC prioriza a precisão estatística; evite sombras 3D ou gradientes que distorçam os valores.</li>
+                                <li><strong>Acessibilidade & e-MAG:</strong> Forneça sempre atributos <code>role="region"</code> e <code>aria-label</code> nos contêineres de gráficos, acompanhados de tabela de dados subjacente quando cabível.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 5. SNIPPETS E CÓDIGO DE INTEGRAÇÃO                         -->
+            <!-- ========================================================= -->
+            <section id="snippets-integracao" class="mb-5 pt-3">
+                <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+                    <h2 class="h4 font-weight-bold text-bcb-brand mb-0">5. Snippets e Código de Integração</h2>
+                    <span class="small text-muted font-weight-bold">HTML & JavaScript</span>
+                </div>
+
+                <!-- Snippet 1: Inicialização do Highcharts -->
+                <div class="mb-4">
+                    <h3 class="h6 font-weight-bold text-bcb-brand mb-2">5.1 Integração de Gráfico com Highcharts e Tema BCB</h3>
+                    <div class="code-snippet-box">
+                        <button type="button" class="btn-copy-code" aria-label="Copiar snippet de JavaScript">Copiar</button>
+                        <pre><code>&lt;!-- 1. Carregue o Highcharts oficial e o tema corporativo do BCB --&gt;
+&lt;script src="https://code.highcharts.com/highcharts.js"&gt;&lt;/script&gt;
+&lt;script src="../assets/js/highcharts-theme-bcb.js"&gt;&lt;/script&gt;
+
+&lt;!-- 2. Contêiner acessível para o gráfico --&gt;
+&lt;div id="meuGrafico" class="bcb-chart-container" role="region" aria-label="Evolução de crédito"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+// O tema corporativo BCB já aplica as 12 cores, Arial e localização pt-BR automaticamente!
+Highcharts.chart('meuGrafico', {
+  chart: { type: 'line' },
+  title: { text: 'Taxa de Inadimplência do Sistema Financeiro' },
+  subtitle: { text: 'Operações com atraso superior a 90 dias — Pessoas Físicas e Jurídicas' },
+  xAxis: { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'] },
+  yAxis: { title: { text: 'Em %' } },
+  series: [
+    { name: 'Pessoas Físicas', data: [3.4, 3.5, 3.4, 3.6, 3.5, 3.3] }, // Usa Série 01 (#2E4C59)
+    { name: 'Pessoas Jurídicas', data: [2.1, 2.0, 2.2, 2.1, 2.0, 1.9] } // Usa Série 02 (#F2B557)
+  ]
+});
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Snippet 2: Estrutura da Tabela Analítica Estrita -->
+                <div class="mb-4">
+                    <h3 class="h6 font-weight-bold text-bcb-brand mb-2">5.2 Estrutura Canônica da Tabela Estrita (REF / Relatórios)</h3>
+                    <div class="code-snippet-box">
+                        <button type="button" class="btn-copy-code" aria-label="Copiar snippet HTML de tabela">Copiar</button>
+                        <pre><code>&lt;div class="bcb-table-wrapper"&gt;
+  &lt;div class="bcb-table-header-flex"&gt;
+    &lt;div class="bcb-table-title-box"&gt;
+      &lt;h4 class="bcb-table-title"&gt;Tabela 1.1 — Título Normativo do Relatório&lt;/h4&gt;
+      &lt;p class="bcb-table-subtitle"&gt;Subtítulo explicativo em itálico&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-table-unit-box"&gt;R$ milhões&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="table-responsive"&gt;
+    &lt;table class="bcb-table table-strict"&gt;
+      &lt;caption class="sr-only"&gt;Descrição da tabela para leitores de tela&lt;/caption&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col" class="bcb-col-separator"&gt;Segmento&lt;/th&gt;
+          &lt;th scope="col"&gt;2024&lt;/th&gt;
+          &lt;th scope="col"&gt;2025&lt;/th&gt;
+          &lt;th scope="col"&gt;2026&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;th scope="row" class="bcb-col-separator"&gt;Operações Pré-fixadas&lt;/th&gt;
+          &lt;td&gt;1.200&lt;/td&gt;
+          &lt;td&gt;1.350&lt;/td&gt;
+          &lt;td&gt;&lt;span class="num-negative"&gt;-150&lt;/span&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class="bcb-row-total"&gt;
+          &lt;th scope="row" class="bcb-col-separator"&gt;Total Consolidado&lt;/th&gt;
+          &lt;td&gt;3.400&lt;/td&gt;
+          &lt;td&gt;3.950&lt;/td&gt;
+          &lt;td&gt;4.200&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+      &lt;tfoot&gt;
+        &lt;tr&gt;
+          &lt;td colspan="4" class="bcb-table-source"&gt;
+            Fonte: Banco Central do Brasil. Relatório de Estabilidade Financeira (REF).
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tfoot&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">keyboard_arrow_up</span>
+    </button>
+
+    <!-- Scripts Bootstrap e Highcharts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="../assets/js/highcharts-theme-bcb.js"></script>
+    <script src="../assets/js/bcb-ui.js"></script>
+
+    <!-- Inicialização dos Gráficos da Página -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Gráfico das 12 Cores Sequenciais
+            if (document.getElementById('chart12Cores')) {
+                Highcharts.chart('chart12Cores', {
+                    chart: { type: 'column' },
+                    title: { text: 'Paleta Mestra Corporativa do BCB' },
+                    subtitle: { text: 'Aplicação sequencial das 12 cores oficiais (6 primárias e 6 secundárias) — Manual Corporativo do BC' },
+                    xAxis: {
+                        categories: [
+                            'Série 01', 'Série 02', 'Série 03', 'Série 04', 'Série 05', 'Série 06',
+                            'Série 07', 'Série 08', 'Série 09', 'Série 10', 'Série 11', 'Série 12'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        title: { text: 'Índice de Distribuição (pts)' },
+                        min: 0,
+                        max: 100
+                    },
+                    tooltip: {
+                        headerFormat: '<div style="font-size:11px; font-weight: bold; margin-bottom: 2px;">{point.key}</div>',
+                        pointFormat: '<div>Valor: <b>{point.y:.1f} pts</b></div>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            colorByPoint: true,
+                            pointPadding: 0.15,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y:.0f}'
+                            }
+                        }
+                    },
+                    legend: { enabled: false },
+                    series: [{
+                        name: 'Séries BCB',
+                        data: [95, 88, 82, 75, 70, 64, 58, 52, 45, 38, 32, 25]
+                    }]
+                });
+            }
+
+            // 2. Gráfico de Série Temporal Multissérie
+            if (document.getElementById('chartSerieTemporal')) {
+                Highcharts.chart('chartSerieTemporal', {
+                    chart: { type: 'spline' },
+                    title: { text: 'Evolução dos Indicadores Macroeconômicos' },
+                    subtitle: { text: 'Trajetória mensal da Selic Meta, IPCA acumulado 12 meses e Taxa de Câmbio PTAX (2025–2026)' },
+                    xAxis: {
+                        categories: [
+                            'Mai/25', 'Jun/25', 'Jul/25', 'Ago/25', 'Set/25', 'Out/25',
+                            'Nov/25', 'Dez/25', 'Jan/26', 'Fev/26', 'Mar/26', 'Abr/26'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: [{
+                        // Eixo Y Primário (Taxas em %)
+                        title: { text: 'Taxa anual (%)' },
+                        labels: { format: '{value}%' }
+                    }, {
+                        // Eixo Y Secundário (Câmbio em R$/US$)
+                        title: { text: 'Câmbio PTAX (R$/US$)' },
+                        labels: { format: 'R$ {value:.2f}' },
+                        opposite: true
+                    }],
+                    tooltip: {
+                        shared: true,
+                        crosshairs: true
+                    },
+                    series: [
+                        {
+                            name: 'Taxa Selic Meta (% a.a.)',
+                            yAxis: 0,
+                            data: [10.50, 10.50, 10.50, 10.75, 11.25, 11.75, 12.25, 12.25, 12.75, 13.00, 13.25, 13.25],
+                            marker: { symbol: 'circle' }
+                        },
+                        {
+                            name: 'IPCA Acumulado 12M (%)',
+                            yAxis: 0,
+                            data: [3.93, 4.23, 4.50, 4.24, 4.42, 4.76, 4.87, 4.62, 4.51, 4.38, 4.20, 3.95],
+                            marker: { symbol: 'diamond' }
+                        },
+                        {
+                            name: 'Câmbio PTAX (R$/US$)',
+                            yAxis: 1,
+                            data: [5.05, 5.15, 5.25, 5.40, 5.45, 5.55, 5.60, 5.70, 5.75, 5.68, 5.60, 5.52],
+                            marker: { symbol: 'triangle' },
+                            dashStyle: 'ShortDash'
+                        }
+                    ]
+                });
+            }
+
+            // 3. Gráfico de Composição em Colunas Empilhadas
+            if (document.getElementById('chartComposicao')) {
+                Highcharts.chart('chartComposicao', {
+                    chart: { type: 'column' },
+                    title: { text: 'Composição de Operações de Crédito por Segmento' },
+                    subtitle: { text: 'Saldo total trimestral de concessões do Sistema Financeiro Nacional' },
+                    xAxis: {
+                        categories: ['1º Tri 2025', '2º Tri 2025', '3º Tri 2025', '4º Tri 2025', '1º Tri 2026']
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: 'Saldo Concedido (R$ bilhões)' },
+                        stackLabels: {
+                            enabled: true,
+                            style: {
+                                fontWeight: 'bold',
+                                color: '#606060'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{point.x}</b><br/>',
+                        pointFormat: '{series.name}: R$ {point.y} bi (Total: R$ {point.stackTotal} bi)<br/>'
+                    },
+                    plotOptions: {
+                        column: {
+                            stacking: 'normal',
+                            dataLabels: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    series: [
+                        { name: 'Pessoas Físicas', data: [240, 255, 270, 290, 305] },
+                        { name: 'Micro e Pequenas Empresas', data: [110, 118, 125, 132, 140] },
+                        { name: 'Grandes Corporações', data: [180, 185, 192, 205, 215] },
+                        { name: 'Crédito Rural e Habitacional', data: [130, 135, 142, 150, 158] }
+                    ]
+                });
+            }
+
+            // Botão Voltar ao Topo
+            const backToTop = document.getElementById('backToTop');
+            if (backToTop) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+                backToTop.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Botão Toggle Sidebar (Mobile)
+            const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+            const sidebar = document.getElementById('ds-sidebar-nav');
+            if (btnToggleSidebar && sidebar) {
+                btnToggleSidebar.addEventListener('click', () => {
+                    const expanded = btnToggleSidebar.getAttribute('aria-expanded') === 'true';
+                    btnToggleSidebar.setAttribute('aria-expanded', String(!expanded));
+                    sidebar.classList.toggle('show');
+                });
+            }
+
+            // Sincronização da Sidebar Ativa no Scroll
+            const sections = document.querySelectorAll('.ds-main section[id], .ds-main div[id]');
+            const navLinks = document.querySelectorAll('.ds-sidebar .nav-link');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.add('active');
+                            } else if (link.getAttribute('href').startsWith('#') && link.getAttribute('href') !== `#${entry.target.id}`) {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-15% 0px -70% 0px' });
+            
+            sections.forEach(section => observer.observe(section));
+
+            // Copiar snippets de código
+            document.querySelectorAll('.btn-copy-code').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const pre = btn.parentElement.querySelector('pre');
+                    if (pre) {
+                        navigator.clipboard.writeText(pre.innerText).then(() => {
+                            const originalText = btn.textContent;
+                            btn.textContent = 'Copiado!';
+                            setTimeout(() => { btn.textContent = originalText; }, 2000);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

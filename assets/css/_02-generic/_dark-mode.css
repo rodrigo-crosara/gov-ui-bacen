@@ -76,6 +76,18 @@
   --bg-amarellato-light: #2a2210;
   --bg-vinho-light: #1a2228;
   --bg-gray-light: #1A1F24;
+
+  /* Tabelas Analíticas e Gráficos no Dark Mode */
+  --bcb-table-text: #D0D7DF;
+  --bcb-table-border: #606062;
+  --bcb-table-col-separator: #3E454B;
+  --bcb-table-header-bg: #1c3540;
+  --bcb-table-header-text: #FFFFFF;
+  --bcb-table-zebra: rgba(107, 174, 191, 0.08);
+  --bcb-table-highlight-bg: rgba(242, 181, 87, 0.22);
+  --bcb-table-highlight-text: #F9DEAA;
+  --bcb-table-num-negative: #FF6B6B;
+  --bcb-table-total-text: #6BAEBF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -83,6 +95,16 @@
     /* Base e Texto */
     --bcb-color-white: #121212;
     --bcb-color-black: #FFFFFF;
+    --bcb-table-text: #D0D7DF;
+    --bcb-table-border: #606062;
+    --bcb-table-col-separator: #3E454B;
+    --bcb-table-header-bg: #1c3540;
+    --bcb-table-header-text: #FFFFFF;
+    --bcb-table-zebra: rgba(107, 174, 191, 0.08);
+    --bcb-table-highlight-bg: rgba(242, 181, 87, 0.22);
+    --bcb-table-highlight-text: #F9DEAA;
+    --bcb-table-num-negative: #FF6B6B;
+    --bcb-table-total-text: #6BAEBF;
     --bcb-color-body-text: #D0D7DF;
     --bcb-color-bg-light: #1A1F24;
 
@@ -550,6 +572,41 @@
 :root[data-theme="dark"] .bcb-tooltip-term,
 [data-theme="dark"] .bcb-tooltip-term {
   border-bottom-color: var(--bcb-brand-blue, #0A9FD4) !important;
+}
+
+/* Tabelas e Gráficos no Dark Mode */
+:root[data-theme="dark"] .bcb-chart-container,
+[data-theme="dark"] .bcb-chart-container {
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-table,
+[data-theme="dark"] .bcb-table {
+  background-color: transparent !important;
+  color: var(--bcb-table-text, #D0D7DF) !important;
+}
+
+:root[data-theme="dark"] .bcb-table-title,
+:root[data-theme="dark"] .bcb-table-subtitle,
+:root[data-theme="dark"] .bcb-table-unit-box,
+:root[data-theme="dark"] .bcb-table-source,
+[data-theme="dark"] .bcb-table-title,
+[data-theme="dark"] .bcb-table-subtitle,
+[data-theme="dark"] .bcb-table-unit-box,
+[data-theme="dark"] .bcb-table-source {
+  color: var(--bcb-table-text, #D0D7DF) !important;
+}
+
+:root[data-theme="dark"] .table-strict thead tr:last-child th,
+[data-theme="dark"] .table-strict thead tr:last-child th {
+  border-bottom-color: var(--bcb-table-border, #606062) !important;
+}
+
+:root[data-theme="dark"] .table-strict tbody,
+[data-theme="dark"] .table-strict tbody {
+  border-top-color: var(--bcb-table-border, #606062) !important;
+  border-bottom-color: var(--bcb-table-border, #606062) !important;
 }
 
 /* Anel de Foco de Alta Visibilidade no Dark Mode (WCAG 2.4.7 / 2.4.11) */
