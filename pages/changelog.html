@@ -229,7 +229,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-5-0">v2.5.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-5-1">v2.5.1 (Atual)</a>
+                <a class="nav-link" href="#v2-5-0">v2.5.0</a>
                 <a class="nav-link" href="#v2-4-0">v2.4.0</a>
                 <a class="nav-link" href="#v2-3-0">v2.3.0</a>
                 <a class="nav-link" href="#v2-2-0">v2.2.0</a>
@@ -255,13 +256,51 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.5.1 ============ -->
+            <section id="v2-5-1" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.5.1]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Simplificação do Visualizador Técnico (Harness)</span>
+                        </div>
+                        <div class="version-date">04 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-removido">
+                            <div class="change-group-title" style="color: #c62828;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">remove_circle</span>
+                                Removido
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Simulação de Casca Institucional em <code>prototipos/_harness.html</code>:</strong> Remoção integral dos blocos de simulação de casca institucional (<code>#simulatedShellTop</code> com Barra Brasil, Header BCB e Breadcrumb, e <code>#simulatedShellBottom</code> com Rodapé BCB).</li>
+                                <li><strong>Controles Redundantes na Toolbar:</strong> Eliminação do alternador de modo "Com Casca / Puro" (<code>#toggleShellBtn</code>), drawer lateral de briefing da demanda (<code>#briefingDrawer</code>), botão de cópia de HTML (<code>#btnCopyHtml</code>) e seletores duplicados de tema.</li>
+                                <li><strong>Limpeza de Estilos e Scripts:</strong> Remoção de todas as classes CSS vinculadas à casca simulada (<code>.simulated-shell-top</code>, <code>.simulated-header</code>, <code>.simulated-nav</code>, <code>.simulated-footer</code>, etc.) e da lógica JS associada.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-modificado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">published_with_changes</span>
+                                Modificado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Visualizador Técnico Puro (<code>prototipos/_harness.html</code>):</strong> Foco exclusivo no <code>&lt;iframe&gt;</code> nativo com preenchimento a 100% de largura e altura no Desktop, e dispositivos com moldura centralizada nos modos Tablet (768px) e Mobile (375px).</li>
+                                <li><strong>Toolbar Minimalista:</strong> Barra de topo simplificada contendo apenas identificação do visualizador, seletor de protótipos, alternador de viewports e botão direto para abrir a tela isolada em nova aba (<code>target="_blank"</code> com <code>rel="noopener noreferrer"</code>).</li>
+                                <li><strong>Documentação e Guia de IA (<code>pages/prototipos.html</code> e <code>pages/automacao-ia.html</code>):</strong> Atualização de cartões arquiteturais, etapas operacionais e botões de atalho refletindo o visualizador sem cascas simuladas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.5.0 ============ -->
             <section id="v2-5-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.5.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Manual Corporativo: Gráficos Highcharts &amp; Tabelas Analíticas</span>
                         </div>
                         <div class="version-date">04 de Setembro de 2026</div>

@@ -262,20 +262,20 @@
 
         <!-- ============ ARQUITETURA DE PROTOTIPAGEM: FRAGMENTO, HARNESS E FLUXO OPERACIONAL ============ -->
         <div class="row mb-5">
-            <!-- Coluna 1: O Conceito de Fragmento de Conteúdo -->
+            <!-- Coluna 1: O Padrão de Protótipos Autônomos -->
             <div class="col-12 col-lg-4 mb-3 mb-lg-0">
                 <div class="card h-100 p-4 border shadow-sm" style="background-color: var(--bcb-color-surface); border-top: 4px solid var(--bcb-brand-azul-blue) !important;">
                     <div class="d-flex align-items-center mb-2" style="gap: 0.5rem; color: var(--bcb-brand-azul-blue);">
                         <span class="material-symbols-outlined material-icons" aria-hidden="true">code_blocks</span>
-                        <h2 class="h5 mb-0 font-weight-bold">1. Fragmento de Conteúdo</h2>
+                        <h2 class="h5 mb-0 font-weight-bold">1. Protótipo Autônomo</h2>
                     </div>
                     <p class="text-body small mb-2">
-                        Todo protótipo modela <strong>exclusivamente o corpo interno da página</strong>, iniciando diretamente em <code>&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;</code> e encerrando em <code>&lt;/main&gt;</code>.
+                        Todo protótipo possui um <strong>envelope técnico mínimo</strong> para visualização direta, delimitando o conteúdo estritamente dentro de <code>&lt;main id="conteudo-principal" class="bcb-main-content"&gt;</code>:
                     </p>
                     <ul class="text-body small pl-3 mb-0">
-                        <li><strong>Sem tags de documento:</strong> Proibido <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code> ou <code>&lt;!DOCTYPE&gt;</code>.</li>
-                        <li><strong>Sem casca fixa externa:</strong> Header, Footer, Barra Brasil e Breadcrumbs são providos pelo CMS institucional.</li>
-                        <li><strong>Zero scripts no arquivo:</strong> Toda lógica é delegada de forma limpa a <code>assets/js/bcb-ui.js</code>.</li>
+                        <li><strong>Envelope Mínimo:</strong> Contém <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;head&gt;</code> com links institucionais e <code>bcb-ui.js</code>.</li>
+                        <li><strong>Sem casca do portal:</strong> Header, Footer, Barra Brasil e Breadcrumbs são terminantemente proibidos no arquivo.</li>
+                        <li><strong>Pronto para CMS:</strong> O miolo central pode ser extraído diretamente para publicação no portal institucional.</li>
                     </ul>
                 </div>
             </div>
@@ -284,16 +284,16 @@
             <div class="col-12 col-lg-4 mb-3 mb-lg-0">
                 <div class="card h-100 p-4 border shadow-sm" style="background-color: var(--bcb-color-surface); border-top: 4px solid var(--bcb-brand-verde-susta) !important;">
                     <div class="d-flex align-items-center mb-2" style="gap: 0.5rem; color: var(--bcb-brand-verde-susta);">
-                        <span class="material-symbols-outlined material-icons" aria-hidden="true">splitscreen</span>
-                        <h2 class="h5 mb-0 font-weight-bold">2. Visualizador (_harness.html)</h2>
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">devices</span>
+                        <h2 class="h5 mb-0 font-weight-bold">2. Visualizador Técnico (_harness.html)</h2>
                     </div>
                     <p class="text-body small mb-2">
-                        O visualizador técnico atua como <strong>casca estática de homologação</strong>, injetando as dependências de design em tempo de execução sem sujar o código do fragmento:
+                        O visualizador técnico atua como <strong>sandbox de homologação limpa</strong> via <code>&lt;iframe&gt;</code> nativo, eliminando simulações de cascas fixas para focar exclusivamente no conteúdo:
                     </p>
                     <ul class="text-body small pl-3 mb-0">
-                        <li><strong>Casca Simulada Dinâmica:</strong> Injeta Barra Brasil, Header BCB, Breadcrumb e Footer com metadados extraídos do H1 do protótipo.</li>
-                        <li><strong>Split-Screen Integrado:</strong> Exibe o briefing em Markdown lado a lado com a interface renderizada.</li>
-                        <li><strong>Simulador Multidispositivo:</strong> Alternância de viewports (Mobile 375px, Tablet 768px, Desktop 1200px, Full 1440px) e 3 temas.</li>
+                        <li><strong>Pré-visualização Pura e Autônoma:</strong> Renderização direta do envelope semântico sem injeção de cascas simuladas (sem cabeçalho ou rodapé fictícios).</li>
+                        <li><strong>Alternador Rápido de Viewports:</strong> Alternância imediata entre Desktop (100% fluido), Tablet (768px centrado) e Mobile (375px centrado com moldura).</li>
+                        <li><strong>Abertura Direta e Isolada:</strong> Botão dedicado para abrir o protótipo autônomo em nova aba sem dependências de visualizadores externos.</li>
                     </ul>
                 </div>
             </div>
@@ -310,8 +310,8 @@
                     </p>
                     <ol class="text-body small pl-3 mb-0">
                         <li><strong>Intake da Demanda:</strong> Crie o briefing via <code>npm run demanda:criar</code>.</li>
-                        <li><strong>Diagramação IA:</strong> O agente gera o fragmento semântico em <code>prototipos/&lt;slug&gt;.html</code>.</li>
-                        <li><strong>Homologação no Harness:</strong> Inspecione no visualizador split-screen.</li>
+                        <li><strong>Diagramação IA:</strong> O agente gera o protótipo autônomo em <code>prototipos/&lt;slug&gt;.html</code>.</li>
+                        <li><strong>Homologação no Visualizador:</strong> Inspecione no visualizador de resoluções (<code>_harness.html</code>).</li>
                         <li><strong>Auditoria Técnica:</strong> Valide via <code>npm run test:prototypes</code>.</li>
                         <li><strong>Exportação CMS:</strong> Exporte o miolo limpo via <code>npm run prototipo:exportar</code>.</li>
                     </ol>
@@ -328,7 +328,7 @@
                         Visualizador Técnico de Protótipos (Harness)
                     </h2>
                     <p class="text-body small mb-0">
-                        Inspecione qualquer tela produzida pelo agente em uma casca técnica mínima com alternador dinâmico de 3 temas (Padrão, Escuro e Alto Contraste), sem elementos externos de portal.
+                        Inspecione qualquer tela produzida pelo agente em uma visualização limpa via <code>&lt;iframe&gt;</code> com alternador de resoluções (Desktop 100%, Tablet 768px e Mobile 375px), sem simulações de cascas externas.
                     </p>
                 </div>
                 <a href="../prototipos/_harness.html" class="btn btn-primary btn-sm text-nowrap d-inline-flex align-items-center" style="gap: 0.35rem;">
@@ -371,9 +371,9 @@
                             </div>
                         </div>
                         <div class="d-flex flex-wrap align-items-center pt-2 border-top" style="gap: 0.5rem;">
-                            <a href="../prototipos/_harness.html?src=copom-decisao-taxa-selic.html&doc=01-comunicado-normativo.md" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">splitscreen</span>
-                                <span>Inspecionar no Harness (Split-View)</span>
+                            <a href="../prototipos/_harness.html?src=copom-decisao-taxa-selic.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">devices</span>
+                                <span>Inspecionar no Visualizador</span>
                             </a>
                             <a href="../prototipos/copom-decisao-taxa-selic.html" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
                                 <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
@@ -408,9 +408,9 @@
                             </div>
                         </div>
                         <div class="d-flex flex-wrap align-items-center pt-2 border-top" style="gap: 0.5rem;">
-                            <a href="../prototipos/_harness.html?src=sgs-series-taxa-selic.html&doc=02-dados-sgs-indicadores.md" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">splitscreen</span>
-                                <span>Inspecionar no Harness (Split-View)</span>
+                            <a href="../prototipos/_harness.html?src=sgs-series-taxa-selic.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">devices</span>
+                                <span>Inspecionar no Visualizador</span>
                             </a>
                             <a href="../prototipos/sgs-series-taxa-selic.html" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
                                 <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
@@ -445,9 +445,9 @@
                             </div>
                         </div>
                         <div class="d-flex flex-wrap align-items-center pt-2 border-top" style="gap: 0.5rem;">
-                            <a href="../prototipos/_harness.html?src=mecanismo-especial-devolucao-med.html&doc=03-servico-passo-a-passo.md" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">splitscreen</span>
-                                <span>Inspecionar no Harness (Split-View)</span>
+                            <a href="../prototipos/_harness.html?src=mecanismo-especial-devolucao-med.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">devices</span>
+                                <span>Inspecionar no Visualizador</span>
                             </a>
                             <a href="../prototipos/mecanismo-especial-devolucao-med.html" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
                                 <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
@@ -482,9 +482,9 @@
                             </div>
                         </div>
                         <div class="d-flex flex-wrap align-items-center pt-2 border-top" style="gap: 0.5rem;">
-                            <a href="../prototipos/_harness.html?src=regras-cheque-especial.html&doc=04-conteudo-html-legado.md" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">splitscreen</span>
-                                <span>Inspecionar no Harness (Split-View)</span>
+                            <a href="../prototipos/_harness.html?src=regras-cheque-especial.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">devices</span>
+                                <span>Inspecionar no Visualizador</span>
                             </a>
                             <a href="../prototipos/regras-cheque-especial.html" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
                                 <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
@@ -518,9 +518,9 @@
                             </div>
                         </div>
                         <div class="d-flex flex-wrap align-items-center pt-2 border-top" style="gap: 0.5rem;">
-                            <a href="../prototipos/_harness.html?src=resolucao-bcb-dou.html&doc=05-entrada-nao-estruturada-dou.md" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
-                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">splitscreen</span>
-                                <span>Inspecionar no Harness (Split-View)</span>
+                            <a href="../prototipos/_harness.html?src=resolucao-bcb-dou.html" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">devices</span>
+                                <span>Inspecionar no Visualizador</span>
                             </a>
                             <a href="../prototipos/resolucao-bcb-dou.html" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
                                 <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
@@ -543,7 +543,7 @@
                     <li class="mb-2"><strong>Crie a demanda:</strong> Execute <code>npm run demanda:criar -- --slug meu-servico --titulo "Título"</code> para gerar o scaffold em <code>.docs-ia/exemplos-demandas/</code>.</li>
                     <li class="mb-2"><strong>Instrua o agente:</strong> Forneça o markdown preenchido ao agente indicando a intenção e o padrão de UX desejado (ex.: <em>"Gere o protótipo para esta resolução adotando o layout 70/30 com downloads"</em>).</li>
                     <li class="mb-2"><strong>Diagramação do miolo semântico:</strong> A IA projeta a interface em <code>prototipos/meu-servico.html</code> no container <code>&lt;main id="conteudo-principal"&gt;</code> com H1 único, grid modular de 12 colunas e botão voltar ao topo (isento de header, footer e breadcrumbs).</li>
-                    <li class="mb-2"><strong>Homologue no Harness Split-Screen:</strong> Abra <code>prototipos/_harness.html?src=meu-servico.html&amp;doc=...</code> para inspecionar lado a lado o briefing da demanda e a interface com casca institucional simulada nos 3 viewports e 3 temas.</li>
+                    <li class="mb-2"><strong>Homologue no visualizador técnico:</strong> Abra <code>prototipos/_harness.html?src=meu-servico.html</code> para inspecionar a interface autônoma nos 3 viewports (Desktop 100%, Tablet 768px e Mobile 375px) e testar a responsividade de forma limpa.</li>
                     <li class="mb-0"><strong>Valide a qualidade:</strong> Execute <code>npm run test:prototypes</code> para certificar conformidade WCAG 2.1 AA, linter estrito de miolo e ausência de scripts inline.</li>
                 </ol>
             </div>

@@ -5,6 +5,21 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.5.1] — 2026-09-04
+
+### Removido
+- **Simulação de Casca Institucional em `prototipos/_harness.html`:**
+  - Remoção integral dos blocos de simulação de casca institucional (`#simulatedShellTop` com Barra Brasil, Header BCB e Breadcrumb, e `#simulatedShellBottom` com Rodapé BCB).
+  - Remoção da barra de ferramentas dos controles de alternância "Com Casca / Puro" (`#toggleShellBtn`), painel retrátil de briefing (`#briefingDrawer`), botão de cópia de HTML (`#btnCopyHtml`) e seletores duplicados de tema.
+  - Limpeza completa de todas as classes CSS `.simulated-*` e funções/variáveis JavaScript associadas (`shellMode`, `simulatedBreadcrumbTitle`).
+
+### Modificado
+- **Visualizador Técnico de Protótipos (`prototipos/_harness.html`):**
+  - Foco exclusivo na pré-visualização limpa do `<iframe>` nativo: largura e altura a 100% fluidas no modo Desktop, e dispositivos com moldura e cantos arredondados nos modos Tablet (768px) e Mobile (375px).
+  - Barra de ferramentas superior minimalista contendo estritamente: Identificação institucional, Seletor de protótipos (`#selectPrototipo`), Alternador de viewports (Desktop, Tablet 768px, Mobile 375px) e Botão "Abrir em nova aba" (`#btnOpenNewTab` com `target="_blank"` e `rel="noopener noreferrer"`).
+- **Documentação de Protótipos e Guia de IA (`pages/prototipos.html` e `pages/automacao-ia.html`):**
+  - Atualização dos cartões conceituais, etapas de fluxo e botões de inspeção dos protótipos ativos para refletir a homologação direta no visualizador técnico sem injeção de cascas simuladas.
+
 ## [2.5.0] — 2026-09-04
 
 ### Adicionado

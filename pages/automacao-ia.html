@@ -377,18 +377,18 @@
                     </div>
                 </div>
 
-                <!-- Etapa 5: Harness Split-Screen -->
+                <!-- Etapa 5: Visualizador & Viewports -->
                 <div class="col-12 col-md-6 col-lg mb-3">
                     <div class="card h-100 p-3 border shadow-sm" style="background-color: var(--bcb-color-surface); border-left: 3px solid var(--bcb-brand-azul-blue) !important;">
                         <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
                             <span class="badge badge-success px-2 py-1" style="font-size: 0.9rem;">5</span>
-                            <h3 class="h6 mb-0 font-weight-bold">Harness &amp; Split-View</h3>
+                            <h3 class="h6 mb-0 font-weight-bold">Visualizador &amp; Viewports</h3>
                         </div>
                         <p class="text-body small mb-2">
-                            Homologação visual com casca estática simulada e briefing lado a lado:
+                            Homologação visual do protótipo autônomo em iframe nativo limpo:
                         </p>
-                        <code class="small d-block p-1 bg-light rounded text-info mb-2">_harness.html?src=...&amp;doc=...</code>
-                        <span class="small text-muted d-block">&bull; Injeta Barra Brasil, Header, Breadcrumbs dinâmicos, Footer, viewports e 3 temas.</span>
+                        <code class="small d-block p-1 bg-light rounded text-info mb-2">_harness.html?src=...</code>
+                        <span class="small text-muted d-block">&bull; Alternância de viewports (Desktop 100%, Tablet 768px, Mobile 375px), sem cascas simuladas e abertura direta.</span>
                     </div>
                 </div>
             </div>
@@ -399,13 +399,13 @@
                     <span class="material-symbols-outlined material-icons text-success" style="font-size: 1.75rem;" aria-hidden="true">integration_instructions</span>
                     <div>
                         <h3 class="h5 font-weight-bold mb-1" style="color: var(--bcb-brand-verde-susta);">
-                            Contrato Técnico de Fragmento de Conteúdo (Desacoplamento de Casca)
+                            Contrato Técnico de Protótipos Autônomos (Desacoplamento de Casca)
                         </h3>
                         <p class="text-body small mb-2">
-                            Para garantir máxima interoperabilidade com o CMS do portal institucional e frameworks corporativos do BCB, <strong>os protótipos nunca contêm tags de documento completo</strong> (<code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;!DOCTYPE&gt;</code>), cascas externas (<code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, breadcrumbs) ou scripts.
+                            Para garantir máxima interoperabilidade com o CMS do portal institucional e visualização direta em qualquer ambiente, <strong>os protótipos adotam envelope técnico mínimo autônomo</strong>, delimitando o conteúdo estritamente dentro de <code>&lt;main id="conteudo-principal" class="bcb-main-content bcb-container container py-4 mb-5"&gt;</code> e proibindo cascas externas do portal (<code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, breadcrumbs) ou scripts inline.
                         </p>
                         <p class="text-body small mb-0">
-                            Todo o markup entregue pelo agente inicia diretamente no elemento semântico <code>&lt;main id="conteudo-principal" class="bcb-container container py-4 mb-5"&gt;</code> e encerra em <code>&lt;/main&gt;</code>. Ao exportar a tela via <code>npm run prototipo:exportar &lt;slug&gt;</code>, o arquivo <code>corpo-conteudo.html</code> pode ser inserido diretamente no slot central do CMS sem necessidade de limpeza prévia.
+                            Ao exportar a tela via <code>npm run prototipo:exportar &lt;slug&gt;</code>, os arquivos <code>corpo-conteudo.html</code> e <code>fragmento-interno.html</code> podem ser inseridos diretamente no slot central do CMS sem necessidade de limpeza prévia.
                         </p>
                     </div>
                 </div>

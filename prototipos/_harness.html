@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizador Técnico de Protótipos — BCB Design System</title>
-    <meta name="description" content="Casca técnica mínima sem elementos fixos de portal para testes visuais, split-screen de demandas, responsividade e auditoria de contraste de protótipos do BCB.">
+    <meta name="description" content="Visualizador técnico para homologação de responsividade e visualização de protótipos autônomos do Banco Central do Brasil.">
 
     <!-- Bootstrap 4.6 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -29,10 +29,11 @@
             margin: 0;
             padding: 0;
             background-color: #0f1418;
-            overflow-x: hidden;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            height: 100vh;
+            font-family: var(--bcb-font-ubuntu, sans-serif);
         }
 
         /* Toolbar técnica de controle */
@@ -47,8 +48,7 @@
             justify-content: space-between;
             gap: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            position: sticky;
-            top: 0;
+            flex-shrink: 0;
             z-index: 1000;
         }
 
@@ -79,7 +79,7 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
 
         .bcb-harness-group {
@@ -101,10 +101,13 @@
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 4px;
-            padding: 4px 8px;
-            font-size: 0.8rem;
+            padding: 5px 10px;
+            font-size: 0.82rem;
             outline: none;
-            max-width: 270px;
+            min-width: 260px;
+        }
+        .bcb-harness-select:focus {
+            border-color: #4dc8ff;
         }
 
         .bcb-harness-btn-group {
@@ -119,18 +122,20 @@
             background: transparent;
             border: none;
             color: #c4cbd1;
-            padding: 4px 10px;
-            font-size: 0.75rem;
+            padding: 5px 12px;
+            font-size: 0.78rem;
             cursor: pointer;
             border-radius: 3px;
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
+            text-decoration: none;
         }
         .bcb-harness-btn:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
+            text-decoration: none;
         }
         .bcb-harness-btn.active {
             background: var(--bcb-brand-azul-blue, #025C75);
@@ -138,162 +143,109 @@
             font-weight: 600;
         }
 
-        /* Container Split-Screen (Gaveta de Demanda + Palco de Renderização) */
-        .bcb-harness-layout {
-            display: flex;
+        .bcb-harness-btn--action {
+            background: #2a343d;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+        .bcb-harness-btn--action:hover {
+            background: rgba(2, 92, 117, 0.4);
+            border-color: var(--bcb-brand-azul-blue, #025C75);
+            color: #ffffff;
+        }
+
+        /* Container principal */
+        .bcb-harness-main {
             flex: 1;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
             position: relative;
-        }
-
-        /* Gaveta Retrátil de Briefing da Demanda */
-        .bcb-harness-drawer {
-            width: 0;
-            opacity: 0;
-            visibility: hidden;
-            background-color: #141b22;
-            color: #c9d1d9;
-            border-right: 1px solid rgba(255, 255, 255, 0.15);
-            transition: width 0.3s ease, opacity 0.2s ease, visibility 0.3s ease;
-            overflow-y: auto;
-            height: calc(100vh - 50px);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .bcb-harness-layout.drawer-open .bcb-harness-drawer {
-            width: 440px;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .bcb-drawer-header {
-            background: #1f2933;
-            padding: 12px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .bcb-drawer-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin: 0;
-        }
-
-        .bcb-drawer-body {
-            padding: 16px;
-            font-size: 0.82rem;
-            line-height: 1.5;
-        }
-
-        .bcb-briefing-meta {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 3px solid var(--bcb-brand-azul-blue, #025C75);
-            padding: 10px 12px;
-            border-radius: 0 4px 4px 0;
-            margin-bottom: 14px;
-        }
-
-        .bcb-briefing-meta dt {
-            color: #8b949e;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .bcb-briefing-meta dd {
-            color: #f0f6fc;
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-        .bcb-briefing-meta dd:last-child {
-            margin-bottom: 0;
-        }
-
-        .bcb-briefing-raw {
-            background: #0d1117;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 6px;
-            padding: 12px;
-            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-            font-size: 0.78rem;
-            color: #79c0ff;
-            white-space: pre-wrap;
-            margin-bottom: 14px;
-        }
-
-        .bcb-briefing-instruction {
-            background: rgba(2, 92, 117, 0.15);
-            border: 1px solid rgba(2, 92, 117, 0.4);
-            border-radius: 6px;
-            padding: 12px;
-            color: #e6edf3;
-            font-style: italic;
-        }
-
-        /* Palco de renderização do protótipo */
-        .bcb-harness-stage {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 16px;
             background-color: #0f1418;
-            overflow-y: auto;
-            height: calc(100vh - 50px);
-            transition: all 0.3s ease;
+            height: calc(100vh - 49px);
         }
 
-        .bcb-harness-device {
+        /* Palco de renderização (#previewStage) */
+        #previewStage {
+            flex: 1;
             width: 100%;
             height: 100%;
-            min-height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            background-color: #0f1418;
+            overflow: hidden;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        /* Container do dispositivo / iframe (#previewFrameWrapper) */
+        #previewFrameWrapper {
             background: #ffffff;
-            transition: width 0.3s ease, max-width 0.3s ease, box-shadow 0.3s ease;
+            transition: width 0.25s ease, max-width 0.25s ease, height 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
             position: relative;
             display: flex;
             flex-direction: column;
+            box-sizing: border-box;
         }
 
-        /* Modos de Viewport */
-        .bcb-harness-device.viewport-desktop {
+        /* MODO DESKTOP: 100% da largura e altura disponíveis, sem moldura visual */
+        #previewStage.mode-desktop {
+            padding: 0;
+            overflow: hidden;
+            align-items: stretch;
+        }
+
+        #previewFrameWrapper.viewport-desktop {
             width: 100%;
-            max-width: 1440px;
-            border-radius: 4px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            height: 100%;
+            max-width: 100%;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
         }
 
-        .bcb-harness-device.viewport-tablet {
+        /* MODO TABLET (768px): centralizado com moldura visual */
+        #previewStage.mode-tablet {
+            padding: 24px 16px;
+            overflow-y: auto;
+            align-items: flex-start;
+        }
+
+        #previewFrameWrapper.viewport-tablet {
             width: 768px;
             max-width: 100%;
+            height: 90vh;
+            min-height: 700px;
             border-radius: 12px;
             border: 8px solid #2a343d;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
-        .bcb-harness-device.viewport-mobile {
+        /* MODO MOBILE (375px): centralizado com moldura visual */
+        #previewStage.mode-mobile {
+            padding: 24px 16px;
+            overflow-y: auto;
+            align-items: flex-start;
+        }
+
+        #previewFrameWrapper.viewport-mobile {
             width: 375px;
             max-width: 100%;
+            height: 90vh;
+            min-height: 640px;
             border-radius: 24px;
             border: 10px solid #2a343d;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
         }
 
+        /* Iframe do protótipo */
         .bcb-harness-frame {
             width: 100%;
             height: 100%;
             border: none;
             display: block;
-            background: transparent;
+            background: #ffffff;
             flex: 1;
         }
 
@@ -309,313 +261,40 @@
             border: 0;
         }
 
-        /* Componente Toast de Feedback */
-        .bcb-harness-toast {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background-color: #1f2933;
-            color: #f0f6fc;
-            border: 1px solid rgba(74, 222, 128, 0.4);
-            border-left: 4px solid #4ade80;
-            border-radius: 6px;
-            padding: 12px 18px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-            transition: opacity 0.25s ease, transform 0.25s ease;
-        }
-        .bcb-harness-toast.show {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        .harness-icon-success { color: #4ade80 !important; }
-        .harness-icon-info { color: #4dc8ff !important; }
-        .harness-badge-file { font-size: 0.72rem; }
         :focus-visible {
             outline: 3px solid #088694 !important;
             outline-offset: 2px !important;
-        }
-
-        /* =================================================================
-           Casca Institucional Simulada do Portal BCB (Header, Breadcrumbs e Footer)
-           ================================================================= */
-        .simulated-portal-shell {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            background: #ffffff;
-            color: #212529;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .simulated-barra-brasil {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 4px 16px;
-            font-size: 0.75rem;
-            color: #4a5568;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .simulated-barra-brasil a {
-            color: #4a5568;
-            text-decoration: none;
-        }
-        .simulated-barra-brasil a:hover {
-            color: var(--bcb-brand-azul-blue, #025C75);
-            text-decoration: underline;
-        }
-        .simulated-gov-badge {
-            font-weight: 700;
-            color: #1a202c;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .simulated-header-bcb {
-            background-color: var(--bcb-brand-azul-blue, #025C75);
-            color: #ffffff;
-            padding: 12px 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .simulated-header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .simulated-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: #ffffff;
-        }
-        .simulated-brand:hover {
-            color: #ffffff;
-            text-decoration: none;
-        }
-        .simulated-brand-logo {
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-        .simulated-brand-text {
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-        .simulated-brand-sub {
-            font-size: 0.7rem;
-            opacity: 0.85;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-        }
-        .simulated-header-nav {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.8rem;
-        }
-        .simulated-nav-link {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            transition: background 0.15s;
-        }
-        .simulated-nav-link:hover {
-            color: #ffffff;
-            background: rgba(255,255,255,0.15);
-            text-decoration: none;
-        }
-
-        .simulated-breadcrumbs-bar {
-            background-color: var(--bcb-gray-50, #f8f9fa);
-            border-bottom: 1px solid var(--bcb-gray-200, #e9ecef);
-            padding: 8px 16px;
-            font-size: 0.8rem;
-        }
-        .simulated-breadcrumbs-bar .breadcrumb {
-            margin: 0;
-            padding: 0;
-            background: transparent;
-            font-size: 0.8rem;
-        }
-        .simulated-breadcrumbs-bar .breadcrumb-item a {
-            color: var(--bcb-brand-azul-blue, #025C75);
-            text-decoration: none;
-        }
-        .simulated-breadcrumbs-bar .breadcrumb-item a:hover {
-            text-decoration: underline;
-        }
-        .simulated-breadcrumbs-bar .breadcrumb-item.active {
-            color: #6c757d;
-        }
-
-        .simulated-content-stage {
-            width: 100%;
-            background: #ffffff;
-            min-height: 520px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .simulated-footer-bcb {
-            background-color: var(--bcb-brand-azulpetro, #2E4C59);
-            color: #ffffff;
-            padding: 24px 16px 14px;
-            font-size: 0.8rem;
-            line-height: 1.5;
-            margin-top: auto;
-        }
-        .simulated-footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        .simulated-footer-title {
-            font-size: 0.82rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--bcb-brand-amarellato, #F8D48D);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .simulated-footer-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .simulated-footer-list li {
-            margin-bottom: 4px;
-        }
-        .simulated-footer-list a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-        }
-        .simulated-footer-list a:hover {
-            color: #ffffff;
-            text-decoration: underline;
-        }
-        .simulated-footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.15);
-            padding-top: 10px;
-            text-align: center;
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* Temas na Casca Simulada */
-        #deviceContainer[data-theme="dark"] .simulated-portal-shell,
-        #deviceContainer[data-theme="dark"] .simulated-content-stage {
-            background: #121212;
-            color: #e6edf3;
-        }
-        #deviceContainer[data-theme="dark"] .simulated-barra-brasil {
-            background-color: #0d1117;
-            border-bottom-color: #30363d;
-            color: #8b949e;
-        }
-        #deviceContainer[data-theme="dark"] .simulated-gov-badge {
-            color: #f0f6fc;
-        }
-        #deviceContainer[data-theme="dark"] .simulated-header-bcb {
-            background-color: #16242c;
-            border-bottom: 1px solid #30363d;
-        }
-        #deviceContainer[data-theme="dark"] .simulated-breadcrumbs-bar {
-            background-color: #161b22;
-            border-bottom-color: #30363d;
-        }
-        #deviceContainer[data-theme="dark"] .simulated-breadcrumbs-bar .breadcrumb-item a {
-            color: #58a6ff;
-        }
-        #deviceContainer[data-theme="dark"] .simulated-breadcrumbs-bar .breadcrumb-item.active {
-            color: #8b949e;
-        }
-        #deviceContainer[data-theme="dark"] .simulated-footer-bcb {
-            background-color: #0d1117;
-            border-top: 1px solid #30363d;
-        }
-
-        #deviceContainer[data-contrast="high"] .simulated-portal-shell,
-        #deviceContainer[data-contrast="high"] .simulated-content-stage {
-            background: #000000 !important;
-            color: #ffffff !important;
-        }
-        #deviceContainer[data-contrast="high"] .simulated-barra-brasil,
-        #deviceContainer[data-contrast="high"] .simulated-header-bcb,
-        #deviceContainer[data-contrast="high"] .simulated-breadcrumbs-bar,
-        #deviceContainer[data-contrast="high"] .simulated-footer-bcb {
-            background: #000000 !important;
-            color: #ffffff !important;
-            border-color: #ffffff !important;
-        }
-        #deviceContainer[data-contrast="high"] a {
-            color: #ffff00 !important;
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA TÉCNICA DE CONTROLE (Exclusiva do Harness / Ocultada em Produção) -->
-    <header class="bcb-harness-bar" role="banner" aria-label="Controles de Homologação do Harness">
+    <!-- BARRA TÉCNICA DE CONTROLE -->
+    <header class="bcb-harness-bar" role="banner" aria-label="Controles do Visualizador de Protótipos">
         <a href="../pages/prototipos.html" class="bcb-harness-title">
-            <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">dashboard</span>
-            <span>Harness de Visualização Técnica</span>
-            <span class="bcb-harness-badge">Protótipos BCB</span>
+            <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">arrow_back</span>
+            <span>Visualizador de Protótipos</span>
+            <span class="bcb-harness-badge">BCB</span>
         </a>
 
         <div class="bcb-harness-controls">
-            <!-- Seletor de Protótipos (Primeiro controle de foco operacional) -->
+            <!-- Seletor de Protótipos -->
             <div class="bcb-harness-group">
                 <label for="selectPrototipo" class="bcb-harness-label">Tela:</label>
                 <select id="selectPrototipo" class="bcb-harness-select" aria-label="Selecionar protótipo para visualização">
-                    <optgroup label="Protótipos Oficiais (Produção)">
-                        <option value="copom-decisao-taxa-selic.html">Copom: Taxa Selic &amp; Série SGS 432</option>
-                        <option value="sgs-series-taxa-selic.html">SGS: Painel Analítico &amp; Dados Abertos</option>
-                        <option value="mecanismo-especial-devolucao-med.html">Serviço: MED Pix com Stepper e Alerta</option>
-                        <option value="regras-cheque-especial.html">Regulação: Limite Cheque Especial (70/30)</option>
-                        <option value="resolucao-bcb-dou.html">Regulação: Resolução BCB nº 492 (DOU / Comef)</option>
-                    </optgroup>
+                    <option value="copom-decisao-taxa-selic.html">Copom: Taxa Selic &amp; Série SGS 432</option>
+                    <option value="sgs-series-taxa-selic.html">SGS: Painel Analítico &amp; Dados Abertos</option>
+                    <option value="mecanismo-especial-devolucao-med.html">Serviço: MED Pix com Stepper e Alerta</option>
+                    <option value="regras-cheque-especial.html">Regulação: Limite Cheque Especial (70/30)</option>
+                    <option value="resolucao-bcb-dou.html">Regulação: Resolução BCB nº 492 (DOU / Comef)</option>
                 </select>
             </div>
 
-            <!-- Botão de Briefing Retrátil (Split-Screen) com Contratos ARIA -->
-            <button type="button" id="btnToggleBriefing" class="bcb-harness-btn" aria-expanded="false" aria-controls="briefingDrawer" title="Exibir/Ocultar Briefing da Demanda Original (.docs-ia/)">
-                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">description</span>
-                <span>Briefing da Demanda</span>
-            </button>
-
-            <!-- Alternador de Viewport (Desktop / Tablet / Mobile) -->
+            <!-- Alternador de Resolução (Desktop, Tablet 768px, Mobile 375px) -->
             <div class="bcb-harness-group">
-                <span class="bcb-harness-label">Viewport:</span>
-                <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de viewport">
-                    <button type="button" class="bcb-harness-btn active" data-viewport="desktop" title="Desktop (100% / max-width 1440px)">
+                <span class="bcb-harness-label">Resolução:</span>
+                <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de resolução">
+                    <button type="button" class="bcb-harness-btn active" data-viewport="desktop" title="Desktop (100%)">
                         <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">desktop_windows</span> Desktop
                     </button>
                     <button type="button" class="bcb-harness-btn" data-viewport="tablet" title="Tablet (768px)">
@@ -627,379 +306,57 @@
                 </div>
             </div>
 
-            <!-- Alternador de Temas (Padrão / Escuro / Alto Contraste) -->
+            <!-- Link para abrir arquivo diretamente em nova aba -->
             <div class="bcb-harness-group">
-                <span class="bcb-harness-label">Tema:</span>
-                <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de tema do protótipo">
-                    <button type="button" class="bcb-harness-btn active" data-theme-target="default" title="Modo Claro Institucional">
-                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">light_mode</span> Padrão
-                    </button>
-                    <button type="button" class="bcb-harness-btn" data-theme-target="dark" title="Modo Escuro (Dark Mode)">
-                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">dark_mode</span> Escuro
-                    </button>
-                    <button type="button" class="bcb-harness-btn" data-theme-target="high-contrast" title="Alto Contraste WCAG AAA">
-                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">contrast</span> Contraste
-                    </button>
-                </div>
-            </div>
-
-            <!-- Alternador de Modo de Casca (Com Casca do Portal / Protótipo Puro) -->
-            <div class="bcb-harness-group">
-                <span class="bcb-harness-label">Modo:</span>
-                <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de Casca Institucional">
-                    <button type="button" id="btnModeShell" class="bcb-harness-btn active" title="Exibir com Casca Institucional Fixa do Portal">
-                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">web</span> Com Casca
-                    </button>
-                    <button type="button" id="btnModePure" class="bcb-harness-btn" title="Exibir apenas o Protótipo Autônomo Puro">
-                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">crop_free</span> Puro
-                    </button>
-                </div>
-            </div>
-
-            <!-- Ação Rápida: Copiar HTML do Miolo -->
-            <div class="bcb-harness-group">
-                <button type="button" id="btnCopyMain" class="bcb-harness-btn" title="Copiar HTML do miolo (<main>) limpo para inclusão no CMS">
-                    <span class="material-symbols-outlined material-icons md-16 harness-icon-success" aria-hidden="true">content_copy</span>
-                    <span>Copiar HTML do Miolo</span>
-                </button>
-            </div>
-
-            <!-- Link para abrir arquivo de protótipo diretamente -->
-            <div class="bcb-harness-group">
-                <a id="btnOpenIsolated" href="copom-decisao-taxa-selic.html" target="_blank" rel="noopener noreferrer" class="bcb-harness-btn" title="Abrir arquivo do protótipo diretamente em nova aba (visualização autônoma)">
+                <a id="btnOpenNewTab" href="copom-decisao-taxa-selic.html" target="_blank" rel="noopener noreferrer" class="bcb-harness-btn bcb-harness-btn--action" title="Abrir protótipo diretamente em nova aba">
                     <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">open_in_new</span>
-                    <span>Abrir Isolado</span>
+                    <span>Abrir em nova aba</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- PALCO CENTRALIZADO COM SPLIT-SCREEN (GAVETA DE BRIEFING + DISPOSITIVO) -->
-    <main id="conteudo-principal" class="bcb-harness-layout">
+    <!-- PALCO DE PRÉ-VISUALIZAÇÃO LIMPA COM IFRAME -->
+    <main id="conteudo-principal" class="bcb-harness-main">
         <h1 class="sr-only">Visualizador Técnico de Protótipos — Banco Central do Brasil</h1>
 
-        <!-- Gaveta Retrátil de Briefing da Demanda -->
-        <aside id="briefingDrawer" class="bcb-harness-drawer" aria-label="Painel de Briefing da Demanda" aria-hidden="true">
-            <div class="bcb-drawer-header">
-                <h2 class="bcb-drawer-title">
-                    <span class="material-symbols-outlined material-icons md-18 harness-icon-info" aria-hidden="true">assignment</span>
-                    <span id="briefingTitle">Briefing da Demanda</span>
-                </h2>
-                <button type="button" id="btnCloseDrawer" class="bcb-harness-btn" aria-label="Fechar painel de briefing" title="Fechar Painel de Briefing">
-                    <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">close</span>
-                </button>
-            </div>
-            <div id="briefingContent" class="bcb-drawer-body">
-                <!-- Conteúdo renderizado dinamicamente via JS -->
-            </div>
-        </aside>
-
-        <!-- Palco do Dispositivo (Visualizador de Protótipos Autônomos via Iframe Dinâmico) -->
-        <div class="bcb-harness-stage">
-            <div id="deviceContainer" class="bcb-harness-device viewport-desktop" data-theme="light" data-contrast="normal">
-                <!-- Casca Institucional Superior Simulada -->
-                <div id="simulatedShellTop" class="simulated-portal-shell">
-                    <div class="simulated-barra-brasil" role="region" aria-label="Barra de Governo Federal Simulada">
-                        <div class="simulated-barra-brasil-inner">
-                            <span class="simulated-gov-badge">
-                                <span class="material-symbols-outlined material-icons md-16" style="color: #0080A4;" aria-hidden="true">flag</span>
-                                <span>BRASIL</span>
-                            </span>
-                            <div class="d-none d-sm-flex align-items-center gap-3">
-                                <a href="#">Órgãos do Governo</a>
-                                <a href="#">Acesso à Informação</a>
-                                <a href="#">Legislação</a>
-                                <a href="#">Acessibilidade</a>
-                            </div>
-                        </div>
-                    </div>
-                    <header class="simulated-header-bcb" role="banner" aria-label="Cabeçalho Institucional do Banco Central Simulado">
-                        <div class="simulated-header-inner">
-                            <div class="simulated-brand">
-                                <div class="simulated-brand-logo" aria-hidden="true">BC</div>
-                                <div>
-                                    <span class="simulated-brand-text">BANCO CENTRAL DO BRASIL</span>
-                                    <span class="simulated-brand-sub">Portal Oficial Institucional</span>
-                                </div>
-                            </div>
-                            <nav class="simulated-header-nav d-none d-md-flex" aria-label="Navegação Institucional Simulada">
-                                <a href="#" class="simulated-nav-link">Institucional</a>
-                                <a href="#" class="simulated-nav-link">Política Monetária</a>
-                                <a href="#" class="simulated-nav-link">Estabilidade Financeira</a>
-                                <a href="#" class="simulated-nav-link">Estatísticas</a>
-                                <a href="#" class="simulated-nav-link">Cidadania Financeira</a>
-                            </nav>
-                        </div>
-                    </header>
-                    <div class="simulated-breadcrumbs-bar" role="navigation" aria-label="Trilha de navegação institucional fixa">
-                        <div class="simulated-breadcrumbs-bar-inner">
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="#"><span class="material-symbols-outlined material-icons md-16 align-text-bottom" aria-hidden="true">home</span> Início</a></li>
-                                <li class="breadcrumb-item"><a href="#" id="simulatedBreadcrumbArea">Política Monetária</a></li>
-                                <li class="breadcrumb-item active" aria-current="page" id="simulatedBreadcrumbTitle">Taxa Selic: Decisão do Copom e Série SGS</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quadro do Protótipo Autônomo Carregado via Iframe Dinâmico -->
+        <div id="previewStage" class="bcb-harness-stage mode-desktop">
+            <div id="previewFrameWrapper" class="bcb-harness-device viewport-desktop">
                 <iframe id="previewFrame" class="bcb-harness-frame" title="Quadro de Visualização do Protótipo Oficial" src="copom-decisao-taxa-selic.html"></iframe>
-
-                <!-- Casca Institucional Inferior Simulada -->
-                <footer id="simulatedShellBottom" class="simulated-footer-bcb" role="contentinfo" aria-label="Rodapé Institucional do Banco Central Simulado">
-                    <div class="simulated-footer-inner">
-                        <div class="simulated-footer-grid">
-                            <div>
-                                <div class="simulated-footer-title">Banco Central do Brasil</div>
-                                <p class="mb-2 text-white-50 small">Autarquia federal vinculada ao Ministério da Fazenda.</p>
-                                <p class="mb-0 text-white-50 small">SBS Quadra 3 Bloco B — Edifício-Sede<br>Brasília — DF &bull; CEP: 70074-900</p>
-                            </div>
-                            <div>
-                                <div class="simulated-footer-title">Canais de Atendimento</div>
-                                <ul class="simulated-footer-list">
-                                    <li><a href="#">Fale Conosco</a></li>
-                                    <li><a href="#">Ouvidoria BCB: 145</a></li>
-                                    <li><a href="#">e-SIC (Acesso à Informação)</a></li>
-                                    <li><a href="#">Registrato</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <div class="simulated-footer-title">Transparência e Regulação</div>
-                                <ul class="simulated-footer-list">
-                                    <li><a href="#">Atos Normativos e Resoluções</a></li>
-                                    <li><a href="#">Estatísticas e Séries SGS</a></li>
-                                    <li><a href="#">Políticas de Privacidade e Cookies</a></li>
-                                    <li><a href="#">Termos de Uso e Padrões Web</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="simulated-footer-bottom">
-                            <span>&copy; Banco Central do Brasil — Todos os direitos reservados. (Casca Institucional Fixa do Portal Simulada no Harness)</span>
-                        </div>
-                    </div>
-                </footer>
             </div>
         </div>
     </main>
 
-    <!-- Componente Toast de Feedback (Acessível) -->
-    <div id="harnessToast" class="bcb-harness-toast" role="status" aria-live="polite" aria-atomic="true">
-        <span class="material-symbols-outlined material-icons md-20 harness-icon-success" aria-hidden="true">check_circle</span>
-        <span id="toastMessage">HTML do miolo copiado com sucesso!</span>
-    </div>
-
     <script>
         (function() {
+            'use strict';
+
             const frame = document.getElementById('previewFrame');
-            const deviceContainer = document.getElementById('deviceContainer');
+            const previewStage = document.getElementById('previewStage');
+            const previewFrameWrapper = document.getElementById('previewFrameWrapper');
             const selectPrototipo = document.getElementById('selectPrototipo');
-            const themeButtons = document.querySelectorAll('[data-theme-target]');
             const viewportButtons = document.querySelectorAll('[data-viewport]');
-            const harnessLayout = document.querySelector('.bcb-harness-layout');
-            const btnToggleBriefing = document.getElementById('btnToggleBriefing');
-            const btnCloseDrawer = document.getElementById('btnCloseDrawer');
-            const briefingTitle = document.getElementById('briefingTitle');
-            const briefingContent = document.getElementById('briefingContent');
-
-            let currentTheme = 'default';
-
-            // Dicionário canônico dos briefings de demandas (.docs-ia/exemplos-demandas/)
-            const DEMANDAS = {
-                'copom-decisao-taxa-selic.html': {
-                    arquivo: '.docs-ia/exemplos-demandas/01-comunicado-normativo.md',
-                    titulo: 'Modelo 1: Comunicado Normativo & Copom',
-                    origem: 'Assessoria de Imprensa (ASIMP) / Secretaria do Copom',
-                    objetivo: 'Noticiar a decisão da 268ª Reunião do Copom (elevação da Selic para 14,25% a.a.) e disponibilizar notas oficiais.',
-                    publico: 'Jornalistas, analistas de mercado e sociedade.',
-                    padraoUX: 'Comunicação Normativa (Layout 70/30 com citação e downloads)',
-                    textoBruto: 'O Comitê de Política Monetária (Copom) do Banco Central do Brasil decidiu, por unanimidade, elevar a taxa Selic em 1,00 ponto percentual, para 14,25% ao ano, na sua 268ª reunião concluída em 12 de março de 2026.\n\nA decisão reflete o cenário de pressões inflacionárias no horizonte relevante de política monetária...\n\nDeclaração: "A convergência da inflação para a meta estabelecida pelo CMN é o compromisso inegociável da autoridade monetária..."',
-                    instrucao: 'Diagramar o miolo desta nota normativa adotando o layout modular 70/30 (.bcb-col-lg-8 para o corpo editorial com lead e citação oficial diretorial, e .bcb-col-lg-4 para a coluna lateral com os downloads dos atos e resoluções em .documentos).'
-                },
-                'sgs-series-taxa-selic.html': {
-                    arquivo: '.docs-ia/exemplos-demandas/02-dados-sgs-indicadores.md',
-                    titulo: 'Modelo 2: Séries Temporais SGS & Dados Abertos',
-                    origem: 'Departamento de Estatísticas do Banco Central (DSTAT)',
-                    objetivo: 'Publicar a série histórica das últimas reuniões do Copom com visualização imediata das taxas vigentes e exportação de dados abertos.',
-                    publico: 'Pesquisadores, economistas e instituições autorizadas.',
-                    padraoUX: 'Painel Analítico de Indicadores & Tabela Densa SGS',
-                    textoBruto: 'Reuniao;Data_Inicio;Data_Fim;Meta_Taxa_aa;Variacao_pp;Ata_Publicada\n268ª;11/03/2026;12/03/2026;14.25;+1.00;Pendente\n267ª;28/01/2026;29/01/2026;13.25;0.00;Sim\n266ª;10/12/2025;11/12/2025;13.25;-0.25;Sim\n265ª;05/11/2025;06/11/2025;13.50;-0.50;Sim',
-                    instrucao: 'Diagramar o miolo do painel destacando os 3 números-chave no topo em cards (.bcb-indicator-card) no arranjo 33/33/33 (.bcb-col-md-4). Estruturar a série histórica em Data Table acessível com <caption>, thead institucional, alinhamento numérico à direita e bloco de exportação (.bcb-data-export) para CSV e JSON em largura total (.bcb-col-12).'
-                },
-                'mecanismo-especial-devolucao-med.html': {
-                    arquivo: '.docs-ia/exemplos-demandas/03-servico-passo-a-passo.md',
-                    titulo: 'Modelo 3: Serviço ao Cidadão & Guia com Stepper',
-                    origem: 'Departamento de Atendimento Institucional (DEATI) / Gerência do Pix',
-                    objetivo: 'Explicar como contestar fraudes via MED do Pix, ressaltando que o BCB não cobra taxas nem pede senhas.',
-                    publico: 'Pessoas físicas, correntistas bancários e usuários do Pix.',
-                    padraoUX: 'Guia de Serviço com Stepper Sequencial, Alertas Críticos e FAQ',
-                    textoBruto: 'Serviço: Mecanismo Especial de Devolução (MED) do Pix\n\nEtapas obrigatórias:\n1. Registro imediato da infração no seu banco (até 80 dias).\n2. Notificação e bloqueio cautelar (até 72 horas).\n3. Conclusão da análise pericial e estorno (até 96 horas).\n\nAviso Crítico: O BCB NUNCA entra em contato pedindo senhas ou cobrando taxas!',
-                    instrucao: 'Diagramar o miolo do serviço com abertura institucional em 100%, stepper sequencial (.process-list) numerado com as 3 etapas de solicitação, callout de alerta de segurança elevado (.callout.callout-warning.callout-elevated) com alto contraste destacando o aviso contra golpes, e seção final de dúvidas com acordeão acessível (.accordion.modelo-1).'
-                },
-                'regras-cheque-especial.html': {
-                    arquivo: '.docs-ia/exemplos-demandas/04-conteudo-html-legado.md',
-                    titulo: 'Modelo 4: Refatoração de HTML Legado',
-                    origem: 'Departamento de Comunicação Interna e Externa',
-                    objetivo: 'Modernizar e converter código HTML antigo com tabelas de layout para a arquitetura semântica do BCB Design System.',
-                    publico: 'Correntistas, consumidores de crédito e microempresas.',
-                    padraoUX: 'Refatoração Semântica em Grid 12 Colunas (.bcb-row e .bcb-col-*)',
-                    textoBruto: 'Código antigo com <table bgcolor="#f5f5f5"> e <font face="Arial">\n\nRegra Chave: O banco não pode cobrar tarifa de disponibilização para limites de cheque especial até R$ 500,00. Uso de mais de 15% por mais de 30 dias exige proposta ativa de parcelamento.',
-                    instrucao: 'Converter este HTML legado em um miolo semântico moderno e acessível: substituir as tabelas de layout pelo Grid de 12 colunas do BCB em arranjo 70/30 (.bcb-col-12.bcb-col-lg-8 e .bcb-col-12.bcb-col-lg-4), converter a fonte e cores antigas para a tipografia oficial e variáveis CSS do Manual de Marca, transformar o aviso inline em um .callout.callout-warning acessível, e estruturar os links da barra lateral como cards canônicos de download (.documentos .documento).'
-                }
-            };
-
-            function renderBriefing(slug) {
-                const demanda = DEMANDAS[slug];
-                if (!demanda) {
-                    briefingTitle.textContent = 'Briefing da Demanda';
-                    briefingContent.innerHTML = `
-                        <div class="bcb-briefing-meta">
-                            <dl class="mb-0">
-                                <dt>Status do Briefing</dt>
-                                <dd>Demanda Externa / Personalizada</dd>
-                            </dl>
-                        </div>
-                        <p class="text-muted small">Este protótipo não possui um arquivo markdown associado em <code>.docs-ia/exemplos-demandas/</code>.</p>
-                    `;
-                    return;
-                }
-
-                briefingTitle.textContent = demanda.titulo;
-                briefingContent.innerHTML = `
-                    <div class="mb-3">
-                        <span class="badge badge-info harness-badge-file">Arquivo: ${demanda.arquivo}</span>
-                    </div>
-
-                    <div class="bcb-briefing-meta">
-                        <dl class="mb-0">
-                            <dt>Origem / Solicitante</dt>
-                            <dd>${demanda.origem}</dd>
-                            <dt>Objetivo da Comunicação</dt>
-                            <dd>${demanda.objetivo}</dd>
-                            <dt>Público-Alvo</dt>
-                            <dd>${demanda.publico}</dd>
-                            <dt>Padrão de UX Recomendado</dt>
-                            <dd>${demanda.padraoUX}</dd>
-                        </dl>
-                    </div>
-
-                    <h3 class="h6 font-weight-bold text-white mb-2">Insumo Bruto da Área de Negócio:</h3>
-                    <pre class="bcb-briefing-raw">${demanda.textoBruto}</pre>
-
-                    <h3 class="h6 font-weight-bold text-white mb-2">Instrução ao Especialista / Agente:</h3>
-                    <div class="bcb-briefing-instruction">
-                        "${demanda.instrucao}"
-                    </div>
-                `;
-            }
-
-            let currentMainHtml = '';
-            let currentSlug = '';
-
-            const AREAS = {
-                'copom-decisao-taxa-selic.html': { area: 'Política Monetária', title: 'Taxa Selic e Decisão do Copom' },
-                'sgs-series-taxa-selic.html': { area: 'Estatísticas', title: 'Séries Temporais SGS' },
-                'mecanismo-especial-devolucao-med.html': { area: 'Estabilidade Financeira', title: 'Mecanismo Especial de Devolução (MED)' },
-                'regras-cheque-especial.html': { area: 'Sistema Financeiro', title: 'Regras do Cheque Especial' },
-                'resolucao-bcb-dou.html': { area: 'Estabilidade Financeira', title: 'Resolução BCB nº 492' }
-            };
-
-            const btnOpenIsolated = document.getElementById('btnOpenIsolated');
-            const btnModeShell = document.getElementById('btnModeShell');
-            const btnModePure = document.getElementById('btnModePure');
-            const simulatedShellTop = document.getElementById('simulatedShellTop');
-            const simulatedShellBottom = document.getElementById('simulatedShellBottom');
-
-            if (btnModeShell && btnModePure) {
-                btnModeShell.addEventListener('click', () => {
-                    btnModeShell.classList.add('active');
-                    btnModePure.classList.remove('active');
-                    if (simulatedShellTop) simulatedShellTop.style.display = 'block';
-                    if (simulatedShellBottom) simulatedShellBottom.style.display = 'block';
-                });
-
-                btnModePure.addEventListener('click', () => {
-                    btnModePure.classList.add('active');
-                    btnModeShell.classList.remove('active');
-                    if (simulatedShellTop) simulatedShellTop.style.display = 'none';
-                    if (simulatedShellBottom) simulatedShellBottom.style.display = 'none';
-                });
-            }
-
-            function loadPrototype(slug) {
-                currentSlug = slug;
-                renderBriefing(slug);
-
-                if (btnOpenIsolated) {
-                    btnOpenIsolated.href = slug;
-                }
-
-                const fallback = AREAS[slug] || {};
-                const finalArea = fallback.area || 'Serviços e Informações';
-                const finalTitle = fallback.title || slug.replace('.html', '').replace(/-/g, ' ');
-
-                const breadcrumbArea = document.getElementById('simulatedBreadcrumbArea');
-                const breadcrumbTitle = document.getElementById('simulatedBreadcrumbTitle');
-                if (breadcrumbArea) breadcrumbArea.textContent = finalArea;
-                if (breadcrumbTitle) breadcrumbTitle.textContent = finalTitle;
-
-                // Carregamento dinâmico direto via iframe nativo (100% imediato e compatível com file:/// e http://)
-                frame.src = slug;
-            }
-
-            function applyThemeToFrame(theme) {
-                currentTheme = theme;
-                themeButtons.forEach(btn => {
-                    btn.classList.toggle('active', btn.getAttribute('data-theme-target') === theme);
-                });
-
-                const themeAttr = (theme === 'dark') ? 'dark' : (theme === 'high-contrast' ? 'high-contrast' : 'light');
-                const contrastAttr = (theme === 'high-contrast') ? 'high' : 'normal';
-
-                if (deviceContainer) {
-                    deviceContainer.setAttribute('data-theme', themeAttr);
-                    deviceContainer.setAttribute('data-contrast', contrastAttr);
-                }
-
-                // 1. Tentar manipulação direta de atributos no documento do iframe
-                try {
-                    const doc = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
-                    if (doc && doc.documentElement) {
-                        doc.documentElement.setAttribute('data-theme', themeAttr);
-                        doc.documentElement.setAttribute('data-contrast', contrastAttr);
-                        if (doc.body) {
-                            doc.body.setAttribute('data-theme', themeAttr);
-                            doc.body.setAttribute('data-contrast', contrastAttr);
-                        }
-                    }
-                } catch(e) {
-                    console.warn('Frame theme context:', e);
-                }
-
-                // 2. PostMessage defensivo para sincronização assíncrona / file:///
-                try {
-                    if (frame.contentWindow) {
-                        frame.contentWindow.postMessage({ action: 'set-theme', theme: currentTheme, themeAttr, contrastAttr }, '*');
-                    }
-                } catch(e) {}
-            }
+            const btnOpenNewTab = document.getElementById('btnOpenNewTab');
 
             function setViewport(viewport) {
                 viewportButtons.forEach(btn => {
-                    btn.classList.toggle('active', btn.getAttribute('data-viewport') === viewport);
+                    const isActive = btn.getAttribute('data-viewport') === viewport;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
                 });
-                deviceContainer.className = `bcb-harness-device viewport-${viewport}`;
+
+                if (previewStage && previewFrameWrapper) {
+                    previewStage.className = `bcb-harness-stage mode-${viewport}`;
+                    previewFrameWrapper.className = `bcb-harness-device viewport-${viewport}`;
+                }
             }
 
-            function toggleDrawer(forceState) {
-                const isOpen = typeof forceState === 'boolean' ? forceState : !harnessLayout.classList.contains('drawer-open');
-                harnessLayout.classList.toggle('drawer-open', isOpen);
-                btnToggleBriefing.classList.toggle('active', isOpen);
-                btnToggleBriefing.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                briefingDrawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-                if (isOpen) {
-                    btnCloseDrawer.focus();
-                } else if (document.activeElement === btnCloseDrawer || briefingDrawer.contains(document.activeElement)) {
-                    btnToggleBriefing.focus();
+            function loadPrototype(slug) {
+                if (btnOpenNewTab) {
+                    btnOpenNewTab.href = slug;
+                }
+                if (frame) {
+                    frame.src = slug;
                 }
             }
 
@@ -1009,59 +366,15 @@
                 loadPrototype(slug);
             });
 
-            frame.addEventListener('load', () => {
-                applyThemeToFrame(currentTheme);
-                try {
-                    const doc = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
-                    if (doc) {
-                        const mainEl = doc.querySelector('main#conteudo-principal') || doc.querySelector('main');
-                        if (mainEl) currentMainHtml = mainEl.outerHTML;
-
-                        const tagEl = mainEl ? mainEl.querySelector('.tag-bcb') : null;
-                        const h1El = mainEl ? (mainEl.querySelector('h1.bcb-page-title') || mainEl.querySelector('h1')) : null;
-
-                        const breadcrumbArea = document.getElementById('simulatedBreadcrumbArea');
-                        const breadcrumbTitle = document.getElementById('simulatedBreadcrumbTitle');
-                        if (tagEl && tagEl.textContent.trim() && breadcrumbArea) {
-                            breadcrumbArea.textContent = tagEl.textContent.trim();
-                        }
-                        if (h1El && h1El.textContent.trim() && breadcrumbTitle) {
-                            breadcrumbTitle.textContent = h1El.textContent.trim();
-                        }
-                    }
-                } catch (err) {
-                    console.warn('Frame load processing:', err);
-                }
-            });
-
-            themeButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    applyThemeToFrame(btn.getAttribute('data-theme-target'));
-                });
-            });
-
             viewportButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     setViewport(btn.getAttribute('data-viewport'));
                 });
             });
 
-            btnToggleBriefing.addEventListener('click', () => toggleDrawer());
-            btnCloseDrawer.addEventListener('click', () => toggleDrawer(false));
-
-            // Fechamento da gaveta de briefing via tecla Escape (WCAG 2.1)
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' || e.key === 'Esc') {
-                    if (harnessLayout.classList.contains('drawer-open')) {
-                        toggleDrawer(false);
-                    }
-                }
-            });
-
-            // Suporte a abertura direta parametrizada: _harness.html?src=...&doc=...
+            // Suporte a abertura parametrizada: _harness.html?src=nome.html
             const urlParams = new URLSearchParams(window.location.search);
             const paramSrc = urlParams.get('src');
-            const paramDoc = urlParams.get('doc');
 
             let prototipoInicial = 'copom-decisao-taxa-selic.html';
             if (paramSrc) {
@@ -1074,76 +387,7 @@
                 }
             }
 
-            // Se paramDoc ou paramSrc foi informado, abre o split-screen de briefing automaticamente
-            if (paramDoc || paramSrc) {
-                toggleDrawer(true);
-            }
-
-            // Utilitário de Cópia do HTML do Miolo (<main>) com Toast
-            const btnCopyMain = document.getElementById('btnCopyMain');
-            const harnessToast = document.getElementById('harnessToast');
-            const toastMessage = document.getElementById('toastMessage');
-            let toastTimeout = null;
-
-            function showToast(msg, isSuccess = true) {
-                toastMessage.textContent = msg;
-                harnessToast.style.borderLeftColor = isSuccess ? '#4ade80' : '#f87171';
-                harnessToast.classList.add('show');
-                if (toastTimeout) clearTimeout(toastTimeout);
-                toastTimeout = setTimeout(() => {
-                    harnessToast.classList.remove('show');
-                }, 3000);
-            }
-
-            function fallbackCopy(text) {
-                const textarea = document.createElement('textarea');
-                textarea.value = text;
-                textarea.style.position = 'fixed';
-                textarea.style.opacity = '0';
-                document.body.appendChild(textarea);
-                textarea.focus();
-                textarea.select();
-                try {
-                    document.execCommand('copy');
-                    showToast('HTML do miolo (<main>) copiado com sucesso! Pronto para colar no CMS.');
-                } catch (e) {
-                    showToast('Não foi possível copiar automaticamente.', false);
-                }
-                document.body.removeChild(textarea);
-            }
-
-            if (btnCopyMain) {
-                btnCopyMain.addEventListener('click', () => {
-                    try {
-                        let htmlToCopy = currentMainHtml;
-                        if (!htmlToCopy) {
-                            const doc = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
-                            if (doc) {
-                                const mainEl = doc.querySelector('main#conteudo-principal') || doc.querySelector('main');
-                                if (mainEl) htmlToCopy = mainEl.outerHTML;
-                            }
-                        }
-                        if (!htmlToCopy) throw new Error('Elemento <main> não encontrado no protótipo');
-
-                        if (navigator.clipboard && navigator.clipboard.writeText) {
-                            navigator.clipboard.writeText(htmlToCopy).then(() => {
-                                showToast('HTML do miolo (<main>) copiado com sucesso! Pronto para colar no CMS.');
-                            }).catch(() => {
-                                fallbackCopy(htmlToCopy);
-                            });
-                        } else {
-                            fallbackCopy(htmlToCopy);
-                        }
-                    } catch (err) {
-                        console.error('Erro ao copiar miolo:', err);
-                        showToast('Erro ao copiar HTML do miolo.', false);
-                    }
-                });
-            }
-
-            // Inicialização do briefing e carregamento do protótipo no frame
-            const slugInicial = prototipoInicial.split('/').pop();
-            loadPrototype(slugInicial);
+            loadPrototype(prototipoInicial.split('/').pop());
         })();
     </script>
 </body>
