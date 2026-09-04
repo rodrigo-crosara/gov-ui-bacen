@@ -547,6 +547,11 @@ Janelas sobrepostas para confirmação ou inserção de dados.
 - `.bcb-modal--lg`: 850px (Visualização de tabelas, relatórios e formulários multi-campo).
 - `.bcb-modal--xl`: 1140px (Painéis analíticos densos e auditorias de dados).
 
+### Acessibilidade e Ciclo de Vida (WAI-ARIA Modal Pattern)
+- **Focus-Trap Infalível**: Ao abrir o modal, o foco inicial é direcionado ao botão de fechar ou primeiro controle focável. O ciclo das teclas `Tab` e `Shift + Tab` é estritamente confinado dentro da janela modal ativa.
+- **Fechamento por Teclado (`Escape`)**: Acionar `Escape` fecha a janela instantaneamente e devolve o foco ao elemento disparador (`previousActiveElement`).
+- **Fechamento por Clique no Backdrop**: Clicar na área escura externa (backdrop) fecha o diálogo.
+
 ---
 
 ## 16. Alertas e Toast Notifications
@@ -910,6 +915,11 @@ Exibição horizontal acessível com proporção 16:9, botões de rolagem por se
   </div>
 </div>
 ```
+
+### Acessibilidade e Navegação por Teclado (WCAG 2.1 AA)
+- **Navegação por Setas**: O track (`.bcb-video-carousel__track`) e os cards (`.bcb-video-carousel__item`) possuem suporte nativo às teclas `ArrowLeft` e `ArrowRight`, permitindo rolar e transferir o foco sequencialmente.
+- **Anel de Foco Visível**: Botões e itens possuem anel de foco destacado (`outline: 3px solid var(--bcb-color-verde-castell, #088694) !important; outline-offset: 2px !important;`).
+- **Conformidade WAI-ARIA**: Container com `role="region"` e `aria-roledescription="carrossel de vídeos"`; trilha com `role="list"` e `tabindex="0"`; itens com `role="listitem"` e `tabindex="0"`.
 
 ---
 

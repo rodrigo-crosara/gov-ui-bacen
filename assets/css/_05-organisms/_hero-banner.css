@@ -10,11 +10,17 @@
 }
 
 .bcb-hero-banner .row { margin: 0; }
-.bcb-hero-content { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
-.bcb-hero-title { color: var(--bcb-brand-amarellato-biscoito, #F8D48D); margin-bottom: 1rem; font-weight: 700; font-size: var(--bcb-font-600); line-height: 1.2; }
-.bcb-hero-text { font-size: 1.125rem; margin-bottom: 1.5rem; color: var(--bcb-color-white, #FFFFFF); line-height: 1.6; }
-.bcb-hero-img-container { padding: 0; display: flex; justify-content: flex-end; }
-.bcb-hero-img-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 0 var(--bcb-radius-8, 8px) var(--bcb-radius-8, 8px) 0; }
+.bcb-hero-content,
+.bcb-hero-banner__content { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+.bcb-hero-title,
+.bcb-hero-banner__title { color: var(--bcb-brand-amarellato-biscoito, #F8D48D); margin-bottom: 1rem; font-weight: 700; font-size: var(--bcb-font-600); line-height: 1.2; }
+.bcb-hero-text,
+.bcb-hero-banner__description { font-size: 1.125rem; margin-bottom: 1.5rem; color: var(--bcb-color-white, #FFFFFF); line-height: 1.6; }
+.bcb-hero-img-container,
+.bcb-hero-banner__media { padding: 0; display: flex; justify-content: flex-end; }
+.bcb-hero-img-container img,
+.bcb-hero-banner__media img,
+.bcb-hero-banner__media svg { width: 100%; height: 100%; object-fit: cover; border-radius: 0 var(--bcb-radius-8, 8px) var(--bcb-radius-8, 8px) 0; }
 
 /* Variante Split com Imagem na Lateral Direita */
 .bcb-hero-banner--split {
@@ -23,17 +29,21 @@
   align-items: stretch;
 }
 
-.bcb-hero-banner--split .bcb-hero-content {
+.bcb-hero-banner--split .bcb-hero-content,
+.bcb-hero-banner--split .bcb-hero-banner__content {
   flex: 1 1 58%;
   min-width: 0;
 }
 
-.bcb-hero-banner--split .bcb-hero-img-container {
+.bcb-hero-banner--split .bcb-hero-img-container,
+.bcb-hero-banner--split .bcb-hero-banner__media {
   flex: 1 1 42%;
   min-height: 260px;
 }
 
-.bcb-hero-banner--split .bcb-hero-img-container img {
+.bcb-hero-banner--split .bcb-hero-img-container img,
+.bcb-hero-banner--split .bcb-hero-banner__media img,
+.bcb-hero-banner--split .bcb-hero-banner__media svg {
   width: 100%;
   height: 100%;
   object-fit: cover;

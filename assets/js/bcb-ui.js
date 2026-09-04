@@ -710,49 +710,51 @@
       // 10. Inicialização Automática e Declarativa de Gráficos Highcharts Oficiais
       try {
         if (typeof Highcharts !== 'undefined') {
-          // Gráfico Selic Histórico SGS (ex: prototipos/sgs-series-taxa-selic.html)
-          const selicContainer = document.getElementById('chartSelicSgs') || document.querySelector('[data-bcb-chart="selic-history"]');
-          if (selicContainer && !selicContainer._bcbChartInitialized) {
-            selicContainer._bcbChartInitialized = true;
-            Highcharts.chart(selicContainer, {
-              chart: { type: 'spline' },
-              title: { text: 'Evolução da Taxa Selic Fixada pelo Copom' },
-              subtitle: { text: 'Série SGS 432 — Histórico recente de metas de juros (% a.a.)' },
-              xAxis: {
-                categories: ['263ª (Jul/25)', '264ª (Set/25)', '265ª (Nov/25)', '266ª (Dez/25)', '267ª (Jan/26)', '268ª (Mar/26)'],
-                crosshair: true,
-                title: { text: 'Reunião do Copom' }
-              },
-              yAxis: {
-                title: { text: 'Taxa Meta (% a.a.)' },
-                min: 12.5,
-                max: 15.0,
-                tickInterval: 0.5
-              },
-              tooltip: {
-                shared: true,
-                crosshairs: true,
-                valueSuffix: '% a.a.'
-              },
-              plotOptions: {
-                spline: {
-                  dataLabels: {
+          // Gráfico Selic Histórico SGS & Copom
+          const selicContainers = document.querySelectorAll('#chartSelicCopom, #chartSelicSgs, [data-bcb-chart="selic-history"]');
+          selicContainers.forEach(selicContainer => {
+            if (selicContainer && !selicContainer._bcbChartInitialized) {
+              selicContainer._bcbChartInitialized = true;
+              Highcharts.chart(selicContainer, {
+                chart: { type: 'spline' },
+                title: { text: 'Evolução da Taxa Selic Fixada pelo Copom' },
+                subtitle: { text: 'Série SGS 432 — Histórico recente de metas de juros (% a.a.)' },
+                xAxis: {
+                  categories: ['263ª (Jul/25)', '264ª (Set/25)', '265ª (Nov/25)', '266ª (Dez/25)', '267ª (Jan/26)', '268ª (Mar/26)'],
+                  crosshair: true,
+                  title: { text: 'Reunião do Copom' }
+                },
+                yAxis: {
+                  title: { text: 'Taxa Meta (% a.a.)' },
+                  min: 12.5,
+                  max: 15.0,
+                  tickInterval: 0.5
+                },
+                tooltip: {
+                  shared: true,
+                  crosshairs: true,
+                  valueSuffix: '% a.a.'
+                },
+                plotOptions: {
+                  spline: {
+                    dataLabels: {
+                      enabled: true,
+                      format: '{y:.2f}%'
+                    },
+                    enableMouseTracking: true
+                  }
+                },
+                series: [{
+                  name: 'Meta Selic (% a.a.)',
+                  data: [14.25, 14.00, 13.50, 13.25, 13.25, 14.25],
+                  marker: {
                     enabled: true,
-                    format: '{y:.2f}%'
-                  },
-                  enableMouseTracking: true
-                }
-              },
-              series: [{
-                name: 'Meta Selic (% a.a.)',
-                data: [14.25, 14.00, 13.50, 13.25, 13.25, 14.25],
-                marker: {
-                  enabled: true,
-                  radius: 5
-                }
-              }]
-            });
-          }
+                    radius: 5
+                  }
+                }]
+              });
+            }
+          });
         }
       } catch (e) {
         console.warn('BCB UI: Erro na inicialização defensiva de gráficos Highcharts', e);

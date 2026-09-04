@@ -144,6 +144,20 @@ Quando a demanda tiver origem em textos brutos de despachos ou cópias do Diári
 
 ---
 
+### 2.2 Regras de Ouro e Preferências Arquiteturais de Componentes
+
+1. **Abertura de Alto Impacto com Imagem / Conceito Visual:**
+   - **PREFIRA `.bcb-hero-banner--split`** sempre que a demanda fornecer imagem, representação gráfica ou conceito visual forte (ex.: Copom, Drex, Pix, Open Finance, Cidadania). A proporção calibrada de 58% texto e 42% mídia com contraste normativo valoriza o conteúdo e atende a padrões de design modernos.
+2. **Regras Condicionais, Prazos e Árvores de Decisão:**
+   - **UTILIZE OBRIGATORIAMENTE `.bcb-decision-flow`** sempre que houver regras condicionais ou árvore de decisão no insumo ("Se aprovado... caso contrário...", roteiros de segurança, contestações e prazos de devolução). Seus nós generosos (`.bcb-decision-node`) e badges semânticos (`.bcb-decision-badge--yes` e `.bcb-decision-badge--no`) proporcionam clareza e conformidade estrita WCAG AAA.
+3. **Seleção de Tabelas Analíticas Corporativas:**
+   - **Aplique `.table-digital`** (com `.bcb-table-wrapper` e `thead` em azul institucional) para tabelas de dados em painéis web, dashboards e consultas interativas (ex.: séries temporais SGS, comparativo de tarifas e estatísticas).
+   - **Aplique `.table-strict`** para tabelas de relatórios técnicos normativos e documentos oficiais do Depec/Dstat/DOU, oferecendo leitura tabular rigorosa com linhas de separação discretas e alinhamento numérico impecável.
+4. **Encerramento Orientado à Ação:**
+   - **Aplique `.bcb-cta--centered`** no fechamento de páginas informativas para direcionar o próximo passo do usuário (acesso a relatórios completos, canais de atendimento ou download de atas).
+
+---
+
 ## 3. ARQUITETURA DE LINHAS E SLOTS MODULARES (CMS BCB)
 
 O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Colunas Proporcionais (`.bcb-col-*`)**, delimitando cada bloco com **comentários semânticos canônicos de slots**:

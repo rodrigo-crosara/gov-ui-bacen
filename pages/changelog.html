@@ -229,7 +229,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-6-0">v2.6.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-7-0">v2.7.0 (Atual)</a>
+                <a class="nav-link" href="#v2-6-0">v2.6.0</a>
                 <a class="nav-link" href="#v2-5-2">v2.5.2</a>
                 <a class="nav-link" href="#v2-5-1">v2.5.1</a>
                 <a class="nav-link" href="#v2-5-0">v2.5.0</a>
@@ -258,13 +259,44 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.7.0 ============ -->
+            <section id="v2-7-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.7.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Acessibilidade Avançada, Suporte a Temas e Protótipo Integrado</span>
+                        </div>
+                        <div class="version-date">04 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-adicionado">
+                            <div class="change-group-title" style="color: #2e7d32;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">add_circle</span>
+                                Adicionado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Acessibilidade e Navegação por Teclado em Vídeos (<code>assets/js/carousel.js</code> &amp; <code>_videos.css</code>):</strong> Implementação da classe <code>BcbVideoCarousel</code> com controle bidirecional via teclas <code>ArrowLeft</code> / <code>ArrowRight</code>, scroll programático suave baseado na largura dos cards e anel de foco <code>:focus-visible</code> de 3px em ciano corporativo (<code>#088694</code>).</li>
+                                <li><strong>Semântica ARIA para Etapa Corrente (<code>_stepper.css</code> &amp; <code>_process-list.css</code>):</strong> Suporte completo ao atributo <code>aria-current="step"</code> para anunciar com precisão a etapa ativa em leitores de tela.</li>
+                                <li><strong>Focus-Trap e Fechamento via Escape em Modais (<code>assets/js/modal.js</code>):</strong> Retenção estrita de foco em todas as 4 larguras normativas (<code>.bcb-modal--sm</code>, <code>--md</code>, <code>--lg</code>, <code>--xl</code>), fechamento com tecla <code>Escape</code> e restituição garantida do foco ao elemento acionador original.</li>
+                                <li><strong>Acessibilidade na Gaveta Retrátil (<code>prototipos/_harness.html</code>):</strong> Fechamento acessível via tecla <code>Escape</code> e gerenciamento cíclico de foco entre o botão disparador (<code>#toggleDocBtn</code>) e o botão de fechar da gaveta.</li>
+                                <li><strong>Revisão Integral de Alto Contraste e Dark Mode (<code>_high-contrast.css</code> &amp; <code>_dark-mode.css</code>):</strong> Cobertura estrita sob <code>data-contrast="high"</code> (fundo <code>#000000</code>, bordas <code>#FFFFFF</code>, títulos em <code>#FFFF00</code> e badges Sim/Não) e sob <code>data-theme="dark"</code> para CTA Centralizado, Hero Banner Split, Carrossel de Vídeos, Fluxograma de Decisão e Notícia Editorial.</li>
+                                <li><strong>Protótipo Integrado da Taxa Selic (<code>prototipos/copom-decisao-taxa-selic.html</code>):</strong> Demonstração de alta fidelidade semântica harmonizando Hero Split com SVG temático, cards com tooltips conceituais (<code>.bcb-tooltip-btn</code>), gráfico Highcharts oficial da Série SGS 432 com tema institucional do BCB, seção analítica 70/30 com Callout Editorial, tabela analítica Depec (<code>.table-digital</code>) e CTA Centralizado (<code>.bcb-cta--centered</code>).</li>
+                                <li><strong>Heurísticas e Vocabulário de IA (<code>.docs-ia/components.md</code> &amp; <code>SKILL.md</code>):</strong> Diretrizes para diagramação autônoma de Hero Split com imagens, fluxos de decisão condicionais e seleção criteriosa entre tabelas digitais e tabelas estritas documentais.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.6.0 ============ -->
             <section id="v2-6-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.6.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Revisão Fina da Biblioteca de Componentes, Tokens e Vitrine</span>
                         </div>
                         <div class="version-date">04 de Setembro de 2026</div>

@@ -69,11 +69,25 @@ ul.bcb-process-list {
   transition: background-color 0.2s ease;
 }
 
-/* Quando o item estiver ativo / em andamento */
+/* Quando o item estiver ativo / em andamento (Active / aria-current="step") */
 .process-list > li.active::before,
-.bcb-process-list > li.active::before {
+.bcb-process-list > li.active::before,
+.process-list > li[aria-current="step"]::before,
+.bcb-process-list > li[aria-current="step"]::before {
   background-color: var(--bcb-btn-primary-hover, #077391);
   box-shadow: 0 0 0 4px var(--bcb-brand-amarellato, #F9DEAA);
+}
+
+.process-list > li.active > h4,
+.process-list > li.active > h5,
+.process-list > li.active > h6,
+.process-list > li[aria-current="step"] > h4,
+.process-list > li[aria-current="step"] > h5,
+.process-list > li[aria-current="step"] > h6,
+.process-list > li[aria-current="step"] .process-title,
+.bcb-process-list > li[aria-current="step"] .bcb-process-list__title {
+  color: var(--bcb-color-primary, #2E4C59);
+  font-weight: 700;
 }
 
 /* Quando o item estiver concluído */

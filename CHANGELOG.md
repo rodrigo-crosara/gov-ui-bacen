@@ -5,6 +5,24 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.7.0] — 2026-09-04
+
+### Adicionado
+- **Acessibilidade WCAG 2.1 AA / 2.2 e Semântica ARIA:**
+  - **Navegação por Teclado em Vídeos (`assets/js/carousel.js` & `_videos.css`):** Módulo `BcbVideoCarousel` com suporte bidirecional via teclas `ArrowLeft` / `ArrowRight`, rolagem fluida calculada com base na largura dos itens e anel de foco `:focus-visible` de 3px em ciano `#088694` (`--bcb-color-verde-castell`).
+  - **Passo Ativo Semântico (`_stepper.css` & `_process-list.css`):** Adição do seletor `[aria-current="step"]` em conformidade com o WAI-ARIA Authoring Practices Guide para anunciar precisamente a etapa corrente aos leitores de tela.
+  - **Focus-Trap e Tecla Escape em Modais (`assets/js/modal.js`):** Implementação de retenção estrita de foco em todas as 4 variações (`.bcb-modal--sm`, `--md`, `--lg`, `--xl`), impedindo vazamento para o documento subjacente, fechamento via tecla `Escape` e restituição automática do foco ao elemento disparador (`previousActiveElement`).
+  - **Acessibilidade na Gaveta Retrátil (`prototipos/_harness.html`):** Suporte nativo ao fechamento com a tecla `Escape`, transferência automática do foco para o botão de fechar ao abrir e devolução ao botão disparador (`#toggleDocBtn`) ao fechar.
+- **Cobertura de Temas (Dark Mode e Alto Contraste):**
+  - **Estilização de Alto Contraste (`_high-contrast.css`):** Regras especializadas com conformidade estrita WCAG AAA (fundo `#000000`, bordas sólidas `#FFFFFF`, títulos e links em amarelo `#FFFF00`, badges de decisão "Sim" em `#00FF88` e "Não" em `#FF5555`) para `.bcb-cta--centered`, `.bcb-hero-banner--split`, `.bcb-video-carousel`, `.bcb-decision-flow` e `.bcb-news-card--editorial`.
+  - **Estilização de Modo Escuro (`_dark-mode.css`):** Tratamento sob `data-theme="dark"` para as 5 variações recentes de componentes, garantindo legibilidade e harmonia cromática.
+- **Protótipo Integrado da Taxa Selic (`prototipos/copom-decisao-taxa-selic.html`):**
+  - Integração de alta fidelidade semântica combinando Hero Split institucional (`.bcb-hero-banner--split`) com ilustração SVG temática, 3 cards de indicadores de topo com tooltips conceituais (`.bcb-tooltip-btn` e `data-tooltip`), gráfico interativo Highcharts da Série SGS 432 renderizado com tema corporativo oficial do BCB, seção analítica 70/30 com Callout Editorial (`.bcb-callout--editorial`), tabela analítica Depec (`.table-digital`) com linha em destaque da reunião atual e CTA Centralizado (`.bcb-cta--centered`).
+- **Heurísticas e Documentação IA (`.docs-ia/components.md` & `SKILL.md`):**
+  - Atualização do catálogo de especificações com a anatomia e ciclo de vida de modais, carrossel de vídeos e tabelas analíticas.
+  - Inclusão da Seção 2.2 no Guia de Habilidade da IA (`SKILL.md`) com diretrizes para adoção de Hero Split com imagens/mídias, fluxos de decisão (`.bcb-decision-flow`) em regras condicionais e distinção entre `.table-digital` e `.table-strict`.
+  - Inicialização declarativa e unificada de contêineres Highcharts via seletor `#chartSelicCopom, #chartSelicSgs, [data-bcb-chart="selic-history"]` em `assets/js/bcb-ui.js`.
+
 ## [2.6.0] — 2026-09-04
 
 ### Adicionado

@@ -612,6 +612,11 @@
                     toggleDocBtn.classList.toggle('active', isOpen);
                     toggleDocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 }
+                if (isOpen) {
+                    if (closeDocBtn) closeDocBtn.focus();
+                } else {
+                    if (toggleDocBtn) toggleDocBtn.focus();
+                }
             }
 
             function renderSimpleMarkdown(md) {
@@ -773,6 +778,7 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' || e.key === 'Esc') {
                     if (docDrawer && docDrawer.classList.contains('open')) {
+                        e.preventDefault();
                         toggleDocDrawer(false);
                     }
                 }
