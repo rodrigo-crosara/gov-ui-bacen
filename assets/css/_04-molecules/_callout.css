@@ -21,7 +21,8 @@
     --bg-gray-light: #f8f9fb;
 }
 
-.callout {
+.callout,
+.bcb-callout {
     padding: var(--bcb-space-5, 1.25rem);
     margin: var(--bcb-spacing-lg, 1.5rem) 0;
     border-radius: var(--bcb-radius-4, 4px);
@@ -32,12 +33,16 @@
 }
 
 .callout a:focus-visible,
-.callout button:focus-visible {
+.callout button:focus-visible,
+.bcb-callout a:focus-visible,
+.bcb-callout button:focus-visible {
     outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
     outline-offset: 2px !important;
 }
 
-.callout-content {
+.callout-content,
+.bcb-callout-content,
+.bcb-callout__content {
     flex-grow: 1;
     min-width: 0;
 }
@@ -48,7 +53,9 @@
 .callout h4.callout-title,
 .callout .callout-content > h2,
 .callout .callout-content > h3,
-.callout .callout-content > h4 {
+.callout .callout-content > h4,
+.bcb-callout-title,
+.bcb-callout__title {
     margin-top: 0;
     margin-bottom: var(--bcb-space-2, 0.5rem);
     font-size: 1.125rem;
@@ -56,16 +63,22 @@
     line-height: 1.35;
 }
 
-.callout p {
+.callout p,
+.bcb-callout p,
+.bcb-callout__description {
     line-height: 1.6;
     margin-bottom: var(--bcb-space-2, 0.5rem);
 }
 
-.callout p:last-child {
+.callout p:last-child,
+.bcb-callout p:last-child,
+.bcb-callout__description:last-child {
     margin-bottom: 0;
 }
 
-.callout-icon {
+.callout-icon,
+.bcb-callout-icon,
+.bcb-callout__icon {
     font-size: 2rem !important;
     line-height: 1;
     flex-shrink: 0;
@@ -77,57 +90,149 @@
 }
 
 /* 15.1 Variações Estruturais */
-.callout-left-bordered {
+.callout-left-bordered,
+.bcb-callout--left-bordered {
     border-left: 6px solid transparent;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
 
-.callout-outline {
+.callout-outline,
+.bcb-callout--outline {
     border: 1px solid transparent;
-    background-color: white !important;
+    background-color: var(--bcb-color-white, #ffffff) !important;
 }
 
-.callout-elevated {
+.callout-elevated,
+.bcb-callout--elevated {
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    background-color: white;
+    background-color: var(--bcb-color-white, #ffffff);
     border-left: 6px solid transparent;
 }
 
-/* 15.2 Variações Semânticas (Cores) */
+/* 15.2 Variações Semânticas Oficiais */
 
-/* Brand / Informação Padrão */
-.callout-brand { background-color: var(--bg-brand-light); }
-.callout-brand.callout-left-bordered, .callout-brand.callout-elevated { border-left-color: var(--bcb-brand-blue); }
-.callout-brand.callout-outline { border-color: var(--bcb-brand-blue); }
-.callout-brand .callout-icon, .callout-brand .callout-title { color: var(--bcb-brand-blue); }
+/* Info / Brand Institucional */
+.callout-brand,
+.bcb-callout--info {
+    background-color: var(--bg-brand-light, #f0f7f9);
+    border-left: 6px solid var(--bcb-color-primary, #2E4C59);
+}
+.callout-brand.callout-outline,
+.bcb-callout--info.bcb-callout--outline {
+    border-color: var(--bcb-color-primary, #2E4C59);
+}
+.callout-brand .callout-icon,
+.callout-brand .callout-title,
+.bcb-callout--info .bcb-callout-icon,
+.bcb-callout--info .bcb-callout__icon,
+.bcb-callout--info .bcb-callout-title,
+.bcb-callout--info .bcb-callout__title {
+    color: var(--bcb-color-primary, #2E4C59);
+}
 
 /* Sucesso */
-.callout-success { background-color: var(--bg-verde-light); }
-.callout-success.callout-left-bordered, .callout-success.callout-elevated { border-left-color: var(--bcb-brand-verde-susta); }
-.callout-success.callout-outline { border-color: var(--bcb-brand-verde-susta); }
-.callout-success .callout-icon, .callout-success .callout-title { color: var(--bcb-brand-verde-susta); }
+.callout-success,
+.bcb-callout--success {
+    background-color: var(--bg-verde-light, #f0f8f8);
+    border-left: 6px solid var(--bcb-brand-verde-susta, #067078);
+}
+.callout-success.callout-outline,
+.bcb-callout--success.bcb-callout--outline {
+    border-color: var(--bcb-brand-verde-susta, #067078);
+}
+.callout-success .callout-icon,
+.callout-success .callout-title,
+.bcb-callout--success .bcb-callout-icon,
+.bcb-callout--success .bcb-callout__icon,
+.bcb-callout--success .bcb-callout-title,
+.bcb-callout--success .bcb-callout__title {
+    color: var(--bcb-brand-verde-susta, #067078);
+}
 
-/* Alerta / Atenção (Baseado em Amarellato Biscoito / Cafellato com texto em Vinho Autêntico para ratio WCAG AAA > 7.7:1) */
-.callout-warning { background-color: var(--bg-amarellato-light, #fefbfa); }
-.callout-warning.callout-left-bordered, .callout-warning.callout-elevated { border-left-color: var(--bcb-feedback-warning-border, #DEBE7F); }
-.callout-warning.callout-outline { border-color: var(--bcb-feedback-warning-border, #DEBE7F); }
-.callout-warning .callout-icon, .callout-warning .callout-title { color: var(--bcb-brand-vinho-autentico, #47373A); }
+/* Alerta / Atenção (Amarellato / Cafellato com alto contraste) */
+.callout-warning,
+.bcb-callout--warning {
+    background-color: var(--bg-amarellato-light, #fefbfa);
+    border-left: 6px solid var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+}
+.callout-warning.callout-outline,
+.bcb-callout--warning.bcb-callout--outline {
+    border-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+}
+.callout-warning .callout-icon,
+.callout-warning .callout-title,
+.bcb-callout--warning .bcb-callout-icon,
+.bcb-callout--warning .bcb-callout__icon,
+.bcb-callout--warning .bcb-callout-title,
+.bcb-callout--warning .bcb-callout__title {
+    color: var(--bcb-brand-vinho-autentico, #47373A);
+}
 
-/* Erro / Crítico (Marsala Suave - var(--bcb-brand-marsala)) */
-.callout-danger { background-color: var(--bg-vinho-light); }
-.callout-danger.callout-left-bordered, .callout-danger.callout-elevated { border-left-color: var(--bcb-brand-marsala); }
-.callout-danger.callout-outline { border-color: var(--bcb-brand-marsala); }
-.callout-danger .callout-icon, .callout-danger .callout-title { color: var(--bcb-brand-marsala); }
+/* Perigo / Erro Crítico (Vinho / Marsala) */
+.callout-danger,
+.bcb-callout--danger {
+    background-color: var(--bg-vinho-light, #f5f7f8);
+    border-left: 6px solid var(--bcb-brand-vinho-autentico, #47373A);
+}
+.callout-danger.callout-outline,
+.bcb-callout--danger.bcb-callout--outline {
+    border-color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+.callout-danger .callout-icon,
+.callout-danger .callout-title,
+.bcb-callout--danger .bcb-callout-icon,
+.bcb-callout--danger .bcb-callout__icon,
+.bcb-callout--danger .bcb-callout-title,
+.bcb-callout--danger .bcb-callout__title {
+    color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+
+/* Editorial / Caixa de Dica Destacada (Evolução Canônica da Tip-Box) */
+.bcb-callout--editorial,
+.tip-box {
+    background-color: #FFF8E8;
+    border-left: 6px solid var(--bcb-color-primary, #2E4C59);
+    border-radius: var(--bcb-radius-4, 4px);
+    padding: var(--bcb-space-4, 1rem) var(--bcb-space-5, 1.25rem);
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--bcb-space-4, 1rem);
+}
+.bcb-callout--editorial.callout-outline {
+    border-color: var(--bcb-color-primary, #2E4C59);
+}
+.bcb-callout--editorial .bcb-callout__icon,
+.bcb-callout--editorial .callout-icon,
+.bcb-callout--editorial .callout-title,
+.bcb-callout--editorial .bcb-callout__title,
+.tip-box .material-icons,
+.tip-box .material-symbols-outlined {
+    color: var(--bcb-color-primary, #2E4C59);
+}
 
 /* Neutro */
-.callout-neutral { background-color: var(--bg-gray-light); }
-.callout-neutral.callout-left-bordered, .callout-neutral.callout-elevated { border-left-color: #a0aec0; }
-.callout-neutral.callout-outline { border-color: var(--bcb-gray-200); }
-.callout-neutral .callout-icon, .callout-neutral .callout-title { color: #4a5568; }
+.callout-neutral,
+.bcb-callout--neutral {
+    background-color: var(--bg-gray-light, #f8f9fb);
+    border-left: 6px solid #a0aec0;
+}
+.callout-neutral.callout-outline,
+.bcb-callout--neutral.bcb-callout--outline {
+    border-color: var(--bcb-gray-200);
+}
+.callout-neutral .callout-icon,
+.callout-neutral .callout-title,
+.bcb-callout--neutral .callout-icon,
+.bcb-callout--neutral .callout-title {
+    color: #4a5568;
+}
 
 /* 15.3 Botões e Links no Callout */
-.callout-actions {
+.callout-actions,
+.bcb-callout-actions,
+.bcb-callout__actions {
     margin-top: 1.25rem;
     display: flex;
     gap: 10px;

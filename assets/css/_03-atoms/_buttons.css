@@ -64,49 +64,63 @@
 }
 
 /* ==========================================================================
-   2. BOTÃO SECUNDÁRIO / OUTLINE (Borda Azul Blue, Fundo Transparente)
+   2. BOTÃO SECUNDÁRIO (Fundo Suave #EBF2F5, Borda e Texto #2E4C59)
    ========================================================================== */
 .bcb-btn--secondary,
-.btn-secondary,
-.btn-outline-primary {
-  background-color: transparent !important;
-  border-color: var(--bcb-btn-primary-bg, #025C75) !important;
-  color: var(--bcb-btn-primary-bg, #025C75) !important;
+.btn-secondary {
+  background-color: #EBF2F5 !important;
+  border-color: var(--bcb-color-primary, #2E4C59) !important;
+  color: var(--bcb-color-primary, #2E4C59) !important;
 }
 
 .bcb-btn--secondary:hover,
-.btn-secondary:hover,
-.btn-outline-primary:hover {
-  background-color: rgba(2, 92, 117, 0.08) !important;
-  border-color: var(--bcb-btn-primary-hover, #077391) !important;
-  color: var(--bcb-btn-primary-hover, #077391) !important;
+.btn-secondary:hover {
+  background-color: var(--bcb-color-primary, #2E4C59) !important;
+  border-color: var(--bcb-color-primary, #2E4C59) !important;
+  color: #FFFFFF !important;
 }
 
 .bcb-btn--secondary:active,
-.btn-secondary:active,
-.btn-outline-primary:active {
-  background-color: rgba(2, 92, 117, 0.16) !important;
-  border-color: var(--bcb-btn-primary-active, #2E4C59) !important;
-  color: var(--bcb-btn-primary-active, #2E4C59) !important;
+.btn-secondary:active {
+  background-color: #233a44 !important;
+  border-color: #233a44 !important;
+  color: #FFFFFF !important;
 }
 
 /* ==========================================================================
-   3. BOTÃO TERCIÁRIO / GHOST
+   3. BOTÃO TERCIÁRIO / OUTLINE (Contorno Sutil Neutro)
    ========================================================================== */
-.bcb-btn--tertiary {
-  background-color: transparent;
-  border-color: transparent;
-  color: var(--bcb-btn-primary-bg, #025C75);
+.bcb-btn--tertiary,
+.btn-tertiary,
+.bcb-btn--outline,
+.btn-outline,
+.btn-outline-primary,
+.btn-outline-secondary {
+  background-color: transparent !important;
+  border: 1px solid var(--bcb-gray-400, #B7C0CB) !important;
+  color: var(--bcb-color-primary, #2E4C59) !important;
 }
 
-.bcb-btn--tertiary:hover {
-  background-color: rgba(2, 92, 117, 0.06);
-  color: var(--bcb-btn-primary-hover, #077391);
+.bcb-btn--tertiary:hover,
+.btn-tertiary:hover,
+.bcb-btn--outline:hover,
+.btn-outline:hover,
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover {
+  background-color: var(--bcb-gray-100, #F8F9FA) !important;
+  border-color: var(--bcb-gray-500, #9AA6B2) !important;
+  color: var(--bcb-color-primary, #2E4C59) !important;
 }
 
-.bcb-btn--tertiary:active {
-  background-color: rgba(2, 92, 117, 0.12);
-  color: var(--bcb-btn-primary-active, #2E4C59);
+.bcb-btn--tertiary:active,
+.btn-tertiary:active,
+.bcb-btn--outline:active,
+.btn-outline:active,
+.btn-outline-primary:active,
+.btn-outline-secondary:active {
+  background-color: var(--bcb-gray-200, #E9ECEF) !important;
+  border-color: var(--bcb-color-primary, #2E4C59) !important;
+  color: var(--bcb-color-primary, #2E4C59) !important;
 }
 
 /* ==========================================================================

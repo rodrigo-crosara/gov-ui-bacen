@@ -80,14 +80,27 @@
 }
 
 /* 3. Variante Empilhada / Centralizada */
+.bcb-cta--centered,
 .bcb-cta--stacked {
   text-align: center;
   align-items: center;
   justify-content: center;
 }
 
+.bcb-cta--centered .bcb-cta__content,
+.bcb-cta--stacked .bcb-cta__content {
+  text-align: center;
+}
+
+.bcb-cta--centered .bcb-cta__meta,
+.bcb-cta--stacked .bcb-cta__meta {
+  justify-content: center;
+}
+
+.bcb-cta--centered .bcb-cta__action,
 .bcb-cta--stacked .bcb-cta__action {
   align-items: center;
+  justify-content: center;
 }
 
 /* Estrutura Interna */

@@ -9,7 +9,7 @@
   padding: var(--bcb-space-5, 1.5rem);
   box-shadow: var(--bcb-shadow-100);
   border: 1px solid var(--bcb-gray-200, #E6EAEF);
-  border-left: 5px solid var(--bcb-brand-blue, #025C75);
+  border-left: 5px solid var(--bcb-color-primary, #2E4C59);
   height: 100%;
   width: 100%;
   min-width: 0;
@@ -30,7 +30,7 @@
 /* Variantes de Borda de Acento */
 .bcb-kpi-card.kpi-brand,
 .bcb-kpi-card.kpi-blue {
-  border-left-color: var(--bcb-brand-blue, #025C75);
+  border-left-color: var(--bcb-color-primary, #2E4C59);
 }
 
 .bcb-kpi-card.kpi-success,
@@ -68,7 +68,7 @@
 }
 
 .bcb-kpi-icon {
-  color: var(--bcb-brand-blue, #025C75);
+  color: var(--bcb-color-primary, #2E4C59);
   font-size: 1.5rem !important;
   line-height: 1;
   flex-shrink: 0;
@@ -80,7 +80,7 @@
 }
 
 .bcb-kpi-value {
-  font-family: var(--bcb-font-cormorant, "Cormorant Garamond", Georgia, serif);
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   font-size: clamp(1.5rem, 2.2vw, 2.25rem);
   font-weight: 700;
   color: var(--bcb-gray-900, #14171A);

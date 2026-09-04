@@ -1,4 +1,204 @@
 /* ============= BCB Design System — Organisms / News List =============
- * Módulo reservado para futura extração.
- * Os estilos atuais estão no bcb-style.css monolítico.
+ * Lista e Cards de Notícias Institucionais (Editorial News Card).
+ * Suporta proporção 16:9, badges de editoria, data, lead e compartilhamento.
  * ================================================================== */
+
+.bcb-news-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--bcb-space-5, 1.5rem);
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+
+/* Card Editorial Completo */
+.bcb-news-card,
+.bcb-news-card--editorial {
+  background-color: var(--bcb-color-white, #FFFFFF);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-radius: var(--bcb-radius-8, 8px);
+  overflow: hidden;
+  box-shadow: var(--bcb-shadow-100, 0 1px 2px rgba(0,0,0,0.06));
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.bcb-news-card:hover,
+.bcb-news-card--editorial:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--bcb-shadow-300, 0 4px 10px rgba(0,0,0,0.1));
+  border-color: var(--bcb-color-primary, #2E4C59);
+}
+
+/* Container de Imagem Proporção 16:9 */
+.bcb-news-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--bcb-gray-100, #F8F9FB);
+  overflow: hidden;
+}
+
+.bcb-news-card__media img,
+.bcb-news-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.bcb-news-card:hover .bcb-news-card__media img,
+.bcb-news-card:hover .bcb-news-card__img {
+  transform: scale(1.03);
+}
+
+.bcb-news-card__media-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(46, 76, 89, 0.08) 0%, rgba(2, 92, 117, 0.14) 100%);
+  color: var(--bcb-color-primary, #2E4C59);
+}
+
+.bcb-news-card__media-placeholder .material-symbols-outlined,
+.bcb-news-card__media-placeholder .material-icons {
+  font-size: 2.5rem !important;
+}
+
+/* Corpo do Card */
+.bcb-news-card__body {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Metadados: Editoria e Data */
+.bcb-news-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bcb-news-card__category {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--bcb-color-primary, #2E4C59);
+  background-color: var(--bg-brand-light, #F0F7F9);
+  padding: 2px 8px;
+  border-radius: var(--bcb-radius-4, 4px);
+  border: 1px solid rgba(46, 76, 89, 0.15);
+}
+
+.bcb-news-card__date {
+  font-size: 0.8rem;
+  color: var(--bcb-gray-500, #9AA6B2);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bcb-news-card__date .material-icons,
+.bcb-news-card__date .material-symbols-outlined {
+  font-size: 1rem !important;
+}
+
+/* Título */
+.bcb-news-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--bcb-gray-900, #14171A);
+  margin: 0 0 0.5rem 0;
+}
+
+.bcb-news-card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.bcb-news-card__title a:hover,
+.bcb-news-card__title a:focus-visible {
+  color: var(--bcb-color-primary, #2E4C59);
+  text-decoration: underline;
+}
+
+/* Introdução / Lead */
+.bcb-news-card__intro,
+.bcb-news-card__summary {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--bcb-gray-700, #4A5568);
+  margin: 0 0 1rem 0;
+  flex-grow: 1;
+}
+
+/* Rodapé com Compartilhamento e Ações */
+.bcb-news-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--bcb-gray-200, #E6EAEF);
+  padding-top: 0.75rem;
+  margin-top: auto;
+}
+
+.bcb-news-card__author {
+  font-size: 0.8rem;
+  color: var(--bcb-gray-600, #7E8A95);
+  font-weight: 500;
+}
+
+.bcb-news-card__share {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bcb-share-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  color: var(--bcb-gray-600, #7E8A95);
+  border-radius: var(--bcb-radius-4, 4px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.bcb-share-btn:hover,
+.bcb-share-btn:focus-visible {
+  color: var(--bcb-color-primary, #2E4C59);
+  background-color: var(--bcb-gray-100, #F8F9FB);
+}
+
+.bcb-share-btn .material-icons,
+.bcb-share-btn .material-symbols-outlined {
+  font-size: 1.15rem !important;
+}
+
+/* Compatibilidade Legada */
+.news-item {
+  border-bottom: 1px solid var(--bcb-gray-200, #E6EAEF);
+  padding: 1rem 0;
+}
+.news-item .news-title {
+  font-weight: 600;
+  color: var(--bcb-color-primary, #2E4C59);
+}

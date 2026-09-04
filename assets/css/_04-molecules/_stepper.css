@@ -17,10 +17,10 @@
   content: '';
   position: absolute;
   top: 18px;
-  left: 5%;
-  width: 90%;
+  left: 24px;
+  right: 24px;
   height: 2px;
-  background: var(--bcb-gray-300);
+  background: var(--bcb-gray-300, #c4cbd1);
   z-index: 1;
 }
 
@@ -36,15 +36,15 @@
   width: 36px;
   height: 36px;
   border-radius: var(--bcb-radius-pill);
-  background: var(--bcb-gray-200);
-  color: var(--bcb-gray-700);
+  background: var(--bcb-gray-200, #E6EAEF);
+  color: var(--bcb-gray-700, #4A5568);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 0.5rem;
   font-weight: 700;
   font-size: 0.95rem;
-  border: 3px solid var(--bcb-color-white);
+  border: 3px solid var(--bcb-color-white, #FFFFFF);
   transition: all 0.2s ease-in-out;
   box-shadow: var(--bcb-shadow-100);
 }
@@ -58,7 +58,7 @@
 /* Etapa Concluída (Completed) */
 .bcb-stepper-item.completed .bcb-stepper-circle {
   background: var(--bcb-color-verde-castell, #088694);
-  color: var(--bcb-color-white);
+  color: var(--bcb-color-white, #FFFFFF);
 }
 .bcb-stepper-item.completed .bcb-stepper-title {
   color: var(--bcb-color-verde-castell, #088694);
@@ -68,14 +68,14 @@
 /* Etapa Ativa (Active / aria-current="step") */
 .bcb-stepper-item.active .bcb-stepper-circle,
 .bcb-stepper-item[aria-current="step"] .bcb-stepper-circle {
-  background: var(--bcb-brand-blue);
-  color: var(--bcb-color-white);
-  box-shadow: 0 0 0 4px rgba(2, 92, 117, 0.25);
+  background: var(--bcb-color-primary, #2E4C59);
+  color: var(--bcb-color-white, #FFFFFF);
+  box-shadow: 0 0 0 4px rgba(46, 76, 89, 0.25);
 }
 
 .bcb-stepper-item.active .bcb-stepper-title,
 .bcb-stepper-item[aria-current="step"] .bcb-stepper-title {
-  color: var(--bcb-brand-blue);
+  color: var(--bcb-color-primary, #2E4C59);
   font-weight: 700;
 }
 

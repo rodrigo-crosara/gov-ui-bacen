@@ -221,46 +221,48 @@ Menu lateral sticky para navegação interna em páginas longas.
 
 ---
 
-## 6. Callouts e Alertas Estruturados
+## 6. Callouts e Alertas Estruturados (`.bcb-callout` / `.callout`)
 
-Substitui o antigo `.bcb-olho`. Utilizado para destaques, avisos operacionais, normativos e orientações críticas.
+Utilizado para destaques, avisos operacionais, normativos, dicas editoriais e orientações críticas.
 
-### Assinatura HTML Canônica
+### Assinatura HTML Canônica (Padrão BEM)
 ```html
-<div class="callout callout-brand callout-left-bordered">
-  <span class="material-icons callout-icon" aria-hidden="true">info</span>
-  <div class="callout-content">
-    <h3 class="callout-title">Comunicado Importante</h3>
-    <p>O Banco Central não envia e-mails solicitando confirmação de dados bancários ou senhas.</p>
+<aside class="bcb-callout bcb-callout--info" aria-label="Comunicado Importante">
+  <div class="bcb-callout__header">
+    <span class="material-symbols-outlined material-icons bcb-callout__icon" aria-hidden="true">info</span>
+    <span class="bcb-callout__title">Comunicado Importante</span>
   </div>
-</div>
+  <div class="bcb-callout__body">
+    <p class="mb-0">O Banco Central não envia e-mails solicitando confirmação de dados bancários ou senhas.</p>
+  </div>
+</aside>
 ```
 
-### Variantes Semânticas
-- `.callout-brand`: Informativo / institucional (Azul).
-- `.callout-success`: Confirmação / regra atendida (Verde).
-- `.callout-warning`: Atenção / prazo / cuidado (Âmbar).
-- `.callout-danger`: Erro / proibição / risco de fraude (Marsala).
-- `.callout-neutral`: Curiosidade / nota neutra (Cinza).
-
-### Estruturas
-- `.callout-left-bordered`: Borda grossa à esquerda (padrão).
-- `.callout-outline`: Contorno fechado com fundo branco.
-- `.callout-elevated`: Elevação com sombra suave.
+### Variantes Temáticas Homologadas
+- `.bcb-callout--info`: Informativo / institucional (Azul BCB `#2E4C59`).
+- `.bcb-callout--warning`: Atenção / prazo / cuidado (Âmbar institucional).
+- `.bcb-callout--success`: Confirmação / regra atendida (Verde sustentável).
+- `.bcb-callout--danger`: Erro / proibição / risco de fraude (Vinho autêntico).
+- `.bcb-callout--editorial`: Dica editorial, educação financeira ou nota instrutiva (Ícone `tips_and_updates` e fundo suave).
 
 ---
 
-## 7. Tip Box (Dica Educativa)
+## 7. Callout Editorial — Dicas Educativas (`.bcb-callout--editorial`)
 
-Utilizado exclusivamente em materiais de educação e cidadania financeira.
+> [!NOTE]
+> **Substituição da antiga Tip Box:** A classe isolada `.tip-box` foi descontinuada e consolidada como a variante `.bcb-callout.bcb-callout--editorial`, mantendo total retrocompatibilidade visual.
 
 ### Assinatura HTML Canônica
 ```html
-<div class="tip-box">
-  <p class="mb-0">
-    <strong>Dica Financeira:</strong> Organize seu orçamento mensal antes de contratar qualquer linha de crédito.
-  </p>
-</div>
+<aside class="bcb-callout bcb-callout--editorial" aria-label="Dica Financeira">
+  <div class="bcb-callout__header">
+    <span class="material-symbols-outlined material-icons bcb-callout__icon" aria-hidden="true">tips_and_updates</span>
+    <span class="bcb-callout__title">Dica de Planejamento:</span>
+  </div>
+  <div class="bcb-callout__body">
+    <p class="mb-0">Monte uma reserva de emergência equivalente a no mínimo 6 meses de suas despesas essenciais antes de iniciar investimentos de longo prazo.</p>
+  </div>
+</aside>
 ```
 
 ---
@@ -516,8 +518,9 @@ Janelas sobrepostas para confirmação ou inserção de dados.
 
 ### Assinatura HTML Canônica
 ```html
+<!-- Modal com calibragem de largura (.bcb-modal--sm | --md | --lg | --xl) -->
 <div class="bcb-modal-backdrop" id="modalExemplo" role="dialog" aria-modal="true" aria-labelledby="modalTitulo" aria-describedby="modalDescricao">
-  <div class="bcb-modal-dialog">
+  <div class="bcb-modal-dialog bcb-modal--md">
     <div class="bcb-modal-header">
       <h3 class="bcb-modal-title" id="modalTitulo">
         <span class="material-icons text-primary mr-1" aria-hidden="true">security</span>
@@ -537,6 +540,12 @@ Janelas sobrepostas para confirmação ou inserção de dados.
   </div>
 </div>
 ```
+
+### Modificadores de Largura Homologados
+- `.bcb-modal--sm`: 400px (Confirmações simples, alertas curtos).
+- `.bcb-modal--md`: 600px (Largura padrão de diálogos de confirmação e formulários rápidos).
+- `.bcb-modal--lg`: 850px (Visualização de tabelas, relatórios e formulários multi-campo).
+- `.bcb-modal--xl`: 1140px (Painéis analíticos densos e auditorias de dados).
 
 ---
 
@@ -665,27 +674,43 @@ Ideal para FAQs e seções secundárias de regulamentação.
 
 ---
 
-## 20. Cards de Links Rápidos (Listalinks)
+## 20. Cards de Navegação e Links Rápidos (`.bcb-card-link`)
 
-Grade de acessos rápidos a serviços.
+Grade de acessos a serviços e destaques temáticos.
 
-### Assinatura HTML Canônica (Modelo 1)
+### Assinatura HTML Canônica — Modelo 1 (Lista de Links Institucional)
 ```html
-<div class="listalinks-light modelo-1">
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <div class="h-100 d-flex align-items-center">
-        <a href="/registrato" class="d-inline-flex rounded w-100 h-100">
-          <div class="icon-container d-flex align-items-center justify-content-center rounded-left">
-            <span class="material-icons md-36 color-1" aria-hidden="true">account_balance</span>
-          </div>
-          <div class="info-container align-self-center p-3">
-            <span class="title color-1">Registrato</span><br>
-            <span class="description">Consulte suas contas, empréstimos e chaves Pix.</span>
-          </div>
-        </a>
+<div class="row">
+  <div class="col-md-6 mb-3 bcb-card-link bcb-card-link--modelo-1">
+    <a href="/registrato">
+      <div class="icon-container">
+        <span class="material-symbols-outlined material-icons md-24" aria-hidden="true">account_balance</span>
       </div>
-    </div>
+      <div class="item-card">
+        <div class="title">Registrato</div>
+        <p class="description">Consulte suas contas, empréstimos e chaves Pix vinculadas ao seu CPF.</p>
+      </div>
+    </a>
+  </div>
+</div>
+```
+
+### Assinatura HTML Canônica — Modelo 2 (Card de Destaque Horizontal Responsivo)
+```html
+<div class="row">
+  <div class="col-lg-6 mb-3 bcb-card-link bcb-card-link--modelo-2">
+    <a href="/drex">
+      <div class="thumbnail-container">
+        <img src="imagem-destaque.jpg" alt="Drex Real Digital">
+      </div>
+      <div class="item-card">
+        <div class="tag-container">
+          <span class="badge badge-primary">Moeda Digital</span>
+        </div>
+        <div class="title">Plataforma Drex</div>
+        <p class="description">Infraestrutura do Real Digital desenvolvida pelo BCB para serviços financeiros inteligentes.</p>
+      </div>
+    </a>
   </div>
 </div>
 ```
@@ -773,26 +798,25 @@ Cartões de arquivo com identificação de extensão e data.
 
 ---
 
-## 23. Hero Banner Institucional
+## 23. Hero Banner Institucional (`.bcb-hero-banner`)
 
-Banner visual de abertura de produtos ou temas prioritários (Drex, Pix, Open Finance).
+Banner visual de abertura de produtos ou temas prioritários (Drex, Pix, Open Finance) com suporte à variante split com imagem lateral (`.bcb-hero-banner--split`).
 
-### Assinatura HTML Canônica
+### Assinatura HTML Canônica (Variante Split)
 ```html
-<div class="bcb-hero-banner shadow-sm">
-  <div class="row">
-    <div class="col-md-7 bcb-hero-content">
-      <h2 class="bcb-hero-title">Drex: A Moeda Digital do Banco Central</h2>
-      <div class="bcb-hero-text">
-        Inovação e segurança para a economia digital brasileira através de tecnologia blockchain segura.
-      </div>
-      <div class="mt-auto text-md-left">
-        <a href="#piloto" class="btn btn-sm btn-outline-primary bg-white">Conheça o Projeto Piloto</a>
-      </div>
+<div class="bcb-hero-banner bcb-hero-banner--split">
+  <div class="bcb-hero-content">
+    <span class="badge badge-warning text-dark font-weight-bold mb-2 align-self-start">Inovação Financeira</span>
+    <h2 class="bcb-hero-title">Drex: A Moeda Digital do Banco Central</h2>
+    <p class="bcb-hero-text">
+      Inovação e segurança para a economia digital brasileira através de plataforma com liquidação garantida pelo BCB.
+    </p>
+    <div>
+      <a href="#piloto" class="btn btn-warning font-weight-bold px-4 py-2">Conheça o Projeto Piloto</a>
     </div>
-    <div class="col-md-5 bcb-hero-img-container">
-      <img src="../assets/img/hero-drex.jpg" alt="Representação gráfica da moeda digital Drex">
-    </div>
+  </div>
+  <div class="bcb-hero-img-container">
+    <img src="../assets/img/hero-drex.jpg" alt="Representação gráfica da moeda digital Drex">
   </div>
 </div>
 ```
@@ -850,18 +874,39 @@ Cronograma horizontal com marcos e datas.
 
 ---
 
-## 26. Carrossel de Vídeos
+## 26. Carrossel de Vídeos (`.bcb-video-carousel`)
 
-Exibição horizontal com proporção 16:9 acessível.
+Exibição horizontal acessível com proporção 16:9, botões de rolagem por setas e suporte a touch scroll-snap.
 
 ### Assinatura HTML Canônica
 ```html
-<div class="videos-destaque">
-  <div class="video-item">
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen title="Vídeo explicativo: O que é a Taxa Selic"></iframe>
+<div class="bcb-video-carousel" aria-label="Galeria de vídeos institucionais">
+  <div class="bcb-video-carousel__header">
+    <h3 class="bcb-video-carousel__title">
+      <span class="material-symbols-outlined material-icons" aria-hidden="true">ondemand_video</span> Vídeos Educativos
+    </h3>
+    <div class="bcb-video-carousel__controls">
+      <button type="button" class="bcb-video-carousel__btn" aria-label="Vídeos anteriores">
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">chevron_left</span>
+      </button>
+      <button type="button" class="bcb-video-carousel__btn" aria-label="Próximos vídeos">
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">chevron_right</span>
+      </button>
     </div>
-    <p class="video-title">O que é a Taxa Selic e como ela impacta seu dia a dia</p>
+  </div>
+  <div class="bcb-video-carousel__track">
+    <div class="bcb-video-carousel__item">
+      <div class="bcb-video-carousel__media">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen title="Vídeo explicativo: O que é a Taxa Selic"></iframe>
+      </div>
+      <div class="bcb-video-carousel__body">
+        <span class="bcb-video-carousel__tag">Economia</span>
+        <div class="bcb-video-carousel__item-title">O que é a Taxa Selic e como ela impacta seu dia a dia</div>
+        <span class="bcb-video-carousel__duration">
+          <span class="material-symbols-outlined material-icons" aria-hidden="true">schedule</span> 03:45
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 ```
@@ -1200,47 +1245,47 @@ Card institucional posicionado logo abaixo do título em páginas de atos normat
 
 ---
 
-## 37. Fluxogramas Textuais e Passo a Passo com Decisão (.bcb-decision-flow)
+## 37. Fluxogramas Textuais e Passo a Passo com Decisão (`.bcb-decision-flow`)
 
-Roteiro sequencial de tomada de decisão que substitui imagens inacessíveis de fluxograma por nós semânticos de decisão (*Se Sim*, *Se Não*), prazos e encaminhamentos oficiais.
+Roteiro sequencial de tomada de decisão que substitui imagens inacessíveis de fluxograma por nós semânticos de decisão (*Se Sim*, *Se Não*), prazos e encaminhamentos oficiais, com espaçamento generoso e badges direcionais contrastantes.
 
 ### Assinatura HTML Canônica
 ```html
 <div class="bcb-decision-flow-wrapper my-4">
   <h3 class="h5 font-weight-bold mb-3 text-bcb-brand">Fluxograma Operacional de Contestação</h3>
-  <ol class="bcb-decision-flow list-unstyled pl-0">
+  <ol class="bcb-decision-flow">
     <!-- Nó 1: Ação Inicial -->
-    <li class="card border mb-3 p-3 bg-bcb-surface shadow-sm">
-      <div class="d-flex align-items-start" style="gap: 0.75rem;">
-        <span class="badge badge-primary rounded-circle p-2" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;">1</span>
-        <div class="flex-grow-1">
-          <h4 class="h6 font-weight-bold mb-1 text-dark">Identificação da Transação Suspeita</h4>
-          <p class="small text-body mb-2">A vítima detecta movimentação não autorizada ou induzida por golpe no extrato da conta.</p>
-          <div class="p-2 bg-light rounded border-left small border-warning">
+    <li class="bcb-decision-node">
+      <div class="bcb-decision-node__header">
+        <span class="bcb-decision-node__step">1</span>
+        <div class="bcb-decision-node__content">
+          <h4 class="bcb-decision-node__title">Identificação da Transação Suspeita</h4>
+          <p class="bcb-decision-node__desc">A vítima detecta movimentação não autorizada ou induzida por golpe no extrato da conta.</p>
+          <div class="bcb-decision-node__meta">
             <strong>Prazo Máximo:</strong> Até 80 dias da realização do Pix para acionar a instituição bancária.
           </div>
         </div>
       </div>
     </li>
 
-    <!-- Nó 2: Bifurcação de Decisão -->
-    <li class="card border mb-3 p-3 bg-bcb-surface shadow-sm">
-      <div class="d-flex align-items-start" style="gap: 0.75rem;">
-        <span class="badge badge-primary rounded-circle p-2" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;">2</span>
-        <div class="flex-grow-1">
-          <h4 class="h6 font-weight-bold mb-2 text-dark">Abertura de Notificação de Infração (MED)</h4>
-          <div class="row">
-            <div class="col-12 col-md-6 mb-2 mb-md-0">
-              <div class="p-2 border rounded bg-light">
-                <span class="badge badge-success mb-1">Se Fraude Comprovada</span>
-                <p class="small text-body mb-0">O banco recebedor bloqueia os recursos cautelarmente por até 72h e realiza o estorno em 96h.</p>
-              </div>
+    <!-- Nó 2: Bifurcação de Decisão com Badges Sim / Não -->
+    <li class="bcb-decision-node">
+      <div class="bcb-decision-node__header">
+        <span class="bcb-decision-node__step">2</span>
+        <div class="bcb-decision-node__content">
+          <h4 class="bcb-decision-node__title">Abertura de Notificação de Infração (MED)</h4>
+          <div class="bcb-decision-branches">
+            <div class="bcb-decision-branch">
+              <span class="bcb-decision-badge--yes">
+                <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">check</span> Sim &bull; Fraude Comprovada
+              </span>
+              <p>O banco recebedor bloqueia os recursos cautelarmente por até 72h e realiza o estorno em 96h.</p>
             </div>
-            <div class="col-12 col-md-6">
-              <div class="p-2 border rounded bg-light">
-                <span class="badge badge-secondary mb-1">Se Desacordo Comercial</span>
-                <p class="small text-body mb-0">O MED não se aplica. O consumidor deve recorrer ao Procon ou Juizado Especial Cível.</p>
-              </div>
+            <div class="bcb-decision-branch">
+              <span class="bcb-decision-badge--no">
+                <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">close</span> Não &bull; Desacordo Comercial
+              </span>
+              <p>O MED não se aplica. O consumidor deve recorrer ao Procon ou Juizado Especial Cível.</p>
             </div>
           </div>
         </div>
@@ -1303,6 +1348,7 @@ Roteiro sequencial de tomada de decisão que substitui imagens inacessíveis de 
 | `.bcb-cta` | Container principal flexível e responsivo da chamada de ação. |
 | `.bcb-cta--primary` | Variante de destaque máximo com gradiente institucional azul BCB. |
 | `.bcb-cta--neutral` | Variante neutra elegante para formulários de consulta ou serviços rotineiros. |
+| `.bcb-cta--centered` | Variante com alinhamento centralizado de texto e botão. |
 | `.bcb-cta--stacked` | Força disposição vertical em cards estreitos ou colunas laterais. |
 | `.bcb-cta__content` | Bloco textual agrupando tag, título, descrição e metadados. |
 | `.bcb-cta__tag` | Pílula semântica superior identificando a natureza da ação. |
@@ -1311,9 +1357,9 @@ Roteiro sequencial de tomada de decisão que substitui imagens inacessíveis de 
 | `.bcb-cta__action` | Container do botão de ação com alinhamento responsivo. |
 | `.bcb-btn-cta` | Botão dimensionado com padding ampliado e micro-interação. |
 
-### Exemplo de Implementação Canônica
-
+### Exemplo de Implementação Canônica (Primário e Centralizado)
 ```html
+<!-- CTA Primário Institucional -->
 <div class="bcb-cta bcb-cta--primary" role="region" aria-label="Ação Prioritária do Cidadão">
   <div class="bcb-cta__content">
     <span class="bcb-cta__tag">
@@ -1331,6 +1377,18 @@ Roteiro sequencial de tomada de decisão que substitui imagens inacessíveis de 
     <a href="#solicitar-med" class="btn btn-light bcb-btn-cta">
       Acionar Mecanismo MED <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
     </a>
+  </div>
+</div>
+
+<!-- CTA Centralizado Neutro -->
+<div class="bcb-cta bcb-cta--neutral bcb-cta--centered" role="region" aria-label="Notificações">
+  <div class="bcb-cta__content">
+    <span class="bcb-cta__tag"><span class="material-symbols-outlined material-icons">mail</span> Notificações Oficiais</span>
+    <h3 class="bcb-cta__title">Receba as Atualizações Oficiais do Banco Central</h3>
+    <p class="bcb-cta__description">Inscreva seu e-mail institucional para receber comunicados em primeira mão.</p>
+  </div>
+  <div class="bcb-cta__action">
+    <a href="#newsletter" class="btn btn-primary bcb-btn-cta">Cadastrar E-mail</a>
   </div>
 </div>
 ```
@@ -1462,3 +1520,41 @@ A sequência de cores é estrita e imutável. As séries numéricas adotam as co
 - **Localização pt-BR**: Formatação de milhares com ponto (`.`), decimais com vírgula (`,`) e meses em português.
 - **Acessibilidade e-MAG**: O contêiner `.bcb-chart-container` deve possuir `role="region"` e `aria-label`.
 - **Declaração Automática**: Pode ser instanciado via script modular ou declarativamente via `[data-bcb-chart]` no script `bcb-ui.js`.
+
+---
+
+## 43. Card de Notícia Editorial (`.bcb-news-card--editorial`)
+
+> **Nível Atômico**: Molécula / Organismo  
+> **Finalidade**: Cartões editoriais de notícias e manchetes jornalísticas com imagem em proporção 16:9, metadados semânticos de categoria e data, resumo informativo (lead) e ações de compartilhamento.
+
+### Assinatura HTML Canônica
+```html
+<article class="bcb-news-card bcb-news-card--editorial">
+  <div class="bcb-news-card__media">
+    <img src="imagem-noticia.jpg" alt="Descrição da imagem da notícia">
+  </div>
+  <div class="bcb-news-card__body">
+    <div class="bcb-news-card__meta">
+      <span class="bcb-news-card__category">Copom</span>
+      <time class="bcb-news-card__date" datetime="2026-03-12T18:30:00">
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">calendar_today</span> 12/03/2026 18:30
+      </time>
+    </div>
+    <h3 class="bcb-news-card__title">
+      <a href="/noticia/copom-selic">Copom eleva a taxa Selic para 14,25% ao ano na 268ª reunião</a>
+    </h3>
+    <p class="bcb-news-card__intro">
+      O Comitê de Política Monetária do Banco Central decidiu elevar os juros básicos para assegurar a convergência da inflação à meta.
+    </p>
+    <div class="bcb-news-card__footer">
+      <span class="bcb-news-card__author">Comunicação BCB</span>
+      <div class="bcb-news-card__share">
+        <button type="button" class="bcb-share-btn" aria-label="Compartilhar notícia">
+          <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">share</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</article>
+```

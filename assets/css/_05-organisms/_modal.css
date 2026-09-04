@@ -49,12 +49,29 @@
   transform: translateY(0) scale(1);
 }
 
-.bcb-modal-dialog.modal-lg {
-  max-width: 800px;
+/* Modificadores Oficiais de Largura do Modal */
+.bcb-modal--sm,
+.bcb-modal-dialog.modal-sm,
+.bcb-modal-dialog.bcb-modal--sm {
+  max-width: 400px;
 }
 
-.bcb-modal-dialog.modal-sm {
-  max-width: 400px;
+.bcb-modal--md,
+.bcb-modal-dialog.modal-md,
+.bcb-modal-dialog.bcb-modal--md {
+  max-width: 600px;
+}
+
+.bcb-modal--lg,
+.bcb-modal-dialog.modal-lg,
+.bcb-modal-dialog.bcb-modal--lg {
+  max-width: 850px;
+}
+
+.bcb-modal--xl,
+.bcb-modal-dialog.modal-xl,
+.bcb-modal-dialog.bcb-modal--xl {
+  max-width: 1140px;
 }
 
 /* Modal Header */

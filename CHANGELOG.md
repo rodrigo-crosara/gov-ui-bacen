@@ -5,6 +5,44 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.6.0] — 2026-09-04
+
+### Adicionado
+- **Sobrescrita e Compatibilidade de Tokens Bootstrap (`tokens.json` & `_tokens.css`):**
+  - Sobrescrita mandatória das classes utilitárias do Bootstrap (`.text-primary`, `.bg-primary`, `.border-primary`, `.badge-primary`) mapeadas para `var(--bcb-color-primary, #2E4C59) !important`, expurgando azuis genéricos (`#0d6efd` e `#007bff`).
+  - Padronização de ícones Material Icons (`.bcb-icon`), badges, tags e textos institucionais com a cor institucional azul da marca.
+- **Variantes de Botões (`_buttons.css`):**
+  - Calibração do botão secundário `.btn-secondary`: fundo suave (`#EBF2F5`), borda e texto em `#2E4C59`, transitando em `:hover` para fundo sólido `#2E4C59` com texto `#FFFFFF`.
+  - Calibração de `.btn-tertiary` e `.btn-outline` com contorno sutil neutro.
+- **Consolidação BEM de Callouts e Descontinuação da Tip Box (`_callout.css`):**
+  - Descontinuação do arquivo legado `_tip-box.css` e consolidação das variantes BEM (`.bcb-callout--info`, `.bcb-callout--warning`, `.bcb-callout--success`, `.bcb-callout--danger`, `.bcb-callout--editorial`), com suporte retrocompatível para `.tip-box`.
+- **Cards de Navegação e Links (`_card-link.css`):**
+  - Reestruturação em Modelo 1 (Lista de Links Institucional) e Modelo 2 (Card de Destaque Horizontal Responsivo com thumbnail, tag, título e descrição).
+- **Calibração de KPIs e Indicadores (`_kpi-card.css` & `_card-indicator.css`):**
+  - Remoção da fonte Cormorant Garamond dos valores numéricos em `.bcb-kpi-value`, substituída por Arial tabular bold (`font-variant-numeric: tabular-nums; font-weight: 700;`).
+  - Expurgado azul genérico em `.bcb-indicator-card`.
+- **Citações com Calha Dedicada e Linhas Contínuas (`_quote.css`, `_stepper.css`, `_process-list.css`):**
+  - Rediagramação de `.bcb-citacao` / `.bcb-quote` em CSS Grid com calha dedicada de ícone à esquerda, eliminando marcas d'água sob o texto para conformidade estrita WCAG AAA.
+  - Reancoragem dos conectores verticais em `.process-list` e `.bcb-stepper` para 100% de continuidade visual sem quebras ou lacunas.
+- **Filtros Facetados e Busca em Linha Única (`_faceted-search.css` & `_search-overlay.css`):**
+  - Prevenção de sobreposição no grid de `.bcb-date-range` e diagrama de `.bcb-search-input-group` em linha única com botão de lupa integrado e chips temáticos ativos em `#2E4C59`.
+- **CTA Centralizado, Hero Banner Split e Notícia Editorial (`_cta.css`, `_hero-banner.css`, `_news-list.css`):**
+  - Nova variante `.bcb-cta--centered`.
+  - Nova variante `.bcb-hero-banner--split` com proporção 58%/42% desktop e imagem lateral direita.
+  - Implementação de `.bcb-news-card--editorial` com imagem 16:9, metadados de editoria e data, manchete, lead e rodapé de compartilhamento.
+- **Linhas do Tempo, Modais, Vídeos e Fluxogramas (`_timeline.css`, `_modal.css`, `_videos.css`, `_decision-flow.css`):**
+  - Linha contínua e cartões com tags/mídias 16:9 em `_timeline.css`.
+  - Calibração de larguras modais normativas: `.bcb-modal--sm` (400px), `.bcb-modal--md` (600px), `.bcb-modal--lg` (850px), `.bcb-modal--xl` (1140px).
+  - Implementação do carrossel acessível de vídeos `.bcb-video-carousel` com controles por setas e track scroll-snap.
+  - Nós de decisão generosos em `.bcb-decision-flow` com bifurcações e badges contrastantes `.bcb-decision-badge--yes` e `.bcb-decision-badge--no`.
+
+### Modificado
+- **Limpeza e Calibração da Vitrine Oficial (`pages/components.html`):**
+  - Remoção de `.ds-state-pills` de 32 componentes não interativos/não formulários, preservando estritamente em Botões e Formulários.
+  - Atualização completa de demonstrações visuais e snippets para Callout Editorial, Cards Modelo 1 e 2, Filtros Facetados, Busca Local, CTA Centralizado, Hero Banner Split, Notícia Editorial, Modais por Tamanho, Carrossel de Vídeos e Fluxograma de Decisão.
+- **Sincronização de Documentação e Skill IA (`.docs-ia/components.md` e `SKILL.md`):**
+  - Vocabulário e regras atualizados com as classes BEM e padrões visuais homologados.
+
 ## [2.5.2] — 2026-09-04
 
 ### Adicionado

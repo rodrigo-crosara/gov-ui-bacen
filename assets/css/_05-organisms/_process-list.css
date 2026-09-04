@@ -33,14 +33,14 @@ ul.bcb-process-list {
   margin-bottom: 0;
 }
 
-/* Linha vertical conectora entre os círculos das etapas */
+/* Linha vertical conectora contínua entre os círculos das etapas */
 .process-list > li:not(:last-child)::after,
 .bcb-process-list > li:not(:last-child)::after {
   content: '';
   position: absolute;
-  left: 1.1rem;
-  top: 2.3rem;
-  bottom: -0.5rem;
+  left: 1.125rem;
+  top: 1.125rem;
+  bottom: -2rem;
   width: 2px;
   background-color: var(--bcb-gray-300, #c4cbd1);
   z-index: 1;
@@ -57,7 +57,7 @@ ul.bcb-process-list {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
-  background-color: var(--bcb-brand-azul-blue, #025C75);
+  background-color: var(--bcb-color-primary, #2E4C59);
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -72,7 +72,7 @@ ul.bcb-process-list {
 /* Quando o item estiver ativo / em andamento */
 .process-list > li.active::before,
 .bcb-process-list > li.active::before {
-  background-color: var(--bcb-brand-azulcinti, #077391);
+  background-color: var(--bcb-btn-primary-hover, #077391);
   box-shadow: 0 0 0 4px var(--bcb-brand-amarellato, #F9DEAA);
 }
 

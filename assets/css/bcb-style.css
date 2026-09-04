@@ -27,7 +27,6 @@
 @import "_04-molecules/_breadcrumbs.css";
 @import "_04-molecules/_alert.css";
 @import "_04-molecules/_callout.css";
-@import "_04-molecules/_tip-box.css";
 @import "_04-molecules/_card-indicator.css";
 @import "_04-molecules/_kpi-card.css";
 @import "_04-molecules/_card-link.css";
@@ -36,6 +35,7 @@
 @import "_04-molecules/_data-table.css";
 @import "_04-molecules/_data-export.css";
 @import "_04-molecules/_faceted-search.css";
+@import "_04-molecules/_search-overlay.css";
 @import "_04-molecules/_empty-state.css";
 @import "_04-molecules/_page-toolbar.css";
 @import "_04-molecules/_norm-metadata.css";

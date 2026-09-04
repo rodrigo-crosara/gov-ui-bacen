@@ -11,7 +11,7 @@
   line-height: 1.2;
   vertical-align: middle;
   background-color: var(--bcb-gray-200);
-  color: var(--bcb-brand-blue);
+  color: var(--bcb-color-primary, #2E4C59);
   border-radius: var(--bcb-radius-4, 4px);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -34,13 +34,17 @@
 
 /* Variantes Semânticas */
 .tag-bcb.primary,
-.tag-bcb--primary {
-  background-color: var(--bcb-brand-blue);
+.tag-bcb--primary,
+.badge-bcb.primary,
+.badge-bcb--primary {
+  background-color: var(--bcb-color-primary, #2E4C59);
   color: var(--bcb-color-white);
 }
 .tag-bcb.primary:hover,
-.tag-bcb--primary:hover {
-  background-color: var(--bcb-btn-primary-hover);
+.tag-bcb--primary:hover,
+.badge-bcb.primary:hover,
+.badge-bcb--primary:hover {
+  background-color: var(--bcb-btn-primary-hover, #077391);
 }
 
 .tag-bcb--success,

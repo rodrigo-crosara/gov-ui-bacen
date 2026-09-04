@@ -33,6 +33,7 @@
 
 .bcb-filter-group {
   margin-bottom: 1.5rem;
+  min-width: 0;
 }
 
 .bcb-filter-group:last-child {
@@ -45,6 +46,7 @@
   color: var(--bcb-gray-800);
   margin-bottom: 0.5rem;
   display: block;
+  white-space: nowrap;
 }
 
 /* Date Range Inputs */
@@ -52,17 +54,27 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-width: 0;
 }
 
 .bcb-date-range input[type="date"],
 .bcb-date-range input[type="text"] {
   width: 100%;
+  min-width: 110px;
+  flex: 1 1 auto;
+}
+
+@media (max-width: 991.98px) {
+  .bcb-date-range {
+    flex-wrap: wrap;
+  }
 }
 
 .bcb-date-separator {
   color: var(--bcb-gray-500);
   font-weight: 500;
   padding: 0 4px;
+  flex-shrink: 0;
 }
 
 /* Switch Toggle Customizado */
@@ -121,8 +133,8 @@
 }
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: var(--bcb-brand-blue);
-  border-color: var(--bcb-brand-blue);
+  background-color: var(--bcb-color-primary, #2E4C59);
+  border-color: var(--bcb-color-primary, #2E4C59);
 }
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
@@ -131,7 +143,7 @@
 }
 
 .custom-switch .custom-control-input:focus ~ .custom-control-label::before {
-  box-shadow: 0 0 0 0.2rem rgba(2, 92, 117, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(46, 76, 89, 0.25);
 }
 
 /* Barra de Filtros Ativos (Chips) */
@@ -160,8 +172,8 @@
   gap: 6px;
   padding: 4px 10px;
   background-color: var(--bcb-color-white);
-  border: 1px solid var(--bcb-brand-blue);
-  color: var(--bcb-brand-blue);
+  border: 1px solid var(--bcb-color-primary, #2E4C59);
+  color: var(--bcb-color-primary, #2E4C59);
   border-radius: var(--bcb-radius-pill);
   font-size: 0.8rem;
   font-weight: 500;
@@ -171,7 +183,7 @@
   background: none;
   border: none;
   padding: 0;
-  color: var(--bcb-brand-blue);
+  color: var(--bcb-color-primary, #2E4C59);
   cursor: pointer;
   display: inline-flex;
   align-items: center;

@@ -2,8 +2,10 @@
  * Suporte a Material Symbols Outlined e Material Icons.
  * ================================================================== */
 
-.material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
+.material-symbols-outlined,
+.material-icons,
+.material-icons-outlined {
+  font-family: 'Material Symbols Outlined', 'Material Icons';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -16,6 +18,13 @@
   direction: ltr;
   -webkit-font-smoothing: antialiased;
   vertical-align: middle;
+}
+
+/* Ícones institucionais herdam cor do contexto ou adotam o azul institucional */
+.bcb-icon,
+.material-symbols-outlined.text-brand,
+.material-icons.text-brand {
+  color: var(--bcb-color-primary, #2E4C59);
 }
 
 /* Modificadores de escala de ícones */

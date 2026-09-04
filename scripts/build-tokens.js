@@ -273,6 +273,34 @@ if (tokens.zIndex) {
 lines.push('}');
 lines.push('');
 
+// 15. Compatibilidade Bootstrap e Padrões Visuais BCB
+lines.push('/* ==========================================');
+lines.push('   15. COMPATIBILIDADE BOOTSTRAP & UTILITÁRIOS OFICIAIS');
+lines.push('   ========================================== */');
+lines.push('.text-primary {');
+lines.push('  color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('}');
+lines.push('');
+lines.push('.bg-primary {');
+lines.push('  background-color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('}');
+lines.push('');
+lines.push('.border-primary {');
+lines.push('  border-color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('}');
+lines.push('');
+lines.push('.badge-primary {');
+lines.push('  background-color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('');
+lines.push('/* Textos institucionais e badges com a cor da marca por padrão */');
+lines.push('.text-bcb-brand,');
+lines.push('.font-color-1 {');
+lines.push('  color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('}');
+lines.push('');
+
 const outputCSS = lines.join('\n');
 
 if (isCheckMode) {

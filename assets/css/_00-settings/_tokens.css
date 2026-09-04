@@ -204,3 +204,29 @@
   --bcb-z-toast: 1060;
   --bcb-z-max: 99999;
 }
+
+/* ==========================================
+   15. COMPATIBILIDADE BOOTSTRAP & UTILITÁRIOS OFICIAIS
+   ========================================== */
+.text-primary {
+  color: var(--bcb-color-primary, #2E4C59) !important;
+}
+
+.bg-primary {
+  background-color: var(--bcb-color-primary, #2E4C59) !important;
+}
+
+.border-primary {
+  border-color: var(--bcb-color-primary, #2E4C59) !important;
+}
+
+.badge-primary {
+  background-color: var(--bcb-color-primary, #2E4C59) !important;
+  color: #ffffff !important;
+}
+
+/* Textos institucionais e badges com a cor da marca por padrão */
+.text-bcb-brand,
+.font-color-1 {
+  color: var(--bcb-color-primary, #2E4C59) !important;
+}

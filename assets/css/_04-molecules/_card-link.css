@@ -1,26 +1,16 @@
-/* ============= BCB Design System — Molecules / Card Link ============= */
+/* ============= BCB Design System — Molecules / Card Link =============
+ * Componente de links e cards de navegação temática.
+ * Modelo 1: Lista de Links Institucional (Ícone + Título + Descrição).
+ * Modelo 2: Card de Destaque Horizontal Responsivo (Thumbnail + Tag + Título + Descrição).
+ * ===================================================================== */
 
-/* LISTALINKS */
-.bcb-listalinks .buffer a { height: 3rem; }
-.bcb-listalinks .buffer .texto { font-size: 0.9rem; line-height: 1.1; background-color: var(--bcb-gray-100); padding: 5px 10px; transition: background-color 0.3s, box-shadow 0.3s; }
-.bcb-listalinks .buffer a:hover .texto { background-color: var(--bcb-gray-200); }
-.bcb-listalinks .buffer .icone { width: 3rem; min-width: 3rem; }
-
-/* ==========================================
-   CARDS DE CONTEÚDO (LISTALINKS-LIGHT)
-   ========================================== */
+.bcb-card-link,
 .listalinks-light {
   display: block;
   width: 100%;
 }
 
-.listalinks-light .title {
-  font-weight: 600;
-  color: var(--bcb-brand-blue);
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
+.bcb-card-link a,
 .listalinks-light a {
   text-decoration: none;
   color: inherit;
@@ -30,74 +20,149 @@
   min-width: 0;
   border-radius: var(--bcb-radius-4, 4px);
   outline: none;
+  background-color: var(--bcb-color-white, #ffffff);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  box-shadow: var(--bcb-shadow-100, 0 1px 2px rgba(0,0,0,0.06));
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
+.bcb-card-link a:focus-visible,
 .listalinks-light a:focus-visible {
   outline: 3px solid var(--bcb-color-verde-castell, #088694) !important;
   outline-offset: 2px !important;
 }
 
-.listalinks-light a:hover .title {
-  text-decoration: underline;
+.bcb-card-link a:hover,
+.listalinks-light a:hover {
+  box-shadow: var(--bcb-shadow-300, 0 4px 8px rgba(0,0,0,0.1));
+  transform: translateY(-2px);
+  border-color: var(--bcb-color-primary, #2E4C59);
 }
 
-.listalinks-light .icon-container {
-  width: 85px;
-  flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.bcb-card-link .title,
+.listalinks-light .title {
+  font-weight: 600;
+  color: var(--bcb-color-primary, #2E4C59);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  margin-bottom: 4px;
 }
 
+.bcb-card-link .description,
 .listalinks-light .description {
-  color: var(--bcb-gray-600);
+  color: var(--bcb-gray-600, #7E8A95);
   font-size: 0.9rem;
   line-height: 1.4;
-  display: block;
-  margin-top: 4px;
+  margin: 0;
   word-break: break-word;
   overflow-wrap: break-word;
 }
 
-/* Efeito de Sombra e Escala (Modelos 1 e 5) */
-.listalinks-light.modelo-1 a,
-.listalinks-light.modelo-5 a {
-  box-shadow: var(--bcb-shadow-100);
-  transition: all 0.2s ease-in-out;
-  background-color: var(--bcb-color-white);
-  border: 1px solid var(--bcb-gray-200);
+/* ==========================================================================
+   MODELO 1: Lista de Links Institucional
+   ========================================================================== */
+.bcb-card-link--modelo-1 a,
+.listalinks-light.modelo-1 a {
+  align-items: stretch;
+  overflow: hidden;
 }
 
-.listalinks-light.modelo-1 a:hover,
-.listalinks-light.modelo-5 a:hover {
-  box-shadow: var(--bcb-shadow-300);
-  transform: translateY(-2px);
-  border-color: var(--bcb-brand-azulcinti, #077391);
-}
-
-.listalinks-light.modelo-1 a:hover .title,
-.listalinks-light.modelo-5 a:hover .title {
-  text-decoration: none;
-}
-
-/* Ajustes Específicos por Modelo */
+.bcb-card-link--modelo-1 .icon-container,
 .listalinks-light.modelo-1 .icon-container {
-  background-color: var(--bcb-gray-100);
+  width: 80px;
+  min-width: 80px;
+  flex: none;
+  background-color: var(--bcb-gray-100, #F8F9FB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bcb-color-primary, #2E4C59);
 }
 
+.bcb-card-link--modelo-1 .icon-container .material-icons,
+.bcb-card-link--modelo-1 .icon-container .material-symbols-outlined,
+.listalinks-light.modelo-1 .icon-container .material-icons,
+.listalinks-light.modelo-1 .icon-container .material-symbols-outlined {
+  font-size: 2rem !important;
+}
+
+.bcb-card-link--modelo-1 .item-card,
+.listalinks-light.modelo-1 .item-card {
+  padding: 1rem 1.25rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   MODELO 2: Card de Destaque Horizontal Responsivo
+   ========================================================================== */
+.bcb-card-link--modelo-2 a,
+.listalinks-light.modelo-2 a {
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.bcb-card-link--modelo-2 .thumbnail-container,
+.listalinks-light.modelo-2 .thumbnail-container {
+  width: 180px;
+  min-width: 180px;
+  flex: none;
+  position: relative;
+  background-color: var(--bcb-gray-100, #F8F9FB);
+  overflow: hidden;
+}
+
+.bcb-card-link--modelo-2 .thumbnail-container img,
+.listalinks-light.modelo-2 .thumbnail-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bcb-card-link--modelo-2 .thumbnail-placeholder,
+.listalinks-light.modelo-2 .thumbnail-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(46, 76, 89, 0.08) 0%, rgba(2, 92, 117, 0.12) 100%);
+  color: var(--bcb-color-primary, #2E4C59);
+}
+
+.bcb-card-link--modelo-2 .item-card,
 .listalinks-light.modelo-2 .item-card {
-  border-bottom: 1px solid var(--bcb-gray-200);
-  padding: 1rem 0;
-}
-
-.listalinks-light.modelo-5 .icon-container {
-  width: auto;
-  margin-bottom: 1rem;
-}
-
-.listalinks-light.modelo-5 a {
-  background-color: var(--bcb-gray-50);
-  padding: 1.5rem;
-  text-align: center;
+  padding: 1.25rem;
+  flex: 1 1 auto;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
+
+.bcb-card-link--modelo-2 .tag-container,
+.listalinks-light.modelo-2 .tag-container {
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 767.98px) {
+  .bcb-card-link--modelo-2 a,
+  .listalinks-light.modelo-2 a {
+    flex-direction: column;
+  }
+
+  .bcb-card-link--modelo-2 .thumbnail-container,
+  .listalinks-light.modelo-2 .thumbnail-container {
+    width: 100%;
+    min-width: 100%;
+    height: 140px;
+  }
+}
+
+/* Compatibilidade Legada */
+.bcb-listalinks .buffer a { height: 3rem; }
+.bcb-listalinks .buffer .texto { font-size: 0.9rem; line-height: 1.1; background-color: var(--bcb-gray-100); padding: 5px 10px; }
+.bcb-listalinks .buffer a:hover .texto { background-color: var(--bcb-gray-200); }
+.bcb-listalinks .buffer .icone { width: 3rem; min-width: 3rem; }

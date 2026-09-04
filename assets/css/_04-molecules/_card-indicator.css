@@ -10,7 +10,7 @@
   margin-bottom: var(--bcb-space-4, 1rem);
   box-shadow: var(--bcb-shadow-100);
   border: 1px solid var(--bcb-gray-200);
-  border-top: 4px solid var(--bcb-brand-blue);
+  border-top: 4px solid var(--bcb-color-primary, #2E4C59);
   height: 100%;
   width: 100%;
   min-width: 0;
@@ -42,7 +42,7 @@ a.bcb-indicator-card:focus-visible,
 /* Variantes de Borda Superior Semântica */
 .bcb-indicator-card.accent-blue,
 .bcb-indicator-card.indicator-brand {
-  border-top-color: var(--bcb-brand-blue);
+  border-top-color: var(--bcb-color-primary, #2E4C59);
 }
 
 .bcb-indicator-card.accent-green,
@@ -81,7 +81,7 @@ a.bcb-indicator-card:focus-visible,
 .bcb-indicator-value {
   font-size: clamp(1.35rem, 2vw, 1.85rem);
   font-weight: 700;
-  color: var(--bcb-brand-blue);
+  color: var(--bcb-color-primary, #2E4C59);
   margin-bottom: 0.35rem;
   line-height: 1.15;
   display: flex;
@@ -147,7 +147,7 @@ a.bcb-indicator-card:focus-visible,
 
 /* Indicadores Avançados com Banda de Tolerância */
 .bcb-indicator-card--advanced {
-  border-left: 4px solid var(--bcb-brand-blue, #025C75) !important;
+  border-left: 4px solid var(--bcb-color-primary, #2E4C59) !important;
 }
 
 .bcb-tolerance-band {

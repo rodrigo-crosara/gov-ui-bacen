@@ -229,7 +229,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-5-2">v2.5.2 (Atual)</a>
+                <a class="nav-link active" href="#v2-6-0">v2.6.0 (Atual)</a>
+                <a class="nav-link" href="#v2-5-2">v2.5.2</a>
                 <a class="nav-link" href="#v2-5-1">v2.5.1</a>
                 <a class="nav-link" href="#v2-5-0">v2.5.0</a>
                 <a class="nav-link" href="#v2-4-0">v2.4.0</a>
@@ -257,13 +258,66 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.6.0 ============ -->
+            <section id="v2-6-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.6.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Revisão Fina da Biblioteca de Componentes, Tokens e Vitrine</span>
+                        </div>
+                        <div class="version-date">04 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-adicionado">
+                            <div class="change-group-title" style="color: #2e7d32;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">add_circle</span>
+                                Adicionado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Sobrescrita e Compatibilidade de Tokens Bootstrap (<code>tokens.json</code> &amp; <code>_tokens.css</code>):</strong> Sobrescrita mandatória das classes utilitárias do Bootstrap (<code>.text-primary</code>, <code>.bg-primary</code>, <code>.border-primary</code>, <code>.badge-primary</code>) mapeadas para <code>var(--bcb-color-primary, #2E4C59) !important</code>, expurgando azuis genéricos (<code>#0d6efd</code> e <code>#007bff</code>) e padronizando ícones Material Icons (<code>.bcb-icon</code>), badges e textos institucionais.</li>
+                                <li><strong>Variantes de Botões (<code>_buttons.css</code>):</strong> Calibração do botão secundário <code>.btn-secondary</code> com fundo suave (<code>#EBF2F5</code>), borda e texto em <code>#2E4C59</code>, transitando em <code>:hover</code> para fundo sólido <code>#2E4C59</code> com texto <code>#FFFFFF</code>; contorno sutil neutro em <code>.btn-tertiary</code> e <code>.btn-outline</code>.</li>
+                                <li><strong>Consolidação BEM de Callouts (<code>_callout.css</code>):</strong> Variantes temáticas <code>.bcb-callout--info</code>, <code>.bcb-callout--warning</code>, <code>.bcb-callout--success</code>, <code>.bcb-callout--danger</code> e o novo <strong>Callout Editorial</strong> (<code>.bcb-callout--editorial</code>), com suporte retrocompatível para <code>.tip-box</code>.</li>
+                                <li><strong>Cards de Navegação e Links (<code>_card-link.css</code>):</strong> Padronização do Modelo 1 (Lista de Links Institucional) e Modelo 2 (Card de Destaque Horizontal Responsivo com thumbnail 16:9/quadrada, tag, título e descrição).</li>
+                                <li><strong>Calibração de KPIs e Indicadores (<code>_kpi-card.css</code> &amp; <code>_card-indicator.css</code>):</strong> Substituição da fonte Cormorant Garamond por Arial tabular bold (<code>font-variant-numeric: tabular-nums; font-weight: 700;</code>) nos valores de <code>.bcb-kpi-value</code> e expurgo de azul genérico em <code>.bcb-indicator-card</code>.</li>
+                                <li><strong>Citações com Calha Dedicada e Linhas Contínuas (<code>_quote.css</code>, <code>_stepper.css</code>, <code>_process-list.css</code>):</strong> Rediagramação de <code>.bcb-citacao</code> / <code>.bcb-quote</code> em CSS Grid com calha dedicada de ícone à esquerda, eliminando marcas d'água sob o texto para conformidade estrita WCAG AAA; linhas conectoras contínuas sem lacunas visuais em <code>.process-list</code> e <code>.bcb-stepper</code>.</li>
+                                <li><strong>Filtros Facetados e Busca em Linha Única (<code>_faceted-search.css</code> &amp; <code>_search-overlay.css</code>):</strong> Prevenção de quebra/sobreposição em <code>.bcb-date-range</code> e diagrama de <code>.bcb-search-input-group</code> em linha única com botão de lupa integrado e chips temáticos ativos em <code>#2E4C59</code>.</li>
+                                <li><strong>CTA Centralizado, Hero Banner Split e Notícia Editorial (<code>_cta.css</code>, <code>_hero-banner.css</code>, <code>_news-list.css</code>):</strong> Nova variante <code>.bcb-cta--centered</code>, Hero Banner Split <code>.bcb-hero-banner--split</code> (58%/42% com imagem lateral direita) e Card de Notícia Editorial <code>.bcb-news-card--editorial</code> com mídia 16:9, metadados de editoria/data, manchete, lead e rodapé de compartilhamento.</li>
+                                <li><strong>Linhas do Tempo, Modais, Vídeos e Fluxogramas (<code>_timeline.css</code>, <code>_modal.css</code>, <code>_videos.css</code>, <code>_decision-flow.css</code>):</strong> Linha contínua em <code>.bcb-timeline</code>; 4 larguras modais normativas (<code>.bcb-modal--sm</code>, <code>--md</code>, <code>--lg</code>, <code>--xl</code>); carrossel acessível <code>.bcb-video-carousel</code> com controles direcionais; nós de decisão generosos em <code>.bcb-decision-flow</code> com badges <code>.bcb-decision-badge--yes</code> e <code>.bcb-decision-badge--no</code>.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-modificado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">published_with_changes</span>
+                                Modificado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Limpeza da Vitrine Oficial (<code>pages/components.html</code>):</strong> Remoção de <code>.ds-state-pills</code> de 32 componentes não interativos/não formulários, preservando-os estritamente nas seções de Botões e Formulários.</li>
+                                <li><strong>Demonstrações e Snippets Atualizados:</strong> Atualização visual completa de códigos e previews para Callouts Editoriais, Cards Modelo 1 e 2, Filtros, Busca Local, CTA Centralizado, Hero Banner Split, Notícia Editorial, Modais por Tamanho, Carrossel de Vídeos e Fluxograma de Decisão.</li>
+                                <li><strong>Sincronização de Documentação e Skill IA (<code>.docs-ia/components.md</code> e <code>SKILL.md</code>):</strong> Vocabulário técnico, regras de uso e matriz de componentes sincronizados com as novas classes BEM.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-removido">
+                            <div class="change-group-title" style="color: #c62828;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">remove_circle</span>
+                                Removido
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Descontinuação do arquivo legado <code>_tip-box.css</code>:</strong> Arquivo removido e referências migradas para <code>_callout.css</code> com preservação de retrocompatibilidade através da classe <code>.tip-box</code> mapeada para os estilos de <code>.bcb-callout</code>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.5.2 ============ -->
             <section id="v2-5-2" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.5.2]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Gaveta Retrátil de Demandas & Calibração de Tabelas</span>
                         </div>
                         <div class="version-date">04 de Setembro de 2026</div>

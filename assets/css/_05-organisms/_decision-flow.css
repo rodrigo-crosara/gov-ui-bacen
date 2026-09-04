@@ -1,19 +1,151 @@
 /* ============= BCB Design System — Organisms / Decision Flow =============
  * Fluxogramas textuais sequenciais e acessíveis com nós de decisão.
+ * Elimina o achatamento de nós com espaçamento generoso e badges "Sim" / "Não".
  * ====================================================================== */
 
 .bcb-decision-flow-wrapper {
   width: 100%;
+  margin: 1.5rem 0 2.5rem 0;
 }
 
 .bcb-decision-flow {
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  position: relative;
 }
 
-.bcb-decision-flow > li {
-  margin-bottom: var(--bcb-space-4, 1rem);
+/* Nós de Decisão Principais */
+.bcb-decision-flow > li,
+.bcb-decision-node {
+  position: relative;
+  background-color: var(--bcb-color-white, #FFFFFF);
+  border: 1px solid var(--bcb-gray-300, #D0D7DF);
+  border-radius: var(--bcb-radius-8, 8px);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--bcb-shadow-100);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.bcb-decision-flow > li:hover,
+.bcb-decision-node:hover {
+  box-shadow: var(--bcb-shadow-300);
+  border-color: var(--bcb-color-primary, #2E4C59);
+}
+
+/* Cabeçalho do Nó */
+.bcb-decision-node__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.bcb-decision-node__step,
+.bcb-decision-step-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bcb-color-primary, #2E4C59);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(46, 76, 89, 0.15);
+}
+
+.bcb-decision-node__content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.bcb-decision-node__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bcb-gray-900, #14171A);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.35;
+}
+
+.bcb-decision-node__desc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--bcb-gray-700, #4A5568);
+  margin-bottom: 0.75rem;
+}
+
+.bcb-decision-node__meta {
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-brand-light, #F0F7F9);
+  border-left: 4px solid var(--bcb-color-primary, #2E4C59);
+  border-radius: 0 var(--bcb-radius-4, 4px) var(--bcb-radius-4, 4px) 0;
+  font-size: 0.875rem;
+  color: var(--bcb-gray-800, #2A3038);
+  margin-top: 0.75rem;
+}
+
+/* Bifurcações e Ramos de Decisão */
+.bcb-decision-branches {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.bcb-decision-branch {
+  flex: 1 1 calc(50% - 0.75rem);
+  min-width: 260px;
+  padding: 1.25rem;
+  border-radius: var(--bcb-radius-6, 6px);
+  background-color: var(--bcb-gray-50, #F8F9FB);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  display: flex;
+  flex-direction: column;
+}
+
+.bcb-decision-branch p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--bcb-gray-800, #2A3038);
+  margin: 0.5rem 0 0 0;
+}
+
+/* Badges Direcionais "Sim" / "Não" */
+.bcb-decision-badge--yes,
+.badge-decision-yes {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--bcb-color-verde-castell, #088694);
+  color: #FFFFFF !important;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: var(--bcb-radius-4, 4px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+}
+
+.bcb-decision-badge--no,
+.badge-decision-no {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--bcb-brand-vinho-autentico, #47373A);
+  color: #FFFFFF !important;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: var(--bcb-radius-4, 4px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
 }
 
 .bcb-table-comparison-wrapper {
