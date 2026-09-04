@@ -228,7 +228,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-2-0">v2.2.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-3-0">v2.3.0 (Atual)</a>
+                <a class="nav-link" href="#v2-2-0">v2.2.0</a>
                 <a class="nav-link" href="#v2-1-0">v2.1.0</a>
                 <a class="nav-link" href="#v2-0-0">v2.0.0</a>
                 <a class="nav-link" href="#v1-1-0">v1.1.0</a>
@@ -251,13 +252,52 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.3.0 ============ -->
+            <section id="v2-3-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.3.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Protótipos Autônomos &amp; Delimitação Central</span>
+                        </div>
+                        <div class="version-date">04 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-adicionado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">add_circle</span>
+                                Adicionado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Padrão de Protótipos Autônomos:</strong> Introdução do envelope técnico mínimo (<code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> com <code>bcb-style.css</code>, fontes e Material Symbols, e <code>bcb-ui.js</code> antes de <code>&lt;/body&gt;</code>), permitindo visualização direta e autônoma em qualquer navegador (incluindo protocolo <code>file:///</code>).</li>
+                                <li><strong>Visualizador Harness com Iframe Dinâmico (<code>_harness.html</code>):</strong> Renderização resiliente de protótipos via <code>&lt;iframe&gt;</code> nativo com alternador "Modo: Com Casca / Puro", botão "Abrir Isolado", cópia direta do HTML do miolo e sincronização de temas (Light, Dark, High Contrast) via <code>postMessage</code>.</li>
+                                <li><strong>Extração Cirúrgica de Fragmento Interno (<code>exportar-prototipo.js</code>):</strong> Exportação automatizada de <code>fragmento-interno.html</code> (miolo puro sem a tag <code>&lt;main&gt;</code> para CMSs que já provêem a casca) juntamente com <code>corpo-conteudo.html</code>, <code>prototipo-autonomo.html</code> e manifesto JSON.</li>
+                                <li><strong>Scaffold Autônomo em <code>nova-demanda.js</code>:</strong> Geração de templates HTML prontos para execução autônoma delimitados no container <code>&lt;main id="conteudo-principal" class="bcb-main-content"&gt;</code>.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-modificado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">published_with_changes</span>
+                                Modificado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Refatoração Integral dos 5 Protótipos Canônicos:</strong> Todos os arquivos em <code>prototipos/</code> atualizados para o padrão autônomo com a classe <code>.bcb-main-content</code>, garantindo ausência irrevogável de header, footer, breadcrumbs e Barra Brasil.</li>
+                                <li><strong>Linters e Testes de Integridade:</strong> <code>prototipos-lint.test.js</code> e <code>html-integrity.test.js</code> atualizados para validar o envelope técnico autônomo e manter taxa de 100% de conformidade.</li>
+                                <li><strong>Regras do Agente (<code>.antigravityrules</code> e <code>SKILL.md</code>):</strong> Atualizadas Seções 4 e 5 instruindo o agente a adotar o Padrão de Protótipos Autônomos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.2.0 ============ -->
             <section id="v2-2-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.2.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Desacoplamento da Casca &amp; Fragmentos</span>
                         </div>
                         <div class="version-date">03 de Setembro de 2026</div>

@@ -171,30 +171,31 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
 
 ---
 
-## 4. CONTRATO MANDATÓRIO DE SAÍDA ESTRITA (OUTPUT CONTRACT)
+## 4. CONTRATO MANDATÓRIO DE SAÍDA (PADRÃO DE PROTÓTIPOS AUTÔNOMOS)
 
-1. **Restrição Mandante de Saída ao Nó `<main class="bcb-container">`:**
-   - O agente entrega **estritamente o nó do container de conteúdo principal**:
-     `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` (ou fragmento `<section class="bcb-section">` caso seja solicitado apenas o recorte de um slot).
-   - **BANIMENTO EXPRESSO DE ELEMENTOS GLOBAIS, CASCA INSTITUCIONAL E SCRIPTS:**
-     - ❌ **TOTALMENTE BANIDO:** Tags estruturais de documento completo (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`). O agente NUNCA deve gerar cabeçalho técnico HTML ou casca externa.
-     - ❌ **TOTALMENTE BANIDO:** Tags de script (`<script src="...">` ou `<script>...</script>`). Toda reatividade é delegada a `assets/js/bcb-ui.js` e provida no visualizador `_harness.html`.
-     - ❌ **TOTALMENTE BANIDO:** Tag `<header>` e barras de navegação globais.
+1. **Envelope Técnico Mínimo com Delimitação Estrita ao `<main>`:**
+   - Todo novo protótipo gerado pelo agente adota o **Padrão de Protótipos Autônomos**:
+     - Contém envelope técnico mínimo (`<!DOCTYPE html>`, `<html lang="pt-BR">`, `<head>` com meta charset UTF-8, viewport, `<title>`, `bcb-style.css`, Google Fonts e Material Symbols, e `<script src="../assets/js/bcb-ui.js"></script>` antes do fechamento `</body>`).
+     - Permite renderização e validação direta no navegador (incluindo duplo clique e protocolo `file:///`), sem necessidade de servidor ou do harness.
+     - Todo o conteúdo visível é delimitado ESTRITAMENTE dentro do container `<main id="conteudo-principal" class="bcb-main-content bcb-container container py-4 mb-5">`. Fora do `<main>`, nenhum markup visível é permitido.
+   - **PROIBIÇÃO ABSOLUTA DE ELEMENTOS FIXOS DO PORTAL INSTITUCIONAL:**
+     - ❌ **TOTALMENTE BANIDO:** Tag `<header>` e barras de navegação globais do portal.
      - ❌ **TOTALMENTE BANIDO:** Tag `<footer>` institucional, rodapés de portal ou tag `<footer>` em citações (utilize `<cite class="blockquote-footer">`).
      - ❌ **TOTALMENTE BANIDO:** Barra Brasil (`#barra-brasil`, `.bcb-govbr-bar`).
      - ❌ **TOTALMENTE BANIDO:** Breadcrumbs (`<nav aria-label="breadcrumb">`, `.breadcrumb`).
      - ❌ **TOTALMENTE BANIDO:** Menus laterais globais de portal ou skip links redundantes.
      - ❌ **TOTALMENTE BANIDO:** Estilos inline (`style="..."`).
-   - **Justificativa Técnica:** Elementos de casca fixa (header, breadcrumbs e footer) e scripts globais são estáticos, providos de forma centralizada pelo CMS institucional do portal BCB e embutidos estaticamente no visualizador técnico (`prototipos/_harness.html`). O papel exclusivo do agente é conceber o corpo central de conteúdo semântico (`<main>`).
+     - ❌ **TOTALMENTE BANIDO:** Scripts inline (`<script>...</script>`). Toda reatividade deve residir em `assets/js/bcb-ui.js`.
+   - **Justificativa Técnica:** Elementos de casca fixa (header, breadcrumbs e footer) são estáticos e providos centralizadamente pelo CMS institucional do portal BCB (sendo simulados dinamicamente no visualizador `prototipos/_harness.html`). O papel exclusivo do protótipo é conceber o corpo central de conteúdo semântico (`<main>`), encapsulado em envelope técnico leve para conferência visual direta.
 
 2. **Diretriz Obrigatória de Saída de Arquivos (`prototipos/<slug>.html`):**
    - Todo novo protótipo gerado pelo agente DEVE ser salvo obrigatoriamente no caminho canônico:
      `prototipos/<slug-da-demanda>.html`
-     (utilizando nomes semânticos em kebab-case, ex.: `copom-decisao-taxa-selic.html`, `sgs-series-taxa-selic.html`, `mecanismo-especial-devolucao-med.html`, `regras-cheque-especial.html`).
+     (utilizando nomes semânticos em kebab-case, ex.: `copom-decisao-taxa-selic.html`, `sgs-series-taxa-selic.html`, `mecanismo-especial-devolucao-med.html`, `regras-cheque-especial.html`, `resolucao-bcb-dou.html`).
    - **Indexação Mandatória:** Ao gerar um novo protótipo, o agente DEVE:
      1. Cadastrar a nova tela no seletor `<select id="selectPrototipo">` de `prototipos/_harness.html`.
      2. Adicionar o card representativo com resumo e badges na vitrine oficial em `pages/prototipos.html`.
-   - **Formato do Arquivo:** O arquivo salvo em `prototipos/` deve conter estritamente a estrutura central de conteúdo da Seção 5, encapsulando rigorosamente o miolo `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">` sem qualquer elemento de casca externa ou tags globais.
+   - **Formato do Arquivo:** O arquivo salvo em `prototipos/` deve seguir o Boilerplate Canônico da Seção 5.
 
 3. **Hierarquia Tipográfica Estrita (e-MAG 3.1):**
    - Exatamente **1 tag `<h1>`** com a classe `.bcb-page-title`.
@@ -237,51 +238,81 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
 
 ---
 
-## 5. BOILERPLATE CANÔNICO PARA PROTOTIPAGEM (`prototipos/`)
+## 5. BOILERPLATE CANÔNICO PARA PROTOTIPAGEM AUTÔNOMA (`prototipos/`)
 
-Ao conceber um novo protótipo ou versionar em `prototipos/[nome-da-demanda].html`, forneça estritamente a estrutura central de conteúdo sem tags de documento completo (`<html>/<head>/<body>`), sem casca externa (sem header, sem footer, sem breadcrumb) e sem estilos inline:
+Ao conceber um novo protótipo ou versionar em `prototipos/[nome-da-demanda].html`, adote a casca técnica mínima autônoma com o miolo semântico delimitado em `<main>`:
 
 ```html
-<!-- CONTEÚDO PRINCIPAL (Miolo Semântico Iniciado no H1 Único — Restrito Estritamente ao <main>) -->
-<main id="conteudo-principal" class="bcb-container container py-4 mb-5">
-    
-    <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
-    <section class="bcb-section">
-        <div class="bcb-row">
-            <div class="bcb-col-12">
-                <h1 class="bcb-page-title">[Título Oficial da Página]</h1>
-                <div class="bcb-page-meta">
-                    <span class="tag-bcb primary">[Categoria do Conteúdo]</span>
-                    <span>Publicado em: [DD/MM/AAAA] &bull; Banco Central do Brasil</span>
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-contrast="normal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Título Oficial da Página] — Banco Central do Brasil</title>
+    <meta name="description" content="[Descrição executiva da matéria do protótipo]">
+
+    <!-- Bootstrap 4.6 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous">
+
+    <!-- Tipografia e Ícones Oficiais do BCB -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- BCB Design System CSS -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+</head>
+<body>
+
+    <!-- CORPO CENTRAL DELIMITADO (Sem header, footer ou breadcrumbs do portal) -->
+    <main id="conteudo-principal" class="bcb-main-content bcb-container container py-4 mb-5">
+        
+        <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <h1 class="bcb-page-title">[Título Oficial da Página]</h1>
+                    <div class="bcb-page-meta">
+                        <span class="tag-bcb primary">[Categoria do Conteúdo]</span>
+                        <span>Publicado em: [DD/MM/AAAA] &bull; Banco Central do Brasil</span>
+                    </div>
+                    <p class="lead mt-3 text-body">
+                        [Parágrafo lead contextualizando o objetivo do ato, serviço ou painel econômico]
+                    </p>
                 </div>
-                <p class="lead mt-3 text-body">
-                    [Parágrafo lead contextualizando o objetivo do ato, serviço ou painel econômico]
-                </p>
             </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% | 70/30 | 50/50 | 33/33/33 - Projeção Semântica dos Dados] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12 bcb-col-lg-8 mb-4 mb-lg-0">
+                    <!-- Coluna Principal (70%) -->
+                </div>
+                <div class="bcb-col-12 bcb-col-lg-4">
+                    <!-- Coluna Lateral (30%) -->
+                </div>
+            </div>
+        </section>
+
+        <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
+        <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
+            <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">
+                <span class="material-symbols-outlined material-icons md-16 align-middle" aria-hidden="true">arrow_upward</span>
+                <span>Voltar ao topo</span>
+            </a>
         </div>
-    </section>
 
-    <!-- [SLOT CMS: 100% | 70/30 | 50/50 | 33/33/33 - Projeção Semântica dos Dados] -->
-    <section class="bcb-section">
-        <div class="bcb-row">
-            <div class="bcb-col-12 bcb-col-lg-8 mb-4 mb-lg-0">
-                <!-- Coluna Principal (70%) -->
-            </div>
-            <div class="bcb-col-12 bcb-col-lg-4">
-                <!-- Coluna Lateral (30%) -->
-            </div>
-        </div>
-    </section>
+    </main>
 
-    <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
-    <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
-        <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">
-            <span class="material-symbols-outlined material-icons md-16 align-middle" aria-hidden="true">arrow_upward</span>
-            <span>Voltar ao topo</span>
-        </a>
-    </div>
-
-</main>
+    <!-- Scripts Oficiais do BCB Design System -->
+    <script src="../assets/js/bcb-ui.js"></script>
+</body>
+</html>
 ```
 
 ---
@@ -290,8 +321,10 @@ Ao conceber um novo protótipo ou versionar em `prototipos/[nome-da-demanda].htm
 
 Antes de entregar qualquer novo protótipo ou salvar em `prototipos/`, valide obrigatoriamente cada item:
 
-### 1. Ritmo Vertical e Espaçamento entre Seções
-- [ ] O miolo semântico inicia diretamente no `<main id="conteudo-principal" class="bcb-container container py-4 mb-5">`?
+### 1. Envelope Técnico e Delimitação em `<main>`
+- [ ] O arquivo possui a casca técnica mínima autônoma (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`, `bcb-ui.js`)?
+- [ ] O conteúdo visível está 100% contido em `<main id="conteudo-principal" class="bcb-main-content bcb-container container py-4 mb-5">`?
+- [ ] O protótipo está livre de casca do portal (sem `<header>`, sem `<footer>`, sem breadcrumb, sem `#barra-brasil`)?
 - [ ] Cada bloco lógico principal está envelopado por `<section class="bcb-section">` (garantindo o ritmo vertical de 48px / `var(--bcb-spacing-2xl)`)?
 - [ ] As colunas e cards utilizam o gutter padrão de 24px proporcionado por `.bcb-row` e `.bcb-col-*`?
 - [ ] Cada seção possui seu comentário delimitador de slot CMS (`<!-- [SLOT CMS: ...] -->`)?

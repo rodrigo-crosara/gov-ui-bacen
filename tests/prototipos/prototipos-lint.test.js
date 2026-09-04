@@ -141,8 +141,8 @@ for (const arquivo of arquivosHTML) {
   const ehPrototipo = !ehHarness && nomeRelativo.startsWith('prototipos/');
 
   // 1. INTEGRIDADE DE ESTILOS E TOKENS OFICIAIS
-  // Protótipos são fragmentos de conteúdo sem <head>; estilos são providos pela casca do harness
-  if (!ehPrototipo && !conteudo.includes('bcb-style.css')) {
+  // Todos os documentos HTML e protótipos autônomos devem importar bcb-style.css
+  if (!conteudo.includes('bcb-style.css')) {
     problemas.push('Folha de estilo oficial bcb-style.css não importada.');
   }
 
@@ -205,27 +205,35 @@ for (const arquivo of arquivosHTML) {
     problemas.push(`${totalImagens - totalImagensAlt} imagem(ns) sem atributo alt obrigatório.`);
   }
 
-  // 3. MODULARIDADE E RESTRIÇÃO AO CORPO DE CONTEÚDO (PROTÓTIPOS)
+  // 3. PADRÃO DE PROTÓTIPOS AUTÔNOMOS E RESTRIÇÃO AO CORPO DE CONTEÚDO
   if (ehPrototipo) {
-    // 3.0 Proibição estrita de tags estruturais completas e scripts em fragmentos
-    if (conteudo.toLowerCase().includes('<!doctype')) {
-      problemas.push('Tag <!DOCTYPE> detectada — protótipos devem ser fragmentos semânticos de conteúdo.');
+    // 3.0 Validação do envelope técnico mínimo
+    if (!conteudo.trim().toLowerCase().startsWith('<!doctype html>')) {
+      problemas.push('Tag <!DOCTYPE html> ausente no início do protótipo autônomo.');
     }
-    if (conteudo.match(/<html[\s>]/i)) {
-      problemas.push('Tag <html> detectada — protótipos devem ser fragmentos semânticos de conteúdo.');
+    if (!conteudo.match(/<html[^>]*lang=["']pt-BR["']/i)) {
+      problemas.push('Tag <html lang="pt-BR"> ausente em protótipo autônomo.');
     }
-    if (conteudo.match(/<head[\s>]/i)) {
-      problemas.push('Tag <head> detectada — protótipos devem ser fragmentos semânticos de conteúdo.');
+    if (!conteudo.match(/<head[\s>]/i) || !conteudo.match(/<\/head>/i)) {
+      problemas.push('Tag <head> ausente em protótipo autônomo.');
     }
-    if (conteudo.match(/<body[\s>]/i)) {
-      problemas.push('Tag <body> detectada — protótipos devem ser fragmentos semânticos de conteúdo.');
+    if (!conteudo.toLowerCase().includes('charset="utf-8"') && !conteudo.toLowerCase().includes("charset='utf-8'") && !conteudo.toLowerCase().includes('charset=utf-8')) {
+      problemas.push('Meta charset UTF-8 ausente em protótipo autônomo.');
     }
-    const tagsScriptTotal = conteudo.match(/<script[\s>]/gi) || [];
-    if (tagsScriptTotal.length > 0) {
-      problemas.push(`${tagsScriptTotal.length} tag(s) <script> detectada(s) em protótipo — scripts são providos centralizadamente pela casca.`);
+    if (!conteudo.includes('viewport')) {
+      problemas.push('Meta viewport ausente em protótipo autônomo.');
+    }
+    if (!conteudo.match(/<title[\s>]/i)) {
+      problemas.push('Tag <title> ausente em protótipo autônomo.');
+    }
+    if (!conteudo.match(/<body[\s>]/i) || !conteudo.match(/<\/body>/i)) {
+      problemas.push('Tag <body> ausente em protótipo autônomo.');
+    }
+    if (!conteudo.includes('bcb-ui.js')) {
+      problemas.push('Script oficial bcb-ui.js ausente ao final do <body> em protótipo autônomo.');
     }
 
-    // 3.1 Exatamente 1 elemento <main> identificado como conteúdo principal
+    // 3.1 Exatamente 1 elemento <main> identificado como conteúdo principal com classe bcb-main-content
     const conteudoLimpo = conteudo.replace(/<!--[\s\S]*?-->/g, '').trim();
     const totalMain = (conteudoLimpo.match(/<main[\s>]/gi) || []).length;
     if (totalMain !== 1) {
@@ -234,9 +242,12 @@ for (const arquivo of arquivosHTML) {
     if (!conteudo.includes('id="conteudo-principal"') && !conteudo.includes("id='conteudo-principal'")) {
       problemas.push('Elemento <main> deve obrigatoriamente possuir id="conteudo-principal" para acessibilidade.');
     }
+    if (!conteudo.includes('bcb-main-content')) {
+      problemas.push('Elemento <main> deve possuir a classe .bcb-main-content para controle de largura e padding responsivo.');
+    }
 
     // 3.2 Proibição estrita de casca externa e elementos redundantes
-    if (conteudo.includes('id="barra-brasil"') || conteudo.includes("id='barra-brasil'")) {
+    if (conteudoLimpo.includes('id="barra-brasil"') || conteudoLimpo.includes("id='barra-brasil'")) {
       problemas.push('Barra Brasil (#barra-brasil) detectada — cascas externas são providas pelo portal.');
     }
     if (conteudoLimpo.match(/<header[\s>]/gi)) {
@@ -267,9 +278,15 @@ for (const arquivo of arquivosHTML) {
       problemas.push(`${handlersInline.length} manipulador(es) inline de evento detectado(s) (${handlersInline.join(', ')}). Utilize seletores de dados como data-action e delegue a assets/js/bcb-ui.js.`);
     }
 
-    // 3.5 Restrição estrita de conteúdo ao container <main id="conteudo-principal" class="bcb-container">
-    if (!conteudoLimpo.startsWith('<main') || !conteudoLimpo.endsWith('</main>')) {
-      problemas.push('O protótipo deve iniciar diretamente no elemento <main id="conteudo-principal"> e finalizar em </main> (permitidos apenas comentários HTML fora do container).');
+    // 3.5 Delimitação estrita do conteúdo visível dentro de <main id="conteudo-principal">
+    const matchBody = conteudo.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+    if (matchBody) {
+      const bodySemComentarios = matchBody[1].replace(/<!--[\s\S]*?-->/g, '');
+      const semMain = bodySemComentarios.replace(/<main[\s\S]*?<\/main>/i, '');
+      const semScripts = semMain.replace(/<script[\s\S]*?<\/script>/gi, '').trim();
+      if (semScripts.length > 0) {
+        problemas.push(`Conteúdo fora de <main> no <body> detectado ("${semScripts.slice(0, 60)}..."). Todo o conteúdo visível deve estar delimitado dentro de <main id="conteudo-principal">.`);
+      }
     }
 
     // 3.6 Proibição de estilos inline arbitrários em protótipos oficiais

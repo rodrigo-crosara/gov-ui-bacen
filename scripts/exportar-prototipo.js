@@ -74,6 +74,10 @@ const htmlOriginal = fs.readFileSync(arquivoOrigem, 'utf8');
 const matchMain = htmlOriginal.match(/<main[\s\S]*?<\/main>/i);
 const mioloHtml = matchMain ? matchMain[0] : htmlOriginal.trim();
 
+// Extrair conteúdo interno do <main> (para CMSs que já renderizam a casca do <main>)
+const matchInnerMain = mioloHtml.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+const fragmentoInternoHtml = matchInnerMain ? matchInnerMain[1].trim() : mioloHtml;
+
 if (!mioloHtml.includes('conteudo-principal')) {
   console.error('❌ Elemento <main id="conteudo-principal"> não identificado no protótipo.');
   process.exit(1);
@@ -88,14 +92,22 @@ const titulo = h1Texto;
 const pastaExportacao = path.join(DIR_DIST, slug);
 fs.mkdirSync(pastaExportacao, { recursive: true });
 
-// 1. Salvar exclusivamente o corpo de conteúdo puro (HTML de integração para CMS)
+// 1. Salvar o corpo de conteúdo delimitado com <main>
 const caminhoCorpo = path.join(pastaExportacao, 'corpo-conteudo.html');
 fs.writeFileSync(caminhoCorpo, mioloHtml, 'utf8');
 
 const caminhoMiolo = path.join(pastaExportacao, 'miolo.html');
 fs.writeFileSync(caminhoMiolo, mioloHtml, 'utf8');
 
-// 3. Copiar assets locais para entrega autocontida
+// 2. Salvar o fragmento interno estrito (sem a tag <main>, ideal para CMS com casca própria)
+const caminhoFragmento = path.join(pastaExportacao, 'fragmento-interno.html');
+fs.writeFileSync(caminhoFragmento, fragmentoInternoHtml, 'utf8');
+
+// 3. Salvar o arquivo autônomo completo para visualização direta
+const caminhoAutonomo = path.join(pastaExportacao, 'prototipo-autonomo.html');
+fs.writeFileSync(caminhoAutonomo, htmlOriginal, 'utf8');
+
+// 4. Copiar assets locais para entrega autocontida
 function copiarDiretorioRecursivo(origem, destino) {
   if (!fs.existsSync(origem)) return;
   fs.mkdirSync(destino, { recursive: true });
@@ -114,7 +126,7 @@ function copiarDiretorioRecursivo(origem, destino) {
 const pastaAssetsDestino = path.join(pastaExportacao, 'assets');
 copiarDiretorioRecursivo(path.join(RAIZ_PROJETO, 'assets'), pastaAssetsDestino);
 
-// 4. Gerar Manifesto JSON para Integração
+// 5. Gerar Manifesto JSON para Integração
 const manifesto = {
   nome: slug,
   titulo: titulo,
@@ -123,14 +135,17 @@ const manifesto = {
   autor: 'Banco Central do Brasil — DEINF / Design System',
   acessibilidade: 'WCAG 2.1 AA / e-MAG 3.1 Compatível',
   estrutura: {
-    containerPrincipal: 'main#conteudo-principal.bcb-container',
+    containerPrincipal: 'main#conteudo-principal.bcb-main-content.bcb-container',
     mioloBytes: Buffer.byteLength(mioloHtml, 'utf8'),
+    fragmentoBytes: Buffer.byteLength(fragmentoInternoHtml, 'utf8'),
     grid: '12 colunas (.bcb-row / .bcb-col-*)',
     suporteTemas: ['Padrão (Claro)', 'Dark Mode (data-theme="dark")', 'Alto Contraste (data-contrast="high")']
   },
   arquivosEntregues: [
     'corpo-conteudo.html (Markup semântico estrito do <main> para inserção no CMS)',
-    'miolo.html (Alias do corpo de conteúdo para integração direta)',
+    'miolo.html (Alias do corpo de conteúdo com tag <main>)',
+    'fragmento-interno.html (Conteúdo interno sem tag <main>, pronto para CMS que já fornece a casca)',
+    'prototipo-autonomo.html (Envelope técnico completo para visualização direta em qualquer navegador)',
     'manifest.json (Metadados estruturais da exportação)',
     'README.md (Instruções técnicas para os desenvolvedores)',
     'assets/ (Folhas de estilo bcb-style.css e scripts bcb-ui.js)'
@@ -138,7 +153,7 @@ const manifesto = {
 };
 fs.writeFileSync(path.join(pastaExportacao, 'manifest.json'), JSON.stringify(manifesto, null, 2), 'utf8');
 
-// 5. Gerar README de Instruções para Desenvolvedores
+// 6. Gerar README de Instruções para Desenvolvedores
 const readmeEngenharia = `# Pacote de Entrega de Interface: ${titulo}
 
 Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos desenvolvidos pelo time de Webdesign do Banco Central do Brasil para integração nos sistemas do portal.
@@ -147,7 +162,9 @@ Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos des
 
 ## 📦 Conteúdo do Pacote
 
-- **\`corpo-conteudo.html\` (ou \`miolo.html\`):** O markup semântico estrito do container \`<main id="conteudo-principal">\`. Este é o arquivo que deve ser injetado no layout principal do CMS ou framework (Drupal, Django, Spring MVC, React, Vue, Angular, etc.).
+- **\`corpo-conteudo.html\` (ou \`miolo.html\`):** O markup semântico delimitado pelo container \`<main id="conteudo-principal">\`. Ideal para sistemas e templates de CMS onde o desenvolvedor injeta o bloco de conteúdo principal completo.
+- **\`fragmento-interno.html\`:** O miolo interno estrito (sem a tag \`<main>\`). Ideal para CMSs ou templates que já fornecem o elemento \`<main id="conteudo-principal">\` externamente.
+- **\`prototipo-autonomo.html\`:** O arquivo completo com envelope técnico mínimo (\`<!DOCTYPE html>\`, \`<head>\`, dependências de CSS/JS). Permite visualização e testes diretos no navegador sem necessidade de servidor ou harness.
 - **\`assets/\`:** Folhas de estilo (\`assets/css/bcb-style.css\`) e comportamentos interativos (\`assets/js/bcb-ui.js\`).
 - **\`manifest.json\`:** Metadados estruturais da exportação.
 
@@ -156,18 +173,21 @@ Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos des
 ## 🛠️ Como Integrar no Backend / CMS
 
 1. **Injeção do Corpo de Conteúdo:**
-   Copie o conteúdo de \`corpo-conteudo.html\` para o slot de conteúdo da sua página:
+   Se o seu template já renderiza \`<main id="conteudo-principal">\`, copie o conteúdo de \`fragmento-interno.html\`:
    \`\`\`html
-   <!-- Slot Central do Template CMS -->
+   <main id="conteudo-principal" class="bcb-main-content bcb-container container py-4 mb-5">
+       {{ fragmento_interno_html }}
+   </main>
+   \`\`\`
+   Caso o template necessite do container completo, utilize \`corpo-conteudo.html\`:
+   \`\`\`html
    {{ corpo_conteudo_html }}
    \`\`\`
 2. **Dependências de CSS (no <head>):**
-   - Bootstrap 4.6 (CSS)
-   - Fontes: Inter, Ubuntu e Cormorant Garamond
+   - Fontes: Open Sans e Roboto
    - Material Symbols Outlined
    - \`assets/css/bcb-style.css\`
 3. **Dependências de JS (ao final do <body>):**
-   - jQuery 3.5.1 + Bootstrap 4.6 bundle JS
    - \`assets/js/bcb-ui.js\`
 
 ---
@@ -182,10 +202,12 @@ fs.writeFileSync(path.join(pastaExportacao, 'README.md'), readmeEngenharia, 'utf
 console.log('\n=======================================================');
 console.log('📦 BCB Design System — Pacote de Exportação Gerado');
 console.log('=======================================================');
-console.log(`🎯 Protótipo:          ${slug}`);
-console.log(`📁 Diretório:          dist/exportacoes/${slug}/`);
-console.log(`📄 Corpo de conteúdo:  dist/exportacoes/${slug}/corpo-conteudo.html`);
-console.log(`📄 Miolo puro (alias): dist/exportacoes/${slug}/miolo.html`);
-console.log(`📋 Manifesto:          dist/exportacoes/${slug}/manifest.json`);
-console.log(`📖 Documentação:       dist/exportacoes/${slug}/README.md`);
+console.log(`🎯 Protótipo:            ${slug}`);
+console.log(`📁 Diretório:            dist/exportacoes/${slug}/`);
+console.log(`📄 Corpo de conteúdo:    dist/exportacoes/${slug}/corpo-conteudo.html`);
+console.log(`📄 Miolo puro (alias):   dist/exportacoes/${slug}/miolo.html`);
+console.log(`🧩 Fragmento interno:    dist/exportacoes/${slug}/fragmento-interno.html`);
+console.log(`🌐 Protótipo autônomo:   dist/exportacoes/${slug}/prototipo-autonomo.html`);
+console.log(`📋 Manifesto:            dist/exportacoes/${slug}/manifest.json`);
+console.log(`📖 Documentação:         dist/exportacoes/${slug}/README.md`);
 console.log('=======================================================\n');

@@ -5,6 +5,19 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.3.0] — 2026-09-04
+
+### Adicionado
+- **Padrão de Protótipos Autônomos com Delimitação em `<main>`:** Reestruturação da arquitetura de prototipagem para envelopes técnicos mínimos autônomos (`<!DOCTYPE html>`, `<html>`, `<head>` com `bcb-style.css`, fontes e Material Symbols, e `<script src="../assets/js/bcb-ui.js"></script>` antes de `</body>`), permitindo renderização direta e imediata em qualquer navegador (incluindo protocolo local `file:///`).
+- **Novo Visualizador Harness com Iframe Dinâmico (`prototipos/_harness.html`):** Carregamento direto via `frame.src = slug` eliminando restrições de CORS em arquivos locais, com novo alternador "Modo: Com Casca / Puro", botão "Abrir Isolado", cópia direta de HTML do miolo e sincronização de temas (Light/Dark/High Contrast) via atributos DOM e `postMessage`.
+- **Extração Cirúrgica de Fragmento Interno no Exportador (`scripts/exportar-prototipo.js`):** Geração automática de `fragmento-interno.html` (miolo interno puro sem `<main>` para CMS com casca própria) juntamente com `corpo-conteudo.html` (com container `<main>`), `prototipo-autonomo.html` (envelope completo) e manifesto detalhado.
+- **Scaffold Autônomo em `scripts/nova-demanda.js`:** Suporte à geração de esqueleto HTML completo com envelope técnico mínimo e `<main id="conteudo-principal" class="bcb-main-content bcb-container container py-4 mb-5">`.
+
+### Modificado
+- **Conversão de Todos os Protótipos Canônicos:** Reestruturação integral dos 5 protótipos de produção (`copom-decisao-taxa-selic.html`, `sgs-series-taxa-selic.html`, `mecanismo-especial-devolucao-med.html`, `regras-cheque-especial.html` e `resolucao-bcb-dou.html`) para o padrão autônomo com classe `.bcb-main-content`, preservando zero casca do portal (sem header, sem footer, sem breadcrumb).
+- **Linters e Testes de Integridade (`tests/prototipos/prototipos-lint.test.js` e `tests/html/html-integrity.test.js`):** Ajustados para validar rigorosamente a casca técnica mínima (DOCTYPE, meta charset, viewport, title, CSS e JS do BCB) e certificar a ausência estrita de casca fixa do portal e estilos inline.
+- **Formalização nas Regras do Agente (`.antigravityrules` e `.agent/skills/gerador-ui-bcb/SKILL.md`):** Seção 4 e Etapa 5 reformuladas com o contrato de saída, boilerplate canônico e checklist de prototipagem autônoma.
+
 ## [2.2.0] — 2026-09-03
 
 ### Adicionado

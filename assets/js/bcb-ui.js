@@ -114,6 +114,15 @@
       applyTheme(savedTheme);
     }
   };
+
+  // Suporte a sincronização de temas via postMessage (harness / iframes)
+  window.addEventListener('message', (event) => {
+    try {
+      if (event.data && event.data.action === 'set-theme' && event.data.theme) {
+        applyTheme(event.data.theme);
+      }
+    } catch(e) {}
+  });
 })();
 
 // 2. Módulos de Componentes — Inicialização Defensiva Condicional

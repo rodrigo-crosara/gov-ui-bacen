@@ -12,7 +12,8 @@
 /* ==========================================
    1. CONTAINER INSTITUCIONAL (MAX 1440PX)
    ========================================== */
-.bcb-container {
+.bcb-container,
+.bcb-main-content {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -22,14 +23,16 @@
 }
 
 @media (min-width: 1200px) {
-  .bcb-container {
+  .bcb-container,
+  .bcb-main-content {
     padding-right: 25px;
     padding-left: 25px;
   }
 }
 
 @media (min-width: 1520px) {
-  .bcb-container {
+  .bcb-container,
+  .bcb-main-content {
     max-width: 1440px;
   }
 }
