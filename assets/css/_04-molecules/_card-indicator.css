@@ -144,3 +144,17 @@ a.bcb-indicator-card:focus-visible,
   line-height: 1;
   vertical-align: middle;
 }
+
+/* Indicadores Avançados com Banda de Tolerância */
+.bcb-indicator-card--advanced {
+  border-left: 4px solid var(--bcb-brand-blue, #025C75) !important;
+}
+
+.bcb-tolerance-band {
+  width: 100%;
+}
+
+.bcb-progress-sm {
+  height: 6px;
+}
+

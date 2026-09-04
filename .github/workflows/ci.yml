@@ -45,6 +45,9 @@ jobs:
       - name: Linter Dedicado de Protótipos (prototipos/)
         run: npm run lint:prototypes
 
+      - name: Validação Completa de Fragmentos de Conteúdo (Lint & A11y Protótipos)
+        run: npm run test:prototypes
+
   acessibilidade:
     name: Acessibilidade Dinâmica (WCAG 2.2 / e-MAG)
     runs-on: ubuntu-latest

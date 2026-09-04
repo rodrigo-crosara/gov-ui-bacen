@@ -436,6 +436,8 @@
             <a class="nav-link" href="#molecula-page-toolbar" data-category="moleculas">2.15 Barra de Utilidades da Página</a>
             <a class="nav-link" href="#molecula-quote" data-category="moleculas">2.16 Citação e Destaque Normativo</a>
             <a class="nav-link" href="#molecula-alert" data-category="moleculas">2.17 Alertas Inline de Validação</a>
+            <a class="nav-link" href="#molecula-indicadores-avancados" data-category="moleculas">2.18 Indicadores Financeiros Avançados</a>
+            <a class="nav-link" href="#molecula-metadados-normativos" data-category="moleculas">2.19 Bloco de Metadados Normativos</a>
 
             <div class="ds-sidebar-title" data-category="organismos">3. Organismos (Compostos)</div>
             <a class="nav-link" href="#organismo-cards-link" data-category="organismos">3.1 Cards de Navegação (Listalinks)</a>
@@ -446,6 +448,7 @@
             <a class="nav-link" href="#organismo-process-list" data-category="organismos">3.6 Process List</a>
             <a class="nav-link" href="#organismo-modal" data-category="organismos">3.7 Modal / Dialog Acessível</a>
             <a class="nav-link" href="#organismo-videos" data-category="organismos">3.8 Container de Vídeos</a>
+            <a class="nav-link" href="#organismo-fluxograma-decisao" data-category="organismos">3.11 Fluxogramas Textuais com Decisão</a>
 
             <div class="ds-sidebar-title" data-category="utilitarios">4. Utilitários (Helpers)</div>
             <a class="nav-link" href="#utilitario-backtotop" data-category="utilitarios">4.1 Botão Voltar ao Topo</a>
@@ -2338,6 +2341,147 @@
                 </div>
             </section>
 
+            <!-- 2.18 Indicadores Financeiros Avançados -->
+            <section id="molecula-indicadores-avancados" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">query_stats</span> 2.18 Indicadores Financeiros Avançados (.bcb-indicator-card--advanced)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Bandas de Tolerância &bull; WCAG 2.2</span>
+                </div>
+                <div class="ds-component-preview">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3 mb-md-0">
+                            <div class="card bcb-indicator-card bcb-indicator-card--advanced border shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="text-uppercase font-weight-bold small text-muted">Meta para a Inflação (IPCA)</span>
+                                    <span class="badge badge-success">Dentro da Meta</span>
+                                </div>
+                                <div class="d-flex align-items-baseline mb-2">
+                                    <span class="bcb-indicator-value h2 font-weight-bold mb-0 text-primary">3,00%</span>
+                                    <span class="ml-2 small text-muted">ao ano (Centro da Meta)</span>
+                                </div>
+                                <div class="bcb-tolerance-band mb-2" aria-label="Banda de tolerância de 1,50% a 4,50%">
+                                    <div class="d-flex justify-content-between small text-muted mb-1">
+                                        <span>Piso: 1,50%</span>
+                                        <span class="font-weight-bold text-dark">Atual: 3,75%</span>
+                                        <span>Teto: 4,50%</span>
+                                    </div>
+                                    <div class="progress bcb-progress-sm">
+                                        <div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                                    <span>Acumulado 12m: <strong>+3,75%</strong></span>
+                                    <span class="text-success font-weight-bold d-inline-flex align-items-center">
+                                        <span class="material-symbols-outlined material-icons md-16 mr-1" aria-hidden="true">trending_down</span> -0,12 p.p.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="card bcb-indicator-card bcb-indicator-card--advanced border shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="text-uppercase font-weight-bold small text-muted">Adicional Contracíclico (ACCPBrasil)</span>
+                                    <span class="badge badge-primary">Ativação Prudencial</span>
+                                </div>
+                                <div class="d-flex align-items-baseline mb-2">
+                                    <span class="bcb-indicator-value h2 font-weight-bold mb-0 text-primary">0,50%</span>
+                                    <span class="ml-2 small text-muted">sobre o RWA</span>
+                                </div>
+                                <div class="bcb-tolerance-band mb-2" aria-label="Escala regulatória do adicional de capital de 0,00% a 2,50%">
+                                    <div class="d-flex justify-content-between small text-muted mb-1">
+                                        <span>Piso: 0,00%</span>
+                                        <span class="font-weight-bold text-dark">Vigente: 0,50%</span>
+                                        <span>Teto: 2,50%</span>
+                                    </div>
+                                    <div class="progress bcb-progress-sm">
+                                        <div class="progress-bar bg-primary w-25" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                                    <span>Segmentos: <strong>S1 e S2</strong></span>
+                                    <span class="text-primary font-weight-bold">Transição 12m</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-kpi-advanced" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-indicator-card bcb-indicator-card--advanced bcb-tolerance-band bcb-progress-sm progress progress-bar" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-kpi-advanced">&lt;div class="card bcb-indicator-card bcb-indicator-card--advanced border shadow-sm p-3"&gt;
+  &lt;div class="d-flex justify-content-between align-items-center mb-2"&gt;
+    &lt;span class="text-uppercase font-weight-bold small text-muted"&gt;Meta para a Inflação (IPCA)&lt;/span&gt;
+    &lt;span class="badge badge-success"&gt;Dentro da Meta&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="d-flex align-items-baseline mb-2"&gt;
+    &lt;span class="bcb-indicator-value h2 font-weight-bold mb-0 text-primary"&gt;3,00%&lt;/span&gt;
+    &lt;span class="ml-2 small text-muted"&gt;ao ano&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-tolerance-band mb-2" aria-label="Banda de tolerância de 1,50% a 4,50%"&gt;
+    &lt;div class="progress bcb-progress-sm"&gt;
+      &lt;div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- 2.19 Bloco de Metadados Normativos -->
+            <section id="molecula-metadados-normativos" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">gavel</span> 2.19 Bloco de Metadados Normativos (.bcb-norm-metadata)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Validade Jurídica &bull; DOU</span>
+                </div>
+                <div class="ds-component-preview">
+                    <div class="card bcb-norm-metadata border shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center">
+                                    <span class="tag-bcb primary mr-2">Resolução BCB</span>
+                                    <strong class="text-primary font-weight-bold">Nº 492, de 2 de Março de 2026</strong>
+                                </div>
+                                <span class="badge badge-success px-2 py-1">Em Vigor</span>
+                            </div>
+                            <div class="row small text-muted">
+                                <div class="col-12 col-md-4 mb-2 mb-md-0">
+                                    <span class="d-block font-weight-bold text-dark">Autoridade Expedidora:</span>
+                                    <span>Comitê de Estabilidade Financeira / Diretoria Colegiada</span>
+                                </div>
+                                <div class="col-12 col-md-4 mb-2 mb-md-0">
+                                    <span class="d-block font-weight-bold text-dark">Publicação Oficial:</span>
+                                    <span>DOU de 02/03/2026, Seção 1, Página 118</span>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <span class="d-block font-weight-bold text-dark">Revogações Expressas:</span>
+                                    <span>Revoga a Resolução BCB nº 398/2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-norm-meta" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-norm-metadata card card-body tag-bcb" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-norm-meta">&lt;div class="card bcb-norm-metadata border shadow-sm"&gt;
+  &lt;div class="card-body p-3"&gt;
+    &lt;div class="d-flex flex-wrap justify-content-between align-items-center mb-2"&gt;
+      &lt;span class="tag-bcb primary"&gt;Resolução BCB&lt;/span&gt;
+      &lt;span class="badge badge-success"&gt;Em Vigor&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="row small text-muted"&gt;
+      &lt;div class="col-md-4"&gt;Autoridade: Diretoria Colegiada&lt;/div&gt;
+      &lt;div class="col-md-4"&gt;DOU: 02/03/2026&lt;/div&gt;
+      &lt;div class="col-md-4"&gt;Revoga: Res. nº 398/2024&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
             <!-- ========================================================= -->
             <!-- 3. ORGANISMOS (COMPOSTOS) -->
             <!-- ========================================================= -->
@@ -2735,6 +2879,73 @@
                 </div>
             </section>
 
+            <!-- 3.11 Fluxogramas Textuais e Decisões Sequenciais -->
+            <section id="organismo-fluxograma-decisao" class="ds-component-card" data-category="organismos">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">alt_route</span> 3.11 Fluxogramas Textuais e Decisões Sequenciais (.bcb-decision-flow)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Acessível &bull; WCAG AAA</span>
+                </div>
+                <div class="ds-component-preview">
+                    <div class="bcb-decision-flow-wrapper">
+                        <ol class="bcb-decision-flow">
+                            <li class="card border mb-3 p-3 shadow-sm">
+                                <div class="d-flex align-items-start">
+                                    <span class="badge badge-primary rounded-circle p-2 mr-3">1</span>
+                                    <div class="flex-grow-1">
+                                        <h4 class="h6 font-weight-bold mb-1 text-dark">Identificação da Transação Suspeita</h4>
+                                        <p class="small text-body mb-2">A vítima detecta movimentação não autorizada ou induzida por golpe no extrato da conta.</p>
+                                        <div class="p-2 bg-light rounded border-left small">
+                                            <strong>Prazo Regulamentar:</strong> Até 80 dias da realização do Pix para acionar a instituição bancária.
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="card border mb-3 p-3 shadow-sm">
+                                <div class="d-flex align-items-start">
+                                    <span class="badge badge-primary rounded-circle p-2 mr-3">2</span>
+                                    <div class="flex-grow-1">
+                                        <h4 class="h6 font-weight-bold mb-2 text-dark">Abertura de Notificação de Infração (MED)</h4>
+                                        <div class="row">
+                                            <div class="col-12 col-md-6 mb-2 mb-md-0">
+                                                <div class="p-2 border rounded bg-light">
+                                                    <span class="badge badge-success mb-1">Se Fraude Comprovada</span>
+                                                    <p class="small text-body mb-0">Bloqueio cautelar em até 72h e devolução automática ao cidadão em 96h.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="p-2 border rounded bg-light">
+                                                    <span class="badge badge-secondary mb-1">Se Desacordo Comercial</span>
+                                                    <p class="small text-body mb-0">O MED não se aplica. O consumidor deve recorrer ao Procon ou Juizado Especial.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <div class="ds-code-actions">
+                        <button type="button" class="btn-copy-code" data-code="code-decision-flow" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-decision-flow-wrapper bcb-decision-flow card border rounded" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                    </div>
+                    <pre><code id="code-decision-flow">&lt;div class="bcb-decision-flow-wrapper"&gt;
+  &lt;ol class="bcb-decision-flow"&gt;
+    &lt;li class="card border mb-3 p-3"&gt;
+      &lt;div class="d-flex align-items-start"&gt;
+        &lt;span class="badge badge-primary rounded-circle p-2 mr-3"&gt;1&lt;/span&gt;
+        &lt;div class="flex-grow-1"&gt;
+          &lt;h4 class="h6 font-weight-bold"&gt;Etapa 1&lt;/h4&gt;
+          &lt;p class="small"&gt;Instruções operacionais.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
             <!-- ========================================================= -->
             <!-- 4. UTILITÁRIOS (HELPERS) -->
             <!-- ========================================================= -->
@@ -2999,9 +3210,9 @@
 
             // Mapeamento de finalidades de blocos centrais de conteúdo
             const purposeMap = {
-                'dados': ['atomo-grid', 'atomo-tabelas', 'molecula-datatable', 'molecula-cards-indicadores', 'molecula-kpi-card', 'molecula-botoes-exportacao'],
-                'alertas': ['molecula-alert', 'molecula-callouts', 'molecula-tip-box', 'molecula-quote', 'atomo-tags', 'molecula-toasts', 'molecula-empty-state'],
-                'navegacao': ['organismo-abas', 'molecula-acordeon', 'molecula-stepper', 'organismo-process-list', 'organismo-timelines', 'utilitario-backtotop', 'molecula-page-toolbar', 'molecula-breadcrumbs'],
+                'dados': ['atomo-grid', 'atomo-tabelas', 'molecula-datatable', 'molecula-cards-indicadores', 'molecula-kpi-card', 'molecula-botoes-exportacao', 'molecula-indicadores-avancados', 'molecula-metadados-normativos'],
+                'alertas': ['molecula-alert', 'molecula-callouts', 'molecula-tip-box', 'molecula-quote', 'atomo-tags', 'molecula-toasts', 'molecula-empty-state', 'molecula-metadados-normativos'],
+                'navegacao': ['organismo-abas', 'molecula-acordeon', 'molecula-stepper', 'organismo-process-list', 'organismo-timelines', 'utilitario-backtotop', 'molecula-page-toolbar', 'molecula-breadcrumbs', 'organismo-fluxograma-decisao'],
                 'midias': ['molecula-documentos', 'organismo-videos', 'organismo-cards-link', 'organismo-noticias', 'organismo-hero-banner']
             };
 

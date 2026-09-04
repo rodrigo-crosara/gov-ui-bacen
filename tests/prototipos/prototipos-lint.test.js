@@ -109,6 +109,7 @@ const classesPadraoBootstrap = new Set([
   'breadcrumb', 'breadcrumb-item', 'alert', 'alert-success', 'alert-danger', 'alert-warning', 'alert-info',
   'collapse', 'accordion', 'show', 'active', 'fade', 'collapsed',
   'embed-responsive', 'embed-responsive-16by9', 'embed-responsive-item',
+  'progress', 'progress-bar', 'text-decoration-none',
   'blockquote-footer', 'sr-only',
   // Material Icons & Indicadores de Tendência BCB
   'material-symbols-outlined', 'material-icons', 'md-16', 'md-18', 'md-20', 'md-24', 'md-36', 'md-48',

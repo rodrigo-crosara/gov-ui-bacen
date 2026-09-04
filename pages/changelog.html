@@ -228,7 +228,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-1-0">v2.1.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-2-0">v2.2.0 (Atual)</a>
+                <a class="nav-link" href="#v2-1-0">v2.1.0</a>
                 <a class="nav-link" href="#v2-0-0">v2.0.0</a>
                 <a class="nav-link" href="#v1-1-0">v1.1.0</a>
                 <a class="nav-link" href="#v1-0-0">v1.0.0</a>
@@ -250,13 +251,53 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.2.0 ============ -->
+            <section id="v2-2-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.2.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Desacoplamento da Casca &amp; Fragmentos</span>
+                        </div>
+                        <div class="version-date">03 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-adicionado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">add_circle</span>
+                                Adicionado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Desacoplamento Completo da Casca Fixa em Protótipos:</strong> Todos os arquivos em <code>prototipos/</code> convertidos em fragmentos puros semânticos (<code>&lt;main id="conteudo-principal"&gt;</code>), banindo tags de documento (<code>&lt;!DOCTYPE&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>), tags <code>&lt;script&gt;</code> e cascas externas.</li>
+                                <li><strong>Casca Estática Resiliente no Harness (<code>_harness.html</code>):</strong> Injeção dinâmica da casca institucional simulada (Barra Brasil, Header BCB, Breadcrumb dinâmico e Footer) e dependências (Bootstrap, fontes e CSS).</li>
+                                <li><strong>Novos Linters e Testes de Fragmentos:</strong> <code>prototipos-lint.test.js</code> e <code>a11y-runner.js</code> adaptados para auditar exclusivamente fragmentos de miolo.</li>
+                                <li><strong>Comandos Ágeis no <code>package.json</code>:</strong> <code>npm run validar:rapido</code> e <code>npm run harness:preview</code> para verificação e homologação instantânea.</li>
+                                <li><strong>Expansão do Catálogo de Conteúdo Central:</strong> Indicadores financeiros avançados com tolerância, tabelas comparativas com filtros locais, bloco de metadados normativos e fluxogramas textuais com decisão.</li>
+                            </ul>
+                        </div>
+                        <div class="change-group group-modificado">
+                            <div class="change-group-title">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">published_with_changes</span>
+                                Modificado
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Regras do Agente (<code>.antigravityrules</code> e <code>SKILL.md</code>):</strong> Restrição à geração exclusiva do corpo central e proibição de scripts inline.</li>
+                                <li><strong>Scripts de Automação:</strong> <code>scripts/nova-demanda.js</code> e <code>scripts/exportar-prototipo.js</code> ajustados para gerar e exportar unicamente o miolo de conteúdo (<code>corpo-conteudo.html</code> e <code>miolo.html</code>).</li>
+                                <li><strong>Documentação Oficial:</strong> Atualizados <code>pages/prototipos.html</code> e <code>pages/automacao-ia.html</code> documentando o contrato de fragmento.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.1.0 ============ -->
             <section id="v2-1-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.1.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Motor de Prototipagem IA</span>
                         </div>
                         <div class="version-date">03 de Setembro de 2026</div>

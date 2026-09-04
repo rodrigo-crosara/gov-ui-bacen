@@ -1,0 +1,25 @@
+/* ============= BCB Design System — Organisms / Decision Flow =============
+ * Fluxogramas textuais sequenciais e acessíveis com nós de decisão.
+ * ====================================================================== */
+
+.bcb-decision-flow-wrapper {
+  width: 100%;
+}
+
+.bcb-decision-flow {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.bcb-decision-flow > li {
+  margin-bottom: var(--bcb-space-4, 1rem);
+}
+
+.bcb-table-comparison-wrapper {
+  width: 100%;
+}
+
+.bcb-table-toolbar {
+  margin-bottom: var(--bcb-space-3, 0.75rem);
+}

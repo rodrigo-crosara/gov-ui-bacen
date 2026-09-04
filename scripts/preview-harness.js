@@ -21,7 +21,8 @@ const MAPA_DEMANDAS = {
   'copom-decisao-taxa-selic.html': '01-comunicado-normativo.md',
   'sgs-series-taxa-selic.html': '02-dados-sgs-indicadores.md',
   'mecanismo-especial-devolucao-med.html': '03-servico-passo-a-passo.md',
-  'regras-cheque-especial.html': '04-conteudo-html-legado.md'
+  'regras-cheque-especial.html': '04-conteudo-html-legado.md',
+  'resolucao-bcb-dou.html': '05-entrada-nao-estruturada-dou.md'
 };
 
 const filtroSlug = process.argv[2] ? process.argv[2].replace('.html', '').toLowerCase() : null;

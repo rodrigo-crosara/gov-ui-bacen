@@ -68,13 +68,14 @@ Antes de redigir qualquer linha de código ou salvar o arquivo em `prototipos/`,
    - Slug rigorosamente em kebab-case alfanumérico (`^[a-z0-9]+(-[a-z0-9]+)*$`).
    - Título formal institucional com pelo menos 4 caracteres, sem placeholders como `[Título...]` ou valores padrão genéricos.
 3. **Padrão de UX Canônico Reconhecido:**
-   - O briefing deve pertencer obrigatoriamente a um dos 4 padrões homologados pelo Design System:
+   - O briefing deve pertencer obrigatoriamente a um dos 5 padrões homologados pelo Design System:
      - *Comunicação Normativa (Layout 70/30 com downloads)*
      - *Painel Analítico & Séries Temporais (SGS)*
      - *Serviço ao Cidadão (Stepper .process-list)*
      - *Refatoração Semântica de Conteúdo Legado*
+     - *Comunicação Regulatória / DOU (Metadados Normativos, Indicadores Avançados e Layout 70/30)*
 4. **Insumo Textual Técnico Consistente:**
-   - O campo de texto bruto deve conter dados substanciais (comunicado redigido, série numérica CSV/tabular, etapas detalhadas do procedimento ou HTML legado desestruturado). Textos vazios ou contendo apenas espaços/placeholders devem ser rejeitados imediatamente.
+   - O campo de texto bruto deve conter dados substanciais (comunicado redigido, série numérica CSV/tabular, etapas detalhadas do procedimento, HTML legado desestruturado ou cópia bruta de e-mail/DOU). Textos vazios ou contendo apenas espaços/placeholders devem ser rejeitados imediatamente.
 5. **Atos e Documentos Vinculados:**
    - Presença de atos normativos ou resoluções vinculadas, especificando tipo de arquivo (PDF, ZIP, CSV) e tamanho aproximado (KB/MB) para renderização canônica no componente `.documentos`.
 
@@ -110,7 +111,11 @@ Ao receber o insumo cru do webdesigner, analise a natureza das informações e c
 | Tipo de Conteúdo no Insumo Bruto | Padrão de UX Recomendado | Componente Canônico | Especificação de Implementação |
 |---|---|---|---|
 | **Métricas, taxas, índices, inflação ou valores de destaque** | Painel de destaques quantitativos no topo ou seção analítica | **KPI Card Financeiro** (`.bcb-kpi-card`) | Grade flexível em 4 colunas (`.col-lg-3`) ou 3 colunas com microcopy label, valor em destaque Cormorant Garamond, badge de tendência direcional com ícone (`.positive`, `.negative`, `.neutral`) e data de referência. |
+| **Metas de inflação com bandas de tolerância ou alíquotas prudenciais** | Painel de metas econômicas com bandas inferior, centro e superior | **Indicador Financeiro Avançado** (`.bcb-indicator-card--advanced`) | Cartão com alíquota em destaque, barra visual de tolerância (`.bcb-tolerance-band` e `.progress`) e badge de enquadramento regulatório. |
+| **Atos regulatórios, resoluções do Comef/Copom e publicações do DOU** | Identificação jurídica de normas oficiais | **Bloco de Metadados Normativos** (`.bcb-norm-metadata`) | Card com espécie normativa, vigência, órgão emissor, data/seção do DOU e revogações expressas. |
 | **Instruções passo a passo, etapas ordenadas ou fluxos sequenciais** | Roteiro cronológico visualmente numerado com instruções curtas | **Process List / Stepper** (`<ol class="process-list">` ou `.bcb-stepper`) | Lista ordenada com títulos semânticos `<h3>`, textos objetivos e links diretos. Suporta disposição horizontal em desktop e vertical condensada (<576px). |
+| **Roteiros de decisão com alternativas (*Se Fraude* vs. *Se Desacordo*)** | Diagrama sequencial acessível em lista estruturada | **Fluxograma Textual com Decisão** (`.bcb-decision-flow`) | Lista ordenada acessível com bifurcações claras, prazos legais destacados e encaminhamentos oficiais. |
+| **Comparativos de taxas bancárias, tarifas ou rankings por segmento** | Tabela densa comparativa com filtros rápidos no topo | **Tabela Comparativa com Filtros** (`.bcb-table-comparison-wrapper`) | Tabela com controles de filtro por segmento, totalizadores no rodapé e barra de exportação CSV/JSON. |
 | **Alertas regulatórios, prazos críticos, sanções ou golpes** | Caixa de destaque de alta visibilidade com contraste calibrado (WCAG AAA) | **Callout Oficial** (`.callout`) | `.callout.callout-warning|callout-danger|callout-brand` com borda lateral de 4px, ícone semântico Material Symbols e texto explicativo claro. |
 | **Erros de validação em formulários, confirmações ou avisos inline** | Caixa contextual com checklist de pendências e botão de dispensa | **Alertas Inline** (`.bcb-alert`) | `.bcb-alert.alert-danger|alert-success|alert-warning` com ícone, título, lista `.alert-list` e botão `.alert-close` acessível. |
 | **Séries temporais, tabelas orçamentárias ou matrizes de limite** | Tabela semântica de alta densidade com controles de exportação | **Data Table com Export** (`.table-responsive`) | Tabela com `<caption>` descritivo, cabeçalho adesivo `position: sticky`, sombras de transbordo e barra `.bcb-data-export` com botões CSV, JSON e API. |
@@ -119,6 +124,16 @@ Ao receber o insumo cru do webdesigner, analise a natureza das informações e c
 | **Regras densas, esclarecimentos de dúvidas, termos técnicos ou FAQ** | Seções expansíveis/colapsáveis para otimizar o fluxo de leitura | **Accordion Acessível** (`.accordion.modelo-1`) | Acordeão acessível compatível com WAI-ARIA (`aria-expanded`, `data-toggle="collapse"`). |
 | **Minutas oficiais, resoluções, anexos regulatórios ou manuais em PDF** | Cartões de download de documentos com metadados obrigatórios | **Download de Documento** (`.documentos`) | Bloco `.documento` com ícone de formato (PDF, ZIP, CSV), título oficial do ato, peso em KB/MB e botão de baixar. |
 | **Trilha hierárquica e navegação institucional global** | Elemento de casca fixa do portal (provido pelo CMS institucional) | **Casca Fixa do Portal** (Fora do escopo do protótipo) | **NÃO GERAR**: Breadcrumbs, header e footer são imutáveis e fixos no portal do BCB, simulados exclusivamente no harness (`_harness.html`). |
+
+---
+
+### 2.1 Heurísticas de Conversão para Entradas Não Estruturadas (E-mails e DOU)
+Quando a demanda tiver origem em textos brutos de despachos ou cópias do Diário Oficial:
+1. **Higienização de Ruídos:** Eliminar cabeçalhos de e-mail (De/Para/Data), assinaturas burocráticas repetidas e notas marginais de processo.
+2. **Extração de Metadados Normativos:** Mapear o número do ato, data de publicação, seção/página do DOU e revogações expressas diretamente no componente `.bcb-norm-metadata`.
+3. **Detecção de Números Regulatórios:** Transformar alíquotas, taxas percentuais e prazos em componentes de alta legibilidade (`.bcb-indicator-card--advanced`).
+4. **Isolamento de Prazos Imperativos:** Destacar prazos de cumprimento obrigatório em `.callout.callout-warning.callout-elevated`.
+5. **Estruturação de Anexos:** Identificar menções a PDFs e planilhas e convertê-las em blocos `.documentos .documento` com peso e formato explicitados.
 
 ---
 

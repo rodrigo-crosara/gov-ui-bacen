@@ -19,7 +19,8 @@ const PROTOTIPOS_HOMOLOGADOS = [
   '/prototipos/copom-decisao-taxa-selic.html',
   '/prototipos/sgs-series-taxa-selic.html',
   '/prototipos/mecanismo-especial-devolucao-med.html',
-  '/prototipos/regras-cheque-especial.html'
+  '/prototipos/regras-cheque-especial.html',
+  '/prototipos/resolucao-bcb-dou.html'
 ];
 
 // Função para descobrir dinamicamente todas as páginas HTML do projeto

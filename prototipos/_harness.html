@@ -600,6 +600,7 @@
                         <option value="sgs-series-taxa-selic.html">SGS: Painel Analítico &amp; Dados Abertos</option>
                         <option value="mecanismo-especial-devolucao-med.html">Serviço: MED Pix com Stepper e Alerta</option>
                         <option value="regras-cheque-especial.html">Regulação: Limite Cheque Especial (70/30)</option>
+                        <option value="resolucao-bcb-dou.html">Regulação: Resolução BCB nº 492 (DOU / Comef)</option>
                     </optgroup>
                 </select>
             </div>
@@ -799,6 +800,14 @@
 
             let currentMainHtml = '';
             let currentSlug = '';
+
+            const AREAS = {
+                'copom-decisao-taxa-selic.html': { area: 'Política Monetária', title: 'Taxa Selic e Decisão do Copom' },
+                'sgs-series-taxa-selic.html': { area: 'Estatísticas', title: 'Séries Temporais SGS' },
+                'mecanismo-especial-devolucao-med.html': { area: 'Estabilidade Financeira', title: 'Mecanismo Especial de Devolução (MED)' },
+                'regras-cheque-especial.html': { area: 'Sistema Financeiro', title: 'Regras do Cheque Especial' },
+                'resolucao-bcb-dou.html': { area: 'Estabilidade Financeira', title: 'Resolução BCB nº 492' }
+            };
 
             function getShellHtml(mainContentHtml, slug, theme) {
                 let areaExtraida = 'Serviços e Informações';

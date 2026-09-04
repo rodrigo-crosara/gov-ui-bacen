@@ -407,6 +407,41 @@
   color: var(--bcb-link-color, #5BB8E8) !important;
 }
 
+:root[data-theme="dark"] .bcb-norm-metadata,
+[data-theme="dark"] .bcb-norm-metadata {
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-decision-flow .card,
+[data-theme="dark"] .bcb-decision-flow .card {
+  background-color: var(--bcb-gray-100, #1A1F24) !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-decision-flow .bg-light,
+[data-theme="dark"] .bcb-decision-flow .bg-light {
+  background-color: var(--bcb-gray-200, #2A3038) !important;
+  color: var(--bcb-color-body-text, #D0D7DF) !important;
+}
+
+:root[data-theme="dark"] .bcb-indicator-card--advanced,
+[data-theme="dark"] .bcb-indicator-card--advanced {
+  border-left-color: var(--bcb-brand-blue, #0A9FD4) !important;
+}
+
+:root[data-theme="dark"] .bcb-tolerance-band .progress,
+[data-theme="dark"] .bcb-tolerance-band .progress {
+  background-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
+:root[data-theme="dark"] .bcb-table-comparison-wrapper .thead-light th,
+[data-theme="dark"] .bcb-table-comparison-wrapper .thead-light th {
+  background-color: var(--bcb-gray-200, #2A3038) !important;
+  color: #FFFFFF !important;
+  border-color: var(--bcb-gray-300, #3E454B) !important;
+}
+
 /* Anel de Foco de Alta Visibilidade no Dark Mode (WCAG 2.4.7 / 2.4.11) */
 :root[data-theme="dark"] a:focus-visible,
 :root[data-theme="dark"] button:focus-visible,
@@ -448,5 +483,16 @@
   }
   :root:not([data-theme="light"]) .text-dark {
     color: var(--bcb-color-neutral-10, #f8f9fa) !important;
+  }
+  :root:not([data-theme="light"]) .bcb-norm-metadata {
+    background-color: var(--bcb-gray-100, #1A1F24) !important;
+    border-color: var(--bcb-gray-300, #3E454B) !important;
+  }
+  :root:not([data-theme="light"]) .bcb-decision-flow .card {
+    background-color: var(--bcb-gray-100, #1A1F24) !important;
+    border-color: var(--bcb-gray-300, #3E454B) !important;
+  }
+  :root:not([data-theme="light"]) .bcb-tolerance-band .progress {
+    background-color: var(--bcb-gray-300, #3E454B) !important;
   }
 }

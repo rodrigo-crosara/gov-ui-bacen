@@ -150,6 +150,8 @@
 :root[data-contrast="high"] .bcb-olho,
 :root[data-contrast="high"] .callout,
 :root[data-contrast="high"] .bcb-indicator-card,
+:root[data-contrast="high"] .bcb-norm-metadata,
+:root[data-contrast="high"] .bcb-table-comparison-wrapper,
 :root[data-contrast="high"] .listalinks-light a,
 :root[data-contrast="high"] .bcb-search-overlay,
 :root[data-contrast="high"] .step-card,
@@ -219,6 +221,10 @@
 :root[data-theme="high-contrast"] .bcb-kpi-card,
 :root[data-contrast="high"] .bcb-quote,
 :root[data-theme="high-contrast"] .bcb-quote,
+:root[data-contrast="high"] .bcb-norm-metadata,
+:root[data-theme="high-contrast"] .bcb-norm-metadata,
+:root[data-contrast="high"] .bcb-decision-flow .card,
+:root[data-theme="high-contrast"] .bcb-decision-flow .card,
 :root[data-contrast="high"] .bcb-alert,
 :root[data-theme="high-contrast"] .bcb-alert,
 :root[data-contrast="high"] .bcb-page-toolbar,
@@ -226,6 +232,17 @@
   border: 2px solid #FFFFFF !important;
   background-color: #000000 !important;
   color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-tolerance-band .progress,
+:root[data-theme="high-contrast"] .bcb-tolerance-band .progress {
+  background-color: #000000 !important;
+  border: 1px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-tolerance-band .progress-bar,
+:root[data-theme="high-contrast"] .bcb-tolerance-band .progress-bar {
+  background-color: #FFFF00 !important;
 }
 
 :root[data-contrast="high"] .bcb-page-toolbar__btn,
@@ -253,6 +270,8 @@
   :root:not([data-contrast="normal"]) .bcb-olho,
   :root:not([data-contrast="normal"]) .callout,
   :root:not([data-contrast="normal"]) .bcb-indicator-card,
+  :root:not([data-contrast="normal"]) .bcb-norm-metadata,
+  :root:not([data-contrast="normal"]) .bcb-table-comparison-wrapper,
   :root:not([data-contrast="normal"]) .listalinks-light a,
   :root:not([data-contrast="normal"]) .bcb-search-overlay,
   :root:not([data-contrast="normal"]) .step-card,

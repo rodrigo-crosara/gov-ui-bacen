@@ -1,0 +1,14 @@
+/* ============= BCB Design System — Molecules / Normative Metadata =============
+ * Card estruturado para identificação jurídica de atos normativos e resoluções.
+ * ============================================================================ */
+
+.bcb-norm-metadata {
+  background-color: var(--bcb-color-white, #FFFFFF);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-radius: var(--bcb-radius-8, 8px);
+  box-shadow: var(--bcb-shadow-100);
+}
+
+.bcb-norm-metadata .card-body {
+  padding: var(--bcb-space-4, 1rem);
+}
