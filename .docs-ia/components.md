@@ -947,17 +947,8 @@ Botão fixo que aparece na rolagem.
 <button class="bcb-back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
   <span class="material-icons" aria-hidden="true">keyboard_arrow_up</span>
 </button>
-<script>
-  const backToTop = document.getElementById('backToTop');
-  if (backToTop) {
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 400);
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-</script>
+<!-- A interatividade de scroll e toggle de visibilidade é gerenciada
+     automaticamente por assets/js/bcb-ui.js — zero scripts inline. -->
 ```
 
 ---
@@ -968,14 +959,12 @@ Navegação em páginas de listagens e explicações em termos técnicos.
 
 ### Assinatura HTML Canônica
 ```html
-<!-- Tooltip de Glossário -->
-O Copom definiu a meta para a 
-<a href="#" class="bcb-tooltip-link" data-toggle="tooltip" title="Comitê de Política Monetária responsável pelas decisões de juros no Brasil.">taxa Selic</a>.
+<!-- Tooltip Acessível (Padrão Declarativo — sem jQuery nem scripts inline) -->
+O Copom definiu a meta para a
+<span class="bcb-tooltip-term" data-tooltip="Comitê de Política Monetária responsável pelas decisões de juros no Brasil." tabindex="0">taxa Selic</span>.
 
-<!-- Inicialização JS obrigatória -->
-<script>
-  $(function () { $('[data-toggle="tooltip"]').tooltip(); });
-</script>
+<!-- A inicialização dos tooltips é gerenciada automaticamente
+     por assets/js/bcb-ui.js via [data-tooltip] — zero scripts inline. -->
 ```
 
 ---

@@ -98,3 +98,4 @@ npm run test:prototypes
 | [`sgs-series-taxa-selic.html`](./sgs-series-taxa-selic.html) | `02-dados-sgs-indicadores.md` | Painel Analítico & Tabela Densa SGS | ✅ Homologado |
 | [`mecanismo-especial-devolucao-med.html`](./mecanismo-especial-devolucao-med.html) | `03-servico-passo-a-passo.md` | Stepper `.process-list`, Alerta Elevado e FAQ | ✅ Homologado |
 | [`regras-cheque-especial.html`](./regras-cheque-especial.html) | `04-conteudo-html-legado.md` | Refatoração Semântica 70/30 de Legado | ✅ Homologado |
+| [`resolucao-bcb-dou.html`](./resolucao-bcb-dou.html) | `05-entrada-nao-estruturada-dou.md` | Comunicação Regulatória DOU com Metadados e Indicadores | ✅ Homologado |
