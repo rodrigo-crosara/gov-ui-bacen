@@ -93,46 +93,58 @@
 }
 
 /* Variantes Semânticas */
-.bcb-alert.alert-success {
-  border-left-color: var(--bcb-feedback-success, #067078);
-  background-color: var(--bcb-feedback-success-bg, #E8F5E9);
-  border-color: rgba(6, 112, 120, 0.2);
-  border-left-color: var(--bcb-feedback-success, #067078);
+.bcb-alert.alert-success,
+.alert-success {
+  border-left-color: var(--bcb-feedback-success, #00A478) !important;
+  background-color: var(--bcb-feedback-success-bg, #E8F5E9) !important;
+  border-color: rgba(0, 164, 120, 0.2) !important;
+  border-left-color: var(--bcb-feedback-success, #00A478) !important;
 }
 .bcb-alert.alert-success .alert-icon,
-.bcb-alert.alert-success .alert-title {
-  color: var(--bcb-feedback-success, #067078);
+.bcb-alert.alert-success .alert-title,
+.alert-success .alert-icon,
+.alert-success .alert-title {
+  color: var(--bcb-feedback-success, #00A478) !important;
 }
 
-.bcb-alert.alert-warning {
-  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
-  background-color: var(--bg-amarellato-light, #fefbfa);
-  border-color: rgba(222, 190, 127, 0.35);
-  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+.bcb-alert.alert-warning,
+.alert-warning {
+  border-left-color: var(--bcb-brand-mandarino, #F4B757) !important;
+  background-color: var(--bg-amarellato-light, #FEF9EE) !important;
+  border-color: rgba(244, 183, 87, 0.35) !important;
+  border-left-color: var(--bcb-brand-mandarino, #F4B757) !important;
 }
 .bcb-alert.alert-warning .alert-icon,
-.bcb-alert.alert-warning .alert-title {
-  color: var(--bcb-brand-vinho-autentico, #47373A);
+.bcb-alert.alert-warning .alert-title,
+.alert-warning .alert-icon,
+.alert-warning .alert-title {
+  color: var(--bcb-brand-achocolatado, #914D23) !important;
 }
 
-.bcb-alert.alert-danger {
-  border-left-color: var(--bcb-brand-vinho-autentico, #47373A);
-  background-color: var(--bcb-feedback-danger-bg, #FFEBEE);
-  border-color: rgba(71, 55, 58, 0.2);
-  border-left-color: var(--bcb-brand-vinho-autentico, #47373A);
+.bcb-alert.alert-danger,
+.alert-danger {
+  border-left-color: var(--bcb-brand-vinho-autentico, #47373A) !important;
+  background-color: var(--bcb-feedback-danger-bg, #FFEBEE) !important;
+  border-color: rgba(71, 55, 58, 0.2) !important;
+  border-left-color: var(--bcb-brand-vinho-autentico, #47373A) !important;
 }
 .bcb-alert.alert-danger .alert-icon,
-.bcb-alert.alert-danger .alert-title {
-  color: var(--bcb-brand-vinho-autentico, #47373A);
+.bcb-alert.alert-danger .alert-title,
+.alert-danger .alert-icon,
+.alert-danger .alert-title {
+  color: var(--bcb-brand-vinho-autentico, #47373A) !important;
 }
 
-.bcb-alert.alert-info {
-  border-left-color: var(--bcb-brand-blue, #025C75);
-  background-color: var(--bg-brand-light, #f0f7f9);
-  border-color: rgba(2, 92, 117, 0.2);
-  border-left-color: var(--bcb-brand-blue, #025C75);
+.bcb-alert.alert-info,
+.alert-info {
+  border-left-color: var(--bcb-feedback-info, #025C75) !important;
+  background-color: var(--bg-brand-light, #f0f7f9) !important;
+  border-color: rgba(2, 92, 117, 0.2) !important;
+  border-left-color: var(--bcb-feedback-info, #025C75) !important;
 }
 .bcb-alert.alert-info .alert-icon,
-.bcb-alert.alert-info .alert-title {
-  color: var(--bcb-brand-blue, #025C75);
+.bcb-alert.alert-info .alert-title,
+.alert-info .alert-icon,
+.alert-info .alert-title {
+  color: var(--bcb-feedback-info, #025C75) !important;
 }

@@ -9,7 +9,7 @@
   padding: var(--bcb-space-5, 1.5rem);
   box-shadow: var(--bcb-shadow-100);
   border: 1px solid var(--bcb-gray-200, #E6EAEF);
-  border-left: 5px solid var(--bcb-color-primary, #2E4C59);
+  border-left: 5px solid var(--bcb-color-primary, #025C75);
   height: 100%;
   width: 100%;
   min-width: 0;
@@ -30,12 +30,12 @@
 /* Variantes de Borda de Acento */
 .bcb-kpi-card.kpi-brand,
 .bcb-kpi-card.kpi-blue {
-  border-left-color: var(--bcb-color-primary, #2E4C59);
+  border-left-color: var(--bcb-color-primary, #025C75);
 }
 
 .bcb-kpi-card.kpi-success,
 .bcb-kpi-card.kpi-green {
-  border-left-color: var(--bcb-brand-verde-susta, #067078);
+  border-left-color: var(--bcb-brand-rio-jordao, #00A478);
 }
 
 .bcb-kpi-card.kpi-danger,
@@ -45,7 +45,7 @@
 
 .bcb-kpi-card.kpi-warning,
 .bcb-kpi-card.kpi-amber {
-  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+  border-left-color: var(--bcb-brand-mandarino, #F4B757);
 }
 
 /* Cabeçalho do KPI */
@@ -68,7 +68,7 @@
 }
 
 .bcb-kpi-icon {
-  color: var(--bcb-color-primary, #2E4C59);
+  color: var(--bcb-color-primary, #025C75);
   font-size: 1.5rem !important;
   line-height: 1;
   flex-shrink: 0;
@@ -135,7 +135,7 @@
 
 .bcb-kpi-trend.positive {
   background-color: var(--bcb-feedback-success-bg, #E8F5E9);
-  color: var(--bcb-brand-verde-susta, #067078);
+  color: var(--bcb-brand-rio-jordao, #00A478);
 }
 
 .bcb-kpi-trend.negative {

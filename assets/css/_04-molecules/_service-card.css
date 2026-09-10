@@ -1,0 +1,301 @@
+/* ============= BCB Design System — Molecules / Service Card =============
+ * Card de acesso rápido a serviços, ferramentas e sistemas do BCB.
+ * Variante Padrão: Ícone centralizado + título + descrição (vertical).
+ * Variante Horizontal: Ícone à esquerda + conteúdo à direita.
+ * Variante Compacta: Proporção reduzida para grids de 4+ colunas.
+ * Variante Destaque: Borda superior colorida para cards prioritários.
+ *
+ * Estrutura BEM:
+ *   .bcb-service-card
+ *     .bcb-service-card__icon
+ *     .bcb-service-card__body
+ *       .bcb-service-card__title
+ *       .bcb-service-card__description
+ *     .bcb-service-card__badge     (opcional)
+ *     .bcb-service-card__arrow     (opcional, seta de navegação)
+ * ======================================================================== */
+
+/* ==========================================================================
+   BASE — Card Vertical Centralizado (Padrão)
+   ========================================================================== */
+.bcb-service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--bcb-color-white, #FFFFFF);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-radius: var(--bcb-radius-8, 8px);
+  padding: var(--bcb-space-6, 1.5rem) var(--bcb-space-5, 1.25rem);
+  height: 100%;
+  width: 100%;
+  min-width: 0;
+  box-shadow: var(--bcb-shadow-100, 0 1px 2px rgba(0,0,0,0.06));
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.bcb-service-card:hover {
+  box-shadow: var(--bcb-shadow-300, 0 4px 12px rgba(0,0,0,0.1));
+  transform: translateY(-3px);
+  border-color: var(--bcb-brand-verde-castell, #088694);
+  text-decoration: none;
+  color: inherit;
+}
+
+.bcb-service-card:focus-visible {
+  outline: 3px solid var(--bcb-brand-verde-castell, #088694) !important;
+  outline-offset: 2px !important;
+  text-decoration: none;
+}
+
+.bcb-service-card:active {
+  transform: translateY(-1px);
+  box-shadow: var(--bcb-shadow-100, 0 1px 2px rgba(0,0,0,0.06));
+}
+
+/* ==========================================================================
+   ÍCONE — Círculo Institucional com Material Icon
+   ========================================================================== */
+.bcb-service-card__icon {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 50%;
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--bcb-space-4, 1rem);
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+
+.bcb-service-card__icon .material-symbols-outlined,
+.bcb-service-card__icon .material-icons {
+  font-size: 1.75rem !important;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bcb-service-card:hover .bcb-service-card__icon {
+  background-color: var(--bcb-brand-verde-castell, #088694);
+  transform: scale(1.06);
+}
+
+/* Variantes de Cor do Ícone */
+.bcb-service-card__icon--verde {
+  background-color: var(--bcb-brand-rio-jordao, #00A478);
+}
+.bcb-service-card:hover .bcb-service-card__icon--verde {
+  background-color: var(--bcb-brand-verde-castell, #088694);
+}
+
+.bcb-service-card__icon--petro {
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+}
+.bcb-service-card:hover .bcb-service-card__icon--petro {
+  background-color: var(--bcb-brand-verde-castell, #088694);
+}
+
+.bcb-service-card__icon--vinho {
+  background-color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+.bcb-service-card:hover .bcb-service-card__icon--vinho {
+  background-color: var(--bcb-brand-marsala-intenso, #9C365E);
+}
+
+/* ==========================================================================
+   CORPO — Título e Descrição
+   ========================================================================== */
+.bcb-service-card__body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.bcb-service-card__title {
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--bcb-color-primary, #025C75);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 var(--bcb-space-2, 0.5rem) 0;
+  line-height: 1.3;
+}
+
+.bcb-service-card__description {
+  font-size: 0.875rem;
+  color: var(--bcb-gray-600, #7E8A95);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   BADGE — Rótulo Opcional (Novo, Popular, Externo)
+   ========================================================================== */
+.bcb-service-card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: var(--bcb-radius-pill, 9999px);
+  background-color: var(--bcb-brand-rio-jordao, #00A478);
+  color: #FFFFFF;
+  line-height: 1.4;
+}
+
+.bcb-service-card__badge--warning {
+  background-color: var(--bcb-brand-mandarino, #F4B757);
+  color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+
+.bcb-service-card__badge--external {
+  background-color: var(--bcb-gray-200, #E6EAEF);
+  color: var(--bcb-gray-700, #495057);
+}
+
+/* ==========================================================================
+   SETA DE NAVEGAÇÃO — Indicador Visual de Ação
+   ========================================================================== */
+.bcb-service-card__arrow {
+  margin-top: var(--bcb-space-3, 0.75rem);
+  color: var(--bcb-brand-verde-castell, #088694);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bcb-service-card__arrow .material-symbols-outlined,
+.bcb-service-card__arrow .material-icons {
+  font-size: 1.25rem !important;
+}
+
+.bcb-service-card:hover .bcb-service-card__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   VARIANTE: DESTAQUE — Borda Superior Colorida
+   ========================================================================== */
+.bcb-service-card--featured {
+  border-top: 3px solid var(--bcb-brand-azul-blue, #025C75);
+}
+
+.bcb-service-card--featured.bcb-service-card--verde {
+  border-top-color: var(--bcb-brand-rio-jordao, #00A478);
+}
+
+.bcb-service-card--featured.bcb-service-card--petro {
+  border-top-color: var(--bcb-brand-azul-blue, #025C75);
+}
+
+.bcb-service-card--featured.bcb-service-card--vinho {
+  border-top-color: var(--bcb-brand-vinho-autentico, #47373A);
+}
+
+/* ==========================================================================
+   VARIANTE: HORIZONTAL — Ícone à Esquerda, Conteúdo à Direita
+   ========================================================================== */
+.bcb-service-card--horizontal {
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+  padding: var(--bcb-space-4, 1rem) var(--bcb-space-5, 1.25rem);
+  gap: var(--bcb-space-4, 1rem);
+}
+
+.bcb-service-card--horizontal .bcb-service-card__icon {
+  margin-bottom: 0;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+}
+
+.bcb-service-card--horizontal .bcb-service-card__icon .material-symbols-outlined,
+.bcb-service-card--horizontal .bcb-service-card__icon .material-icons {
+  font-size: 1.5rem !important;
+}
+
+.bcb-service-card--horizontal .bcb-service-card__title {
+  margin-bottom: 2px;
+}
+
+.bcb-service-card--horizontal .bcb-service-card__description {
+  font-size: 0.8125rem;
+}
+
+.bcb-service-card--horizontal .bcb-service-card__arrow {
+  margin-top: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   VARIANTE: COMPACTA — Para Grids de 4+ Colunas
+   ========================================================================== */
+.bcb-service-card--compact {
+  padding: var(--bcb-space-4, 1rem);
+}
+
+.bcb-service-card--compact .bcb-service-card__icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  margin-bottom: var(--bcb-space-3, 0.75rem);
+}
+
+.bcb-service-card--compact .bcb-service-card__icon .material-symbols-outlined,
+.bcb-service-card--compact .bcb-service-card__icon .material-icons {
+  font-size: 1.375rem !important;
+}
+
+.bcb-service-card--compact .bcb-service-card__title {
+  font-size: 0.8125rem;
+  margin-bottom: 4px;
+}
+
+.bcb-service-card--compact .bcb-service-card__description {
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .bcb-service-card--horizontal {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .bcb-service-card--horizontal .bcb-service-card__icon {
+    margin-bottom: var(--bcb-space-3, 0.75rem);
+  }
+
+  .bcb-service-card--horizontal .bcb-service-card__arrow {
+    margin-left: 0;
+    margin-top: var(--bcb-space-2, 0.5rem);
+  }
+}

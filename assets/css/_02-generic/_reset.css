@@ -25,7 +25,7 @@ a {
 }
 
 a:hover {
-  color: var(--bcb-color-azulcinti, #077391);
+  color: var(--bcb-brand-verde-castell, #088694);
   text-decoration: underline;
 }
 

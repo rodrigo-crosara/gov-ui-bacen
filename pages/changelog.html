@@ -196,6 +196,7 @@
       <div class="bcb-container bcb-ds-header__inner">
         <div class="bcb-ds-header__brand">
           <a href="../index.html" class="bcb-ds-header__title">Design System <span>BCB</span></a>
+          <span class="bcb-ds-version-badge">v2.8.0</span>
         </div>
         <nav class="bcb-ds-header__nav" aria-label="Navegação da documentação">
           <ul class="bcb-ds-header__links">
@@ -229,7 +230,8 @@
                 <a class="nav-link" href="automacao-ia.html">Guia de Automação IA</a>
 
                 <div class="ds-sidebar-title">Histórico de Versões</div>
-                <a class="nav-link active" href="#v2-7-0">v2.7.0 (Atual)</a>
+                <a class="nav-link active" href="#v2-8-0">v2.8.0 (Atual)</a>
+                <a class="nav-link" href="#v2-7-0">v2.7.0</a>
                 <a class="nav-link" href="#v2-6-0">v2.6.0</a>
                 <a class="nav-link" href="#v2-5-2">v2.5.2</a>
                 <a class="nav-link" href="#v2-5-1">v2.5.1</a>
@@ -259,13 +261,99 @@
                 </div>
             </div>
 
+            <!-- ============ VERSÃO 2.8.0 ============ -->
+            <section id="v2-8-0" class="mb-4">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-title-group">
+                            <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-azul-blue);">[2.8.0]</h2>
+                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Paleta Oficial Vigente Aprovada pela Chefia (11 Cores)</span>
+                        </div>
+                        <div class="version-date">10 de Setembro de 2026</div>
+                    </div>
+                    <div class="version-body">
+                        <div class="change-group group-atualizado">
+                            <div class="change-group-title" style="color: var(--bcb-brand-azul-blue);">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">palette</span>
+                                Atualizado — Paleta de Cores Institucionais do Manual de Marca
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Paleta Oficial Vigente Homologada pela Chefia:</strong> Adoção integral da nova especificação de 11 cores canônicas com dados industriais completos (Pantone, CMYK, RGB e Hexadecimal):
+                                    <ul>
+                                        <li><strong>Azulblue:</strong> <code>#025C75</code> &bull; Pantone 3025 &bull; CMYK 100/30/20/40 &bull; RGB (2, 92, 117)</li>
+                                        <li><strong>Verde Castell:</strong> <code>#088694</code> &bull; Pantone 320 &bull; CMYK 100/30/40/0 &bull; RGB (8, 134, 148)</li>
+                                        <li><strong>Celestial:</strong> <code>#36B2C2</code> &bull; Pantone 311 &bull; CMYK 70/5/25/0 &bull; RGB (54, 178, 194)</li>
+                                        <li><strong>Rio Jordão:</strong> <code>#00A478</code> &bull; Pantone 3395 &bull; CMYK 80/5/65/0 &bull; RGB (0, 164, 120)</li>
+                                        <li><strong>Marsala Intenso:</strong> <code>#9C365E</code> &bull; Pantone 7647 &bull; CMYK 30/85/35/20 &bull; RGB (156, 54, 94)</li>
+                                        <li><strong>Salmão Rosado:</strong> <code>#ED6B6A</code> &bull; Pantone 178 &bull; CMYK 0/70/50/0 &bull; RGB (237, 107, 106)</li>
+                                        <li><strong>Mandarino:</strong> <code>#F4B757</code> &bull; Pantone 137 &bull; CMYK 5/30/75/0 &bull; RGB (244, 183, 87)</li>
+                                        <li><strong>Achocolatado:</strong> <code>#914D23</code> &bull; Pantone 160 &bull; CMYK 30/70/90/30 &bull; RGB (145, 77, 35)</li>
+                                        <li><strong>Vinho Autêntico:</strong> <code>#47373A</code> &bull; Pantone 4975 &bull; CMYK 50/60/50/60 &bull; RGB (71, 55, 58)</li>
+                                        <li><strong>Cinza80:</strong> <code>#606060</code> &bull; Pantone Cool Gray 10 &bull; CMYK 0/0/0/80 &bull; RGB (96, 96, 96)</li>
+                                        <li><strong>Concreto:</strong> <code>#AEAFAA</code> &bull; Pantone 428 &bull; CMYK 35/25/30/5 &bull; RGB (174, 175, 170)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Calibração Exata de Cinza80:</strong> Atualizado o hexadecimal oficial de <code>#606062</code> para <code>#606060</code> (RGB 96/96/96 correspondente a <code>0x60, 0x60, 0x60</code>).</li>
+                                <li><strong>Retrocompatibilidade Preservada:</strong> Camada de compatibilidade mantendo aliases para tokens prévios (<code>azulcinti</code>, <code>azulpetro</code>, <code>azulnetuno</code>, <code>verde-susta</code>, <code>amarellato-biscoito</code>, <code>cafellato</code>, <code>marsala-suave</code>), prevenindo qualquer impacto negativo em componentes e protótipos.</li>
+                                <li><strong>Acessibilidade e Temas (Dark Mode &amp; Alto Contraste):</strong> Mapeamento das 11 cores com ratios WCAG AA/AAA, além de calibrações dedicadas em <code>_dark-mode.css</code> e <code>_high-contrast.css</code>.</li>
+                            </ul>
+                        </div>
+
+                        <div class="change-group mt-3">
+                            <div class="change-group-title" style="color: var(--bcb-brand-vinho-autentico, #47373A);">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">delete_sweep</span>
+                                Removido &amp; Consolidado — Arquitetura de Callouts e Limpeza de Redundâncias
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Eliminação de Redundância:</strong> Descontinuação do componente isolado <code>2.3 Callout Editorial</code> (<code>.bcb-callout--editorial</code> / <code>.tip-box</code>) e unificação completa sob o padrão oficial <code>2.1 Callouts Estruturados</code> (<code>.callout.callout-brand.callout-left-bordered</code>).</li>
+                                <li><strong>Flexibilidade Semântica:</strong> Dicas editoriais e notas explicativas agora utilizam classes de callout canônicas combinadas com ícones semânticos (ex.: <code>tips_and_updates</code>, <code>info</code>, <code>warning</code>), sem necessidade de classes CSS fragmentadas adicionais.</li>
+                                <li><strong>Retrocompatibilidade Transparente:</strong> Preservado mapeamento de <code>.bcb-callout--editorial</code> e <code>.tip-box</code> em <code>_callout.css</code> com substituição da cor hexadecimal não-padronizada <code>#FFF8E8</code> pelo token oficial <code>var(--bg-azul-light, #f0f7f9)</code>.</li>
+                                <li><strong>Sincronização Integral da Vitrine:</strong> Renumeração contínua das 20 Moléculas (2.1 a 2.20) e 10 Organismos (3.1 a 3.10) na barra lateral de navegação e corpo de <code>pages/components.html</code>, eliminando âncoras órfãs.</li>
+                            </ul>
+                        </div>
+
+                        <div class="change-group mt-3">
+                            <div class="change-group-title" style="color: var(--bcb-brand-rio-jordao, #00A478);">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">timeline</span>
+                                Aprimorado — Organismo 3.3 Timelines (Vertical Educativa e Horizontal)
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>Benchmark Institucional (Educação Financeira):</strong> Reengenharia completa do componente com base no padrão real de storytelling e jornadas cidadãs do Banco Central (Cidadania Financeira / ENEF).</li>
+                                <li><strong>Variante 1 — Vertical Educativa &amp; Jornada (<code>.bcb-timeline--vertical</code> / <code>.timeline-container</code>):</strong> Trilho vertical de conexão contínua com gradiente institucional, marcadores circulares de nó em 44px com anel de foco, estados semânticos (Concluído, Em Andamento e Próximo), layout dividido (split) para mídias/ilustrações (38%) e narrativa educativa (62%), e rodapé expandido para callouts, tabelas comparativas e checklists com ícones.</li>
+                                <li><strong>Variante 2 — Horizontal de Cronograma &amp; Marcos (<code>.bcb-timeline--horizontal</code> / <code>.timeline-horizontal</code>):</strong> Barra contínua de marcos temporais para cronogramas e ciclos de projetos institucionais com estados (Concluído, Em Execução com anel pulsante Mandarino e Planejado).</li>
+                                <li><strong>Colapso Responsivo Inteligente:</strong> Em telas compactas (&le; 768px), o cronograma horizontal colapsa automaticamente em um stepper vertical fluido e acessível sem overflow lateral.</li>
+                                <li><strong>Acessibilidade &amp; Multitema:</strong> Suporte integral a Dark Mode (<code>_dark-mode.css</code>) e Alto Contraste (<code>_high-contrast.css</code>), estrutura semântica WAI-ARIA (<code>ol</code>/<code>li</code>, <code>aria-label</code>, <code>aria-current="step"</code>) e 100% de aprovação nos testes WCAG 2.1 AA / e-MAG.</li>
+                            </ul>
+                        </div>
+
+                        <div class="change-group mt-3">
+                            <div class="change-group-title" style="color: var(--bcb-brand-mandarino, #F4B757);">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">contrast</span>
+                                Corrigido &amp; Calibrado — Legibilidade em Modo Escuro e Alto Contraste
+                            </div>
+                            <ul class="change-list">
+                                <li><strong>2.19 Call to Action (CTA) (<code>.bcb-cta</code> / <code>.bcb-cta--primary</code>):</strong> Corrigido o título que ficava escuro no Dark Mode pela avaliação da variável <code>var(--bcb-color-white)</code> como <code>#121212</code>. Implementado gradiente institucional contrastante em Dark Mode (<code>linear-gradient(135deg, #024659 0%, #065C66 100%)</code>), título branco puro (<code>#FFFFFF !important;</code>), textos secundários claros e botão de destaque Mandarino. Em Alto Contraste, todas as variantes foram calibradas com fundo preto, bordas brancas e elementos focais amarelos.</li>
+                                <li><strong>3.4 Hero Banner (<code>.bcb-hero-banner--split</code>):</strong> Corrigida a descrição (<code>.bcb-hero-text</code> e <code>.bcb-hero-banner__description</code>) que ficava escura sobre fundo escuro. Agora garantido texto claro calibrado (<code>var(--bcb-color-body-text, #D0D7DF)</code> em Dark Mode e <code>#FFFFFF</code> em Alto Contraste).</li>
+                                <li><strong>3.5 Lista de Notícias (<code>.bcb-news-card--editorial</code>):</strong> Corrigido o título da notícia para branco puro (<code>#FFFFFF !important;</code>) no Dark Mode e amarelo sublinhado (<code>#FFFF00 !important;</code>) no Alto Contraste tanto para links quanto elementos de cabeçalho.</li>
+                                <li><strong>3.9 Fluxogramas Textuais e Decisões Sequenciais (<code>.bcb-decision-flow</code>):</strong> Corrigido o título das etapas (<code>.bcb-decision-node__title</code>, <code>h3</code>, <code>h4</code>) no Dark Mode, garantindo contraste nítido em branco puro (<code>#FFFFFF !important;</code>) e amarelo em Alto Contraste.</li>
+                                <li><strong>1.1 Botões e Variantes (<code>.bcb-btn</code>, <code>.btn</code>, <code>.btn-primary</code>, <code>.btn-secondary</code>, <code>.btn-outline-primary</code>, <code>.btn-danger</code>):</strong> Eliminação definitiva de textos claros sobre fundos claros em Alto Contraste (botão primário com fundo ciano #4DC8FF agora utiliza texto e ícones pretos puros <code>#000000 !important;</code> com peso 700, alcançando contraste de 11.8:1 WCAG AAA), eliminação do bloco branco sólido no botão de perigo / ação crítica (<code>.btn-danger</code> agora opera sobre fundo preto com borda e texto em vermelho coral #FF5555), calibração do botão Secundário (fundo grafite escuro #252D37 no Dark Mode) e Terciário / Outline (borda e texto ciano luminoso #4DC8FF sobre fundo escuro/preto), e ajuste multitema completo para botões semânticos e controles da vitrine (<code>.ds-state-btn</code> e <code>.badge-a11y</code>).</li>
+                                <li><strong>1.4 Tags e Badges (<code>.tag-bcb</code>, <code>.badge-bcb</code>, <code>.badge</code>, <code>.bcb-trend-badge</code>):</strong> Eliminação definitiva de textos claros sobre fundos claros ("Em Análise" amarelo com texto branco, badges de status com texto branco sobre verde/vermelho pastel) e retângulos brancos sólidos no Alto Contraste (variante "Rejeitado" <code>.tag-bcb--danger</code>). Em Dark Mode, tags semânticas e badges de variação contam agora com superfícies translúcidas escuras (tint 20-25%) e textos/bordas brilhantes com contraste &ge; 7:1. Em Alto Contraste, todas as tags e badges operam sobre fundo preto puro (#000000) com bordas sólidas de 2px e tipografia em cores semânticas de alta visibilidade WCAG AAA (#00FF88, #FFFF00, #FF5555, #4DC8FF).</li>
+                                <li><strong>2.1 Callouts Estruturados (<code>.callout</code>, <code>.bcb-callout</code>, <code>.callout-brand</code>, <code>.callout-warning</code>, <code>.callout-success</code>, <code>.callout-danger</code>, <code>.callout-neutral</code>):</strong> Revisão e correção de usabilidade onde 4 de 5 modelos reprovavam em contraste (Brand com 1.94:1, Warning com 3.18:1, Danger com 3.2:1 e Neutral com 2.28:1). No Dark Mode, todas as variantes receberam fundos escuros translúcidos com borda e tipografia luminosa (ratio &ge; 7.5:1). Em Alto Contraste, foi eliminada a sobreposição que apagava a borda chanfrada lateral de 6px, preservando o chanfro semântico colorido e restaurando a cor de alerta vermelha (#FF5555) na variante de perigo que antes ficava descaracterizada em branco puro.</li>
+                                <li><strong>Blindagem Preventiva Global:</strong> Substituição em cascata de variáveis de cor de fundo usadas erroneamente em propriedades de texto em botões, tags semânticas, tabelas, stepper e timeline, eliminando qualquer risco de inversão involuntária.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ============ VERSÃO 2.7.0 ============ -->
             <section id="v2-7-0" class="mb-4">
                 <div class="version-card">
                     <div class="version-header">
                         <div class="version-title-group">
                             <h2 class="version-number mb-0" style="font-size: 1.5rem; font-weight: 700; color: var(--bcb-brand-blue);">[2.7.0]</h2>
-                            <span class="version-tag tag-current">Versão Estável Atual</span>
+                            <span class="version-tag">Versão Estável Anterior</span>
                             <span class="version-tag">Acessibilidade Avançada, Suporte a Temas e Protótipo Integrado</span>
                         </div>
                         <div class="version-date">04 de Setembro de 2026</div>

@@ -117,22 +117,22 @@
 /* Variantes Semânticas de Toast e Alert */
 .bcb-toast.toast-success,
 .bcb-alert.alert-success {
-  border-left-color: var(--bcb-feedback-success, #067078);
+  border-left-color: var(--bcb-feedback-success, #00A478);
 }
 .bcb-toast.toast-success .bcb-toast-icon,
 .bcb-alert.alert-success .alert-icon {
-  color: var(--bcb-feedback-success, #067078);
+  color: var(--bcb-feedback-success, #00A478);
 }
 
 .bcb-toast.toast-warning,
 .bcb-alert.alert-warning {
-  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+  border-left-color: var(--bcb-brand-mandarino, #F4B757);
   background-color: var(--bcb-gray-50);
 }
 .bcb-toast.toast-warning .bcb-toast-icon,
 .bcb-alert.alert-warning .alert-icon,
 .bcb-alert.alert-warning .alert-title {
-  color: var(--bcb-brand-vinho-autentico, #47373A);
+  color: var(--bcb-brand-achocolatado, #914D23);
 }
 
 .bcb-toast.toast-danger,
@@ -146,11 +146,11 @@
 
 .bcb-toast.toast-info,
 .bcb-alert.alert-info {
-  border-left-color: var(--bcb-brand-blue);
+  border-left-color: var(--bcb-feedback-info, #025C75);
 }
 .bcb-toast.toast-info .bcb-toast-icon,
 .bcb-alert.alert-info .alert-icon {
-  color: var(--bcb-brand-blue);
+  color: var(--bcb-feedback-info, #025C75);
 }
 
 /* Alertas em Linha (Inline Alerts) */

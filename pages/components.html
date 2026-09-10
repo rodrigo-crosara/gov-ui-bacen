@@ -248,7 +248,7 @@
 
         .btn-copy-code:focus-visible,
         .btn-copy-css:focus-visible {
-            outline: 2px solid var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+            outline: 2px solid var(--bcb-brand-mandarino, #F4B757);
             outline-offset: 1px;
         }
 
@@ -317,6 +317,45 @@
             font-size: 0.9rem !important;
         }
 
+        /* Ajustes Multitema para os Controles da Vitrine */
+        [data-theme="dark"] .badge-a11y {
+            background-color: rgba(0, 164, 120, 0.2) !important;
+            color: #00FF88 !important;
+            border: 1px solid rgba(0, 255, 136, 0.3) !important;
+        }
+        [data-contrast="high"] .badge-a11y,
+        [data-theme="high-contrast"] .badge-a11y {
+            background-color: #000000 !important;
+            color: #00FF88 !important;
+            border: 2px solid #00FF88 !important;
+        }
+        [data-theme="dark"] .ds-state-pills {
+            background: var(--bcb-gray-200, #2A3038);
+            border-color: var(--bcb-gray-300, #3E454B);
+        }
+        [data-theme="dark"] .ds-state-btn {
+            color: var(--bcb-gray-700, #B7C0CB);
+        }
+        [data-theme="dark"] .ds-state-btn.active {
+            background: var(--bcb-brand-azul-blue, #0A9FD4);
+            color: #FFFFFF;
+        }
+        [data-contrast="high"] .ds-state-pills,
+        [data-theme="high-contrast"] .ds-state-pills {
+            background: #000000 !important;
+            border: 2px solid #FFFFFF !important;
+        }
+        [data-contrast="high"] .ds-state-btn,
+        [data-theme="high-contrast"] .ds-state-btn {
+            color: #FFFFFF !important;
+        }
+        [data-contrast="high"] .ds-state-btn.active,
+        [data-theme="high-contrast"] .ds-state-btn.active {
+            background: #4DC8FF !important;
+            color: #000000 !important;
+            font-weight: 700 !important;
+        }
+
         @media (max-width: 991px) {
             .ds-wrapper {
                 flex-direction: column;
@@ -351,6 +390,7 @@
       <div class="bcb-container bcb-ds-header__inner">
         <div class="bcb-ds-header__brand">
           <a href="../index.html" class="bcb-ds-header__title">Design System <span>BCB</span></a>
+          <span class="bcb-ds-version-badge">v2.8.0</span>
         </div>
         <nav class="bcb-ds-header__nav" aria-label="Navegação da documentação">
           <ul class="bcb-ds-header__links">
@@ -422,28 +462,29 @@
             <a class="nav-link" href="#atomo-tooltip" data-category="atomos">1.8 Tooltip Acessível</a>
 
             <div class="ds-sidebar-title" data-category="moleculas">2. Moléculas (Padrões)</div>
-            <a class="nav-link" href="#molecula-cards-indicadores" data-category="moleculas">2.1 Cards de Indicadores</a>
-            <a class="nav-link" href="#molecula-callouts" data-category="moleculas">2.2 Callouts de Contexto</a>
-            <a class="nav-link" href="#molecula-tipbox" data-category="moleculas">2.3 Callout Editorial</a>
-            <a class="nav-link" href="#molecula-documentos" data-category="moleculas">2.4 Download de Documentos</a>
+            <a class="nav-link" href="#molecula-callouts" data-category="moleculas">2.1 Callouts Estruturados</a>
+            <a class="nav-link" href="#molecula-documentos" data-category="moleculas">2.2 Download de Documentos</a>
+            <a class="nav-link" href="#molecula-indicadores" data-category="moleculas">2.3 Card de Indicador Econômico</a>
+            <a class="nav-link" href="#molecula-listalinks" data-category="moleculas">2.4 Card Link / Lista de Links</a>
             <a class="nav-link" href="#molecula-stepper" data-category="moleculas">2.5 Stepper de Fases</a>
-            <a class="nav-link" href="#molecula-acordeon" data-category="moleculas">2.6 Acordeom Expansível</a>
-            <a class="nav-link" href="#molecula-datatable" data-category="moleculas">2.7 Data Table Responsiva</a>
-            <a class="nav-link" href="#molecula-busca-facetada" data-category="moleculas">2.8 Busca com Filtros Facetados</a>
-            <a class="nav-link" href="#molecula-toasts" data-category="moleculas">2.9 Toasts e Notificações</a>
-            <a class="nav-link" href="#molecula-empty-state" data-category="moleculas">2.10 Empty State</a>
-            <a class="nav-link" href="#molecula-botoes-exportacao" data-category="moleculas">2.11 Botões de Exportação</a>
-            <a class="nav-link" href="#molecula-breadcrumbs" data-category="moleculas">2.13 Breadcrumbs Acessíveis</a>
-            <a class="nav-link" href="#molecula-kpi-card" data-category="moleculas">2.14 KPI Card Financeiro</a>
-            <a class="nav-link" href="#molecula-page-toolbar" data-category="moleculas">2.15 Barra de Utilidades da Página</a>
-            <a class="nav-link" href="#molecula-quote" data-category="moleculas">2.16 Citação e Destaque Normativo</a>
-            <a class="nav-link" href="#molecula-alert" data-category="moleculas">2.17 Alertas Inline de Validação</a>
-            <a class="nav-link" href="#molecula-indicadores-avancados" data-category="moleculas">2.18 Indicadores Financeiros Avançados</a>
-            <a class="nav-link" href="#molecula-metadados-normativos" data-category="moleculas">2.19 Bloco de Metadados Normativos</a>
-            <a class="nav-link" href="#molecula-cta" data-category="moleculas">2.20 Call to Action (CTA)</a>
+            <a class="nav-link" href="#molecula-datatable" data-category="moleculas">2.6 Data Table Responsiva</a>
+            <a class="nav-link" href="#molecula-filtros" data-category="moleculas">2.7 Busca com Filtros Facetados</a>
+            <a class="nav-link" href="#molecula-search-overlay" data-category="moleculas">2.8 Busca Avançada Local</a>
+            <a class="nav-link" href="#molecula-toasts-alertas" data-category="moleculas">2.9 Toasts e Notificações</a>
+            <a class="nav-link" href="#molecula-data-export" data-category="moleculas">2.10 Exportação de Dados</a>
+            <a class="nav-link" href="#molecula-empty-state" data-category="moleculas">2.11 Empty State</a>
+            <a class="nav-link" href="#molecula-breadcrumbs" data-category="moleculas">2.12 Breadcrumbs Acessíveis</a>
+            <a class="nav-link" href="#molecula-kpi-card" data-category="moleculas">2.13 KPI Card Financeiro</a>
+            <a class="nav-link" href="#molecula-page-toolbar" data-category="moleculas">2.14 Barra de Utilidades da Página</a>
+            <a class="nav-link" href="#molecula-quote" data-category="moleculas">2.15 Citação e Destaque Normativo</a>
+            <a class="nav-link" href="#molecula-alert" data-category="moleculas">2.16 Alertas Inline de Validação</a>
+            <a class="nav-link" href="#molecula-indicadores-avancados" data-category="moleculas">2.17 Indicadores Financeiros Avançados</a>
+            <a class="nav-link" href="#molecula-metadados-normativos" data-category="moleculas">2.18 Bloco de Metadados Normativos</a>
+            <a class="nav-link" href="#molecula-cta" data-category="moleculas">2.19 Call to Action (CTA)</a>
+            <a class="nav-link" href="#molecula-service-card" data-category="moleculas">2.20 Card de Serviço (.bcb-service-card)</a>
 
             <div class="ds-sidebar-title" data-category="organismos">3. Organismos (Compostos)</div>
-            <a class="nav-link" href="#organismo-cards-link" data-category="organismos">3.1 Cards de Navegação (Listalinks)</a>
+            <a class="nav-link" href="#organismo-accordion" data-category="organismos">3.1 Accordion (Sanfona)</a>
             <a class="nav-link" href="#organismo-abas" data-category="organismos">3.2 Navegação em Abas</a>
             <a class="nav-link" href="#organismo-timelines" data-category="organismos">3.3 Timelines (Vertical & Horizontal)</a>
             <a class="nav-link" href="#organismo-hero-banner" data-category="organismos">3.4 Hero Banner</a>
@@ -451,8 +492,8 @@
             <a class="nav-link" href="#organismo-process-list" data-category="organismos">3.6 Process List</a>
             <a class="nav-link" href="#organismo-modal" data-category="organismos">3.7 Modal / Dialog Acessível</a>
             <a class="nav-link" href="#organismo-videos" data-category="organismos">3.8 Container de Vídeos</a>
-            <a class="nav-link" href="#organismo-fluxograma-decisao" data-category="organismos">3.11 Fluxogramas Textuais com Decisão</a>
-            <a class="nav-link" href="#organismo-carrossel" data-category="organismos">3.12 Carrossel Manchete</a>
+            <a class="nav-link" href="#organismo-fluxograma-decisao" data-category="organismos">3.9 Fluxogramas Textuais com Decisão</a>
+            <a class="nav-link" href="#organismo-carrossel" data-category="organismos">3.10 Carrossel Manchete</a>
 
             <div class="ds-sidebar-title" data-category="utilitarios">4. Utilitários (Helpers)</div>
             <a class="nav-link" href="#utilitario-backtotop" data-category="utilitarios">4.1 Botão Voltar ao Topo</a>
@@ -471,6 +512,11 @@
             </div>
 
             <div class="mb-4">
+                <div class="d-flex align-items-center flex-wrap gap-2 mb-2">
+                    <span class="tag-bcb primary">Versão 2.8.0</span>
+                    <span class="badge badge-success">32+ Componentes Homologados</span>
+                    <span class="badge badge-light border text-muted">WCAG 2.2 AA / AAA</span>
+                </div>
                 <h1 class="h2 font-weight-bold text-bcb-brand">Catálogo Vivo de Componentes</h1>
                 <p class="text-muted">Explore todos os blocos de construção oficiais do portal do Banco Central do Brasil. Copie os snippets HTML canônicos e teste a responsividade e a alternância de temas em tempo real.</p>
             </div>
@@ -502,9 +548,9 @@
                             <ul class="list-unstyled small mb-0 d-flex flex-column gap-1">
                                 <li><a href="#molecula-datatable" class="text-decoration-none text-bcb-brand font-weight-bold">&bull; Data Table Responsiva &amp; Sticky</a></li>
                                 <li><a href="#molecula-kpi-card" class="text-decoration-none text-body">&bull; KPI Card Financeiro</a></li>
-                                <li><a href="#molecula-cards-indicadores" class="text-decoration-none text-body">&bull; Cards de Indicadores de Taxas</a></li>
+                                <li><a href="#molecula-indicadores" class="text-decoration-none text-body">&bull; Cards de Indicadores de Taxas</a></li>
                                 <li><a href="#atomo-grid" class="text-decoration-none text-body">&bull; Grid 12 Colunas &amp; Slots CMS</a></li>
-                                <li><a href="#molecula-botoes-exportacao" class="text-decoration-none text-body">&bull; Barra de Exportação (CSV/JSON)</a></li>
+                                <li><a href="#molecula-data-export" class="text-decoration-none text-body">&bull; Barra de Exportação (CSV/JSON)</a></li>
                             </ul>
                         </div>
                     </div>
@@ -519,8 +565,8 @@
                             <p class="small text-muted mb-3">Avisos regulatórios, segurança antifraude e destaques contextuais.</p>
                             <ul class="list-unstyled small mb-0 d-flex flex-column gap-1">
                                 <li><a href="#molecula-alert" class="text-decoration-none text-bcb-brand font-weight-bold">&bull; Alertas Inline de Validação</a></li>
-                                <li><a href="#molecula-callouts" class="text-decoration-none text-body">&bull; Callouts de Contexto e Avisos</a></li>
-                                <li><a href="#molecula-tip-box" class="text-decoration-none text-body">&bull; Tip-Box Destacada</a></li>
+                                <li><a href="#molecula-callouts" class="text-decoration-none text-body">&bull; Callouts Estruturados (Brand, Avisos, Dicas)</a></li>
+                                <li><a href="#molecula-toasts-alertas" class="text-decoration-none text-body">&bull; Toasts &amp; Notificações</a></li>
                                 <li><a href="#molecula-quote" class="text-decoration-none text-body">&bull; Citação &amp; Destaque Normativo</a></li>
                                 <li><a href="#atomo-tags" class="text-decoration-none text-body">&bull; Tags &amp; Badges de Situação</a></li>
                             </ul>
@@ -531,7 +577,7 @@
                     <div class="col-12 col-md-6 col-xl-3 mb-3 mb-md-0">
                         <div class="card h-100 border p-3" style="background: var(--bcb-color-white);">
                             <div class="d-flex align-items-center gap-2 mb-2 font-weight-bold text-bcb-brand">
-                                <span class="material-symbols-outlined material-icons" style="color: var(--bcb-brand-verde-susta, #067078);" aria-hidden="true">menu_open</span>
+                                <span class="material-symbols-outlined material-icons" style="color: var(--bcb-brand-rio-jordao, #00A478);" aria-hidden="true">menu_open</span>
                                 <span>3. Navegação Interna</span>
                             </div>
                             <p class="small text-muted mb-3">Estruturação de fluxos, etapas de processos, sanfonas e utilidades.</p>
@@ -606,12 +652,12 @@
                             <span class="badge badge-secondary mb-1">Linha 70/30 — .bcb-col-lg-8 + .bcb-col-lg-4 (Conteúdo Analítico + Sidebar de Ações)</span>
                             <div class="bcb-row">
                                 <div class="bcb-col-12 bcb-col-lg-8 mb-2 mb-lg-0">
-                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-azulcinti); color: #fff; font-weight: 600;">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-verde-castell); color: #fff; font-weight: 600;">
                                         70% Conteúdo Analítico (.bcb-col-lg-8)
                                     </div>
                                 </div>
                                 <div class="bcb-col-12 bcb-col-lg-4">
-                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-azulpetro); color: #fff; font-weight: 600;">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-azul-blue); color: #fff; font-weight: 600;">
                                         30% Sidebar (.bcb-col-lg-4)
                                     </div>
                                 </div>
@@ -623,12 +669,12 @@
                             <span class="badge badge-secondary mb-1">Linha 50/50 — .bcb-col-md-6 (Comparativos Binários e Indicadores Duplos)</span>
                             <div class="bcb-row">
                                 <div class="bcb-col-12 bcb-col-md-6 mb-2 mb-md-0">
-                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-verde-susta); color: #fff; font-weight: 600;">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-rio-jordao); color: #fff; font-weight: 600;">
                                         50% (.bcb-col-md-6)
                                     </div>
                                 </div>
                                 <div class="bcb-col-12 bcb-col-md-6">
-                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-verde-susta); color: #fff; font-weight: 600;">
+                                    <div class="p-3 text-center rounded" style="background-color: var(--bcb-brand-rio-jordao); color: #fff; font-weight: 600;">
                                         50% (.bcb-col-md-6)
                                     </div>
                                 </div>
@@ -1196,20 +1242,29 @@
                         </div>
                     </div>
                     <!-- Danger -->
-                    <div class="callout callout-danger callout-left-bordered">
+                    <div class="callout callout-danger callout-left-bordered mb-3">
                         <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">error_outline</span>
                         <div class="callout-content">
                             <h4 class="callout-title">Alerta de Indisponibilidade</h4>
                             <p>O sistema de pagamentos estará em manutenção programada no próximo domingo das 02:00 às 04:00.</p>
                         </div>
                     </div>
+                    <!-- Neutral -->
+                    <div class="callout callout-neutral callout-left-bordered">
+                        <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">help_outline</span>
+                        <div class="callout-content">
+                            <h4 class="callout-title">Nota Informativa Complementar</h4>
+                            <p class="mb-0">Informações de apoio ao cidadão, orientações gerais e notas contextuais complementares.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="ds-component-code">
                     <div class="ds-code-actions">
                         <button type="button" class="btn-copy-code" data-code="code-callouts" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
-                        <button type="button" class="btn-copy-css" data-classes="callout callout-brand callout-left-bordered material-symbols-outlined material-icons callout-icon callout-content callout-title" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                        <button type="button" class="btn-copy-css" data-classes="callout callout-brand callout-warning callout-success callout-danger callout-neutral callout-left-bordered material-symbols-outlined material-icons callout-icon callout-content callout-title" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
                     </div>
-                    <pre><code id="code-callouts">&lt;div class="callout callout-brand callout-left-bordered"&gt;
+                    <pre><code id="code-callouts">&lt;!-- Callout Estruturado (Variantes: callout-brand | callout-warning | callout-success | callout-danger | callout-neutral) --&gt;
+&lt;div class="callout callout-brand callout-left-bordered"&gt;
   &lt;span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true"&gt;info&lt;/span&gt;
   &lt;div class="callout-content"&gt;
     &lt;h4 class="callout-title"&gt;Título do Destaque&lt;/h4&gt;
@@ -1219,44 +1274,10 @@
                 </div>
             </section>
 
-            <!-- 2.3 Callout Editorial -->
-            <section id="molecula-tipbox" class="ds-component-card" data-category="moleculas">
-                <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">lightbulb</span> 2.3 Callout Editorial (.bcb-callout--editorial)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Destaque Editorial e Dicas</span>
-                </div>
-                <div class="ds-component-preview">
-                    <aside class="bcb-callout bcb-callout--editorial" aria-label="Dica Editorial">
-                        <div class="bcb-callout__header">
-                            <span class="material-symbols-outlined material-icons bcb-callout__icon" aria-hidden="true">tips_and_updates</span>
-                            <span class="bcb-callout__title">Dica de Planejamento:</span>
-                        </div>
-                        <div class="bcb-callout__body">
-                            <p class="mb-0">Monte uma reserva de emergência equivalente a no mínimo 6 meses de suas despesas essenciais antes de iniciar investimentos de longo prazo.</p>
-                        </div>
-                    </aside>
-                </div>
-                <div class="ds-component-code">
-                    <div class="ds-code-actions">
-                        <button type="button" class="btn-copy-code" data-code="code-tipbox" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
-                        <button type="button" class="btn-copy-css" data-classes="bcb-callout bcb-callout--editorial bcb-callout__header bcb-callout__icon bcb-callout__title bcb-callout__body" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
-                    </div>
-                    <pre><code id="code-tipbox">&lt;aside class="bcb-callout bcb-callout--editorial" aria-label="Dica Editorial"&gt;
-  &lt;div class="bcb-callout__header"&gt;
-    &lt;span class="material-symbols-outlined material-icons bcb-callout__icon" aria-hidden="true"&gt;tips_and_updates&lt;/span&gt;
-    &lt;span class="bcb-callout__title"&gt;Dica de Planejamento:&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div class="bcb-callout__body"&gt;
-    &lt;p class="mb-0"&gt;Monte uma reserva de emergência equivalente a no mínimo 6 meses de suas despesas essenciais...&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/aside&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- 2.4 Download de Documentos -->
+            <!-- 2.2 Download de Documentos -->
             <section id="molecula-documentos" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">cloud_download</span> 2.4 Download de Documentos (.documentos)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">cloud_download</span> 2.2 Download de Documentos (.documentos)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Metadados e Formato</span>
                 
                 </div>
@@ -1309,10 +1330,10 @@
                 </div>
             </section>
 
-            <!-- 2.5 Card de Indicador Econômico -->
+            <!-- 2.3 Card de Indicador Econômico -->
             <section id="molecula-indicadores" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span> 2.5 Card de Indicador Econômico (.bcb-indicator-card)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span> 2.3 Card de Indicador Econômico (.bcb-indicator-card)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Séries Temporais & Mercado</span>
                 
                 </div>
@@ -1399,10 +1420,10 @@
                 </div>
             </section>
 
-            <!-- 2.6 Card Link / Lista Links -->
+            <!-- 2.4 Card Link / Lista Links -->
             <section id="molecula-listalinks" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">link</span> 2.6 Card Link / Lista de Links (.bcb-card-link)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">link</span> 2.4 Card Link / Lista de Links (.bcb-card-link)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Modelo 1 e Modelo 2</span>
                 </div>
                 <div class="ds-component-preview">
@@ -1502,24 +1523,24 @@
                 </div>
             </section>
 
-            <!-- 2.7 Stepper -->
+            <!-- 2.5 Stepper -->
             <section id="molecula-stepper" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">linear_scale</span> 2.7 Stepper (Passo a Passo Multi-etapas)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">linear_scale</span> 2.5 Stepper (Passo a Passo Multi-etapas)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Jornada do Cidadão</span>
                 
                 </div>
                 <div class="ds-component-preview">
                     <div class="d-flex justify-content-between align-items-center position-relative my-3" style="max-width: 600px; margin: 0 auto;">
                         <div class="text-center position-relative" style="z-index: 2;">
-                            <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--bcb-brand-verde-susta); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">
+                            <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--bcb-brand-rio-jordao); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">
                                 <span class="material-symbols-outlined material-icons" style="font-size: 1.2rem;" aria-hidden="true">check</span>
                             </div>
                             <small class="d-block mt-1 font-weight-bold">1. Identificação</small>
                         </div>
-                        <div style="flex-grow: 1; height: 3px; background-color: var(--bcb-brand-verde-susta); margin: 0 -10px; margin-top: -18px; z-index: 1;"></div>
+                        <div style="flex-grow: 1; height: 3px; background-color: var(--bcb-brand-rio-jordao); margin: 0 -10px; margin-top: -18px; z-index: 1;"></div>
                         <div class="text-center position-relative" style="z-index: 2;">
-                            <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--bcb-brand-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">2</div>
+                            <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--bcb-brand-azul-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto;">2</div>
                             <small class="d-block mt-1 font-weight-bold text-primary">2. Consulta</small>
                         </div>
                         <div style="flex-grow: 1; height: 3px; background-color: var(--bcb-gray-300); margin: 0 -10px; margin-top: -18px; z-index: 1;"></div>
@@ -1545,10 +1566,10 @@
                 </div>
             </section>
 
-            <!-- 2.8 Data Table Responsiva -->
+            <!-- 2.6 Data Table Responsiva -->
             <section id="molecula-datatable" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_list</span> 2.8 Data Table Responsiva</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_list</span> 2.6 Data Table Responsiva</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Ordenação Client-Side</span>
                 
                 </div>
@@ -1704,10 +1725,10 @@
                 </div>
             </section>
 
-            <!-- 2.9 Filtros e Busca Facetada -->
+            <!-- 2.7 Filtros e Busca Facetada -->
             <section id="molecula-filtros" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">filter_alt</span> 2.9 Filtros e Busca Facetada (.bcb-filter-panel)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">filter_alt</span> 2.7 Filtros e Busca Facetada (.bcb-filter-panel)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Chips Removíveis</span>
                 
                 </div>
@@ -1785,10 +1806,10 @@
                 </div>
             </section>
 
-            <!-- 2.10 Busca Avançada Local de Conteúdo -->
+            <!-- 2.8 Busca Avançada Local de Conteúdo -->
             <section id="molecula-search-overlay" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">search</span> 2.10 Busca Avançada Local de Conteúdo (.bcb-search-overlay)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">search</span> 2.8 Busca Avançada Local de Conteúdo (.bcb-search-overlay)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> role="search" &bull; In-page</span>
                 </div>
                 <div class="ds-component-preview">
@@ -1830,10 +1851,10 @@
                 </div>
             </section>
 
-            <!-- 2.11 Toasts e Alertas -->
+            <!-- 2.9 Toasts e Alertas -->
             <section id="molecula-toasts-alertas" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">notifications_active</span> 2.11 Toasts e Alertas</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">notifications_active</span> 2.9 Toasts e Alertas</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-live="polite"</span>
                 
                 </div>
@@ -1879,10 +1900,10 @@
                 </div>
             </section>
 
-            <!-- 2.12 Exportação de Dados Abertos -->
+            <!-- 2.10 Exportação de Dados Abertos -->
             <section id="molecula-data-export" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">file_download</span> 2.12 Exportação de Dados Abertos (.bcb-data-export)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">file_download</span> 2.10 Exportação de Dados Abertos (.bcb-data-export)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Dados Abertos & SGS</span>
                 
                 </div>
@@ -1940,10 +1961,10 @@
                 </div>
             </section>
 
-            <!-- 2.13 Empty State -->
+            <!-- 2.11 Empty State -->
             <section id="molecula-empty-state" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">inbox</span> 2.13 Empty State / Estado Vazio (.bcb-empty-state)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">inbox</span> 2.11 Empty State / Estado Vazio (.bcb-empty-state)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> WCAG 2.2 AA &bull; Resiliência</span>
                 
                 </div>
@@ -2001,10 +2022,10 @@
                 </div>
             </section>
 
-            <!-- 2.13 Breadcrumbs Acessíveis -->
+            <!-- 2.12 Breadcrumbs Acessíveis -->
             <section id="molecula-breadcrumbs" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">linear_scale</span> 2.13 Breadcrumbs Acessíveis (.bcb-breadcrumb-nav)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">linear_scale</span> 2.12 Breadcrumbs Acessíveis (.bcb-breadcrumb-nav)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> aria-label &bull; aria-current="page"</span>
                 
                 </div>
@@ -2035,10 +2056,10 @@
                 </div>
             </section>
 
-            <!-- 2.14 Bloco de Métricas / KPI Card Financeiro -->
+            <!-- 2.13 Bloco de Métricas / KPI Card Financeiro -->
             <section id="molecula-kpi-card" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">query_stats</span> 2.14 Bloco de Métricas / KPI Card (.bcb-kpi-card)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">query_stats</span> 2.13 Bloco de Métricas / KPI Card (.bcb-kpi-card)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Variantes de Mercado</span>
                 
                 </div>
@@ -2127,10 +2148,10 @@
                 </div>
             </section>
 
-            <!-- 2.15 Barra de Utilidades da Página -->
+            <!-- 2.14 Barra de Utilidades da Página -->
             <section id="molecula-page-toolbar" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">more_horiz</span> 2.15 Barra de Utilidades da Página (.bcb-page-toolbar)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">more_horiz</span> 2.14 Barra de Utilidades da Página (.bcb-page-toolbar)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> 44px Touch Target</span>
                 
                 </div>
@@ -2178,10 +2199,10 @@
                 </div>
             </section>
 
-            <!-- 2.16 Citação Institucional e Destaque Normativo -->
+            <!-- 2.15 Citação Institucional e Destaque Normativo -->
             <section id="molecula-quote" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_quote</span> 2.16 Citação Institucional e Destaque Normativo (.bcb-quote)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_quote</span> 2.15 Citação Institucional e Destaque Normativo (.bcb-quote)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Cormorant Garamond</span>
                 
                 </div>
@@ -2230,10 +2251,10 @@
                 </div>
             </section>
 
-            <!-- 2.17 Alertas Inline de Validação -->
+            <!-- 2.16 Alertas Inline de Validação -->
             <section id="molecula-alert" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">feedback</span> 2.17 Alertas Inline de Validação (.bcb-alert)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">feedback</span> 2.16 Alertas Inline de Validação (.bcb-alert)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> role="alert" &bull; WCAG 2.2</span>
                 
                 </div>
@@ -2293,10 +2314,10 @@
                 </div>
             </section>
 
-            <!-- 2.18 Indicadores Financeiros Avançados -->
+            <!-- 2.17 Indicadores Financeiros Avançados -->
             <section id="molecula-indicadores-avancados" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">query_stats</span> 2.18 Indicadores Financeiros Avançados (.bcb-indicator-card--advanced)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">query_stats</span> 2.17 Indicadores Financeiros Avançados (.bcb-indicator-card--advanced)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Bandas de Tolerância &bull; WCAG 2.2</span>
                 </div>
                 <div class="ds-component-preview">
@@ -2318,7 +2339,7 @@
                                         <span>Teto: 4,50%</span>
                                     </div>
                                     <div class="progress bcb-progress-sm">
-                                        <div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-success w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
@@ -2373,17 +2394,17 @@
   &lt;/div&gt;
   &lt;div class="bcb-tolerance-band mb-2" aria-label="Banda de tolerância de 1,50% a 4,50%"&gt;
     &lt;div class="progress bcb-progress-sm"&gt;
-      &lt;div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+      &lt;div class="progress-bar bg-success w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </section>
 
-            <!-- 2.19 Bloco de Metadados Normativos -->
+            <!-- 2.18 Bloco de Metadados Normativos -->
             <section id="molecula-metadados-normativos" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">gavel</span> 2.19 Bloco de Metadados Normativos (.bcb-norm-metadata)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">gavel</span> 2.18 Bloco de Metadados Normativos (.bcb-norm-metadata)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Validade Jurídica &bull; DOU</span>
                 </div>
                 <div class="ds-component-preview">
@@ -2434,10 +2455,10 @@
                 </div>
             </section>
 
-            <!-- 2.20 Call to Action (CTA) -->
+            <!-- 2.19 Call to Action (CTA) -->
             <section id="molecula-cta" class="ds-component-card" data-category="moleculas">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">campaign</span> 2.20 Call to Action (CTA) (.bcb-cta)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">campaign</span> 2.19 Call to Action (CTA) (.bcb-cta)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Variantes Primária e Neutra</span>
                 </div>
                 <div class="ds-component-preview">
@@ -2517,6 +2538,167 @@
                 </div>
             </section>
 
+            <!-- 2.20 Card de Serviço / Acesso Rápido (.bcb-service-card) -->
+            <section id="molecula-service-card" class="ds-component-card" data-category="moleculas">
+                <div class="ds-component-header">
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">widgets</span> 2.20 Card de Serviço (.bcb-service-card)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> 4 Variantes &bull; 4 Cores &bull; Dark &bull; Alto Contraste</span>
+                </div>
+                <div class="ds-component-preview">
+
+                    <!-- Variante Padrão — Grid 33/33/33 -->
+                    <p class="small text-muted font-weight-bold text-uppercase mb-2">Variante Padrão (Vertical Centralizado)</p>
+                    <div class="row mb-4">
+                        <div class="col-12 col-md-4 mb-3">
+                            <a href="#calculadora" class="bcb-service-card" onclick="event.preventDefault()">
+                                <span class="bcb-service-card__badge">Novo</span>
+                                <div class="bcb-service-card__icon">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">calculate</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">Calculadora do Cidadão</h3>
+                                    <p class="bcb-service-card__description">Simule financiamentos, investimentos e correção monetária</p>
+                                </div>
+                                <span class="bcb-service-card__arrow" aria-hidden="true">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <a href="#registrato" class="bcb-service-card" onclick="event.preventDefault()">
+                                <div class="bcb-service-card__icon bcb-service-card__icon--verde">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">key</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">Registrato</h3>
+                                    <p class="bcb-service-card__description">Consulte suas contas, empréstimos e chaves Pix vinculadas ao seu CPF</p>
+                                </div>
+                                <span class="bcb-service-card__arrow" aria-hidden="true">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <a href="#sgs" class="bcb-service-card bcb-service-card--featured" onclick="event.preventDefault()">
+                                <div class="bcb-service-card__icon bcb-service-card__icon--petro">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">monitoring</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">SGS — Séries Temporais</h3>
+                                    <p class="bcb-service-card__description">Acesse dados econômicos e estatísticas oficiais do BCB</p>
+                                </div>
+                                <span class="bcb-service-card__arrow" aria-hidden="true">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Variante Horizontal -->
+                    <p class="small text-muted font-weight-bold text-uppercase mb-2">Variante Horizontal</p>
+                    <div class="row mb-4">
+                        <div class="col-12 col-md-6 mb-3">
+                            <a href="#cambio" class="bcb-service-card bcb-service-card--horizontal" onclick="event.preventDefault()">
+                                <div class="bcb-service-card__icon bcb-service-card__icon--verde">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">currency_exchange</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">Câmbio e Capitais</h3>
+                                    <p class="bcb-service-card__description">Serviços e informações sobre moedas estrangeiras e capitais internacionais</p>
+                                </div>
+                                <span class="bcb-service-card__arrow" aria-hidden="true">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <a href="#med" class="bcb-service-card bcb-service-card--horizontal" onclick="event.preventDefault()">
+                                <div class="bcb-service-card__icon bcb-service-card__icon--vinho">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">security</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">Mecanismo Especial de Devolução</h3>
+                                    <p class="bcb-service-card__description">Solicite a devolução de valores Pix em casos de fraude</p>
+                                </div>
+                                <span class="bcb-service-card__arrow" aria-hidden="true">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Variante Compacta — Grid de 4 colunas -->
+                    <p class="small text-muted font-weight-bold text-uppercase mb-2">Variante Compacta (Grid 25/25/25/25)</p>
+                    <div class="row mb-3">
+                        <div class="col-6 col-md-3 mb-3">
+                            <a href="#pix" class="bcb-service-card bcb-service-card--compact" onclick="event.preventDefault()">
+                                <div class="bcb-service-card__icon">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">qr_code_2</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">Pix</h3>
+                                    <p class="bcb-service-card__description">Pagamentos e transferências instantâneas</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <a href="#drex" class="bcb-service-card bcb-service-card--compact" onclick="event.preventDefault()">
+                                <div class="bcb-service-card__icon bcb-service-card__icon--verde">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">token</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">Drex</h3>
+                                    <p class="bcb-service-card__description">Real Digital e ativos tokenizados</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <a href="#taxas" class="bcb-service-card bcb-service-card--compact" onclick="event.preventDefault()">
+                                <div class="bcb-service-card__icon bcb-service-card__icon--petro">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">Taxas de Juros</h3>
+                                    <p class="bcb-service-card__description">Selic, CDI e taxas de referência</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <a href="#inflacao" class="bcb-service-card bcb-service-card--compact bcb-service-card--featured bcb-service-card--verde" onclick="event.preventDefault()">
+                                <div class="bcb-service-card__icon bcb-service-card__icon--vinho">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">insights</span>
+                                </div>
+                                <div class="bcb-service-card__body">
+                                    <h3 class="bcb-service-card__title">Metas de Inflação</h3>
+                                    <p class="bcb-service-card__description">IPCA, expectativas e regime de metas</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ds-component-code">
+                    <h4>Código HTML</h4>
+                    <pre><code>&lt;!-- Variante Padrão --&gt;
+&lt;a href="#servico" class="bcb-service-card"&gt;
+  &lt;span class="bcb-service-card__badge"&gt;Novo&lt;/span&gt;
+  &lt;div class="bcb-service-card__icon"&gt;
+    &lt;span class="material-symbols-outlined" aria-hidden="true"&gt;calculate&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="bcb-service-card__body"&gt;
+    &lt;h3 class="bcb-service-card__title"&gt;Título do Serviço&lt;/h3&gt;
+    &lt;p class="bcb-service-card__description"&gt;Descrição breve do serviço.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;span class="bcb-service-card__arrow" aria-hidden="true"&gt;
+    &lt;span class="material-symbols-outlined"&gt;arrow_forward&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- Variantes: --horizontal, --compact, --featured --&gt;
+&lt;!-- Cores do ícone: --verde, --petro, --vinho --&gt;
+&lt;!-- Badge: --warning, --external --&gt;</code></pre>
+                </div>
+            </section>
+
             <!-- ========================================================= -->
             <!-- 3. ORGANISMOS (COMPOSTOS) -->
             <!-- ========================================================= -->
@@ -2591,10 +2773,10 @@
                 </div>
             </section>
 
-            <!-- 3.4 Navegação em Abas -->
+            <!-- 3.2 Navegação em Abas -->
             <section id="organismo-abas" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">tab</span> 3.4 Navegação em Abas (.bcb-navegacaoabas)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">tab</span> 3.2 Navegação em Abas (.bcb-navegacaoabas)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Chanfro Angular</span>
                 
                 </div>
@@ -2604,12 +2786,20 @@
                         <ul class="nav nav-tabs" id="tabPerfil" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link active" id="tab-cidadao" data-toggle="tab" href="#cidadao" role="tab" aria-controls="cidadao" aria-selected="true">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">person</span>
                                     <span class="texto">Para Você (Cidadão)</span>
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="tab-empresa" data-toggle="tab" href="#empresa" role="tab" aria-controls="empresa" aria-selected="false">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">domain</span>
                                     <span class="texto">Para Empresas & Instituições</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="tab-api" data-toggle="tab" href="#api" role="tab" aria-controls="api" aria-selected="false">
+                                    <span class="material-symbols-outlined material-icons" aria-hidden="true">terminal</span>
+                                    <span class="texto">Desenvolvedores (APIs)</span>
                                 </a>
                             </li>
                         </ul>
@@ -2619,6 +2809,9 @@
                             </div>
                             <div class="tab-pane fade" id="empresa" role="tabpanel" aria-labelledby="tab-empresa">
                                 <p class="mb-0">Regulamentação bancária, autorização de funcionamento, envio de demonstrativos contábeis (Cosif) e acesso a APIs do Open Finance.</p>
+                            </div>
+                            <div class="tab-pane fade" id="api" role="tabpanel" aria-labelledby="tab-api">
+                                <p class="mb-0">Documentação técnica, schemas JSON do Open Finance, catálogo de APIs do Pix e ambiente Sandbox para homologação de sistemas participantes.</p>
                             </div>
                         </div>
                     </div>
@@ -2632,63 +2825,346 @@
   &lt;span class="line"&gt;&lt;/span&gt;
   &lt;ul class="nav nav-tabs" role="tablist"&gt;
     &lt;li class="nav-item"&gt;
-      &lt;a class="nav-link active" data-toggle="tab" href="#aba1" role="tab" aria-selected="true"&gt;&lt;span class="texto"&gt;Aba 1&lt;/span&gt;&lt;/a&gt;
+      &lt;a class="nav-link active" data-toggle="tab" href="#aba1" role="tab" aria-selected="true"&gt;
+        &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;person&lt;/span&gt;
+        &lt;span class="texto"&gt;Aba com Ícone&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+      &lt;a class="nav-link" data-toggle="tab" href="#aba2" role="tab" aria-selected="false"&gt;
+        &lt;span class="material-symbols-outlined material-icons" aria-hidden="true"&gt;domain&lt;/span&gt;
+        &lt;span class="texto"&gt;Empresas&lt;/span&gt;
+      &lt;/a&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
   &lt;div class="tab-content"&gt;
     &lt;div class="tab-pane fade show active" id="aba1" role="tabpanel"&gt;Conteúdo da Aba 1&lt;/div&gt;
+    &lt;div class="tab-pane fade" id="aba2" role="tabpanel"&gt;Conteúdo da Aba 2&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                 </div>
             </section>
 
-            <!-- 3.5 Timelines -->
+            <!-- 3.3 Timelines -->
             <section id="organismo-timelines" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">timeline</span> 3.5 Timelines (Vertical Educativa e Horizontal)</h3>
-                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Cronograma & Jornada</span>
-                
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">timeline</span> 3.3 Timelines (Vertical Educativa e Horizontal)</h3>
+                    <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> 2 Variantes &bull; WCAG 2.1 AA &bull; Dark &bull; Alto Contraste &bull; Responsivo</span>
                 </div>
                 <div class="ds-component-preview">
-                    <!-- Timeline Educativa Vertical -->
-                    <h5 class="h6 font-weight-bold text-muted mb-3">Timeline Vertical Educativa (step-card)</h5>
-                    <div class="timeline-vertical mb-4">
-                        <div class="step-card mb-3 p-3 rounded" style="border-left: 4px solid var(--bcb-brand-blue); background: var(--bcb-gray-50);">
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="badge badge-primary mr-2">Fase 1</span>
-                                <h4 class="h6 font-weight-bold mb-0 text-primary">Início da Poupança e Planejamento</h4>
-                            </div>
-                            <p class="mb-0 text-muted small">Crie o hábito de poupar 10% a 20% da renda mensal assim que ingressar no mercado de trabalho.</p>
-                        </div>
-                        <div class="step-card p-3 rounded" style="border-left: 4px solid var(--bcb-brand-verde-susta); background: var(--bcb-gray-50);">
-                            <div class="d-flex align-items-center mb-1">
-                                <span class="badge badge-success mr-2">Fase 2</span>
-                                <h4 class="h6 font-weight-bold mb-0" style="color: var(--bcb-brand-verde-susta);">Consolidação e Juros Compostos</h4>
-                            </div>
-                            <p class="mb-0 text-muted small">Aproveite o tempo a seu favor para diversificar investimentos em títulos públicos e previdência.</p>
-                        </div>
+
+                    <!-- Variante 1: Timeline Vertical Educativa & Jornada -->
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h5 class="h6 font-weight-bold text-muted text-uppercase mb-0">Variante 1 — Timeline Vertical Educativa & Jornada (.bcb-timeline--vertical)</h5>
+                        <span class="badge badge-primary">Padrão Cidadania Financeira</span>
                     </div>
+                    <p class="text-muted small mb-4">
+                        Ideal para trilhas de aprendizagem, jornadas do usuário, orientações financeiras e guias passo a passo. Possui trilho de conexão contínuo, cabeçalho estruturado, layout dividido com mídia e rodapé expandido para callouts e simulações.
+                    </p>
+
+                    <ol class="bcb-timeline bcb-timeline--vertical mb-5" aria-label="Jornada Educativa de Educação Financeira">
+                        <!-- Passo 1: Concluído -->
+                        <li class="bcb-timeline__item is-completed">
+                            <div class="bcb-timeline__node" aria-hidden="true">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">receipt_long</span>
+                            </div>
+                            <div class="bcb-timeline__card">
+                                <div class="bcb-timeline__header">
+                                    <div class="bcb-timeline__header-content">
+                                        <span class="bcb-timeline__badge bcb-timeline__badge--completed">
+                                            <span class="material-symbols-outlined material-icons" style="font-size: 14px;" aria-hidden="true">check_circle</span> Passo 01 &bull; Concluído
+                                        </span>
+                                        <h4 class="bcb-timeline__title">1. Diagnóstico e Orçamento Familiar</h4>
+                                    </div>
+                                </div>
+                                <div class="bcb-timeline__split">
+                                    <div class="bcb-timeline__media">
+                                        <div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center p-3 text-center" style="background: linear-gradient(135deg, rgba(2, 92, 117, 0.08) 0%, rgba(0, 164, 120, 0.15) 100%); min-height: 200px;">
+                                            <span class="material-symbols-outlined material-icons bcb-timeline__media-icon mb-2" aria-hidden="true">pie_chart</span>
+                                            <span class="small font-weight-bold text-muted">Controle Orçamentário</span>
+                                        </div>
+                                    </div>
+                                    <div class="bcb-timeline__split-content">
+                                        <div class="bcb-timeline__body">
+                                            <p class="mb-2">Para organizar a vida financeira, o primeiro passo é conhecer com clareza todas as entradas e saídas de recursos da família.</p>
+                                            <p class="mb-0">Mapear gastos fixos, variáveis e eventuais permite identificar para onde o dinheiro está indo e quais desperdícios podem ser eliminados imediatamente.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bcb-timeline__footer">
+                                    <div class="callout callout-brand callout-left-bordered">
+                                        <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">lightbulb</span>
+                                        <div class="callout-content">
+                                            <h5 class="callout-title">Dica Prática de Diagnóstico</h5>
+                                            <p class="mb-0">Não confie apenas na memória. Registre todas as despesas por pelo menos 30 dias em uma planilha ou aplicativo antes de tomar decisões financeiras.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Passo 2: Ativo (Em Andamento) -->
+                        <li class="bcb-timeline__item is-active" aria-current="step">
+                            <div class="bcb-timeline__node" aria-hidden="true">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">savings</span>
+                            </div>
+                            <div class="bcb-timeline__card">
+                                <div class="bcb-timeline__header">
+                                    <div class="bcb-timeline__header-content">
+                                        <span class="bcb-timeline__badge bcb-timeline__badge--active">
+                                            <span class="material-symbols-outlined material-icons" style="font-size: 14px;" aria-hidden="true">pending</span> Passo 02 &bull; Em Andamento
+                                        </span>
+                                        <h4 class="bcb-timeline__title">2. Construção da Reserva de Emergência</h4>
+                                    </div>
+                                </div>
+                                <div class="bcb-timeline__split">
+                                    <div class="bcb-timeline__media">
+                                        <div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center p-3 text-center" style="background: linear-gradient(135deg, rgba(2, 92, 117, 0.12) 0%, rgba(244, 183, 87, 0.2) 100%); min-height: 200px;">
+                                            <span class="material-symbols-outlined material-icons bcb-timeline__media-icon mb-2" style="color: var(--bcb-brand-azul-blue);" aria-hidden="true">shield</span>
+                                            <span class="small font-weight-bold text-muted">Colchão de Proteção</span>
+                                        </div>
+                                    </div>
+                                    <div class="bcb-timeline__split-content">
+                                        <div class="bcb-timeline__body">
+                                            <p class="mb-2">Imprevistos acontecem: problemas de saúde, reparos domésticos urgentes ou desemprego inesperado. A reserva de emergência é o colchão financeiro que protege sua família.</p>
+                                            <p class="mb-0">O ideal é acumular o equivalente a 3 a 6 meses do custo de vida familiar em ativos com liquidez diária e baixo risco.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bcb-timeline__footer">
+                                    <div class="table-responsive mt-3 mb-3">
+                                        <table class="table table-sm table-bordered text-center mb-0" style="font-size: 0.8125rem;">
+                                            <caption class="sr-only">Simulação de tempo de acumulação da reserva de emergência por valor poupado mensalmente</caption>
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Aporte Mensal</th>
+                                                    <th scope="col">Prazo 12 Meses</th>
+                                                    <th scope="col">Prazo 24 Meses</th>
+                                                    <th scope="col">Prazo 36 Meses</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="font-weight-bold">R$ 200,00</th>
+                                                    <td>R$ 2.470,00</td>
+                                                    <td>R$ 5.120,00</td>
+                                                    <td>R$ 7.980,00</td>
+                                                </tr>
+                                                <tr class="table-info" style="background-color: var(--bg-azul-light, #f0f7f9);">
+                                                    <th scope="row" class="font-weight-bold text-primary">R$ 500,00</th>
+                                                    <td class="font-weight-bold text-primary">R$ 6.175,00</td>
+                                                    <td class="font-weight-bold text-primary">R$ 12.800,00</td>
+                                                    <td class="font-weight-bold text-primary">R$ 19.950,00</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-2">
+                                        <span class="small text-muted font-italic">Simulação estimada com base em rentabilidade líquida conservadora.</span>
+                                        <a href="#calculadora" class="btn btn-sm btn-primary" onclick="event.preventDefault()">
+                                            <span class="material-symbols-outlined material-icons md-16 mr-1" aria-hidden="true">calculate</span> Simular na Calculadora do Cidadão
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Passo 3: Pendente (Próxima Etapa) -->
+                        <li class="bcb-timeline__item is-pending">
+                            <div class="bcb-timeline__node" aria-hidden="true">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span>
+                            </div>
+                            <div class="bcb-timeline__card">
+                                <div class="bcb-timeline__header">
+                                    <div class="bcb-timeline__header-content">
+                                        <span class="bcb-timeline__badge bcb-timeline__badge--pending">Passo 03 &bull; Próxima Etapa</span>
+                                        <h4 class="bcb-timeline__title">3. Planejamento e Investimento de Longo Prazo</h4>
+                                    </div>
+                                </div>
+                                <div class="bcb-timeline__body">
+                                    <p class="mb-2">Com o orçamento equilibrado e a reserva constituída, o próximo horizonte é fazer o dinheiro render acima da inflação para a realização de sonhos e aposentadoria.</p>
+                                    <p class="mb-3">Antes de escolher aplicações, consolide estes três pilares estratégicos:</p>
+                                    <ul class="bcb-timeline__list">
+                                        <li><strong>Equilíbrio do Tripé:</strong> Entenda a relação entre liquidez, risco e rentabilidade (não existe alto ganho sem risco proporcional).</li>
+                                        <li><strong>Pague-se Primeiro:</strong> Programe investimentos automáticos no início do mês, logo após o recebimento da renda.</li>
+                                        <li><strong>Atenção a Golpes:</strong> Desconfie de promessas de retornos garantidos ou fáceis. Apostas e jogos eletrônicos não são investimentos.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <!-- Variante 2: Timeline Horizontal de Cronograma & Marcos -->
+                    <div class="d-flex align-items-center justify-content-between mb-3 mt-5 pt-3 border-top">
+                        <h5 class="h6 font-weight-bold text-muted text-uppercase mb-0">Variante 2 — Timeline Horizontal de Cronograma & Marcos (.bcb-timeline--horizontal)</h5>
+                        <span class="badge badge-secondary">Cronogramas & Ciclos de Projetos</span>
+                    </div>
+                    <p class="text-muted small mb-4">
+                        Recomendada para exibir roadmaps, cronogramas de implantação, fases de regulação e marcos de projetos institucionais. Em telas compactas (dispositivos móveis e tablets &le; 768px), o layout colapsa automaticamente para um stepper vertical fluido e acessível.
+                    </p>
+
+                    <ol class="bcb-timeline bcb-timeline--horizontal" aria-label="Cronograma de Implantação e Evolução do Sistema">
+                        <!-- Marco 1: Concluído -->
+                        <li class="bcb-timeline-horizontal__item is-completed">
+                            <div class="bcb-timeline-horizontal__node" aria-hidden="true">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">check</span>
+                            </div>
+                            <div class="bcb-timeline-horizontal__content">
+                                <span class="bcb-timeline-horizontal__date">1º Sem / 2025</span>
+                                <h4 class="bcb-timeline-horizontal__title">Diagnóstico & Diretrizes</h4>
+                                <p class="bcb-timeline-horizontal__desc">Consulta pública e especificação da arquitetura regulatória.</p>
+                                <span class="badge badge-success mt-2">Concluído</span>
+                            </div>
+                        </li>
+
+                        <!-- Marco 2: Concluído -->
+                        <li class="bcb-timeline-horizontal__item is-completed">
+                            <div class="bcb-timeline-horizontal__node" aria-hidden="true">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">check</span>
+                            </div>
+                            <div class="bcb-timeline-horizontal__content">
+                                <span class="bcb-timeline-horizontal__date">2º Sem / 2025</span>
+                                <h4 class="bcb-timeline-horizontal__title">Piloto Controlado</h4>
+                                <p class="bcb-timeline-horizontal__desc">Testes de segurança em ambiente sandbox com participantes.</p>
+                                <span class="badge badge-success mt-2">Concluído</span>
+                            </div>
+                        </li>
+
+                        <!-- Marco 3: Ativo (Em Execução) -->
+                        <li class="bcb-timeline-horizontal__item is-active" aria-current="step">
+                            <div class="bcb-timeline-horizontal__node" aria-hidden="true">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">sync_alt</span>
+                            </div>
+                            <div class="bcb-timeline-horizontal__content">
+                                <span class="bcb-timeline-horizontal__date">1º Sem / 2026</span>
+                                <h4 class="bcb-timeline-horizontal__title">Integração do Ecossistema</h4>
+                                <p class="bcb-timeline-horizontal__desc">Homologação de liquidação atômica e protocolos de privacidade.</p>
+                                <span class="badge badge-primary mt-2">Em Execução</span>
+                            </div>
+                        </li>
+
+                        <!-- Marco 4: Pendente (Planejado) -->
+                        <li class="bcb-timeline-horizontal__item is-pending">
+                            <div class="bcb-timeline-horizontal__node" aria-hidden="true">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">rocket_launch</span>
+                            </div>
+                            <div class="bcb-timeline-horizontal__content">
+                                <span class="bcb-timeline-horizontal__date">2º Sem / 2026</span>
+                                <h4 class="bcb-timeline-horizontal__title">Lançamento Aberto</h4>
+                                <p class="bcb-timeline-horizontal__desc">Disponibilização das operações a toda a população brasileira.</p>
+                                <span class="badge badge-secondary mt-2">Planejado</span>
+                            </div>
+                        </li>
+                    </ol>
+
                 </div>
                 <div class="ds-component-code">
                     <div class="ds-code-actions">
                         <button type="button" class="btn-copy-code" data-code="code-timelines" data-type="html"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">content_copy</span> HTML</button>
-                        <button type="button" class="btn-copy-css" data-classes="h6 timeline-vertical step-card rounded align-items-center badge badge-primary mr-2" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
+                        <button type="button" class="btn-copy-css" data-classes="bcb-timeline bcb-timeline--vertical bcb-timeline--horizontal bcb-timeline__item is-completed is-active is-pending bcb-timeline-horizontal__item" data-type="css"><span class="material-symbols-outlined material-icons md-18" aria-hidden="true">css</span> Classes</button>
                     </div>
-                    <pre><code id="code-timelines">&lt;!-- Card de Etapa da Timeline Vertical --&gt;
-&lt;div class="step-card p-3 rounded" style="border-left: 4px solid var(--bcb-brand-blue); background: var(--bcb-gray-50);"&gt;
-  &lt;div class="d-flex align-items-center mb-1"&gt;
-    &lt;span class="badge badge-primary mr-2"&gt;Fase 1&lt;/span&gt;
-    &lt;h4 class="h6 font-weight-bold mb-0 text-primary"&gt;Título da Etapa&lt;/h4&gt;
-  &lt;/div&gt;
-  &lt;p class="mb-0 text-muted small"&gt;Descrição detalhada da fase.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+                    <pre><code id="code-timelines">&lt;!-- ========================================================= --&gt;
+&lt;!-- VARIANTE 1: TIMELINE VERTICAL EDUCATIVA &amp; JORNADA CIDADÃ  --&gt;
+&lt;!-- ========================================================= --&gt;
+&lt;ol class="bcb-timeline bcb-timeline--vertical" aria-label="Jornada Educativa"&gt;
+  &lt;!-- Etapa 1: Concluída (.is-completed) --&gt;
+  &lt;li class="bcb-timeline__item is-completed"&gt;
+    &lt;div class="bcb-timeline__node" aria-hidden="true"&gt;
+      &lt;span class="material-symbols-outlined"&gt;receipt_long&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-timeline__card"&gt;
+      &lt;div class="bcb-timeline__header"&gt;
+        &lt;span class="bcb-timeline__badge bcb-timeline__badge--completed"&gt;Passo 01 &bull; Concluído&lt;/span&gt;
+        &lt;h4 class="bcb-timeline__title"&gt;1. Diagnóstico e Orçamento&lt;/h4&gt;
+      &lt;/div&gt;
+      &lt;div class="bcb-timeline__split"&gt;
+        &lt;div class="bcb-timeline__media"&gt;
+          &lt;span class="material-symbols-outlined bcb-timeline__media-icon" aria-hidden="true"&gt;pie_chart&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="bcb-timeline__split-content"&gt;
+          &lt;div class="bcb-timeline__body"&gt;
+            &lt;p&gt;Mapear gastos fixos, variáveis e eventuais da família.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="bcb-timeline__footer"&gt;
+        &lt;div class="callout callout-brand callout-left-bordered"&gt;
+          &lt;span class="material-symbols-outlined callout-icon" aria-hidden="true"&gt;lightbulb&lt;/span&gt;
+          &lt;div class="callout-content"&gt;
+            &lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; Registre todas as despesas por 30 dias.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;!-- Etapa 2: Em Andamento (.is-active com aria-current="step") --&gt;
+  &lt;li class="bcb-timeline__item is-active" aria-current="step"&gt;
+    &lt;div class="bcb-timeline__node" aria-hidden="true"&gt;
+      &lt;span class="material-symbols-outlined"&gt;savings&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-timeline__card"&gt;
+      &lt;div class="bcb-timeline__header"&gt;
+        &lt;span class="bcb-timeline__badge bcb-timeline__badge--active"&gt;Passo 02 &bull; Em Andamento&lt;/span&gt;
+        &lt;h4 class="bcb-timeline__title"&gt;2. Reserva de Emergência&lt;/h4&gt;
+      &lt;/div&gt;
+      &lt;div class="bcb-timeline__body"&gt;
+        &lt;p&gt;Construa um colchão equivalente a 3 a 6 meses do custo de vida.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- ========================================================= --&gt;
+&lt;!-- VARIANTE 2: TIMELINE HORIZONTAL DE CRONOGRAMA &amp; MARCOS    --&gt;
+&lt;!-- ========================================================= --&gt;
+&lt;ol class="bcb-timeline bcb-timeline--horizontal" aria-label="Cronograma de Projeto"&gt;
+  &lt;!-- Marco Concluído --&gt;
+  &lt;li class="bcb-timeline-horizontal__item is-completed"&gt;
+    &lt;div class="bcb-timeline-horizontal__node" aria-hidden="true"&gt;
+      &lt;span class="material-symbols-outlined"&gt;check&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-timeline-horizontal__content"&gt;
+      &lt;span class="bcb-timeline-horizontal__date"&gt;1º Sem / 2025&lt;/span&gt;
+      &lt;h4 class="bcb-timeline-horizontal__title"&gt;Diagnóstico&lt;/h4&gt;
+      &lt;p class="bcb-timeline-horizontal__desc"&gt;Especificação regulatória.&lt;/p&gt;
+      &lt;span class="badge badge-success"&gt;Concluído&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;!-- Marco Ativo (aria-current="step") --&gt;
+  &lt;li class="bcb-timeline-horizontal__item is-active" aria-current="step"&gt;
+    &lt;div class="bcb-timeline-horizontal__node" aria-hidden="true"&gt;
+      &lt;span class="material-symbols-outlined"&gt;sync_alt&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-timeline-horizontal__content"&gt;
+      &lt;span class="bcb-timeline-horizontal__date"&gt;1º Sem / 2026&lt;/span&gt;
+      &lt;h4 class="bcb-timeline-horizontal__title"&gt;Integração&lt;/h4&gt;
+      &lt;p class="bcb-timeline-horizontal__desc"&gt;Homologação técnica.&lt;/p&gt;
+      &lt;span class="badge badge-primary"&gt;Em Execução&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;!-- Marco Pendente --&gt;
+  &lt;li class="bcb-timeline-horizontal__item is-pending"&gt;
+    &lt;div class="bcb-timeline-horizontal__node" aria-hidden="true"&gt;
+      &lt;span class="material-symbols-outlined"&gt;rocket_launch&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="bcb-timeline-horizontal__content"&gt;
+      &lt;span class="bcb-timeline-horizontal__date"&gt;2º Sem / 2026&lt;/span&gt;
+      &lt;h4 class="bcb-timeline-horizontal__title"&gt;Lançamento&lt;/h4&gt;
+      &lt;p class="bcb-timeline-horizontal__desc"&gt;Disponibilização ao público.&lt;/p&gt;
+      &lt;span class="badge badge-secondary"&gt;Planejado&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
                 </div>
             </section>
 
-            <!-- 3.6 Hero Banner -->
+            <!-- 3.4 Hero Banner -->
             <section id="organismo-hero-banner" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">panorama</span> 3.6 Hero Banner (.bcb-hero-banner--split)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">panorama</span> 3.4 Hero Banner (.bcb-hero-banner--split)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Destaque Principal com Imagem</span>
                 </div>
                 <div class="ds-component-preview p-0">
@@ -2698,11 +3174,11 @@
                             <h4 class="bcb-hero-title">Drex: A Plataforma do Real Digital</h4>
                             <p class="bcb-hero-text">A infraestrutura do Real Digital desenvolvida pelo Banco Central do Brasil para viabilizar serviços financeiros inovadores, programáveis e com liquidação garantida pela autoridade monetária.</p>
                             <div>
-                                <a href="#conheca-drex" class="btn btn-warning font-weight-bold px-4 py-2" style="background-color: var(--bcb-brand-amarellato-biscoito, #F8D48D); border: none; color: #14171A;">Conheça o Projeto Piloto</a>
+                                <a href="#conheca-drex" class="btn btn-warning font-weight-bold px-4 py-2" style="background-color: var(--bcb-brand-mandarino, #F4B757); border: none; color: #14171A;">Conheça o Projeto Piloto</a>
                             </div>
                         </div>
                         <div class="bcb-hero-img-container">
-                            <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, rgba(8, 134, 148, 0.4) 0%, rgba(46, 76, 89, 0.8) 100%); min-height: 220px;">
+                            <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, rgba(8, 134, 148, 0.4) 0%, rgba(2, 92, 117, 0.8) 100%); min-height: 220px;">
                                 <span class="material-symbols-outlined material-icons text-white" style="font-size: 5rem;" aria-hidden="true">currency_exchange</span>
                             </div>
                         </div>
@@ -2727,10 +3203,10 @@
                 </div>
             </section>
 
-            <!-- 3.7 Lista de Notícias -->
+            <!-- 3.5 Lista de Notícias -->
             <section id="organismo-noticias" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">newspaper</span> 3.7 Lista de Notícias (.bcb-news-card--editorial)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">newspaper</span> 3.5 Lista de Notícias (.bcb-news-card--editorial)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Proporção 16:9 &bull; Editorial</span>
                 </div>
                 <div class="ds-component-preview">
@@ -2832,10 +3308,10 @@
                 </div>
             </section>
 
-            <!-- 3.8 Process List -->
+            <!-- 3.6 Process List -->
             <section id="organismo-process-list" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_list_numbered</span> 3.8 Process List (Passo a Passo Sequencial)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">format_list_numbered</span> 3.6 Process List (Passo a Passo Sequencial)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Numeração em Grade</span>
                 
                 </div>
@@ -2869,10 +3345,10 @@
                 </div>
             </section>
 
-            <!-- 3.9 Modal / Dialog Acessível -->
+            <!-- 3.7 Modal / Dialog Acessível -->
             <section id="organismo-modal" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">picture_in_picture</span> 3.9 Modal / Dialog Acessível (.bcb-modal)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">picture_in_picture</span> 3.7 Modal / Dialog Acessível (.bcb-modal)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Focus-Trap & ESC</span>
                 
                 </div>
@@ -2936,10 +3412,10 @@
                 </div>
             </section>
 
-            <!-- 3.10 Container de Vídeos -->
+            <!-- 3.8 Container de Vídeos -->
             <section id="organismo-videos" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">play_circle</span> 3.10 Carrossel de Vídeos (.bcb-video-carousel)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">play_circle</span> 3.8 Carrossel de Vídeos (.bcb-video-carousel)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Aspect Ratio 16:9 &bull; Scroll Snap</span>
                 </div>
                 <div class="ds-component-preview">
@@ -3025,10 +3501,10 @@
                 </div>
             </section>
 
-            <!-- 3.11 Fluxogramas Textuais e Decisões Sequenciais -->
+            <!-- 3.9 Fluxogramas Textuais e Decisões Sequenciais -->
             <section id="organismo-fluxograma-decisao" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">alt_route</span> 3.11 Fluxogramas Textuais e Decisões Sequenciais (.bcb-decision-flow)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">alt_route</span> 3.9 Fluxogramas Textuais e Decisões Sequenciais (.bcb-decision-flow)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> Acessível &bull; WCAG AAA</span>
                 </div>
                 <div class="ds-component-preview">
@@ -3103,10 +3579,10 @@
                 </div>
             </section>
 
-            <!-- 3.12 Carrossel Manchete -->
+            <!-- 3.10 Carrossel Manchete -->
             <section id="organismo-carrossel" class="ds-component-card" data-category="organismos">
                 <div class="ds-component-header">
-                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_carousel</span> 3.12 Carrossel Manchete (.bcb-carousel)</h3>
+                    <h3><span class="material-symbols-outlined material-icons" aria-hidden="true">view_carousel</span> 3.10 Carrossel Manchete (.bcb-carousel)</h3>
                     <span class="badge-a11y"><span class="material-symbols-outlined material-icons" aria-hidden="true">check_circle</span> WAI-ARIA Carousel & Pause/Play</span>
                 </div>
                 <div class="ds-component-preview">
@@ -3332,7 +3808,7 @@
                     navigator.clipboard.writeText(codeElement.innerText).then(() => {
                         const originalHTML = btn.innerHTML;
                         btn.innerHTML = '<span class="material-symbols-outlined material-icons md-18" aria-hidden="true">check</span> Copiado!';
-                        btn.style.background = 'var(--bcb-brand-verde-susta, #067078)';
+                        btn.style.background = 'var(--bcb-brand-rio-jordao, #00A478)';
                         btn.style.color = '#ffffff';
                         setTimeout(() => {
                             btn.innerHTML = originalHTML;
@@ -3519,10 +3995,10 @@
 
             // Mapeamento de finalidades de blocos centrais de conteúdo
             const purposeMap = {
-                'dados': ['atomo-grid', 'atomo-tabelas', 'molecula-datatable', 'molecula-cards-indicadores', 'molecula-kpi-card', 'molecula-botoes-exportacao', 'molecula-indicadores-avancados', 'molecula-metadados-normativos', 'atomo-tooltip'],
-                'alertas': ['molecula-alert', 'molecula-callouts', 'molecula-tip-box', 'molecula-quote', 'atomo-tags', 'molecula-toasts', 'molecula-empty-state', 'molecula-metadados-normativos', 'molecula-cta'],
-                'navegacao': ['organismo-abas', 'molecula-acordeon', 'molecula-stepper', 'organismo-process-list', 'organismo-timelines', 'utilitario-backtotop', 'molecula-page-toolbar', 'molecula-breadcrumbs', 'organismo-fluxograma-decisao', 'molecula-cta', 'organismo-carrossel'],
-                'midias': ['molecula-documentos', 'organismo-videos', 'organismo-cards-link', 'organismo-noticias', 'organismo-hero-banner', 'organismo-carrossel']
+                'dados': ['atomo-grid', 'atomo-tabelas', 'molecula-datatable', 'molecula-indicadores', 'molecula-kpi-card', 'molecula-data-export', 'molecula-indicadores-avancados', 'molecula-metadados-normativos', 'atomo-tooltip'],
+                'alertas': ['molecula-alert', 'molecula-callouts', 'molecula-quote', 'atomo-tags', 'molecula-toasts-alertas', 'molecula-empty-state', 'molecula-metadados-normativos', 'molecula-cta'],
+                'navegacao': ['organismo-abas', 'organismo-accordion', 'molecula-stepper', 'organismo-process-list', 'organismo-timelines', 'utilitario-backtotop', 'molecula-page-toolbar', 'molecula-breadcrumbs', 'organismo-fluxograma-decisao', 'molecula-cta', 'organismo-carrossel', 'molecula-service-card'],
+                'midias': ['molecula-documentos', 'organismo-videos', 'molecula-listalinks', 'organismo-noticias', 'organismo-hero-banner', 'organismo-carrossel', 'molecula-service-card']
             };
 
             const isPurposeFilter = Boolean(purposeMap[category]);

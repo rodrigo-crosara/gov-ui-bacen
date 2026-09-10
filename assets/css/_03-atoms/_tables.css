@@ -39,7 +39,7 @@
 
 .table .thead-primary th {
   background-color: var(--bcb-brand-blue);
-  color: var(--bcb-color-white);
+  color: #FFFFFF !important;
   border-color: var(--bcb-brand-blue);
   font-weight: 500;
 }

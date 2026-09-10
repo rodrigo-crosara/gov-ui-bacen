@@ -1,3 +1,9 @@
+/*!
+ * BCB Design System v2.8.0
+ * Banco Central do Brasil — DEINF
+ * WCAG 2.2 AA / AAA & e-MAG 3.1
+ */
+
 /* Settings */
 @import "_00-settings/_tokens.css";
 @import "_00-settings/_typography.css";
@@ -42,6 +48,7 @@
 @import "_04-molecules/_quote.css";
 @import "_04-molecules/_toast.css";
 @import "_04-molecules/_cta.css";
+@import "_04-molecules/_service-card.css";
 
 /* Organisms */
 @import "_05-organisms/_accordion.css";

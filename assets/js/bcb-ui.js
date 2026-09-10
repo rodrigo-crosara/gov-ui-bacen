@@ -1,8 +1,10 @@
 /**
- * BCB Design System — Pacote Unificado de Micro-scripts (Vanilla JS)
+ * BCB Design System v2.8.0 — Pacote Unificado de Micro-scripts (Vanilla JS)
  * Inicializa Seletor de Temas (IIFE autônoma imediata), Modal, Toast, Tabs, Accordion e Data Table.
  * Arquitetura defensiva com tolerância a falhas e verificação estrita de nulidade.
  */
+
+window.BCB_UI_VERSION = '2.8.0';
 
 // 1. Alternador de Temas — Isolado em Função Autônoma Imediata (IIFE)
 (function initBcbThemeImmediate() {
@@ -543,10 +545,10 @@
             if (carousel._bcbBound) return;
             carousel._bcbBound = true;
             const slides = Array.from(carousel.querySelectorAll('.bcb-carousel__slide'));
-            const indicators = Array.from(carousel.querySelectorAll('.bcb-carousel__indicator'));
-            const prevBtn = carousel.querySelector('.bcb-carousel__prev, [data-carousel="prev"]');
-            const nextBtn = carousel.querySelector('.bcb-carousel__next, [data-carousel="next"]');
-            const playPauseBtn = carousel.querySelector('.bcb-carousel__toggle-play, [data-carousel="toggle-play"]');
+            const indicators = Array.from(carousel.querySelectorAll('.bcb-carousel__indicator, .bcb-carousel__dot'));
+            const prevBtn = carousel.querySelector('.bcb-carousel__btn--prev, .bcb-carousel__prev, [data-carousel="prev"]');
+            const nextBtn = carousel.querySelector('.bcb-carousel__btn--next, .bcb-carousel__next, [data-carousel="next"]');
+            const playPauseBtn = carousel.querySelector('.bcb-carousel__btn--playpause, .bcb-carousel__toggle-play, [data-carousel="toggle-play"]');
             let current = 0;
             let playing = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             let timer = null;

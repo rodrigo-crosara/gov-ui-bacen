@@ -13,12 +13,12 @@ a {
 
 .bcb-link:hover,
 a:hover {
-  color: var(--bcb-link-hover, #077391);
+  color: var(--bcb-link-hover, var(--bcb-brand-verde-castell, #088694));
 }
 
 .bcb-link:active,
 a:active {
-  color: var(--bcb-brand-azulpetro, #2E4C59);
+  color: var(--bcb-brand-azul-blue, #025C75);
 }
 
 .bcb-link:focus-visible,

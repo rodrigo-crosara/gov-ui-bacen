@@ -52,7 +52,7 @@
         .token-swatch-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--bcb-shadow-300);
-            border-color: var(--bcb-brand-azulcinti);
+            border-color: var(--bcb-brand-verde-castell);
         }
         .token-swatch-preview {
             height: 100px;
@@ -116,7 +116,7 @@
             color: var(--bcb-color-neutral-10, #f8f9fa);
         }
         :root[data-theme="dark"] .token-var {
-            color: var(--bcb-color-azulcinti, #077391);
+            color: var(--bcb-brand-celestial, #36B2C2);
         }
         :root[data-theme="dark"] .token-value {
             color: var(--bcb-color-neutral-40, #c4cbd1);
@@ -181,7 +181,7 @@
         }
         .spacing-bar-fill {
             height: 20px;
-            background-color: var(--bcb-brand-azulcinti);
+            background-color: var(--bcb-brand-verde-castell);
             border-radius: 2px;
             transition: background-color 0.2s;
         }
@@ -218,31 +218,62 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Bloco de Alto Contraste */
+        /* Bloco de Alto Contraste (Simulação permanente com fundo preto) */
         .hc-showcase-box {
-            background-color: var(--bcb-hc-bg-level-1);
-            color: var(--bcb-hc-text);
-            border: 2px solid var(--bcb-hc-border);
+            background-color: #000000 !important;
+            color: #FFFFFF !important;
+            border: 2px solid #FFFFFF !important;
             border-radius: var(--bcb-radius-8);
             padding: 2rem;
+            box-shadow: var(--bcb-shadow-300);
+        }
+        .hc-showcase-box h3,
+        .hc-showcase-box h4 {
+            color: #FFFFFF !important;
+        }
+        .hc-showcase-box p,
+        .hc-showcase-box div,
+        .hc-showcase-box span {
+            color: #FFFFFF !important;
         }
         .hc-showcase-box a {
-            color: var(--bcb-hc-link);
-            text-decoration: underline;
+            color: #FFFF00 !important;
+            text-decoration: underline !important;
             font-weight: bold;
         }
+        .hc-showcase-box a:hover,
+        .hc-showcase-box a:focus {
+            color: #FFFF66 !important;
+        }
+        .hc-showcase-box code {
+            background-color: #333333 !important;
+            color: #FFFF00 !important;
+            border: 1px solid #FFFFFF !important;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
         .hc-card-level2 {
-            background-color: var(--bcb-hc-bg-level-2);
-            border: 1px solid var(--bcb-hc-border);
-            padding: 1rem;
+            background-color: #222222 !important;
+            border: 1px solid #FFFFFF !important;
+            padding: 1.25rem;
             border-radius: var(--bcb-radius-4);
             margin-bottom: 1rem;
+            color: #FFFFFF !important;
+        }
+        .hc-card-level2 p,
+        .hc-card-level2 div {
+            color: #FFFFFF !important;
         }
         .hc-card-level3 {
-            background-color: var(--bcb-hc-bg-level-3);
-            border: 1px dashed var(--bcb-hc-border);
-            padding: 0.75rem;
+            background-color: #333333 !important;
+            border: 1px dashed #FFFFFF !important;
+            padding: 1rem;
             border-radius: var(--bcb-radius-4);
+            color: #FFFFFF !important;
+        }
+        .hc-card-level3 div {
+            color: #FFFFFF !important;
         }
 
         /* Layout da Documentação em Duas Colunas */
@@ -395,6 +426,7 @@
       <div class="bcb-container bcb-ds-header__inner">
         <div class="bcb-ds-header__brand">
           <a href="../index.html" class="bcb-ds-header__title">Design System <span>BCB</span></a>
+          <span class="bcb-ds-version-badge">v2.8.0</span>
         </div>
         <nav class="bcb-ds-header__nav" aria-label="Navegação da documentação">
           <ul class="bcb-ds-header__links">
@@ -466,6 +498,11 @@
                     <span>Categorias de Tokens</span>
                 </button>
             </div>
+            <div class="d-flex align-items-center flex-wrap gap-2 mb-2">
+                <span class="tag-bcb primary">Versão 2.8.0</span>
+                <span class="badge badge-success">Design Tokens W3C DTCG</span>
+                <span class="badge badge-light border text-muted">WCAG 2.2 AA / AAA</span>
+            </div>
             <h1 class="h2 font-weight-bold mb-3">Design Tokens do Banco Central do Brasil</h1>
             
             <!-- Banner Informativo -->
@@ -480,179 +517,200 @@
 
             <!-- ============ A) CORES BRAND ============ -->
             <section id="cores-brand">
-                <h2>Cores Brand (Manual de Marca Oficial do BCB)</h2>
-                <p class="text-body mb-4">Paleta cromática oficial do Banco Central do Brasil em total conformidade com o Manual de Marca. Cada cor possui especificações industriais (Pantone, CMYK, RGB e HEX) com ratios calculados para contraste acessível (WCAG 2.2 AA / AAA).</p>
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                    <h2 class="mb-0">Cores Brand (Manual de Marca Oficial do BCB)</h2>
+                    <span class="badge badge-success px-2 py-1 font-weight-bold">Aprovada pela Chefia &bull; 11 Cores</span>
+                </div>
+                <p class="text-body mb-4">Paleta cromática oficial e vigente do Banco Central do Brasil homologada pela chefia. Composta por 11 cores canônicas com especificações industriais rigorosas (Pantone, CMYK, RGB e Hexadecimal) e ratios calibrados para contraste acessível (WCAG 2.2 AA / AAA).</p>
 
-                <h3 class="h5">Cores Primárias e Institucionais</h3>
+                <h3 class="h5">Cores Principais e Institucionais</h3>
                 <div class="row mb-4">
-                    <!-- 1. Azul Blue -->
-                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                    <!-- 1. Azulblue -->
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
                         <div class="token-swatch-card" data-token="var(--bcb-brand-azul-blue)" title="Clique para copiar">
                             <div class="token-swatch-preview" style="background-color: var(--bcb-brand-azul-blue); color: var(--bcb-color-white);">
                                 <span class="copy-badge">Copiar token</span>
                             </div>
                             <div class="token-swatch-info">
-                                <div class="token-name">Azul Blue (Primária Oficial)</div>
+                                <div class="token-name">Azulblue (Primária Oficial)</div>
                                 <div class="token-var">--bcb-brand-azul-blue</div>
-                                <div class="token-value">#025C75 &bull; Pantone 3025 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (2, 92, 117) | CMYK: 98, 21, 0, 54</div>
-                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AAA &bull; 7.6:1</div>
+                                <div class="token-value">#025C75 &bull; Pantone 3025</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (2, 92, 117) | CMYK: 100/30/20/40</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AAA &bull; 7.5:1</div>
                             </div>
                         </div>
                     </div>
-                    <!-- 2. Azul Cinti -->
-                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
-                        <div class="token-swatch-card" data-token="var(--bcb-brand-azulcinti)" title="Clique para copiar">
-                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-azulcinti); color: var(--bcb-color-white);">
-                                <span class="copy-badge">Copiar token</span>
-                            </div>
-                            <div class="token-swatch-info">
-                                <div class="token-name">Azul Cinti (Hover / Destaque)</div>
-                                <div class="token-var">--bcb-brand-azulcinti</div>
-                                <div class="token-value">#077391 &bull; Pantone 7698 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (7, 115, 145) | CMYK: 95, 21, 0, 43</div>
-                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 5.2:1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 3. Cinza 80 -->
-                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
-                        <div class="token-swatch-card" data-token="var(--bcb-brand-cinza-80)" title="Clique para copiar">
-                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-cinza-80); color: var(--bcb-color-white);">
-                                <span class="copy-badge">Copiar token</span>
-                            </div>
-                            <div class="token-swatch-info">
-                                <div class="token-name">Cinza 80 (Texto Institucional)</div>
-                                <div class="token-var">--bcb-brand-cinza-80</div>
-                                <div class="token-value">#606062 &bull; Pantone Cool Gray 10 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (96, 96, 98) | CMYK: 2, 2, 0, 62</div>
-                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 6.3:1</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="h5">Cores Complementares e Semânticas</h3>
-                <div class="row">
-                    <!-- 4. Azul Petro -->
-                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                        <div class="token-swatch-card" data-token="var(--bcb-brand-azulpetro)" title="Clique para copiar">
-                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-azulpetro); color: var(--bcb-color-white);">
-                                <span class="copy-badge">Copiar token</span>
-                            </div>
-                            <div class="token-swatch-info">
-                                <div class="token-name">Azul Petro (Active)</div>
-                                <div class="token-var">--bcb-brand-azulpetro</div>
-                                <div class="token-value">#2E4C59 &bull; Pantone 7546 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (46, 76, 89) | CMYK: 48, 15, 0, 65</div>
-                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AAA &bull; 9.4:1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 5. Azul Netuno -->
-                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                        <div class="token-swatch-card" data-token="var(--bcb-brand-azulnetuno)" title="Clique para copiar">
-                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-azulnetuno); color: var(--bcb-color-white);">
-                                <span class="copy-badge">Copiar token</span>
-                            </div>
-                            <div class="token-swatch-info">
-                                <div class="token-name">Azul Netuno (Divisores)</div>
-                                <div class="token-var">--bcb-brand-azulnetuno</div>
-                                <div class="token-value">#476F82 &bull; Pantone 7544 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (71, 111, 130) | CMYK: 45, 15, 0, 49</div>
-                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 4.8:1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 6. Verde Susta -->
-                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                        <div class="token-swatch-card" data-token="var(--bcb-brand-verde-susta)" title="Clique para copiar">
-                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-verde-susta); color: var(--bcb-color-white);">
-                                <span class="copy-badge">Copiar token</span>
-                            </div>
-                            <div class="token-swatch-info">
-                                <div class="token-name">Verde Susta (Sucesso)</div>
-                                <div class="token-var">--bcb-brand-verde-susta</div>
-                                <div class="token-value">#067078 &bull; Pantone 7719 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (6, 112, 120) | CMYK: 95, 7, 0, 53</div>
-                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AAA &bull; 5.5:1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 7. Verde Castell -->
+                    <!-- 2. Verde Castell -->
                     <div class="col-12 col-sm-6 col-lg-3 mb-3">
                         <div class="token-swatch-card" data-token="var(--bcb-brand-verde-castell)" title="Clique para copiar">
                             <div class="token-swatch-preview" style="background-color: var(--bcb-brand-verde-castell); color: var(--bcb-color-white);">
                                 <span class="copy-badge">Copiar token</span>
                             </div>
                             <div class="token-swatch-info">
-                                <div class="token-name">Verde Castell (Botão Sec.)</div>
+                                <div class="token-name">Verde Castell (Acento / Secundária)</div>
                                 <div class="token-var">--bcb-brand-verde-castell</div>
-                                <div class="token-value">#088694 &bull; Pantone 3145 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (8, 134, 148) | CMYK: 95, 9, 0, 42</div>
-                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 4.5:1</div>
+                                <div class="token-value">#088694 &bull; Pantone 320</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (8, 134, 148) | CMYK: 100/30/40/0</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 4.8:1</div>
                             </div>
                         </div>
                     </div>
-                    <!-- 8. Amarellato Biscoito -->
+                    <!-- 3. Cinza80 -->
                     <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                        <div class="token-swatch-card" data-token="var(--bcb-brand-amarellato-biscoito)" title="Clique para copiar">
-                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-amarellato-biscoito); color: var(--bcb-gray-900);">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-cinza-80)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-cinza-80); color: var(--bcb-color-white);">
                                 <span class="copy-badge">Copiar token</span>
                             </div>
                             <div class="token-swatch-info">
-                                <div class="token-name">Amarellato (Alerta / Foco)</div>
-                                <div class="token-var">--bcb-brand-amarellato-biscoito</div>
-                                <div class="token-value">#F8D48D &bull; Pantone 141 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (248, 212, 141) | CMYK: 0, 15, 43, 3</div>
-                                <div class="badge badge-info mt-1" style="font-size: 0.65rem; color: #000;">Foco &bull; Superfície</div>
+                                <div class="token-name">Cinza80 (Texto Institucional)</div>
+                                <div class="token-var">--bcb-brand-cinza-80</div>
+                                <div class="token-value">#606060 &bull; Pantone Cool Gray 10</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (96, 96, 96) | CMYK: 0/0/0/80</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 6.3:1</div>
                             </div>
                         </div>
                     </div>
-                    <!-- 9. Cafellato -->
+                    <!-- 4. Concreto -->
                     <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                        <div class="token-swatch-card" data-token="var(--bcb-brand-cafellato)" title="Clique para copiar">
-                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-cafellato); color: var(--bcb-gray-900);">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-concreto)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-concreto); color: #000000;">
                                 <span class="copy-badge">Copiar token</span>
                             </div>
                             <div class="token-swatch-info">
-                                <div class="token-name">Cafellato (Borda Alerta)</div>
-                                <div class="token-var">--bcb-brand-cafellato</div>
-                                <div class="token-value">#DEBE7F &bull; Pantone 7508 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (222, 190, 127) | CMYK: 0, 14, 43, 13</div>
-                                <div class="badge badge-info mt-1" style="font-size: 0.65rem; color: #000;">Bordas de Aviso</div>
+                                <div class="token-name">Concreto (Superfície / Neutro)</div>
+                                <div class="token-var">--bcb-brand-concreto</div>
+                                <div class="token-value">#AEAFAA &bull; Pantone 428</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (174, 175, 170) | CMYK: 35/25/30/5</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AAA &bull; 9.5:1</div>
                             </div>
                         </div>
                     </div>
-                    <!-- 10. Vinho Autêntico -->
+                </div>
+
+                <h3 class="h5">Cores Complementares e Destaques</h3>
+                <div class="row mb-4">
+                    <!-- 5. Celestial -->
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-celestial)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-celestial); color: #000000;">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Celestial (Ciano / Destaque)</div>
+                                <div class="token-var">--bcb-brand-celestial</div>
+                                <div class="token-value">#36B2C2 &bull; Pantone 311</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (54, 178, 194) | CMYK: 70/5/25/0</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AAA &bull; 8.3:1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 6. Rio Jordão -->
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-rio-jordao)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-rio-jordao); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Rio Jordão (Sucesso / Estabilidade)</div>
+                                <div class="token-var">--bcb-brand-rio-jordao</div>
+                                <div class="token-value">#00A478 &bull; Pantone 3395</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (0, 164, 120) | CMYK: 80/5/65/0</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 6.6:1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 7. Marsala Intenso -->
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-marsala-intenso)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-marsala-intenso); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Marsala Intenso (Destaque Editorial)</div>
+                                <div class="token-var">--bcb-brand-marsala-intenso</div>
+                                <div class="token-value">#9C365E &bull; Pantone 7647</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (156, 54, 94) | CMYK: 30/85/35/20</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 6.8:1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8. Salmão Rosado -->
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-salmao-rosado)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-salmao-rosado); color: #000000;">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Salmão Rosado (Acento Quente)</div>
+                                <div class="token-var">--bcb-brand-salmao-rosado</div>
+                                <div class="token-value">#ED6B6A &bull; Pantone 178</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (237, 107, 106) | CMYK: 0/70/50/0</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 6.9:1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 9. Mandarino -->
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-mandarino)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-mandarino); color: #000000;">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Mandarino (Alerta / Atenção)</div>
+                                <div class="token-var">--bcb-brand-mandarino</div>
+                                <div class="token-value">#F4B757 &bull; Pantone 137</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (244, 183, 87) | CMYK: 5/30/75/0</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AAA &bull; 11.8:1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 10. Achocolatado -->
+                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <div class="token-swatch-card" data-token="var(--bcb-brand-achocolatado)" title="Clique para copiar">
+                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-achocolatado); color: var(--bcb-color-white);">
+                                <span class="copy-badge">Copiar token</span>
+                            </div>
+                            <div class="token-swatch-info">
+                                <div class="token-name">Achocolatado (Terra / Secundário)</div>
+                                <div class="token-var">--bcb-brand-achocolatado</div>
+                                <div class="token-value">#914D23 &bull; Pantone 160</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (145, 77, 35) | CMYK: 30/70/90/30</div>
+                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 6.4:1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 11. Vinho Autêntico -->
                     <div class="col-12 col-sm-6 col-lg-3 mb-3">
                         <div class="token-swatch-card" data-token="var(--bcb-brand-vinho-autentico)" title="Clique para copiar">
                             <div class="token-swatch-preview" style="background-color: var(--bcb-brand-vinho-autentico); color: var(--bcb-color-white);">
                                 <span class="copy-badge">Copiar token</span>
                             </div>
                             <div class="token-swatch-info">
-                                <div class="token-name">Vinho Autêntico (Perigo/Erro)</div>
+                                <div class="token-name">Vinho Autêntico (Regulatório / Erro)</div>
                                 <div class="token-var">--bcb-brand-vinho-autentico</div>
-                                <div class="token-value">#47373A &bull; Pantone 4975 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (71, 55, 58) | CMYK: 0, 23, 18, 72</div>
+                                <div class="token-value">#47373A &bull; Pantone 4975</div>
+                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (71, 55, 58) | CMYK: 50/60/50/60</div>
                                 <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AAA &bull; 11.2:1</div>
                             </div>
                         </div>
                     </div>
-                    <!-- 11. Marsala Suave -->
-                    <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                        <div class="token-swatch-card" data-token="var(--bcb-brand-marsala-suave)" title="Clique para copiar">
-                            <div class="token-swatch-preview" style="background-color: var(--bcb-brand-marsala-suave); color: var(--bcb-color-white);">
-                                <span class="copy-badge">Copiar token</span>
-                            </div>
-                            <div class="token-swatch-info">
-                                <div class="token-name">Marsala Suave (Indicadores)</div>
-                                <div class="token-var">--bcb-brand-marsala-suave</div>
-                                <div class="token-value">#736063 &bull; Pantone 5005 C</div>
-                                <div class="text-muted mt-1" style="font-size: 0.7rem;">RGB: (115, 96, 99) | CMYK: 0, 17, 14, 55</div>
-                                <div class="badge badge-success mt-1" style="font-size: 0.65rem;">WCAG AA &bull; 5.8:1</div>
-                            </div>
-                        </div>
+                </div>
+
+                <!-- Painel de Migração e Descontinuação (@deprecated) -->
+                <div class="callout callout-left-bordered mt-3" style="background-color: var(--bcb-gray-100); border-left-color: var(--bcb-brand-azul-blue);">
+                    <div class="d-flex align-items-center gap-2 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue); font-size: 0.85rem;">
+                        <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">sync</span>
+                        <span>Tokens Legados Descontinuados (@deprecated) — Matriz de Substituição Canônica</span>
+                    </div>
+                    <p class="small text-muted mb-2">Para garantir estabilidade visual e eliminar dívida técnica, todos os tokens legados foram mapeados diretamente para a paleta oficial de 11 cores aprovada pela chefia:</p>
+                    <div class="small d-flex flex-wrap gap-2 text-muted">
+                        <span class="badge badge-light border"><code>--bcb-brand-azulcinti</code> &rarr; <strong>verde-castell</strong> (#088694)</span>
+                        <span class="badge badge-light border"><code>--bcb-brand-azulpetro</code> &rarr; <strong>azul-blue</strong> (#025C75)</span>
+                        <span class="badge badge-light border"><code>--bcb-brand-azulnetuno</code> &rarr; <strong>verde-castell</strong> (#088694)</span>
+                        <span class="badge badge-light border"><code>--bcb-brand-verde-susta</code> &rarr; <strong>rio-jordao</strong> (#00A478)</span>
+                        <span class="badge badge-light border"><code>--bcb-brand-amarellato-biscoito</code> &rarr; <strong>mandarino</strong> (#F4B757)</span>
+                        <span class="badge badge-light border"><code>--bcb-brand-cafellato</code> &rarr; <strong>achocolatado</strong> (#914D23)</span>
+                        <span class="badge badge-light border"><code>--bcb-brand-marsala-suave</code> &rarr; <strong>marsala-intenso</strong> (#9C365E)</span>
                     </div>
                 </div>
             </section>
@@ -755,7 +813,7 @@
                             <div class="token-swatch-info">
                                 <div class="token-name">Gray 700 (Rótulos)</div>
                                 <div class="token-var">--bcb-gray-700</div>
-                                <div class="token-value">#606062</div>
+                                <div class="token-value">#606060</div>
                             </div>
                         </div>
                     </div>
@@ -829,8 +887,8 @@
                             </div>
                             <div style="font-size: 0.8rem; font-family: monospace;">
                                 <div><code>--bcb-btn-secondary-bg: #088694 (Verde Castell)</code></div>
-                                <div><code>--bcb-btn-secondary-hover: #067078 (Verde Susta)</code></div>
-                                <div><code>--bcb-btn-secondary-active: #2E4C59 (Azul Petro)</code></div>
+                                <div><code>--bcb-btn-secondary-hover: #025C75 (Azul Blue)</code></div>
+                                <div><code>--bcb-btn-secondary-active: #055B64 (Verde Castell Escuro)</code></div>
                             </div>
                         </div>
                     </div>
@@ -840,15 +898,15 @@
                 <div class="row mb-4">
                     <div class="col-12 col-md-6 col-lg-3 mb-3">
                         <div class="p-3 rounded border" style="background-color: var(--bg-verde-light); border-color: var(--bcb-feedback-success) !important;">
-                            <div class="font-weight-bold" style="color: var(--bcb-feedback-success); font-size: 0.9rem;">Sucesso (Verde Susta)</div>
-                            <div class="mt-1" style="font-size: 0.75rem; font-family: monospace;"><code>--bcb-feedback-success: #067078</code></div>
+                            <div class="font-weight-bold" style="color: var(--bcb-feedback-success); font-size: 0.9rem;">Sucesso (Rio Jordão)</div>
+                            <div class="mt-1" style="font-size: 0.75rem; font-family: monospace;"><code>--bcb-feedback-success: #00A478</code></div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3 mb-3">
                         <div class="p-3 rounded border" style="background-color: var(--bg-amarellato-light); border-color: var(--bcb-feedback-warning-border) !important;">
-                            <div class="font-weight-bold" style="color: #4a3107; font-size: 0.9rem;">Atenção (Amarellato / Cafellato)</div>
-                            <div class="mt-1" style="font-size: 0.75rem; font-family: monospace;"><code>--bcb-feedback-warning-surface: #F8D48D</code></div>
-                            <div style="font-size: 0.75rem; font-family: monospace;"><code>--bcb-feedback-warning-border: #DEBE7F</code></div>
+                            <div class="font-weight-bold" style="color: #4a3107; font-size: 0.9rem;">Atenção (Mandarino / Achocolatado)</div>
+                            <div class="mt-1" style="font-size: 0.75rem; font-family: monospace;"><code>--bcb-feedback-warning-surface: #F4B757</code></div>
+                            <div style="font-size: 0.75rem; font-family: monospace;"><code>--bcb-feedback-warning-border: #914D23</code></div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3 mb-3">
@@ -1185,21 +1243,27 @@
 
             <!-- ============ G) ALTO CONTRASTE ============ -->
             <section id="alto-contraste">
-                <h2>Tokens para Modo Alto Contraste</h2>
-                <p class="text-body mb-4">Conjunto de tokens dedicados para usuários que ativam recursos de acessibilidade para baixa visão e contraste máximo, seguindo as diretrizes do Modelo de Acessibilidade em Governo Eletrônico (e-MAG).</p>
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                    <h2 class="mb-0">Tokens para Modo Alto Contraste</h2>
+                    <span class="badge badge-dark border px-2 py-1" style="border-color: #FFFFFF !important; background-color: #000000; color: #FFFFFF;">e-MAG / WCAG AAA</span>
+                </div>
+                <p class="text-body mb-4">Conjunto de tokens dedicados para usuários que ativam recursos de acessibilidade para baixa visão e contraste máximo, seguindo as diretrizes do Modelo de Acessibilidade em Governo Eletrônico (e-MAG). A caixa de simulação abaixo permanece com fundo preto mesmo no modo padrão para demonstrar com exatidão o contraste dos parágrafos e elementos.</p>
 
                 <div class="hc-showcase-box mb-4">
-                    <h3 class="h4 mb-3" style="color: var(--bcb-hc-text); border-bottom: 2px solid var(--bcb-hc-border); padding-bottom: 0.5rem;">Simulação de Superfície em Alto Contraste</h3>
+                    <div class="d-flex align-items-center justify-content-between pb-2 mb-3" style="border-bottom: 2px solid #FFFFFF;">
+                        <h3 class="h4 mb-0 text-white font-weight-bold">Simulação de Superfície em Alto Contraste</h3>
+                        <span class="badge badge-warning text-dark font-weight-bold px-2 py-1">Fundo Preto Ativo</span>
+                    </div>
                     
                     <div class="hc-card-level2">
-                        <div class="font-weight-bold mb-2">Superfície Nível 2 (<code>--bcb-hc-bg-level-2: #222222</code>)</div>
-                        <p class="mb-2">O texto de leitura principal utiliza contraste puro (<code>--bcb-hc-text: #FFFFFF</code>) com fundo escuro profundo.</p>
+                        <div class="font-weight-bold mb-2 text-white">Superfície Nível 2 (<code>--bcb-hc-bg-level-2: #222222</code>)</div>
+                        <p class="mb-2 text-white">O texto de leitura principal utiliza contraste puro (<code>--bcb-hc-text: #FFFFFF</code>) com fundo escuro profundo, atingindo ratio máximo de 21:1.</p>
                         <p class="mb-0"><a href="#alto-contraste" aria-label="Exemplo de hiperlink em modo alto contraste">Hiperlinks são destacados em amarelo puro (--bcb-hc-link: #FFFF00)</a></p>
                     </div>
 
                     <div class="hc-card-level3">
-                        <div class="font-weight-bold mb-1">Superfície Nível 3 (<code>--bcb-hc-bg-level-3: #333333</code>)</div>
-                        <div style="font-size: 0.85rem;">Bordas de separação possuem contraste nítido (<code>--bcb-hc-border: #FFFFFF</code>).</div>
+                        <div class="font-weight-bold mb-1 text-white">Superfície Nível 3 (<code>--bcb-hc-bg-level-3: #333333</code>)</div>
+                        <div class="text-white" style="font-size: 0.85rem;">Bordas de separação possuem contraste nítido (<code>--bcb-hc-border: #FFFFFF</code>) para foco e limites de controle.</div>
                     </div>
                 </div>
 

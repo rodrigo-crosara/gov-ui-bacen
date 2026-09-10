@@ -4,8 +4,8 @@
   border-radius: var(--bcb-radius-8, 8px);
   overflow: hidden;
   margin-bottom: 2.5rem;
-  background-color: var(--bcb-color-primary, #2E4C59);
-  color: var(--bcb-color-white, #FFFFFF);
+  background-color: var(--bcb-color-primary, #025C75);
+  color: #FFFFFF;
   box-shadow: var(--bcb-shadow-100);
 }
 
@@ -13,9 +13,9 @@
 .bcb-hero-content,
 .bcb-hero-banner__content { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
 .bcb-hero-title,
-.bcb-hero-banner__title { color: var(--bcb-brand-amarellato-biscoito, #F8D48D); margin-bottom: 1rem; font-weight: 700; font-size: var(--bcb-font-600); line-height: 1.2; }
+.bcb-hero-banner__title { color: var(--bcb-brand-mandarino, #F4B757); margin-bottom: 1rem; font-weight: 700; font-size: var(--bcb-font-600); line-height: 1.2; }
 .bcb-hero-text,
-.bcb-hero-banner__description { font-size: 1.125rem; margin-bottom: 1.5rem; color: var(--bcb-color-white, #FFFFFF); line-height: 1.6; }
+.bcb-hero-banner__description { font-size: 1.125rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.95); line-height: 1.6; }
 .bcb-hero-img-container,
 .bcb-hero-banner__media { padding: 0; display: flex; justify-content: flex-end; }
 .bcb-hero-img-container img,
@@ -50,9 +50,9 @@
 }
 
 /* Variações de Cor Institucional */
-.bcb-hero-banner.bg-verde-susta,
+.bcb-hero-banner.bg-rio-jordao,
 .bcb-hero-banner--verde {
-  background-color: var(--bcb-color-verde-castell, #088694);
+  background-color: var(--bcb-brand-rio-jordao, #00A478);
 }
 
 .bcb-hero-banner.bg-vinho,

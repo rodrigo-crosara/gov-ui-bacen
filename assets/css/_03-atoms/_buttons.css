@@ -45,45 +45,45 @@
 .btn-primary {
   background-color: var(--bcb-btn-primary-bg, #025C75) !important;
   border-color: var(--bcb-btn-primary-bg, #025C75) !important;
-  color: var(--bcb-color-white, #ffffff) !important;
+  color: #ffffff !important;
 }
 
 .bcb-btn--primary:hover,
 .btn-primary:hover {
-  background-color: var(--bcb-btn-primary-hover, #077391) !important;
-  border-color: var(--bcb-btn-primary-hover, #077391) !important;
-  color: var(--bcb-color-white, #ffffff) !important;
+  background-color: var(--bcb-btn-primary-hover, var(--bcb-brand-verde-castell, #088694)) !important;
+  border-color: var(--bcb-btn-primary-hover, var(--bcb-brand-verde-castell, #088694)) !important;
+  color: #ffffff !important;
 }
 
 .bcb-btn--primary:active,
 .btn-primary:active,
 .btn-primary:focus:not(:focus-visible) {
-  background-color: var(--bcb-btn-primary-active, #2E4C59) !important;
-  border-color: var(--bcb-btn-primary-active, #2E4C59) !important;
-  color: var(--bcb-color-white, #ffffff) !important;
+  background-color: var(--bcb-btn-primary-active, #013F50) !important;
+  border-color: var(--bcb-btn-primary-active, #013F50) !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
-   2. BOTÃO SECUNDÁRIO (Fundo Suave #EBF2F5, Borda e Texto #2E4C59)
+   2. BOTÃO SECUNDÁRIO (Fundo Suave #EBF2F5, Borda e Texto #025C75)
    ========================================================================== */
 .bcb-btn--secondary,
 .btn-secondary {
   background-color: #EBF2F5 !important;
-  border-color: var(--bcb-color-primary, #2E4C59) !important;
-  color: var(--bcb-color-primary, #2E4C59) !important;
+  border-color: var(--bcb-color-primary, #025C75) !important;
+  color: var(--bcb-color-primary, #025C75) !important;
 }
 
 .bcb-btn--secondary:hover,
 .btn-secondary:hover {
-  background-color: var(--bcb-color-primary, #2E4C59) !important;
-  border-color: var(--bcb-color-primary, #2E4C59) !important;
+  background-color: var(--bcb-color-primary, #025C75) !important;
+  border-color: var(--bcb-color-primary, #025C75) !important;
   color: #FFFFFF !important;
 }
 
 .bcb-btn--secondary:active,
 .btn-secondary:active {
-  background-color: #233a44 !important;
-  border-color: #233a44 !important;
+  background-color: #013F50 !important;
+  border-color: #013F50 !important;
   color: #FFFFFF !important;
 }
 
@@ -98,7 +98,7 @@
 .btn-outline-secondary {
   background-color: transparent !important;
   border: 1px solid var(--bcb-gray-400, #B7C0CB) !important;
-  color: var(--bcb-color-primary, #2E4C59) !important;
+  color: var(--bcb-color-primary, #025C75) !important;
 }
 
 .bcb-btn--tertiary:hover,
@@ -109,7 +109,7 @@
 .btn-outline-secondary:hover {
   background-color: var(--bcb-gray-100, #F8F9FA) !important;
   border-color: var(--bcb-gray-500, #9AA6B2) !important;
-  color: var(--bcb-color-primary, #2E4C59) !important;
+  color: var(--bcb-color-primary, #025C75) !important;
 }
 
 .bcb-btn--tertiary:active,
@@ -119,8 +119,8 @@
 .btn-outline-primary:active,
 .btn-outline-secondary:active {
   background-color: var(--bcb-gray-200, #E9ECEF) !important;
-  border-color: var(--bcb-color-primary, #2E4C59) !important;
-  color: var(--bcb-color-primary, #2E4C59) !important;
+  border-color: var(--bcb-color-primary, #025C75) !important;
+  color: var(--bcb-color-primary, #025C75) !important;
 }
 
 /* ==========================================================================
@@ -130,21 +130,93 @@
 .btn-danger {
   background-color: var(--bcb-brand-vinho-autentico, #47373A) !important;
   border-color: var(--bcb-brand-vinho-autentico, #47373A) !important;
-  color: var(--bcb-color-white, #ffffff) !important;
+  color: #ffffff !important;
 }
 
 .bcb-btn--danger:hover,
 .btn-danger:hover {
-  background-color: var(--bcb-brand-marsala, #736063) !important;
-  border-color: var(--bcb-brand-marsala, #736063) !important;
-  color: var(--bcb-color-white, #ffffff) !important;
+  background-color: var(--bcb-brand-marsala-intenso, #9C365E) !important;
+  border-color: var(--bcb-brand-marsala-intenso, #9C365E) !important;
+  color: #ffffff !important;
 }
 
 .bcb-btn--danger:active,
 .btn-danger:active {
   background-color: #35282a !important;
   border-color: #35282a !important;
-  color: var(--bcb-color-white, #ffffff) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   4.1 BOTÃO DE SUCESSO (Rio Jordão Oficial BCB)
+   ========================================================================== */
+.bcb-btn--success,
+.btn-success {
+  background-color: var(--bcb-feedback-success, #00A478) !important;
+  border-color: var(--bcb-feedback-success, #00A478) !important;
+  color: #ffffff !important;
+}
+
+.bcb-btn--success:hover,
+.btn-success:hover {
+  background-color: #00825f !important;
+  border-color: #00825f !important;
+  color: #ffffff !important;
+}
+
+.bcb-btn--success:active,
+.btn-success:active {
+  background-color: #006349 !important;
+  border-color: #006349 !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   4.2 BOTÃO DE ATENÇÃO / AVISO (Mandarino Oficial BCB)
+   ========================================================================== */
+.bcb-btn--warning,
+.btn-warning {
+  background-color: var(--bcb-feedback-warning-surface, #F4B757) !important;
+  border-color: var(--bcb-feedback-warning-border, #914D23) !important;
+  color: #14171A !important;
+}
+
+.bcb-btn--warning:hover,
+.btn-warning:hover {
+  background-color: #e5a53d !important;
+  border-color: #914D23 !important;
+  color: #14171A !important;
+}
+
+.bcb-btn--warning:active,
+.btn-warning:active {
+  background-color: #d6962f !important;
+  border-color: #914D23 !important;
+  color: #14171A !important;
+}
+
+/* ==========================================================================
+   4.3 BOTÃO INFORMATIVO (Azul Blue / Feedback Info Oficial BCB)
+   ========================================================================== */
+.bcb-btn--info,
+.btn-info {
+  background-color: var(--bcb-feedback-info, #025C75) !important;
+  border-color: var(--bcb-feedback-info, #025C75) !important;
+  color: #ffffff !important;
+}
+
+.bcb-btn--info:hover,
+.btn-info:hover {
+  background-color: var(--bcb-brand-verde-castell, #088694) !important;
+  border-color: var(--bcb-brand-verde-castell, #088694) !important;
+  color: #ffffff !important;
+}
+
+.bcb-btn--info:active,
+.btn-info:active {
+  background-color: #055B64 !important;
+  border-color: #055B64 !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
@@ -161,12 +233,12 @@
 }
 
 .btn-link:hover {
-  color: var(--bcb-link-hover, #077391) !important;
+  color: var(--bcb-link-hover, var(--bcb-brand-verde-castell, #088694)) !important;
   text-decoration: underline !important;
 }
 
 .btn-link:active {
-  color: var(--bcb-brand-azulpetro, #2E4C59) !important;
+  color: var(--bcb-brand-azul-blue, #025C75) !important;
 }
 
 /* ==========================================================================

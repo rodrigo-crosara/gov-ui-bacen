@@ -116,11 +116,11 @@
 .callout-brand,
 .bcb-callout--info {
     background-color: var(--bg-brand-light, #f0f7f9);
-    border-left: 6px solid var(--bcb-color-primary, #2E4C59);
+    border-left: 6px solid var(--bcb-color-primary, #025C75);
 }
 .callout-brand.callout-outline,
 .bcb-callout--info.bcb-callout--outline {
-    border-color: var(--bcb-color-primary, #2E4C59);
+    border-color: var(--bcb-color-primary, #025C75);
 }
 .callout-brand .callout-icon,
 .callout-brand .callout-title,
@@ -128,18 +128,18 @@
 .bcb-callout--info .bcb-callout__icon,
 .bcb-callout--info .bcb-callout-title,
 .bcb-callout--info .bcb-callout__title {
-    color: var(--bcb-color-primary, #2E4C59);
+    color: var(--bcb-color-primary, #025C75);
 }
 
 /* Sucesso */
 .callout-success,
 .bcb-callout--success {
     background-color: var(--bg-verde-light, #f0f8f8);
-    border-left: 6px solid var(--bcb-brand-verde-susta, #067078);
+    border-left: 6px solid var(--bcb-brand-rio-jordao, #00A478);
 }
 .callout-success.callout-outline,
 .bcb-callout--success.bcb-callout--outline {
-    border-color: var(--bcb-brand-verde-susta, #067078);
+    border-color: var(--bcb-brand-rio-jordao, #00A478);
 }
 .callout-success .callout-icon,
 .callout-success .callout-title,
@@ -147,18 +147,18 @@
 .bcb-callout--success .bcb-callout__icon,
 .bcb-callout--success .bcb-callout-title,
 .bcb-callout--success .bcb-callout__title {
-    color: var(--bcb-brand-verde-susta, #067078);
+    color: var(--bcb-brand-rio-jordao, #00A478);
 }
 
-/* Alerta / Atenção (Amarellato / Cafellato com alto contraste) */
+/* Alerta / Atenção (Mandarino / Achocolatado com alto contraste) */
 .callout-warning,
 .bcb-callout--warning {
-    background-color: var(--bg-amarellato-light, #fefbfa);
-    border-left: 6px solid var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+    background-color: var(--bg-amarellato-light, #FEF9EE);
+    border-left: 6px solid var(--bcb-brand-mandarino, #F4B757);
 }
 .callout-warning.callout-outline,
 .bcb-callout--warning.bcb-callout--outline {
-    border-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+    border-color: var(--bcb-brand-mandarino, #F4B757);
 }
 .callout-warning .callout-icon,
 .callout-warning .callout-title,
@@ -166,7 +166,7 @@
 .bcb-callout--warning .bcb-callout__icon,
 .bcb-callout--warning .bcb-callout-title,
 .bcb-callout--warning .bcb-callout__title {
-    color: var(--bcb-brand-vinho-autentico, #47373A);
+    color: var(--bcb-brand-achocolatado, #914D23);
 }
 
 /* Perigo / Erro Crítico (Vinho / Marsala) */
@@ -188,11 +188,14 @@
     color: var(--bcb-brand-vinho-autentico, #47373A);
 }
 
-/* Editorial / Caixa de Dica Destacada (Evolução Canônica da Tip-Box) */
+/* ==========================================================================
+   DEPRECADO / RETROCOMPATIBILIDADE: .bcb-callout--editorial e .tip-box
+   Substituído pelo padrão canônico oficial: .callout.callout-brand.callout-left-bordered
+   ========================================================================== */
 .bcb-callout--editorial,
 .tip-box {
-    background-color: #FFF8E8;
-    border-left: 6px solid var(--bcb-color-primary, #2E4C59);
+    background-color: var(--bg-azul-light, #f0f7f9);
+    border-left: 6px solid var(--bcb-color-primary, #025C75);
     border-radius: var(--bcb-radius-4, 4px);
     padding: var(--bcb-space-4, 1rem) var(--bcb-space-5, 1.25rem);
     margin: 1.5rem 0;
@@ -201,7 +204,7 @@
     gap: var(--bcb-space-4, 1rem);
 }
 .bcb-callout--editorial.callout-outline {
-    border-color: var(--bcb-color-primary, #2E4C59);
+    border-color: var(--bcb-color-primary, #025C75);
 }
 .bcb-callout--editorial .bcb-callout__icon,
 .bcb-callout--editorial .callout-icon,
@@ -209,14 +212,14 @@
 .bcb-callout--editorial .bcb-callout__title,
 .tip-box .material-icons,
 .tip-box .material-symbols-outlined {
-    color: var(--bcb-color-primary, #2E4C59);
+    color: var(--bcb-color-primary, #025C75);
 }
 
 /* Neutro */
 .callout-neutral,
 .bcb-callout--neutral {
     background-color: var(--bg-gray-light, #f8f9fb);
-    border-left: 6px solid #a0aec0;
+    border-left: 6px solid var(--bcb-gray-400, #a0aec0);
 }
 .callout-neutral.callout-outline,
 .bcb-callout--neutral.bcb-callout--outline {
@@ -226,7 +229,7 @@
 .callout-neutral .callout-title,
 .bcb-callout--neutral .callout-icon,
 .bcb-callout--neutral .callout-title {
-    color: #4a5568;
+    color: var(--bcb-gray-700, #4a5568);
 }
 
 /* 15.3 Botões e Links no Callout */

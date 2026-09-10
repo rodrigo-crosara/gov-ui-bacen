@@ -18,7 +18,7 @@
 .bcb-empty-state-icon {
   font-size: 3.5rem;
   line-height: 1;
-  color: var(--bcb-brand-azulcinti);
+  color: var(--bcb-brand-verde-castell, #088694);
   background-color: var(--bg-brand-light);
   width: 80px;
   height: 80px;

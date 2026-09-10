@@ -39,7 +39,7 @@
 }
 
 .bcb-tooltip-btn:hover {
-  color: var(--bcb-brand-azulcinti, #077391);
+  color: var(--bcb-brand-verde-castell, #088694);
 }
 
 .bcb-tooltip-btn:focus-visible {
@@ -57,7 +57,7 @@
 .bcb-tooltip {
   position: absolute;
   z-index: 1070;
-  background-color: var(--bcb-brand-azulpetro, #2E4C59);
+  background-color: var(--bcb-brand-azul-blue, #025C75);
   color: #FFFFFF;
   font-size: 0.8125rem;
   font-weight: 400;
@@ -101,7 +101,7 @@
   left: 50%;
   transform: translateX(-50%);
   border-width: 6px 6px 0 6px;
-  border-color: var(--bcb-brand-azulpetro, #2E4C59) transparent transparent transparent;
+  border-color: var(--bcb-brand-azul-blue, #025C75) transparent transparent transparent;
 }
 
 /* Posicionamento Bottom */
@@ -116,7 +116,7 @@
   left: 50%;
   transform: translateX(-50%);
   border-width: 0 6px 6px 6px;
-  border-color: transparent transparent var(--bcb-brand-azulpetro, #2E4C59) transparent;
+  border-color: transparent transparent var(--bcb-brand-azul-blue, #025C75) transparent;
 }
 
 /* Posicionamento Left */
@@ -131,7 +131,7 @@
   left: 100%;
   transform: translateY(-50%);
   border-width: 6px 0 6px 6px;
-  border-color: transparent transparent transparent var(--bcb-brand-azulpetro, #2E4C59);
+  border-color: transparent transparent transparent var(--bcb-brand-azul-blue, #025C75);
 }
 
 /* Posicionamento Right */
@@ -146,7 +146,7 @@
   right: 100%;
   transform: translateY(-50%);
   border-width: 6px 6px 6px 0;
-  border-color: transparent var(--bcb-brand-azulpetro, #2E4C59) transparent transparent;
+  border-color: transparent var(--bcb-brand-azul-blue, #025C75) transparent transparent;
 }
 
 /* Respeito a Movimento Reduzido */

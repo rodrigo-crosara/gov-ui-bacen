@@ -73,6 +73,16 @@
   outline: none;
 }
 
+.bcb-navegacaoabas .nav-link .material-symbols-outlined,
+.bcb-navegacaoabas .nav-link .material-icons,
+.bcb-navegacaoabas [role="tab"] .material-symbols-outlined,
+.bcb-navegacaoabas [role="tab"] .material-icons {
+  font-size: 1.2rem !important;
+  line-height: 1;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
 /* Hover em Abas Inativas — Contraste seguro sem quebrar layout */
 .bcb-tab:not(.active):hover,
 .bcb-tab:not([aria-selected="true"]):hover,

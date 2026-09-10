@@ -28,7 +28,7 @@
 }
 
 .form-control:hover {
-  border-color: var(--bcb-brand-azulcinti, #077391);
+  border-color: var(--bcb-brand-verde-castell, #088694);
 }
 
 .form-control:focus,
@@ -121,7 +121,7 @@
 }
 
 .custom-select:hover {
-  border-color: var(--bcb-brand-azulcinti, #077391);
+  border-color: var(--bcb-brand-verde-castell, #088694);
 }
 
 .custom-select:focus,

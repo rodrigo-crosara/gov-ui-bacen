@@ -23,10 +23,14 @@ const DIR_DIST = path.join(RAIZ_PROJETO, 'dist', 'exportacoes');
 // Argumentos
 const rawArgs = process.argv.slice(2).filter(a => a !== '--');
 let slug = null;
+let exportAll = false;
 
 for (let i = 0; i < rawArgs.length; i++) {
   const a = rawArgs[i];
-  if (a === '--slug' || a === '-s') {
+  if (a === '--all' || a === '-a' || a === 'all' || a === '--todos' || a === 'todos') {
+    exportAll = true;
+    break;
+  } else if (a === '--slug' || a === '-s') {
     slug = rawArgs[i + 1];
     break;
   } else if (a.startsWith('--slug=')) {
@@ -38,7 +42,11 @@ for (let i = 0; i < rawArgs.length; i++) {
   }
 }
 
-if (!slug && process.env.npm_config_slug) {
+if (process.env.npm_config_all) {
+  exportAll = true;
+}
+
+if (!slug && !exportAll && process.env.npm_config_slug) {
   slug = process.env.npm_config_slug;
 }
 
@@ -47,67 +55,11 @@ const prototiposDisponiveis = fs.existsSync(DIR_PROTOTIPOS)
   ? fs.readdirSync(DIR_PROTOTIPOS).filter(f => f.endsWith('.html') && !f.startsWith('_'))
   : [];
 
-if (!slug) {
-  if (prototiposDisponiveis.length === 0) {
-    console.error('❌ Nenhum protótipo encontrado em prototipos/.');
-    process.exit(1);
-  }
-  slug = prototiposDisponiveis[0].replace(/\.html$/, '');
-  console.log(`ℹ️  Nenhum slug informado. Utilizando o primeiro protótipo: ${slug}`);
-}
-
-// Limpar slug
-slug = slug.replace(/\.html$/, '');
-const arquivoOrigem = path.join(DIR_PROTOTIPOS, `${slug}.html`);
-
-if (!fs.existsSync(arquivoOrigem)) {
-  console.error(`❌ Protótipo não encontrado em disco: prototipos/${slug}.html`);
-  console.log('\nProtótipos disponíveis:');
-  prototiposDisponiveis.forEach(p => console.log(`  - ${p.replace(/\.html$/, '')}`));
+if (prototiposDisponiveis.length === 0) {
+  console.error('❌ Nenhum protótipo encontrado em prototipos/.');
   process.exit(1);
 }
 
-// Ler arquivo HTML
-const htmlOriginal = fs.readFileSync(arquivoOrigem, 'utf8');
-
-// Extrair <main>
-const matchMain = htmlOriginal.match(/<main[\s\S]*?<\/main>/i);
-const mioloHtml = matchMain ? matchMain[0] : htmlOriginal.trim();
-
-// Extrair conteúdo interno do <main> (para CMSs que já renderizam a casca do <main>)
-const matchInnerMain = mioloHtml.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
-const fragmentoInternoHtml = matchInnerMain ? matchInnerMain[1].trim() : mioloHtml;
-
-if (!mioloHtml.includes('conteudo-principal')) {
-  console.error('❌ Elemento <main id="conteudo-principal"> não identificado no protótipo.');
-  process.exit(1);
-}
-
-// Extrair H1 e título a partir do corpo de conteúdo semântico
-const matchH1 = htmlOriginal.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-const h1Texto = matchH1 ? matchH1[1].replace(/<[^>]+>/g, '').trim() : `Protótipo ${slug}`;
-const titulo = h1Texto;
-
-// Criar pasta de destino
-const pastaExportacao = path.join(DIR_DIST, slug);
-fs.mkdirSync(pastaExportacao, { recursive: true });
-
-// 1. Salvar o corpo de conteúdo delimitado com <main>
-const caminhoCorpo = path.join(pastaExportacao, 'corpo-conteudo.html');
-fs.writeFileSync(caminhoCorpo, mioloHtml, 'utf8');
-
-const caminhoMiolo = path.join(pastaExportacao, 'miolo.html');
-fs.writeFileSync(caminhoMiolo, mioloHtml, 'utf8');
-
-// 2. Salvar o fragmento interno estrito (sem a tag <main>, ideal para CMS com casca própria)
-const caminhoFragmento = path.join(pastaExportacao, 'fragmento-interno.html');
-fs.writeFileSync(caminhoFragmento, fragmentoInternoHtml, 'utf8');
-
-// 3. Salvar o arquivo autônomo completo para visualização direta
-const caminhoAutonomo = path.join(pastaExportacao, 'prototipo-autonomo.html');
-fs.writeFileSync(caminhoAutonomo, htmlOriginal, 'utf8');
-
-// 4. Copiar assets locais para entrega autocontida
 function copiarDiretorioRecursivo(origem, destino) {
   if (!fs.existsSync(origem)) return;
   fs.mkdirSync(destino, { recursive: true });
@@ -123,38 +75,90 @@ function copiarDiretorioRecursivo(origem, destino) {
   }
 }
 
-const pastaAssetsDestino = path.join(pastaExportacao, 'assets');
-copiarDiretorioRecursivo(path.join(RAIZ_PROJETO, 'assets'), pastaAssetsDestino);
+function exportarPrototipo(nomeSlug) {
+  const s = nomeSlug.replace(/\.html$/, '');
+  const arquivoOrigem = path.join(DIR_PROTOTIPOS, `${s}.html`);
 
-// 5. Gerar Manifesto JSON para Integração
-const manifesto = {
-  nome: slug,
-  titulo: titulo,
-  h1: h1Texto,
-  dataExportacao: new Date().toISOString(),
-  autor: 'Banco Central do Brasil — DEINF / Design System',
-  acessibilidade: 'WCAG 2.1 AA / e-MAG 3.1 Compatível',
-  estrutura: {
-    containerPrincipal: 'main#conteudo-principal.bcb-main-content.bcb-container',
-    mioloBytes: Buffer.byteLength(mioloHtml, 'utf8'),
-    fragmentoBytes: Buffer.byteLength(fragmentoInternoHtml, 'utf8'),
-    grid: '12 colunas (.bcb-row / .bcb-col-*)',
-    suporteTemas: ['Padrão (Claro)', 'Dark Mode (data-theme="dark")', 'Alto Contraste (data-contrast="high")']
-  },
-  arquivosEntregues: [
-    'corpo-conteudo.html (Markup semântico estrito do <main> para inserção no CMS)',
-    'miolo.html (Alias do corpo de conteúdo com tag <main>)',
-    'fragmento-interno.html (Conteúdo interno sem tag <main>, pronto para CMS que já fornece a casca)',
-    'prototipo-autonomo.html (Envelope técnico completo para visualização direta em qualquer navegador)',
-    'manifest.json (Metadados estruturais da exportação)',
-    'README.md (Instruções técnicas para os desenvolvedores)',
-    'assets/ (Folhas de estilo bcb-style.css e scripts bcb-ui.js)'
-  ]
-};
-fs.writeFileSync(path.join(pastaExportacao, 'manifest.json'), JSON.stringify(manifesto, null, 2), 'utf8');
+  if (!fs.existsSync(arquivoOrigem)) {
+    console.error(`❌ Protótipo não encontrado em disco: prototipos/${s}.html`);
+    console.log('\nProtótipos disponíveis:');
+    prototiposDisponiveis.forEach(p => console.log(`  - ${p.replace(/\.html$/, '')}`));
+    return false;
+  }
 
-// 6. Gerar README de Instruções para Desenvolvedores
-const readmeEngenharia = `# Pacote de Entrega de Interface: ${titulo}
+  // Ler arquivo HTML
+  const htmlOriginal = fs.readFileSync(arquivoOrigem, 'utf8');
+
+  // Extrair <main>
+  const matchMain = htmlOriginal.match(/<main[\s\S]*?<\/main>/i);
+  const mioloHtml = matchMain ? matchMain[0] : htmlOriginal.trim();
+
+  // Extrair conteúdo interno do <main> (para CMSs que já renderizam a casca do <main>)
+  const matchInnerMain = mioloHtml.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+  const fragmentoInternoHtml = matchInnerMain ? matchInnerMain[1].trim() : mioloHtml;
+
+  if (!mioloHtml.includes('conteudo-principal')) {
+    console.error(`❌ Elemento <main id="conteudo-principal"> não identificado no protótipo ${s}.`);
+    return false;
+  }
+
+  // Extrair H1 e título a partir do corpo de conteúdo semântico
+  const matchH1 = htmlOriginal.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  const h1Texto = matchH1 ? matchH1[1].replace(/<[^>]+>/g, '').trim() : `Protótipo ${s}`;
+  const titulo = h1Texto;
+
+  // Criar pasta de destino
+  const pastaExportacao = path.join(DIR_DIST, s);
+  fs.mkdirSync(pastaExportacao, { recursive: true });
+
+  // 1. Salvar o corpo de conteúdo delimitado com <main>
+  const caminhoCorpo = path.join(pastaExportacao, 'corpo-conteudo.html');
+  fs.writeFileSync(caminhoCorpo, mioloHtml, 'utf8');
+
+  const caminhoMiolo = path.join(pastaExportacao, 'miolo.html');
+  fs.writeFileSync(caminhoMiolo, mioloHtml, 'utf8');
+
+  // 2. Salvar o fragmento interno estrito (sem a tag <main>, ideal para CMS com casca própria)
+  const caminhoFragmento = path.join(pastaExportacao, 'fragmento-interno.html');
+  fs.writeFileSync(caminhoFragmento, fragmentoInternoHtml, 'utf8');
+
+  // 3. Salvar o arquivo autônomo completo para visualização direta
+  const caminhoAutonomo = path.join(pastaExportacao, 'prototipo-autonomo.html');
+  fs.writeFileSync(caminhoAutonomo, htmlOriginal, 'utf8');
+
+  // 4. Copiar assets locais para entrega autocontida
+  const pastaAssetsDestino = path.join(pastaExportacao, 'assets');
+  copiarDiretorioRecursivo(path.join(RAIZ_PROJETO, 'assets'), pastaAssetsDestino);
+
+  // 5. Gerar Manifesto JSON para Integração
+  const manifesto = {
+    nome: s,
+    titulo: titulo,
+    h1: h1Texto,
+    dataExportacao: new Date().toISOString(),
+    autor: 'Banco Central do Brasil — DEINF / Design System',
+    acessibilidade: 'WCAG 2.1 AA / e-MAG 3.1 Compatível',
+    estrutura: {
+      containerPrincipal: 'main#conteudo-principal.bcb-main-content.bcb-container',
+      mioloBytes: Buffer.byteLength(mioloHtml, 'utf8'),
+      fragmentoBytes: Buffer.byteLength(fragmentoInternoHtml, 'utf8'),
+      grid: '12 colunas (.bcb-row / .bcb-col-*)',
+      suporteTemas: ['Padrão (Claro)', 'Dark Mode (data-theme="dark")', 'Alto Contraste (data-contrast="high")']
+    },
+    arquivosEntregues: [
+      'corpo-conteudo.html (Markup semântico estrito do <main> para inserção no CMS)',
+      'miolo.html (Alias do corpo de conteúdo com tag <main>)',
+      'fragmento-interno.html (Conteúdo interno sem tag <main>, pronto para CMS que já fornece a casca)',
+      'prototipo-autonomo.html (Envelope técnico completo para visualização direta em qualquer navegador)',
+      'manifest.json (Metadados estruturais da exportação)',
+      'README.md (Instruções técnicas para os desenvolvedores)',
+      'assets/ (Folhas de estilo bcb-style.css e scripts bcb-ui.js)'
+    ]
+  };
+  fs.writeFileSync(path.join(pastaExportacao, 'manifest.json'), JSON.stringify(manifesto, null, 2), 'utf8');
+
+  // 6. Gerar README de Instruções para Desenvolvedores
+  const readmeEngenharia = `# Pacote de Entrega de Interface: ${titulo}
 
 Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos desenvolvidos pelo time de Webdesign do Banco Central do Brasil para integração nos sistemas do portal.
 
@@ -197,17 +201,30 @@ Este pacote contém o protótipo de alta fidelidade e os artefatos técnicos des
 - **Navegação:** Foco exclusivo no corpo de conteúdo com botão de retorno ao topo (breadcrumbs, header e footer institucionais fornecidos pelo portal).
 - **Alvos de Toque:** Dimensão mínima de 44x44px em resoluções mobile.
 `;
-fs.writeFileSync(path.join(pastaExportacao, 'README.md'), readmeEngenharia, 'utf8');
+  fs.writeFileSync(path.join(pastaExportacao, 'README.md'), readmeEngenharia, 'utf8');
 
-console.log('\n=======================================================');
-console.log('📦 BCB Design System — Pacote de Exportação Gerado');
-console.log('=======================================================');
-console.log(`🎯 Protótipo:            ${slug}`);
-console.log(`📁 Diretório:            dist/exportacoes/${slug}/`);
-console.log(`📄 Corpo de conteúdo:    dist/exportacoes/${slug}/corpo-conteudo.html`);
-console.log(`📄 Miolo puro (alias):   dist/exportacoes/${slug}/miolo.html`);
-console.log(`🧩 Fragmento interno:    dist/exportacoes/${slug}/fragmento-interno.html`);
-console.log(`🌐 Protótipo autônomo:   dist/exportacoes/${slug}/prototipo-autonomo.html`);
-console.log(`📋 Manifesto:            dist/exportacoes/${slug}/manifest.json`);
-console.log(`📖 Documentação:         dist/exportacoes/${slug}/README.md`);
-console.log('=======================================================\n');
+  console.log(`✅ [Exportado com sucesso]: ${s} -> dist/exportacoes/${s}/`);
+  return true;
+}
+
+if (exportAll) {
+  console.log('\n=======================================================');
+  console.log('📦 BCB Design System — Exportando Todos os Protótipos');
+  console.log('=======================================================');
+  let totalSucesso = 0;
+  for (const p of prototiposDisponiveis) {
+    const ok = exportarPrototipo(p);
+    if (ok) totalSucesso++;
+  }
+  console.log('=======================================================');
+  console.log(`🎉 Total exportado: ${totalSucesso}/${prototiposDisponiveis.length} protótipo(s) atualizado(s) em dist/exportacoes/`);
+  console.log('=======================================================\n');
+} else {
+  if (!slug) {
+    slug = prototiposDisponiveis[0].replace(/\.html$/, '');
+    console.log(`ℹ️  Nenhum slug informado. Utilizando o primeiro protótipo: ${slug}`);
+  }
+  exportarPrototipo(slug);
+}
+process.exit(0);
+

@@ -15,62 +15,83 @@
      2. BRAND (Cores Oficiais do Manual de Marca)
      ========================================== */
   --bcb-brand-azul-blue: #025C75;
-  --bcb-brand-azulcinti: #077391;
-  --bcb-brand-azulpetro: #2E4C59;
-  --bcb-brand-azulnetuno: #476F82;
-  --bcb-brand-verde-susta: #067078;
   --bcb-brand-verde-castell: #088694;
-  --bcb-brand-cinza-80: #606062;
-  --bcb-brand-amarellato-biscoito: #F8D48D;
-  --bcb-brand-cafellato: #DEBE7F;
+  --bcb-brand-celestial: #36B2C2;
+  --bcb-brand-rio-jordao: #00A478;
+  --bcb-brand-marsala-intenso: #9C365E;
+  --bcb-brand-salmao-rosado: #ED6B6A;
+  --bcb-brand-mandarino: #F4B757;
+  --bcb-brand-achocolatado: #914D23;
   --bcb-brand-vinho-autentico: #47373A;
-  --bcb-brand-marsala-suave: #736063;
+  --bcb-brand-cinza-80: #606060;
+  --bcb-brand-concreto: #AEAFAA;
+  --bcb-color-primary: #025C75;
+  /* ==========================================
+     2.1 TOKENS LEGADOS DESCONTINUADOS (@deprecated)
+     Mapeados para a paleta oficial vigente de 11 cores
+     ========================================== */
+  --bcb-brand-azulcinti: #088694; /* @deprecated -> oficial */
+  --bcb-brand-azulpetro: #025C75; /* @deprecated -> oficial */
+  --bcb-brand-azulnetuno: #088694; /* @deprecated -> oficial */
+  --bcb-brand-verde-susta: #00A478; /* @deprecated -> oficial */
+  --bcb-brand-amarellato-biscoito: #F4B757; /* @deprecated -> oficial */
+  --bcb-brand-cafellato: #914D23; /* @deprecated -> oficial */
+  --bcb-brand-marsala-suave: #9C365E; /* @deprecated -> oficial */
   /* Aliases de compatibilidade */
   --bcb-brand-blue: #025C75;
   --bcb-brand-blue-dark: #013F50;
-  --bcb-brand-gray80: #606062;
+  --bcb-brand-gray80: #606060;
+  --bcb-brand-cinza80: #606060;
   --bcb-brand-vinho: #47373A;
-  --bcb-brand-marsala: #736063;
-  --bcb-brand-amarellato: #F8D48D;
+  --bcb-brand-marsala: #9C365E;
+  --bcb-brand-amarellato: #F4B757;
   --bcb-color-azul-blue: #025C75;
-  --bcb-color-azulcinti: #077391;
-  --bcb-color-azulpetro: #2E4C59;
   --bcb-color-verde-castell: #088694;
+  --bcb-color-celestial: #36B2C2;
+  --bcb-color-rio-jordao: #00A478;
+  --bcb-color-marsala-intenso: #9C365E;
+  --bcb-color-salmao-rosado: #ED6B6A;
+  --bcb-color-mandarino: #F4B757;
+  --bcb-color-achocolatado: #914D23;
   --bcb-color-vinho-autentico: #47373A;
+  --bcb-color-cinza-80: #606060;
+  --bcb-color-concreto: #AEAFAA;
+  --bcb-color-azulcinti: #088694;
+  --bcb-color-azulpetro: #025C75;
 
   /* ==========================================
      3. AÇÕES E INTERAÇÃO (Botões e Links)
      ========================================== */
   --bcb-btn-primary-bg: #025C75;
-  --bcb-btn-primary-hover: #077391;
-  --bcb-btn-primary-active: #2E4C59;
+  --bcb-btn-primary-hover: #088694;
+  --bcb-btn-primary-active: #013F50;
   --bcb-action-primary-default: #025C75;
-  --bcb-action-primary-hover: #077391;
-  --bcb-action-primary-active: #2E4C59;
+  --bcb-action-primary-hover: #088694;
+  --bcb-action-primary-active: #013F50;
   --bcb-btn-secondary-bg: #088694;
-  --bcb-btn-secondary-hover: #067078;
-  --bcb-btn-secondary-active: #2E4C59;
+  --bcb-btn-secondary-hover: #025C75;
+  --bcb-btn-secondary-active: #055B64;
   --bcb-action-secondary-default: #088694;
-  --bcb-action-secondary-hover: #067078;
-  --bcb-action-secondary-active: #2E4C59;
-  --bcb-link-color: #1B75A6;
-  --bcb-link-hover: #025C75;
+  --bcb-action-secondary-hover: #025C75;
+  --bcb-action-secondary-active: #055B64;
+  --bcb-link-color: #025C75;
+  --bcb-link-hover: #088694;
 
   /* ==========================================
      4. FEEDBACK SEMÂNTICO (Success, Warning, Danger, Info)
      ========================================== */
-  --bcb-feedback-success: #067078;
-  --bcb-feedback-warning-surface: #F8D48D;
-  --bcb-feedback-warning-border: #DEBE7F;
+  --bcb-feedback-success: #00A478;
+  --bcb-feedback-warning-surface: #F4B757;
+  --bcb-feedback-warning-border: #914D23;
   --bcb-feedback-danger: #47373A;
   --bcb-feedback-info: #025C75;
-  --bcb-feedback-warning: #DEBE7F;
+  --bcb-feedback-warning: #914D23;
 
   /* ==========================================
      5. TEXTO E SUPERFÍCIE
      ========================================== */
   --bcb-text-primary: #606060;
-  --bcb-text-secondary: #606062;
+  --bcb-text-secondary: #606060;
   --bcb-surface-light: #E0EBEE;
   --bcb-surface-card: #F3F5F7;
 
@@ -83,6 +104,9 @@
   --bcb-hc-text: #FFFFFF;
   --bcb-hc-link: #FFFF00;
   --bcb-hc-border: #FFFFFF;
+  --bcb-hc-bg-level-1: #000000;
+  --bcb-hc-bg-level-2: #222222;
+  --bcb-hc-bg-level-3: #333333;
 
   /* ==========================================
      7. ESCALA DE CINZAS UI (Superfícies e Bordas)
@@ -94,7 +118,7 @@
   --bcb-gray-400: #B7C0CB;
   --bcb-gray-500: #9AA6B2;
   --bcb-gray-600: #7E8A95;
-  --bcb-gray-700: #606062;
+  --bcb-gray-700: #606060;
   --bcb-gray-800: #3E454B;
   --bcb-gray-900: #22272B;
   --bcb-gray-1000: #0B0D0E;
@@ -208,25 +232,225 @@
 /* ==========================================
    15. COMPATIBILIDADE BOOTSTRAP & UTILITÁRIOS OFICIAIS
    ========================================== */
+/* Primary (Azul Blue Oficial BCB) */
 .text-primary {
-  color: var(--bcb-color-primary, #2E4C59) !important;
+  color: var(--bcb-color-primary, #025C75) !important;
 }
-
 .bg-primary {
-  background-color: var(--bcb-color-primary, #2E4C59) !important;
+  background-color: var(--bcb-color-primary, #025C75) !important;
 }
-
 .border-primary {
-  border-color: var(--bcb-color-primary, #2E4C59) !important;
+  border-color: var(--bcb-color-primary, #025C75) !important;
+}
+.badge-primary {
+  background-color: var(--bcb-color-primary, #025C75) !important;
+  color: #ffffff !important;
 }
 
-.badge-primary {
-  background-color: var(--bcb-color-primary, #2E4C59) !important;
+/* Secondary (Verde Castell / Cinza 80) */
+.text-secondary {
+  color: var(--bcb-brand-cinza-80, #606060) !important;
+}
+.bg-secondary {
+  background-color: var(--bcb-brand-verde-castell, #088694) !important;
   color: #ffffff !important;
+}
+.border-secondary {
+  border-color: var(--bcb-brand-verde-castell, #088694) !important;
+}
+.badge-secondary {
+  background-color: var(--bcb-brand-verde-castell, #088694) !important;
+  color: #ffffff !important;
+}
+
+/* Success (Rio Jordão Oficial BCB) */
+.text-success {
+  color: var(--bcb-feedback-success, #00A478) !important;
+}
+.bg-success {
+  background-color: var(--bcb-feedback-success, #00A478) !important;
+  color: #ffffff !important;
+}
+.border-success {
+  border-color: var(--bcb-feedback-success, #00A478) !important;
+}
+.badge-success {
+  background-color: var(--bcb-feedback-success, #00A478) !important;
+  color: #ffffff !important;
+}
+
+/* Danger / Error (Vinho Autêntico Oficial BCB) */
+.text-danger {
+  color: var(--bcb-feedback-danger, #47373A) !important;
+}
+.bg-danger {
+  background-color: var(--bcb-feedback-danger, #47373A) !important;
+  color: #ffffff !important;
+}
+.border-danger {
+  border-color: var(--bcb-feedback-danger, #47373A) !important;
+}
+.badge-danger {
+  background-color: var(--bcb-feedback-danger, #47373A) !important;
+  color: #ffffff !important;
+}
+
+/* Warning (Superfície Mandarino, Texto e Borda Achocolatado para WCAG AAA > 7:1) */
+.text-warning {
+  color: var(--bcb-feedback-warning, #914D23) !important;
+}
+.bg-warning {
+  background-color: var(--bcb-feedback-warning-surface, #F4B757) !important;
+  color: #14171A !important;
+}
+.border-warning {
+  border-color: var(--bcb-feedback-warning-border, #914D23) !important;
+}
+.badge-warning {
+  background-color: var(--bcb-feedback-warning-surface, #F4B757) !important;
+  color: #14171A !important;
+}
+
+/* Info (Azul Blue / Feedback Info Oficial BCB) */
+.text-info {
+  color: var(--bcb-feedback-info, #025C75) !important;
+}
+.bg-info {
+  background-color: var(--bcb-feedback-info, #025C75) !important;
+  color: #ffffff !important;
+}
+.border-info {
+  border-color: var(--bcb-feedback-info, #025C75) !important;
+}
+.badge-info {
+  background-color: var(--bcb-feedback-info, #025C75) !important;
+  color: #ffffff !important;
+}
+
+/* Dark & Light Neutrais */
+.text-dark {
+  color: var(--bcb-gray-900, #14171A) !important;
+}
+.bg-dark {
+  background-color: var(--bcb-portal-primary, #22272B) !important;
+  color: #ffffff !important;
+}
+.bg-light {
+  background-color: var(--bcb-surface-light, #F8F9FA) !important;
+}
+.badge-dark {
+  background-color: var(--bcb-portal-primary, #22272B) !important;
+  color: #ffffff !important;
+}
+.badge-light {
+  background-color: var(--bcb-gray-100, #F3F5F7) !important;
+  color: var(--bcb-color-primary, #025C75) !important;
+  border: 1px solid var(--bcb-gray-300, #D0D7DF) !important;
 }
 
 /* Textos institucionais e badges com a cor da marca por padrão */
 .text-bcb-brand,
 .font-color-1 {
-  color: var(--bcb-color-primary, #2E4C59) !important;
+  color: var(--bcb-color-primary, #025C75) !important;
+}
+
+/* Utilitários Canônicos das 11 Cores Oficiais da Marca BCB */
+.bg-bcb-azul-blue, .bg-azul-blue {
+  background-color: var(--bcb-brand-azul-blue) !important;
+}
+.text-bcb-azul-blue, .text-azul-blue {
+  color: var(--bcb-brand-azul-blue) !important;
+}
+.border-bcb-azul-blue, .border-azul-blue {
+  border-color: var(--bcb-brand-azul-blue) !important;
+}
+.bg-bcb-verde-castell, .bg-verde-castell {
+  background-color: var(--bcb-brand-verde-castell) !important;
+}
+.text-bcb-verde-castell, .text-verde-castell {
+  color: var(--bcb-brand-verde-castell) !important;
+}
+.border-bcb-verde-castell, .border-verde-castell {
+  border-color: var(--bcb-brand-verde-castell) !important;
+}
+.bg-bcb-celestial, .bg-celestial {
+  background-color: var(--bcb-brand-celestial) !important;
+}
+.text-bcb-celestial, .text-celestial {
+  color: var(--bcb-brand-celestial) !important;
+}
+.border-bcb-celestial, .border-celestial {
+  border-color: var(--bcb-brand-celestial) !important;
+}
+.bg-bcb-rio-jordao, .bg-rio-jordao {
+  background-color: var(--bcb-brand-rio-jordao) !important;
+}
+.text-bcb-rio-jordao, .text-rio-jordao {
+  color: var(--bcb-brand-rio-jordao) !important;
+}
+.border-bcb-rio-jordao, .border-rio-jordao {
+  border-color: var(--bcb-brand-rio-jordao) !important;
+}
+.bg-bcb-marsala-intenso, .bg-marsala-intenso {
+  background-color: var(--bcb-brand-marsala-intenso) !important;
+}
+.text-bcb-marsala-intenso, .text-marsala-intenso {
+  color: var(--bcb-brand-marsala-intenso) !important;
+}
+.border-bcb-marsala-intenso, .border-marsala-intenso {
+  border-color: var(--bcb-brand-marsala-intenso) !important;
+}
+.bg-bcb-salmao-rosado, .bg-salmao-rosado {
+  background-color: var(--bcb-brand-salmao-rosado) !important;
+}
+.text-bcb-salmao-rosado, .text-salmao-rosado {
+  color: var(--bcb-brand-salmao-rosado) !important;
+}
+.border-bcb-salmao-rosado, .border-salmao-rosado {
+  border-color: var(--bcb-brand-salmao-rosado) !important;
+}
+.bg-bcb-mandarino, .bg-mandarino {
+  background-color: var(--bcb-brand-mandarino) !important;
+}
+.text-bcb-mandarino, .text-mandarino {
+  color: var(--bcb-brand-mandarino) !important;
+}
+.border-bcb-mandarino, .border-mandarino {
+  border-color: var(--bcb-brand-mandarino) !important;
+}
+.bg-bcb-achocolatado, .bg-achocolatado {
+  background-color: var(--bcb-brand-achocolatado) !important;
+}
+.text-bcb-achocolatado, .text-achocolatado {
+  color: var(--bcb-brand-achocolatado) !important;
+}
+.border-bcb-achocolatado, .border-achocolatado {
+  border-color: var(--bcb-brand-achocolatado) !important;
+}
+.bg-bcb-vinho-autentico, .bg-vinho-autentico {
+  background-color: var(--bcb-brand-vinho-autentico) !important;
+}
+.text-bcb-vinho-autentico, .text-vinho-autentico {
+  color: var(--bcb-brand-vinho-autentico) !important;
+}
+.border-bcb-vinho-autentico, .border-vinho-autentico {
+  border-color: var(--bcb-brand-vinho-autentico) !important;
+}
+.bg-bcb-cinza-80, .bg-cinza-80 {
+  background-color: var(--bcb-brand-cinza-80) !important;
+}
+.text-bcb-cinza-80, .text-cinza-80 {
+  color: var(--bcb-brand-cinza-80) !important;
+}
+.border-bcb-cinza-80, .border-cinza-80 {
+  border-color: var(--bcb-brand-cinza-80) !important;
+}
+.bg-bcb-concreto, .bg-concreto {
+  background-color: var(--bcb-brand-concreto) !important;
+}
+.text-bcb-concreto, .text-concreto {
+  color: var(--bcb-brand-concreto) !important;
+}
+.border-bcb-concreto, .border-concreto {
+  border-color: var(--bcb-brand-concreto) !important;
 }

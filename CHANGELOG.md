@@ -5,6 +5,68 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [2.8.0] — 2026-09-10
+
+### Atualizado
+- **Paleta Oficial de Cores do Manual de Marca (Aprovada pela Chefia):**
+  - Integração da paleta oficial vigente homologada pela chefia contendo 11 cores canônicas com especificações industriais completas (Pantone, CMYK, RGB e Hexadecimal):
+    1. **Azulblue** (`#025C75` &bull; Pantone 3025 &bull; CMYK 100/30/20/40 &bull; RGB 2, 92, 117)
+    2. **Verde Castell** (`#088694` &bull; Pantone 320 &bull; CMYK 100/30/40/0 &bull; RGB 8, 134, 148)
+    3. **Celestial** (`#36B2C2` &bull; Pantone 311 &bull; CMYK 70/5/25/0 &bull; RGB 54, 178, 194)
+    4. **Rio Jordão** (`#00A478` &bull; Pantone 3395 &bull; CMYK 80/5/65/0 &bull; RGB 0, 164, 120)
+    5. **Marsala Intenso** (`#9C365E` &bull; Pantone 7647 &bull; CMYK 30/85/35/20 &bull; RGB 156, 54, 94)
+    6. **Salmão Rosado** (`#ED6B6A` &bull; Pantone 178 &bull; CMYK 0/70/50/0 &bull; RGB 237, 107, 106)
+    7. **Mandarino** (`#F4B757` &bull; Pantone 137 &bull; CMYK 5/30/75/0 &bull; RGB 244, 183, 87)
+    8. **Achocolatado** (`#914D23` &bull; Pantone 160 &bull; CMYK 30/70/90/30 &bull; RGB 145, 77, 35)
+    9. **Vinho Autêntico** (`#47373A` &bull; Pantone 4975 &bull; CMYK 50/60/50/60 &bull; RGB 71, 55, 58)
+    10. **Cinza80** (`#606060` &bull; Pantone Cool Gray 10 &bull; CMYK 0/0/0/80 &bull; RGB 96, 96, 96)
+    11. **Concreto** (`#AEAFAA` &bull; Pantone 428 &bull; CMYK 35/25/30/5 &bull; RGB 174, 175, 170)
+  - **Calibração de Cinza80:** Ajustado o valor hexadecimal de `#606062` para `#606060` (RGB 96/96/96 exato).
+  - **Retrocompatibilidade Estrita:** Preservados aliases e tokens legados (`azulcinti`, `azulpetro`, `azulnetuno`, `verde-susta`, `amarellato-biscoito`, `cafellato`, `marsala-suave`) no compilador e folhas de estilo.
+  - **Suporte Multitema:** Variáveis calibradas para Dark Mode (`_dark-mode.css`) e Alto Contraste (`_high-contrast.css`) para todas as novas cores.
+  - **Documentação e Testes:** Amostras interativas atualizadas em `pages/tokens.html` com ratios de contraste WCAG AA/AAA e 114 verificações em `tests/tokens/tokens-integrity.test.js`.
+- **Evolução do Organismo 3.3 Timelines (Vertical Educativa e Horizontal):**
+  - **Benchmark Institucional & Engenharia Visual:** Redesenho completo inspirado nos portais de Cidadania Financeira e ENEF do Banco Central do Brasil, transformando o componente básico em um organismo de alta fidelidade e acessibilidade.
+  - **Variante 1 — Timeline Vertical Educativa & Jornada (`.bcb-timeline--vertical` / `.timeline-container`):**
+    - Trilho contínuo de conexão vertical com gradiente institucional e marcadores circulares de 44px (`.bcb-timeline__node` / `.step-node`).
+    - Estados semânticos: Concluído (`.is-completed`), Em Andamento (`.is-active` com anel Mandarino e `aria-current="step"`) e Próximo (`.is-pending`).
+    - Layout dividido (`split`) para ilustração/mídia gráfica e narrativa, com rodapé expandido para callouts, tabelas simuladoras e checklists com ícones.
+  - **Variante 2 — Timeline Horizontal de Cronograma & Marcos (`.bcb-timeline--horizontal` / `.timeline-horizontal`):**
+    - Barra contínua de marcos temporais para cronogramas e ciclos de projetos institucionais com estados (Concluído, Em Execução, Planejado).
+    - Colapso responsivo inteligente: em telas $\le$ 768px, colapsa perfeitamente para um stepper vertical sem overflow lateral.
+  - **Multitema & Acessibilidade:** Cobertura 100% calibrada para Dark Mode e Alto Contraste, semântica WAI-ARIA completa (`ol`/`li`, `aria-label`, `aria-current="step"`).
+  - **Vitrine e Snippets:** Seção `3.3 Timelines` em `pages/components.html` totalmente reformulada com exemplos práticos interativos.
+
+### Corrigido & Aprimorado
+- **Correção e Calibração de Contraste no Modo Escuro e Alto Contraste:**
+  - **1.1 Botões e Variantes (`.bcb-btn`, `.btn`, `.btn-primary`, `.btn-secondary`, `.btn-outline-primary`, `.btn-danger`, etc.):**
+    - **Eliminação de Fundo Claro e Texto Claro em Alto Contraste (WCAG AAA):** Corrigido o botão Primário (`.btn-primary` e variações com ícone, simuladas e tamanhos) que renderizava com fundo ciano claro `#4DC8FF` e texto/ícones brancos `#FFFFFF` (ratio de apenas 1.77:1). Agora o botão primário adota texto e ícones pretos profundos `#000000 !important;` com peso 700 sobre `#4DC8FF`, elevando a taxa de contraste para impressionantes **11.8:1**.
+    - **Eliminação do Bloco Branco Sólido no Alto Contraste:** O botão de perigo / ação crítica (`.btn-danger`) utilizava `var(--bcb-brand-vinho-autentico)` (mapeado como `#FFFFFF`) com texto branco `#FFFFFF`, gerando um retângulo 100% branco sem texto legível. Agora opera com fundo preto puro `#000000 !important;`, borda sólida de `2px solid #FF5555` e texto em vermelho coral `#FF5555 !important;`.
+    - **Calibração do Botão Secundário e Terciário / Outline:** O botão Secundário (`.btn-secondary`), que apresentava fundo branco/gelo `#EBF2F5` fora de padrão no Dark Mode, passa a utilizar superfície grafite escura `#252D37` com borda e texto brancos. O botão Terciário / Outline (`.btn-outline-primary`), cujo texto azul petróleo escuro `#025C75` ficava invisível sobre fundo escuro, passa a exibir borda e tipografia luminosa ciano `#4DC8FF`.
+    - **Botões Semânticos e Controles da Vitrine:** Cobertura completa de contrastes calibrados para Sucesso, Aviso, Info, Link e Desabilitados, além de pílulas de simulação de estados (`.ds-state-btn`) e badges da vitrine (`.badge-a11y`).
+  - **1.4 Tags e Badges (`.tag-bcb`, `.badge-bcb`, `.bcb-trend-badge`, `.badge-*`):**
+    - **Eliminação de Fundo Claro e Texto Claro no Modo Escuro:** Corrigida a tag "Em Análise" (`.tag-bcb--warning`) que usava `var(--bcb-gray-900)` invertido para branco `#E6EAEF` sobre fundo amarelo Mandarino. Corrigidas as badges semânticas "Ativo" (`.badge-success`) e "Revogado" (`.badge-danger`) que apresentavam texto branco sobre fundos claros mint `#00D498` e salmão `#F87171`. Implementada estética refinada de fundo escuro translúcido com borda de 1px e tipografia em cor semântica vibrante (ratio > 7:1 WCAG AAA).
+    - **Eliminação do Bloco Branco Sólido no Alto Contraste:** A tag "Rejeitado" (`.tag-bcb--danger`) utilizava `var(--bcb-brand-vinho-autentico)` mapeado como `#FFFFFF` com texto `#FFFFFF`, resultando em um bloco branco sólido sem texto legível. Criadas regras estritas de Alto Contraste com fundo `#000000 !important;`, borda de 2px e texto em cores de alto contraste (`#00FF88`, `#FFFF00`, `#FF5555`, `#FFFFFF`).
+    - **Badges Financeiras de Variação de Mercado (`.bcb-trend-badge`):** Eliminados os fundos claros hardcoded (`#E8F5E9` verde claro e `#FFEBEE` rosa claro), adaptando `.positive`, `.negative` e `.neutral` perfeitamente ao Dark Mode e Alto Contraste.
+    - **Tag Neutra / Padrão e Desabilitada:** Corrigido o texto azul escuro `#025C75` que ficava invisível sobre o fundo escuro/preto, garantindo texto claro `#E6EAEF` no Dark Mode e `#FFFFFF` em Alto Contraste.
+  - **2.1 Callouts Estruturados (`.callout`, `.bcb-callout`, `.callout-brand`, `.callout-warning`, `.callout-success`, `.callout-danger`, `.callout-neutral`):**
+    - **Revisão e Calibração Crítica de Contraste e Usabilidade:** Diagnóstico confirmou reprovação em 4 das 5 variantes nos temas alternativos (Brand com ratio de 1.94:1, Warning com 3.18:1, Danger com 3.2:1 e perda semântica em Alto Contraste, e Neutral com 2.28:1).
+    - **Calibração no Modo Escuro (WCAG 2.1 AA):** Todas as variantes foram calibradas com fundos escuros translúcidos refinados e tipografia/ícones em cores semânticas vibrantes com ratio > 7.5:1 (Brand em ciano `#4DC8FF`, Warning em Mandarino `#F4B757`, Sucesso em verde esmeralda `#00FF88`, Danger em carmim suave `#FFAAAA` e Neutral em cinza claro `#E6EAEF`).
+    - **Preservação e Restauração Semântica em Alto Contraste (WCAG AAA):** Removida a sobreposição genérica de borda branca que apagava a distinção semântica lateral. Agora todos os callouts operam sobre fundo `#000000` com contorno delimitado, preservando a borda lateral de 6px (`border-left: 6px solid ...`) e ícones/títulos em cores de alta visibilidade: Brand ciano `#4DC8FF`, Warning amarelo ouro `#FFFF00`, Sucesso verde `#00FF88`, Danger vermelho coral `#FF5555` (restaurando a semântica de perigo antes perdida com título branco) e Neutral branco `#FFFFFF`.
+  - **2.19 Call to Action (CTA) (`.bcb-cta` / `.bcb-cta--primary`):** Corrigido o título que ficava escuro no Dark Mode devido à avaliação de `var(--bcb-color-white)` para `#121212`. Implementado gradiente institucional contrastante em Dark Mode (`linear-gradient(135deg, #024659 0%, #065C66 100%)`), título branco puro (`#FFFFFF !important;`), descrição e metadados claros, e botão em destaque Mandarino. Em Alto Contraste, homologadas todas as variantes com fundo `#000000`, borda `2px solid #FFFFFF`, título e botões em `#FFFF00` e textos descritivos em `#FFFFFF`.
+  - **3.4 Hero Banner (`.bcb-hero-banner--split`):** Corrigida a descrição (`.bcb-hero-text` e `.bcb-hero-banner__description`) que ficava ilegível com cor escura `#121212` sobre fundo escuro. Agora garantido texto claro (`var(--bcb-color-body-text, #D0D7DF)` no Dark Mode, `#FFFFFF` em Alto Contraste e base clara no componente).
+  - **3.5 Lista de Notícias (`.bcb-news-card--editorial`):** Corrigido o título da notícia que utilizava `var(--bcb-color-white)`, tornando-o branco puro (`#FFFFFF !important;`) no Modo Escuro e amarelo sublinhado (`#FFFF00 !important;`) no Alto Contraste para headings e links.
+  - **3.9 Fluxogramas Textuais e Decisões Sequenciais (`.bcb-decision-flow`):** Corrigido o título das etapas (`.bcb-decision-node__title`, `h3`, `h4`) que ficava escuro no Dark Mode. Agora renderiza com alta legibilidade em branco puro (`#FFFFFF !important;`) no Dark Mode e amarelo (`#FFFF00 !important;`) em Alto Contraste.
+  - **Varredura Preventiva Global de Inversão de Cores:** Eliminadas ocorrências residuais de `color: var(--bcb-color-white)` sobre superfícies escuras em botões sólidos (`_buttons.css`), tags e badges semânticas (`_tags.css`), cabeçalhos de tabela (`_tables.css`, `_data-table.css`), botão voltar ao topo (`_back-to-top.css`), stepper (`_stepper.css`) e timeline (`_timeline.css`), blindando 100% da biblioteca contra texto ilegível no Dark Mode.
+
+### Removido & Consolidado
+- **Consolidação de Callouts e Descontinuação de `2.3 Callout Editorial`:**
+  - Removido o componente redundante `2.3 Callout Editorial` (`.bcb-callout--editorial` / `.tip-box`) da vitrine `pages/components.html`, unificando todos os padrões em `2.1 Callouts Estruturados` (`.callout.callout-brand.callout-left-bordered`).
+  - Dicas editoriais, comunicados oficiais e notas de orientação passam a utilizar o padrão canônico com suporte a ícones flexíveis (ex.: `tips_and_updates`, `info`, `warning`).
+  - Mantido suporte retrocompatível transparente em `_callout.css` substituindo fundo fixo `#FFF8E8` por token semântico `var(--bg-azul-light, #f0f7f9)`.
+  - Atualizado o protótipo `prototipos/copom-decisao-taxa-selic.html` e o pacote de exportação correspondente.
+  - Reorganizada e sincronizada toda a numeração de Moléculas (2.1 a 2.20) e Organismos (3.1 a 3.10) na sidebar e corpo de `pages/components.html`.
+
 ## [2.7.0] — 2026-09-04
 
 ### Adicionado

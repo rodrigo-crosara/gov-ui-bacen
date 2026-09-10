@@ -32,10 +32,10 @@
       this.element.id = this.id;
 
       this.slides = Array.from(element.querySelectorAll('.bcb-carousel__slide'));
-      this.indicators = Array.from(element.querySelectorAll('.bcb-carousel__indicator'));
-      this.prevBtn = element.querySelector('.bcb-carousel__prev, [data-carousel="prev"]');
-      this.nextBtn = element.querySelector('.bcb-carousel__next, [data-carousel="next"]');
-      this.playPauseBtn = element.querySelector('.bcb-carousel__toggle-play, [data-carousel="toggle-play"]');
+      this.indicators = Array.from(element.querySelectorAll('.bcb-carousel__indicator, .bcb-carousel__dot'));
+      this.prevBtn = element.querySelector('.bcb-carousel__btn--prev, .bcb-carousel__prev, [data-carousel="prev"]');
+      this.nextBtn = element.querySelector('.bcb-carousel__btn--next, .bcb-carousel__next, [data-carousel="next"]');
+      this.playPauseBtn = element.querySelector('.bcb-carousel__btn--playpause, .bcb-carousel__toggle-play, [data-carousel="toggle-play"]');
 
       this.currentIndex = 0;
       this.isPlaying = false;
@@ -66,7 +66,7 @@
       this.element.setAttribute('role', 'region');
       this.element.setAttribute('aria-roledescription', 'carrossel');
 
-      const stage = this.element.querySelector('.bcb-carousel__stage');
+      const stage = this.element.querySelector('.bcb-carousel__stage, .bcb-carousel__inner');
       if (stage) {
         stage.setAttribute('aria-live', 'polite');
       }

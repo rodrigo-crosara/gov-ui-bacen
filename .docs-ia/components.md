@@ -1557,3 +1557,127 @@ A sequência de cores é estrita e imutável. As séries numéricas adotam as co
   </div>
 </article>
 ```
+
+---
+
+## 44. Card de Serviço / Acesso Rápido a Ferramentas (.bcb-service-card)
+
+Card institucional de acesso direto a serviços, ferramentas e sistemas do BCB. Utilizado para grades de atalhos na página inicial e em seções de navegação temática. O card inteiro é clicável (tag `<a>`), com efeito de elevação e seta animada ao hover.
+
+### Variantes
+
+| Classe | Uso |
+|---|---|
+| `.bcb-service-card` | **Padrão** — Ícone centralizado, título uppercase, descrição. Layout vertical. |
+| `.bcb-service-card--horizontal` | Ícone à esquerda, conteúdo à direita. Ideal para listagens de serviços. |
+| `.bcb-service-card--compact` | Proporção reduzida para grids de 4+ colunas. Descrição com clamp de 2 linhas. |
+| `.bcb-service-card--featured` | Borda superior colorida (3px) para destaque prioritário. |
+
+### Variantes de Cor do Ícone
+
+| Classe | Cor | Token |
+|---|---|---|
+| *(padrão)* | Azul BCB | `--bcb-brand-azul-blue` (#025C75) |
+| `.bcb-service-card__icon--verde` | Verde Sustentabilidade | `--bcb-brand-verde-susta` (#067078) |
+| `.bcb-service-card__icon--petro` | Azul Petróleo | `--bcb-brand-azulpetro` (#2E4C59) |
+| `.bcb-service-card__icon--vinho` | Vinho Autêntico | `--bcb-brand-vinho-autentico` (#47373A) |
+
+### Elementos BEM
+
+| Classe | Função |
+|---|---|
+| `.bcb-service-card` | Elemento raiz (`<a>` clicável com `href`). |
+| `.bcb-service-card__icon` | Círculo com ícone Material. Recebe variantes de cor. |
+| `.bcb-service-card__body` | Container de texto (título + descrição). |
+| `.bcb-service-card__title` | Título em uppercase, bold, cor institucional. |
+| `.bcb-service-card__description` | Texto descritivo em cinza secundário. |
+| `.bcb-service-card__badge` | Rótulo absoluto (topo-direita) — `Novo`, `Popular`, `Externo`. |
+| `.bcb-service-card__arrow` | Seta de navegação com fade-in animado ao hover. |
+
+### Assinatura HTML Canônica — Variante Padrão (Vertical Centralizado)
+```html
+<!-- Grid 33/33/33 de Cards de Serviço -->
+<div class="bcb-row">
+    <div class="bcb-col-12 bcb-col-md-4 mb-3">
+        <a href="#calculadora" class="bcb-service-card">
+            <span class="bcb-service-card__badge">Novo</span>
+            <div class="bcb-service-card__icon">
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">calculate</span>
+            </div>
+            <div class="bcb-service-card__body">
+                <h3 class="bcb-service-card__title">Calculadora do Cidadão</h3>
+                <p class="bcb-service-card__description">Simule financiamentos, investimentos e correção monetária</p>
+            </div>
+            <span class="bcb-service-card__arrow" aria-hidden="true">
+                <span class="material-symbols-outlined material-icons">arrow_forward</span>
+            </span>
+        </a>
+    </div>
+    <div class="bcb-col-12 bcb-col-md-4 mb-3">
+        <a href="#registrato" class="bcb-service-card">
+            <div class="bcb-service-card__icon bcb-service-card__icon--verde">
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">key</span>
+            </div>
+            <div class="bcb-service-card__body">
+                <h3 class="bcb-service-card__title">Registrato</h3>
+                <p class="bcb-service-card__description">Consulte suas contas, empréstimos e chaves Pix vinculadas ao seu CPF</p>
+            </div>
+            <span class="bcb-service-card__arrow" aria-hidden="true">
+                <span class="material-symbols-outlined material-icons">arrow_forward</span>
+            </span>
+        </a>
+    </div>
+    <div class="bcb-col-12 bcb-col-md-4 mb-3">
+        <a href="#sgs" class="bcb-service-card bcb-service-card--featured">
+            <div class="bcb-service-card__icon bcb-service-card__icon--petro">
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">monitoring</span>
+            </div>
+            <div class="bcb-service-card__body">
+                <h3 class="bcb-service-card__title">SGS — Séries Temporais</h3>
+                <p class="bcb-service-card__description">Acesse dados econômicos e estatísticas oficiais do BCB</p>
+            </div>
+            <span class="bcb-service-card__arrow" aria-hidden="true">
+                <span class="material-symbols-outlined material-icons">arrow_forward</span>
+            </span>
+        </a>
+    </div>
+</div>
+```
+
+### Assinatura HTML — Variante Horizontal
+```html
+<a href="#cambio" class="bcb-service-card bcb-service-card--horizontal">
+    <div class="bcb-service-card__icon bcb-service-card__icon--verde">
+        <span class="material-symbols-outlined material-icons" aria-hidden="true">currency_exchange</span>
+    </div>
+    <div class="bcb-service-card__body">
+        <h3 class="bcb-service-card__title">Câmbio e Capitais</h3>
+        <p class="bcb-service-card__description">Serviços e informações sobre moedas estrangeiras e capitais internacionais</p>
+    </div>
+    <span class="bcb-service-card__arrow" aria-hidden="true">
+        <span class="material-symbols-outlined material-icons">arrow_forward</span>
+    </span>
+</a>
+```
+
+### Assinatura HTML — Variante Compacta (Grid de 4 Colunas)
+```html
+<div class="bcb-row">
+    <div class="bcb-col-6 bcb-col-md-3 mb-3">
+        <a href="#pix" class="bcb-service-card bcb-service-card--compact">
+            <div class="bcb-service-card__icon">
+                <span class="material-symbols-outlined material-icons" aria-hidden="true">pix</span>
+            </div>
+            <div class="bcb-service-card__body">
+                <h3 class="bcb-service-card__title">Pix</h3>
+                <p class="bcb-service-card__description">Pagamentos e transferências instantâneas</p>
+            </div>
+        </a>
+    </div>
+</div>
+```
+
+### Temas Suportados
+- ✅ **Padrão (Claro):** Fundo branco, ícone azul BCB, borda cinza sutil.
+- ✅ **Dark Mode:** Fundo `#1A1F24`, ícone ciano vibrante, borda `#3E454B`.
+- ✅ **Alto Contraste (WCAG AAA):** Fundo `#000`, borda `#FFF` 2px, ícone invertido, seta amarela.

@@ -10,7 +10,7 @@
   margin-bottom: var(--bcb-space-4, 1rem);
   box-shadow: var(--bcb-shadow-100);
   border: 1px solid var(--bcb-gray-200);
-  border-top: 4px solid var(--bcb-color-primary, #2E4C59);
+  border-top: 4px solid var(--bcb-color-primary, #025C75);
   height: 100%;
   width: 100%;
   min-width: 0;
@@ -42,12 +42,12 @@ a.bcb-indicator-card:focus-visible,
 /* Variantes de Borda Superior Semântica */
 .bcb-indicator-card.accent-blue,
 .bcb-indicator-card.indicator-brand {
-  border-top-color: var(--bcb-color-primary, #2E4C59);
+  border-top-color: var(--bcb-color-primary, #025C75);
 }
 
 .bcb-indicator-card.accent-green,
 .bcb-indicator-card.indicator-positive {
-  border-top-color: var(--bcb-brand-verde-susta, #067078);
+  border-top-color: var(--bcb-brand-rio-jordao, #00A478);
 }
 
 .bcb-indicator-card.accent-red,
@@ -57,7 +57,7 @@ a.bcb-indicator-card:focus-visible,
 
 .bcb-indicator-card.accent-amber,
 .bcb-indicator-card.indicator-warning {
-  border-top-color: var(--bcb-brand-cafellato, #DEBE7F);
+  border-top-color: var(--bcb-brand-achocolatado, #914D23);
 }
 
 /* Tipografia e Rótulos */
@@ -81,7 +81,7 @@ a.bcb-indicator-card:focus-visible,
 .bcb-indicator-value {
   font-size: clamp(1.35rem, 2vw, 1.85rem);
   font-weight: 700;
-  color: var(--bcb-color-primary, #2E4C59);
+  color: var(--bcb-color-primary, #025C75);
   margin-bottom: 0.35rem;
   line-height: 1.15;
   display: flex;
@@ -95,7 +95,7 @@ a.bcb-indicator-card:focus-visible,
 }
 
 .bcb-indicator-value.value-positive {
-  color: var(--bcb-brand-verde-susta, #067078);
+  color: var(--bcb-brand-rio-jordao, #00A478);
 }
 
 .bcb-indicator-value.value-negative {
@@ -122,8 +122,8 @@ a.bcb-indicator-card:focus-visible,
 
 .bcb-indicator-trend.positive,
 .bcb-indicator-trend.trend-positive {
-  color: var(--bcb-brand-verde-susta, #067078);
-  background-color: rgba(6, 112, 120, 0.12);
+  color: var(--bcb-brand-rio-jordao, #00A478);
+  background-color: rgba(0, 164, 120, 0.12);
 }
 
 .bcb-indicator-trend.negative,
@@ -147,7 +147,7 @@ a.bcb-indicator-card:focus-visible,
 
 /* Indicadores Avançados com Banda de Tolerância */
 .bcb-indicator-card--advanced {
-  border-left: 4px solid var(--bcb-color-primary, #2E4C59) !important;
+  border-left: 4px solid var(--bcb-color-primary, #025C75) !important;
 }
 
 .bcb-tolerance-band {

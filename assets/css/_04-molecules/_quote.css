@@ -13,7 +13,7 @@
   margin: var(--bcb-space-5, 1.5rem) 0;
   padding: var(--bcb-space-5, 1.5rem);
   background-color: var(--bcb-gray-50, #F8F9FB);
-  border-left: 5px solid var(--bcb-color-primary, #2E4C59);
+  border-left: 5px solid var(--bcb-color-primary, #025C75);
   border-radius: 0 var(--bcb-radius-8, 8px) var(--bcb-radius-8, 8px) 0;
   border-top: 1px solid var(--bcb-gray-200, #E6EAEF);
   border-right: 1px solid var(--bcb-gray-200, #E6EAEF);
@@ -31,8 +31,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(46, 76, 89, 0.12);
-  color: var(--bcb-color-primary, #2E4C59);
+  background-color: rgba(2, 92, 117, 0.12);
+  color: var(--bcb-color-primary, #025C75);
   font-size: 1.5rem;
   line-height: 1;
 }
@@ -60,7 +60,7 @@
 
 .bcb-quote-author {
   font-weight: 700;
-  color: var(--bcb-color-primary, #2E4C59);
+  color: var(--bcb-color-primary, #025C75);
 }
 
 .bcb-quote-role {
@@ -77,8 +77,8 @@
 
 /* Variante: Destaque Normativo / Regulatório */
 .bcb-quote--normative {
-  border-left-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
-  background-color: var(--bg-amarellato-light, #fefbfa);
+  border-left-color: var(--bcb-brand-mandarino, #F4B757);
+  background-color: var(--bg-amarellato-light, #FEF9EE);
 }
 
 .bcb-quote--normative::before {

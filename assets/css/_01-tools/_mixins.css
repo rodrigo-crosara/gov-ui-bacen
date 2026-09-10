@@ -5,7 +5,7 @@
 .text-uppercase { text-transform: uppercase!important; }
 
 /* UTILITÁRIOS BCB (Cores e Efeitos) */
-.bg-color-1 { background-color: var(--bcb-brand-blue) !important; color: var(--bcb-color-white) !important; }
+.bg-color-1 { background-color: var(--bcb-brand-blue) !important; color: #FFFFFF !important; }
 .font-color-1 { color: var(--bcb-brand-blue) !important; font-weight: 500; border: 1px solid var(--bcb-gray-200); border-left: none;}
 .color-1 { color: var(--bcb-brand-blue) !important; }
 .hvr-shadow { transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out; }

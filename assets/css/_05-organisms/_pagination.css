@@ -12,7 +12,7 @@
   justify-content: center;
 }
 .pagination .page-link:hover { background-color: rgba(2, 92, 117, 0.08); color: var(--bcb-brand-blue); }
-.pagination .page-item.active .page-link { background-color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); color: var(--bcb-color-white); }
+.pagination .page-item.active .page-link { background-color: var(--bcb-brand-blue); border-color: var(--bcb-brand-blue); color: #FFFFFF !important; }
 .pagination .page-item.disabled .page-link { color: var(--bcb-gray-400); }
 
 /* Tooltip de Glossário (Termos Financeiros) */

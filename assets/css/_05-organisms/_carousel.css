@@ -27,7 +27,6 @@
   display: none;
   width: 100%;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
   box-sizing: border-box;
 }
 
@@ -36,6 +35,26 @@
   display: flex;
   flex-direction: column-reverse;
   opacity: 1;
+  animation: bcbCarouselFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bcbCarouselFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bcb-carousel__slide.is-active,
+  .bcb-carousel__slide.active {
+    animation: none !important;
+    opacity: 1 !important;
+  }
 }
 
 @media (min-width: 768px) {
@@ -91,7 +110,7 @@
 }
 
 .bcb-carousel__title a:hover {
-  color: var(--bcb-brand-azulcinti, #077391);
+  color: var(--bcb-brand-verde-castell, #088694);
   text-decoration: underline;
 }
 

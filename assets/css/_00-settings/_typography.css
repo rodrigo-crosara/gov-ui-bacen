@@ -21,4 +21,4 @@ p { font-size: var(--bcb-font-100, 1rem); }
 
 .text-body { color: var(--bcb-color-body-text, var(--bcb-color-text, #212529)); }
 .text-link { color: var(--bcb-link-color, var(--bcb-brand-azul-blue, #025C75)); text-decoration: none; transition: color 0.2s, outline 0.2s; }
-.text-link:hover { color: var(--bcb-link-hover, var(--bcb-brand-azulcinti, #077391)); text-decoration: underline; }
+.text-link:hover { color: var(--bcb-link-hover, var(--bcb-brand-verde-castell, #088694)); text-decoration: underline; }

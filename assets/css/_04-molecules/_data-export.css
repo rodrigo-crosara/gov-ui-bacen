@@ -31,7 +31,7 @@
   height: 2.25rem;
   border-radius: var(--bcb-radius-4);
   background-color: var(--bcb-brand-blue);
-  color: var(--bcb-color-white);
+  color: #FFFFFF;
 }
 
 .bcb-data-export-icon .material-icons {
@@ -76,7 +76,7 @@
 
 .bcb-btn-export:hover {
   background-color: var(--bcb-brand-blue);
-  color: var(--bcb-color-white) !important;
+  color: #FFFFFF !important;
   border-color: var(--bcb-brand-blue);
   box-shadow: var(--bcb-shadow-100);
 }
@@ -92,17 +92,17 @@
 
 /* Variantes de Formato */
 .bcb-btn-export.export-csv .export-ext {
-  color: var(--bcb-brand-verde-susta, #0A663A);
+  color: var(--bcb-brand-rio-jordao, #00A478);
   font-weight: 700;
 }
 
 .bcb-btn-export.export-json .export-ext {
-  color: var(--bcb-brand-azulpetro, #0080A4);
+  color: var(--bcb-brand-azul-blue, #025C75);
   font-weight: 700;
 }
 
 .bcb-btn-export.export-api .export-ext {
-  color: var(--bcb-brand-vinho, #491026);
+  color: var(--bcb-brand-vinho-autentico, #47373A);
   font-weight: 700;
 }
 

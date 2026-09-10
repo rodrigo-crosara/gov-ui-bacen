@@ -130,6 +130,7 @@ Ao receber o insumo cru do webdesigner, analise a natureza das informações e c
 | **Diálogos de confirmação, formulários modais e avisos focados** | Diálogo modal com focus-trap e calibragem de largura | **Modal Acessível** (`.bcb-modal`) | `.bcb-modal-backdrop` com `.bcb-modal-dialog` nas larguras `.bcb-modal--sm` (400px), `--md` (600px), `--lg` (850px), `--xl` (1140px). |
 | **Termos técnicos, jargões financeiros, conceitos ou siglas regulatórias** | Dica contextual sob demanda via hover/foco com tecla Escape | **Tooltip Acessível** (`.bcb-tooltip`) | `.bcb-tooltip-term` com `[data-tooltip]` e `tabindex="0"`, ou `.bcb-tooltip-btn` para ajuda contextual (WCAG 1.4.13). |
 | **Minutas oficiais, resoluções, anexos regulatórios ou manuais em PDF** | Cartões de download de documentos com metadados obrigatórios | **Download de Documento** (`.documentos`) | Bloco `.documento` com ícone de formato (PDF, ZIP, CSV), título oficial do ato, peso em KB/MB e botão de baixar. |
+| **Atalhos de ferramentas, acesso a sistemas, serviços ao cidadão ou calculadoras** | Grade de cards clicáveis com ícone proeminente e ação direta | **Card de Serviço** (`.bcb-service-card`) | Card `<a>` clicável com ícone circular (`.bcb-service-card__icon`), título uppercase, descrição e seta animada. Variantes: `--horizontal`, `--compact`, `--featured`. Grid sugerido: 33/33/33 ou 25/25/25/25 (compacto). |
 | **Trilha hierárquica e navegação institucional global** | Elemento de casca fixa do portal (provido pelo CMS institucional) | **Casca Fixa do Portal** (Fora do escopo do protótipo) | **NÃO GERAR**: Breadcrumbs, header e footer são imutáveis e fixos no portal do BCB, simulados exclusivamente no harness (`_harness.html`). |
 
 ---
@@ -225,16 +226,20 @@ O agente projeta o layout organizando o conteúdo em **Linhas (`.bcb-row`) e Col
 4. **Espaçamento entre Blocos com `.bcb-section`:**
    - Cada bloco de conteúdo deve ser envelopado por `<section class="bcb-section">` com espaçamento padrão de 48px (`margin-bottom: var(--bcb-spacing-2xl, 48px);`).
 
-5. **Cores e Identidade Visual (Manual de Marca do BCB):**
+5. **Cores e Identidade Visual (Manual de Marca do BCB — Paleta Vigente de 11 Cores):**
    - Use EXCLUSIVAMENTE variáveis CSS do Design System:
-     - Primária / Ação: `var(--bcb-brand-azul-blue, #025C75)`
-     - Hover / Destaque: `var(--bcb-brand-azulcinti, #077391)`
-     - Superfícies e Cabeçalhos: `var(--bcb-brand-azulpetro, #2E4C59)`
-     - Sucesso / Estabilidade: `var(--bcb-brand-verde-susta, #067078)`
-     - Destaques / Acento: `var(--bcb-brand-verde-castell, #088694)`
-     - Texto Secundário: `var(--bcb-brand-cinza-80, #606062)`
-     - Avisos e Foco: `var(--bcb-brand-amarellato-biscoito, #F8D48D)`
-     - Alertas Regulatórios: `var(--bcb-brand-vinho-autentico, #47373A)`
+     - Primária Institucional: `var(--bcb-brand-azul-blue, #025C75)` (Pantone 3025)
+     - Acento / Secundária: `var(--bcb-brand-verde-castell, #088694)` (Pantone 320)
+     - Ciano / Destaque: `var(--bcb-brand-celestial, #36B2C2)` (Pantone 311)
+     - Sucesso / Estabilidade: `var(--bcb-brand-rio-jordao, #00A478)` (Pantone 3395)
+     - Destaque Editorial: `var(--bcb-brand-marsala-intenso, #9C365E)` (Pantone 7647)
+     - Acento Quente / Coral: `var(--bcb-brand-salmao-rosado, #ED6B6A)` (Pantone 178)
+     - Alerta / Foco / Atenção: `var(--bcb-brand-mandarino, #F4B757)` (Pantone 137)
+     - Secundário Terra: `var(--bcb-brand-achocolatado, #914D23)` (Pantone 160)
+     - Regulatório / Erro: `var(--bcb-brand-vinho-autentico, #47373A)` (Pantone 4975)
+     - Texto Secundário: `var(--bcb-brand-cinza-80, #606060)` (Pantone Cool Gray 10)
+     - Superfície / Neutro: `var(--bcb-brand-concreto, #AEAFAA)` (Pantone 428)
+     - Compatibilidade legada preservada: `azulcinti` (`#077391`), `azulpetro` (`#2E4C59`), `verde-susta` (`#067078`), `amarellato-biscoito` (`#F8D48D`), `marsala-suave` (`#736063`).
    - É **TERMINANTEMENTE PROIBIDO** usar o azul padrão do Bootstrap (`#0d6efd`, `#007bff`).
 
 6. **Acessibilidade e Ícones:**

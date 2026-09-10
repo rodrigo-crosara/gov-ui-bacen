@@ -1,72 +1,238 @@
-/* ============= BCB Design System — Organisms / Timeline ============= */
+/* ============= BCB Design System — Organisms / Timeline =============
+ * Componente Organismo 3.3: Timelines (Vertical Educativa e Horizontal)
+ *
+ * Padrão inspirado nas melhores práticas de design de serviços e educação
+ * financeira do Banco Central do Brasil (Cidadania Financeira / ENEF).
+ *
+ * Variantes:
+ *   1. Vertical Educativa & Jornada (.bcb-timeline--vertical / .timeline-container)
+ *      - Trilho contínuo de conexão (rail conector vertical)
+ *      - Cards com header estruturado (marcador de ícone circular + título + status)
+ *      - Layout dividido responsivo (conteúdo + mídia/ilustração)
+ *      - Seção expandida de apoio (callouts, tabelas, checklists, vídeos, CTAs)
+ *      - Estados semânticos: Concluído (.is-completed), Em Andamento (.is-active), Próximo (.is-pending)
+ *
+ *   2. Horizontal de Cronograma & Marcos (.bcb-timeline--horizontal / .timeline-horizontal)
+ *      - Barra contínua de progresso entre marcos temporais ou etapas de projeto
+ *      - Nós com status: Concluído (check verde), Em Execução (anel azul/mandarino), Planejado (neutro)
+ *      - Datas, títulos institucionais, badges e descrições
+ *      - Colapso responsivo fluido para trilho vertical em telas pequenas (<= 768px)
+ *
+ * Acessibilidade: WCAG 2.1 AA / e-MAG, suporte completo a Dark Mode e Alto Contraste.
+ * ======================================================================== */
 
-.timeline-container { position: relative; padding-left: 0; }
+/* ==========================================================================
+   1. TIMELINE VERTICAL EDUCATIVA & JORNADA (Container e Trilho)
+   ========================================================================== */
+.bcb-timeline--vertical,
+.timeline-container {
+  position: relative;
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0 0 0 3.75rem;
+}
+
+/* Trilho vertical de conexão contínuo */
+.bcb-timeline--vertical::before,
 .timeline-container::before {
   content: '';
   position: absolute;
-  left: 54px;
-  top: 0;
-  bottom: 0;
+  left: 1.625rem;
+  top: 1.75rem;
+  bottom: 2.25rem;
   width: 4px;
-  background-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
+  background: linear-gradient(
+    180deg,
+    var(--bcb-brand-azul-blue, #025C75) 0%,
+    var(--bcb-brand-verde-castell, #088694) 50%,
+    var(--bcb-gray-300, #D0D7DF) 100%
+  );
   border-radius: var(--bcb-radius-4, 4px);
   z-index: 1;
 }
 
+/* Variante sem trilho recuado (para cards integrados simples) */
+.bcb-timeline--vertical.no-rail,
+.timeline-container.no-rail {
+  padding-left: 0;
+}
+.bcb-timeline--vertical.no-rail::before,
+.timeline-container.no-rail::before {
+  display: none;
+}
+
+/* ==========================================================================
+   CARD DE ETAPA (Vertical Step Card)
+   ========================================================================== */
+.bcb-timeline__item,
 .step-card {
-  border: 1px solid var(--bcb-gray-300, #D0D7DF);
-  border-radius: var(--bcb-radius-8, 8px);
-  margin-bottom: 2.5rem;
   position: relative;
   background-color: var(--bcb-color-white, #FFFFFF);
-  overflow: hidden;
-  box-shadow: var(--bcb-shadow-100);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  border-left: 4px solid var(--bcb-brand-azul-blue, #025C75);
+  border-radius: var(--bcb-radius-8, 8px);
+  margin-bottom: 2.25rem;
+  box-shadow: var(--bcb-shadow-100, 0 1px 2px rgba(0,0,0,0.06));
+  overflow: visible;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   z-index: 2;
 }
 
-.step-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--bcb-shadow-300);
-  border-color: var(--bcb-color-primary, #2E4C59);
+.bcb-timeline__item:last-child,
+.step-card:last-child {
+  margin-bottom: 0;
 }
 
+.bcb-timeline__item:hover,
+.step-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--bcb-shadow-300, 0 4px 12px rgba(0,0,0,0.1));
+  border-color: var(--bcb-brand-verde-castell, #088694);
+}
+
+.bcb-timeline__item:focus-within,
+.step-card:focus-within {
+  border-color: var(--bcb-brand-azul-blue, #025C75);
+}
+
+/* ==========================================================================
+   MARCADOR / NÓ DO TRILHO (Circular Node Marker)
+   ========================================================================== */
+.bcb-timeline__node,
+.step-node {
+  position: absolute;
+  left: -3.75rem;
+  top: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--bcb-color-white, #FFFFFF), 0 2px 6px rgba(0, 0, 0, 0.12);
+  z-index: 3;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.bcb-timeline__node .material-symbols-outlined,
+.bcb-timeline__node .material-icons,
+.step-node .material-symbols-outlined,
+.step-node .material-icons {
+  font-size: 1.375rem !important;
+  line-height: 1;
+}
+
+.bcb-timeline__item:hover .bcb-timeline__node,
+.step-card:hover .step-node {
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+   ESTADOS SEMÂNTICOS DAS ETAPAS (Completed, Active, Pending)
+   ========================================================================== */
+
+/* 1. Etapa Concluída (.is-completed) */
+.bcb-timeline__item.is-completed,
+.step-card.is-completed {
+  border-left-color: var(--bcb-brand-rio-jordao, #00A478);
+}
+.bcb-timeline__item.is-completed .bcb-timeline__node,
+.step-card.is-completed .step-node {
+  background-color: var(--bcb-brand-rio-jordao, #00A478);
+  color: #FFFFFF;
+}
+
+/* 2. Etapa Ativa / Em Andamento (.is-active) */
+.bcb-timeline__item.is-active,
+.step-card.is-active {
+  border-left-color: var(--bcb-brand-azul-blue, #025C75);
+  box-shadow: var(--bcb-shadow-200, 0 2px 8px rgba(0,0,0,0.08));
+}
+.bcb-timeline__item.is-active .bcb-timeline__node,
+.step-card.is-active .step-node {
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 4px var(--bcb-color-white, #FFFFFF), 0 0 0 7px var(--bcb-brand-mandarino, #F4B757);
+}
+
+/* 3. Etapa Pendente / Futura (.is-pending) */
+.bcb-timeline__item.is-pending,
+.step-card.is-pending {
+  border-left-color: var(--bcb-gray-300, #D0D7DF);
+  opacity: 0.92;
+}
+.bcb-timeline__item.is-pending .bcb-timeline__node,
+.step-card.is-pending .step-node {
+  background-color: var(--bcb-gray-400, #606062);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 4px var(--bcb-color-white, #FFFFFF);
+}
+
+/* ==========================================================================
+   CABEÇALHO DA ETAPA (Step Header)
+   ========================================================================== */
+.bcb-timeline__header,
 .step-header {
   position: relative;
-  width: 100%;
   display: flex;
   align-items: center;
-  padding: 1.5rem;
-  background: var(--bcb-gray-50, #F8F9FB);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bcb-gray-50, #F8F9FB);
   border-bottom: 1px solid var(--bcb-gray-200, #E6EAEF);
-  z-index: 2;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 }
 
+.bcb-timeline__header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Ícone integrado no Header (quando não usando nó externo) */
 .step-icon {
-  font-size: 2.25rem;
+  font-size: 1.5rem !important;
   line-height: 1;
-  margin-right: 1.25rem;
-  color: var(--bcb-color-white, #FFFFFF);
-  background-color: var(--bcb-color-primary, #2E4C59);
+  color: #FFFFFF !important;
+  background-color: var(--bcb-brand-azul-blue, #025C75);
   border-radius: var(--bcb-radius-pill, 9999px);
-  padding: 10px;
-  box-shadow: 0 0 0 4px var(--bcb-brand-amarellato-biscoito, #DEBE7F);
-  z-index: 3;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 0 3px var(--bcb-brand-mandarino, #F4B757);
 }
 
+.step-card.is-completed .step-icon {
+  background-color: var(--bcb-brand-rio-jordao, #00A478);
+  box-shadow: 0 0 0 3px rgba(0, 164, 120, 0.25);
+}
+
+.bcb-timeline__title,
 .step-title {
-  font-size: 1.25rem;
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+  font-size: 1.1875rem;
   font-weight: 700;
+  color: var(--bcb-color-primary, #025C75);
   margin: 0;
-  color: var(--bcb-gray-900, #14171A);
+  line-height: 1.35;
 }
 
 .step-tag,
-.step-badge {
+.step-badge,
+.bcb-timeline__badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -74,24 +240,56 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 2px 8px;
-  border-radius: var(--bcb-radius-4, 4px);
-  background-color: var(--bg-brand-light, #F0F7F9);
-  color: var(--bcb-color-primary, #2E4C59);
-  margin-bottom: 0.35rem;
+  padding: 3px 10px;
+  border-radius: var(--bcb-radius-pill, 9999px);
+  background-color: var(--bg-azul-light, #F0F7F9);
+  color: var(--bcb-color-primary, #025C75);
+  line-height: 1.3;
 }
 
+.bcb-timeline__badge--completed {
+  background-color: rgba(0, 164, 120, 0.12);
+  color: var(--bcb-brand-rio-jordao, #00A478);
+}
+
+.bcb-timeline__badge--active {
+  background-color: rgba(244, 183, 87, 0.2);
+  color: var(--bcb-brand-achocolatado, #914D23);
+}
+
+.bcb-timeline__badge--pending {
+  background-color: var(--bcb-gray-200, #E6EAEF);
+  color: var(--bcb-gray-600, #7E8A95);
+}
+
+/* ==========================================================================
+   CORPO DA ETAPA & LAYOUT DIVIDIDO COM MÍDIA (Split Layout)
+   ========================================================================== */
+.bcb-timeline__body,
 .step-content {
-  background-color: transparent;
   padding: 1.5rem;
   color: var(--bcb-gray-800, #2A3038);
   line-height: 1.6;
+  font-size: 0.9375rem;
 }
 
+.bcb-timeline__body > *:last-child,
+.step-content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Split Layout: Imagem/Mídia lateral e Texto */
+.bcb-timeline__split,
+.step-split {
+  display: flex;
+  flex-direction: column;
+}
+
+.bcb-timeline__media,
 .img-placeholder,
 .step-image {
   width: 100%;
-  height: 240px;
+  min-height: 200px;
   background-color: var(--bcb-gray-100, #F8F9FB);
   display: flex;
   align-items: center;
@@ -100,115 +298,332 @@
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  position: relative;
 }
 
-.step-image img,
-.img-placeholder img {
+.bcb-timeline__media img,
+.img-placeholder img,
+.step-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.bcb-timeline__media-icon {
+  font-size: 3.5rem !important;
+  color: var(--bcb-brand-verde-castell, #088694);
+  opacity: 0.8;
 }
 
 @media (min-width: 992px) {
-  .step-card { display: flex; flex-direction: row-reverse; align-items: stretch; overflow: hidden; }
-  .img-placeholder,
-  .step-image {
-    width: 40%;
-    height: auto;
-    min-height: 280px;
+  .bcb-timeline__split,
+  .step-card.has-split {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: stretch;
+  }
+
+  .bcb-timeline__media,
+  .step-card.has-split .img-placeholder,
+  .step-card.has-split .step-image {
+    width: 38%;
+    min-height: 240px;
     border-bottom: none;
     border-left: 1px solid var(--bcb-gray-200, #E6EAEF);
     flex-shrink: 0;
   }
-  .step-details { width: 60%; display: flex; flex-direction: column; justify-content: center; position: relative; }
-  .step-header { background: transparent; padding-bottom: 0.5rem; padding-top: 1.5rem; border-bottom: none; }
-  .step-content { padding-top: 0.5rem; margin-top: 0; flex-grow: 1; }
+
+  .bcb-timeline__split-content,
+  .step-card.has-split .step-details {
+    width: 62%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
-/* Timeline Horizontal (Fases e Datas) */
+/* ==========================================================================
+   BASE / RODAPÉ EXPANDIDO DA ETAPA (Callouts, Tabelas, Vídeos, CTAs)
+   ========================================================================== */
+.bcb-timeline__footer,
+.step-base,
+.step-footer {
+  width: 100%;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.bcb-timeline__footer .callout,
+.step-base .callout {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+/* Custom list para itens educativos */
+.bcb-timeline__list,
+.custom-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.bcb-timeline__list li,
+.custom-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.bcb-timeline__list li::before,
+.custom-list li::before {
+  content: 'check_circle';
+  font-family: 'Material Symbols Outlined', 'Material Icons';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 1.125rem;
+  color: var(--bcb-brand-rio-jordao, #00A478);
+  line-height: 1;
+}
+
+/* Diagrama de Fluxo Educativo */
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--bcb-gray-50, #F8F9FB);
+  border-radius: var(--bcb-radius-8, 8px);
+  border: 1px solid var(--bcb-gray-200, #E6EAEF);
+  margin: 1rem 0;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.flow-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-arrow {
+  color: var(--bcb-brand-verde-castell, #088694);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   2. TIMELINE HORIZONTAL (Cronograma, Marcos e Fases de Projetos)
+   ========================================================================== */
+.bcb-timeline--horizontal,
 .timeline-horizontal {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   position: relative;
-  margin: 3rem 0;
-  overflow-x: auto;
-  padding-bottom: 1.5rem;
+  margin: 2.75rem 0 2rem 0;
+  padding: 0 0 1rem 0;
+  list-style: none;
+  gap: 0.5rem;
 }
 
+/* Linha contínua do trilho horizontal */
+.bcb-timeline--horizontal::before,
 .timeline-horizontal::before {
   content: '';
   position: absolute;
-  top: 16px;
-  left: 30px;
-  right: 30px;
-  height: 3px;
+  top: 22px;
+  left: 48px;
+  right: 48px;
+  height: 4px;
   background-color: var(--bcb-gray-300, #D0D7DF);
+  border-radius: var(--bcb-radius-4, 4px);
   z-index: 1;
 }
 
-.timeline-h-step { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 140px; text-align: center; }
-.timeline-h-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: var(--bcb-gray-200, #E6EAEF);
-  border: 4px solid var(--bcb-color-white, #FFFFFF);
-  box-shadow: 0 0 0 2px var(--bcb-gray-300, #D0D7DF);
+/* Item / Marco da Timeline Horizontal */
+.bcb-timeline-horizontal__item,
+.timeline-h-step {
+  position: relative;
+  z-index: 2;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 0;
+  min-width: 140px;
+  padding: 0 0.5rem;
+}
+
+/* Círculo indicador do nó horizontal */
+.bcb-timeline-horizontal__node,
+.timeline-h-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--bcb-color-white, #FFFFFF);
+  border: 3px solid var(--bcb-gray-300, #D0D7DF);
+  color: var(--bcb-gray-600, #7E8A95);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
-  transition: all 0.3s;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin-bottom: 0.875rem;
+  box-shadow: var(--bcb-shadow-100, 0 1px 2px rgba(0,0,0,0.06));
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
+.bcb-timeline-horizontal__node .material-symbols-outlined,
+.bcb-timeline-horizontal__node .material-icons,
+.timeline-h-circle .material-symbols-outlined,
+.timeline-h-circle .material-icons {
+  font-size: 1.25rem !important;
+  line-height: 1;
+}
+
+/* Estados da Timeline Horizontal */
+/* 1. Concluído (.is-completed) */
+.bcb-timeline-horizontal__item.is-completed .bcb-timeline-horizontal__node,
+.timeline-h-step.is-completed .timeline-h-circle {
+  background-color: var(--bcb-brand-rio-jordao, #00A478);
+  border-color: var(--bcb-brand-rio-jordao, #00A478);
+  color: #FFFFFF;
+}
+
+/* 2. Ativo / Atual (.is-active ou .active) */
+.bcb-timeline-horizontal__item.is-active .bcb-timeline-horizontal__node,
+.timeline-h-step.is-active .timeline-h-circle,
 .timeline-h-step.active .timeline-h-circle {
-  background-color: var(--bcb-color-primary, #2E4C59);
-  box-shadow: 0 0 0 2px var(--bcb-color-primary, #2E4C59);
-  color: var(--bcb-color-white, #FFFFFF);
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  border-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 4px var(--bcb-color-white, #FFFFFF), 0 0 0 7px var(--bcb-brand-mandarino, #F4B757);
+  transform: scale(1.08);
 }
 
-.timeline-h-date { font-weight: 700; color: var(--bcb-color-primary, #2E4C59); font-size: 1rem; margin-bottom: 0.25rem; }
-.timeline-h-text { font-size: 0.85rem; color: var(--bcb-gray-700, #4A5568); line-height: 1.3; padding: 0 0.5rem; }
+/* 3. Pendente (.is-pending) */
+.bcb-timeline-horizontal__item.is-pending .bcb-timeline-horizontal__node,
+.timeline-h-step.is-pending .timeline-h-circle {
+  background-color: var(--bcb-gray-100, #F8F9FB);
+  border-color: var(--bcb-gray-300, #D0D7DF);
+  color: var(--bcb-gray-500, #7E8A95);
+}
 
+/* Textos da Timeline Horizontal */
+.bcb-timeline-horizontal__date,
+.timeline-h-date {
+  font-weight: 700;
+  color: var(--bcb-color-primary, #025C75);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.bcb-timeline-horizontal__title,
+.timeline-h-title {
+  font-family: var(--bcb-font-ubuntu, "Ubuntu", sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--bcb-gray-900, #14171A);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+}
+
+.bcb-timeline-horizontal__desc,
+.timeline-h-text {
+  font-size: 0.8125rem;
+  color: var(--bcb-gray-600, #7E8A95);
+  line-height: 1.4;
+  margin: 0;
+  padding: 0 0.25rem;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Mobile & Tablet)
+   ========================================================================== */
 @media (max-width: 767.98px) {
-  .timeline-container::before {
-    left: 32px;
-    top: 0;
-    bottom: 0;
+  /* Timeline Vertical no Mobile */
+  .bcb-timeline--vertical,
+  .timeline-container {
+    padding-left: 2.75rem;
   }
+  .bcb-timeline--vertical::before,
+  .timeline-container::before {
+    left: 1.125rem;
+  }
+  .bcb-timeline__node,
+  .step-node {
+    left: -2.75rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.9375rem;
+  }
+  .bcb-timeline__node .material-symbols-outlined,
+  .bcb-timeline__node .material-icons,
+  .step-node .material-symbols-outlined,
+  .step-node .material-icons {
+    font-size: 1.125rem !important;
+  }
+  .bcb-timeline__header,
   .step-header {
     padding: 1rem;
   }
-  .step-icon {
-    font-size: 1.75rem;
-    padding: 8px;
-    margin-right: 1rem;
-  }
+  .bcb-timeline__title,
   .step-title {
-    font-size: 1.15rem;
+    font-size: 1.0625rem;
   }
+  .bcb-timeline__body,
   .step-content {
     padding: 1rem;
   }
-  .img-placeholder,
-  .step-image {
-    height: 180px;
+  .bcb-timeline__footer,
+  .step-base,
+  .step-footer {
+    padding: 0 1rem 1rem 1rem;
   }
+
+  /* Colapso Responsivo da Timeline Horizontal para Stepper Vertical no Mobile */
+  .bcb-timeline--horizontal,
   .timeline-horizontal {
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 1.5rem;
-    gap: 1.5rem;
-    margin: 2rem 0;
+    padding-left: 3.25rem;
+    gap: 1.75rem;
+    margin: 1.75rem 0;
   }
+
+  .bcb-timeline--horizontal::before,
   .timeline-horizontal::before {
-    top: 16px;
-    bottom: 16px;
-    left: 23px;
-    width: 3px;
-    height: calc(100% - 32px);
+    top: 20px;
+    bottom: 20px;
+    left: 1.375rem;
+    right: auto;
+    width: 4px;
+    height: calc(100% - 40px);
   }
+
+  .bcb-timeline-horizontal__item,
   .timeline-h-step {
     flex-direction: row;
     align-items: flex-start;
@@ -216,9 +631,30 @@
     gap: 1rem;
     min-width: 0;
     width: 100%;
+    padding: 0;
   }
+
+  .bcb-timeline-horizontal__node,
   .timeline-h-circle {
+    margin-left: -3.25rem;
     margin-bottom: 0;
     flex-shrink: 0;
+  }
+
+  .bcb-timeline-horizontal__content {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+/* Suporte a preferências de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .bcb-timeline__item,
+  .step-card,
+  .bcb-timeline__node,
+  .step-node,
+  .bcb-timeline-horizontal__node,
+  .timeline-h-circle {
+    transition: none !important;
   }
 }

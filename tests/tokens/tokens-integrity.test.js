@@ -43,27 +43,47 @@ const tokensObrigatorios = [
   '--bcb-color-black',
   '--bcb-color-body-text',
   '--bcb-color-bg-light',
-  // Brand oficiais do Manual
+  // Brand oficiais do Manual (Paleta Vigente de 11 Cores)
   '--bcb-brand-azul-blue',
+  '--bcb-brand-verde-castell',
+  '--bcb-brand-celestial',
+  '--bcb-brand-rio-jordao',
+  '--bcb-brand-marsala-intenso',
+  '--bcb-brand-salmao-rosado',
+  '--bcb-brand-mandarino',
+  '--bcb-brand-achocolatado',
+  '--bcb-brand-vinho-autentico',
+  '--bcb-brand-cinza-80',
+  '--bcb-brand-concreto',
+  // Brand legados preservados para compatibilidade
   '--bcb-brand-azulcinti',
   '--bcb-brand-azulpetro',
   '--bcb-brand-azulnetuno',
   '--bcb-brand-verde-susta',
-  '--bcb-brand-verde-castell',
-  '--bcb-brand-cinza-80',
   '--bcb-brand-amarellato-biscoito',
   '--bcb-brand-cafellato',
-  '--bcb-brand-vinho-autentico',
   '--bcb-brand-marsala-suave',
   // Brand aliases de compatibilidade
   '--bcb-brand-blue',
   '--bcb-brand-blue-dark',
   '--bcb-brand-gray80',
+  '--bcb-brand-cinza80',
   '--bcb-brand-vinho',
   '--bcb-brand-marsala',
   '--bcb-brand-amarellato',
-  '--bcb-color-azulcinti',
+  '--bcb-color-azul-blue',
   '--bcb-color-verde-castell',
+  '--bcb-color-celestial',
+  '--bcb-color-rio-jordao',
+  '--bcb-color-marsala-intenso',
+  '--bcb-color-salmao-rosado',
+  '--bcb-color-mandarino',
+  '--bcb-color-achocolatado',
+  '--bcb-color-vinho-autentico',
+  '--bcb-color-cinza-80',
+  '--bcb-color-concreto',
+  '--bcb-color-azulcinti',
+  '--bcb-color-azulpetro',
   // Ações e Botões
   '--bcb-btn-primary-bg',
   '--bcb-btn-primary-hover',
@@ -258,6 +278,93 @@ if (ocorrenciasProibidas.length === 0) {
 }
 
 // ============================================
+// TESTE 5: Componentes livres de tokens legados descontinuados
+// ============================================
+console.log('\n📋 Teste 5: Componentes livres de tokens legados descontinuados');
+
+const tokensLegadosNomes = [
+  'azulcinti',
+  'azulpetro',
+  'azulnetuno',
+  'verde-susta',
+  'amarellato-biscoito',
+  'cafellato',
+  'marsala-suave',
+];
+
+const arquivosIsentosTokens = [
+  '_tokens.css',
+  '_dark-mode.css',
+  '_high-contrast.css',
+];
+
+const ocorrenciasTokensLegados = [];
+
+todosCSS.forEach(arquivoCSS => {
+  const nomeArquivo = path.basename(arquivoCSS);
+  if (arquivosIsentosTokens.includes(nomeArquivo)) return;
+
+  const rel = path.relative(RAIZ_PROJETO, arquivoCSS).replace(/\\/g, '/');
+  const conteudo = fs.readFileSync(arquivoCSS, 'utf8');
+
+  tokensLegadosNomes.forEach(tokenLegado => {
+    const regex = new RegExp(`--bcb-(?:brand|color)-${tokenLegado}`, 'gi');
+    if (regex.test(conteudo)) {
+      ocorrenciasTokensLegados.push({ arquivo: rel, token: tokenLegado });
+    }
+  });
+});
+
+if (ocorrenciasTokensLegados.length === 0) {
+  console.log(`   ✅ 100% dos componentes e utilitários CSS livres de tokens legados`);
+  sucessos++;
+} else {
+  console.log(`   ❌ Encontrada(s) ${ocorrenciasTokensLegados.length} ocorrência(s) de tokens legados em componentes:`);
+  ocorrenciasTokensLegados.forEach(o => {
+    console.log(`      → [${o.arquivo}] ainda utiliza token legado --bcb-*-${o.token}`);
+  });
+  falhas += ocorrenciasTokensLegados.length;
+}
+
+// ============================================
+// TESTE 6: Blindagem de Utilitários Semânticos do Bootstrap
+// ============================================
+console.log('\n📋 Teste 6: Blindagem de Utilitários Semânticos do Bootstrap');
+
+const utilitariosBootstrapObrigatorios = [
+  // Primary
+  '.text-primary', '.bg-primary', '.border-primary', '.badge-primary',
+  // Secondary
+  '.text-secondary', '.bg-secondary', '.border-secondary', '.badge-secondary',
+  // Success
+  '.text-success', '.bg-success', '.border-success', '.badge-success',
+  // Danger
+  '.text-danger', '.bg-danger', '.border-danger', '.badge-danger',
+  // Warning
+  '.text-warning', '.bg-warning', '.border-warning', '.badge-warning',
+  // Info
+  '.text-info', '.bg-info', '.border-info', '.badge-info',
+];
+
+let falhasUtilitarios = 0;
+const caminhoTokensCSS = path.join(RAIZ_PROJETO, 'assets', 'css', '_00-settings', '_tokens.css');
+const conteudoTokensCSS = fs.readFileSync(caminhoTokensCSS, 'utf8');
+
+utilitariosBootstrapObrigatorios.forEach(utilitario => {
+  if (conteudoTokensCSS.includes(utilitario)) {
+    sucessos++;
+  } else {
+    console.log(`   ❌ Utilitário de blindagem ausente: ${utilitario}`);
+    falhasUtilitarios++;
+    falhas++;
+  }
+});
+
+if (falhasUtilitarios === 0) {
+  console.log(`   ✅ Todos os ${utilitariosBootstrapObrigatorios.length} utilitários semânticos do Bootstrap estão blindados com tokens BCB`);
+}
+
+// ============================================
 // RESULTADO
 // ============================================
 console.log('\n' + '='.repeat(55));
@@ -265,3 +372,4 @@ console.log(`Resultado: ${sucessos} verificação(ões) OK, ${falhas} falha(s)`)
 console.log('='.repeat(55) + '\n');
 
 process.exit(falhas > 0 ? 1 : 0);
+

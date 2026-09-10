@@ -19,7 +19,7 @@
 
 /* 1. Variante Primária Institucional */
 .bcb-cta--primary {
-  background: linear-gradient(135deg, var(--bcb-brand-azulpetro, #2E4C59) 0%, var(--bcb-brand-azul-blue, #025C75) 100%);
+  background: linear-gradient(135deg, var(--bcb-brand-azul-blue, #025C75) 0%, var(--bcb-brand-verde-castell, #088694) 100%);
   color: #FFFFFF;
   border-color: rgba(255, 255, 255, 0.2);
 }
@@ -45,9 +45,9 @@
 .bcb-cta--primary .btn-primary,
 .bcb-cta--primary .bcb-cta__btn,
 .bcb-cta--primary .bcb-btn-cta {
-  background-color: var(--bcb-brand-amarellato-biscoito, #F8D48D);
+  background-color: var(--bcb-brand-mandarino, #F4B757);
   color: var(--bcb-brand-vinho-autentico, #47373A);
-  border-color: var(--bcb-brand-amarellato-biscoito, #F8D48D);
+  border-color: var(--bcb-brand-mandarino, #F4B757);
   font-weight: 700;
 }
 
@@ -82,6 +82,7 @@
 /* 3. Variante Empilhada / Centralizada */
 .bcb-cta--centered,
 .bcb-cta--stacked {
+  flex-direction: column !important;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -90,6 +91,14 @@
 .bcb-cta--centered .bcb-cta__content,
 .bcb-cta--stacked .bcb-cta__content {
   text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.bcb-cta--centered .bcb-cta__tag,
+.bcb-cta--stacked .bcb-cta__tag {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bcb-cta--centered .bcb-cta__meta,
@@ -99,8 +108,10 @@
 
 .bcb-cta--centered .bcb-cta__action,
 .bcb-cta--stacked .bcb-cta__action {
-  align-items: center;
-  justify-content: center;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100%;
 }
 
 /* Estrutura Interna */
@@ -171,7 +182,7 @@
 
 /* Layout Horizontal em Telas Médias e Grandes */
 @media (min-width: 768px) {
-  .bcb-cta:not(.bcb-cta--stacked) {
+  .bcb-cta:not(.bcb-cta--stacked):not(.bcb-cta--centered) {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -179,7 +190,7 @@
     padding: var(--bcb-space-6, 2rem);
   }
 
-  .bcb-cta:not(.bcb-cta--stacked) .bcb-cta__action {
+  .bcb-cta:not(.bcb-cta--stacked):not(.bcb-cta--centered) .bcb-cta__action {
     align-items: flex-end;
     text-align: right;
   }

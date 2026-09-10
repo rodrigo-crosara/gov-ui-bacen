@@ -11,7 +11,7 @@
   line-height: 1.2;
   vertical-align: middle;
   background-color: var(--bcb-gray-200);
-  color: var(--bcb-color-primary, #2E4C59);
+  color: var(--bcb-color-primary, #025C75);
   border-radius: var(--bcb-radius-4, 4px);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -37,32 +37,48 @@
 .tag-bcb--primary,
 .badge-bcb.primary,
 .badge-bcb--primary {
-  background-color: var(--bcb-color-primary, #2E4C59);
-  color: var(--bcb-color-white);
+  background-color: var(--bcb-color-primary, #025C75);
+  color: #FFFFFF;
 }
 .tag-bcb.primary:hover,
 .tag-bcb--primary:hover,
 .badge-bcb.primary:hover,
 .badge-bcb--primary:hover {
-  background-color: var(--bcb-btn-primary-hover, #077391);
+  background-color: var(--bcb-btn-primary-hover, var(--bcb-brand-verde-castell, #088694));
 }
 
 .tag-bcb--success,
 .tag-bcb.success {
-  background-color: var(--bcb-color-verde-castell, #088694);
-  color: var(--bcb-color-white);
+  background-color: var(--bcb-color-rio-jordao, #00A478);
+  color: #FFFFFF;
 }
 
 .tag-bcb--warning,
 .tag-bcb.warning {
-  background-color: var(--bcb-brand-amarellato-biscoito, #DEBE7F);
-  color: var(--bcb-gray-900);
+  background-color: var(--bcb-brand-mandarino, #F4B757);
+  color: #14171A !important;
 }
 
 .tag-bcb--danger,
 .tag-bcb.danger {
   background-color: var(--bcb-brand-vinho-autentico, #47373A);
-  color: var(--bcb-color-white);
+  color: #FFFFFF;
+}
+
+.tag-bcb--secondary,
+.tag-bcb.secondary,
+.badge-bcb--secondary,
+.badge-bcb.secondary {
+  background-color: var(--bcb-brand-verde-castell, #088694);
+  color: #FFFFFF;
+}
+
+.tag-bcb--info,
+.tag-bcb.info,
+.badge-bcb--info,
+.badge-bcb.info {
+  background-color: var(--bcb-feedback-info, #025C75);
+  color: #FFFFFF;
 }
 
 .tag-bcb--pill,

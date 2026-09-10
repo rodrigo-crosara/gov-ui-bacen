@@ -24,25 +24,46 @@
   --bcb-gray-1000: #FFFFFF;
 
   --bcb-brand-azul-blue: #4DC8FF;
-  --bcb-brand-azulcinti: #4DE8F0;
-  --bcb-brand-azulpetro: #4DC8FF;
-  --bcb-brand-azulnetuno: #80D0FF;
-  --bcb-brand-verde-susta: #00FF88;
   --bcb-brand-verde-castell: #FFFF88;
-  --bcb-brand-cinza-80: #CCCCCC;
-  --bcb-brand-amarellato-biscoito: #FFFF88;
-  --bcb-brand-cafellato: #FFFFFF;
+  --bcb-brand-celestial: #4DE8F0;
+  --bcb-brand-rio-jordao: #00FF88;
+  --bcb-brand-marsala-intenso: #FF6699;
+  --bcb-brand-salmao-rosado: #FFAAAA;
+  --bcb-brand-mandarino: #FFFF88;
+  --bcb-brand-achocolatado: #FFCC99;
   --bcb-brand-vinho-autentico: #FFFFFF;
-  --bcb-brand-marsala-suave: #FF9999;
+  --bcb-brand-cinza-80: #CCCCCC;
+  --bcb-brand-concreto: #DDDDDD;
+
+  /* Tokens legados descontinuados (@deprecated -> oficial) */
+  --bcb-brand-azulcinti: var(--bcb-brand-verde-castell, #4DE8F0);
+  --bcb-brand-azulpetro: var(--bcb-brand-azul-blue, #4DC8FF);
+  --bcb-brand-azulnetuno: var(--bcb-brand-verde-castell, #4DE8F0);
+  --bcb-brand-verde-susta: var(--bcb-brand-rio-jordao, #00FF88);
+  --bcb-brand-amarellato-biscoito: var(--bcb-brand-mandarino, #FFFF88);
+  --bcb-brand-cafellato: var(--bcb-brand-achocolatado, #FFCC99);
+  --bcb-brand-marsala-suave: var(--bcb-brand-marsala-intenso, #FF6699);
 
   /* Aliases de compatibilidade */
   --bcb-brand-blue: #4DC8FF;
   --bcb-brand-blue-dark: #3AB8EE;
   --bcb-brand-vinho: #FFFFFF;
-  --bcb-brand-marsala: #FF9999;
+  --bcb-brand-marsala: #FF6699;
   --bcb-brand-amarellato: #FFFF88;
   --bcb-brand-gray80: #CCCCCC;
-  --bcb-color-azulcinti: #4DE8F0;
+  --bcb-brand-cinza80: #CCCCCC;
+  --bcb-color-azul-blue: #4DC8FF;
+  --bcb-color-verde-castell: #FFFF88;
+  --bcb-color-celestial: #4DE8F0;
+  --bcb-color-rio-jordao: #00FF88;
+  --bcb-color-marsala-intenso: #FF6699;
+  --bcb-color-salmao-rosado: #FFAAAA;
+  --bcb-color-mandarino: #FFFF88;
+  --bcb-color-achocolatado: #FFCC99;
+  --bcb-color-vinho-autentico: #FFFFFF;
+  --bcb-color-cinza-80: #CCCCCC;
+  --bcb-color-concreto: #DDDDDD;
+  --bcb-color-azulcinti: var(--bcb-brand-verde-castell, #4DE8F0);
   --bcb-color-verde-castell: #FFFF88;
 
   --bcb-btn-primary-bg: #4DC8FF;
@@ -68,6 +89,16 @@
   --bg-amarellato-light: #000000;
   --bg-vinho-light: #000000;
   --bg-gray-light: #000000;
+
+  /* Feedback Semântico no Alto Contraste (WCAG AAA) */
+  --bcb-feedback-success: #00FF88;
+  --bcb-feedback-success-bg: #000000;
+  --bcb-feedback-warning-surface: #FFFF00;
+  --bcb-feedback-warning-border: #FFFF00;
+  --bcb-feedback-warning: #FFFF00;
+  --bcb-feedback-danger: #FF5555;
+  --bcb-feedback-danger-bg: #000000;
+  --bcb-feedback-info: #4DC8FF;
 
   /* Tabelas Analíticas e Gráficos no Alto Contraste */
   --bcb-table-text: #FFFFFF;
@@ -116,17 +147,29 @@
     --bcb-gray-900: #FFFFFF;
     --bcb-gray-1000: #FFFFFF;
 
+    --bcb-brand-azul-blue: #4DC8FF;
+    --bcb-brand-verde-castell: #FFFF88;
+    --bcb-brand-celestial: #4DE8F0;
+    --bcb-brand-rio-jordao: #00FF88;
+    --bcb-brand-marsala-intenso: #FF6699;
+    --bcb-brand-salmao-rosado: #FFAAAA;
+    --bcb-brand-mandarino: #FFFF88;
+    --bcb-brand-achocolatado: #FFCC99;
+    --bcb-brand-vinho-autentico: #FFFFFF;
+    --bcb-brand-cinza-80: #CCCCCC;
+    --bcb-brand-concreto: #DDDDDD;
+
     --bcb-brand-blue: #4DC8FF;
     --bcb-brand-blue-dark: #3AB8EE;
-    --bcb-brand-azulcinti: #4DE8F0;
-    --bcb-brand-azulpetro: #4DC8FF;
-    --bcb-brand-azulnetuno: #80D0FF;
-    --bcb-brand-vinho: #FFFFFF;
-    --bcb-brand-marsala: #FF9999;
-    --bcb-brand-verde-susta: #00FF88;
-    --bcb-brand-verde-castell: #FFFF88;
-    --bcb-brand-cafellato: #FFFFFF;
+    --bcb-brand-azulcinti: var(--bcb-brand-verde-castell, #4DE8F0);
+    --bcb-brand-azulpetro: var(--bcb-brand-azul-blue, #4DC8FF);
+    --bcb-brand-azulnetuno: var(--bcb-brand-verde-castell, #4DE8F0);
+    --bcb-brand-verde-susta: var(--bcb-brand-rio-jordao, #00FF88);
+    --bcb-brand-cafellato: var(--bcb-brand-achocolatado, #FFCC99);
+    --bcb-brand-amarellato-biscoito: var(--bcb-brand-mandarino, #FFFF88);
+    --bcb-brand-marsala-suave: var(--bcb-brand-marsala-intenso, #FF6699);
     --bcb-brand-gray80: #CCCCCC;
+    --bcb-brand-cinza80: #CCCCCC;
 
     --bcb-btn-primary-bg: #4DC8FF;
     --bcb-btn-primary-hover: #70D6FF;
@@ -152,6 +195,16 @@
     --bg-vinho-light: #000000;
     --bg-gray-light: #000000;
 
+    /* Feedback Semântico no Alto Contraste (WCAG AAA) */
+    --bcb-feedback-success: #00FF88;
+    --bcb-feedback-success-bg: #000000;
+    --bcb-feedback-warning-surface: #FFFF00;
+    --bcb-feedback-warning-border: #FFFF00;
+    --bcb-feedback-warning: #FFFF00;
+    --bcb-feedback-danger: #FF5555;
+    --bcb-feedback-danger-bg: #000000;
+    --bcb-feedback-info: #4DC8FF;
+
     --bcb-radius-0: 0;
     --bcb-radius-4: 0;
     --bcb-radius-8: 0;
@@ -170,7 +223,6 @@
 :root[data-contrast="high"] .card,
 :root[data-contrast="high"] .bcb-citacao,
 :root[data-contrast="high"] .bcb-olho,
-:root[data-contrast="high"] .callout,
 :root[data-contrast="high"] .bcb-indicator-card,
 :root[data-contrast="high"] .bcb-norm-metadata,
 :root[data-contrast="high"] .bcb-table-comparison-wrapper,
@@ -358,7 +410,6 @@
   :root:not([data-contrast="normal"]) .card,
   :root:not([data-contrast="normal"]) .bcb-citacao,
   :root:not([data-contrast="normal"]) .bcb-olho,
-  :root:not([data-contrast="normal"]) .callout,
   :root:not([data-contrast="normal"]) .bcb-indicator-card,
   :root:not([data-contrast="normal"]) .bcb-norm-metadata,
   :root:not([data-contrast="normal"]) .bcb-table-comparison-wrapper,
@@ -543,27 +594,90 @@
    NOVOS COMPONENTES HOMOLOGADOS EM ALTO CONTRASTE (v2.6.0)
    ========================================================================== */
 
-/* 1. CTA Centralizado (.bcb-cta--centered) */
+/* 1. Call to Action (CTA) (.bcb-cta) */
+:root[data-contrast="high"] .bcb-cta,
+:root[data-contrast="high"] .bcb-cta--primary,
+:root[data-contrast="high"] .bcb-cta--neutral,
 :root[data-contrast="high"] .bcb-cta--centered,
+:root[data-theme="high-contrast"] .bcb-cta,
+:root[data-theme="high-contrast"] .bcb-cta--primary,
+:root[data-theme="high-contrast"] .bcb-cta--neutral,
 :root[data-theme="high-contrast"] .bcb-cta--centered,
+[data-theme="high-contrast"] .bcb-cta,
+[data-theme="high-contrast"] .bcb-cta--primary,
+[data-theme="high-contrast"] .bcb-cta--neutral,
 [data-theme="high-contrast"] .bcb-cta--centered,
+[data-contrast="high"] .bcb-cta,
+[data-contrast="high"] .bcb-cta--primary,
+[data-contrast="high"] .bcb-cta--neutral,
 [data-contrast="high"] .bcb-cta--centered {
   background: #000000 !important;
   border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
 }
 
-:root[data-contrast="high"] .bcb-cta--centered .bcb-cta__title,
-:root[data-theme="high-contrast"] .bcb-cta--centered .bcb-cta__title,
-[data-theme="high-contrast"] .bcb-cta--centered .bcb-cta__title,
-[data-contrast="high"] .bcb-cta--centered .bcb-cta__title {
+:root[data-contrast="high"] .bcb-cta .bcb-cta__title,
+:root[data-theme="high-contrast"] .bcb-cta .bcb-cta__title,
+[data-theme="high-contrast"] .bcb-cta .bcb-cta__title,
+[data-contrast="high"] .bcb-cta .bcb-cta__title {
   color: #FFFF00 !important;
 }
 
-:root[data-contrast="high"] .bcb-cta--centered .bcb-cta__description,
-:root[data-theme="high-contrast"] .bcb-cta--centered .bcb-cta__description,
-[data-theme="high-contrast"] .bcb-cta--centered .bcb-cta__description,
-[data-contrast="high"] .bcb-cta--centered .bcb-cta__description {
+:root[data-contrast="high"] .bcb-cta .bcb-cta__description,
+:root[data-theme="high-contrast"] .bcb-cta .bcb-cta__description,
+[data-theme="high-contrast"] .bcb-cta .bcb-cta__description,
+[data-contrast="high"] .bcb-cta .bcb-cta__description {
   color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-cta .bcb-cta__meta,
+:root[data-theme="high-contrast"] .bcb-cta .bcb-cta__meta,
+[data-theme="high-contrast"] .bcb-cta .bcb-cta__meta,
+[data-contrast="high"] .bcb-cta .bcb-cta__meta {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-cta .bcb-cta__tag,
+:root[data-theme="high-contrast"] .bcb-cta .bcb-cta__tag,
+[data-theme="high-contrast"] .bcb-cta .bcb-cta__tag,
+[data-contrast="high"] .bcb-cta .bcb-cta__tag {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+  border: 1px solid #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-cta .bcb-btn-cta,
+:root[data-contrast="high"] .bcb-cta .bcb-cta__btn,
+:root[data-contrast="high"] .bcb-cta .btn,
+:root[data-theme="high-contrast"] .bcb-cta .bcb-btn-cta,
+:root[data-theme="high-contrast"] .bcb-cta .bcb-cta__btn,
+:root[data-theme="high-contrast"] .bcb-cta .btn,
+[data-theme="high-contrast"] .bcb-cta .bcb-btn-cta,
+[data-theme="high-contrast"] .bcb-cta .bcb-cta__btn,
+[data-theme="high-contrast"] .bcb-cta .btn,
+[data-contrast="high"] .bcb-cta .bcb-btn-cta,
+[data-contrast="high"] .bcb-cta .bcb-cta__btn,
+[data-contrast="high"] .bcb-cta .btn {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-cta .bcb-btn-cta:hover,
+:root[data-contrast="high"] .bcb-cta .bcb-cta__btn:hover,
+:root[data-contrast="high"] .bcb-cta .btn:hover,
+:root[data-theme="high-contrast"] .bcb-cta .bcb-btn-cta:hover,
+:root[data-theme="high-contrast"] .bcb-cta .bcb-cta__btn:hover,
+:root[data-theme="high-contrast"] .bcb-cta .btn:hover,
+[data-theme="high-contrast"] .bcb-cta .bcb-btn-cta:hover,
+[data-theme="high-contrast"] .bcb-cta .bcb-cta__btn:hover,
+[data-theme="high-contrast"] .bcb-cta .btn:hover,
+[data-contrast="high"] .bcb-cta .bcb-btn-cta:hover,
+[data-contrast="high"] .bcb-cta .bcb-cta__btn:hover,
+[data-contrast="high"] .bcb-cta .btn:hover {
+  background-color: #FFFF00 !important;
+  color: #000000 !important;
+  border-color: #FFFF00 !important;
 }
 
 /* 2. Hero Banner Split (.bcb-hero-banner--split) */
@@ -580,16 +694,24 @@
   color: #FFFFFF !important;
 }
 
+:root[data-contrast="high"] .bcb-hero-title,
 :root[data-contrast="high"] .bcb-hero-banner__title,
+:root[data-theme="high-contrast"] .bcb-hero-title,
 :root[data-theme="high-contrast"] .bcb-hero-banner__title,
+[data-theme="high-contrast"] .bcb-hero-title,
 [data-theme="high-contrast"] .bcb-hero-banner__title,
+[data-contrast="high"] .bcb-hero-title,
 [data-contrast="high"] .bcb-hero-banner__title {
   color: #FFFF00 !important;
 }
 
+:root[data-contrast="high"] .bcb-hero-text,
 :root[data-contrast="high"] .bcb-hero-banner__description,
+:root[data-theme="high-contrast"] .bcb-hero-text,
 :root[data-theme="high-contrast"] .bcb-hero-banner__description,
+[data-theme="high-contrast"] .bcb-hero-text,
 [data-theme="high-contrast"] .bcb-hero-banner__description,
+[data-contrast="high"] .bcb-hero-text,
 [data-contrast="high"] .bcb-hero-banner__description {
   color: #FFFFFF !important;
 }
@@ -716,9 +838,17 @@
 }
 
 :root[data-contrast="high"] .bcb-decision-node__title,
+:root[data-contrast="high"] .bcb-decision-node h3,
+:root[data-contrast="high"] .bcb-decision-node h4,
 :root[data-theme="high-contrast"] .bcb-decision-node__title,
+:root[data-theme="high-contrast"] .bcb-decision-node h3,
+:root[data-theme="high-contrast"] .bcb-decision-node h4,
 [data-theme="high-contrast"] .bcb-decision-node__title,
-[data-contrast="high"] .bcb-decision-node__title {
+[data-theme="high-contrast"] .bcb-decision-node h3,
+[data-theme="high-contrast"] .bcb-decision-node h4,
+[data-contrast="high"] .bcb-decision-node__title,
+[data-contrast="high"] .bcb-decision-node h3,
+[data-contrast="high"] .bcb-decision-node h4 {
   color: #FFFF00 !important;
 }
 
@@ -792,10 +922,22 @@
   color: #FFFFFF !important;
 }
 
+:root[data-contrast="high"] .bcb-news-card__title,
 :root[data-contrast="high"] .bcb-news-card__title a,
+:root[data-contrast="high"] .bcb-news-card h3,
+:root[data-contrast="high"] .bcb-news-card h4,
+:root[data-theme="high-contrast"] .bcb-news-card__title,
 :root[data-theme="high-contrast"] .bcb-news-card__title a,
+:root[data-theme="high-contrast"] .bcb-news-card h3,
+:root[data-theme="high-contrast"] .bcb-news-card h4,
+[data-theme="high-contrast"] .bcb-news-card__title,
 [data-theme="high-contrast"] .bcb-news-card__title a,
-[data-contrast="high"] .bcb-news-card__title a {
+[data-theme="high-contrast"] .bcb-news-card h3,
+[data-theme="high-contrast"] .bcb-news-card h4,
+[data-contrast="high"] .bcb-news-card__title,
+[data-contrast="high"] .bcb-news-card__title a,
+[data-contrast="high"] .bcb-news-card h3,
+[data-contrast="high"] .bcb-news-card h4 {
   color: #FFFF00 !important;
   text-decoration: underline !important;
 }
@@ -830,4 +972,1031 @@
   background-color: #000000 !important;
 }
 
+/* Service Card no Alto Contraste (WCAG AAA / e-MAG 3.1) */
+:root[data-contrast="high"] .bcb-service-card,
+:root[data-theme="high-contrast"] .bcb-service-card,
+[data-theme="high-contrast"] .bcb-service-card,
+[data-contrast="high"] .bcb-service-card {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-service-card:hover,
+:root[data-theme="high-contrast"] .bcb-service-card:hover,
+[data-theme="high-contrast"] .bcb-service-card:hover,
+[data-contrast="high"] .bcb-service-card:hover {
+  border-color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-service-card:focus-visible,
+:root[data-theme="high-contrast"] .bcb-service-card:focus-visible,
+[data-theme="high-contrast"] .bcb-service-card:focus-visible,
+[data-contrast="high"] .bcb-service-card:focus-visible {
+  outline: 3px solid #FFFF00 !important;
+  outline-offset: 2px !important;
+}
+
+:root[data-contrast="high"] .bcb-service-card__title,
+:root[data-theme="high-contrast"] .bcb-service-card__title,
+[data-theme="high-contrast"] .bcb-service-card__title,
+[data-contrast="high"] .bcb-service-card__title {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-service-card__description,
+:root[data-theme="high-contrast"] .bcb-service-card__description,
+[data-theme="high-contrast"] .bcb-service-card__description,
+[data-contrast="high"] .bcb-service-card__description {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-service-card__icon,
+:root[data-theme="high-contrast"] .bcb-service-card__icon,
+[data-theme="high-contrast"] .bcb-service-card__icon,
+[data-contrast="high"] .bcb-service-card__icon {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+:root[data-contrast="high"] .bcb-service-card__arrow,
+:root[data-theme="high-contrast"] .bcb-service-card__arrow,
+[data-theme="high-contrast"] .bcb-service-card__arrow,
+[data-contrast="high"] .bcb-service-card__arrow {
+  color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-service-card--featured,
+:root[data-theme="high-contrast"] .bcb-service-card--featured,
+[data-theme="high-contrast"] .bcb-service-card--featured,
+[data-contrast="high"] .bcb-service-card--featured {
+  border-top: 3px solid #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-service-card__badge,
+:root[data-theme="high-contrast"] .bcb-service-card__badge,
+[data-theme="high-contrast"] .bcb-service-card__badge,
+[data-contrast="high"] .bcb-service-card__badge {
+  background-color: #FFFF00 !important;
+  color: #000000 !important;
+}
+
+/* Timelines no Alto Contraste */
+:root[data-contrast="high"] .bcb-timeline--vertical::before,
+:root[data-contrast="high"] .timeline-container::before,
+:root[data-theme="high-contrast"] .bcb-timeline--vertical::before,
+:root[data-theme="high-contrast"] .timeline-container::before,
+[data-theme="high-contrast"] .bcb-timeline--vertical::before,
+[data-contrast="high"] .bcb-timeline--vertical::before {
+  background: #FFFF00 !important;
+  width: 4px !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__item,
+:root[data-contrast="high"] .step-card,
+:root[data-theme="high-contrast"] .bcb-timeline__item,
+:root[data-theme="high-contrast"] .step-card,
+[data-theme="high-contrast"] .bcb-timeline__item,
+[data-contrast="high"] .bcb-timeline__item {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  border-left: 5px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__item.is-completed,
+:root[data-contrast="high"] .step-card.is-completed,
+:root[data-theme="high-contrast"] .bcb-timeline__item.is-completed,
+:root[data-theme="high-contrast"] .step-card.is-completed,
+[data-theme="high-contrast"] .bcb-timeline__item.is-completed,
+[data-contrast="high"] .bcb-timeline__item.is-completed {
+  border-left: 5px solid #00FFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__item.is-active,
+:root[data-contrast="high"] .step-card.is-active,
+:root[data-theme="high-contrast"] .bcb-timeline__item.is-active,
+:root[data-theme="high-contrast"] .step-card.is-active,
+[data-theme="high-contrast"] .bcb-timeline__item.is-active,
+[data-contrast="high"] .bcb-timeline__item.is-active {
+  border-left: 5px solid #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__node,
+:root[data-contrast="high"] .step-node,
+:root[data-theme="high-contrast"] .bcb-timeline__node,
+:root[data-theme="high-contrast"] .step-node,
+[data-theme="high-contrast"] .bcb-timeline__node,
+[data-contrast="high"] .bcb-timeline__node {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 0 4px #000000 !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__item.is-completed .bcb-timeline__node,
+:root[data-contrast="high"] .step-card.is-completed .step-node,
+[data-contrast="high"] .bcb-timeline__item.is-completed .bcb-timeline__node {
+  border-color: #00FFFF !important;
+  color: #00FFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__item.is-active .bcb-timeline__node,
+:root[data-contrast="high"] .step-card.is-active .step-node,
+[data-contrast="high"] .bcb-timeline__item.is-active .bcb-timeline__node {
+  border-color: #FFFF00 !important;
+  color: #FFFF00 !important;
+  box-shadow: 0 0 0 4px #000000, 0 0 0 7px #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__header,
+:root[data-contrast="high"] .step-header,
+[data-contrast="high"] .bcb-timeline__header,
+[data-contrast="high"] .step-header {
+  background-color: #000000 !important;
+  border-bottom: 2px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__title,
+:root[data-contrast="high"] .step-title,
+[data-contrast="high"] .bcb-timeline__title,
+[data-contrast="high"] .step-title {
+  color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline__body,
+:root[data-contrast="high"] .step-content,
+[data-contrast="high"] .bcb-timeline__body,
+[data-contrast="high"] .step-content {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline--horizontal::before,
+:root[data-contrast="high"] .timeline-horizontal::before,
+[data-contrast="high"] .bcb-timeline--horizontal::before,
+[data-contrast="high"] .timeline-horizontal::before {
+  background-color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline-horizontal__node,
+:root[data-contrast="high"] .timeline-h-circle,
+[data-contrast="high"] .bcb-timeline-horizontal__node,
+[data-contrast="high"] .timeline-h-circle {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline-horizontal__item.is-completed .bcb-timeline-horizontal__node,
+:root[data-contrast="high"] .timeline-h-step.is-completed .timeline-h-circle,
+[data-contrast="high"] .bcb-timeline-horizontal__item.is-completed .bcb-timeline-horizontal__node {
+  border-color: #00FFFF !important;
+  color: #00FFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline-horizontal__item.is-active .bcb-timeline-horizontal__node,
+:root[data-contrast="high"] .timeline-h-step.is-active .timeline-h-circle,
+:root[data-contrast="high"] .timeline-h-step.active .timeline-h-circle,
+[data-contrast="high"] .bcb-timeline-horizontal__item.is-active .bcb-timeline-horizontal__node {
+  border-color: #FFFF00 !important;
+  color: #FFFF00 !important;
+  box-shadow: 0 0 0 4px #000000, 0 0 0 7px #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline-horizontal__title,
+:root[data-contrast="high"] .timeline-h-title,
+[data-contrast="high"] .bcb-timeline-horizontal__title,
+[data-contrast="high"] .timeline-h-title {
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline-horizontal__date,
+:root[data-contrast="high"] .timeline-h-date,
+[data-contrast="high"] .bcb-timeline-horizontal__date,
+[data-contrast="high"] .timeline-h-date {
+  color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .bcb-timeline-horizontal__desc,
+:root[data-contrast="high"] .timeline-h-text,
+[data-contrast="high"] .bcb-timeline-horizontal__desc,
+[data-contrast="high"] .timeline-h-text {
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   7. TAGS E BADGES EM ALTO CONTRASTE (WCAG AAA)
+   ========================================================================== */
+
+/* 7.1 Tags Neutras e Base */
+:root[data-contrast="high"] .tag-bcb,
+:root[data-contrast="high"] .badge-bcb,
+:root[data-theme="high-contrast"] .tag-bcb,
+:root[data-theme="high-contrast"] .badge-bcb,
+[data-theme="high-contrast"] .tag-bcb,
+[data-theme="high-contrast"] .badge-bcb,
+[data-contrast="high"] .tag-bcb,
+[data-contrast="high"] .badge-bcb {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+/* 7.2 Tag Primária */
+:root[data-contrast="high"] .tag-bcb.primary,
+:root[data-contrast="high"] .tag-bcb--primary,
+:root[data-contrast="high"] .badge-bcb.primary,
+:root[data-contrast="high"] .badge-bcb--primary,
+:root[data-theme="high-contrast"] .tag-bcb.primary,
+:root[data-theme="high-contrast"] .tag-bcb--primary,
+:root[data-theme="high-contrast"] .badge-bcb.primary,
+:root[data-theme="high-contrast"] .badge-bcb--primary,
+[data-theme="high-contrast"] .tag-bcb.primary,
+[data-theme="high-contrast"] .tag-bcb--primary,
+[data-theme="high-contrast"] .badge-bcb.primary,
+[data-theme="high-contrast"] .badge-bcb--primary,
+[data-contrast="high"] .tag-bcb.primary,
+[data-contrast="high"] .tag-bcb--primary,
+[data-contrast="high"] .badge-bcb.primary,
+[data-contrast="high"] .badge-bcb--primary {
+  background-color: #000000 !important;
+  border: 2px solid #4DC8FF !important;
+  color: #4DC8FF !important;
+}
+
+/* 7.3 Tag Sucesso (Concluído) */
+:root[data-contrast="high"] .tag-bcb--success,
+:root[data-contrast="high"] .tag-bcb.success,
+:root[data-theme="high-contrast"] .tag-bcb--success,
+:root[data-theme="high-contrast"] .tag-bcb.success,
+[data-theme="high-contrast"] .tag-bcb--success,
+[data-theme="high-contrast"] .tag-bcb.success,
+[data-contrast="high"] .tag-bcb--success,
+[data-contrast="high"] .tag-bcb.success {
+  background-color: #000000 !important;
+  border: 2px solid #00FF88 !important;
+  color: #00FF88 !important;
+}
+
+/* 7.4 Tag Aviso / Atenção (Em Análise) */
+:root[data-contrast="high"] .tag-bcb--warning,
+:root[data-contrast="high"] .tag-bcb.warning,
+:root[data-theme="high-contrast"] .tag-bcb--warning,
+:root[data-theme="high-contrast"] .tag-bcb.warning,
+[data-theme="high-contrast"] .tag-bcb--warning,
+[data-theme="high-contrast"] .tag-bcb.warning,
+[data-contrast="high"] .tag-bcb--warning,
+[data-contrast="high"] .tag-bcb.warning {
+  background-color: #000000 !important;
+  border: 2px solid #FFFF00 !important;
+  color: #FFFF00 !important;
+}
+
+/* 7.5 Tag Perigo / Erro (Rejeitado) — Elimina o bloco branco sólido! */
+:root[data-contrast="high"] .tag-bcb--danger,
+:root[data-contrast="high"] .tag-bcb.danger,
+:root[data-theme="high-contrast"] .tag-bcb--danger,
+:root[data-theme="high-contrast"] .tag-bcb.danger,
+[data-theme="high-contrast"] .tag-bcb--danger,
+[data-theme="high-contrast"] .tag-bcb.danger,
+[data-contrast="high"] .tag-bcb--danger,
+[data-contrast="high"] .tag-bcb.danger {
+  background-color: #000000 !important;
+  border: 2px solid #FF5555 !important;
+  color: #FF5555 !important;
+}
+
+/* 7.6 Tag Secundária e Informativa */
+:root[data-contrast="high"] .tag-bcb--secondary,
+:root[data-contrast="high"] .tag-bcb.secondary,
+:root[data-theme="high-contrast"] .tag-bcb--secondary,
+:root[data-theme="high-contrast"] .tag-bcb.secondary,
+[data-theme="high-contrast"] .tag-bcb--secondary,
+[data-theme="high-contrast"] .tag-bcb.secondary,
+[data-contrast="high"] .tag-bcb--secondary,
+[data-contrast="high"] .tag-bcb.secondary {
+  background-color: #000000 !important;
+  border: 2px solid #4DE8F0 !important;
+  color: #4DE8F0 !important;
+}
+
+:root[data-contrast="high"] .tag-bcb--info,
+:root[data-contrast="high"] .tag-bcb.info,
+:root[data-theme="high-contrast"] .tag-bcb--info,
+:root[data-theme="high-contrast"] .tag-bcb.info,
+[data-theme="high-contrast"] .tag-bcb--info,
+[data-theme="high-contrast"] .tag-bcb.info,
+[data-contrast="high"] .tag-bcb--info,
+[data-contrast="high"] .tag-bcb.info {
+  background-color: #000000 !important;
+  border: 2px solid #4DC8FF !important;
+  color: #4DC8FF !important;
+}
+
+/* 7.7 Tag Desabilitada */
+:root[data-contrast="high"] .tag-bcb.disabled,
+:root[data-contrast="high"] .tag-bcb:disabled,
+:root[data-contrast="high"] .tag-bcb[aria-disabled="true"],
+:root[data-theme="high-contrast"] .tag-bcb.disabled,
+:root[data-theme="high-contrast"] .tag-bcb:disabled,
+:root[data-theme="high-contrast"] .tag-bcb[aria-disabled="true"],
+[data-theme="high-contrast"] .tag-bcb.disabled,
+[data-theme="high-contrast"] .tag-bcb:disabled,
+[data-theme="high-contrast"] .tag-bcb[aria-disabled="true"],
+[data-contrast="high"] .tag-bcb.disabled,
+[data-contrast="high"] .tag-bcb:disabled,
+[data-contrast="high"] .tag-bcb[aria-disabled="true"] {
+  background-color: #000000 !important;
+  border: 2px dashed #888888 !important;
+  color: #888888 !important;
+  opacity: 0.8 !important;
+}
+
+/* 7.8 Badges de Variação de Mercado (.bcb-trend-badge) */
+:root[data-contrast="high"] .bcb-trend-badge.positive,
+:root[data-theme="high-contrast"] .bcb-trend-badge.positive,
+[data-theme="high-contrast"] .bcb-trend-badge.positive,
+[data-contrast="high"] .bcb-trend-badge.positive {
+  background-color: #000000 !important;
+  border: 2px solid #00FF88 !important;
+  color: #00FF88 !important;
+}
+
+:root[data-contrast="high"] .bcb-trend-badge.negative,
+:root[data-theme="high-contrast"] .bcb-trend-badge.negative,
+[data-theme="high-contrast"] .bcb-trend-badge.negative,
+[data-contrast="high"] .bcb-trend-badge.negative {
+  background-color: #000000 !important;
+  border: 2px solid #FF5555 !important;
+  color: #FF5555 !important;
+}
+
+:root[data-contrast="high"] .bcb-trend-badge.neutral,
+:root[data-theme="high-contrast"] .bcb-trend-badge.neutral,
+[data-theme="high-contrast"] .bcb-trend-badge.neutral,
+[data-contrast="high"] .bcb-trend-badge.neutral {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+/* 7.9 Badges Semânticas (Ativo, Pendente, Revogado) */
+:root[data-contrast="high"] .badge.badge-success,
+:root[data-contrast="high"] .badge-success,
+:root[data-theme="high-contrast"] .badge.badge-success,
+:root[data-theme="high-contrast"] .badge-success,
+[data-theme="high-contrast"] .badge.badge-success,
+[data-theme="high-contrast"] .badge-success,
+[data-contrast="high"] .badge.badge-success,
+[data-contrast="high"] .badge-success {
+  background-color: #000000 !important;
+  border: 2px solid #00FF88 !important;
+  color: #00FF88 !important;
+}
+
+:root[data-contrast="high"] .badge.badge-warning,
+:root[data-contrast="high"] .badge-warning,
+:root[data-theme="high-contrast"] .badge.badge-warning,
+:root[data-theme="high-contrast"] .badge-warning,
+[data-theme="high-contrast"] .badge.badge-warning,
+[data-theme="high-contrast"] .badge-warning,
+[data-contrast="high"] .badge.badge-warning,
+[data-contrast="high"] .badge-warning {
+  background-color: #000000 !important;
+  border: 2px solid #FFFF00 !important;
+  color: #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .badge.badge-danger,
+:root[data-contrast="high"] .badge-danger,
+:root[data-theme="high-contrast"] .badge.badge-danger,
+:root[data-theme="high-contrast"] .badge-danger,
+[data-theme="high-contrast"] .badge.badge-danger,
+[data-theme="high-contrast"] .badge-danger,
+[data-contrast="high"] .badge.badge-danger,
+[data-contrast="high"] .badge-danger {
+  background-color: #000000 !important;
+  border: 2px solid #FF5555 !important;
+  color: #FF5555 !important;
+}
+
+/* ==========================================================================
+   8. BOTÕES E VARIANTES EM ALTO CONTRASTE (WCAG AAA)
+   ========================================================================== */
+
+/* 8.1 Botão Primário (Fundo Ciano com Texto e Ícones Pretos — 11.8:1) */
+:root[data-contrast="high"] .bcb-btn--primary,
+:root[data-contrast="high"] .btn-primary,
+:root[data-theme="high-contrast"] .bcb-btn--primary,
+:root[data-theme="high-contrast"] .btn-primary,
+[data-theme="high-contrast"] .bcb-btn--primary,
+[data-theme="high-contrast"] .btn-primary,
+[data-contrast="high"] .bcb-btn--primary,
+[data-contrast="high"] .btn-primary {
+  background-color: #4DC8FF !important;
+  border: 2px solid #4DC8FF !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--primary .material-symbols-outlined,
+:root[data-contrast="high"] .bcb-btn--primary .material-icons,
+:root[data-contrast="high"] .btn-primary .material-symbols-outlined,
+:root[data-contrast="high"] .btn-primary .material-icons,
+:root[data-theme="high-contrast"] .bcb-btn--primary .material-symbols-outlined,
+:root[data-theme="high-contrast"] .bcb-btn--primary .material-icons,
+:root[data-theme="high-contrast"] .btn-primary .material-symbols-outlined,
+:root[data-theme="high-contrast"] .btn-primary .material-icons,
+[data-theme="high-contrast"] .bcb-btn--primary .material-symbols-outlined,
+[data-theme="high-contrast"] .bcb-btn--primary .material-icons,
+[data-theme="high-contrast"] .btn-primary .material-symbols-outlined,
+[data-theme="high-contrast"] .btn-primary .material-icons,
+[data-contrast="high"] .bcb-btn--primary .material-symbols-outlined,
+[data-contrast="high"] .bcb-btn--primary .material-icons,
+[data-contrast="high"] .btn-primary .material-symbols-outlined,
+[data-contrast="high"] .btn-primary .material-icons {
+  color: #000000 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--primary:hover,
+:root[data-contrast="high"] .btn-primary:hover,
+:root[data-theme="high-contrast"] .bcb-btn--primary:hover,
+:root[data-theme="high-contrast"] .btn-primary:hover,
+[data-theme="high-contrast"] .bcb-btn--primary:hover,
+[data-theme="high-contrast"] .btn-primary:hover,
+[data-contrast="high"] .bcb-btn--primary:hover,
+[data-contrast="high"] .btn-primary:hover {
+  background-color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--primary:active,
+:root[data-contrast="high"] .btn-primary:active,
+:root[data-theme="high-contrast"] .bcb-btn--primary:active,
+:root[data-theme="high-contrast"] .btn-primary:active,
+[data-theme="high-contrast"] .bcb-btn--primary:active,
+[data-theme="high-contrast"] .btn-primary:active,
+[data-contrast="high"] .bcb-btn--primary:active,
+[data-contrast="high"] .btn-primary:active {
+  background-color: #70D6FF !important;
+  border-color: #70D6FF !important;
+  color: #000000 !important;
+}
+
+/* 8.2 Botão Secundário (Preto Puro com Borda e Texto Branco — WCAG AAA) */
+:root[data-contrast="high"] .bcb-btn--secondary,
+:root[data-contrast="high"] .btn-secondary,
+:root[data-theme="high-contrast"] .bcb-btn--secondary,
+:root[data-theme="high-contrast"] .btn-secondary,
+[data-theme="high-contrast"] .bcb-btn--secondary,
+[data-theme="high-contrast"] .btn-secondary,
+[data-contrast="high"] .bcb-btn--secondary,
+[data-contrast="high"] .btn-secondary {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--secondary:hover,
+:root[data-contrast="high"] .btn-secondary:hover,
+:root[data-theme="high-contrast"] .bcb-btn--secondary:hover,
+:root[data-theme="high-contrast"] .btn-secondary:hover,
+[data-theme="high-contrast"] .bcb-btn--secondary:hover,
+[data-theme="high-contrast"] .btn-secondary:hover,
+[data-contrast="high"] .bcb-btn--secondary:hover,
+[data-contrast="high"] .btn-secondary:hover {
+  background-color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--secondary:active,
+:root[data-contrast="high"] .btn-secondary:active,
+:root[data-theme="high-contrast"] .bcb-btn--secondary:active,
+:root[data-theme="high-contrast"] .btn-secondary:active,
+[data-theme="high-contrast"] .bcb-btn--secondary:active,
+[data-theme="high-contrast"] .btn-secondary:active,
+[data-contrast="high"] .bcb-btn--secondary:active,
+[data-contrast="high"] .btn-secondary:active {
+  background-color: #DDDDDD !important;
+  border-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+/* 8.3 Botão Terciário / Outline (Preto Puro com Borda e Texto Ciano) */
+:root[data-contrast="high"] .bcb-btn--tertiary,
+:root[data-contrast="high"] .btn-tertiary,
+:root[data-contrast="high"] .bcb-btn--outline,
+:root[data-contrast="high"] .btn-outline,
+:root[data-contrast="high"] .btn-outline-primary,
+:root[data-contrast="high"] .btn-outline-secondary,
+:root[data-theme="high-contrast"] .bcb-btn--tertiary,
+:root[data-theme="high-contrast"] .btn-tertiary,
+:root[data-theme="high-contrast"] .bcb-btn--outline,
+:root[data-theme="high-contrast"] .btn-outline,
+:root[data-theme="high-contrast"] .btn-outline-primary,
+:root[data-theme="high-contrast"] .btn-outline-secondary,
+[data-theme="high-contrast"] .bcb-btn--tertiary,
+[data-theme="high-contrast"] .btn-tertiary,
+[data-theme="high-contrast"] .bcb-btn--outline,
+[data-theme="high-contrast"] .btn-outline,
+[data-theme="high-contrast"] .btn-outline-primary,
+[data-theme="high-contrast"] .btn-outline-secondary,
+[data-contrast="high"] .bcb-btn--tertiary,
+[data-contrast="high"] .btn-tertiary,
+[data-contrast="high"] .bcb-btn--outline,
+[data-contrast="high"] .btn-outline,
+[data-contrast="high"] .btn-outline-primary,
+[data-contrast="high"] .btn-outline-secondary {
+  background-color: #000000 !important;
+  border: 2px solid #4DC8FF !important;
+  color: #4DC8FF !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--tertiary:hover,
+:root[data-contrast="high"] .btn-tertiary:hover,
+:root[data-contrast="high"] .bcb-btn--outline:hover,
+:root[data-contrast="high"] .btn-outline:hover,
+:root[data-contrast="high"] .btn-outline-primary:hover,
+:root[data-contrast="high"] .btn-outline-secondary:hover,
+:root[data-theme="high-contrast"] .bcb-btn--tertiary:hover,
+:root[data-theme="high-contrast"] .btn-tertiary:hover,
+:root[data-theme="high-contrast"] .bcb-btn--outline:hover,
+:root[data-theme="high-contrast"] .btn-outline:hover,
+:root[data-theme="high-contrast"] .btn-outline-primary:hover,
+:root[data-theme="high-contrast"] .btn-outline-secondary:hover,
+[data-theme="high-contrast"] .bcb-btn--tertiary:hover,
+[data-theme="high-contrast"] .btn-tertiary:hover,
+[data-theme="high-contrast"] .bcb-btn--outline:hover,
+[data-theme="high-contrast"] .btn-outline:hover,
+[data-theme="high-contrast"] .btn-outline-primary:hover,
+[data-theme="high-contrast"] .btn-outline-secondary:hover,
+[data-contrast="high"] .bcb-btn--tertiary:hover,
+[data-contrast="high"] .btn-tertiary:hover,
+[data-contrast="high"] .bcb-btn--outline:hover,
+[data-contrast="high"] .btn-outline:hover,
+[data-contrast="high"] .btn-outline-primary:hover,
+[data-contrast="high"] .btn-outline-secondary:hover {
+  background-color: #4DC8FF !important;
+  border-color: #4DC8FF !important;
+  color: #000000 !important;
+}
+
+/* 8.4 Botão Perigo / Erro / Ação Crítica (Elimina Bloco Branco Sólido) */
+:root[data-contrast="high"] .bcb-btn--danger,
+:root[data-contrast="high"] .btn-danger,
+:root[data-theme="high-contrast"] .bcb-btn--danger,
+:root[data-theme="high-contrast"] .btn-danger,
+[data-theme="high-contrast"] .bcb-btn--danger,
+[data-theme="high-contrast"] .btn-danger,
+[data-contrast="high"] .bcb-btn--danger,
+[data-contrast="high"] .btn-danger {
+  background-color: #000000 !important;
+  border: 2px solid #FF5555 !important;
+  color: #FF5555 !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--danger:hover,
+:root[data-contrast="high"] .btn-danger:hover,
+:root[data-theme="high-contrast"] .bcb-btn--danger:hover,
+:root[data-theme="high-contrast"] .btn-danger:hover,
+[data-theme="high-contrast"] .bcb-btn--danger:hover,
+[data-theme="high-contrast"] .btn-danger:hover,
+[data-contrast="high"] .bcb-btn--danger:hover,
+[data-contrast="high"] .btn-danger:hover {
+  background-color: #FF5555 !important;
+  border-color: #FF5555 !important;
+  color: #000000 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--danger:active,
+:root[data-contrast="high"] .btn-danger:active,
+:root[data-theme="high-contrast"] .bcb-btn--danger:active,
+:root[data-theme="high-contrast"] .btn-danger:active,
+[data-theme="high-contrast"] .bcb-btn--danger:active,
+[data-theme="high-contrast"] .btn-danger:active,
+[data-contrast="high"] .bcb-btn--danger:active,
+[data-contrast="high"] .btn-danger:active {
+  background-color: #FFAAAA !important;
+  border-color: #FFAAAA !important;
+  color: #000000 !important;
+}
+
+/* 8.5 Botão Sucesso */
+:root[data-contrast="high"] .bcb-btn--success,
+:root[data-contrast="high"] .btn-success,
+:root[data-theme="high-contrast"] .bcb-btn--success,
+:root[data-theme="high-contrast"] .btn-success,
+[data-theme="high-contrast"] .bcb-btn--success,
+[data-theme="high-contrast"] .btn-success,
+[data-contrast="high"] .bcb-btn--success,
+[data-contrast="high"] .btn-success {
+  background-color: #000000 !important;
+  border: 2px solid #00FF88 !important;
+  color: #00FF88 !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--success:hover,
+:root[data-contrast="high"] .btn-success:hover,
+:root[data-theme="high-contrast"] .bcb-btn--success:hover,
+:root[data-theme="high-contrast"] .btn-success:hover,
+[data-theme="high-contrast"] .bcb-btn--success:hover,
+[data-theme="high-contrast"] .btn-success:hover,
+[data-contrast="high"] .bcb-btn--success:hover,
+[data-contrast="high"] .btn-success:hover {
+  background-color: #00FF88 !important;
+  border-color: #00FF88 !important;
+  color: #000000 !important;
+}
+
+/* 8.6 Botão Aviso / Atenção */
+:root[data-contrast="high"] .bcb-btn--warning,
+:root[data-contrast="high"] .btn-warning,
+:root[data-theme="high-contrast"] .bcb-btn--warning,
+:root[data-theme="high-contrast"] .btn-warning,
+[data-theme="high-contrast"] .bcb-btn--warning,
+[data-theme="high-contrast"] .btn-warning,
+[data-contrast="high"] .bcb-btn--warning,
+[data-contrast="high"] .btn-warning {
+  background-color: #000000 !important;
+  border: 2px solid #FFFF00 !important;
+  color: #FFFF00 !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--warning:hover,
+:root[data-contrast="high"] .btn-warning:hover,
+:root[data-theme="high-contrast"] .bcb-btn--warning:hover,
+:root[data-theme="high-contrast"] .btn-warning:hover,
+[data-theme="high-contrast"] .bcb-btn--warning:hover,
+[data-theme="high-contrast"] .btn-warning:hover,
+[data-contrast="high"] .bcb-btn--warning:hover,
+[data-contrast="high"] .btn-warning:hover {
+  background-color: #FFFF00 !important;
+  border-color: #FFFF00 !important;
+  color: #000000 !important;
+}
+
+/* 8.7 Botão Informativo */
+:root[data-contrast="high"] .bcb-btn--info,
+:root[data-contrast="high"] .btn-info,
+:root[data-theme="high-contrast"] .bcb-btn--info,
+:root[data-theme="high-contrast"] .btn-info,
+[data-theme="high-contrast"] .bcb-btn--info,
+[data-theme="high-contrast"] .btn-info,
+[data-contrast="high"] .bcb-btn--info,
+[data-contrast="high"] .btn-info {
+  background-color: #000000 !important;
+  border: 2px solid #4DC8FF !important;
+  color: #4DC8FF !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--info:hover,
+:root[data-contrast="high"] .btn-info:hover,
+:root[data-theme="high-contrast"] .bcb-btn--info:hover,
+:root[data-theme="high-contrast"] .btn-info:hover,
+[data-theme="high-contrast"] .bcb-btn--info:hover,
+[data-theme="high-contrast"] .btn-info:hover,
+[data-contrast="high"] .bcb-btn--info:hover,
+[data-contrast="high"] .btn-info:hover {
+  background-color: #4DC8FF !important;
+  border-color: #4DC8FF !important;
+  color: #000000 !important;
+}
+
+/* 8.8 Botão Link */
+:root[data-contrast="high"] .btn-link,
+:root[data-theme="high-contrast"] .btn-link,
+[data-theme="high-contrast"] .btn-link,
+[data-contrast="high"] .btn-link {
+  background: transparent !important;
+  border: none !important;
+  color: #FFFF00 !important;
+  text-decoration: underline !important;
+  font-weight: 700 !important;
+}
+
+:root[data-contrast="high"] .btn-link:hover,
+:root[data-theme="high-contrast"] .btn-link:hover,
+[data-theme="high-contrast"] .btn-link:hover,
+[data-contrast="high"] .btn-link:hover {
+  color: #FFFFFF !important;
+}
+
+/* 8.9 Botões Desabilitados */
+:root[data-contrast="high"] .bcb-btn:disabled,
+:root[data-contrast="high"] .bcb-btn--disabled,
+:root[data-contrast="high"] .bcb-btn[aria-disabled="true"],
+:root[data-contrast="high"] .btn:disabled,
+:root[data-contrast="high"] .btn.disabled,
+:root[data-contrast="high"] .btn[aria-disabled="true"],
+:root[data-theme="high-contrast"] .bcb-btn:disabled,
+:root[data-theme="high-contrast"] .bcb-btn--disabled,
+:root[data-theme="high-contrast"] .bcb-btn[aria-disabled="true"],
+:root[data-theme="high-contrast"] .btn:disabled,
+:root[data-theme="high-contrast"] .btn.disabled,
+:root[data-theme="high-contrast"] .btn[aria-disabled="true"],
+[data-theme="high-contrast"] .bcb-btn:disabled,
+[data-theme="high-contrast"] .bcb-btn--disabled,
+[data-theme="high-contrast"] .bcb-btn[aria-disabled="true"],
+[data-theme="high-contrast"] .btn:disabled,
+[data-theme="high-contrast"] .btn.disabled,
+[data-theme="high-contrast"] .btn[aria-disabled="true"],
+[data-contrast="high"] .bcb-btn:disabled,
+[data-contrast="high"] .bcb-btn--disabled,
+[data-contrast="high"] .bcb-btn[aria-disabled="true"],
+[data-contrast="high"] .btn:disabled,
+[data-contrast="high"] .btn.disabled,
+[data-contrast="high"] .btn[aria-disabled="true"] {
+  background-color: #1A1A1A !important;
+  border: 2px dashed #666666 !important;
+  color: #888888 !important;
+  cursor: not-allowed !important;
+  opacity: 0.7 !important;
+}
+
+:root[data-contrast="high"] .bcb-btn--secondary:disabled,
+:root[data-contrast="high"] .btn-secondary:disabled,
+:root[data-contrast="high"] .btn-secondary.disabled,
+:root[data-contrast="high"] .btn-outline-primary:disabled,
+:root[data-contrast="high"] .btn-outline-primary.disabled,
+:root[data-theme="high-contrast"] .bcb-btn--secondary:disabled,
+:root[data-theme="high-contrast"] .btn-secondary:disabled,
+:root[data-theme="high-contrast"] .btn-secondary.disabled,
+:root[data-theme="high-contrast"] .btn-outline-primary:disabled,
+:root[data-theme="high-contrast"] .btn-outline-primary.disabled,
+[data-theme="high-contrast"] .bcb-btn--secondary:disabled,
+[data-theme="high-contrast"] .btn-secondary:disabled,
+[data-theme="high-contrast"] .btn-secondary.disabled,
+[data-theme="high-contrast"] .btn-outline-primary:disabled,
+[data-theme="high-contrast"] .btn-outline-primary.disabled,
+[data-contrast="high"] .bcb-btn--secondary:disabled,
+[data-contrast="high"] .btn-secondary:disabled,
+[data-contrast="high"] .btn-secondary.disabled,
+[data-contrast="high"] .btn-outline-primary:disabled,
+[data-contrast="high"] .btn-outline-primary.disabled {
+  background-color: transparent !important;
+  border: 2px dashed #666666 !important;
+  color: #888888 !important;
+}
+
+/* ==========================================================================
+   9. CALLOUTS E DESTAQUES ESTRUTURADOS EM ALTO CONTRASTE (WCAG AAA)
+   ========================================================================== */
+
+/* 9.1 Callout Base (Fundo Preto com Contorno Delimitado e Preservação da Borda Esquerda de 6px) */
+:root[data-contrast="high"] .callout,
+:root[data-contrast="high"] .bcb-callout,
+:root[data-theme="high-contrast"] .callout,
+:root[data-theme="high-contrast"] .bcb-callout,
+[data-theme="high-contrast"] .callout,
+[data-theme="high-contrast"] .bcb-callout,
+[data-contrast="high"] .callout,
+[data-contrast="high"] .bcb-callout {
+  background-color: #000000 !important;
+  border-top: 1px solid #FFFFFF !important;
+  border-right: 1px solid #FFFFFF !important;
+  border-bottom: 1px solid #FFFFFF !important;
+  border-left: 6px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .callout p,
+:root[data-contrast="high"] .bcb-callout p,
+:root[data-contrast="high"] .bcb-callout__description,
+:root[data-theme="high-contrast"] .callout p,
+:root[data-theme="high-contrast"] .bcb-callout p,
+:root[data-theme="high-contrast"] .bcb-callout__description,
+[data-theme="high-contrast"] .callout p,
+[data-theme="high-contrast"] .bcb-callout p,
+[data-theme="high-contrast"] .bcb-callout__description,
+[data-contrast="high"] .callout p,
+[data-contrast="high"] .bcb-callout p,
+[data-contrast="high"] .bcb-callout__description {
+  color: #FFFFFF !important;
+}
+
+/* 9.2 Callout Brand Institucional (Ciano Brilhante #4DC8FF — 11.8:1) */
+:root[data-contrast="high"] .callout-brand,
+:root[data-contrast="high"] .bcb-callout--info,
+:root[data-contrast="high"] .bcb-callout--editorial,
+:root[data-contrast="high"] .tip-box,
+:root[data-theme="high-contrast"] .callout-brand,
+:root[data-theme="high-contrast"] .bcb-callout--info,
+:root[data-theme="high-contrast"] .bcb-callout--editorial,
+:root[data-theme="high-contrast"] .tip-box,
+[data-theme="high-contrast"] .callout-brand,
+[data-theme="high-contrast"] .bcb-callout--info,
+[data-theme="high-contrast"] .bcb-callout--editorial,
+[data-theme="high-contrast"] .tip-box,
+[data-contrast="high"] .callout-brand,
+[data-contrast="high"] .bcb-callout--info,
+[data-contrast="high"] .bcb-callout--editorial,
+[data-contrast="high"] .tip-box {
+  border-left: 6px solid #4DC8FF !important;
+}
+
+:root[data-contrast="high"] .callout-brand .callout-icon,
+:root[data-contrast="high"] .callout-brand .callout-title,
+:root[data-contrast="high"] .bcb-callout--info .callout-icon,
+:root[data-contrast="high"] .bcb-callout--info .callout-title,
+:root[data-contrast="high"] .bcb-callout--info .bcb-callout__icon,
+:root[data-contrast="high"] .bcb-callout--info .bcb-callout__title,
+:root[data-contrast="high"] .bcb-callout--editorial .callout-icon,
+:root[data-contrast="high"] .bcb-callout--editorial .callout-title,
+:root[data-contrast="high"] .bcb-callout--editorial .bcb-callout__icon,
+:root[data-contrast="high"] .bcb-callout--editorial .bcb-callout__title,
+:root[data-contrast="high"] .tip-box .material-icons,
+:root[data-contrast="high"] .tip-box .material-symbols-outlined,
+:root[data-theme="high-contrast"] .callout-brand .callout-icon,
+:root[data-theme="high-contrast"] .callout-brand .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--info .callout-icon,
+:root[data-theme="high-contrast"] .bcb-callout--info .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--info .bcb-callout__icon,
+:root[data-theme="high-contrast"] .bcb-callout--info .bcb-callout__title,
+:root[data-theme="high-contrast"] .bcb-callout--editorial .callout-icon,
+:root[data-theme="high-contrast"] .bcb-callout--editorial .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--editorial .bcb-callout__icon,
+:root[data-theme="high-contrast"] .bcb-callout--editorial .bcb-callout__title,
+:root[data-theme="high-contrast"] .tip-box .material-icons,
+:root[data-theme="high-contrast"] .tip-box .material-symbols-outlined,
+[data-theme="high-contrast"] .callout-brand .callout-icon,
+[data-theme="high-contrast"] .callout-brand .callout-title,
+[data-theme="high-contrast"] .bcb-callout--info .callout-icon,
+[data-theme="high-contrast"] .bcb-callout--info .callout-title,
+[data-theme="high-contrast"] .bcb-callout--info .bcb-callout__icon,
+[data-theme="high-contrast"] .bcb-callout--info .bcb-callout__title,
+[data-theme="high-contrast"] .bcb-callout--editorial .callout-icon,
+[data-theme="high-contrast"] .bcb-callout--editorial .callout-title,
+[data-theme="high-contrast"] .bcb-callout--editorial .bcb-callout__icon,
+[data-theme="high-contrast"] .bcb-callout--editorial .bcb-callout__title,
+[data-theme="high-contrast"] .tip-box .material-icons,
+[data-theme="high-contrast"] .tip-box .material-symbols-outlined,
+[data-contrast="high"] .callout-brand .callout-icon,
+[data-contrast="high"] .callout-brand .callout-title,
+[data-contrast="high"] .bcb-callout--info .callout-icon,
+[data-contrast="high"] .bcb-callout--info .callout-title,
+[data-contrast="high"] .bcb-callout--info .bcb-callout__icon,
+[data-contrast="high"] .bcb-callout--info .bcb-callout__title,
+[data-contrast="high"] .bcb-callout--editorial .callout-icon,
+[data-contrast="high"] .bcb-callout--editorial .callout-title,
+[data-contrast="high"] .bcb-callout--editorial .bcb-callout__icon,
+[data-contrast="high"] .bcb-callout--editorial .bcb-callout__title,
+[data-contrast="high"] .tip-box .material-icons,
+[data-contrast="high"] .tip-box .material-symbols-outlined {
+  color: #4DC8FF !important;
+}
+
+/* 9.3 Callout Aviso / Atenção (Amarelo Puro #FFFF00 — 19.5:1) */
+:root[data-contrast="high"] .callout-warning,
+:root[data-contrast="high"] .bcb-callout--warning,
+:root[data-theme="high-contrast"] .callout-warning,
+:root[data-theme="high-contrast"] .bcb-callout--warning,
+[data-theme="high-contrast"] .callout-warning,
+[data-theme="high-contrast"] .bcb-callout--warning,
+[data-contrast="high"] .callout-warning,
+[data-contrast="high"] .bcb-callout--warning {
+  border-left: 6px solid #FFFF00 !important;
+}
+
+:root[data-contrast="high"] .callout-warning .callout-icon,
+:root[data-contrast="high"] .callout-warning .callout-title,
+:root[data-contrast="high"] .bcb-callout--warning .callout-icon,
+:root[data-contrast="high"] .bcb-callout--warning .callout-title,
+:root[data-contrast="high"] .bcb-callout--warning .bcb-callout__icon,
+:root[data-contrast="high"] .bcb-callout--warning .bcb-callout__title,
+:root[data-theme="high-contrast"] .callout-warning .callout-icon,
+:root[data-theme="high-contrast"] .callout-warning .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--warning .callout-icon,
+:root[data-theme="high-contrast"] .bcb-callout--warning .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--warning .bcb-callout__icon,
+:root[data-theme="high-contrast"] .bcb-callout--warning .bcb-callout__title,
+[data-theme="high-contrast"] .callout-warning .callout-icon,
+[data-theme="high-contrast"] .callout-warning .callout-title,
+[data-theme="high-contrast"] .bcb-callout--warning .callout-icon,
+[data-theme="high-contrast"] .bcb-callout--warning .callout-title,
+[data-theme="high-contrast"] .bcb-callout--warning .bcb-callout__icon,
+[data-theme="high-contrast"] .bcb-callout--warning .bcb-callout__title,
+[data-contrast="high"] .callout-warning .callout-icon,
+[data-contrast="high"] .callout-warning .callout-title,
+[data-contrast="high"] .bcb-callout--warning .callout-icon,
+[data-contrast="high"] .bcb-callout--warning .callout-title,
+[data-contrast="high"] .bcb-callout--warning .bcb-callout__icon,
+[data-contrast="high"] .bcb-callout--warning .bcb-callout__title {
+  color: #FFFF00 !important;
+}
+
+/* 9.4 Callout Sucesso (Verde Neon #00FF88 — 13.9:1) */
+:root[data-contrast="high"] .callout-success,
+:root[data-contrast="high"] .bcb-callout--success,
+:root[data-theme="high-contrast"] .callout-success,
+:root[data-theme="high-contrast"] .bcb-callout--success,
+[data-theme="high-contrast"] .callout-success,
+[data-theme="high-contrast"] .bcb-callout--success,
+[data-contrast="high"] .callout-success,
+[data-contrast="high"] .bcb-callout--success {
+  border-left: 6px solid #00FF88 !important;
+}
+
+:root[data-contrast="high"] .callout-success .callout-icon,
+:root[data-contrast="high"] .callout-success .callout-title,
+:root[data-contrast="high"] .bcb-callout--success .callout-icon,
+:root[data-contrast="high"] .bcb-callout--success .callout-title,
+:root[data-contrast="high"] .bcb-callout--success .bcb-callout__icon,
+:root[data-contrast="high"] .bcb-callout--success .bcb-callout__title,
+:root[data-theme="high-contrast"] .callout-success .callout-icon,
+:root[data-theme="high-contrast"] .callout-success .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--success .callout-icon,
+:root[data-theme="high-contrast"] .bcb-callout--success .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--success .bcb-callout__icon,
+:root[data-theme="high-contrast"] .bcb-callout--success .bcb-callout__title,
+[data-theme="high-contrast"] .callout-success .callout-icon,
+[data-theme="high-contrast"] .callout-success .callout-title,
+[data-theme="high-contrast"] .bcb-callout--success .callout-icon,
+[data-theme="high-contrast"] .bcb-callout--success .callout-title,
+[data-theme="high-contrast"] .bcb-callout--success .bcb-callout__icon,
+[data-theme="high-contrast"] .bcb-callout--success .bcb-callout__title,
+[data-contrast="high"] .callout-success .callout-icon,
+[data-contrast="high"] .callout-success .callout-title,
+[data-contrast="high"] .bcb-callout--success .callout-icon,
+[data-contrast="high"] .bcb-callout--success .callout-title,
+[data-contrast="high"] .bcb-callout--success .bcb-callout__icon,
+[data-contrast="high"] .bcb-callout--success .bcb-callout__title {
+  color: #00FF88 !important;
+}
+
+/* 9.5 Callout Perigo / Erro Crítico (Vermelho Coral #FF5555 — Restaura a Semântica de Alerta!) */
+:root[data-contrast="high"] .callout-danger,
+:root[data-contrast="high"] .bcb-callout--danger,
+:root[data-theme="high-contrast"] .callout-danger,
+:root[data-theme="high-contrast"] .bcb-callout--danger,
+[data-theme="high-contrast"] .callout-danger,
+[data-theme="high-contrast"] .bcb-callout--danger,
+[data-contrast="high"] .callout-danger,
+[data-contrast="high"] .bcb-callout--danger {
+  border-left: 6px solid #FF5555 !important;
+}
+
+:root[data-contrast="high"] .callout-danger .callout-icon,
+:root[data-contrast="high"] .callout-danger .callout-title,
+:root[data-contrast="high"] .bcb-callout--danger .callout-icon,
+:root[data-contrast="high"] .bcb-callout--danger .callout-title,
+:root[data-contrast="high"] .bcb-callout--danger .bcb-callout__icon,
+:root[data-contrast="high"] .bcb-callout--danger .bcb-callout__title,
+:root[data-theme="high-contrast"] .callout-danger .callout-icon,
+:root[data-theme="high-contrast"] .callout-danger .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--danger .callout-icon,
+:root[data-theme="high-contrast"] .bcb-callout--danger .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--danger .bcb-callout__icon,
+:root[data-theme="high-contrast"] .bcb-callout--danger .bcb-callout__title,
+[data-theme="high-contrast"] .callout-danger .callout-icon,
+[data-theme="high-contrast"] .callout-danger .callout-title,
+[data-theme="high-contrast"] .bcb-callout--danger .callout-icon,
+[data-theme="high-contrast"] .bcb-callout--danger .callout-title,
+[data-theme="high-contrast"] .bcb-callout--danger .bcb-callout__icon,
+[data-theme="high-contrast"] .bcb-callout--danger .bcb-callout__title,
+[data-contrast="high"] .callout-danger .callout-icon,
+[data-contrast="high"] .callout-danger .callout-title,
+[data-contrast="high"] .bcb-callout--danger .callout-icon,
+[data-contrast="high"] .bcb-callout--danger .callout-title,
+[data-contrast="high"] .bcb-callout--danger .bcb-callout__icon,
+[data-contrast="high"] .bcb-callout--danger .bcb-callout__title {
+  color: #FF5555 !important;
+}
+
+/* 9.6 Callout Neutro (Branco Puro #FFFFFF — 21:1) */
+:root[data-contrast="high"] .callout-neutral,
+:root[data-contrast="high"] .bcb-callout--neutral,
+:root[data-theme="high-contrast"] .callout-neutral,
+:root[data-theme="high-contrast"] .bcb-callout--neutral,
+[data-theme="high-contrast"] .callout-neutral,
+[data-theme="high-contrast"] .bcb-callout--neutral,
+[data-contrast="high"] .callout-neutral,
+[data-contrast="high"] .bcb-callout--neutral {
+  border-left: 6px solid #FFFFFF !important;
+}
+
+:root[data-contrast="high"] .callout-neutral .callout-icon,
+:root[data-contrast="high"] .callout-neutral .callout-title,
+:root[data-contrast="high"] .bcb-callout--neutral .callout-icon,
+:root[data-contrast="high"] .bcb-callout--neutral .callout-title,
+:root[data-theme="high-contrast"] .callout-neutral .callout-icon,
+:root[data-theme="high-contrast"] .callout-neutral .callout-title,
+:root[data-theme="high-contrast"] .bcb-callout--neutral .callout-icon,
+:root[data-theme="high-contrast"] .bcb-callout--neutral .callout-title,
+[data-theme="high-contrast"] .callout-neutral .callout-icon,
+[data-theme="high-contrast"] .callout-neutral .callout-title,
+[data-theme="high-contrast"] .bcb-callout--neutral .callout-icon,
+[data-theme="high-contrast"] .bcb-callout--neutral .callout-title,
+[data-contrast="high"] .callout-neutral .callout-icon,
+[data-contrast="high"] .callout-neutral .callout-title,
+[data-contrast="high"] .bcb-callout--neutral .callout-icon,
+[data-contrast="high"] .bcb-callout--neutral .callout-title {
+  color: #FFFFFF !important;
+}
 

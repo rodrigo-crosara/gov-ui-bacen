@@ -58,7 +58,7 @@
 /* Etapa Concluída (Completed) */
 .bcb-stepper-item.completed .bcb-stepper-circle {
   background: var(--bcb-color-verde-castell, #088694);
-  color: var(--bcb-color-white, #FFFFFF);
+  color: #FFFFFF !important;
 }
 .bcb-stepper-item.completed .bcb-stepper-title {
   color: var(--bcb-color-verde-castell, #088694);
@@ -69,7 +69,7 @@
 .bcb-stepper-item.active .bcb-stepper-circle,
 .bcb-stepper-item[aria-current="step"] .bcb-stepper-circle {
   background: var(--bcb-color-primary, #2E4C59);
-  color: var(--bcb-color-white, #FFFFFF);
+  color: #FFFFFF !important;
   box-shadow: 0 0 0 4px rgba(46, 76, 89, 0.25);
 }
 

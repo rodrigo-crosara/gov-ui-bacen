@@ -229,7 +229,7 @@
 :root[data-theme="dark"] .bcb-ds-header__title span,
 :root[data-theme="dark"] .bcb-ds-version-badge {
   background-color: #0B0D0E;
-  color: var(--bcb-color-azulcinti, #0A9FD4);
+  color: var(--bcb-brand-celestial, #36B2C2);
   border-color: #3E454B;
 }
 
@@ -249,9 +249,9 @@
 :root[data-theme="dark"] .bcb-ds-nav-link.active,
 :root[data-theme="dark"] .bcb-ds-nav-link[aria-current="page"] {
   background-color: #2A3038 !important;
-  color: var(--bcb-color-azulcinti, #0A9FD4) !important;
-  border-color: var(--bcb-color-azulcinti, #0A9FD4);
-  box-shadow: inset 0 -3px 0 var(--bcb-color-azulcinti, #0A9FD4);
+  color: var(--bcb-brand-celestial, #36B2C2) !important;
+  border-color: var(--bcb-brand-celestial, #36B2C2);
+  box-shadow: inset 0 -3px 0 var(--bcb-brand-celestial, #36B2C2);
 }
 
 :root[data-theme="dark"] .bcb-theme-toggle,

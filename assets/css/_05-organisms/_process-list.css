@@ -57,7 +57,7 @@ ul.bcb-process-list {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
-  background-color: var(--bcb-color-primary, #2E4C59);
+  background-color: var(--bcb-color-primary, #025C75);
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -74,8 +74,8 @@ ul.bcb-process-list {
 .bcb-process-list > li.active::before,
 .process-list > li[aria-current="step"]::before,
 .bcb-process-list > li[aria-current="step"]::before {
-  background-color: var(--bcb-btn-primary-hover, #077391);
-  box-shadow: 0 0 0 4px var(--bcb-brand-amarellato, #F9DEAA);
+  background-color: var(--bcb-btn-primary-hover, var(--bcb-brand-verde-castell, #088694));
+  box-shadow: 0 0 0 4px var(--bcb-brand-mandarino, #F4B757);
 }
 
 .process-list > li.active > h4,
@@ -86,14 +86,14 @@ ul.bcb-process-list {
 .process-list > li[aria-current="step"] > h6,
 .process-list > li[aria-current="step"] .process-title,
 .bcb-process-list > li[aria-current="step"] .bcb-process-list__title {
-  color: var(--bcb-color-primary, #2E4C59);
+  color: var(--bcb-color-primary, #025C75);
   font-weight: 700;
 }
 
 /* Quando o item estiver concluído */
 .process-list > li.completed::before,
 .bcb-process-list > li.completed::before {
-  background-color: var(--bcb-brand-verde-susta, #067078);
+  background-color: var(--bcb-brand-rio-jordao, #00A478);
 }
 
 /* Se o HTML contiver número explícito (.process-number ou .bcb-process-list__number),

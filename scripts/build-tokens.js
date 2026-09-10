@@ -71,19 +71,40 @@ if (tokens.color && tokens.color.brand) {
   for (const [k, v] of Object.entries(tokens.color.brand)) {
     lines.push(`  --bcb-brand-${toKebab(k)}: ${resolveValue(v.$value)};`);
   }
+  lines.push(`  --bcb-color-primary: ${resolveValue(tokens.color.brand?.['azul-blue']?.$value || '#025C75')};`);
+}
+if (tokens.color && tokens.color.brandLegacy) {
+  lines.push('  /* ==========================================');
+  lines.push('     2.1 TOKENS LEGADOS DESCONTINUADOS (@deprecated)');
+  lines.push('     Mapeados para a paleta oficial vigente de 11 cores');
+  lines.push('     ========================================== */');
+  for (const [k, v] of Object.entries(tokens.color.brandLegacy)) {
+    lines.push(`  --bcb-brand-${toKebab(k)}: ${resolveValue(v.$value)}; /* @deprecated -> oficial */`);
+  }
+}
+if (tokens.color && tokens.color.brand) {
   // Aliases de compatibilidade para código e templates legados
   lines.push('  /* Aliases de compatibilidade */');
   lines.push(`  --bcb-brand-blue: ${resolveValue(tokens.color.brand['azul-blue']?.$value || '#025C75')};`);
   lines.push('  --bcb-brand-blue-dark: #013F50;');
-  lines.push(`  --bcb-brand-gray80: ${resolveValue(tokens.color.brand['cinza-80']?.$value || '#606062')};`);
+  lines.push(`  --bcb-brand-gray80: ${resolveValue(tokens.color.brand['cinza-80']?.$value || '#606060')};`);
+  lines.push(`  --bcb-brand-cinza80: ${resolveValue(tokens.color.brand['cinza-80']?.$value || '#606060')};`);
   lines.push(`  --bcb-brand-vinho: ${resolveValue(tokens.color.brand['vinho-autentico']?.$value || '#47373A')};`);
-  lines.push(`  --bcb-brand-marsala: ${resolveValue(tokens.color.brand['marsala-suave']?.$value || '#736063')};`);
-  lines.push(`  --bcb-brand-amarellato: ${resolveValue(tokens.color.brand['amarellato-biscoito']?.$value || '#F8D48D')};`);
+  lines.push(`  --bcb-brand-marsala: ${resolveValue(tokens.color.brand['marsala-intenso']?.$value || '#9C365E')};`);
+  lines.push(`  --bcb-brand-amarellato: ${resolveValue(tokens.color.brand['mandarino']?.$value || '#F4B757')};`);
   lines.push(`  --bcb-color-azul-blue: ${resolveValue(tokens.color.brand['azul-blue']?.$value || '#025C75')};`);
-  lines.push(`  --bcb-color-azulcinti: ${resolveValue(tokens.color.brand['azulcinti']?.$value || '#077391')};`);
-  lines.push(`  --bcb-color-azulpetro: ${resolveValue(tokens.color.brand['azulpetro']?.$value || '#2E4C59')};`);
   lines.push(`  --bcb-color-verde-castell: ${resolveValue(tokens.color.brand['verde-castell']?.$value || '#088694')};`);
+  lines.push(`  --bcb-color-celestial: ${resolveValue(tokens.color.brand['celestial']?.$value || '#36B2C2')};`);
+  lines.push(`  --bcb-color-rio-jordao: ${resolveValue(tokens.color.brand['rio-jordao']?.$value || '#00A478')};`);
+  lines.push(`  --bcb-color-marsala-intenso: ${resolveValue(tokens.color.brand['marsala-intenso']?.$value || '#9C365E')};`);
+  lines.push(`  --bcb-color-salmao-rosado: ${resolveValue(tokens.color.brand['salmao-rosado']?.$value || '#ED6B6A')};`);
+  lines.push(`  --bcb-color-mandarino: ${resolveValue(tokens.color.brand['mandarino']?.$value || '#F4B757')};`);
+  lines.push(`  --bcb-color-achocolatado: ${resolveValue(tokens.color.brand['achocolatado']?.$value || '#914D23')};`);
   lines.push(`  --bcb-color-vinho-autentico: ${resolveValue(tokens.color.brand['vinho-autentico']?.$value || '#47373A')};`);
+  lines.push(`  --bcb-color-cinza-80: ${resolveValue(tokens.color.brand['cinza-80']?.$value || '#606060')};`);
+  lines.push(`  --bcb-color-concreto: ${resolveValue(tokens.color.brand['concreto']?.$value || '#AEAFAA')};`);
+  lines.push(`  --bcb-color-azulcinti: ${resolveValue(tokens.color.brandLegacy?.['azulcinti']?.$value || '#088694')};`);
+  lines.push(`  --bcb-color-azulpetro: ${resolveValue(tokens.color.brandLegacy?.['azulpetro']?.$value || '#025C75')};`);
 }
 lines.push('');
 
@@ -156,6 +177,10 @@ if (tokens.color && tokens.color.highContrast) {
   for (const [k, v] of Object.entries(tokens.color.highContrast)) {
     lines.push(`  --bcb-hc-${toKebab(k)}: ${resolveValue(v.$value)};`);
   }
+  // Aliases com hífen para níveis de superfície em alto contraste
+  lines.push(`  --bcb-hc-bg-level-1: ${resolveValue(tokens.color.highContrast.bgLevel1?.$value || '#000000')};`);
+  lines.push(`  --bcb-hc-bg-level-2: ${resolveValue(tokens.color.highContrast.bgLevel2?.$value || '#222222')};`);
+  lines.push(`  --bcb-hc-bg-level-3: ${resolveValue(tokens.color.highContrast.bgLevel3?.$value || '#333333')};`);
 }
 lines.push('');
 
@@ -277,28 +302,143 @@ lines.push('');
 lines.push('/* ==========================================');
 lines.push('   15. COMPATIBILIDADE BOOTSTRAP & UTILITÁRIOS OFICIAIS');
 lines.push('   ========================================== */');
+lines.push('/* Primary (Azul Blue Oficial BCB) */');
 lines.push('.text-primary {');
-lines.push('  color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('  color: var(--bcb-color-primary, #025C75) !important;');
 lines.push('}');
-lines.push('');
 lines.push('.bg-primary {');
-lines.push('  background-color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('  background-color: var(--bcb-color-primary, #025C75) !important;');
 lines.push('}');
-lines.push('');
 lines.push('.border-primary {');
-lines.push('  border-color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('  border-color: var(--bcb-color-primary, #025C75) !important;');
+lines.push('}');
+lines.push('.badge-primary {');
+lines.push('  background-color: var(--bcb-color-primary, #025C75) !important;');
+lines.push('  color: #ffffff !important;');
 lines.push('}');
 lines.push('');
-lines.push('.badge-primary {');
-lines.push('  background-color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('/* Secondary (Verde Castell / Cinza 80) */');
+lines.push('.text-secondary {');
+lines.push('  color: var(--bcb-brand-cinza-80, #606060) !important;');
+lines.push('}');
+lines.push('.bg-secondary {');
+lines.push('  background-color: var(--bcb-brand-verde-castell, #088694) !important;');
 lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('.border-secondary {');
+lines.push('  border-color: var(--bcb-brand-verde-castell, #088694) !important;');
+lines.push('}');
+lines.push('.badge-secondary {');
+lines.push('  background-color: var(--bcb-brand-verde-castell, #088694) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('');
+lines.push('/* Success (Rio Jordão Oficial BCB) */');
+lines.push('.text-success {');
+lines.push('  color: var(--bcb-feedback-success, #00A478) !important;');
+lines.push('}');
+lines.push('.bg-success {');
+lines.push('  background-color: var(--bcb-feedback-success, #00A478) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('.border-success {');
+lines.push('  border-color: var(--bcb-feedback-success, #00A478) !important;');
+lines.push('}');
+lines.push('.badge-success {');
+lines.push('  background-color: var(--bcb-feedback-success, #00A478) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('');
+lines.push('/* Danger / Error (Vinho Autêntico Oficial BCB) */');
+lines.push('.text-danger {');
+lines.push('  color: var(--bcb-feedback-danger, #47373A) !important;');
+lines.push('}');
+lines.push('.bg-danger {');
+lines.push('  background-color: var(--bcb-feedback-danger, #47373A) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('.border-danger {');
+lines.push('  border-color: var(--bcb-feedback-danger, #47373A) !important;');
+lines.push('}');
+lines.push('.badge-danger {');
+lines.push('  background-color: var(--bcb-feedback-danger, #47373A) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('');
+lines.push('/* Warning (Superfície Mandarino, Texto e Borda Achocolatado para WCAG AAA > 7:1) */');
+lines.push('.text-warning {');
+lines.push('  color: var(--bcb-feedback-warning, #914D23) !important;');
+lines.push('}');
+lines.push('.bg-warning {');
+lines.push('  background-color: var(--bcb-feedback-warning-surface, #F4B757) !important;');
+lines.push('  color: #14171A !important;');
+lines.push('}');
+lines.push('.border-warning {');
+lines.push('  border-color: var(--bcb-feedback-warning-border, #914D23) !important;');
+lines.push('}');
+lines.push('.badge-warning {');
+lines.push('  background-color: var(--bcb-feedback-warning-surface, #F4B757) !important;');
+lines.push('  color: #14171A !important;');
+lines.push('}');
+lines.push('');
+lines.push('/* Info (Azul Blue / Feedback Info Oficial BCB) */');
+lines.push('.text-info {');
+lines.push('  color: var(--bcb-feedback-info, #025C75) !important;');
+lines.push('}');
+lines.push('.bg-info {');
+lines.push('  background-color: var(--bcb-feedback-info, #025C75) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('.border-info {');
+lines.push('  border-color: var(--bcb-feedback-info, #025C75) !important;');
+lines.push('}');
+lines.push('.badge-info {');
+lines.push('  background-color: var(--bcb-feedback-info, #025C75) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('');
+lines.push('/* Dark & Light Neutrais */');
+lines.push('.text-dark {');
+lines.push('  color: var(--bcb-gray-900, #14171A) !important;');
+lines.push('}');
+lines.push('.bg-dark {');
+lines.push('  background-color: var(--bcb-portal-primary, #22272B) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('.bg-light {');
+lines.push('  background-color: var(--bcb-surface-light, #F8F9FA) !important;');
+lines.push('}');
+lines.push('.badge-dark {');
+lines.push('  background-color: var(--bcb-portal-primary, #22272B) !important;');
+lines.push('  color: #ffffff !important;');
+lines.push('}');
+lines.push('.badge-light {');
+lines.push('  background-color: var(--bcb-gray-100, #F3F5F7) !important;');
+lines.push('  color: var(--bcb-color-primary, #025C75) !important;');
+lines.push('  border: 1px solid var(--bcb-gray-300, #D0D7DF) !important;');
 lines.push('}');
 lines.push('');
 lines.push('/* Textos institucionais e badges com a cor da marca por padrão */');
 lines.push('.text-bcb-brand,');
 lines.push('.font-color-1 {');
-lines.push('  color: var(--bcb-color-primary, #2E4C59) !important;');
+lines.push('  color: var(--bcb-color-primary, #025C75) !important;');
 lines.push('}');
+lines.push('');
+lines.push('/* Utilitários Canônicos das 11 Cores Oficiais da Marca BCB */');
+if (tokens.color && tokens.color.brand) {
+  for (const name of Object.keys(tokens.color.brand)) {
+    const kebab = toKebab(name);
+    lines.push(`.bg-bcb-${kebab}, .bg-${kebab} {`);
+    lines.push(`  background-color: var(--bcb-brand-${kebab}) !important;`);
+    lines.push('}');
+    lines.push(`.text-bcb-${kebab}, .text-${kebab} {`);
+    lines.push(`  color: var(--bcb-brand-${kebab}) !important;`);
+    lines.push('}');
+    lines.push(`.border-bcb-${kebab}, .border-${kebab} {`);
+    lines.push(`  border-color: var(--bcb-brand-${kebab}) !important;`);
+    lines.push('}');
+  }
+}
 lines.push('');
 
 const outputCSS = lines.join('\n');
