@@ -104,7 +104,9 @@
             padding: 5px 10px;
             font-size: 0.82rem;
             outline: none;
-            min-width: 260px;
+        }
+        #selectPrototipo {
+            max-width: 200px;
         }
         .bcb-harness-select:focus {
             border-color: #4dc8ff;
@@ -457,6 +459,7 @@
                     <option value="mecanismo-especial-devolucao-med.html">Serviço: MED Pix com Stepper e Alerta</option>
                     <option value="regras-cheque-especial.html">Regulação: Limite Cheque Especial (70/30)</option>
                     <option value="resolucao-bcb-dou.html">Regulação: Resolução BCB nº 492 (DOU / Comef)</option>
+                    <option value="metas-inflacao.html">Metas para a inflação: Painel Econômico SGS &amp; Meta Contínua</option>
                 </select>
             </div>
 
@@ -560,11 +563,19 @@
                 'sgs-series-taxa-selic.html': '02-dados-sgs-indicadores.md',
                 'mecanismo-especial-devolucao-med.html': '03-servico-passo-a-passo.md',
                 'regras-cheque-especial.html': '04-conteudo-html-legado.md',
-                'resolucao-bcb-dou.html': '05-entrada-nao-estruturada-dou.md'
+                'resolucao-bcb-dou.html': '05-entrada-nao-estruturada-dou.md',
+                'metas-inflacao.html': '06-metas-inflacao.md'
             };
 
             // Dados de contingência para renderização offline ou via protocolo file:///
             const DEMANDAS_FALLBACK = {
+                '06-metas-inflacao.md': {
+                    titulo: 'Modelo 6: Metas para a inflação & Regime de Meta Contínua',
+                    origem: 'Conselho Monetário Nacional (CMN) / Banco Central do Brasil (BCB)',
+                    objetivo: 'Divulgar as diretrizes, o centro da meta (3,00%), o intervalo de tolerância e os mecanismos de transmissão da política monetária.',
+                    padraoUX: 'Painel Econômico SGS (Indicadores 33/33/33, Seção Analítica 70/30, Tabela Densa e Hub)',
+                    textoBruto: 'Inflação baixa, estável e previsível traz vários benefícios para a sociedade. A economia pode crescer mais, pois a incerteza na economia é menor, as pessoas podem planejar melhor seu futuro e as famílias não têm sua renda real corroída. Para alcançar esse objetivo, o Brasil adota o regime de metas para a inflação, que está em vigor desde 1999...'
+                },
                 '01-comunicado-normativo.md': {
                     titulo: 'Modelo 1: Comunicado Normativo & Decisão do Copom',
                     origem: 'Assessoria de Imprensa (ASIMP) / Secretaria do Copom',

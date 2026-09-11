@@ -25,6 +25,14 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
   - **Retrocompatibilidade Estrita:** Preservados aliases e tokens legados (`azulcinti`, `azulpetro`, `azulnetuno`, `verde-susta`, `amarellato-biscoito`, `cafellato`, `marsala-suave`) no compilador e folhas de estilo.
   - **Suporte Multitema:** Variáveis calibradas para Dark Mode (`_dark-mode.css`) e Alto Contraste (`_high-contrast.css`) para todas as novas cores.
   - **Documentação e Testes:** Amostras interativas atualizadas em `pages/tokens.html` com ratios de contraste WCAG AA/AAA e 114 verificações em `tests/tokens/tokens-integrity.test.js`.
+- **Automação IA e Prompt Builder (`pages/automacao-ia.html`):**
+  - **Decisão Heurística Autônoma de Diagramação (Modo Inteligente Padrão):** Nova opção prioritária no *Seletor de Tipo de Diagramação* (`value="auto"` com badge *✨ Modo Inteligente*), dispensando a necessidade de o designer selecionar manualmente um dos 4 layouts e permitindo que a IA determine o arranjo arquitetural ideal com base no conteúdo da demanda técnica.
+  - **Árvore de Decisão Heurística Integrada:** O gerador de prompts sintetiza regras mandatórias do Design System mapeando o conteúdo automaticamente para:
+    - *Padrão 70/30* para resoluções, votos normativos e comunicados Copom;
+    - *Painel Econômico SGS* (cards 33/33/33 e data table analítica) para séries temporais e taxas econômicas;
+    - *Guia de Serviço ao Cidadão* (stepper cronológico, callout antifraude e dúvidas frequentes) para fluxos e canais de atendimento;
+    - *Layout Fluido Educacional* (blocos 50/50 e acordeões) para cartilhas conceituais e cidadania financeira.
+  - **Extração Semântica & Formulação Autônoma de H1:** Instruções para a IA extrair cards de indicadores (`.bcb-indicator-card`), callouts de advertência/segurança (`.callout`), marcações de slots modulares CMS (`<!-- [SLOT CMS: ...] -->`) e formular autonomamente um título `<h1 class="bcb-page-title">` conciso e oficial quando o campo de título for omitido.
 - **Evolução do Organismo 3.3 Timelines (Vertical Educativa e Horizontal):**
   - **Benchmark Institucional & Engenharia Visual:** Redesenho completo inspirado nos portais de Cidadania Financeira e ENEF do Banco Central do Brasil, transformando o componente básico em um organismo de alta fidelidade e acessibilidade.
   - **Variante 1 — Timeline Vertical Educativa & Jornada (`.bcb-timeline--vertical` / `.timeline-container`):**

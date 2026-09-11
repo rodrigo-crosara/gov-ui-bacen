@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-contrast="normal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas para a inflação — Banco Central do Brasil</title>
+    <meta name="description" content="Diretrizes, parâmetros e funcionamento do regime de metas para a inflação no Brasil com meta contínua fixada pelo Conselho Monetário Nacional (CMN).">
+
+    <!-- Bootstrap 4.6 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous">
+
+    <!-- Tipografia Institucional (Rawline, Inter, Ubuntu, Cormorant Garamond, Roboto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols Outlined & Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- BCB Design System CSS -->
+    <link rel="stylesheet" href="../assets/css/bcb-style.css">
+</head>
+<body>
+
+    <!-- CORPO CENTRAL DELIMITADO (Sem header, footer ou breadcrumbs do portal) -->
+    <main id="conteudo-principal" class="bcb-main-content bcb-container container py-4 my-4 mb-5">
+
+        <!-- [SLOT CMS: 100% - Abertura Institucional e Lead] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <h1 class="bcb-page-title">Metas para a inflação</h1>
+                    <div class="bcb-page-meta">
+                        <span class="tag-bcb primary">Política Monetária</span>
+                        <span>Conselho Monetário Nacional &bull; Banco Central do Brasil &bull; Vigência: Meta Contínua desde Janeiro de 2025</span>
+                    </div>
+
+                    <!-- Barra de Utilidades da Página -->
+                    <div class="bcb-page-toolbar mt-3" role="toolbar" aria-label="Utilidades da página institucional">
+                        <div class="bcb-page-toolbar__meta">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">schedule</span>
+                            <span>Atualizado em: <strong>Março de 2026</strong></span>
+                        </div>
+                        <div class="bcb-page-toolbar__actions">
+                            <button type="button" class="bcb-page-toolbar__btn" data-action="print" aria-label="Imprimir conteúdo desta página">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">print</span>
+                                <span>Imprimir</span>
+                            </button>
+                            <button type="button" class="bcb-page-toolbar__btn" data-action="copy-link" aria-label="Copiar endereço desta página">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">link</span>
+                                <span>Copiar Link</span>
+                            </button>
+                            <button type="button" class="bcb-page-toolbar__btn" data-action="share" aria-label="Compartilhar página institucional">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">share</span>
+                                <span>Compartilhar</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="lead mt-4 text-body">
+                        Inflação baixa, estável e previsível traz benefícios diretos para toda a sociedade: fomenta o crescimento econômico sustentável, diminui a incerteza nos negócios, protege o poder de compra dos salários e garante capacidade de planejamento para as famílias e empresas. Para alcançar esse objetivo, o Brasil adota o <strong>regime de metas para a inflação</strong> desde 1999, aperfeiçoado a partir de 2025 com o modelo de apuração contínua.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 33/33/33 - Grade de Indicadores Macroeconômicos da Meta] -->
+        <section class="bcb-section">
+            <h2 class="sr-only">Parâmetros Oficiais do Regime de Metas</h2>
+            <div class="bcb-row">
+                <!-- Indicador 1: Meta Fixada -->
+                <div class="bcb-col-12 bcb-col-md-4 mb-4 mb-md-0">
+                    <div class="bcb-indicator-card accent-blue">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="bcb-indicator-label">Centro da Meta (CMN)</span>
+                            <button type="button" class="bcb-tooltip-btn" data-tooltip="Meta central para a inflação fixada pelo Conselho Monetário Nacional (CMN)." aria-label="Conceito do centro da meta">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">help_outline</span>
+                            </button>
+                        </div>
+                        <div class="bcb-indicator-value">
+                            3,00% <small class="text-body font-weight-normal font-size-sm">ao ano</small>
+                        </div>
+                        <div class="bcb-indicator-meta d-flex justify-content-between align-items-center">
+                            <span class="badge badge-success">Meta Contínua</span>
+                            <span class="text-muted small">Vigente desde Jan/2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indicador 2: Intervalo de Tolerância com Barra Visual -->
+                <div class="bcb-col-12 bcb-col-md-4 mb-4 mb-md-0">
+                    <div class="bcb-indicator-card accent-amber">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="bcb-indicator-label">Intervalo de Tolerância</span>
+                            <button type="button" class="bcb-tooltip-btn" data-tooltip="Faixa de variação aceita ao redor da meta central sem caracterizar descumprimento formal." aria-label="Conceito do intervalo de tolerância">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">help_outline</span>
+                            </button>
+                        </div>
+                        <div class="bcb-indicator-value">
+                            1,50% a 4,50%
+                        </div>
+                        <div class="bcb-tolerance-band" aria-label="Banda de tolerância de 1,50% a 4,50%">
+                            <div class="d-flex justify-content-between text-muted small mb-1">
+                                <span>Piso: 1,50%</span>
+                                <span class="font-weight-bold text-dark">&plusmn; 1,50 p.p.</span>
+                                <span>Teto: 4,50%</span>
+                            </div>
+                            <div class="progress bcb-progress-sm">
+                                <div class="progress-bar bg-info w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indicador 3: Índice Oficial e Apuração -->
+                <div class="bcb-col-12 bcb-col-md-4">
+                    <div class="bcb-indicator-card accent-green">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="bcb-indicator-label">Índice de Referência</span>
+                            <button type="button" class="bcb-tooltip-btn" data-tooltip="Índice oficial de preços ao consumidor calculado mensalmente pelo IBGE." aria-label="Conceito do índice IPCA">
+                                <span class="material-symbols-outlined material-icons" aria-hidden="true">help_outline</span>
+                            </button>
+                        </div>
+                        <div class="bcb-indicator-value">
+                            IPCA <small class="text-body font-weight-normal font-size-sm">(IBGE)</small>
+                        </div>
+                        <div class="bcb-indicator-meta d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">Acumulado em 12 meses</span>
+                            <span class="bcb-indicator-trend neutral">
+                                <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">update</span>
+                                <span>Mensal</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Regras Críticas e Governança do Regime] -->
+        <section class="bcb-section">
+            <h2 class="sr-only">Regras Operacionais e Governança do Regime</h2>
+            <div class="bcb-row">
+                <!-- Alerta Regulatório: Regra dos 6 meses consecutivos -->
+                <div class="bcb-col-12 bcb-col-lg-7 mb-4 mb-lg-0">
+                    <div class="callout callout-warning callout-elevated h-100">
+                        <span class="material-symbols-outlined material-icons callout-icon text-warning" aria-hidden="true">gavel</span>
+                        <div class="callout-content">
+                            <h3 class="callout-title">Caracterização de Descumprimento da Meta</h3>
+                            <p class="text-body">
+                                A meta é considerada descumprida se a inflação acumulada em 12 meses permanecer fora do intervalo de tolerância (abaixo de 1,50% ou acima de 4,50%) por <strong>seis meses consecutivos</strong>. Esse intervalo contínuo evita caracterizar descumprimento decorrente de choques temporários de oferta (como variações sazonais de alimentos ou energia).
+                            </p>
+                            <p class="text-body mb-0">
+                                Em caso de descumprimento formal, o Presidente do Banco Central divulga justificativa pública por meio de <strong>nota no Relatório de Política Monetária (RPM)</strong> e <strong>Carta Aberta ao Ministro da Fazenda</strong>, descrevendo com detalhes as causas do desvio, as providências saneadoras e o prazo estimado para o retorno ao intervalo regulamentar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Callout de Previsibilidade: 36 meses de antecedência -->
+                <div class="bcb-col-12 bcb-col-lg-5">
+                    <div class="callout callout-brand callout-left-bordered h-100">
+                        <span class="material-symbols-outlined material-icons callout-icon" aria-hidden="true">event_available</span>
+                        <div class="callout-content">
+                            <h3 class="callout-title">Horizonte de 36 Meses para Alterações</h3>
+                            <p class="text-body">
+                                Eventual alteração da meta de inflação ou de seu intervalo de tolerância pelo Conselho Monetário Nacional deve ser anunciada com <strong>antecedência mínima de 36 meses</strong>.
+                            </p>
+                            <p class="text-muted small mb-0">
+                                Essa regra garante previsibilidade aos agentes econômicos, fortalece o planejamento de longo prazo de famílias e empresas e resguarda a política monetária de pressões transitórias.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 70% Conteúdo Analítico | 30% Sidebar de Apoio e Gráfico] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <!-- Coluna Analítica Principal (70%) -->
+                <div class="bcb-col-12 bcb-col-lg-8 mb-4 mb-lg-0">
+                    <h2 class="h3 font-weight-bold text-bcb-brand mb-3">
+                        Como Funciona o Regime de Metas para a Inflação
+                    </h2>
+
+                    <p class="text-body">
+                        No regime de metas para a inflação, os bancos centrais atuam para que a inflação efetiva convirja para um patamar pré-estabelecido. A meta anunciada publicamente funciona como uma âncora para as expectativas dos agentes financeiros e da sociedade, assegurando que desvios em relação à trajetória planejada sejam corrigidos de maneira ordenada.
+                    </p>
+
+                    <p class="text-body">
+                        No Brasil, a meta e o índice de preços de referência são definidos pelo <strong>Conselho Monetário Nacional (CMN)</strong>, órgão composto pelo Ministro da Fazenda, pela Ministra do Planejamento e Orçamento e pelo Presidente do Banco Central. Cabe privativamente ao <strong>Banco Central do Brasil (BCB)</strong> executar as medidas de política monetária necessárias para o atingimento dos objetivos.
+                    </p>
+
+                    <h3 class="h4 font-weight-bold text-dark mt-4 mb-3">
+                        A Transição para a "Meta Contínua" a Partir de 2025
+                    </h3>
+
+                    <p class="text-body">
+                        Entre 1999 e 2024, a meta referia-se à inflação do ano-calendário fechado (janeiro a dezembro). A verificação do cumprimento ocorria apenas no encerramento de cada exercício fiscal. Desde janeiro de 2025, em consonância com as melhores práticas de bancos centrais internacionais, o Brasil adotou o modelo de <strong>meta contínua</strong>.
+                    </p>
+
+                    <p class="text-body">
+                        Nesse novo formato, todo mês a inflação acumulada em doze meses é confrontada com o centro da meta (3,00%) e suas bandas de tolerância (1,50% a 4,50%). A política monetária opera com um horizonte que se desloca de forma dinâmica ao longo do tempo. O prazo para reconvergência da inflação em episódios de choques é determinado pelo BCB, levando em conta a persistência dos impactos e os mecanismos de transmissão vigentes.
+                    </p>
+
+                    <h3 class="h4 font-weight-bold text-dark mt-4 mb-3">
+                        Os Quatro Pilares do Regime de Metas
+                    </h3>
+
+                    <div class="bcb-row mb-4">
+                        <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                            <div class="card h-100 border p-3 rounded">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="material-symbols-outlined material-icons text-primary mr-2" aria-hidden="true">visibility</span>
+                                    <h4 class="h6 font-weight-bold mb-0 text-dark">1. Conhecimento Prévio</h4>
+                                </div>
+                                <p class="text-muted small mb-0">Divulgação ampla e transparente da meta com antecedência mínima legal de 36 meses para garantir previsibilidade.</p>
+                            </div>
+                        </div>
+
+                        <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                            <div class="card h-100 border p-3 rounded">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="material-symbols-outlined material-icons text-primary mr-2" aria-hidden="true">account_balance</span>
+                                    <h4 class="h6 font-weight-bold mb-0 text-dark">2. Autonomia Operacional</h4>
+                                </div>
+                                <p class="text-muted small mb-0">Independência legal do Banco Central para determinar a taxa de juros básica (Selic) e calibrar os instrumentos monetários.</p>
+                            </div>
+                        </div>
+
+                        <div class="bcb-col-12 bcb-col-md-6 mb-3 mb-md-0">
+                            <div class="card h-100 border p-3 rounded">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="material-symbols-outlined material-icons text-primary mr-2" aria-hidden="true">record_voice_over</span>
+                                    <h4 class="h6 font-weight-bold mb-0 text-dark">3. Comunicação Transparente</h4>
+                                </div>
+                                <p class="text-muted small mb-0">Publicação periódica de atas do Copom, do Relatório de Política Monetária (RPM) trimestral e de notas técnicas fundamentadas.</p>
+                            </div>
+                        </div>
+
+                        <div class="bcb-col-12 bcb-col-md-6">
+                            <div class="card h-100 border p-3 rounded">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="material-symbols-outlined material-icons text-primary mr-2" aria-hidden="true">assignment_turned_in</span>
+                                    <h4 class="h6 font-weight-bold mb-0 text-dark">4. Prestação de Contas</h4>
+                                </div>
+                                <p class="text-muted small mb-0">Obrigação de Carta Aberta e nota no RPM em caso de descumprimento por 6 meses consecutivos, detalhando causas e prazos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Infográfico Acessível: Transmissão da Política Monetária -->
+                    <div class="card border rounded p-4 shadow-sm mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="material-symbols-outlined material-icons text-primary mr-2 md-24" aria-hidden="true">hub</span>
+                            <h3 class="h5 font-weight-bold text-bcb-brand mb-0">
+                                Ciclo Operacional e Canais de Transmissão da Política Monetária
+                            </h3>
+                        </div>
+                        <p class="text-muted small mb-4">
+                            Esquema representativo do fluxo de decisões e dos canais por meio dos quais as ações do Banco Central influenciam a inflação e asseguram a estabilidade de preços:
+                        </p>
+
+                        <div class="bcb-row">
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                                <div class="p-3 border-left border-primary rounded bg-light h-100">
+                                    <span class="badge badge-primary mb-2">Etapa 1 &bull; Diretriz</span>
+                                    <h4 class="h6 font-weight-bold text-dark">Definição da Meta de Inflação</h4>
+                                    <p class="small text-body mb-0">O Conselho Monetário Nacional (CMN) estabelece a meta central e os intervalos de tolerância para o país.</p>
+                                </div>
+                            </div>
+
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3">
+                                <div class="p-3 border-left border-primary rounded bg-light h-100">
+                                    <span class="badge badge-primary mb-2">Etapa 2 &bull; Decisão</span>
+                                    <h4 class="h6 font-weight-bold text-dark">Decisão da Taxa Selic</h4>
+                                    <p class="small text-body mb-0">O Comitê de Política Monetária (Copom) do BCB fixa a meta para a taxa básica de juros a cada 45 dias.</p>
+                                </div>
+                            </div>
+
+                            <div class="bcb-col-12 bcb-col-md-6 mb-3 mb-md-0">
+                                <div class="p-3 border-left border-primary rounded bg-light h-100">
+                                    <span class="badge badge-primary mb-2">Etapa 3 &bull; Operação</span>
+                                    <h4 class="h6 font-weight-bold text-dark">Operações de Mercado Aberto</h4>
+                                    <p class="small text-body mb-0">O Banco Central atua no mercado aberto (compra e venda de títulos públicos) para que a Selic efetiva siga a meta.</p>
+                                </div>
+                            </div>
+
+                            <div class="bcb-col-12 bcb-col-md-6">
+                                <div class="p-3 border-left border-primary rounded bg-light h-100">
+                                    <span class="badge badge-primary mb-2">Etapa 4 &bull; Transmissão</span>
+                                    <h4 class="h6 font-weight-bold text-dark">Canais de Transmissão</h4>
+                                    <p class="small text-body mb-0">A Selic atua sobre 5 canais vitais: <strong>Investimento e Consumo</strong>, <strong>Crédito</strong>, <strong>Expectativas</strong>, <strong>Câmbio</strong> e <strong>Riqueza</strong>, ancorando a inflação na meta.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Coluna Lateral de Destaques, Gráfico e Downloads (30%) -->
+                <div class="bcb-col-12 bcb-col-lg-4">
+
+                    <!-- Painel Gráfico Visual: IPCA vs. Meta e Focus -->
+                    <div class="card border rounded shadow-sm mb-4">
+                        <div class="card-header bg-light py-2 px-3 border-bottom">
+                            <h3 class="h6 font-weight-bold mb-0 text-dark d-flex align-items-center">
+                                <span class="material-symbols-outlined material-icons text-primary mr-2" aria-hidden="true">show_chart</span>
+                                <span>IPCA e Meta para a Inflação</span>
+                            </h3>
+                        </div>
+                        <div class="card-body p-3">
+                            <p class="small text-muted mb-2">
+                                Inflação ocorrida (12 meses), expectativas de mercado (Focus) e bandas de tolerância da meta:
+                            </p>
+
+                            <!-- Representação Gráfica Vetorial Responsiva -->
+                            <div class="border rounded p-2 mb-3 bg-white" role="region" aria-label="Gráfico de variação da inflação IPCA e bandas de tolerância">
+                                <svg viewBox="0 0 320 200" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico linear mostrando a meta de 3,00%, teto de 4,50%, piso de 1,50% e trajetória recente do IPCA">
+                                    <!-- Fundo e Linhas de Grade -->
+                                    <rect width="100%" height="100%" fill="#ffffff" />
+                                    <line x1="30" y1="30" x2="300" y2="30" stroke="#e0e0e0" stroke-width="1" />
+                                    <line x1="30" y1="75" x2="300" y2="75" stroke="#e0e0e0" stroke-width="1" />
+                                    <line x1="30" y1="120" x2="300" y2="120" stroke="#e0e0e0" stroke-width="1" />
+                                    <line x1="30" y1="165" x2="300" y2="165" stroke="#e0e0e0" stroke-width="1" />
+
+                                    <!-- Faixa de Tolerância (1,50% a 4,50%) -->
+                                    <rect x="30" y="55" width="270" height="90" fill="rgba(8, 134, 148, 0.08)" />
+
+                                    <!-- Eixos e Textos -->
+                                    <text x="25" y="59" fill="#666666" font-size="9" text-anchor="end" font-family="sans-serif">4,5%</text>
+                                    <text x="25" y="104" fill="#666666" font-size="9" text-anchor="end" font-family="sans-serif">3,0%</text>
+                                    <text x="25" y="149" fill="#666666" font-size="9" text-anchor="end" font-family="sans-serif">1,5%</text>
+
+                                    <!-- Linha do Teto (4,50%) pontilhada -->
+                                    <line x1="30" y1="55" x2="300" y2="55" stroke="#7E7E7E" stroke-width="1.5" stroke-dasharray="4,3" />
+
+                                    <!-- Linha da Meta Central (3,00%) sólida -->
+                                    <line x1="30" y1="100" x2="300" y2="100" stroke="#025C75" stroke-width="2" />
+
+                                    <!-- Linha do Piso (1,50%) pontilhada -->
+                                    <line x1="30" y1="145" x2="300" y2="145" stroke="#7E7E7E" stroke-width="1.5" stroke-dasharray="4,3" />
+
+                                    <!-- Curva do IPCA Realizado (Azul Petróleo) -->
+                                    <path d="M 40 135 Q 70 85 110 65 T 180 75 T 240 85 L 270 82" fill="none" stroke="#2E4C59" stroke-width="2.5" />
+                                    <circle cx="270" cy="82" r="3.5" fill="#2E4C59" />
+
+                                    <!-- Projeção Focus (Vermelho) -->
+                                    <path d="M 270 82 Q 285 80 300 78" fill="none" stroke="#A92028" stroke-width="2" stroke-dasharray="3,2" />
+                                    <circle cx="300" cy="78" r="3.5" fill="#A92028" />
+
+                                    <!-- Rótulos no Gráfico -->
+                                    <text x="180" y="95" fill="#025C75" font-size="9" font-weight="bold" font-family="sans-serif">Meta: 3,00%</text>
+                                    <text x="270" y="74" fill="#2E4C59" font-size="8" font-weight="bold" text-anchor="middle" font-family="sans-serif">IPCA</text>
+                                    <text x="300" y="70" fill="#A92028" font-size="8" font-weight="bold" text-anchor="end" font-family="sans-serif">Focus</text>
+                                </svg>
+                            </div>
+
+                            <!-- Legenda Estruturada do Gráfico -->
+                            <ul class="list-unstyled small mb-3">
+                                <li class="d-flex align-items-center mb-1">
+                                    <span class="badge badge-primary mr-2">&bull;</span>
+                                    <span><strong>Meta Central:</strong> 3,00% ao ano</span>
+                                </li>
+                                <li class="d-flex align-items-center mb-1">
+                                    <span class="badge badge-secondary mr-2">&bull;</span>
+                                    <span><strong>Bandas de Tolerância:</strong> 1,50% a 4,50%</span>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <span class="badge badge-danger mr-2">&bull;</span>
+                                    <span><strong>Projeção Focus:</strong> Acompanhamento semanal</span>
+                                </li>
+                            </ul>
+
+                            <a href="sgs-series-taxa-selic.html" class="btn btn-outline-primary btn-sm btn-block">
+                                <span class="material-symbols-outlined material-icons md-16 align-middle mr-1" aria-hidden="true">analytics</span>
+                                <span>Ver Série Histórica Completa</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bloco de Documentos Oficiais (.documentos) -->
+                    <div class="card border rounded shadow-sm mb-4">
+                        <div class="card-header bg-light py-2 px-3 border-bottom">
+                            <h3 class="h6 font-weight-bold mb-0 text-dark d-flex align-items-center">
+                                <span class="material-symbols-outlined material-icons text-primary mr-2" aria-hidden="true">download</span>
+                                <span>Publicações Oficiais</span>
+                            </h3>
+                        </div>
+                        <div class="card-body p-3">
+                            <p class="small text-muted mb-3">Documentos analíticos e históricos para consulta e download:</p>
+                            <div class="documentos">
+                                <!-- Documento 1: PDF Dez Anos de Metas -->
+                                <div class="documento d-flex align-items-center justify-content-between p-2 mb-2 border rounded">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined material-icons text-danger md-36 mr-2" aria-hidden="true">picture_as_pdf</span>
+                                        <div>
+                                            <strong class="d-block small text-dark">Dez Anos de Metas para a Inflação</strong>
+                                            <span class="small text-muted">Histórico 1999-2009 &bull; PDF 1,4 MB</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://bcb.gov.br/content/publicacoes/outras_pub_alfa/10_anos_metas_inflacao_completo.pdf" class="btn btn-outline-primary btn-sm" aria-label="Baixar documento Dez anos de metas para a inflação no Brasil em PDF" target="_blank" rel="noopener noreferrer">
+                                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">download</span>
+                                    </a>
+                                </div>
+
+                                <!-- Documento 2: Relatório de Política Monetária -->
+                                <div class="documento d-flex align-items-center justify-content-between p-2 border rounded">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined material-icons text-danger md-36 mr-2" aria-hidden="true">picture_as_pdf</span>
+                                        <div>
+                                            <strong class="d-block small text-dark">Relatório de Política Monetária (RPM)</strong>
+                                            <span class="small text-muted">Edição Trimestral Vigente &bull; PDF 3,2 MB</span>
+                                        </div>
+                                    </div>
+                                    <a href="#download-rpm" class="btn btn-outline-primary btn-sm" aria-label="Baixar edição recente do Relatório de Política Monetária em PDF">
+                                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">download</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartão de Acesso a Normas e Resoluções -->
+                    <div class="card border rounded shadow-sm p-3 bg-light">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="material-symbols-outlined material-icons text-primary mr-2" aria-hidden="true">menu_book</span>
+                            <h3 class="h6 font-weight-bold mb-0 text-dark">Legislação e Atos</h3>
+                        </div>
+                        <p class="small text-muted mb-3">
+                            Consulte os decretos presidenciais, votos e resoluções do CMN que regulamentam o regime de metas para a inflação.
+                        </p>
+                        <a href="resolucao-bcb-dou.html" class="btn btn-outline-primary btn-sm btn-block">
+                            <span>Normas sobre o assunto</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Tabela Densa de Parâmetros e Histórico com Exportação] -->
+        <section class="bcb-section">
+            <div class="bcb-row">
+                <div class="bcb-col-12">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                        <div>
+                            <h2 class="h4 font-weight-bold mb-1 text-bcb-brand">
+                                Histórico e Parâmetros das Metas para a Inflação
+                            </h2>
+                            <p class="text-muted small mb-0">Parâmetros fixados pelo Conselho Monetário Nacional (CMN) e apuração pelo Banco Central do Brasil.</p>
+                        </div>
+
+                        <!-- Barra de Exportação de Dados -->
+                        <div class="bcb-data-export mt-2 mt-md-0" role="toolbar" aria-label="Opções de exportação dos parâmetros das metas de inflação">
+                            <span class="bcb-data-export-label">Exportar dados:</span>
+                            <div class="bcb-data-export-buttons">
+                                <button type="button" class="bcb-btn-export" aria-label="Exportar parâmetros das metas em CSV">
+                                    <span class="material-symbols-outlined material-icons bcb-btn-export-icon" aria-hidden="true">file_download</span>
+                                    <span>CSV</span>
+                                </button>
+                                <button type="button" class="bcb-btn-export" aria-label="Exportar parâmetros das metas em JSON">
+                                    <span class="material-symbols-outlined material-icons bcb-btn-export-icon" aria-hidden="true">data_object</span>
+                                    <span>JSON</span>
+                                </button>
+                                <button type="button" class="bcb-btn-export" data-action="print" aria-label="Imprimir tabela de histórico das metas">
+                                    <span class="material-symbols-outlined material-icons bcb-btn-export-icon" aria-hidden="true">print</span>
+                                    <span>Imprimir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabela Acessível Padrão Digital Depec -->
+                    <div class="table-responsive bcb-table-wrapper" tabindex="0" role="region" aria-label="Tabela analítica de parâmetros das metas de inflação com rolagem horizontal">
+                        <table class="bcb-table table table-bordered table-striped table-digital mb-0">
+                            <caption>Parâmetros regulatórios e histórico das metas para a inflação fixadas pelo CMN.</caption>
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Período de Vigência</th>
+                                    <th scope="col">Regime de Apuração</th>
+                                    <th scope="col" class="text-right">Centro da Meta</th>
+                                    <th scope="col" class="text-right">Intervalo de Tolerância</th>
+                                    <th scope="col" class="text-right">Limites (Piso - Teto)</th>
+                                    <th scope="col">Índice Oficial</th>
+                                    <th scope="col">Ato Normativo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bcb-row-highlight">
+                                    <th scope="row">2025 em diante</th>
+                                    <td><strong>Meta Contínua</strong> (12 meses apurada mês a mês)</td>
+                                    <td class="text-right font-weight-bold">3,00%</td>
+                                    <td class="text-right">&plusmn; 1,50 p.p.</td>
+                                    <td class="text-right">1,50% a 4,50%</td>
+                                    <td>IPCA (IBGE)</td>
+                                    <td>Decreto nº 12.079/2024 / Resolução CMN nº 5.176/2024</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2024</th>
+                                    <td>Ano-calendário (jan-dez)</td>
+                                    <td class="text-right">3,00%</td>
+                                    <td class="text-right">&plusmn; 1,50 p.p.</td>
+                                    <td class="text-right">1,50% a 4,50%</td>
+                                    <td>IPCA (IBGE)</td>
+                                    <td>Resolução CMN nº 4.923/2021</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2023</th>
+                                    <td>Ano-calendário (jan-dez)</td>
+                                    <td class="text-right">3,25%</td>
+                                    <td class="text-right">&plusmn; 1,50 p.p.</td>
+                                    <td class="text-right">1,75% a 4,75%</td>
+                                    <td>IPCA (IBGE)</td>
+                                    <td>Resolução CMN nº 4.838/2020</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2022</th>
+                                    <td>Ano-calendário (jan-dez)</td>
+                                    <td class="text-right">3,50%</td>
+                                    <td class="text-right">&plusmn; 1,50 p.p.</td>
+                                    <td class="text-right">2,00% a 5,00%</td>
+                                    <td>IPCA (IBGE)</td>
+                                    <td>Resolução CMN nº 4.729/2019</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2021</th>
+                                    <td>Ano-calendário (jan-dez)</td>
+                                    <td class="text-right">3,75%</td>
+                                    <td class="text-right">&plusmn; 1,50 p.p.</td>
+                                    <td class="text-right">2,25% a 5,25%</td>
+                                    <td>IPCA (IBGE)</td>
+                                    <td>Resolução CMN nº 4.657/2018</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2020</th>
+                                    <td>Ano-calendário (jan-dez)</td>
+                                    <td class="text-right">4,00%</td>
+                                    <td class="text-right">&plusmn; 1,50 p.p.</td>
+                                    <td class="text-right">2,50% a 5,50%</td>
+                                    <td>IPCA (IBGE)</td>
+                                    <td>Resolução CMN nº 4.581/2017</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Hub Temático de Navegação e Serviços Correlatos] -->
+        <section class="bcb-section">
+            <h2 class="h4 font-weight-bold text-bcb-brand mb-3">
+                Canais de Acesso e Conteúdos Relacionados
+            </h2>
+            <div class="bcb-row">
+                <!-- Link 1: Mecanismos de Transmissão -->
+                <div class="bcb-col-12 bcb-col-md-4 mb-3">
+                    <a href="#mecanismos" class="bcb-service-card">
+                        <div class="bcb-service-card__icon">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">account_tree</span>
+                        </div>
+                        <div class="bcb-service-card__body">
+                            <span class="bcb-service-card__title">Mecanismos de Transmissão</span>
+                            <span class="bcb-service-card__description">Compreenda como as variações nos juros afetam o crédito, câmbio e a formação de preços.</span>
+                        </div>
+                        <span class="bcb-service-card__arrow">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Link 2: Taxa Selic -->
+                <div class="bcb-col-12 bcb-col-md-4 mb-3">
+                    <a href="copom-decisao-taxa-selic.html" class="bcb-service-card">
+                        <div class="bcb-service-card__icon bcb-service-card__icon--verde">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">trending_up</span>
+                        </div>
+                        <div class="bcb-service-card__body">
+                            <span class="bcb-service-card__title">Taxa Selic</span>
+                            <span class="bcb-service-card__description">Decisões recentes do Copom, taxas vigentes, calendário de reuniões e atas oficiais.</span>
+                        </div>
+                        <span class="bcb-service-card__arrow">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Link 3: Histórico das Metas -->
+                <div class="bcb-col-12 bcb-col-md-4 mb-3">
+                    <a href="sgs-series-taxa-selic.html" class="bcb-service-card">
+                        <div class="bcb-service-card__icon bcb-service-card__icon--petro">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">history</span>
+                        </div>
+                        <div class="bcb-service-card__body">
+                            <span class="bcb-service-card__title">Histórico das Metas</span>
+                            <span class="bcb-service-card__description">Série histórica completa das metas para a inflação e resultados apurados desde 1999.</span>
+                        </div>
+                        <span class="bcb-service-card__arrow">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Link 4: Votos do CMN -->
+                <div class="bcb-col-12 bcb-col-md-6 mb-3 mb-md-0">
+                    <a href="resolucao-bcb-dou.html" class="bcb-service-card">
+                        <div class="bcb-service-card__icon bcb-service-card__icon--vinho">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">how_to_vote</span>
+                        </div>
+                        <div class="bcb-service-card__body">
+                            <span class="bcb-service-card__title">Votos para o CMN</span>
+                            <span class="bcb-service-card__description">Propostas técnicas e votos colegiados que subsidiaram a fixação das metas e intervalos de tolerância.</span>
+                        </div>
+                        <span class="bcb-service-card__arrow">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Link 5: Normas sobre o Regime -->
+                <div class="bcb-col-12 bcb-col-md-6">
+                    <a href="resolucao-bcb-dou.html" class="bcb-service-card">
+                        <div class="bcb-service-card__icon">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">gavel</span>
+                        </div>
+                        <div class="bcb-service-card__body">
+                            <span class="bcb-service-card__title">Normas do Regime de Metas</span>
+                            <span class="bcb-service-card__description">Arcabouço jurídico completo, decretos presidenciais e resoluções do CMN pertinentes.</span>
+                        </div>
+                        <span class="bcb-service-card__arrow">
+                            <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- [SLOT CMS: 100% - Chamada para Ação Institucional (CTA)] -->
+        <section class="bcb-section">
+            <div class="bcb-cta bcb-cta--primary" role="region" aria-label="Acompanhamento da Política Monetária">
+                <div class="bcb-cta__content">
+                    <span class="bcb-cta__tag">
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">analytics</span>
+                        <span>Transparência e Comunicação</span>
+                    </span>
+                    <h2 class="bcb-cta__title h3">Acompanhe o Relatório de Política Monetária (RPM)</h2>
+                    <p class="bcb-cta__description">
+                        Publicado trimestralmente pelo Banco Central, o Relatório de Política Monetária apresenta análises aprofundadas sobre a conjuntura econômica, projeções condicionais de inflação e o balanço de riscos para as decisões de juros.
+                    </p>
+                </div>
+                <div class="bcb-cta__action">
+                    <a href="copom-decisao-taxa-selic.html" class="btn btn-light bcb-btn-cta">
+                        <span>Acessar Relatório de Política Monetária</span>
+                        <span class="material-symbols-outlined material-icons" aria-hidden="true">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- [NAVEGAÇÃO: Retorno ao Topo Acessível (WCAG 2.4.1)] -->
+        <div class="bcb-back-to-top-wrapper text-right mt-5 pt-3 border-top">
+            <a href="#conteudo-principal" class="btn btn-outline-secondary btn-sm bcb-btn-back-to-top" aria-label="Voltar ao início do conteúdo desta página">
+                <span class="material-symbols-outlined material-icons md-16 align-middle" aria-hidden="true">arrow_upward</span>
+                <span>Voltar ao topo</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Scripts Oficiais do BCB Design System -->
+    <script src="../assets/js/bcb-ui.js"></script>
+</body>
+</html>

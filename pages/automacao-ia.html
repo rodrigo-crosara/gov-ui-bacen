@@ -325,17 +325,18 @@
                     </div>
                 </div>
 
-                <!-- Etapa 2: Triagem Webdesigner -->
+                <!-- Etapa 2: Triagem do Designer ou Decisão IA -->
                 <div class="col-12 col-md-6 col-lg mb-3">
                     <div class="card h-100 p-3 border shadow-sm" style="background-color: var(--bcb-color-surface);">
                         <div class="d-flex align-items-center mb-2" style="color: var(--bcb-brand-azul-blue); gap: 0.5rem;">
                             <span class="badge badge-primary px-2 py-1" style="font-size: 0.9rem;">2</span>
-                            <h3 class="h6 mb-0 font-weight-bold">Triagem do Designer</h3>
+                            <h3 class="h6 mb-0 font-weight-bold">Triagem &amp; Decisão IA</h3>
                         </div>
                         <p class="text-body small mb-2">
-                            O webdesigner identifica o objetivo da comunicação e indica o padrão de UX oficial:
+                            O webdesigner pode delegar a triagem autônoma para a IA ou forçar um padrão:
                         </p>
                         <ul class="text-body small mb-0 pl-3">
+                            <li>✨ <strong>Decisão Heurística IA</strong> (Automática)</li>
                             <li>Layout 70/30 (Normativos)</li>
                             <li>Painel SGS (Estatísticas)</li>
                             <li>Stepper Process (Serviços)</li>
@@ -681,27 +682,37 @@
                 <span class="material-symbols-outlined material-icons" aria-hidden="true">tune</span> 5. Gerador de Prompts para o Webdesigner de Plantão
             </h2>
             <p class="text-body mb-3">
-                Preencha os campos abaixo para montar e copiar instantaneamente um prompt estruturado pronto para colar no agente ou LLM:
+                Preencha os campos abaixo para montar e copiar instantaneamente um prompt estruturado pronto para colar no agente ou LLM. Por padrão, a <strong>Decisão Heurística Autônoma</strong> analisa o conteúdo cru e escolhe o arranjo de grid e os componentes ideais sem necessidade de seleção manual:
             </p>
 
             <div class="prompt-builder-card">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="selectTipoDemanda" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
-                            <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">category</span> Seletor de Tipo de Diagramação:
-                        </label>
-                        <select class="form-control custom-select" id="selectTipoDemanda">
-                            <option value="normativa">Página Normativa / Comunicado Copom (Layout 70/30)</option>
-                            <option value="indicadores">Painel Econômico / Séries Temporais (Cards 33/33/33 &amp; Data Table)</option>
-                            <option value="servico">Serviço ao Cidadão / Guia Passo a Passo (Stepper 100% &amp; Orientação)</option>
-                            <option value="educacional">Página Informativa / Educacional (Layout Fluido, 50/50 &amp; Accordions)</option>
+                        <div class="d-flex align-items-center justify-content-between mb-1">
+                            <label for="selectTipoDemanda" class="font-weight-bold mb-0" style="color: var(--bcb-brand-azul-blue);">
+                                <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">category</span> Seletor de Tipo de Diagramação:
+                            </label>
+                            <span class="badge badge-success font-weight-bold" style="font-size: 0.72rem;">✨ Modo Inteligente</span>
+                        </div>
+                        <select class="form-control custom-select" id="selectTipoDemanda" aria-describedby="tipoDemandaHelp">
+                            <option value="auto" selected>✨ Decisão Heurística Autônoma (Recomendado — IA analisa o conteúdo e define o layout)</option>
+                            <option value="normativa">Página Normativa / Comunicado Copom (Forçar Layout 70/30)</option>
+                            <option value="indicadores">Painel Econômico / Séries Temporais (Forçar Cards 33/33/33 &amp; Data Table)</option>
+                            <option value="servico">Serviço ao Cidadão / Guia Passo a Passo (Forçar Stepper 100% &amp; Orientação)</option>
+                            <option value="educacional">Página Informativa / Educacional (Forçar Layout 50/50 &amp; Accordions)</option>
                         </select>
+                        <small class="form-text text-muted" id="tipoDemandaHelp">
+                            A IA avalia automaticamente dados, prazos, fluxos e escolhe o melhor padrão (70/30, SGS, Stepper ou Educacional).
+                        </small>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputTituloSugerido" class="font-weight-bold" style="color: var(--bcb-brand-azul-blue);">
-                            <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">title</span> Título Oficial Previsto:
+                        <label for="inputTituloSugerido" class="font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
+                            <span class="material-symbols-outlined material-icons md-18 align-middle" aria-hidden="true">title</span> Título Oficial Previsto (Opcional):
                         </label>
-                        <input type="text" class="form-control" id="inputTituloSugerido" placeholder="Ex: Ajustes nos Limites Noturnos do Pix">
+                        <input type="text" class="form-control" id="inputTituloSugerido" placeholder="Ex: Ajustes nos Limites Noturnos do Pix (ou deixe em branco para IA formular)">
+                        <small class="form-text text-muted">
+                            Se não informado, a IA formula um H1 conciso e oficial a partir da demanda.
+                        </small>
                     </div>
                 </div>
 
@@ -969,12 +980,35 @@ CONTEÚDO BRUTO DO SERVIÇO:
         if (btnGerarPrompt) {
             btnGerarPrompt.addEventListener('click', () => {
                 const tipo = document.getElementById('selectTipoDemanda').value;
-                const titulo = document.getElementById('inputTituloSugerido').value.trim() || 'Título da Demanda Institucional';
+                const inputTitulo = document.getElementById('inputTituloSugerido').value.trim();
                 const texto = document.getElementById('textareaTextoBruto').value.trim() || '[Insira aqui o texto bruto da demanda recebida da área técnica]';
 
+                let tituloFinal = inputTitulo || 'Título Oficial da Demanda Institucional';
                 let especificacaoLayout = '';
 
                 switch (tipo) {
+                    case 'auto':
+                        tituloFinal = inputTitulo || '[Identificar e definir o H1 oficial ideal a partir do tema central]';
+                        especificacaoLayout = `DECISÃO HEURÍSTICA AUTÔNOMA DE ARQUITETURA E LAYOUT (MODO INTELIGENTE RECOMENDADO):
+Analise detalhadamente o texto bruto da demanda e execute a triagem heurística autônoma para selecionar e aplicar o melhor padrão de UX oficial do Banco Central do Brasil:
+
+1. Árvore de Decisão Heurística (Identifique e aplique o arranjo canônico ideal):
+   - Se a demanda tratar de resoluções, diretrizes de colegiado, votos normativos ou regulamentações:
+     -> Aplique o Padrão 70/30 (.bcb-row com .bcb-col-12.bcb-col-lg-8 para texto analítico/noticioso e .bcb-col-12.bcb-col-lg-4 para sidebar de atos normativos, prazos e downloads de PDFs).
+   - Se contiver taxas Selic, metas de inflação, séries temporais SGS, índices econômicos ou tabelas densas:
+     -> Aplique o Painel Econômico SGS (abertura 100%, grade 33/33/33 com .bcb-indicator-card + tendências direcionais, e tabela densa .table.table-striped com exportação .bcb-data-export em .bcb-col-12).
+   - Se descrever procedimentos sequenciais, passos para o cidadão, contestação MED do Pix ou canais de atendimento:
+     -> Aplique o Guia de Serviço (abertura 100%, stepper cronológico <ol class="process-list">, callout antifraude .callout.callout-warning.callout-elevated e acordeão de dúvidas frequentes).
+   - Se for conceitual, reflexivo, cartilha informativa ou cidadania financeira:
+     -> Aplique o Layout Fluido / Educacional (.bcb-col-lg-10 centralizado, blocos de destaque 50/50 .bcb-col-md-6, caixas .tip-box e acordeões ARIA).
+
+2. Extração Semântica e Modularidade Obrigatória:
+   - Extraia automaticamente os valores, taxas e prazos em cards de indicadores (.bcb-indicator-card).
+   - Converta advertências de segurança e regras críticas em callouts estruturados (.callout.callout-warning ou .callout-danger).
+   - Segmente cada bloco funcional em slots modulares delimitados por comentários <!-- [SLOT CMS: ...] --> para implantação direta no CMS do portal.
+   ${inputTitulo ? '' : '- Formule um título H1 institucional, conciso e oficial na classe .bcb-page-title baseado no tema central da demanda.'}`;
+                        break;
+
                     case 'normativa':
                         especificacaoLayout = `ESTRUTURA DE GRID E SLOTS EXIGIDA (PÁGINA NORMATIVA / COMUNICADO COPOM):
 - Layout estruturado no padrão 70/30 (.bcb-row com .bcb-col-12.bcb-col-lg-8 e .bcb-col-12.bcb-col-lg-4).
@@ -1009,13 +1043,17 @@ CONTEÚDO BRUTO DO SERVIÇO:
                         break;
                 }
 
+                const h1Clausula = (tipo === 'auto' && !inputTitulo)
+                    ? 'com exatamente 1 tag <` + `h1 class="bcb-page-title">[Título conciso e oficial formulado pela IA a partir da demanda]</` + `h1>'
+                    : 'com exatamente 1 tag <` + `h1 class="bcb-page-title">' + tituloFinal + '</` + `h1>';
+
                 const promptMontado = `Atue como Especialista em Diagramação e Arquitetura de Informação UI/UX do Banco Central do Brasil.
-Gere uma página HTML5 oficial para o portal institucional referente à demanda: "${titulo}".
+Gere uma página HTML5 oficial para o portal institucional referente à demanda: "${tituloFinal}".
 
 ${especificacaoLayout}
 
 DIRETRIZES TÉCNICAS MANDATÓRIAS DO DESIGN SYSTEM:
-1. Inicie diretamente em <main id="conteudo-principal" class="bcb-container container py-4 my-4"> com exatamente 1 tag <` + `h1 class="bcb-page-title">${titulo}</` + `h1>.
+1. Inicie diretamente em <main id="conteudo-principal" class="bcb-container container py-4 my-4"> ${h1Clausula}.
 2. É ESTRITAMENTE PROIBIDO incluir casca externa (<header>, <footer>, barras externas ou Breadcrumbs), providos pelo portal.
 3. Utilize exclusivamente o Grid oficial do BCB (.bcb-container, .bcb-row, .bcb-col-*, .bcb-section) com gutter de 24px e seções verticais com margem de 48px.
 4. Aplique a paleta de cores e tipografia estritamente via tokens oficiais (--bcb-brand-*, --bcb-color-*, font-family Ubuntu/Cormorant).
