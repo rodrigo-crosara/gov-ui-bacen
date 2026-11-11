@@ -278,12 +278,27 @@ window.BCB_UI_VERSION = '2.8.0';
           });
         });
 
-        // Clique em aba
+        // Clique em aba ou gatilho externo declarativo ([data-bcb-tab-target])
         document.addEventListener('click', (event) => {
           const tab = event.target.closest('[role="tab"], .bcb-navegacaoabas .nav-link, .nav-tabs .nav-link[data-toggle="tab"]');
           if (tab) {
             event.preventDefault();
             switchTab(tab, tab);
+            return;
+          }
+
+          const externalTrigger = event.target.closest('[data-bcb-tab-target]');
+          if (externalTrigger) {
+            event.preventDefault();
+            const targetSelector = externalTrigger.getAttribute('data-bcb-tab-target');
+            const targetTab = targetSelector ? document.querySelector(targetSelector) : null;
+            if (targetTab) {
+              switchTab(targetTab, targetTab);
+              const navContainer = targetTab.closest('.bcb-navegacaoabas, [role="tablist"]');
+              if (navContainer && typeof navContainer.scrollIntoView === 'function') {
+                navContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }
+            }
           }
         });
 

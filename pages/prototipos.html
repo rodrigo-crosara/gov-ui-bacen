@@ -321,22 +321,28 @@
             </div>
         </div>
 
-        <!-- Callout de Acesso Rápido ao Harness de Visualização -->
+        <!-- Callout de Acesso Rápido ao Harness e Live Studio -->
         <div class="card p-4 border mb-5" style="background-color: var(--bcb-color-surface); border-left: 4px solid var(--bcb-brand-azul-blue) !important;">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
-                <div class="pr-md-3 mb-3 mb-md-0">
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center" style="gap: 1rem;">
+                <div class="pr-lg-3 mb-2 mb-lg-0">
                     <h2 class="h5 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
-                        <span class="material-symbols-outlined material-icons" style="vertical-align: middle; font-size: 1.25rem;" aria-hidden="true">preview</span>
-                        Visualizador Técnico de Protótipos (Harness)
+                        <span class="material-symbols-outlined material-icons" style="vertical-align: middle; font-size: 1.25rem;" aria-hidden="true">dashboard_customize</span>
+                        Live Studio &amp; Visualizador Técnico
                     </h2>
                     <p class="text-body small mb-0">
-                        Inspecione qualquer tela produzida pelo agente em uma visualização limpa via <code>&lt;iframe&gt;</code> com alternador de resoluções (Desktop 100%, Tablet 768px e Mobile 375px), sem simulações de cascas externas.
+                        Inspecione qualquer tela no visualizador de resoluções (<code>_harness.html</code>) ou edite visualmente os organismos via drag-and-drop e microcopy in-place com exportação limpa no <strong>Live Studio</strong> (<code>_builder.html</code>).
                     </p>
                 </div>
-                <a href="../prototipos/_harness.html" class="btn btn-primary btn-sm text-nowrap d-inline-flex align-items-center" style="gap: 0.35rem;">
-                    <span>Abrir Visualizador Técnico</span>
-                    <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">open_in_new</span>
-                </a>
+                <div class="d-flex flex-wrap align-items-center" style="gap: 0.5rem;">
+                    <a href="../prototipos/_builder.html" class="btn btn-primary btn-sm text-nowrap d-inline-flex align-items-center" style="gap: 0.35rem;">
+                        <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">edit_note</span>
+                        <span>Abrir Live Studio</span>
+                    </a>
+                    <a href="../prototipos/_harness.html" class="btn btn-outline-secondary btn-sm text-nowrap d-inline-flex align-items-center" style="gap: 0.35rem;">
+                        <span class="material-symbols-outlined material-icons" style="font-size: 1.1rem;" aria-hidden="true">preview</span>
+                        <span>Visualizador Técnico</span>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -344,7 +350,7 @@
         <section id="prototipos-ativos" class="mb-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2 class="h4 font-weight-bold mb-0" style="color: var(--bcb-gray-900);">Protótipos Oficiais em Produção</h2>
-                <span class="badge badge-success">6 Telas em <code>prototipos/</code></span>
+                <span class="badge badge-success">8 Telas em <code>prototipos/</code></span>
             </div>
 
             <div class="row">
@@ -562,6 +568,79 @@
                                 <span>Inspecionar no Visualizador</span>
                             </a>
                             <a href="../prototipos/metas-inflacao.html" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                                <span>Tela Isolada</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Protótipo 7: Institucional (Visão Geral, Governança & Hub) -->
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="card border p-4 shadow-sm h-100 d-flex flex-column justify-content-between" style="background-color: var(--bcb-color-surface); border-left: 4px solid var(--bcb-brand-azul-blue) !important;">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="tag-bcb primary">Demanda 07 &bull; Institucional</span>
+                                <span class="badge badge-success">Homologado</span>
+                            </div>
+                            <h3 class="h5 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
+                                Institucional: Visão Geral, Governança &amp; Hub Temático
+                            </h3>
+                            <span class="small text-muted d-block mb-3">Arquivo: <code>prototipos/institucional.html</code></span>
+                            <p class="text-body small mb-3">
+                                Refatoração semântica completa de layout legado: arranjo 70/30 com indicadores de governança (Lei 4.595/64 e LC 179/21), composição do CMN, 5 pilares de atuação, citação institucional da missão e Hub de Serviços em grade responsiva 3x3.
+                            </p>
+                            <div class="template-components mb-3">
+                                <span class="template-chip">Layout 70/30</span>
+                                <span class="template-chip">Indicadores de Governança</span>
+                                <span class="template-chip">Callout Institucional</span>
+                                <span class="template-chip">5 Pilares de Atuação</span>
+                                <span class="template-chip">Citação (.bcb-quote)</span>
+                                <span class="template-chip">Hub de Serviços (.bcb-service-card)</span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap align-items-center pt-2 border-top" style="gap: 0.5rem;">
+                            <a href="../prototipos/_harness.html?src=institucional.html&amp;doc=07-institucional.md" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">devices</span>
+                                <span>Inspecionar no Visualizador</span>
+                            </a>
+                            <a href="../prototipos/institucional.html" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
+                                <span>Tela Isolada</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Protótipo 8: Planejamento Estratégico (PEI-BC 2026–2029 & Narrativa Cidadã) -->
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="card border p-4 shadow-sm h-100 d-flex flex-column justify-content-between" style="background-color: var(--bcb-color-surface); border-left: 4px solid var(--bcb-brand-azul-blue) !important;">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="tag-bcb primary">Demanda 08 &bull; Estratégia e Governança</span>
+                                <span class="badge badge-success">Homologado</span>
+                            </div>
+                            <h3 class="h5 font-weight-bold mb-1" style="color: var(--bcb-brand-azul-blue);">
+                                Planejamento Estratégico: PEI-BC 2026–2029 &amp; Narrativa Cidadã
+                            </h3>
+                            <span class="small text-muted d-block mb-3">Arquivo: <code>prototipos/planejamento-estrategico.html</code></span>
+                            <p class="text-body small mb-3">
+                                Unificação da narrativa cidadã com a identidade visual estratégica oficial do PEI-BC 2026–2029: paleta cromática oficial dos 5 Objetivos Estratégicos (OE1 a OE5), abas como legenda e filtro (Controle &rarr; Resultado), capa dominante por objetivo selecionado e arquitetura conectada em cascata com protagonismo para as 33 Ações da Agenda BC.
+                            </p>
+                            <div class="template-components mb-3">
+                                <span class="template-chip">Identidade Cromática OE1–OE5</span>
+                                <span class="template-chip">Cascata Conectada (.pei-cascade)</span>
+                                <span class="template-chip">Capa de Objetivo (.pei-oe-cover)</span>
+                                <span class="template-chip">Fluxo de Valor (.flow-diagram)</span>
+                                <span class="template-chip">Acordeão &amp; Downloads</span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap align-items-center pt-2 border-top" style="gap: 0.5rem;">
+                            <a href="../prototipos/_harness.html?src=planejamento-estrategico.html&amp;doc=08-planejamento-estrategico.md" class="btn btn-primary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
+                                <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">devices</span>
+                                <span>Inspecionar no Visualizador</span>
+                            </a>
+                            <a href="../prototipos/planejamento-estrategico.html" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center" style="gap: 0.35rem;">
                                 <span class="material-symbols-outlined material-icons" style="font-size: 1rem;" aria-hidden="true">open_in_new</span>
                                 <span>Tela Isolada</span>
                             </a>

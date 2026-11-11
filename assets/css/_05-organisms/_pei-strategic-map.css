@@ -1,0 +1,966 @@
+/* ============= BCB Design System — Organisms / PEI Strategic Map =============
+ * Identidade Visual Estratégica Oficial do Banco Central do Brasil (PEI-BC 2026–2029).
+ * Incorpora a paleta cromática institucional dos 5 Objetivos Estratégicos (OE1 a OE5),
+ * blocos retangulares sólidos, hierarquia em cascata e estados selecionados dominantes.
+ * Compatível com Tema Claro, Tema Escuro e Alto Contraste (WCAG 2.2 AA / AAA).
+ * ============================================================================ */
+
+:root {
+  /* Paleta Oficial dos 5 Objetivos Estratégicos (PEI-BC 2026–2029) */
+  --bcb-pei-oe1: #025c75;
+  --bcb-pei-oe1-ink: #ffffff;
+  --bcb-pei-oe1-strong: #025c75;
+  --bcb-pei-oe1-tint: #edf4f6;
+
+  --bcb-pei-oe2: #253b56;
+  --bcb-pei-oe2-ink: #ffffff;
+  --bcb-pei-oe2-strong: #253b56;
+  --bcb-pei-oe2-tint: #eef1f5;
+
+  --bcb-pei-oe3: #4e6d5f;
+  --bcb-pei-oe3-ink: #ffffff;
+  --bcb-pei-oe3-strong: #3d574b;
+  --bcb-pei-oe3-tint: #eff4f1;
+
+  --bcb-pei-oe4: #99a390;
+  --bcb-pei-oe4-ink: #14171a;
+  --bcb-pei-oe4-strong: #465440;
+  --bcb-pei-oe4-tint: #f2f4f0;
+
+  --bcb-pei-oe5: #606060;
+  --bcb-pei-oe5-ink: #ffffff;
+  --bcb-pei-oe5-strong: #4a4a4a;
+  --bcb-pei-oe5-tint: #f3f4f4;
+
+  /* Tom de Apoio Institucional (6º tom da paleta PEI — Projetos Corporativos) */
+  --bcb-pei-sand: #c6bead;
+  --bcb-pei-sand-ink: #14171a;
+  --bcb-pei-sand-strong: #5a5243;
+  --bcb-pei-sand-tint: #f6f4ef;
+
+  /* Superfícies Estruturais do Mapa em Cascata */
+  --bcb-pei-frame-bg: #f4f6f7;
+  --bcb-pei-frame-border: #c5d0d6;
+  --bcb-pei-stage-header-bg: #dfe7ea;
+  --bcb-pei-stage-header-ink: #1b2a32;
+  --bcb-pei-connector-bg: #e7eef0;
+  --bcb-pei-connector-line: #025c75;
+}
+
+:root[data-theme="dark"] {
+  --bcb-pei-oe1: #0a7896;
+  --bcb-pei-oe1-ink: #ffffff;
+  --bcb-pei-oe1-strong: #67c3dc;
+  --bcb-pei-oe1-tint: #13272f;
+
+  --bcb-pei-oe2: #345276;
+  --bcb-pei-oe2-ink: #ffffff;
+  --bcb-pei-oe2-strong: #9ab6da;
+  --bcb-pei-oe2-tint: #172230;
+
+  --bcb-pei-oe3: #4e6d5f;
+  --bcb-pei-oe3-ink: #ffffff;
+  --bcb-pei-oe3-strong: #98bda9;
+  --bcb-pei-oe3-tint: #182620;
+
+  --bcb-pei-oe4: #99a390;
+  --bcb-pei-oe4-ink: #14171a;
+  --bcb-pei-oe4-strong: #c2ccb9;
+  --bcb-pei-oe4-tint: #21261f;
+
+  --bcb-pei-oe5: #686e73;
+  --bcb-pei-oe5-ink: #ffffff;
+  --bcb-pei-oe5-strong: #c4c9ce;
+  --bcb-pei-oe5-tint: #222528;
+
+  --bcb-pei-sand: #b8af9c;
+  --bcb-pei-sand-ink: #14171a;
+  --bcb-pei-sand-strong: #dcd4c4;
+  --bcb-pei-sand-tint: #25231e;
+
+  --bcb-pei-frame-bg: #161a1e;
+  --bcb-pei-frame-border: #38414a;
+  --bcb-pei-stage-header-bg: #20272e;
+  --bcb-pei-stage-header-ink: #f3f5f7;
+  --bcb-pei-connector-bg: #1c2329;
+  --bcb-pei-connector-line: #36b2c2;
+}
+
+/* ==========================================================================
+   1. TAGS E CHIPS INSTITUCIONAIS DOS OBJETIVOS ESTRATÉGICOS
+   ========================================================================== */
+
+.pei-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  border-radius: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pei-tag--oe1 {
+  background-color: var(--bcb-pei-oe1);
+  color: var(--bcb-pei-oe1-ink);
+}
+
+.pei-tag--oe2 {
+  background-color: var(--bcb-pei-oe2);
+  color: var(--bcb-pei-oe2-ink);
+}
+
+.pei-tag--oe3 {
+  background-color: var(--bcb-pei-oe3);
+  color: var(--bcb-pei-oe3-ink);
+}
+
+.pei-tag--oe4 {
+  background-color: var(--bcb-pei-oe4);
+  color: var(--bcb-pei-oe4-ink);
+}
+
+.pei-tag--oe5 {
+  background-color: var(--bcb-pei-oe5);
+  color: var(--bcb-pei-oe5-ink);
+}
+
+.pei-tag--sand {
+  background-color: var(--bcb-pei-sand);
+  color: var(--bcb-pei-sand-ink);
+}
+
+/* Variante sutil para contadores secundários com borda da cor do OE */
+.pei-chip-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  border-radius: 2px;
+  background-color: var(--bcb-color-white);
+  color: var(--bcb-gray-900);
+  border: 1px solid var(--bcb-gray-300);
+}
+
+:root[data-theme="dark"] .pei-chip-count {
+  background-color: var(--bcb-gray-900);
+  color: var(--bcb-color-white);
+  border-color: var(--bcb-gray-600);
+}
+
+/* ==========================================================================
+   2. NAVEGAÇÃO / FILTRO CROMÁTICO DOS OBJETIVOS (.pei-map-tabs)
+   ========================================================================== */
+
+.pei-map-tabs.bcb-navegacaoabas {
+  margin-bottom: 0;
+}
+
+.pei-map-tabs .nav-tabs {
+  border-bottom: 2px solid var(--bcb-pei-frame-border);
+  gap: 6px;
+  padding-bottom: 0;
+}
+
+.pei-map-tabs .nav-link {
+  border-radius: 2px 2px 0 0;
+  padding: 0.8rem 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background-color: var(--bcb-color-white);
+  color: var(--bcb-gray-800);
+  border: 1px solid var(--bcb-pei-frame-border);
+  border-bottom: none;
+  margin-bottom: 0;
+  border-top-width: 4px;
+}
+
+:root[data-theme="dark"] .pei-map-tabs .nav-link {
+  background-color: var(--bcb-gray-900);
+  color: var(--bcb-gray-200);
+}
+
+/* Indicador quadrado sólido funcionando como legenda imediata na aba */
+.pei-tab-swatch {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  border-radius: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.pei-tab-swatch--oe1 {
+  background-color: var(--bcb-pei-oe1);
+}
+
+.pei-tab-swatch--oe2 {
+  background-color: var(--bcb-pei-oe2);
+}
+
+.pei-tab-swatch--oe3 {
+  background-color: var(--bcb-pei-oe3);
+}
+
+.pei-tab-swatch--oe4 {
+  background-color: var(--bcb-pei-oe4);
+}
+
+.pei-tab-swatch--oe5 {
+  background-color: var(--bcb-pei-oe5);
+}
+
+/* Assinatura cromática superior nas abas inativas */
+.pei-map-tabs .nav-link.pei-tab--all {
+  border-top-color: var(--bcb-portal-primary);
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe1 {
+  border-top-color: var(--bcb-pei-oe1);
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe2 {
+  border-top-color: var(--bcb-pei-oe2);
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe3 {
+  border-top-color: var(--bcb-pei-oe3);
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe4 {
+  border-top-color: var(--bcb-pei-oe4);
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe5 {
+  border-top-color: var(--bcb-pei-oe5);
+}
+
+/* Estado Ativo Dominante: Bloco Sólido na Cor Oficial de Cada Objetivo */
+.pei-map-tabs .nav-link.pei-tab--all.active,
+.pei-map-tabs .nav-link.pei-tab--all[aria-selected="true"] {
+  background-color: var(--bcb-portal-primary) !important;
+  color: var(--bcb-color-white) !important;
+  border-color: var(--bcb-portal-primary) !important;
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe1.active,
+.pei-map-tabs .nav-link.pei-tab--oe1[aria-selected="true"] {
+  background-color: var(--bcb-pei-oe1) !important;
+  color: var(--bcb-pei-oe1-ink) !important;
+  border-color: var(--bcb-pei-oe1) !important;
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe2.active,
+.pei-map-tabs .nav-link.pei-tab--oe2[aria-selected="true"] {
+  background-color: var(--bcb-pei-oe2) !important;
+  color: var(--bcb-pei-oe2-ink) !important;
+  border-color: var(--bcb-pei-oe2) !important;
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe3.active,
+.pei-map-tabs .nav-link.pei-tab--oe3[aria-selected="true"] {
+  background-color: var(--bcb-pei-oe3) !important;
+  color: var(--bcb-pei-oe3-ink) !important;
+  border-color: var(--bcb-pei-oe3) !important;
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe4.active,
+.pei-map-tabs .nav-link.pei-tab--oe4[aria-selected="true"] {
+  background-color: var(--bcb-pei-oe4) !important;
+  color: var(--bcb-pei-oe4-ink) !important;
+  border-color: var(--bcb-pei-oe4) !important;
+}
+
+.pei-map-tabs .nav-link.pei-tab--oe5.active,
+.pei-map-tabs .nav-link.pei-tab--oe5[aria-selected="true"] {
+  background-color: var(--bcb-pei-oe5) !important;
+  color: var(--bcb-pei-oe5-ink) !important;
+  border-color: var(--bcb-pei-oe5) !important;
+}
+
+.pei-map-tabs .nav-link.active .pei-tab-swatch,
+.pei-map-tabs .nav-link[aria-selected="true"] .pei-tab-swatch {
+  border-color: currentcolor;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.55);
+}
+
+.pei-map-tabs .tab-content {
+  padding: 0;
+  border: 1px solid var(--bcb-pei-frame-border);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  background-color: var(--bcb-pei-frame-bg);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   3. ARQUITETURA EM CASCATA CONECTADA (.pei-cascade)
+   ========================================================================== */
+
+.pei-cascade {
+  display: flex;
+  flex-direction: column;
+}
+
+.pei-stage {
+  background-color: var(--bcb-pei-frame-bg);
+  padding: 1.5rem;
+}
+
+.pei-stage__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  background-color: var(--bcb-pei-stage-header-bg);
+  color: var(--bcb-pei-stage-header-ink);
+  border-left: 5px solid var(--bcb-brand-azul-blue);
+}
+
+.pei-stage__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--bcb-pei-stage-header-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pei-stage__subtitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--bcb-gray-700);
+}
+
+:root[data-theme="dark"] .pei-stage__subtitle {
+  color: var(--bcb-gray-300);
+}
+
+/* Faixa Estrutural de Transição em Cascata entre Estágios */
+.pei-cascade-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  background-color: var(--bcb-pei-connector-bg);
+  border-top: 1px solid var(--bcb-pei-frame-border);
+  border-bottom: 1px solid var(--bcb-pei-frame-border);
+  color: var(--bcb-pei-stage-header-ink);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   4. CAMADA 1 DO MAPA COMPLETO: FAIXA DE 5 OBJETIVOS (SEM 6º CARD INTRUSO)
+   ========================================================================== */
+
+.pei-oe-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+@media (max-width: 1199.98px) {
+  .pei-oe-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pei-oe-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pei-oe-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-pei-frame-border);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+:root[data-theme="dark"] .pei-oe-tile {
+  background-color: var(--bcb-gray-900);
+}
+
+.pei-oe-tile:hover {
+  box-shadow: var(--bcb-shadow-300);
+}
+
+/* Massa sólida superior de cada OE no Mapa Completo */
+.pei-oe-tile__band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0.85rem;
+  font-weight: 700;
+}
+
+.pei-oe-tile--oe1 .pei-oe-tile__band {
+  background-color: var(--bcb-pei-oe1);
+  color: var(--bcb-pei-oe1-ink);
+}
+
+.pei-oe-tile--oe2 .pei-oe-tile__band {
+  background-color: var(--bcb-pei-oe2);
+  color: var(--bcb-pei-oe2-ink);
+}
+
+.pei-oe-tile--oe3 .pei-oe-tile__band {
+  background-color: var(--bcb-pei-oe3);
+  color: var(--bcb-pei-oe3-ink);
+}
+
+.pei-oe-tile--oe4 .pei-oe-tile__band {
+  background-color: var(--bcb-pei-oe4);
+  color: var(--bcb-pei-oe4-ink);
+}
+
+.pei-oe-tile--oe5 .pei-oe-tile__band {
+  background-color: var(--bcb-pei-oe5);
+  color: var(--bcb-pei-oe5-ink);
+}
+
+.pei-oe-tile__code {
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.pei-oe-tile__count {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+}
+
+.pei-oe-tile--oe4 .pei-oe-tile__count {
+  background-color: rgba(20, 23, 26, 0.12);
+  border-color: rgba(20, 23, 26, 0.35);
+}
+
+.pei-oe-tile__body {
+  padding: 0.95rem 0.9rem;
+  flex-grow: 1;
+}
+
+.pei-oe-tile__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  color: var(--bcb-gray-900);
+}
+
+:root[data-theme="dark"] .pei-oe-tile__title {
+  color: var(--bcb-color-white);
+}
+
+.pei-oe-tile__desc {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--bcb-color-body-text);
+  margin-bottom: 0;
+}
+
+.pei-oe-tile__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.55rem 0.9rem;
+  border: none;
+  border-top: 1px solid var(--bcb-gray-200);
+  background-color: var(--bcb-gray-50);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+:root[data-theme="dark"] .pei-oe-tile__trigger {
+  background-color: var(--bcb-gray-800);
+  border-top-color: var(--bcb-gray-700);
+}
+
+.pei-oe-tile--oe1 .pei-oe-tile__trigger {
+  color: var(--bcb-pei-oe1-strong);
+}
+
+.pei-oe-tile--oe2 .pei-oe-tile__trigger {
+  color: var(--bcb-pei-oe2-strong);
+}
+
+.pei-oe-tile--oe3 .pei-oe-tile__trigger {
+  color: var(--bcb-pei-oe3-strong);
+}
+
+.pei-oe-tile--oe4 .pei-oe-tile__trigger {
+  color: var(--bcb-pei-oe4-strong);
+}
+
+.pei-oe-tile--oe5 .pei-oe-tile__trigger {
+  color: var(--bcb-pei-oe5-strong);
+}
+
+.pei-oe-tile__trigger:hover {
+  background-color: var(--bcb-gray-200);
+}
+
+:root[data-theme="dark"] .pei-oe-tile__trigger:hover {
+  background-color: var(--bcb-gray-700);
+}
+
+/* ==========================================================================
+   5. CAPA DOMINANTE DO OBJETIVO SELECIONADO NAS ABAS OE1 A OE5 (.pei-oe-cover)
+   ========================================================================== */
+
+.pei-oe-cover {
+  padding: 1.75rem 1.75rem 1.5rem;
+}
+
+.pei-oe-cover--oe1 {
+  background-color: var(--bcb-pei-oe1);
+  color: var(--bcb-pei-oe1-ink);
+}
+
+.pei-oe-cover--oe2 {
+  background-color: var(--bcb-pei-oe2);
+  color: var(--bcb-pei-oe2-ink);
+}
+
+.pei-oe-cover--oe3 {
+  background-color: var(--bcb-pei-oe3);
+  color: var(--bcb-pei-oe3-ink);
+}
+
+.pei-oe-cover--oe4 {
+  background-color: var(--bcb-pei-oe4);
+  color: var(--bcb-pei-oe4-ink);
+}
+
+.pei-oe-cover--oe5 {
+  background-color: var(--bcb-pei-oe5);
+  color: var(--bcb-pei-oe5-ink);
+}
+
+.pei-oe-cover__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.pei-oe-cover__kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.92;
+}
+
+.pei-oe-cover__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.pei-oe-cover--oe4 .pei-oe-cover__pill {
+  background-color: rgba(20, 23, 26, 0.12);
+  border-color: rgba(20, 23, 26, 0.38);
+}
+
+.pei-oe-cover__title {
+  font-size: clamp(1.35rem, 1.15rem + 0.9vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.6rem 0;
+  color: inherit !important;
+}
+
+.pei-oe-cover__statement {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 940px;
+  color: inherit !important;
+}
+
+/* Faixa acoplada de tradução cidadã sob a capa dominante */
+.pei-oe-citizen-bar {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.95rem 1.75rem;
+  border-bottom: 1px solid var(--bcb-pei-frame-border);
+  font-size: 0.9rem;
+  color: var(--bcb-gray-900);
+}
+
+:root[data-theme="dark"] .pei-oe-citizen-bar {
+  color: var(--bcb-gray-100);
+}
+
+.pei-oe-citizen-bar--oe1 {
+  background-color: var(--bcb-pei-oe1-tint);
+  border-left: 6px solid var(--bcb-pei-oe1);
+}
+
+.pei-oe-citizen-bar--oe2 {
+  background-color: var(--bcb-pei-oe2-tint);
+  border-left: 6px solid var(--bcb-pei-oe2);
+}
+
+.pei-oe-citizen-bar--oe3 {
+  background-color: var(--bcb-pei-oe3-tint);
+  border-left: 6px solid var(--bcb-pei-oe3);
+}
+
+.pei-oe-citizen-bar--oe4 {
+  background-color: var(--bcb-pei-oe4-tint);
+  border-left: 6px solid var(--bcb-pei-oe4);
+}
+
+.pei-oe-citizen-bar--oe5 {
+  background-color: var(--bcb-pei-oe5-tint);
+  border-left: 6px solid var(--bcb-pei-oe5);
+}
+
+/* ==========================================================================
+   6. PROTAGONISMO DAS AÇÕES ESTRATÉGICAS & SUB-CASCATA DE SUSTENTAÇÃO
+   ========================================================================== */
+
+/* Painel Primário: Ações Estratégicas (Agenda BC) com destaque hierárquico */
+.pei-exec-primary {
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-pei-frame-border);
+  border-top: 4px solid var(--bcb-brand-azul-blue);
+  padding: 1.35rem;
+}
+
+:root[data-theme="dark"] .pei-exec-primary {
+  background-color: var(--bcb-gray-900);
+}
+
+.pei-exec-primary--oe1 {
+  border-top-color: var(--bcb-pei-oe1);
+}
+
+.pei-exec-primary--oe2 {
+  border-top-color: var(--bcb-pei-oe2);
+}
+
+.pei-exec-primary--oe3 {
+  border-top-color: var(--bcb-pei-oe3);
+}
+
+.pei-exec-primary--oe4 {
+  border-top-color: var(--bcb-pei-oe4);
+}
+
+.pei-exec-primary--oe5 {
+  border-top-color: var(--bcb-pei-oe5);
+}
+
+/* Grupos de Ações por OE no Mapa Completo */
+.pei-action-group {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  border: 1px solid var(--bcb-gray-300);
+  margin-bottom: 0.75rem;
+  background-color: var(--bcb-color-white);
+}
+
+.pei-action-group:last-child {
+  margin-bottom: 0;
+}
+
+:root[data-theme="dark"] .pei-action-group {
+  background-color: var(--bcb-gray-900);
+  border-color: var(--bcb-gray-700);
+}
+
+@media (max-width: 991.98px) {
+  .pei-action-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pei-action-group__aside {
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pei-action-group--oe1 .pei-action-group__aside {
+  background-color: var(--bcb-pei-oe1);
+  color: var(--bcb-pei-oe1-ink);
+}
+
+.pei-action-group--oe2 .pei-action-group__aside {
+  background-color: var(--bcb-pei-oe2);
+  color: var(--bcb-pei-oe2-ink);
+}
+
+.pei-action-group--oe3 .pei-action-group__aside {
+  background-color: var(--bcb-pei-oe3);
+  color: var(--bcb-pei-oe3-ink);
+}
+
+.pei-action-group--oe4 .pei-action-group__aside {
+  background-color: var(--bcb-pei-oe4);
+  color: var(--bcb-pei-oe4-ink);
+}
+
+.pei-action-group--oe5 .pei-action-group__aside {
+  background-color: var(--bcb-pei-oe5);
+  color: var(--bcb-pei-oe5-ink);
+}
+
+.pei-action-group__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  padding: 0.85rem;
+  margin: 0;
+  list-style: none;
+}
+
+@media (max-width: 767.98px) {
+  .pei-action-group__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pei-action-pill {
+  padding: 0.55rem 0.7rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--bcb-gray-900);
+  background-color: var(--bcb-gray-50);
+  border: 1px solid var(--bcb-gray-200);
+  border-left-width: 4px;
+}
+
+:root[data-theme="dark"] .pei-action-pill {
+  background-color: var(--bcb-gray-800);
+  border-color: var(--bcb-gray-700);
+  color: var(--bcb-gray-100);
+}
+
+.pei-action-group--oe1 .pei-action-pill,
+.pei-action-card--oe1 {
+  border-left-color: var(--bcb-pei-oe1) !important;
+}
+
+.pei-action-group--oe2 .pei-action-pill,
+.pei-action-card--oe2 {
+  border-left-color: var(--bcb-pei-oe2) !important;
+}
+
+.pei-action-group--oe3 .pei-action-pill,
+.pei-action-card--oe3 {
+  border-left-color: var(--bcb-pei-oe3) !important;
+}
+
+.pei-action-group--oe4 .pei-action-pill,
+.pei-action-card--oe4 {
+  border-left-color: var(--bcb-pei-oe4) !important;
+}
+
+.pei-action-group--oe5 .pei-action-pill,
+.pei-action-card--oe5 {
+  border-left-color: var(--bcb-pei-oe5) !important;
+}
+
+/* Cards de Ação Individual dentro das Abas OE1 a OE5 */
+.pei-action-card {
+  height: 100%;
+  padding: 0.9rem 1rem;
+  background-color: var(--bcb-gray-50);
+  border: 1px solid var(--bcb-gray-300);
+  border-left-width: 5px;
+}
+
+:root[data-theme="dark"] .pei-action-card {
+  background-color: var(--bcb-gray-800);
+  border-color: var(--bcb-gray-700);
+}
+
+/* Conector Interno ligando Ações Estratégicas -> Projetos e Cadeia de Valor */
+.pei-support-bridge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  margin: 0;
+  background-color: var(--bcb-pei-stage-header-bg);
+  border-left: 1px solid var(--bcb-pei-frame-border);
+  border-right: 1px solid var(--bcb-pei-frame-border);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--bcb-pei-stage-header-ink);
+}
+
+.pei-support-panel {
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-pei-frame-border);
+  padding: 1.25rem;
+}
+
+:root[data-theme="dark"] .pei-support-panel {
+  background-color: var(--bcb-gray-900);
+}
+
+/* Painel de Projetos Corporativos com identidade Areia Institucional (#c6bead) */
+.pei-projects-box {
+  height: 100%;
+  padding: 1.15rem;
+  background-color: var(--bcb-pei-sand-tint);
+  border: 1px solid var(--bcb-pei-sand);
+  border-top: 5px solid var(--bcb-pei-sand);
+}
+
+.pei-project-item {
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-pei-sand);
+  border-left-width: 4px;
+  font-size: 0.82rem;
+}
+
+.pei-project-item:last-child {
+  margin-bottom: 0;
+}
+
+:root[data-theme="dark"] .pei-project-item {
+  background-color: var(--bcb-gray-900);
+}
+
+/* Painel da Cadeia de Valor */
+.pei-chain-box {
+  height: 100%;
+  padding: 1.15rem;
+  background-color: var(--bcb-gray-50);
+  border: 1px solid var(--bcb-gray-300);
+  border-top: 5px solid var(--bcb-pei-oe3);
+}
+
+:root[data-theme="dark"] .pei-chain-box {
+  background-color: var(--bcb-gray-800);
+  border-color: var(--bcb-gray-700);
+}
+
+.pei-process-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-gray-300);
+  border-bottom: 3px solid var(--bcb-pei-oe3);
+  font-size: 0.82rem;
+}
+
+.pei-process-item:last-child {
+  margin-bottom: 0;
+}
+
+:root[data-theme="dark"] .pei-process-item {
+  background-color: var(--bcb-gray-900);
+  border-color: var(--bcb-gray-700);
+  border-bottom-color: var(--bcb-pei-oe3);
+}
+
+.pei-process-item--base {
+  border-bottom-color: var(--bcb-pei-oe5);
+}
+
+/* Blocos Sólidos de Orientações Estratégicas e Monitoramento */
+.pei-institutional-card {
+  height: 100%;
+  padding: 1.35rem;
+  background-color: var(--bcb-color-white);
+  border: 1px solid var(--bcb-pei-frame-border);
+  border-top: 5px solid var(--bcb-pei-oe1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+:root[data-theme="dark"] .pei-institutional-card {
+  background-color: var(--bcb-gray-900);
+}
+
+.pei-institutional-card--oe2 {
+  border-top-color: var(--bcb-pei-oe2);
+}
+
+.pei-institutional-card--oe3 {
+  border-top-color: var(--bcb-pei-oe3);
+}
+
+/* ==========================================================================
+   7. MODO ALTO CONTRASTE (WCAG AAA)
+   ========================================================================== */
+
+:root[data-contrast="high"] .pei-tag,
+:root[data-contrast="high"] .pei-chip-count,
+:root[data-contrast="high"] .pei-oe-tile__band,
+:root[data-contrast="high"] .pei-oe-cover,
+:root[data-contrast="high"] .pei-oe-citizen-bar,
+:root[data-contrast="high"] .pei-stage,
+:root[data-contrast="high"] .pei-stage__header,
+:root[data-contrast="high"] .pei-cascade-step,
+:root[data-contrast="high"] .pei-exec-primary,
+:root[data-contrast="high"] .pei-action-group,
+:root[data-contrast="high"] .pei-action-group__aside,
+:root[data-contrast="high"] .pei-action-pill,
+:root[data-contrast="high"] .pei-action-card,
+:root[data-contrast="high"] .pei-support-bridge,
+:root[data-contrast="high"] .pei-support-panel,
+:root[data-contrast="high"] .pei-projects-box,
+:root[data-contrast="high"] .pei-project-item,
+:root[data-contrast="high"] .pei-chain-box,
+:root[data-contrast="high"] .pei-process-item,
+:root[data-contrast="high"] .pei-institutional-card {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+:root[data-contrast="high"] .pei-oe-tile__trigger {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-top: 2px solid #ffffff !important;
+}

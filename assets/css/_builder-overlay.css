@@ -1,0 +1,423 @@
+/* ==========================================================================
+   BCB Live Studio & Visual Builder — Overlay Stylesheet
+   Folha de apoio isolada para o Modo Edição, Drag-and-Drop e Edição In-Place.
+   NUNCA importe este arquivo em produção (bcb-style.css permanece 100% puro).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. ESTADOS DO MODO EDIÇÃO
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   1. ESTADOS DO MODO EDIÇÃO
+   -------------------------------------------------------------------------- */
+body:not(.studio-editing) .studio-drag-handle,
+body:not(.studio-editing) .studio-row-handle,
+body:not(.studio-editing) .studio-col-handle,
+body:not(.studio-editing) .studio-component-handle {
+  display: none !important;
+}
+
+body:not(.studio-editing) [contenteditable] {
+  outline: none !important;
+  cursor: inherit !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. HIERARQUIA ARRASTÁVEL: SEÇÃO, LINHA, COLUNA E COMPONENTE
+   -------------------------------------------------------------------------- */
+
+/* 2.1 Seções e Organismos Principais */
+.studio-draggable-block {
+  position: relative !important;
+  transition: outline 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.studio-editing .studio-draggable-block:hover {
+  outline: 2px dashed rgba(2, 92, 117, 0.45);
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
+/* 2.2 Linhas (.bcb-row / .row) */
+.studio-draggable-row {
+  position: relative !important;
+  transition: outline 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.studio-editing .studio-draggable-row:hover {
+  outline: 1.5px dashed rgba(26, 82, 118, 0.5);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* 2.3 Colunas (.bcb-col-* / .col-*) */
+.studio-draggable-col {
+  position: relative !important;
+  transition: outline 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.studio-editing .studio-draggable-col:hover {
+  outline: 1.5px dashed rgba(8, 134, 148, 0.5);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* 2.4 Componentes e Organismos Internos (.card, .callout, .alert, etc.) */
+.studio-draggable-component {
+  position: relative !important;
+  transition: outline 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.studio-editing .studio-draggable-component:hover {
+  outline: 1.5px dashed rgba(217, 119, 6, 0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   3. GATILHOS DEDICADOS DE ARRASTE (HANDLES)
+   Aparecem suavemente apenas ao passar o mouse sobre o elemento correspondente.
+   -------------------------------------------------------------------------- */
+
+/* Base compartilhada dos handles */
+.studio-drag-handle,
+.studio-row-handle,
+.studio-col-handle,
+.studio-component-handle {
+  position: absolute;
+  border-radius: 20px;
+  font-family: var(--bcb-font-ubuntu, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  cursor: grab;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-3px);
+  transition: opacity 0.15s ease, transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.studio-drag-handle:active,
+.studio-row-handle:active,
+.studio-col-handle:active,
+.studio-component-handle:active {
+  cursor: grabbing;
+  transform: translateY(0) !important;
+}
+
+/* 3.1 Handle de Seção (.studio-drag-handle) — Azul Marinho BCB */
+.studio-drag-handle {
+  top: -14px;
+  left: 20px;
+  z-index: 1000;
+  background-color: var(--bcb-brand-azul-blue, #025C75);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 3px 10px;
+  font-size: 0.70rem;
+  gap: 5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+body.studio-editing .studio-draggable-block:hover > .studio-drag-handle {
+  opacity: 0.95;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.studio-drag-handle:hover {
+  opacity: 1 !important;
+  transform: translateY(-1px) !important;
+  background-color: #003e50;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* 3.2 Handle de Linha (.studio-row-handle) — Azul Petróleo / Índigo */
+.studio-row-handle {
+  top: -12px;
+  left: 82px;
+  z-index: 999;
+  background-color: #1A5276;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2px 8px;
+  font-size: 0.68rem;
+  gap: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+body.studio-editing .studio-draggable-row:hover > .studio-row-handle {
+  opacity: 0.95;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.studio-row-handle:hover {
+  opacity: 1 !important;
+  transform: translateY(-1px) !important;
+  background-color: #154360;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+.studio-drag-handle-icon {
+  font-size: 15px !important;
+  line-height: 1 !important;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+.studio-drag-handle-label {
+  font-size: 0.68rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* 3.3 Handle de Coluna (.studio-col-handle) — Verde Castell BCB */
+.studio-col-handle {
+  top: -10px;
+  right: 14px;
+  z-index: 998;
+  background-color: var(--bcb-brand-verde-castell, #088694);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2px 8px;
+  font-size: 0.68rem;
+  gap: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+body.studio-editing .studio-draggable-col:hover > .studio-col-handle {
+  opacity: 0.95;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.studio-col-handle:hover {
+  opacity: 1 !important;
+  transform: translateY(-1px) !important;
+  background-color: #05616b;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 3.4 Handle de Componente (.studio-component-handle) — Âmbar Ouro BCB */
+.studio-component-handle {
+  top: -10px;
+  left: 14px;
+  z-index: 997;
+  background-color: #D97706;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2px 8px;
+  font-size: 0.68rem;
+  gap: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+body.studio-editing .studio-draggable-component:hover > .studio-component-handle {
+  opacity: 0.95;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.studio-component-handle:hover {
+  opacity: 1 !important;
+  transform: translateY(-1px) !important;
+  background-color: #B45309;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   4. ESTADOS SORTABLEJS (Feedback Visual 150ms)
+   -------------------------------------------------------------------------- */
+.studio-sortable-ghost {
+  opacity: 0.35 !important;
+  background-color: rgba(2, 92, 117, 0.08) !important;
+  outline: 2px dashed var(--bcb-brand-azul-blue, #025C75) !important;
+  outline-offset: 4px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.studio-sortable-chosen {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22) !important;
+  transform: scale(1.004) !important;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.studio-sortable-drag {
+  opacity: 0.95 !important;
+  cursor: grabbing !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. EDIÇÃO TEXTUAL IN-PLACE (contenteditable)
+   Preserva rigorosamente a tipografia e espaçamentos naturais sem desvios.
+   -------------------------------------------------------------------------- */
+body.studio-editing [contenteditable] {
+  cursor: text !important;
+  white-space: inherit !important;
+  transition: outline 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.studio-editing [contenteditable]:hover {
+  outline: 1px dashed rgba(8, 134, 148, 0.45);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+body.studio-editing [contenteditable]:focus {
+  outline: 2px solid var(--bcb-brand-verde-castell, #088694) !important;
+  outline-offset: 3px !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 0 3px rgba(8, 134, 148, 0.2) !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. TEMA ESCURO (Dark Mode)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .studio-drag-handle {
+  background-color: #0A9FD4;
+  color: #000000;
+  font-weight: 700;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .studio-drag-handle:hover {
+  background-color: #4DCFE0;
+}
+
+[data-theme="dark"] .studio-row-handle {
+  background-color: #5C6BC0;
+  color: #FFFFFF;
+  font-weight: 700;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .studio-row-handle:hover {
+  background-color: #7986CB;
+}
+
+[data-theme="dark"] .studio-col-handle {
+  background-color: #4DCFE0;
+  color: #000000;
+  font-weight: 700;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .studio-col-handle:hover {
+  background-color: #7dd3fc;
+}
+
+[data-theme="dark"] .studio-component-handle {
+  background-color: #FBBF24;
+  color: #000000;
+  font-weight: 700;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .studio-component-handle:hover {
+  background-color: #FCD34D;
+}
+
+[data-theme="dark"] body.studio-editing .studio-draggable-block:hover {
+  outline-color: rgba(77, 207, 224, 0.45);
+}
+
+[data-theme="dark"] body.studio-editing .studio-draggable-row:hover {
+  outline-color: rgba(121, 134, 203, 0.45);
+}
+
+[data-theme="dark"] body.studio-editing .studio-draggable-col:hover {
+  outline-color: rgba(77, 207, 224, 0.45);
+}
+
+[data-theme="dark"] body.studio-editing .studio-draggable-component:hover {
+  outline-color: rgba(251, 191, 36, 0.5);
+}
+
+[data-theme="dark"] .studio-sortable-ghost {
+  background-color: rgba(10, 159, 212, 0.12) !important;
+  outline-color: var(--bcb-brand-azul-blue, #0A9FD4) !important;
+}
+
+[data-theme="dark"] body.studio-editing [contenteditable]:hover {
+  outline-color: rgba(77, 207, 224, 0.6);
+}
+
+[data-theme="dark"] body.studio-editing [contenteditable]:focus {
+  outline-color: var(--bcb-brand-celestial, #4DCFE0) !important;
+  box-shadow: 0 0 0 3px rgba(77, 207, 224, 0.25) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. TEMA ALTO CONTRASTE (WCAG 2.2 AAA / e-MAG 3.1)
+   -------------------------------------------------------------------------- */
+:root[data-contrast="high"] .studio-drag-handle,
+:root[data-contrast="high"] .studio-row-handle,
+:root[data-contrast="high"] .studio-col-handle,
+:root[data-contrast="high"] .studio-component-handle,
+:root[data-theme="high-contrast"] .studio-drag-handle,
+:root[data-theme="high-contrast"] .studio-row-handle,
+:root[data-theme="high-contrast"] .studio-col-handle,
+:root[data-theme="high-contrast"] .studio-component-handle,
+[data-theme="high-contrast"] .studio-drag-handle,
+[data-theme="high-contrast"] .studio-row-handle,
+[data-theme="high-contrast"] .studio-col-handle,
+[data-theme="high-contrast"] .studio-component-handle {
+  background-color: #000000 !important;
+  color: #FFFF88 !important;
+  border: 2px solid #FFFF88 !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+
+:root[data-contrast="high"] .studio-drag-handle:hover,
+:root[data-contrast="high"] .studio-row-handle:hover,
+:root[data-contrast="high"] .studio-col-handle:hover,
+:root[data-contrast="high"] .studio-component-handle:hover,
+:root[data-theme="high-contrast"] .studio-drag-handle:hover,
+:root[data-theme="high-contrast"] .studio-row-handle:hover,
+:root[data-theme="high-contrast"] .studio-col-handle:hover,
+:root[data-theme="high-contrast"] .studio-component-handle:hover,
+[data-theme="high-contrast"] .studio-drag-handle:hover,
+[data-theme="high-contrast"] .studio-row-handle:hover,
+[data-theme="high-contrast"] .studio-col-handle:hover,
+[data-theme="high-contrast"] .studio-component-handle:hover {
+  background-color: #FFFF88 !important;
+  color: #000000 !important;
+}
+
+:root[data-contrast="high"] body.studio-editing .studio-draggable-block:hover,
+:root[data-contrast="high"] body.studio-editing .studio-draggable-row:hover,
+:root[data-contrast="high"] body.studio-editing .studio-draggable-col:hover,
+:root[data-contrast="high"] body.studio-editing .studio-draggable-component:hover,
+:root[data-theme="high-contrast"] body.studio-editing .studio-draggable-block:hover,
+:root[data-theme="high-contrast"] body.studio-editing .studio-draggable-row:hover,
+:root[data-theme="high-contrast"] body.studio-editing .studio-draggable-col:hover,
+:root[data-theme="high-contrast"] body.studio-editing .studio-draggable-component:hover,
+[data-theme="high-contrast"] body.studio-editing .studio-draggable-block:hover,
+[data-theme="high-contrast"] body.studio-editing .studio-draggable-row:hover,
+[data-theme="high-contrast"] body.studio-editing .studio-draggable-col:hover,
+[data-theme="high-contrast"] body.studio-editing .studio-draggable-component:hover {
+  outline: 2px dashed #FFFF88 !important;
+  outline-offset: 4px !important;
+}
+
+:root[data-contrast="high"] .studio-sortable-ghost,
+:root[data-theme="high-contrast"] .studio-sortable-ghost,
+[data-theme="high-contrast"] .studio-sortable-ghost {
+  background-color: #000000 !important;
+  outline: 3px dashed #FFFF88 !important;
+}
+
+:root[data-contrast="high"] body.studio-editing [contenteditable]:focus,
+:root[data-theme="high-contrast"] body.studio-editing [contenteditable]:focus,
+[data-theme="high-contrast"] body.studio-editing [contenteditable]:focus {
+  outline: 3px solid #FFFF88 !important;
+  outline-offset: 3px !important;
+  box-shadow: none !important;
+}

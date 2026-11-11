@@ -62,6 +62,7 @@
 @import "_05-organisms/_decision-flow.css";
 @import "_05-organisms/_videos.css";
 @import "_05-organisms/_carousel.css";
+@import "_05-organisms/_pei-strategic-map.css";
 
 /* Utilities */
 @import "_06-utilities/_helpers.css";

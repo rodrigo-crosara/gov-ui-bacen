@@ -40,25 +40,28 @@
         .bcb-harness-bar {
             background-color: #1a2228;
             color: #ffffff;
-            padding: 8px 16px;
-            font-size: 0.85rem;
+            padding: 6px 14px;
+            font-size: 0.82rem;
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
+            gap: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             flex-shrink: 0;
             z-index: 1000;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         .bcb-harness-title {
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             color: #ffffff;
             text-decoration: none;
+            flex-shrink: 0;
         }
         .bcb-harness-title:hover {
             color: #4dc8ff;
@@ -67,9 +70,9 @@
 
         .bcb-harness-badge {
             background: rgba(255, 255, 255, 0.15);
-            padding: 2px 8px;
+            padding: 2px 6px;
             border-radius: 4px;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #c4cbd1;
@@ -77,23 +80,26 @@
 
         .bcb-harness-controls {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             align-items: center;
-            gap: 16px;
+            gap: 10px;
+            flex-shrink: 0;
         }
 
         .bcb-harness-group {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
+            flex-shrink: 0;
         }
 
         .bcb-harness-label {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: #9aa6b2;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0;
+            font-weight: 600;
         }
 
         .bcb-harness-select {
@@ -101,12 +107,12 @@
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 0.82rem;
+            padding: 4px 8px;
+            font-size: 0.78rem;
             outline: none;
         }
         #selectPrototipo {
-            max-width: 200px;
+            max-width: 170px;
         }
         .bcb-harness-select:focus {
             border-color: #4dc8ff;
@@ -124,15 +130,16 @@
             background: transparent;
             border: none;
             color: #c4cbd1;
-            padding: 5px 12px;
-            font-size: 0.78rem;
+            padding: 4px 10px;
+            font-size: 0.76rem;
             cursor: pointer;
             border-radius: 3px;
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             text-decoration: none;
+            user-select: none;
         }
         .bcb-harness-btn:hover {
             color: #ffffff;
@@ -145,10 +152,18 @@
             font-weight: 600;
         }
 
+        .bcb-harness-btn--icon-only {
+            padding: 4px 8px;
+            min-width: 30px;
+            justify-content: center;
+        }
+
         .bcb-harness-btn--action {
             background: #2a343d;
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: #ffffff;
+            padding: 4px 9px;
+            font-size: 0.76rem;
         }
         .bcb-harness-btn--action:hover {
             background: rgba(2, 92, 117, 0.4);
@@ -443,10 +458,10 @@
 
     <!-- BARRA TÉCNICA DE CONTROLE -->
     <header class="bcb-harness-bar" role="banner" aria-label="Controles do Visualizador de Protótipos">
-        <a href="../pages/prototipos.html" class="bcb-harness-title">
+        <a href="../pages/prototipos.html" class="bcb-harness-title" title="Retornar à vitrine de protótipos" aria-label="Retornar à vitrine de protótipos">
             <span class="material-symbols-outlined material-icons md-18" aria-hidden="true">arrow_back</span>
-            <span>Visualizador de Protótipos</span>
-            <span class="bcb-harness-badge">BCB v2.8.0</span>
+            <span>Visualizador</span>
+            <span class="bcb-harness-badge">v2.8.0</span>
         </a>
 
         <div class="bcb-harness-controls">
@@ -460,35 +475,58 @@
                     <option value="regras-cheque-especial.html">Regulação: Limite Cheque Especial (70/30)</option>
                     <option value="resolucao-bcb-dou.html">Regulação: Resolução BCB nº 492 (DOU / Comef)</option>
                     <option value="metas-inflacao.html">Metas para a inflação: Painel Econômico SGS &amp; Meta Contínua</option>
+                    <option value="institucional.html">Institucional: Visão Geral, Governança &amp; Hub</option>
+                    <option value="planejamento-estrategico.html">Planejamento Estratégico: PEI-BC 2026–2029 &amp; Narrativa Cidadã</option>
                 </select>
             </div>
 
-            <!-- Alternador de Resolução (Desktop, Tablet 768px, Mobile 375px) -->
+            <!-- Alternador de Resolução (Apenas Ícones: Desktop, Tablet 768px, Mobile 375px) -->
             <div class="bcb-harness-group">
                 <span class="bcb-harness-label">Resolução:</span>
                 <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de resolução">
-                    <button type="button" class="bcb-harness-btn active" data-viewport="desktop" title="Desktop (100%)">
-                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">desktop_windows</span> Desktop
+                    <button type="button" class="bcb-harness-btn bcb-harness-btn--icon-only active" data-viewport="desktop" title="Desktop (100% fluido)" aria-label="Desktop (100% fluido)">
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">desktop_windows</span>
                     </button>
-                    <button type="button" class="bcb-harness-btn" data-viewport="tablet" title="Tablet (768px)">
-                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">tablet_mac</span> Tablet (768px)
+                    <button type="button" class="bcb-harness-btn bcb-harness-btn--icon-only" data-viewport="tablet" title="Tablet (768px centrado)" aria-label="Tablet (768px centrado)">
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">tablet_mac</span>
                     </button>
-                    <button type="button" class="bcb-harness-btn" data-viewport="mobile" title="Mobile (375px)">
-                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">smartphone</span> Mobile (375px)
+                    <button type="button" class="bcb-harness-btn bcb-harness-btn--icon-only" data-viewport="mobile" title="Mobile (375px centrado)" aria-label="Mobile (375px centrado)">
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">smartphone</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Controles de Ação (Ver Demanda e Abrir Isolado) -->
+            <!-- Alternador de Tema Institucional (Apenas Ícones: Padrão, Escuro, Alto Contraste) -->
             <div class="bcb-harness-group">
-                <button type="button" id="toggleDocBtn" class="bcb-harness-btn bcb-harness-btn--action" aria-expanded="false" aria-controls="docDrawer" title="Visualizar documento de demanda (.md)">
+                <span class="bcb-harness-label">Tema:</span>
+                <div class="bcb-harness-btn-group" role="group" aria-label="Alternador de tema institucional">
+                    <button type="button" class="bcb-harness-btn bcb-harness-btn--icon-only active" data-theme="light" title="Tema Padrão (Claro)" aria-label="Tema Padrão (Claro)">
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">light_mode</span>
+                    </button>
+                    <button type="button" class="bcb-harness-btn bcb-harness-btn--icon-only" data-theme="dark" title="Tema Escuro (Dark Mode)" aria-label="Tema Escuro (Dark Mode)">
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">dark_mode</span>
+                    </button>
+                    <button type="button" class="bcb-harness-btn bcb-harness-btn--icon-only" data-theme="high-contrast" title="Tema Alto Contraste (e-MAG / WCAG AAA)" aria-label="Tema Alto Contraste">
+                        <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">contrast</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Controles de Ação Simplificados -->
+            <div class="bcb-harness-group">
+                <button type="button" id="toggleDocBtn" class="bcb-harness-btn bcb-harness-btn--action" aria-expanded="false" aria-controls="docDrawer" title="Visualizar documento de demanda (.md)" aria-label="Ver Documento de Demanda">
                     <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">description</span>
-                    <span>Ver Demanda</span>
+                    <span>Demanda</span>
                 </button>
 
-                <a id="btnOpenNewTab" href="copom-decisao-taxa-selic.html" target="_blank" rel="noopener noreferrer" class="bcb-harness-btn bcb-harness-btn--action" title="Abrir protótipo diretamente em nova aba">
+                <a id="btnOpenBuilder" href="_builder.html?src=copom-decisao-taxa-selic.html" class="bcb-harness-btn bcb-harness-btn--action" title="Editar este protótipo no Live Studio &amp; Visual Builder" aria-label="Editar no Live Studio">
+                    <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">dashboard_customize</span>
+                    <span>Studio</span>
+                </a>
+
+                <a id="btnOpenNewTab" href="copom-decisao-taxa-selic.html" target="_blank" rel="noopener noreferrer" class="bcb-harness-btn bcb-harness-btn--action" title="Abrir protótipo diretamente em nova aba" aria-label="Abrir protótipo em nova aba">
                     <span class="material-symbols-outlined material-icons md-16" aria-hidden="true">open_in_new</span>
-                    <span>Abrir em nova aba</span>
+                    <span>Nova Aba</span>
                 </a>
             </div>
         </div>
@@ -564,11 +602,27 @@
                 'mecanismo-especial-devolucao-med.html': '03-servico-passo-a-passo.md',
                 'regras-cheque-especial.html': '04-conteudo-html-legado.md',
                 'resolucao-bcb-dou.html': '05-entrada-nao-estruturada-dou.md',
-                'metas-inflacao.html': '06-metas-inflacao.md'
+                'metas-inflacao.html': '06-metas-inflacao.md',
+                'institucional.html': '07-institucional.md',
+                'planejamento-estrategico.html': '08-planejamento-estrategico.md'
             };
 
             // Dados de contingência para renderização offline ou via protocolo file:///
             const DEMANDAS_FALLBACK = {
+                '08-planejamento-estrategico.md': {
+                    titulo: 'Modelo 8: Planejamento Estratégico Institucional (PEI-BC 2026–2029) & Narrativa Cidadã',
+                    origem: 'Departamento de Governança e Estratégia / Gabinete da Presidência / ASIMP',
+                    objetivo: 'Unificar a narrativa cidadã (por que planejamos e impacto social) com o Mapa Estratégico oficial do PEI-BC 2026–2029, Agenda BC, Cadeia de Valor e PPA 2024–2027.',
+                    padraoUX: 'Composição Híbrida (70/30 Narrativa e Orientações, Grade 5 OEs, Mapa Interativo em Abas WAI-ARIA, Timeline de Entregas, KPIs e PPA 2024–2027)',
+                    textoBruto: 'O planejamento estratégico define o norte do Banco Central do Brasil (BC), orientando esforços e recursos no cumprimento do nosso papel em ciclos de quatro anos (PEI-BC 2026–2029)...'
+                },
+                '07-institucional.md': {
+                    titulo: 'Modelo 7: Demanda Institucional — Visão Geral e Governança do BCB',
+                    origem: 'Gabinete da Presidência / Assessoria de Imprensa (ASIMP)',
+                    objetivo: 'Apresentar a missão institucional, a base legal (Lei 4.595/64 e LC 179/21), o CMN, os cinco pilares de atuação e o hub temático de serviços.',
+                    padraoUX: 'Padrão 70/30 (Conteúdo Analítico & Sidebar de Governança com Hub Temático)',
+                    textoBruto: 'O Banco Central (BC) é o guardião dos valores do Brasil. O BC é uma autarquia de natureza especial, criado pela Lei nº 4.595/1964 e com autonomia estabelecida pela Lei Complementar nº 179/2021...'
+                },
                 '06-metas-inflacao.md': {
                     titulo: 'Modelo 6: Metas para a inflação & Regime de Meta Contínua',
                     origem: 'Conselho Monetário Nacional (CMN) / Banco Central do Brasil (BCB)',
@@ -748,9 +802,14 @@
                 }
             }
 
+            const btnOpenBuilder = document.getElementById('btnOpenBuilder');
+
             function loadPrototype(slug) {
                 if (btnOpenNewTab) {
                     btnOpenNewTab.href = slug;
+                }
+                if (btnOpenBuilder) {
+                    btnOpenBuilder.href = `_builder.html?src=${slug}`;
                 }
                 if (frame) {
                     frame.src = slug;
@@ -766,6 +825,55 @@
                 const slug = val.split('/').pop();
                 loadPrototype(slug);
             });
+
+            // Alternância e Sincronização de Temas
+            const themeButtons = document.querySelectorAll('[data-theme]');
+            let currentTheme = 'light';
+
+            function applyTheme(themeKey) {
+                currentTheme = themeKey;
+                themeButtons.forEach(btn => {
+                    const isActive = btn.getAttribute('data-theme') === themeKey;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                });
+
+                const themeAttr = themeKey === 'dark' ? 'dark' : (themeKey === 'high-contrast' ? 'high-contrast' : 'light');
+                const contrastAttr = themeKey === 'high-contrast' ? 'high' : 'normal';
+
+                document.documentElement.setAttribute('data-theme', themeAttr);
+                document.documentElement.setAttribute('data-contrast', contrastAttr);
+
+                syncThemeToFrame();
+            }
+
+            function syncThemeToFrame() {
+                if (!frame) return;
+                try {
+                    const doc = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
+                    if (!doc) return;
+                    const themeAttr = currentTheme === 'dark' ? 'dark' : (currentTheme === 'high-contrast' ? 'high-contrast' : 'light');
+                    const contrastAttr = currentTheme === 'high-contrast' ? 'high' : 'normal';
+                    if (doc.documentElement) {
+                        doc.documentElement.setAttribute('data-theme', themeAttr);
+                        doc.documentElement.setAttribute('data-contrast', contrastAttr);
+                    }
+                    if (doc.body) {
+                        doc.body.setAttribute('data-theme', themeAttr);
+                        doc.body.setAttribute('data-contrast', contrastAttr);
+                    }
+                } catch (e) {}
+            }
+
+            themeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    applyTheme(btn.getAttribute('data-theme'));
+                });
+            });
+
+            if (frame) {
+                frame.addEventListener('load', syncThemeToFrame);
+            }
 
             viewportButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
